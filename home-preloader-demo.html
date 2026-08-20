@@ -7,37 +7,48 @@
 <link href="https://fonts.googleapis.com" rel="preconnect">
 <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
 <link href="https://cdn.prod.website-files.com" rel="preconnect" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap">
 <style>
   /* ============================================================
-     AUS HERO — RENOVATION (v2)
-     Real brand palette from Webflow Variables panel:
-       #c8cdd8 (cool gray-blue), #f2f2f2 (light gray), #fa6400 (orange,
-       primary accent), #ffffff (white), #fff737 (yellow, secondary
-       accent). Typography: Inter only, leaning on weight contrast
-       (300 → 800) for hierarchy instead of a second display face.
-     Direction: crisp, light, modern-editorial — thin gray-blue rules,
-     bold orange as the dominant "call to action" color, yellow used
-     sparingly as a sharp accent (per design-skill guidance: one
-     dominant accent + one sharp secondary beats splitting focus).
-
-     NOTE FOR ABBASS: --ink below (#14181f) is an INFERRED dark
-     neutral for body text — it wasn't in the 5 hex codes you sent
-     (which were all light/accent tones). If AUS's Variables panel has
-     an actual dark/text color, swap it in here.
+     AUS HERO — BRAND-ALIGNED (v3)
+     Palette taken directly from the official AUS Business School
+     Brand Book (Aug 2025) "Colors" page — the 6 confirmed hex codes:
+       #ffffff  Pantone Safe White  — white
+       #22295f  Pantone 2766 C      — navy (headline/body ink, dark sections)
+       #be1f3d  Pantone 1935 C      — crimson (primary accent, was
+                                      incorrectly #fa6400 orange, which
+                                      does not appear anywhere in the
+                                      brand book)
+       #bbddf8  Pantone 290 C       — light blue (alt section background)
+       #fff737  Pantone 114 C       — yellow (CTA accent — the brand book's
+                                      own "Apply" button mock uses yellow
+                                      fill + navy text, so buttons here
+                                      follow that exact pairing)
+       #768cb0  Pantone 645 C       — gray-blue (borders, muted/dividers)
+     Typography, per the brand book's "Fonts" page: Title = Inter,
+     Subtitle = Playfair Display, CTA = Inter. Inter carries all
+     headings/body/buttons; Playfair Display (serif) is reserved for
+     "subtitle" style labels — eyebrows/taglines/est. lines — exactly
+     as shown in the book (e.g. "Est. 1991" under the wordmark).
      ============================================================ */
 
   :root{
     --white:#ffffff;
-    --gray-light:#f2f2f2;      /* section alt background */
-    --gray-blue:#c8cdd8;       /* borders, dividers, muted icons */
-    --orange:#fa6400;          /* primary accent / CTA */
-    --yellow:#fff737;          /* secondary accent, used sparingly */
-    --ink:#14181f;             /* INFERRED dark text — confirm/replace */
-    --ink-soft:#3a3f47;
+    --navy:#22295f;            /* brand navy — headline ink, dark sections */
+    --crimson:#be1f3d;         /* brand crimson — primary accent / links / tags */
+    --light-blue:#bbddf8;      /* brand light blue — alt section background */
+    --yellow:#fff737;          /* brand yellow — CTA button fill */
+    --gray-blue:#768cb0;       /* brand gray-blue — borders, dividers, muted icons */
+
+    /* Legacy variable names kept so every existing var(--x) reference
+       below resolves to the correct brand color without a full rename. */
+    --gray-light: var(--light-blue);
+    --orange: var(--crimson);
+    --ink: var(--navy);
+    --ink-soft:#4a5279;        /* navy, lightened for secondary body copy */
     --line: rgba(255,255,255,0.2);
-    --line-dark: rgba(20,24,31,0.12);
-    --scrim: rgba(10,11,14,0.72); /* functional dark overlay for hero media legibility, not a brand color */
+    --line-dark: rgba(34,41,95,0.14);
+    --scrim: rgba(34,41,95,0.72); /* navy-based overlay for hero media legibility — kept dark enough for contrast, tinted to brand navy instead of neutral black */
     --ease: cubic-bezier(.22,1,.36,1);
 
     /* Rounded-corner scale — no sharp edges anywhere in the UI */
@@ -46,8 +57,9 @@
     --r-lg: 24px;
     --r-pill: 100px;
 
-    --font-display:'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-display:'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;   /* Title / CTA, per brand book */
     --font-body:'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-serif:'Playfair Display', Georgia, 'Times New Roman', serif;     /* Subtitle, per brand book */
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -147,13 +159,12 @@
     filter:brightness(0) invert(1) drop-shadow(0 1px 6px rgba(0,0,0,.25));
     transition:filter .4s var(--ease), transform .4s var(--ease);
   }
-  /* Was `filter:none` — that just showed the source AVIF's own colors,
-     which are apparently light/white (made for dark backgrounds only, no
-     separate dark variant exists). On the white scrolled nav that meant
-     near-invisible contrast. brightness(0) forces the mark to solid black
-     regardless of its native color, which is legible on white — but it's
-     a workaround, not a true fix: swap in a real dark/navy logo asset from
-     the brand kit here if one exists, for correct brand color. */
+  /* White-on-dark / black-on-white is one of the four approved logo
+     colorways on the Brand Book's "Logo" page (row 2: solid black on
+     white, solid white on navy/black) — so forcing this via filter
+     instead of the full-color mark is on-brand, not a stand-in. If a
+     navy (#22295f) logo asset exists in the kit, swap it in below for
+     the closer color match, but black is an explicitly approved variant. */
   .aus-nav.is-scrolled .aus-logo img{filter:brightness(0);opacity:.92;}
   .aus-logo-fallback{
     font-family:var(--font-display);font-weight:800;font-size:19px;letter-spacing:.02em;
@@ -202,7 +213,7 @@
     background:var(--white);color:var(--ink);border-radius:var(--r-md);
     min-width:520px;padding:26px;
     display:grid;grid-template-columns:1fr 1fr;gap:22px 32px;
-    box-shadow:0 24px 60px rgba(20,24,31,.28);
+    box-shadow:0 24px 60px rgba(34,41,95,.28);
   }
   .dropdown-col-title{
     font-family:var(--font-display);font-size:12.5px;font-weight:700;color:var(--orange);
@@ -214,15 +225,18 @@
   }
   .dropdown-col a:hover{color:var(--orange);padding-left:4px;}
 
+  /* Brand book's Colors page shows the "Apply" CTA as a yellow pill with
+     navy text on every background variant (dark, light, and colored) —
+     so this button no longer flips color with the scrolled nav state. */
   .aus-nav-cta{
     font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
-    padding:11px 22px;background:var(--orange);color:var(--white);border:1px solid var(--orange);border-radius:var(--r-pill);
+    padding:11px 22px;background:var(--yellow);color:var(--navy);border:1px solid var(--yellow);border-radius:var(--r-pill);
     transition:background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease);
     white-space:nowrap;
   }
-  .aus-nav-cta:hover{background:var(--white);color:var(--orange);transform:translateY(-2px);}
-  .aus-nav.is-scrolled .aus-nav-cta{color:var(--white);}
-  .aus-nav.is-scrolled .aus-nav-cta:hover{color:var(--orange);}
+  .aus-nav-cta:hover{background:var(--navy);color:var(--yellow);border-color:var(--navy);transform:translateY(-2px);}
+  .aus-nav.is-scrolled .aus-nav-cta{color:var(--navy);}
+  .aus-nav.is-scrolled .aus-nav-cta:hover{color:var(--yellow);}
 
   .aus-burger{display:none;flex-direction:column;gap:5px;width:26px;z-index:110;}
   .aus-burger span{display:block;height:1px;width:100%;background:currentColor;transition:transform .3s var(--ease), opacity .3s var(--ease);}
@@ -269,7 +283,7 @@
     /* one fixed gradient, tuned so every line of hero copy sits on a
        reliably dark region regardless of what's behind it */
     background:
-      linear-gradient(180deg, rgba(10,11,14,.55) 0%, rgba(10,11,14,.32) 26%, rgba(10,11,14,.6) 62%, var(--ink) 100%);
+      linear-gradient(180deg, rgba(34,41,95,.55) 0%, rgba(34,41,95,.32) 26%, rgba(34,41,95,.6) 62%, var(--ink) 100%);
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -286,10 +300,11 @@
   }
 
   .hero-eyebrow{
-    display:flex;align-items:center;gap:12px;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--orange);text-shadow:0 1px 12px rgba(0,0,0,.45);
+    display:flex;align-items:center;gap:12px;font-family:var(--font-serif);font-style:italic;font-weight:600;
+    font-size:14px;letter-spacing:.02em;
+    color:var(--yellow);text-shadow:0 1px 12px rgba(0,0,0,.45);
   }
-  .hero-eyebrow .rule{width:34px;height:1px;background:var(--orange);display:inline-block;flex:none;}
+  .hero-eyebrow .rule{width:34px;height:1px;background:var(--yellow);display:inline-block;flex:none;}
 
   /* Sized to a safer ceiling (was up to 6.4rem, which on narrow-but-not-mobile
      widths — ~700-900px — produced lines tall enough to collide with the
@@ -339,7 +354,7 @@
   .hero-sub-rotator ul{position:relative;height:100%;}
   .hero-sub-rotator li{
     position:absolute;inset:0;display:flex;align-items:center;
-    font-family:var(--font-display);font-weight:600;color:var(--orange);
+    font-family:var(--font-display);font-weight:600;color:var(--white);
     opacity:0;
     animation-name:subRotate;
     animation-duration:10.2s; /* 3 lines x 3.4s */
@@ -370,7 +385,7 @@
 
   .hero-index{display:flex;gap:clamp(18px,3vw,40px);flex-wrap:wrap;}
   .hero-index-item{display:flex;flex-direction:column;gap:4px;}
-  .hero-index-item .num{font-size:11px;color:var(--orange);letter-spacing:.08em;}
+  .hero-index-item .num{font-size:11px;color:var(--yellow);letter-spacing:.08em;}
   .hero-index-item a{
     font-size:14px;font-weight:500;position:relative;padding-bottom:2px;
   }
@@ -425,8 +440,8 @@
   .section-inner{max-width:1360px;margin:0 auto;}
 
   .eyebrow-tag{
-    display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;
-    letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:18px;
+    display:inline-flex;align-items:center;gap:10px;font-family:var(--font-serif);font-style:italic;font-weight:600;
+    font-size:16px;letter-spacing:.01em;text-transform:none;color:var(--orange);margin-bottom:18px;
   }
   .eyebrow-tag::before{content:"";width:20px;height:2px;background:var(--yellow);display:inline-block;}
 
@@ -572,11 +587,11 @@
   .program-list a:hover .plus-mark::before,.program-list a:hover .plus-mark::after{background:var(--orange);}
 
   .btn-solid{
-    display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:var(--white);
+    display:inline-flex;align-items:center;gap:10px;background:var(--yellow);color:var(--navy);
     font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;
-    padding:14px 26px;border-radius:var(--r-pill);transition:background .3s var(--ease), transform .3s var(--ease), box-shadow .3s var(--ease);
+    padding:14px 26px;border-radius:var(--r-pill);transition:background .3s var(--ease), color .3s var(--ease), transform .3s var(--ease), box-shadow .3s var(--ease);
   }
-  .btn-solid:hover{background:var(--ink);transform:translateX(3px) translateY(-2px);box-shadow:0 12px 24px rgba(20,24,31,.2);}
+  .btn-solid:hover{background:var(--ink);color:var(--yellow);transform:translateX(3px) translateY(-2px);box-shadow:0 12px 24px rgba(34,41,95,.2);}
 
   @media (max-width:900px){
     .program-panel{grid-template-columns:1fr;}
@@ -620,7 +635,7 @@
   /* ---------- TESTIMONIALS ---------- */
   .testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:clamp(48px,6vw,80px);}
   .yt-card{position:relative;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:16/9;background:var(--ink);cursor:pointer;transition:transform .35s var(--ease), box-shadow .35s var(--ease);}
-  .yt-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(20,24,31,.18);}
+  .yt-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(34,41,95,.18);}
   .yt-card img{width:100%;height:100%;object-fit:cover;opacity:.75;transition:opacity .3s var(--ease), transform .5s var(--ease);}
   .yt-card:hover img{opacity:.55;transform:scale(1.04);}
   .yt-play{
@@ -758,8 +773,6 @@
     </div>
 
     <div class="hero-inner">
-      <div class="hero-eyebrow"><span class="rule"></span> Shaping Leaders Since 1991 · La Tour-de-Peilz, Switzerland</div>
-
       <h1 class="hero-heading" id="heroHeading">AUS Business School</h1>
 
       <div class="hero-sub-row">
@@ -790,7 +803,6 @@
   <section class="section section-light">
     <div class="section-inner about-section">
       <div class="about-copy reveal">
-        <div class="eyebrow-tag">Since 1991</div>
         <h2 class="section-heading">It starts with you</h2>
         <p>Nestled on the shores of Lake Geneva, AUS Business School offers a distinctly Swiss education for a global career. From Bachelor's to DBA programs, we combine academic rigor with hands-on industry experience — preparing you to lead in business, hospitality, and beyond.</p>
         <div class="about-stats">
@@ -808,7 +820,6 @@
   <!-- ============ CAMPUS GALLERY — pinned horizontal scroll ============ -->
   <section class="hscroll-section" id="campusGallery">
     <div class="hscroll-head reveal">
-      <div class="eyebrow-tag">Life at AUS</div>
       <h2 class="section-heading">Keep scrolling to see campus</h2>
     </div>
     <div class="hscroll-viewport">
@@ -845,7 +856,6 @@
   <section class="section section-gray" id="programs" style="scroll-margin-top:100px;">
     <div class="section-inner">
       <div class="programs-head reveal">
-        <div class="eyebrow-tag">Explore Programs</div>
         <h2 class="section-heading">Bachelor's, Master's &amp; Doctorate</h2>
       </div>
 
@@ -918,7 +928,6 @@
   <section class="section section-light">
     <div class="section-inner">
       <div class="partners-head reveal">
-        <div class="eyebrow-tag">Global Recognition</div>
         <h2 class="section-heading" style="font-size:clamp(1.6rem,2.8vw,2.2rem);">Accredited &amp; Recognized Worldwide</h2>
       </div>
       <div class="logo-marquee reveal">
@@ -949,7 +958,6 @@
   <section class="section section-gray">
     <div class="section-inner">
       <div class="reveal" style="margin-bottom:8px;">
-        <div class="eyebrow-tag">Student Voices</div>
         <h2 class="section-heading">Testimonials</h2>
       </div>
       <div class="testimonial-grid reveal" style="margin-top:36px;">
