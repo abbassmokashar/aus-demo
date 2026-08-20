@@ -7,32 +7,36 @@
 <link href="https://fonts.googleapis.com" rel="preconnect">
 <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
 <link href="https://cdn.prod.website-files.com" rel="preconnect" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
   /* ============================================================
-     AUS — ACCOUNTING PROGRAM PAGE
-     Same design system as the homepage renovation: brand palette
-     (#c8cdd8 / #f2f2f2 / #fa6400 / #ffffff / #fff737), Inter only,
-     rounded-corner scale, orange as dominant CTA color, yellow as a
-     sharp secondary accent. This file intentionally reuses the exact
-     nav, footer, section utilities, buttons and reveal system from
-     the homepage build so the two pages read as one site — plus a
-     small set of new components for content types the homepage
-     doesn't need (spec sheets, numbered advantage cards, admissions
-     steps) built in the same visual language.
+     AUS BUSINESS SCHOOL — ACCOUNTING PROGRAM PAGE
+     Brought into line with the official AUS Business School Brand
+     Book (Aug 2025): Navy #22295f, Crimson #be1f3d, Sky #bbddf8,
+     Signal Yellow #fff737 and Slate-Blue #768cb0 on a white ground.
+     Title type is Inter (bold, geometric — "modern"); subtitles,
+     ledes and pull-quotes run in Playfair Display ("heritage" —
+     curved, delicate). CTAs stay in Inter per the brand's type
+     scale. Visual language mixes bolder geometric shapes (the
+     crimson/navy/slate blocks) with delicate curved linework —
+     expressed here as soft floating circles/arcs used as ambient
+     motion accents through the page.
      ============================================================ */
 
   :root{
     --white:#ffffff;
-    --gray-light:#f2f2f2;
-    --gray-blue:#c8cdd8;
-    --orange:#fa6400;
-    --yellow:#fff737;
-    --ink:#14181f;
-    --ink-soft:#3a3f47;
-    --line: rgba(255,255,255,0.2);
-    --line-dark: rgba(20,24,31,0.12);
-    --scrim: rgba(10,11,14,0.72);
+    --gray-light:#eef6fd;      /* tint of brand Sky #bbddf8 for section backgrounds */
+    --sky:#bbddf8;             /* brand Sky */
+    --gray-blue:#768cb0;       /* brand Slate-Blue */
+    --orange:#be1f3d;          /* brand Crimson — replaces the old orange as the CTA/accent color */
+    --yellow:#fff737;          /* brand Signal Yellow — unchanged, already on-brand */
+    --ink:#22295f;             /* brand Navy — replaces the old near-black ink */
+    --ink-soft:#4a527c;        /* softened navy for body copy */
+    --line: rgba(255,255,255,0.22);
+    --line-dark: rgba(34,41,95,0.14);
+    --scrim: rgba(15,18,48,0.74);
     --ease: cubic-bezier(.22,1,.36,1);
 
     --r-sm: 10px;
@@ -42,6 +46,7 @@
 
     --font-display:'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
     --font-body:'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-serif:'Playfair Display', Georgia, 'Times New Roman', serif;
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -58,6 +63,46 @@
   img{display:block;max-width:100%;}
   ul{list-style:none;}
   button{font-family:inherit;background:none;border:none;cursor:pointer;color:inherit;}
+
+  /* ---------- PRELOADER ---------- */
+  /* Covers the viewport on first load, mark pulses in, then the whole
+     panel wipes away once the page is actually ready (fonts + a minimum
+     show-time so it never just flashes). Sits above everything and is
+     removed from the DOM after it fades so it can't ever intercept clicks.
+     Body scroll is locked while it's up. */
+  html.has-preloader body{overflow:hidden;}
+  .aus-preloader{
+    position:fixed;inset:0;z-index:300;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--ink);
+    transition:opacity .6s var(--ease), visibility .6s var(--ease);
+  }
+  .aus-preloader-mark{
+    width:auto;height:clamp(72px,12vw,140px);
+    opacity:0;transform:scale(.82);
+    animation:preloaderIn 1s var(--ease) forwards;
+  }
+  .aus-preloader-bar{
+    position:absolute;left:50%;bottom:16%;transform:translateX(-50%);
+    width:120px;height:2px;background:var(--line-dark);border-radius:var(--r-pill);overflow:hidden;
+  }
+  .aus-preloader-bar::after{
+    content:"";position:absolute;inset:0;width:40%;background:var(--orange);border-radius:var(--r-pill);
+    animation:preloaderBar 1.1s ease-in-out infinite;
+  }
+  @keyframes preloaderIn{
+    0%{opacity:0;transform:scale(.82);}
+    60%{opacity:1;transform:scale(1.04);}
+    100%{opacity:1;transform:scale(1);}
+  }
+  @keyframes preloaderBar{
+    0%{transform:translateX(-120%);}
+    100%{transform:translateX(340%);}
+  }
+  .aus-preloader.is-hidden{opacity:0;visibility:hidden;pointer-events:none;}
+  @media (prefers-reduced-motion: reduce){
+    .aus-preloader{display:none;}
+  }
 
   /* ---------- NAV (identical to homepage) ---------- */
   .aus-nav{
@@ -172,16 +217,15 @@
     display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;
     letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:18px;
   }
-  .eyebrow-tag::before{content:"";width:20px;height:2px;background:var(--yellow);display:inline-block;}
   .eyebrow-tag.on-dark{color:var(--yellow);}
-  .eyebrow-tag.on-dark::before{background:var(--orange);}
+  .eyebrow-tag.on-dark::before{content:"";width:20px;height:2px;background:var(--orange);display:inline-block;}
 
   .section-heading{
-    font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;
-    font-size:clamp(2rem,4.2vw,3.4rem);line-height:1.05;
+    font-family:var(--font-serif);font-weight:700;letter-spacing:-.01em;
+    font-size:clamp(2rem,4.2vw,3.4rem);line-height:1.1;
   }
 
-  .section-lede{font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.7;color:var(--ink-soft);max-width:640px;}
+  .section-lede{font-family:var(--font-body);font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.7;color:var(--ink-soft);max-width:640px;}
   .section-lede.on-dark{color:rgba(255,255,255,.72);}
 
   .reveal{opacity:1;transform:none;}
@@ -214,14 +258,18 @@
   .btn-row{display:flex;gap:14px;flex-wrap:wrap;}
 
   /* ---------- BREADCRUMB ---------- */
+  .breadcrumb-bar{
+    background:var(--white);border-bottom:1px solid var(--line-dark);
+    padding:16px clamp(20px,4vw,56px);
+  }
   .aus-breadcrumb{
     position:relative;z-index:2;display:flex;align-items:center;gap:8px;flex-wrap:wrap;
-    font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.7);
+    font-size:12px;letter-spacing:.04em;color:var(--ink-soft);
   }
   .aus-breadcrumb a{transition:color .2s;}
   .aus-breadcrumb a:hover{color:var(--orange);}
   .aus-breadcrumb .sep{opacity:.5;}
-  .aus-breadcrumb .current{color:var(--yellow);}
+  .aus-breadcrumb .current{color:var(--orange);font-weight:600;}
 
   /* ---------- PROGRAM HERO ---------- */
   .program-hero{
@@ -239,14 +287,14 @@
     max-width:1360px;margin:0 auto;width:100%;
     display:flex;flex-direction:column;gap:22px;
   }
-  .program-kicker{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);}
+  .program-kicker{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white);}
   .program-hero-heading{
-    font-family:var(--font-display);font-weight:800;color:var(--white);
-    font-size:clamp(2.6rem, 7vw, 5.8rem);line-height:1.02;letter-spacing:-.02em;
+    font-family:var(--font-serif);font-weight:700;color:var(--white);
+    font-size:clamp(2.6rem, 7vw, 5.8rem);line-height:1.05;letter-spacing:-.01em;
     text-wrap:balance;max-width:14ch;
   }
   .program-hero-sub{
-    font-size:clamp(1rem,1.6vw,1.2rem);line-height:1.6;color:rgba(255,255,255,.82);max-width:560px;font-weight:300;
+    font-family:var(--font-body);font-size:clamp(1rem,1.6vw,1.2rem);line-height:1.6;color:rgba(255,255,255,.82);max-width:560px;font-weight:300;
   }
   .program-hero-foot{
     display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;
@@ -260,7 +308,7 @@
     display:flex;align-items:center;gap:16px;padding:16px 22px;border-radius:var(--r-md);
     background:rgba(20,24,31,.5);border:1px solid var(--line);backdrop-filter:blur(6px);
   }
-  .hero-stat-card .num{font-family:var(--font-display);font-weight:800;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--orange);line-height:1;}
+  .hero-stat-card .num{font-family:var(--font-display);font-weight:800;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--yellow);line-height:1;}
   .hero-stat-card .label{font-size:12px;line-height:1.4;color:rgba(255,255,255,.78);max-width:190px;}
 
   /* ---------- OVERVIEW ---------- */
@@ -310,7 +358,7 @@
   .pull-quote{
     margin:26px 0;padding:22px 26px;border-left:3px solid var(--orange);background:var(--gray-light);border-radius:0 var(--r-md) var(--r-md) 0;
   }
-  .pull-quote p{font-family:var(--font-display);font-weight:600;font-size:1.05rem;line-height:1.5;color:var(--ink);margin:0;}
+  .pull-quote p{font-family:var(--font-serif);font-style:italic;font-weight:600;font-size:1.15rem;line-height:1.5;color:var(--ink);margin:0;}
   @media (max-width:900px){
     .desc-section{grid-template-columns:1fr;}
     .desc-media{order:-1;aspect-ratio:16/10;}
@@ -324,7 +372,7 @@
     transition:transform .35s var(--ease), box-shadow .35s var(--ease);
   }
   .term-year:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(20,24,31,.1);}
-  .term-year-label{font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:var(--ink);margin-bottom:16px;}
+  .term-year-label{font-family:var(--font-serif);font-weight:700;font-size:1.6rem;color:var(--ink);margin-bottom:16px;}
   .term-dots{display:flex;gap:8px;margin-bottom:12px;}
   .term-dots span{width:100%;height:6px;border-radius:var(--r-pill);background:var(--orange);}
   .term-year-note{font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);}
@@ -344,7 +392,7 @@
     background:var(--ink);color:var(--white);border-radius:var(--r-lg);padding:clamp(28px,3.4vw,40px);
   }
   .dual-card .eyebrow-tag{margin-bottom:14px;}
-  .dual-card h3{font-family:var(--font-display);font-weight:700;font-size:1.5rem;margin-bottom:14px;line-height:1.3;}
+  .dual-card h3{font-family:var(--font-serif);font-weight:700;font-size:1.6rem;margin-bottom:14px;line-height:1.3;}
   .dual-card p{color:rgba(255,255,255,.72);font-size:14px;line-height:1.75;margin-bottom:0;}
   @media (max-width:900px){.dual-section{grid-template-columns:1fr;}}
 
@@ -392,7 +440,7 @@
     display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;
     background:var(--orange);color:var(--white);font-family:var(--font-display);font-weight:700;font-size:13px;margin-bottom:16px;
   }
-  .admissions-block h3{font-family:var(--font-display);font-weight:700;font-size:1.4rem;margin-bottom:14px;}
+  .admissions-block h3{font-family:var(--font-serif);font-weight:700;font-size:1.5rem;margin-bottom:14px;}
   .admissions-block > p{font-size:14.5px;line-height:1.75;color:var(--ink-soft);margin-bottom:20px;}
   .req-list{display:flex;flex-direction:column;gap:16px;}
   .req-item{border-top:1px solid var(--line-dark);padding-top:14px;}
@@ -404,18 +452,19 @@
     margin-top:28px;background:var(--ink);color:var(--white);border-radius:var(--r-lg);padding:clamp(26px,3vw,34px);
   }
   .intake-card .intake-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;}
-  .intake-card .intake-headline{font-family:var(--font-display);font-weight:800;font-size:1.6rem;margin-bottom:20px;}
+  .intake-card .intake-headline{font-family:var(--font-serif);font-weight:700;font-size:1.7rem;margin-bottom:20px;}
   .intake-info{display:flex;gap:clamp(24px,4vw,40px);flex-wrap:wrap;margin-bottom:22px;}
   .intake-info .intake-sub-label{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px;}
   .intake-info .intake-value{font-family:var(--font-display);font-weight:700;font-size:1.05rem;}
 
   /* ---------- CERTIFICATION PARTNERS ---------- */
   .cert-logos{display:flex;align-items:center;justify-content:center;gap:clamp(32px,5vw,72px);flex-wrap:wrap;margin-top:clamp(32px,4vw,48px);}
-  .cert-logos img{height:44px;width:auto;max-width:150px;object-fit:contain;filter:grayscale(1) opacity(.65);transition:filter .3s var(--ease);}
-  .cert-logos img:hover{filter:grayscale(0) opacity(1);}
+  .cert-logos img{height:72px;width:auto;max-width:220px;object-fit:contain;filter:grayscale(1) opacity(.65);transition:filter .3s var(--ease), transform .3s var(--ease);}
+  .cert-logos img:hover{filter:grayscale(0) opacity(1);transform:scale(1.06);}
 
   /* ---------- FINAL CTA BAND ---------- */
   .cta-band{
+    position:relative;overflow:hidden;
     background:var(--ink);color:var(--white);text-align:center;
     padding:clamp(64px,9vw,120px) clamp(20px,4vw,56px);
   }
@@ -427,7 +476,7 @@
   .aus-footer{background:var(--ink);color:var(--white);padding:clamp(56px,8vw,96px) clamp(20px,4vw,56px) 28px;}
   .footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:clamp(32px,4vw,48px);padding-bottom:48px;border-bottom:1px solid var(--line);}
   .footer-brand-line{font-family:var(--font-display);font-weight:700;font-size:15px;margin-bottom:14px;}
-  .footer-tagline{font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.62);max-width:320px;}
+  .footer-tagline{font-family:var(--font-serif);font-style:italic;font-size:14.5px;line-height:1.7;color:rgba(255,255,255,.65);max-width:320px;}
   .footer-col-title{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:18px;}
   .footer-col a, .footer-col p{display:block;font-size:13.5px;color:rgba(255,255,255,.72);line-height:2;transition:color .2s;}
   .footer-col a:hover{color:var(--orange);}
@@ -446,12 +495,97 @@
   @media (max-width:900px){.footer-top{grid-template-columns:1fr 1fr;}}
   @media (max-width:560px){.footer-top{grid-template-columns:1fr;}}
 
+  /* ---------- SCROLL PROGRESS BAR ---------- */
+  .aus-progress{
+    position:fixed;top:0;left:0;height:3px;width:0%;z-index:200;
+    background:linear-gradient(90deg, var(--orange), var(--yellow));
+    transition:width .12s linear;
+  }
+
+  /* ---------- FLOATING BRAND SHAPES (delicate curves + bold geometry) ---------- */
+  .brand-shapes{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
+  .cta-band .section-inner{position:relative;z-index:2;}
+  .brand-shape{position:absolute;will-change:transform;}
+  .brand-shape.circle{border-radius:50%;border:1.5px solid rgba(255,255,255,.22);}
+  .brand-shape.circle.filled{background:var(--yellow);border:none;opacity:.9;}
+  .brand-shape.half{border-radius:999px 999px 0 0;background:var(--orange);opacity:.85;}
+  .brand-shape.block{background:var(--gray-blue);opacity:.5;border-radius:6px;}
+
+  @keyframes floatA{
+    0%,100%{transform:translate(0,0) rotate(0deg);}
+    50%{transform:translate(14px,-22px) rotate(8deg);}
+  }
+  @keyframes floatB{
+    0%,100%{transform:translate(0,0) rotate(0deg);}
+    50%{transform:translate(-18px,16px) rotate(-6deg);}
+  }
+  @keyframes floatC{
+    0%,100%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(10px,10px) scale(1.06);}
+  }
+  @keyframes pulseSoft{
+    0%,100%{opacity:.55;transform:scale(1);}
+    50%{opacity:1;transform:scale(1.12);}
+  }
+  @keyframes shimmerSweep{
+    0%{transform:translateX(-120%) skewX(-12deg);}
+    100%{transform:translateX(220%) skewX(-12deg);}
+  }
+  @keyframes gentleSpin{
+    from{transform:rotate(0deg);} to{transform:rotate(360deg);}
+  }
+
+  .float-a{animation:floatA 9s var(--ease) infinite;}
+  .float-b{animation:floatB 11s var(--ease) infinite;}
+  .float-c{animation:floatC 7.5s var(--ease) infinite;}
+
+  /* Shimmer sweep across solid CTA buttons on hover */
+  .btn-solid{position:relative;overflow:hidden;}
+  .btn-solid::before{
+    content:"";position:absolute;top:0;left:0;width:40%;height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,.45), transparent);
+    transform:translateX(-120%) skewX(-12deg);
+  }
+  .btn-solid:hover::before{animation:shimmerSweep .9s var(--ease);}
+
+  /* Plus-mark gets a subtle heartbeat pulse to draw the eye, on-brand micro detail */
+  .eyebrow-tag .plus-mark,
+  .eyebrow-tag::before{transition:transform .3s var(--ease);}
+  .reveal.is-visible .eyebrow-tag::before{animation:pulseSoft 2.4s var(--ease) infinite;}
+
+  /* Tilt-ready cards (JS adds inline transform on mousemove) */
+  .advantage-card, .career-card, .term-year{
+    transform-style:preserve-3d;
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .3s var(--ease);
+  }
+
+  /* Slightly more dynamic stagger reveal: a whisper of rotation, geometric-shape motif */
+  html.js-reveal-ready .reveal .stagger-child{transform:translateY(22px) rotate(-1.2deg);}
+  html.js-reveal-ready .reveal.is-visible .stagger-child{transform:none;}
+
+  /* Hero media gets a slow parallax scale via JS-driven CSS var */
+  .program-hero-media img{transform:translateY(var(--parallax, 0px)) scale(1.06);transition:transform .05s linear;}
+
+  /* Count-up numerals get a tiny settle-bounce when they finish, via .is-counted class */
+  .is-counted{animation:countSettle .4s var(--ease);}
+  @keyframes countSettle{
+    0%{transform:scale(1);} 40%{transform:scale(1.08);} 100%{transform:scale(1);}
+  }
+
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:.001ms !important;transition-duration:.001ms !important;}
+    .brand-shape{display:none;}
   }
 </style>
 </head>
 <body>
+
+<div class="aus-preloader" id="ausPreloader" aria-hidden="true">
+  <img class="aus-preloader-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a558e03f97cbda4768f37bb_aus-logo.avif" alt="" onerror="this.style.display='none';">
+  <div class="aus-preloader-bar"></div>
+</div>
+
+<div class="aus-progress" id="ausProgress"></div>
 
 <!-- ============ NAV ============ -->
 <nav class="aus-nav" id="ausNav">
@@ -525,16 +659,18 @@
 
 <!-- ============ PROGRAM HERO ============ -->
 <header class="program-hero">
-  <div class="program-hero-media">
+  <div class="program-hero-media" id="heroMedia">
     <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a3ccac727db2a45f9b7e4be_accounting-hero-p-1600.jpg" alt="Accounting students at AUS Business School" loading="eager">
   </div>
+  <div class="brand-shapes" aria-hidden="true">
+    <div class="brand-shape circle float-a" style="width:90px;height:90px;top:18%;right:8%;"></div>
+    <div class="brand-shape circle filled float-c" style="width:14px;height:14px;top:32%;right:16%;"></div>
+    <div class="brand-shape half float-b" style="width:120px;height:60px;bottom:22%;right:12%;"></div>
+    <div class="brand-shape block float-a" style="width:34px;height:34px;top:60%;right:6%;transform:rotate(20deg);"></div>
+  </div>
   <div class="program-hero-inner">
-    <div class="aus-breadcrumb">
-      <a href="/">Home</a><span class="sep">/</span><a href="/#programs">Bachelor's Degree</a><span class="sep">/</span><span class="current">Accounting</span>
-    </div>
     <div class="program-kicker">BSc in Business Administration</div>
     <h1 class="program-hero-heading">Accounting</h1>
-    <p class="program-hero-sub">A traditional accounting pathway built for the modern workplace — financial analysis, taxation, and business decision-making, taught in small cohorts on the shores of Lake Geneva.</p>
 
     <div class="program-hero-foot">
       <div class="btn-row">
@@ -548,6 +684,15 @@
     </div>
   </div>
 </header>
+
+<!-- ============ BREADCRUMB ============ -->
+<div class="breadcrumb-bar">
+  <div class="section-inner">
+    <div class="aus-breadcrumb">
+      <a href="/">Home</a><span class="sep">/</span><a href="/#programs">Bachelor's Degree</a><span class="sep">/</span><span class="current">Accounting</span>
+    </div>
+  </div>
+</div>
 
 <!-- ============ OVERVIEW ============ -->
 <section class="section section-light">
@@ -785,6 +930,12 @@
 
 <!-- ============ FINAL CTA ============ -->
 <section class="cta-band">
+  <div class="brand-shapes" aria-hidden="true">
+    <div class="brand-shape circle float-b" style="width:140px;height:140px;top:-40px;left:6%;"></div>
+    <div class="brand-shape circle filled float-c" style="width:16px;height:16px;bottom:18%;left:14%;"></div>
+    <div class="brand-shape half float-a" style="width:100px;height:50px;bottom:-10px;right:10%;"></div>
+    <div class="brand-shape block float-b" style="width:26px;height:26px;top:20%;right:16%;transform:rotate(30deg);"></div>
+  </div>
   <div class="section-inner reveal">
     <div class="eyebrow-tag on-dark">What's Next</div>
     <h2 class="section-heading">Take the Next Step</h2>
@@ -848,12 +999,103 @@
 
 <script>
 (function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasGSAP = !!window.gsap && !reduceMotion;
+  if(hasGSAP){ gsap.registerPlugin(ScrollTrigger); }
+
+  // ---------- Preloader ----------
+  // Locks scroll + shows the mark until the page is actually ready, with a
+  // minimum show-time (600ms) so it never just flickers on a fast cache hit,
+  // and a hard ceiling (2500ms) so a slow asset can never leave it stuck up.
+  var preloader = document.getElementById('ausPreloader');
+  if(preloader && !reduceMotion){
+    document.documentElement.classList.add('has-preloader');
+    var minShown = new Promise(function(res){ setTimeout(res, 600); });
+    var pageReady = new Promise(function(res){
+      if(document.readyState === 'complete'){ res(); }
+      else{ window.addEventListener('load', res); }
+    });
+    var ceiling = new Promise(function(res){ setTimeout(res, 2500); });
+    Promise.race([Promise.all([minShown, pageReady]), ceiling]).then(function(){
+      preloader.classList.add('is-hidden');
+      document.documentElement.classList.remove('has-preloader');
+      preloader.addEventListener('transitionend', function(){ preloader.remove(); playHeroIntro(); }, {once:true});
+    });
+  } else if(preloader){
+    preloader.remove();
+  }
+
   // ---------- Nav scroll state ----------
   var nav = document.getElementById('ausNav');
   window.addEventListener('scroll', function(){
     if(window.scrollY > 40){ nav.classList.add('is-scrolled'); }
     else { nav.classList.remove('is-scrolled'); }
   }, {passive:true});
+
+  // ---------- Scroll progress bar ----------
+  var progressBar = document.getElementById('ausProgress');
+  function updateProgress(){
+    var doc = document.documentElement;
+    var scrollTop = doc.scrollTop || document.body.scrollTop;
+    var height = doc.scrollHeight - doc.clientHeight;
+    var pct = height > 0 ? (scrollTop / height) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, {passive:true});
+  updateProgress();
+
+  // ---------- Hero entrance (GSAP timeline, plays once preloader clears) ----------
+  function playHeroIntro(){
+    if(!hasGSAP) return;
+    var tl = gsap.timeline({defaults:{ease:'power3.out'}});
+    tl.from('.program-kicker', {opacity:0, y:24, duration:.7})
+      .from('.program-hero-heading', {opacity:0, y:34, duration:.9}, '-=.5')
+      .from('.program-hero-foot .btn-row a', {opacity:0, y:20, duration:.6, stagger:.12}, '-=.5')
+      .from('.hero-stat-card', {opacity:0, y:20, scale:.94, duration:.6}, '-=.4')
+      .from('.program-hero .brand-shape', {opacity:0, scale:.5, duration:.8, stagger:.06}, '-=.6');
+  }
+  if(!preloader){ if(hasGSAP){ playHeroIntro(); } }
+
+  // ---------- Hero parallax ----------
+  var heroMedia = document.getElementById('heroMedia');
+  if(heroMedia && hasGSAP){
+    gsap.to(heroMedia, {
+      '--parallax':'90px', ease:'none',
+      scrollTrigger:{trigger:'.program-hero', start:'top top', end:'bottom top', scrub:true}
+    });
+  } else if(heroMedia && !reduceMotion){
+    window.addEventListener('scroll', function(){
+      var offset = Math.min(window.scrollY * 0.15, 90);
+      heroMedia.style.setProperty('--parallax', offset + 'px');
+    }, {passive:true});
+  }
+
+  // ---------- Gentle 3D tilt on cards (GSAP quickTo for buttery smoothing) ----------
+  if(!reduceMotion){
+    document.querySelectorAll('.advantage-card, .career-card, .term-year').forEach(function(card){
+      if(hasGSAP){
+        var setRX = gsap.quickTo(card, 'rotationX', {duration:.4, ease:'power2.out'});
+        var setRY = gsap.quickTo(card, 'rotationY', {duration:.4, ease:'power2.out'});
+        var setY  = gsap.quickTo(card, 'y', {duration:.4, ease:'power2.out'});
+        card.style.transformPerspective = 700;
+        card.addEventListener('mousemove', function(e){
+          var rect = card.getBoundingClientRect();
+          var x = (e.clientX - rect.left) / rect.width - 0.5;
+          var y = (e.clientY - rect.top) / rect.height - 0.5;
+          setRX(y * -6); setRY(x * 6); setY(-4);
+        });
+        card.addEventListener('mouseleave', function(){ setRX(0); setRY(0); setY(0); });
+      } else {
+        card.addEventListener('mousemove', function(e){
+          var rect = card.getBoundingClientRect();
+          var x = (e.clientX - rect.left) / rect.width - 0.5;
+          var y = (e.clientY - rect.top) / rect.height - 0.5;
+          card.style.transform = 'perspective(700px) rotateX(' + (y * -6) + 'deg) rotateY(' + (x * 6) + 'deg) translateY(-4px)';
+        });
+        card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
+      }
+    });
+  }
 
   // ---------- Mobile menu ----------
   var burger = document.getElementById('ausBurger');
@@ -872,10 +1114,21 @@
     });
   });
 
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // ---------- Scroll reveal (vanilla IntersectionObserver, no library) ----------
-  if('IntersectionObserver' in window){
+  // ---------- Scroll reveal ----------
+  // GSAP ScrollTrigger drives the reveal when available (staggered children
+  // included); falls back to the vanilla IntersectionObserver version.
+  if(hasGSAP){
+    document.querySelectorAll('.reveal').forEach(function(el){
+      var staggerChildren = el.querySelectorAll('.stagger-child');
+      var targets = staggerChildren.length ? staggerChildren : el;
+      gsap.set(targets, {opacity:0, y:32});
+      gsap.to(targets, {
+        opacity:1, y:0, duration:.8, ease:'power3.out',
+        stagger: staggerChildren.length ? .09 : 0,
+        scrollTrigger:{trigger:el, start:'top 85%'}
+      });
+    });
+  } else if('IntersectionObserver' in window){
     document.documentElement.classList.add('js-reveal-ready');
     var revealObserver = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
@@ -888,9 +1141,38 @@
     document.querySelectorAll('.reveal').forEach(function(el){ revealObserver.observe(el); });
   }
 
+  // ---------- Certification partner logos: fade + rise in on scroll ----------
+  if(hasGSAP){
+    var certLogos = document.querySelectorAll('.cert-logos img');
+    if(certLogos.length){
+      gsap.set(certLogos, {opacity:0, y:18});
+      gsap.to(certLogos, {
+        opacity:1, y:0, duration:.6, ease:'power2.out', stagger:.1,
+        scrollTrigger:{trigger:'.cert-logos', start:'top 88%'}
+      });
+    }
+  }
+
   // ---------- Count-up stats ----------
+  // GSAP tween (with a numeric proxy object) drives the digits when
+  // available; falls back to the vanilla requestAnimationFrame version.
   var metricEls = document.querySelectorAll('[data-count-to]');
-  if(metricEls.length && 'IntersectionObserver' in window){
+  if(metricEls.length && hasGSAP){
+    metricEls.forEach(function(el){
+      var end = parseFloat(el.getAttribute('data-count-to'));
+      var suffix = el.getAttribute('data-suffix') || '';
+      var counter = {val:0};
+      ScrollTrigger.create({
+        trigger:el, start:'top 85%', once:true,
+        onEnter:function(){
+          gsap.to(counter, {
+            val:end, duration:1.4, ease:'power3.out',
+            onUpdate:function(){ el.textContent = Math.round(counter.val) + suffix; }
+          });
+        }
+      });
+    });
+  } else if(metricEls.length && 'IntersectionObserver' in window){
     var countObserver = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if(!entry.isIntersecting) return;
@@ -905,7 +1187,8 @@
           var progress = Math.min((ts - startTime) / duration, 1);
           var eased = 1 - Math.pow(1 - progress, 3);
           el.textContent = Math.round(start + (end - start) * eased) + suffix;
-          if(progress < 1) requestAnimationFrame(step);
+          if(progress < 1){ requestAnimationFrame(step); }
+          else { el.classList.add('is-counted'); }
         }
         requestAnimationFrame(step);
       });
