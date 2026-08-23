@@ -336,6 +336,37 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   .curr-scroll-wrap .curr-scroll{scroll-snap-type:x mandatory;}
   .curr-scroll-wrap .curr-card{scroll-snap-align:start;}
 }
+
+/* ANIMATION SYSTEM */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
+.reveal.is-visible{opacity:1;transform:translateY(0);}
+.reveal.d1{transition-delay:.1s;}.reveal.d2{transition-delay:.2s;}.reveal.d3{transition-delay:.3s;}.reveal.d4{transition-delay:.4s;}.reveal.d5{transition-delay:.5s;}
+.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
+.reveal-scale.is-visible{opacity:1;transform:scale(1);}
+.reveal-clip{clip-path:inset(100% 0 0 0);transition:clip-path 1s var(--ease-soft);}
+.reveal-clip.is-visible{clip-path:inset(0 0 0 0);}
+.reveal-rotate{opacity:0;transform:rotate(-8deg) scale(.9);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
+.reveal-rotate.is-visible{opacity:1;transform:rotate(0) scale(1);}
+.split-text .word{display:inline-block;opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease-soft),transform .5s var(--ease-soft);}
+.split-text.is-visible .word{opacity:1;transform:translateY(0);}
+.parallax{will-change:transform;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+.float{animation:float 5s ease-in-out infinite;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.marquee-track{display:flex;width:max-content;animation:marquee 25s linear infinite;}
+.marquee-track:hover{animation-play-state:paused;}
+.stagger-grid > *{opacity:0;transform:translateY(30px);transition:opacity .6s var(--ease-soft),transform .6s var(--ease-soft);}
+.stagger-grid.is-visible > *:nth-child(1){transition-delay:.05s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(2){transition-delay:.12s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(3){transition-delay:.19s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(4){transition-delay:.26s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(5){transition-delay:.33s;opacity:1;transform:translateY(0);}
+.tilt-card{transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
+.tilt-card:hover{transform:translateY(-6px) rotate(.5deg);box-shadow:0 20px 50px rgba(34,41,95,.1);}
+.img-zoom{overflow:hidden;}
+.img-zoom img{transition:transform .7s var(--ease-soft);}
+.img-zoom:hover img{transform:scale(1.06);}
+.mag-btn{position:relative;transition:transform .3s var(--ease);}
 </style>
 </head>
 <body>
@@ -415,7 +446,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
         <button class="accordion-trigger">About <span class="accordion-icon"></span></button>
         <div class="accordion-panel"><div class="accordion-panel-inner">
           <div class="accordion-group">
-            <a href="#">About AUS</a>
+            <a href="aus-about.html">About AUS</a>
             <a href="#">Faculty</a>
             <a href="#">Accreditations</a>
           </div>
@@ -984,7 +1015,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if('IntersectionObserver' in window&&!reduceMotion){
     document.documentElement.classList.add('js-reveal-ready');
-    var reveals=document.querySelectorAll('.reveal');
+    var reveals=document.querySelectorAll('.reveal,.reveal-scale,.reveal-clip,.reveal-rotate,.split-text,.stagger-grid,.line-draw');
     var revealObserver=new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if(entry.isIntersecting){
@@ -1022,6 +1053,36 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     },{threshold:0.5});
     counters.forEach(function(c){counterObserver.observe(c);});
   }
+
+// Split text into words
+document.querySelectorAll('.split-text').forEach(function(el){
+  var text=el.textContent.trim();
+  el.innerHTML=text.split(/\s+/).map(function(w){return '<span class="word">'+w+'</span>';}).join(' ');
+});
+
+// Magnetic buttons
+document.querySelectorAll('.mag-btn').forEach(function(btn){
+  btn.addEventListener('mousemove',function(e){
+    var rect=btn.getBoundingClientRect();
+    var x=e.clientX-rect.left-rect.width/2;
+    var y=e.clientY-rect.top-rect.height/2;
+    btn.style.transform='translate('+x*.15+'px,'+y*.15+'px)';
+  });
+  btn.addEventListener('mouseleave',function(){btn.style.transform='';});
+});
+
+// Parallax on scroll
+if(!reduceMotion){
+  var parallaxEls=document.querySelectorAll('.parallax');
+  window.addEventListener('scroll',function(){
+    parallaxEls.forEach(function(el){
+      var rect=el.getBoundingClientRect();
+      var speed=parseFloat(el.getAttribute('data-speed'))||0.15;
+      var y=(rect.top-window.innerHeight)*speed;
+      el.style.transform='translateY('+y+'px)';
+    });
+  },{passive:true});
+}
 })();
 </script>
 </body>
