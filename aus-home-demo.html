@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -230,13 +230,18 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   flex:0 0 auto;padding:22px clamp(24px,4vw,36px) 28px;border-top:1px solid var(--line-on-navy);
   display:flex;flex-direction:column;gap:18px;
 }
-.side-panel-foot .hero-cta{background:var(--yellow);color:var(--navy);align-self:flex-start;}
+.side-panel-foot .hero-cta{background:var(--white);color:var(--navy);align-self:flex-start;border:1px solid var(--line);}
 .side-panel-foot .hero-cta:hover{background:var(--crimson);color:var(--white);}
 .side-panel-socials{display:flex;gap:9px;}
 .side-panel-socials .footer-social-tile{border-color:var(--line-on-navy);}
 .side-panel-socials .footer-social-tile svg{fill:var(--white);}
 .side-panel-socials .footer-social-tile:hover svg{fill:var(--white);}
 
+
+.panel-link{display:block;font-size:14px;color:rgba(255,255,255,.65);padding:6px 2px;transition:color .25s var(--ease),padding-left .25s var(--ease);}
+.panel-link:hover{color:var(--white);padding-left:6px;}
+.panel-section-title{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4);margin:16px 0 4px;padding-left:2px;}
+.panel-section-title:first-child{margin-top:0;}
 /* ---------- HERO ---------- */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy);}
 .hero-media{position:absolute;inset:0;z-index:0;}
@@ -678,23 +683,33 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
           <div class="accordion-group">
             <div class="accordion-group-title">Bachelor's Degree</div>
             <a href="aus-bachelor-accounting.html">Accounting</a>
-            <a href="#">Business Management</a>
-            <a href="#">International Business</a>
-            <a href="#">Human Resource Management</a>
-            <a href="#">Hospitality Management</a>
-            <a href="#">Aviation Management</a>
+            <a href="aus-bachelor-business-management.html">Business Management</a>
+            <a href="aus-bachelor-healthcare-administration.html">Healthcare Administration</a>
+            <a href="aus-bachelor-human-resource-management.html">Human Resource Management</a>
+            <a href="aus-bachelor-integrated-digital-marketing.html">Integrated &amp; Digital Marketing</a>
+            <a href="aus-bachelor-international-business.html">International Business</a>
+            <a href="aus-bachelor-sports-management-athletic.html">Sports Management — Athletic Administration</a>
+            <a href="aus-bachelor-sports-management-marketing.html">Sports Management — Sports Marketing</a>
+            <a href="aus-bachelor-hospitality-management.html">Hospitality Management</a>
+            <a href="aus-bachelor-aviation-management.html">Aviation Management</a>
+            <a href="aus-bachelor-data-analytics-ai.html">Data Analytics &amp; AI for Business</a>
           </div>
           <div class="accordion-group">
             <div class="accordion-group-title">Master's Degree</div>
-            <a href="#">Finance</a>
-            <a href="#">Data Analytics</a>
-            <a href="#">Leadership &amp; Change</a>
-            <a href="#">International Business</a>
+            <a href="aus-master-finance.html">Finance</a>
+            <a href="aus-master-data-analytics.html">Data Analytics</a>
+            <a href="aus-master-healthcare-administration.html">Healthcare Administration</a>
+            <a href="aus-master-human-resource-management.html">Human Resource Management</a>
+            <a href="aus-master-international-business.html">International Business</a>
+            <a href="aus-master-leadership-change.html">Leadership &amp; Change</a>
+            <a href="aus-master-sports-management.html">Sports Management</a>
+            <a href="aus-master-strategic-brand-digital-marketing.html">Strategic Brand &amp; Digital Marketing</a>
+            <a href="aus-master-aviation-management.html">Aviation Management</a>
           </div>
           <div class="accordion-group">
             <div class="accordion-group-title">Doctorate &amp; Diploma</div>
-            <a href="#">Doctorate in Business Administration</a>
-            <a href="#">Swiss Federal Diploma</a>
+            <a href="aus-dba.html">Doctorate in Business Administration</a>
+            <a href="aus-federal-diploma.html">Swiss Federal Diploma</a>
           </div>
         </div></div>
       </div>
@@ -720,7 +735,7 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
       </div>
       <a href="#" class="side-panel-link">Admissions &amp; Financing</a>
       <a href="#" class="side-panel-link">Contact</a>
-    </nav>
+</nav>
     <div class="side-panel-foot">
       <a href="#" class="hero-cta">Apply now →</a>
       <div class="side-panel-socials footer-social-grid">
@@ -743,7 +758,7 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
     <h1 class="reveal d1">Where <em>precision</em><br>meets ambition.</h1>
     <p class="hero-sub reveal d2">A Swiss business education built on scientific method and practice, for students who intend to lead, not just graduate.</p>
     <div class="hero-bottom-row reveal d3">
-      <a href="#programs" class="hero-cta">Explore the archive →</a>
+      <a href="#programs" class="hero-cta">Explore the archive ?</a>
       <span class="hero-meta">Founded 1991<br>La Tour-de-Peilz, Switzerland</span>
     </div>
   </div>
@@ -977,7 +992,7 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
     <div class="statement-content reveal d1">
       <h2>Local and international voices, inside the classroom.</h2>
       <p>The Speaker Series brings practitioners into the room to bridge academic theory with what's actually happening in business today.</p>
-      <a href="#" class="hero-cta statement-cta">Speaker Series →</a>
+      <a href="#" class="hero-cta statement-cta">Speaker Series ?</a>
     </div>
   </div>
 </section>
@@ -1103,8 +1118,8 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 AUS Business School. All rights reserved.</span>
-      <span><a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Terms</a></span>
+      <span>— 2026 AUS Business School. All rights reserved.</span>
+      <span><a href="#">Privacy</a> &nbsp;—&nbsp; <a href="#">Terms</a></span>
     </div>
   </div>
 </footer>
