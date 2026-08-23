@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About AUS | AUS Business School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#22295f;--crimson:#be1f3d;--yellow:#fff737;--sky:#bbddf8;--sky-tint:#eef6fd;--slate:#768cb0;
+  --white:#fff;--ink:#10132d;--ink-soft:#585b7a;--line:rgba(34,41,95,.1);
+  --line-on-navy:rgba(255,255,255,.12);
+  --font-body:'Inter',sans-serif;--font-display:'Inter',sans-serif;--font-serif:'Playfair Display',Georgia,serif;
+  --ease:cubic-bezier(.25,.46,.45,.94);--ease-soft:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+body{font-family:var(--font-body);color:var(--ink);background:var(--white);overflow-x:hidden;}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;background:none;border:none;cursor:pointer;color:inherit;}
+.wrap{max-width:1360px;margin:0 auto;padding-left:clamp(20px,5vw,64px);padding-right:clamp(20px,5vw,64px);}
+
+/* PRELOADER */
+.aus-preloader{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:22px;background:var(--navy);transition:opacity .7s var(--ease),visibility .7s var(--ease);}
+.aus-preloader-mark{height:clamp(64px,9vw,92px);width:auto;opacity:0;transform:translateY(10px);animation:preloaderIn .9s var(--ease) forwards;}
+.aus-preloader-bar{width:140px;height:1px;background:var(--line-on-navy);overflow:hidden;position:relative;margin-top:6px;}
+.aus-preloader-bar::after{content:"";position:absolute;inset:0;width:34%;background:var(--yellow);animation:preloaderBar 1.15s ease-in-out infinite;}
+@keyframes preloaderIn{to{opacity:1;transform:translateY(0);}}
+@keyframes preloaderBar{0%{transform:translateX(-120%);}100%{transform:translateX(400%);}}
+.aus-preloader.is-hidden{opacity:0;visibility:hidden;pointer-events:none;}
+@media (prefers-reduced-motion: reduce){.aus-preloader{display:none;}}
+
+/* SIDE PANEL */
+.side-panel{position:fixed;inset:0;z-index:120;pointer-events:none;}
+.side-panel-backdrop{position:absolute;inset:0;background:rgba(15,17,38,.55);opacity:0;transition:opacity .5s var(--ease);}
+.side-panel-canvas{position:absolute;top:0;right:0;bottom:0;width:min(460px,92vw);background:var(--navy);color:var(--white);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .55s var(--ease);box-shadow:-30px 0 60px rgba(15,17,38,.28);}
+.panel-open .side-panel{pointer-events:auto;}.panel-open .side-panel-backdrop{opacity:1;}.panel-open .side-panel-canvas{transform:translateX(0);}
+.side-panel-head{display:flex;align-items:center;justify-content:space-between;padding:26px clamp(24px,4vw,36px);border-bottom:1px solid var(--line-on-navy);flex:0 0 auto;}
+.side-panel-head img{height:36px;width:auto;}
+.side-panel-close{width:38px;height:38px;border-radius:50%;border:1px solid var(--line-on-navy);display:flex;align-items:center;justify-content:center;}
+.side-panel-close span{position:relative;width:14px;height:14px;}
+.side-panel-close span::before,.side-panel-close span::after{content:"";position:absolute;top:50%;left:0;width:100%;height:1.4px;background:var(--white);}
+.side-panel-close span::before{transform:rotate(45deg);}.side-panel-close span::after{transform:rotate(-45deg);}
+.side-panel-nav{flex:1 1 auto;overflow-y:auto;padding:10px clamp(24px,4vw,36px) 20px;}
+.accordion-item{border-bottom:1px solid var(--line-on-navy);}
+.accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:-.01em;text-align:left;color:var(--white);}
+.accordion-icon{width:20px;height:20px;position:relative;flex:0 0 auto;}
+.accordion-icon::before,.accordion-icon::after{content:"";position:absolute;top:50%;left:50%;background:var(--yellow);transform:translate(-50%,-50%);transition:transform .35s var(--ease),opacity .35s var(--ease);}
+.accordion-icon::before{width:14px;height:1.6px;}.accordion-icon::after{width:1.6px;height:14px;}
+.accordion-item.is-open .accordion-icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0;}
+.accordion-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease);}
+.accordion-panel-inner{overflow:hidden;}
+.accordion-item.is-open .accordion-panel{grid-template-rows:1fr;}
+.accordion-group{padding:4px 0 18px;}
+.accordion-group-title{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--slate);margin:14px 0 8px;}
+.accordion-group-title:first-child{margin-top:0;}
+.accordion-group a{display:block;font-size:15px;padding:7px 0;color:rgba(255,255,255,.72);transition:color .2s var(--ease),transform .2s var(--ease),padding-left .2s var(--ease);}
+.accordion-group a:hover{color:var(--white);padding-left:6px;}
+.side-panel-link{display:block;padding:20px 0;font-family:var(--font-display);font-weight:700;font-size:19px;border-bottom:1px solid var(--line-on-navy);letter-spacing:-.01em;color:var(--white);}
+.side-panel-link:hover{color:var(--white);}
+.side-panel-foot{flex:0 0 auto;padding:22px clamp(24px,4vw,36px) 28px;border-top:1px solid var(--line-on-navy);display:flex;flex-direction:column;gap:18px;}
+.side-panel-foot .hero-cta{background:var(--white);color:var(--navy);align-self:flex-start;border:1px solid var(--line);}
+.side-panel-foot .hero-cta:hover{background:var(--crimson);color:var(--white);}
+.side-panel-socials{display:flex;gap:9px;}
+.side-panel-socials .footer-social-tile{border-color:var(--line-on-navy);}
+.side-panel-socials .footer-social-tile svg{fill:var(--white);}
+
+/* NAV */
+.aus-nav{position:fixed;top:0;left:0;right:0;z-index:110;display:flex;align-items:center;justify-content:space-between;padding:clamp(18px,2.6vw,30px) clamp(20px,4vw,56px);color:var(--white);transition:padding .4s var(--ease),color .4s var(--ease);}
+.aus-nav.is-scrolled{padding-top:14px;padding-bottom:14px;color:var(--white);}
+.aus-nav::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom, rgba(15,17,38,.55) 0%, rgba(15,17,38,0) 100%);opacity:1;transition:opacity .4s var(--ease),background .4s var(--ease);}
+.aus-nav.is-scrolled::before{background:var(--navy);opacity:1;box-shadow:0 1px 0 var(--line-on-navy);}
+.aus-wordmark{position:relative;display:block;height:clamp(40px,4.4vw,52px);width:clamp(180px,19vw,230px);opacity:0;transform:translateY(-10px);animation:navIn .8s var(--ease) .35s forwards;}
+.aus-wordmark img{position:absolute;left:0;top:0;height:100%;width:auto;max-width:none;transition:opacity .4s var(--ease);}
+.aus-wordmark .logo-white{opacity:1;}.aus-wordmark .logo-color{opacity:0;}
+@keyframes navIn{to{opacity:1;transform:translateY(0);}}
+.aus-nav-links{display:flex;align-items:center;gap:26px;opacity:0;animation:navIn .8s var(--ease) .4s forwards;}
+.aus-nav-links button{font-weight:500;font-size:14.5px;}
+.aus-nav-links button::after{content:"";display:block;width:0;height:1px;background:currentColor;transition:width .3s var(--ease);margin-top:3px;}
+.aus-nav-links button:hover::after{width:100%;}
+.aus-nav-right{display:flex;align-items:center;gap:22px;opacity:0;animation:navIn .8s var(--ease) .45s forwards;}
+.aus-nav-apply{font-weight:600;font-size:14px;padding:10px 20px;border:1px solid currentColor;border-radius:100px;transition:background .3s var(--ease),color .3s var(--ease);}
+.aus-nav-apply:hover{background:var(--crimson);border-color:var(--crimson);color:var(--white);}
+.menu-toggle{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;}
+.menu-toggle-bars{width:22px;height:14px;position:relative;}
+.menu-toggle-bars span{position:absolute;left:0;right:0;height:1.5px;background:currentColor;}
+.menu-toggle-bars span:nth-child(1){top:0;}.menu-toggle-bars span:nth-child(2){top:6px;width:70%;}.menu-toggle-bars span:nth-child(3){top:12px;}
+@media (max-width:760px){.aus-nav-links{display:none;}}
+
+/* EYEBROW */
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+.eyebrow.on-navy{color:rgba(255,255,255,.7);}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy);}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,14,34,.92) 0%,rgba(12,14,34,.5) 40%,rgba(12,14,34,.15) 100%);}
+.hero-inner{position:relative;z-index:1;width:100%;padding:clamp(60px,8vw,100px) clamp(20px,5vw,64px) clamp(40px,6vw,70px);color:var(--white);}
+.hero-sub{margin-top:clamp(12px,1.5vw,20px);max-width:42ch;font-size:clamp(15px,1.3vw,17px);line-height:1.6;color:rgba(255,255,255,.65);}
+.hero-scroll{position:absolute;bottom:clamp(24px,3vw,40px);right:clamp(20px,5vw,64px);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.35);font-size:10px;letter-spacing:.12em;text-transform:uppercase;z-index:2;}
+.hero-scroll::after{content:"";width:1px;height:28px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent);animation:scrollPulse 2s ease-in-out infinite;}
+@keyframes scrollPulse{0%,100%{opacity:.35;}50%{opacity:.7;}}
+@media (max-width:760px){.hero{min-height:auto;}.hero-bg{position:relative;height:50vh;}.hero-inner{padding:clamp(32px,5vw,48px) clamp(20px,5vw,64px);}.hero-scroll{display:none;}}
+
+/* MOBILE HERO */
+.hero-mobile{display:none;}
+@media (max-width:760px){
+  .hero{display:none!important;}
+  .hero-mobile{display:block;background:var(--navy);overflow:hidden;}
+  .hero-mob-img{width:100%;height:40vh;min-height:220px;position:relative;}
+  .hero-mob-img img{width:100%;height:100%;object-fit:cover;}
+  .hero-mob-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,14,34,.2) 0%,rgba(12,14,34,.85) 100%);}
+  .hero-mob-content{padding:clamp(20px,5vw,32px) clamp(16px,4vw,24px) clamp(24px,6vw,40px);color:var(--white);}
+  .hero-mob-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);padding:5px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.85);margin-bottom:clamp(10px,2vw,16px);}
+  .hero-mob-content h1{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,9vw,44px);line-height:1.05;letter-spacing:-.02em;margin-bottom:clamp(8px,1.5vw,12px);}
+  .hero-mob-sub{font-size:clamp(13px,2.6vw,15px);line-height:1.5;color:rgba(255,255,255,.6);margin-bottom:clamp(16px,3vw,24px);}
+  .hero-mob-ctas{display:flex;flex-direction:column;gap:10px;}
+  .hero-mob-ctas .hero-cta{width:100%;justify-content:center;text-align:center;}
+}
+
+/* BREADCRUMB */
+.breadcrumb{padding:clamp(24px,3vw,40px) 0 clamp(16px,2vw,24px);border-bottom:1px solid var(--line);}
+.breadcrumb a{font-size:14px;color:var(--ink-soft);transition:color .25s var(--ease);}
+.breadcrumb a:hover{color:var(--navy);}
+.breadcrumb span{font-size:14px;color:var(--ink-soft);margin:0 8px;}
+
+/* CTA */
+.cta-section{background:var(--navy);color:var(--white);padding:clamp(70px,9vw,120px) 0;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.cta-inner{position:relative;z-index:1;}
+.cta-inner .eyebrow{justify-content:center;margin-bottom:clamp(16px,2vw,24px);}
+.cta-inner h2{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4.2vw,52px);line-height:1.15;margin-bottom:clamp(12px,1.5vw,20px);}
+.cta-inner p{font-size:clamp(14px,1.1vw,16px);line-height:1.7;color:rgba(255,255,255,.65);max-width:50ch;margin:0 auto clamp(28px,3.5vw,44px);}
+.cta-btn{display:inline-flex;align-items:center;gap:12px;background:var(--white);color:var(--navy);font-weight:700;font-size:15px;padding:18px 32px;border-radius:100px;transition:transform .35s var(--ease),box-shadow .35s var(--ease);border:1px solid var(--line);}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(34,41,95,.12);}
+
+/* FOOTER */
+.site-footer{background:var(--navy);color:var(--white);padding:clamp(70px,9vw,110px) 0 32px;}
+.footer-top{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:clamp(30px,4vw,50px);padding-bottom:clamp(50px,7vw,80px);border-bottom:1px solid var(--line-on-navy);}
+.footer-mark{height:44px;width:auto;margin-bottom:18px;}
+.footer-top p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.62);max-width:32ch;}
+.footer-col-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
+.footer-col a{display:block;font-size:14.5px;color:rgba(255,255,255,.82);padding:6px 0;transition:color .25s var(--ease);}
+.footer-col a:hover{color:var(--yellow);}
+.footer-social-title{margin-top:34px;}
+.footer-social-grid{display:flex;gap:10px;margin-top:14px;}
+.footer-social-tile{
+  width:44px;height:44px;border-radius:10px;border:1px solid var(--line-on-navy);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);
+}
+.footer-social-tile:hover{border-color:rgba(255,255,255,.3);}
+.footer-social-tile svg{width:18px;height:18px;fill:var(--white);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding-top:26px;font-size:13px;color:rgba(255,255,255,.5);}
+.footer-bottom a{color:rgba(255,255,255,.5);}
+@media (max-width:860px){.footer-top{grid-template-columns:1fr 1fr;}}
+@media (max-width:520px){.footer-top{grid-template-columns:1fr;}}
+
+.footer-v2_bottom{
+  display:flex;align-items:center;flex-wrap:wrap;gap:clamp(18px,3vw,32px);
+  padding:clamp(28px,4vw,38px) 0;margin-top:clamp(6px,1vw,10px);border-bottom:1px solid var(--line-on-navy);
+}
+.footer-v2_bottom-title{
+  font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);
+  flex:0 0 auto;padding-right:clamp(10px,2vw,20px);
+}
+.footer-v2_bottom-list{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(24px,4vw,44px);flex:1 1 auto;}
+.footer-v2_bottom-item{display:flex;align-items:center;}
+.footer-v2_bottom-img{
+  height:clamp(26px,3vw,34px);width:auto;
+  filter:brightness(0) invert(1) opacity(.55);
+  transition:filter .25s var(--ease),opacity .25s var(--ease);
+}
+.footer-v2_bottom-item:hover .footer-v2_bottom-img{filter:brightness(0) invert(1) opacity(.9);}
+
+/* REVEAL */
+.js-reveal-ready .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease-soft),transform .9s var(--ease-soft);}
+.js-reveal-ready .reveal.is-visible{opacity:1;transform:none;}
+.js-reveal-ready .reveal.d1{transition-delay:.08s;}
+.js-reveal-ready .reveal.d2{transition-delay:.16s;}
+.js-reveal-ready .reveal.d3{transition-delay:.24s;}
+.js-reveal-ready .reveal.d4{transition-delay:.32s;}
+
+/* SECTION FADE-IN */
+@keyframes sectionFadeIn{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:none;}}
+.section-animate{animation:sectionFadeIn .8s var(--ease-soft) forwards;}
+
+/* STAT COUNTER */
+.counter{font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,56px);color:var(--navy);line-height:1;}
+
+/* ═══════════════════════════════════════
+   NEW ANIMATION SYSTEM
+   ═══════════════════════════════════════ */
+
+/* REVEAL SYSTEM */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
+.reveal.is-visible{opacity:1;transform:translateY(0);}
+.reveal.d1{transition-delay:.1s;}.reveal.d2{transition-delay:.2s;}.reveal.d3{transition-delay:.3s;}.reveal.d4{transition-delay:.4s;}.reveal.d5{transition-delay:.5s;}
+
+/* SCALE REVEAL */
+.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
+.reveal-scale.is-visible{opacity:1;transform:scale(1);}
+
+/* CLIP REVEAL — image wipe */
+.reveal-clip{clip-path:inset(100% 0 0 0);transition:clip-path 1s var(--ease-soft);}
+.reveal-clip.is-visible{clip-path:inset(0 0 0 0);}
+
+/* SPLIT TEXT */
+.split-text .word{display:inline-block;opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease-soft),transform .5s var(--ease-soft);}
+.split-text.is-visible .word{opacity:1;transform:translateY(0);}
+
+/* PARALLAX */
+.parallax{will-change:transform;}
+
+/* FLOAT */
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+.float{animation:float 5s ease-in-out infinite;}
+
+/* ROTATE IN */
+@keyframes rotateIn{from{opacity:0;transform:rotate(-8deg) scale(.9);}to{opacity:1;transform:rotate(0) scale(1);}}
+.reveal-rotate{opacity:0;transform:rotate(-8deg) scale(.9);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
+.reveal-rotate.is-visible{opacity:1;transform:rotate(0) scale(1);}
+
+/* MARQUEE */
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.marquee-track{display:flex;width:max-content;animation:marquee 25s linear infinite;}
+.marquee-track:hover{animation-play-state:paused;}
+
+/* LINE DRAW */
+.line-draw{stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset 1.2s var(--ease-soft);}
+.line-draw.is-visible{stroke-dashoffset:0;}
+
+/* STAGGER GRID > children */
+.stagger-grid > *{opacity:0;transform:translateY(30px);transition:opacity .6s var(--ease-soft),transform .6s var(--ease-soft);}
+.stagger-grid.is-visible > *:nth-child(1){transition-delay:.05s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(2){transition-delay:.12s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(3){transition-delay:.19s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(4){transition-delay:.26s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(5){transition-delay:.33s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(6){transition-delay:.40s;opacity:1;transform:translateY(0);}
+
+/* CARD TILT on hover */
+.tilt-card{transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
+.tilt-card:hover{transform:translateY(-6px) rotate(.5deg);box-shadow:0 20px 50px rgba(34,41,95,.1);}
+
+/* IMAGE HOVER ZOOM */
+.img-zoom{overflow:hidden;}
+.img-zoom img{transition:transform .7s var(--ease-soft);}
+.img-zoom:hover img{transform:scale(1.06);}
+
+/* MAGNETIC BUTTON */
+.mag-btn{position:relative;transition:transform .3s var(--ease);}
+
+@media (hover:none){.prog-card-detail{max-height:120px!important;opacity:1!important;transform:translateY(0)!important;}}
+
+@media (max-width:960px){
+  .hero h1{font-size:clamp(28px,7vw,52px);}
+  .hero-sub{font-size:clamp(14px,2.8vw,16px);}
+}
+
+@media (max-width:760px){
+  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr)!important;}
+  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,1fr)!important;}
+  .cta-section{padding:clamp(40px,6vw,60px) 0;}
+  .cta-section h2{font-size:clamp(20px,5vw,30px);}
+}
+
+@media (max-width:600px){
+  .wrap{padding-left:clamp(16px,4vw,24px);padding-right:clamp(16px,4vw,24px);}
+  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
+  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
+  .footer-top{grid-template-columns:1fr!important;gap:clamp(20px,4vw,28px);}
+}
+</style>
+</head>
+<body>
+
+<div class="aus-preloader" id="preloader">
+  <img class="aus-preloader-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+  <div class="aus-preloader-bar"></div>
+</div>
+
+<nav class="aus-nav" id="nav">
+  <a href="aus-home-demo.html" class="aus-wordmark" aria-label="AUS Business School — home">
+    <img class="logo-white" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+    <img class="logo-color" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a558e03f97cbda4768f37bb_aus-logo.avif" alt="AUS Business School">
+  </a>
+  <div class="aus-nav-links">
+    <button type="button" data-open-panel="programs">Programs</button>
+    <button type="button" data-open-panel="about">About</button>
+    <button type="button" data-open-panel="student-life">Student Life</button>
+  </div>
+  <div class="aus-nav-right">
+    <a href="#" class="aus-nav-apply">Apply</a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="sidePanel">
+      <span>Menu</span>
+      <span class="menu-toggle-bars"><span></span><span></span><span></span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="side-panel" id="sidePanel">
+  <div class="side-panel-backdrop" id="sidePanelBackdrop"></div>
+  <aside class="side-panel-canvas">
+    <div class="side-panel-head">
+      <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+      <button class="side-panel-close" id="sidePanelClose" aria-label="Close menu"><span></span></button>
+    </div>
+    <nav class="side-panel-nav">
+      <div class="accordion-item" data-panel-key="programs">
+        <button class="accordion-trigger">Programs <span class="accordion-icon"></span></button>
+        <div class="accordion-panel"><div class="accordion-panel-inner">
+          <div class="accordion-group">
+            <a href="aus-programs.html" style="font-weight:600;">Programs Overview</a>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-group-title">Bachelor's Degree</div>
+            <a href="aus-bachelor-accounting.html">Accounting</a>
+            <a href="aus-bachelor-business-management.html">Business Management</a>
+            <a href="aus-bachelor-healthcare-administration.html">Healthcare Administration</a>
+            <a href="aus-bachelor-human-resource-management.html">Human Resource Management</a>
+            <a href="aus-bachelor-integrated-digital-marketing.html">Integrated &amp; Digital Marketing</a>
+            <a href="aus-bachelor-international-business.html">International Business</a>
+            <a href="aus-bachelor-sports-management-athletic.html">Sports Management — Athletic Administration</a>
+            <a href="aus-bachelor-sports-management-marketing.html">Sports Management — Sports Marketing</a>
+            <a href="aus-bachelor-hospitality-management.html">Hospitality Management</a>
+            <a href="aus-bachelor-aviation-management.html">Aviation Management</a>
+            <a href="aus-bachelor-data-analytics-ai.html">Data Analytics &amp; AI for Business</a>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-group-title">Master's Degree</div>
+            <a href="aus-master-finance.html">Finance</a>
+            <a href="aus-master-data-analytics.html">Data Analytics</a>
+            <a href="aus-master-healthcare-administration.html">Healthcare Administration</a>
+            <a href="aus-master-human-resource-management.html">Human Resource Management</a>
+            <a href="aus-master-international-business.html">International Business</a>
+            <a href="aus-master-leadership-change.html">Leadership &amp; Change</a>
+            <a href="aus-master-sports-management.html">Sports Management</a>
+            <a href="aus-master-strategic-brand-digital-marketing.html">Strategic Brand &amp; Digital Marketing</a>
+            <a href="aus-master-aviation-management.html">Aviation Management</a>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-group-title">Doctorate &amp; Diploma</div>
+            <a href="aus-dba.html">Doctorate in Business Administration</a>
+            <a href="aus-federal-diploma.html">Swiss Federal Diploma</a>
+          </div>
+        </div></div>
+      </div>
+      <div class="accordion-item" data-panel-key="about">
+        <button class="accordion-trigger">About <span class="accordion-icon"></span></button>
+        <div class="accordion-panel"><div class="accordion-panel-inner">
+          <div class="accordion-group">
+            <a href="aus-about.html">About AUS</a>
+            <a href="#">Faculty</a>
+            <a href="#">Accreditations</a>
+          </div>
+        </div></div>
+      </div>
+      <div class="accordion-item" data-panel-key="student-life">
+        <button class="accordion-trigger">Student Life <span class="accordion-icon"></span></button>
+        <div class="accordion-panel"><div class="accordion-panel-inner">
+          <div class="accordion-group">
+            <a href="#">Campus &amp; Housing</a>
+            <a href="#">Clubs &amp; Activities</a>
+            <a href="#">Lake Geneva Life</a>
+          </div>
+        </div></div>
+      </div>
+      <a href="#" class="side-panel-link">Admissions &amp; Financing</a>
+      <a href="#" class="side-panel-link">Contact</a>
+</nav>
+    <div class="side-panel-foot">
+      <a href="#" class="hero-cta">Apply now &rarr;</a>
+      <div class="side-panel-socials footer-social-grid">
+        <a class="footer-social-tile" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.62.07 4.81s-.01 3.56-.07 4.81c-.15 3.23-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07-3.2 0-3.6 0-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92-.06-1.25-.07-1.62-.07-4.81s.01-3.56.07-4.81c.15-3.23 1.66-4.77 4.92-4.92C8.4 2.2 8.8 2.2 12 2.2zm0 3.5a6.3 6.3 0 100 12.6 6.3 6.3 0 000-12.6zm0 2.1a4.2 4.2 0 110 8.4 4.2 4.2 0 010-8.4zm6.55-2.35a1.47 1.47 0 100 2.94 1.47 1.47 0 000-2.94z"/></svg></a>
+        <a class="footer-social-tile" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21H18v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21H10V9z"/></svg></a>
+        <a class="footer-social-tile" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.2a2.9 2.9 0 11-2.9-2.9c.2 0 .4 0 .6.05V9a6.2 6.2 0 00-.6-.03A6.13 6.13 0 004.3 15.1 6.13 6.13 0 0010.4 21.2a6.13 6.13 0 006.1-6.1V8.4a8.2 8.2 0 004.8 1.5V6.6A5 5 0 0116.6 2z"/></svg></a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- ═══════════════════════════════════════
+     HERO — Full-screen with floating year badge
+     ═══════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS campus">
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge" style="margin-bottom:clamp(12px,1.5vw,20px);">
+      <svg viewBox="0 0 24 24" width="14" height="14"><path d="M22 10v6M2 10l10-5 10 5-10 5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12v5c3 3 9 3 12 0v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      About AUS
+    </div>
+    <h1 style="font-size:clamp(48px,8vw,96px);line-height:.95;">Shaping Tomorrow's Business Leaders</h1>
+    <p class="hero-sub">For over three decades, AUS has equipped international students with the global business expertise and practical skills that drive organizational success.</p>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</header>
+
+<!-- MOBILE HERO -->
+<div class="hero-mobile">
+  <div class="hero-mob-img">
+    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS campus Lake Geneva">
+  </div>
+  <div class="hero-mob-content">
+    <span class="hero-mob-badge">About AUS</span>
+    <h1>Shaping Tomorrow's Business Leaders</h1>
+    <p class="hero-mob-sub">For over three decades, AUS has equipped international students with the global business expertise and practical skills that drive organizational success.</p>
+    <div class="hero-mob-ctas">
+      <a href="#" class="hero-cta hero-cta-primary">Start your Application <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="wrap">
+    <a href="aus-home-demo.html">Home</a><span>/</span>
+    About
+  </div>
+</div>
+
+<!-- MISSION & VISION -->
+<section style="padding:clamp(40px,6vw,70px) 0;">
+  <div class="wrap">
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;">
+      <div>
+        <span class="eyebrow">Our Purpose</span>
+        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">Mission</h2>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);">AUS equips its students pursuing a degree in international business with the knowledge, skills, and tools necessary to make a significant contribution to the development and success of any business organization. Through practice-oriented studies based on the application of scientific methods, research and development, AUS graduates will be prepared to become competent and confident leaders in the business world.</p>
+      </div>
+      <div class="reveal d1">
+        <span class="eyebrow">Where We're Going</span>
+        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">Vision</h2>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);">Our vision is to build a reputation as a prestigious and well-known private higher education institution in Switzerland that attracts students and faculty from all over the world.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PRESIDENT'S MESSAGE — Large quote with floating portrait
+     ═══════════════════════════════════════ -->
+<section style="padding:clamp(60px,8vw,100px) 0;background:var(--navy);color:var(--white);position:relative;overflow:hidden;">
+  <!-- Decorative circle -->
+  <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;border:1px solid rgba(255,255,255,.06);" class="parallax" data-speed="0.05"></div>
+  <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:var(--crimson);opacity:.08;filter:blur(80px);"></div>
+  
+  <div class="wrap" style="position:relative;z-index:1;">
+    <span class="eyebrow on-navy reveal">President's Message</span>
+    
+    <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(40px,6vw,80px);align-items:center;margin-top:clamp(32px,4vw,48px);">
+      <!-- Floating portrait -->
+      <div class="reveal-scale" style="position:relative;">
+        <div style="width:clamp(280px,22vw,400px);height:clamp(340px,28vw,480px);border-radius:16px;overflow:hidden;position:relative;z-index:1;">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&auto=format&fit=crop&q=80" alt="Dr. M. El Khansa" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <!-- Floating accent card -->
+        <div style="position:absolute;bottom:-20px;right:-30px;background:var(--crimson);color:var(--white);padding:20px 28px;border-radius:12px;z-index:2;box-shadow:0 15px 40px rgba(190,31,61,.3);" class="float">
+          <div style="font-family:var(--font-display);font-weight:800;font-size:28px;">30+</div>
+          <div style="font-size:12px;opacity:.8;margin-top:2px;">Years Leading AUS</div>
+        </div>
+      </div>
+      
+      <!-- Quote -->
+      <div class="reveal d2">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--crimson)" opacity=".3" style="margin-bottom:20px;"><path d="M10 11H6C6 7.686 8.686 5 12 5V3C7.582 3 4 6.582 4 11v7a2 2 0 002 2h4a2 2 0 002-2v-5a2 2 0 00-2-2zm10 0h-4c0-3.314 2.686-6 6-6V3c-4.418 0-8 3.582-8 8v7a2 2 0 002 2h4a2 2 0 002-2v-5a2 2 0 00-2-2z"/></svg>
+        <p class="split-text" style="font-family:var(--font-serif);font-style:italic;font-size:clamp(18px,2vw,26px);line-height:1.6;color:var(--white);margin-bottom:24px;">The entire world of higher education is evolving at an accelerating pace. The AUS history is characterized by continued transformation, growth, and improvement in a world of tremendous change.</p>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:rgba(255,255,255,.6);margin-bottom:28px;">Internally, we are on an accelerated path of capacity building. Externally, we are strengthening new partnerships as part of our community engagement strategy that builds on existing networks of alumni and representatives.</p>
+        <div style="display:flex;align-items:center;gap:16px;">
+          <div style="width:1px;height:40px;background:var(--crimson);"></div>
+          <div>
+            <div style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:18px;">Dr. M. El Khansa</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px;">President, AUS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section style="padding:clamp(40px,6vw,70px) 0;">
+  <div class="wrap">
+    <span class="eyebrow reveal">What We Stand For</span>
+    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 clamp(32px,4vw,48px);">Our Values</h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,32px);">
+      <div class="reveal" style="padding:clamp(24px,3vw,32px);border:1px solid var(--line);border-radius:8px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--navy);margin-bottom:8px;">Respect</h3>
+        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">We value professional behavior and conduct based on respectful communication and actions.</p>
+      </div>
+      <div class="reveal d1" style="padding:clamp(24px,3vw,32px);border:1px solid var(--line);border-radius:8px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--navy);margin-bottom:8px;">Excellence</h3>
+        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">We provide value for money and are transformational in our approaches to learning and teaching.</p>
+      </div>
+      <div class="reveal d2" style="padding:clamp(24px,3vw,32px);border:1px solid var(--line);border-radius:8px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--navy);margin-bottom:8px;">Accountability</h3>
+        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">We hold ourselves accountable and adhere to the highest integrity and ethical standards.</p>
+      </div>
+      <div class="reveal d3" style="padding:clamp(24px,3vw,32px);border:1px solid var(--line);border-radius:8px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--navy);margin-bottom:8px;">Leadership</h3>
+        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">We lead students through developing their knowledge and abilities so they can become impactful leaders of the future.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding:clamp(40px,6vw,70px) 0;background:var(--navy);color:var(--white);">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,40px);text-align:center;">
+      <div class="reveal">
+        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,56px);color:var(--white);">30<span style="color:var(--crimson);">+</span></div>
+        <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:6px;">Years of Excellence</div>
+      </div>
+      <div class="reveal d1">
+        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,56px);color:var(--white);">40<span style="color:var(--crimson);">+</span></div>
+        <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:6px;">Nationalities</div>
+      </div>
+      <div class="reveal d2">
+        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,56px);color:var(--white);">80<span style="color:var(--crimson);">%</span></div>
+        <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:6px;">Graduate Employment</div>
+      </div>
+      <div class="reveal d3">
+        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,56px);color:var(--white);">20</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:6px;">Max Students Per Class</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SUB-PAGES — Bento grid with hover effects
+     ═══════════════════════════════════════ -->
+<section style="padding:clamp(60px,8vw,100px) 0;background:var(--sky-tint);">
+  <div class="wrap">
+    <span class="eyebrow reveal">Explore</span>
+    <h2 class="reveal d1 split-text" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 clamp(32px,4vw,48px);">Learn More About AUS</h2>
+    
+    <div class="stagger-grid" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:clamp(16px,2vw,24px);">
+      <a href="#" class="tilt-card img-zoom" style="display:block;border-radius:12px;overflow:hidden;position:relative;grid-row:1/3;">
+        <img src="https://images.unsplash.com/photo-1461360228754-6e81c478b882?w=600&auto=format&fit=crop&q=80" alt="History" style="width:100%;height:100%;object-fit:cover;">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(12,14,34,.85) 0%,rgba(12,14,34,.2) 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(20px,3vw,32px);">
+          <h3 style="font-family:var(--font-display);font-weight:700;font-size:clamp(20px,2vw,26px);color:var(--white);margin-bottom:6px;">Our History</h3>
+          <p style="font-size:14px;color:rgba(255,255,255,.7);margin-bottom:12px;">From 1963 to today</p>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:var(--crimson);">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+      
+      <a href="#" class="tilt-card" style="display:block;padding:clamp(24px,3vw,32px);background:var(--white);border:1px solid var(--line);border-radius:12px;">
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--navy);margin-bottom:8px;">Accreditation</h3>
+        <p style="font-size:14px;line-height:1.6;color:var(--ink-soft);">Internationally recognized accreditations and memberships.</p>
+        <span style="display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:var(--crimson);margin-top:16px;">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+      
+      <a href="#" class="tilt-card" style="display:block;padding:clamp(24px,3vw,32px);background:var(--navy);color:var(--white);border-radius:12px;">
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--white);margin-bottom:8px;">Faculty</h3>
+        <p style="font-size:14px;line-height:1.6;color:rgba(255,255,255,.65);">Meet our international team of expert educators.</p>
+        <span style="display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:var(--crimson);margin-top:16px;">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+      
+      <a href="#" class="tilt-card" style="display:block;padding:clamp(24px,3vw,32px);background:var(--white);border:1px solid var(--line);border-radius:12px;">
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--navy);margin-bottom:8px;">Governance</h3>
+        <p style="font-size:14px;line-height:1.6;color:var(--ink-soft);">Our leadership structure and principles.</p>
+        <span style="display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:var(--crimson);margin-top:16px;">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+      
+      <a href="#" class="tilt-card" style="display:block;padding:clamp(24px,3vw,32px);background:var(--crimson);color:var(--white);border-radius:12px;">
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--white);margin-bottom:8px;">Rankings</h3>
+        <p style="font-size:14px;line-height:1.6;color:rgba(255,255,255,.7);">QS World Rankings and other recognitions.</p>
+        <span style="display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:var(--white);margin-top:16px;">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CTA
+     ═══════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="wrap cta-inner">
+    <span class="eyebrow on-navy reveal">What's Next</span>
+    <h2 class="reveal d1">Take the Next Step</h2>
+    <p class="reveal d2">Talk to an Admissions Advisor, request a Program Overview, or book a campus visit to experience AUS firsthand.</p>
+    <div class="reveal d3" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="#" class="cta-btn mag-btn">Talk to an Admissions Advisor &rarr;</a>
+      <a href="#" class="cta-btn mag-btn" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,.3);">Request a Program Overview</a>
+      <a href="#" class="cta-btn mag-btn" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,.3);">Book a Campus Visit</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <img class="footer-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+        <p>American Institute of Applied Sciences. Modern heritage, built for the leaders business hasn't met yet.</p>
+        <div class="footer-social-title footer-col-title">Follow</div>
+        <div class="footer-social-grid">
+          <a class="footer-social-tile" href="https://www.linkedin.com/school/aus-swiss/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M14.6666 7.3335C16.1253 7.3335 17.5243 7.91296 18.5557 8.94441C19.5872 9.97586 20.1666 11.3748 20.1666 12.8335V19.2502H16.5V12.8335C16.5 12.3473 16.3068 11.881 15.963 11.5371C15.6192 11.1933 15.1529 11.0002 14.6666 11.0002C14.1804 11.0002 13.7141 11.1933 13.3703 11.5371C13.0264 11.881 12.8333 12.3473 12.8333 12.8335V19.2502H9.16663V12.8335C9.16663 11.3748 9.74609 9.97586 10.7775 8.94441C11.809 7.91296 13.2079 7.3335 14.6666 7.3335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M5.50004 8.25H1.83337V19.25H5.50004V8.25Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M3.66671 5.50016C4.67923 5.50016 5.50004 4.67935 5.50004 3.66683C5.50004 2.65431 4.67923 1.8335 3.66671 1.8335C2.65419 1.8335 1.83337 2.65431 1.83337 3.66683C1.83337 4.67935 2.65419 5.50016 3.66671 5.50016Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="footer-social-tile" href="https://www.facebook.com/american.institute.switzerland" target="_blank" aria-label="Facebook"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M16.5 1.8335H13.75C12.5344 1.8335 11.3686 2.31638 10.5091 3.17592C9.64951 4.03547 9.16663 5.20125 9.16663 6.41683V9.16683H6.41663V12.8335H9.16663V20.1668H12.8333V12.8335H15.5833L16.5 9.16683H12.8333V6.41683C12.8333 6.17371 12.9299 5.94056 13.1018 5.76865C13.2737 5.59674 13.5068 5.50016 13.75 5.50016H16.5V1.8335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="footer-social-tile" href="https://www.instagram.com/aus.swiss/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M15.5834 1.8335H6.41671C3.8854 1.8335 1.83337 3.88552 1.83337 6.41683V15.5835C1.83337 18.1148 3.8854 20.1668 6.41671 20.1668H15.5834C18.1147 20.1668 20.1667 18.1148 20.1667 15.5835V6.41683C20.1667 3.88552 18.1147 1.8335 15.5834 1.8335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M14.6667 10.4223C14.7799 11.1852 14.6495 11.9643 14.2943 12.6489C13.9391 13.3335 13.3771 13.8886 12.6882 14.2353C11.9993 14.5821 11.2186 14.7028 10.4572 14.5802C9.69576 14.4577 8.99234 14.0982 8.44699 13.5529C7.90165 13.0075 7.54214 12.3041 7.41962 11.5427C7.29709 10.7812 7.41778 10.0005 7.76452 9.31163C8.11126 8.62274 8.66639 8.06072 9.35096 7.70551C10.0355 7.3503 10.8147 7.21999 11.5776 7.33312C12.3557 7.44852 13.0762 7.81113 13.6324 8.3674C14.1887 8.92368 14.5513 9.64411 14.6667 10.4223Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M16.0416 5.9585H16.0516" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="footer-social-tile" href="https://www.tiktok.com/@aus.swiss" target="_blank" aria-label="TikTok"><svg viewBox="0 0 22 22" fill="none"><path d="M17.9575 6.13266C17.0437 5.93172 16.2171 5.44648 15.5962 4.74656C14.9753 4.04665 14.5921 3.16804 14.5016 2.23683V1.8335H11.3391V14.3643C11.2523 15.0017 10.9366 15.5858 10.4508 16.0074C9.965 16.4291 9.34238 16.6597 8.69912 16.656C7.99651 16.656 7.32269 16.3769 6.82587 15.8801C6.32906 15.3833 6.04995 14.7094 6.04995 14.0068C6.04995 13.3042 6.32906 12.6304 6.82587 12.1336C7.32269 11.6368 7.99651 11.3577 8.69912 11.3577C8.95578 11.3577 9.19412 11.3943 9.42328 11.4493V8.25933C9.1831 8.22882 8.94123 8.21351 8.69912 8.2135C7.15777 8.2135 5.67955 8.8258 4.58965 9.91569C3.49975 11.0056 2.88745 12.4838 2.88745 14.0252C2.88745 14.7884 3.03777 15.5441 3.32984 16.2492C3.6219 16.9543 4.04999 17.595 4.58965 18.1346C5.67955 19.2245 7.15777 19.8368 8.69912 19.8368C10.2389 19.8344 11.7147 19.221 12.8027 18.1314C13.8906 17.0418 14.5016 15.5649 14.5016 14.0252V7.966C15.7802 8.87783 17.3129 9.36519 18.8833 9.35933V6.1785C18.5739 6.19552 18.2636 6.18016 17.9575 6.13266Z" fill="currentColor"/></svg></a>
+          <a class="footer-social-tile" href="https://www.youtube.com/channel/UCKUFsoxwPuaH8bi0vMoSTaQ" target="_blank" aria-label="YouTube"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M2.29167 15.5833C1.65131 12.5613 1.65131 9.43867 2.29167 6.41667C2.37581 6.10977 2.53838 5.83007 2.7634 5.60506C2.98841 5.38004 3.26812 5.21747 3.57501 5.13333C8.4915 4.31884 13.5085 4.31884 18.425 5.13333C18.7319 5.21747 19.0116 5.38004 19.2366 5.60506C19.4616 5.83007 19.6242 6.10977 19.7083 6.41667C20.3487 9.43867 20.3487 12.5613 19.7083 15.5833C19.6242 15.8902 19.4616 16.1699 19.2366 16.3949C19.0116 16.62 18.7319 16.7825 18.425 16.8667C13.5085 17.6813 8.49149 17.6813 3.57501 16.8667C3.26812 16.7825 2.98841 16.62 2.7634 16.3949C2.53838 16.1699 2.37581 15.8902 2.29167 15.5833Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M9.16663 13.75L13.75 11L9.16663 8.25V13.75Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col"><div class="footer-col-title">Programs</div><a href="aus-programs.html#bachelor">Bachelor's</a><a href="aus-programs.html#master">Master's</a><a href="aus-programs.html#doctorate">Doctorate</a><a href="#">Federal Diploma</a></div>
+      <div class="footer-col"><div class="footer-col-title">School</div><a href="#">About</a><a href="#">Faculty</a><a href="#">Campus life</a></div>
+      <div class="footer-col"><div class="footer-col-title">Connect</div><a href="#">Admissions</a><a href="#">Events</a><a href="#">Contact</a></div>
+    </div>
+    <div class="footer-v2_bottom">
+      <div class="footer-v2_bottom-title">Accredited &amp; Recognized Worldwide</div>
+      <div class="footer-v2_bottom-list">
+        <div class="footer-v2_bottom-item"><img loading="lazy" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e79_698275eb6f621e22c0ea62fc_Clip%20path%20group%20(1)%201.svg" alt="" class="footer-v2_bottom-img"></div>
+        <div class="footer-v2_bottom-item"><img loading="lazy" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e7d_697cf79ce10c6540765924cd_Clip%20path%20group%201.svg" alt="" class="footer-v2_bottom-img"></div>
+        <div class="footer-v2_bottom-item"><img loading="lazy" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e7c_698275bd119470d073f42434_Clip%20path%20group%20(2)%201.svg" alt="" class="footer-v2_bottom-img"></div>
+        <div class="footer-v2_bottom-item"><img loading="lazy" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e78_697cf79cc3d5271cd7269eeb_Group%201.svg" alt="" class="footer-v2_bottom-img"></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 AUS Business School. All rights reserved.</span>
+      <span><a href="#">Privacy</a> &nbsp;&middot;&nbsp; <a href="#">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Preloader
+  document.documentElement.classList.add('has-preloader');
+  var preloader = document.getElementById('preloader');
+  function hidePreloader(){
+      preloader.classList.add('is-hidden');
+      document.documentElement.classList.remove('has-preloader');
+      setTimeout(function(){ if(preloader.parentNode) preloader.parentNode.removeChild(preloader); },700);
+  }
+  var minShow = new Promise(function(res){ setTimeout(res,900); });
+  var ready = new Promise(function(res){ if(document.readyState==='complete') res(); else window.addEventListener('load',res); });
+  Promise.all([minShow,ready]).then(hidePreloader);
+
+  // Nav scroll
+  var nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){
+    nav.classList.toggle('is-scrolled',window.scrollY>40);
+  },{passive:true});
+
+  // Side panel
+  var menuToggle=document.getElementById('menuToggle'),sidePanel=document.getElementById('sidePanel'),sidePanelClose=document.getElementById('sidePanelClose'),sidePanelBackdrop=document.getElementById('sidePanelBackdrop'),sidePanelNav=document.querySelector('.side-panel-nav'),accordionItems=document.querySelectorAll('.accordion-item');
+  function openPanel(expandKey){document.documentElement.classList.add('panel-open');menuToggle.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';if(expandKey){accordionItems.forEach(function(item){if(item.getAttribute('data-panel-key')===expandKey)item.classList.add('is-open');});var t=document.querySelector('.accordion-item[data-panel-key="'+expandKey+'"]');if(t&&sidePanelNav)setTimeout(function(){t.scrollIntoView({block:'start',behavior:'smooth'});},60);}}
+  function closePanel(){document.documentElement.classList.remove('panel-open');menuToggle.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  menuToggle.addEventListener('click',function(){openPanel();});
+  sidePanelClose.addEventListener('click',closePanel);
+  sidePanelBackdrop.addEventListener('click',closePanel);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closePanel();});
+  document.querySelectorAll('[data-open-panel]').forEach(function(btn){btn.addEventListener('click',function(){openPanel(btn.getAttribute('data-open-panel'));});});
+  accordionItems.forEach(function(item){item.querySelector('.accordion-trigger').addEventListener('click',function(){item.classList.toggle('is-open');});});
+
+  // Reveal
+  var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if('IntersectionObserver' in window&&!reduceMotion){
+    document.documentElement.classList.add('js-reveal-ready');
+    var revealTargets=document.querySelectorAll('.reveal,.reveal-scale,.reveal-clip,.reveal-rotate,.split-text,.stagger-grid,.line-draw');
+    var revealObserver=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },{threshold:0,rootMargin:'0px 0px -60px 0px'});
+    revealTargets.forEach(function(el){revealObserver.observe(el);});
+  }
+
+  // Split text into words
+  document.querySelectorAll('.split-text').forEach(function(el){
+    var text=el.textContent.trim();
+    el.innerHTML=text.split(/\s+/).map(function(w){return '<span class="word">'+w+'</span>';}).join(' ');
+  });
+
+  // Magnetic buttons
+  document.querySelectorAll('.mag-btn').forEach(function(btn){
+    btn.addEventListener('mousemove',function(e){
+      var rect=btn.getBoundingClientRect();
+      var x=e.clientX-rect.left-rect.width/2;
+      var y=e.clientY-rect.top-rect.height/2;
+      btn.style.transform='translate('+x*.15+'px,'+y*.15+'px)';
+    });
+    btn.addEventListener('mouseleave',function(){btn.style.transform='';});
+  });
+
+  // Parallax on scroll
+  if(!reduceMotion){
+    var parallaxEls=document.querySelectorAll('.parallax');
+    window.addEventListener('scroll',function(){
+      parallaxEls.forEach(function(el){
+        var rect=el.getBoundingClientRect();
+        var speed=parseFloat(el.getAttribute('data-speed'))||0.15;
+        var y=(rect.top-window.innerHeight)*speed;
+        el.style.transform='translateY('+y+'px)';
+      });
+    },{passive:true});
+  }
+
+  // Counter animation
+  var counters=document.querySelectorAll('.counter');
+  if('IntersectionObserver' in window&&!reduceMotion){
+    var counterObserver=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          var el=entry.target;
+          var target=parseInt(el.getAttribute('data-target'));
+          var duration=1500;
+          var start=0;
+          var startTime=null;
+          function animate(time){
+            if(!startTime)startTime=time;
+            var progress=Math.min((time-startTime)/duration,1);
+            var eased=1-Math.pow(1-progress,3);
+            el.textContent=Math.floor(eased*target);
+            if(progress<1)requestAnimationFrame(animate);
+            else el.textContent=target;
+          }
+          requestAnimationFrame(animate);
+          counterObserver.unobserve(el);
+        }
+      });
+    },{threshold:0.5});
+    counters.forEach(function(c){counterObserver.observe(c);});
+  }
+})();
+</script>
+</body>
+</html>
