@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AUS Business School — Programs</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600;1,700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{
+  --white:#ffffff;--navy:#22295f;--crimson:#be1f3d;--sky:#bbddf8;--sky-tint:#eef6fd;
+  --yellow:#fff737;--slate:#768cb0;--ink:var(--navy);--ink-soft:#565f8c;
+  --line:rgba(34,41,95,0.12);--line-on-navy:rgba(255,255,255,0.16);
+  --ease:cubic-bezier(.22,1,.36,1);--ease-soft:cubic-bezier(.16,1,.3,1);
+  --font-display:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;
+  --font-serif:'Playfair Display',Georgia,'Times New Roman',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html.has-preloader body{overflow:hidden;}
+html,body{background:var(--white);}
+body{font-family:var(--font-display);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+a{color:inherit;text-decoration:none;}img{display:block;max-width:100%;}ul{list-style:none;}
+button{font-family:inherit;background:none;border:none;cursor:pointer;color:inherit;}
+.eyebrow{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:15px;letter-spacing:.01em;color:var(--crimson);display:inline-flex;align-items:center;gap:10px;}
+.eyebrow::before{content:"";width:26px;height:1px;background:currentColor;display:inline-block;}
+.eyebrow.on-navy{color:rgba(255,255,255,.7);}
+
+/* PRELOADER */
+.aus-preloader{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:22px;background:var(--navy);transition:opacity .7s var(--ease),visibility .7s var(--ease);}
+.aus-preloader-mark{height:clamp(64px,9vw,92px);width:auto;opacity:0;transform:translateY(10px);animation:preloaderIn .9s var(--ease) forwards;}
+.aus-preloader-bar{width:140px;height:1px;background:var(--line-on-navy);overflow:hidden;position:relative;margin-top:6px;}
+.aus-preloader-bar::after{content:"";position:absolute;inset:0;width:34%;background:var(--yellow);animation:preloaderBar 1.15s ease-in-out infinite;}
+@keyframes preloaderIn{to{opacity:1;transform:translateY(0);}}
+@keyframes preloaderBar{0%{transform:translateX(-120%);}100%{transform:translateX(400%);}}
+.aus-preloader.is-hidden{opacity:0;visibility:hidden;pointer-events:none;}
+@media (prefers-reduced-motion: reduce){.aus-preloader{display:none;}}
+
+/* ARCHIVE TAB */
+.archive-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding:14px 22px 14px 30px;background:var(--white);border-top-left-radius:6px;border-bottom-left-radius:6px;box-shadow:-6px 0 24px rgba(34,41,95,0.08);transition:background .4s var(--ease),box-shadow .4s var(--ease);cursor:pointer;}
+.archive-tab-num{font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.04em;color:var(--navy);}
+.archive-tab-label{font-family:var(--font-serif);font-style:italic;font-size:12px;color:var(--ink-soft);white-space:nowrap;}
+.archive-tab-toc{position:absolute;right:100%;top:50%;transform:translateY(-50%) translateX(12px);width:236px;background:var(--white);box-shadow:-6px 0 24px rgba(34,41,95,0.14);padding:10px 0;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);}
+.archive-tab:hover .archive-tab-toc,.archive-tab:focus-within .archive-tab-toc{opacity:1;transform:translateY(-50%) translateX(0);pointer-events:auto;}
+.archive-tab-toc-item{display:flex;align-items:baseline;gap:12px;width:100%;text-align:left;padding:8px 20px;font-size:12.5px;color:var(--ink-soft);transition:color .2s var(--ease),background .2s var(--ease);}
+.archive-tab-toc-item:hover{background:var(--sky-tint);color:var(--navy);}
+.archive-tab-toc-item .num{font-family:var(--font-display);font-weight:700;color:var(--crimson);width:18px;flex:0 0 auto;}
+.archive-tab-toc-item.is-current{color:var(--navy);font-weight:600;}
+@media (max-width:960px){.archive-tab{display:none;}}
+
+/* NAV */
+.aus-nav{position:fixed;top:0;left:0;right:0;z-index:110;display:flex;align-items:center;justify-content:space-between;padding:clamp(18px,2.6vw,30px) clamp(20px,4vw,56px);color:var(--white);transition:padding .4s var(--ease),color .4s var(--ease);}
+.aus-nav.is-scrolled{padding-top:14px;padding-bottom:14px;color:var(--white);}
+.aus-nav::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom, rgba(15,17,38,.55) 0%, rgba(15,17,38,0) 100%);opacity:1;transition:opacity .4s var(--ease),background .4s var(--ease);}
+.aus-nav.is-scrolled::before{background:var(--navy);opacity:1;box-shadow:0 1px 0 var(--line-on-navy);}
+.aus-wordmark{position:relative;display:block;height:clamp(40px,4.4vw,52px);width:clamp(180px,19vw,230px);opacity:0;transform:translateY(-10px);animation:navIn .8s var(--ease) .35s forwards;}
+.aus-wordmark img{position:absolute;left:0;top:0;height:100%;width:auto;max-width:none;transition:opacity .4s var(--ease);}
+.aus-wordmark .logo-white{opacity:1;}.aus-wordmark .logo-color{opacity:0;}
+@keyframes navIn{to{opacity:1;transform:translateY(0);}}
+.aus-nav-links{display:flex;align-items:center;gap:26px;opacity:0;animation:navIn .8s var(--ease) .4s forwards;}
+.aus-nav-links button{font-weight:500;font-size:14.5px;}
+.aus-nav-links button::after{content:"";display:block;width:0;height:1px;background:currentColor;transition:width .3s var(--ease);margin-top:3px;}
+.aus-nav-links button:hover::after{width:100%;}
+.aus-nav-right{display:flex;align-items:center;gap:22px;opacity:0;animation:navIn .8s var(--ease) .45s forwards;}
+.aus-nav-apply{font-weight:600;font-size:14px;padding:10px 20px;border:1px solid currentColor;border-radius:100px;transition:background .3s var(--ease),color .3s var(--ease);}
+.aus-nav-apply:hover{background:var(--crimson);border-color:var(--crimson);color:var(--white);}
+.menu-toggle{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;}
+.menu-toggle-bars{width:22px;height:14px;position:relative;}
+.menu-toggle-bars span{position:absolute;left:0;right:0;height:1.5px;background:currentColor;}
+.menu-toggle-bars span:nth-child(1){top:0;}.menu-toggle-bars span:nth-child(2){top:6px;width:70%;}.menu-toggle-bars span:nth-child(3){top:12px;}
+@media (max-width:760px){.aus-nav-links{display:none;}}
+
+/* SIDE PANEL */
+.side-panel{position:fixed;inset:0;z-index:120;pointer-events:none;}
+.side-panel-backdrop{position:absolute;inset:0;background:rgba(15,17,38,.55);opacity:0;transition:opacity .5s var(--ease);}
+.side-panel-canvas{position:absolute;top:0;right:0;bottom:0;width:min(460px,92vw);background:var(--navy);color:var(--white);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .55s var(--ease);box-shadow:-30px 0 60px rgba(15,17,38,.28);}
+.panel-open .side-panel{pointer-events:auto;}.panel-open .side-panel-backdrop{opacity:1;}.panel-open .side-panel-canvas{transform:translateX(0);}
+.side-panel-head{display:flex;align-items:center;justify-content:space-between;padding:26px clamp(24px,4vw,36px);border-bottom:1px solid var(--line-on-navy);flex:0 0 auto;}
+.side-panel-head img{height:36px;width:auto;}
+.side-panel-close{width:38px;height:38px;border-radius:50%;border:1px solid var(--line-on-navy);display:flex;align-items:center;justify-content:center;}
+.side-panel-close span{position:relative;width:14px;height:14px;}
+.side-panel-close span::before,.side-panel-close span::after{content:"";position:absolute;top:50%;left:0;width:100%;height:1.4px;background:var(--white);}
+.side-panel-close span::before{transform:rotate(45deg);}.side-panel-close span::after{transform:rotate(-45deg);}
+.side-panel-nav{flex:1 1 auto;overflow-y:auto;padding:10px clamp(24px,4vw,36px) 20px;}
+.accordion-item{border-bottom:1px solid var(--line-on-navy);}
+.accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:-.01em;text-align:left;color:var(--white);}
+.accordion-icon{width:20px;height:20px;position:relative;flex:0 0 auto;}
+.accordion-icon::before,.accordion-icon::after{content:"";position:absolute;top:50%;left:50%;background:var(--yellow);transform:translate(-50%,-50%);transition:transform .35s var(--ease),opacity .35s var(--ease);}
+.accordion-icon::before{width:14px;height:1.6px;}.accordion-icon::after{width:1.6px;height:14px;}
+.accordion-item.is-open .accordion-icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0;}
+.accordion-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease);}
+.accordion-panel-inner{overflow:hidden;}
+.accordion-item.is-open .accordion-panel{grid-template-rows:1fr;}
+.accordion-group{padding:4px 0 18px;}
+.accordion-group-title{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--slate);margin:14px 0 8px;}
+.accordion-group-title:first-child{margin-top:0;}
+.accordion-group a{display:block;font-size:15px;padding:7px 0;color:rgba(255,255,255,.72);transition:color .2s var(--ease),transform .2s var(--ease),padding-left .2s var(--ease);}
+.accordion-group a:hover{color:var(--white);padding-left:6px;}
+.side-panel-link{display:block;padding:20px 0;font-family:var(--font-display);font-weight:700;font-size:19px;border-bottom:1px solid var(--line-on-navy);letter-spacing:-.01em;color:var(--white);}
+.side-panel-link:hover{color:var(--white);}
+.side-panel-foot{flex:0 0 auto;padding:22px clamp(24px,4vw,36px) 28px;border-top:1px solid var(--line-on-navy);display:flex;flex-direction:column;gap:18px;}
+.side-panel-foot .hero-cta{background:var(--white);color:var(--navy);align-self:flex-start;border:1px solid var(--line);}
+.side-panel-foot .hero-cta:hover{background:var(--crimson);color:var(--white);}
+.side-panel-socials{display:flex;gap:9px;}
+.side-panel-socials .footer-social-tile{border-color:var(--line-on-navy);}
+.side-panel-socials .footer-social-tile svg{fill:var(--white);}
+
+/* REVEAL */
+.reveal{opacity:1;transform:none;}
+.js-reveal-ready .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease-soft),transform .9s var(--ease-soft);}
+.js-reveal-ready .reveal.is-visible{opacity:1;transform:none;}
+.js-reveal-ready .reveal.d1{transition-delay:.08s;}.js-reveal-ready .reveal.d2{transition-delay:.16s;}.js-reveal-ready .reveal.d3{transition-delay:.24s;}
+
+/* SECTION SHELL */
+.chapter{position:relative;}
+.chapter-label{display:flex;align-items:center;gap:14px;margin-bottom:clamp(28px,4vw,44px);font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;}
+.chapter-label .num{color:var(--crimson);}
+.chapter-label::after{content:"";flex:1;height:1px;background:var(--line);}
+.wrap{max-width:1360px;margin:0 auto;padding-left:clamp(20px,5vw,64px);padding-right:clamp(20px,5vw,64px);}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--navy);text-align:center;}
+.hero-media{position:absolute;inset:0;z-index:0;}
+.hero-media img{width:100%;height:100%;object-fit:cover;}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(12,14,34,.88) 0%,rgba(34,41,95,.6) 50%,rgba(12,14,34,.75) 100%);}
+.hero-inner{position:relative;z-index:1;width:100%;padding:clamp(80px,12vw,160px) clamp(20px,5vw,64px) clamp(60px,8vw,100px);color:var(--white);max-width:900px;margin:0 auto;}
+.hero-eyebrow-row{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:clamp(20px,3vw,32px);flex-wrap:wrap;}
+.hero h1{font-family:var(--font-serif);font-style:italic;font-weight:500;letter-spacing:-.01em;font-size:clamp(36px,6.5vw,84px);line-height:1.05;max-width:none;}
+.hero h1 em{font-style:normal;font-weight:800;font-family:var(--font-display);color:var(--sky);}
+.hero-sub{margin-top:20px;max-width:50ch;font-size:clamp(15px,1.5vw,18px);line-height:1.65;color:rgba(255,255,255,.75);}
+.hero-bottom-row{margin-top:clamp(32px,4.5vw,52px);display:flex;justify-content:center;align-items:center;gap:28px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:22px;}
+.hero-cta{display:inline-block;font-weight:600;font-size:14px;color:var(--white);background:transparent;padding:12px 28px;border-radius:100px;transition:all .3s var(--ease);border:1px solid rgba(255,255,255,.3);}
+.hero-cta:hover{background:var(--white);color:var(--navy);border-color:var(--white);transform:translateY(-2px);}
+.hero-meta{font-family:var(--font-serif);font-style:italic;font-size:13px;line-height:1.7;color:rgba(255,255,255,.5);text-align:center;}
+.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);z-index:2;animation:heroScrollPulse 2s ease-in-out infinite;}
+@keyframes heroScrollPulse{0%,100%{opacity:.35;transform:translateX(-50%) translateY(0);}50%{opacity:.7;transform:translateX(-50%) translateY(6px);}}
+.hero-scroll{position:absolute;bottom:clamp(30px,4vw,48px);left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.4);font-size:11px;letter-spacing:.1em;text-transform:uppercase;animation:scrollBounce 2s ease-in-out infinite;}
+.hero-scroll::after{content:"";width:1px;height:32px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);}
+@keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
+
+/* PROGRAMS WRAPPER */
+.programs-wrapper{position:relative;}
+
+/* FILTER BAR */
+.filter-bar{position:sticky;top:72px;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:clamp(14px,1.6vw,20px) 0;transition:box-shadow .3s var(--ease);}
+.filter-bar.is-stuck{box-shadow:0 4px 20px rgba(34,41,95,0.06);}
+.filter-pills{display:flex;align-items:center;gap:clamp(10px,1.4vw,18px);justify-content:center;flex-wrap:wrap;}
+.filter-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:100px;font-weight:600;font-size:14px;color:var(--ink-soft);border:1px solid var(--line);transition:all .3s var(--ease);cursor:pointer;}
+.filter-pill span{font-family:var(--font-display);font-weight:800;font-size:12px;background:var(--sky-tint);color:var(--navy);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s var(--ease);}
+.filter-pill:hover{color:var(--navy);border-color:var(--navy);}
+.filter-pill.is-active{background:var(--navy);color:var(--white);border-color:var(--navy);}
+.filter-pill.is-active span{background:var(--white);color:var(--navy);}
+
+/* PROGRAM SECTIONS */
+.program-section{padding:clamp(80px,10vw,130px) 0;}
+.program-section--alt{background:var(--sky-tint);}
+.program-section-head{margin-bottom:clamp(36px,5vw,54px);}
+.program-section-head h2{font-family:var(--font-display);font-weight:800;letter-spacing:-.015em;font-size:clamp(30px,3.6vw,46px);line-height:1.05;margin-bottom:14px;max-width:18ch;}
+.program-section-head p{max-width:50ch;color:var(--ink-soft);font-size:15px;line-height:1.65;}
+
+/* WHY AUS */
+.why-aus{background:var(--sky-tint);padding:clamp(70px,9vw,100px) 0;}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,20px);margin-top:clamp(32px,4vw,48px);}
+.why-card{background:var(--white);padding:clamp(24px,3vw,36px);border-radius:4px;border:1px solid var(--line);}
+.why-num{font-family:var(--font-display);font-weight:800;font-size:clamp(28px,3vw,40px);color:var(--navy);display:block;line-height:1;}
+.why-label{font-family:var(--font-serif);font-style:italic;font-size:14px;color:var(--ink-soft);display:block;margin-top:4px;margin-bottom:10px;}
+.why-card p{font-size:14px;line-height:1.6;color:var(--ink-soft);}
+@media (max-width:760px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:500px){.why-grid{grid-template-columns:1fr;}}
+
+/* DUAL DEGREE */
+.dual-degree{background:var(--navy);color:var(--white);padding:clamp(70px,9vw,100px) 0;}
+.dual-inner{display:flex;align-items:center;gap:clamp(40px,6vw,80px);margin-top:clamp(32px,4vw,48px);}
+.dual-copy{flex:1;}
+.dual-copy h2{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4vw,48px);line-height:1.15;margin-bottom:20px;}
+.dual-copy em{font-weight:700;color:var(--sky);}
+.dual-copy p{font-size:clamp(14px,1.1vw,16px);line-height:1.7;color:rgba(255,255,255,.75);max-width:48ch;}
+.dual-logos{display:flex;align-items:center;gap:20px;flex-shrink:0;}
+.dual-flag{width:100px;height:100px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.15);box-shadow:0 4px 20px rgba(0,0,0,.3);}
+.dual-flag img{width:100%;height:100%;object-fit:cover;}
+.dual-plus{font-family:var(--font-display);font-weight:800;font-size:32px;color:var(--sky);}
+@media (max-width:760px){.dual-inner{flex-direction:column;text-align:center;}.dual-copy p{margin:0 auto;}}
+
+/* RANKINGS */
+.rankings-section{background:var(--white);padding:clamp(70px,9vw,100px) 0;border-bottom:1px solid var(--line);}
+.rankings-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,1.6vw,20px);margin-top:clamp(32px,4vw,48px);}
+.ranking-card{background:var(--sky-tint);padding:clamp(24px,3vw,36px);border-radius:4px;text-align:center;}
+.ranking-source{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:8px;}
+.ranking-num{font-family:var(--font-display);font-weight:800;font-size:clamp(32px,4vw,52px);color:var(--navy);display:block;line-height:1;}
+.ranking-detail{font-family:var(--font-serif);font-style:italic;font-size:14px;color:var(--ink-soft);display:block;margin-top:6px;}
+.accreditations{margin-top:clamp(32px,4vw,48px);text-align:center;}
+.accred-label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:20px;}
+.accred-track-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent 0%,black 10%,black 90%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,black 10%,black 90%,transparent 100%);}
+.accred-track{display:flex;gap:60px;width:max-content;animation:accredScroll 20s linear infinite;}
+.accred-track:hover{animation-play-state:paused;}
+@keyframes accredScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.accred-logo{flex-shrink:0;width:90px;height:90px;display:flex;align-items:center;justify-content:center;opacity:.5;transition:opacity .3s var(--ease);}
+.accred-logo:hover{opacity:1;}
+.accred-logo img{width:100%;height:100%;object-fit:contain;filter:grayscale(1);transition:filter .3s var(--ease);}
+.accred-logo:hover img{filter:grayscale(0);}
+@media (max-width:600px){.rankings-grid{grid-template-columns:1fr;}}
+
+/* BENTO GRID */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(260px,auto);gap:clamp(14px,1.6vw,20px);}
+.bento .prog-card:nth-child(7n+1){grid-column:span 2;grid-row:span 2;}
+@media (max-width:960px){.bento{grid-template-columns:repeat(2,1fr);}bento .prog-card:nth-child(7n+1){grid-column:span 2;grid-row:span 2;}}
+@media (max-width:600px){.bento{grid-template-columns:1fr;}.bento .prog-card{grid-column:span 1!important;grid-row:span 1!important;min-height:280px;}}
+
+/* PROGRAM CARD */
+.prog-card{position:relative;overflow:hidden;border-radius:4px;cursor:pointer;display:block;transition:transform .45s var(--ease),box-shadow .45s var(--ease);will-change:transform;}
+.prog-card:hover{box-shadow:0 20px 50px rgba(34,41,95,0.18);}
+.prog-card-bg{position:absolute;inset:0;}
+.prog-card-bg img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);filter:grayscale(.25) contrast(1.05) saturate(.85);}
+.prog-card:hover .prog-card-bg img{transform:scale(1.08);}
+.prog-card-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(15,17,38,.82) 0%,rgba(15,17,38,.25) 50%,rgba(15,17,38,.08) 100%);transition:background .4s var(--ease);}
+.prog-card:hover .prog-card-bg::after{background:linear-gradient(to top,rgba(15,17,38,.9) 0%,rgba(15,17,38,.35) 50%,rgba(15,17,38,.15) 100%);}
+.prog-card-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(20px,2.4vw,32px);color:var(--white);}
+.prog-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:auto;padding-bottom:40px;}
+.prog-card-tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);background:rgba(255,255,255,0.08);backdrop-filter:blur(4px);padding:5px 12px;border-radius:100px;}
+.prog-card-num{font-family:var(--font-display);font-weight:800;font-size:12px;color:rgba(255,255,255,.35);letter-spacing:.04em;}
+.prog-card-name{font-family:var(--font-display);font-weight:800;letter-spacing:-.015em;font-size:clamp(20px,2.2vw,30px);line-height:1.15;margin-bottom:8px;}
+.prog-card:hover .prog-card-name{color:var(--white);}
+.prog-card-detail{overflow:hidden;max-height:0;opacity:0;transition:max-height .5s var(--ease),opacity .4s var(--ease),transform .4s var(--ease);transform:translateY(10px);}
+.prog-card:hover .prog-card-detail{max-height:120px;opacity:1;transform:translateY(0);}
+.prog-card-duration{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-bottom:6px;}
+.prog-card-desc{font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.7);margin-bottom:10px;}
+.prog-card-arrow{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:var(--white);transition:gap .3s var(--ease);}
+.prog-card-arrow::after{content:"";display:inline-block;width:16px;height:1px;background:currentColor;transition:width .3s var(--ease);}
+.prog-card:hover .prog-card-arrow{gap:12px;}
+.prog-card:hover .prog-card-arrow::after{width:24px;}
+
+/* DOCTORATE SECTION */
+.doc-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,2.5vw,32px);}
+.doc-card{position:relative;overflow:hidden;border-radius:4px;min-height:clamp(340px,40vw,480px);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(28px,3.5vw,48px);color:var(--white);cursor:pointer;transition:transform .45s var(--ease),box-shadow .45s var(--ease);}
+.doc-card:hover{box-shadow:0 20px 50px rgba(34,41,95,0.18);}
+.doc-card-bg{position:absolute;inset:0;}
+.doc-card-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) contrast(1.05) saturate(.85);transition:transform .6s var(--ease);}
+.doc-card:hover .doc-card-bg img{transform:scale(1.05);}
+.doc-card-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(15,17,38,.88) 0%,rgba(15,17,38,.3) 50%,rgba(15,17,38,.1) 100%);}
+.doc-card-content{position:relative;z-index:1;}
+.doc-card-tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;}
+.doc-card-tag::before{content:"";width:20px;height:1px;background:rgba(255,255,255,.4);}
+.doc-card h3{font-family:var(--font-display);font-weight:800;letter-spacing:-.015em;font-size:clamp(24px,3vw,38px);line-height:1.1;margin-bottom:10px;}
+.doc-card p{font-size:15px;line-height:1.65;color:rgba(255,255,255,.7);max-width:36ch;}
+@media (max-width:760px){.doc-grid{grid-template-columns:1fr;}}
+
+/* EDITORIAL BAND */
+.band{position:relative;background:var(--white);padding:clamp(80px,10vw,140px) 0 0;}
+.band-media{position:relative;height:clamp(320px,45vw,520px);overflow:hidden;}
+.band-media img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);}
+.band-copy{position:relative;z-index:2;margin-top:clamp(-120px,-12vw,-80px);max-width:640px;background:var(--white);padding:clamp(30px,4vw,48px) clamp(28px,4vw,48px) clamp(34px,4vw,48px);box-shadow:0 24px 60px rgba(34,41,95,0.14);}
+.band-copy h2{font-family:var(--font-display);font-weight:800;letter-spacing:-.015em;font-size:clamp(28px,3.6vw,44px);line-height:1.08;margin-bottom:18px;}
+.band-copy h2 em{font-family:var(--font-serif);font-style:italic;font-weight:500;color:var(--crimson);}
+.band-copy p{font-size:16px;line-height:1.7;color:var(--ink-soft);max-width:52ch;}
+@media (max-width:760px){.band-copy{margin-top:-50px;padding:26px 22px;}}
+
+/* CTA SECTION */
+.cta-section{background:var(--navy);color:var(--white);padding:clamp(90px,12vw,160px) 0;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.cta-inner{position:relative;z-index:1;}
+.cta-section h2{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4.4vw,56px);line-height:1.2;max-width:16ch;margin:0 auto clamp(20px,3vw,32px);}
+.cta-section p{font-size:clamp(15px,1.2vw,17px);line-height:1.7;color:rgba(255,255,255,.6);max-width:44ch;margin:0 auto clamp(30px,4vw,44px);}
+.cta-btn{display:inline-flex;align-items:center;gap:12px;background:var(--white);color:var(--navy);font-weight:700;font-size:15px;padding:18px 32px;border-radius:100px;transition:transform .35s var(--ease),box-shadow .35s var(--ease);border:1px solid var(--line);}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(34,41,95,.12);}
+
+/* FOOTER */
+.site-footer{background:var(--navy);color:var(--white);padding:clamp(70px,9vw,110px) 0 32px;}
+.footer-top{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:clamp(30px,4vw,50px);padding-bottom:clamp(50px,7vw,80px);border-bottom:1px solid var(--line-on-navy);}
+.footer-mark{height:44px;width:auto;margin-bottom:18px;}
+.footer-top p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.62);max-width:32ch;}
+.footer-col-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
+.footer-col a{display:block;font-size:14.5px;color:rgba(255,255,255,.82);padding:6px 0;transition:color .25s var(--ease);}
+.footer-col a:hover{color:var(--white);}
+.footer-social-title{margin-top:34px;}
+.footer-social-grid{display:flex;gap:10px;margin-top:14px;}
+.footer-social-tile{width:44px;height:44px;border-radius:10px;border:1px solid var(--line-on-navy);display:flex;align-items:center;justify-content:center;transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);}
+.footer-social-tile:hover{background:var(--crimson);border-color:var(--crimson);transform:translateY(-3px);}
+.footer-social-tile svg{width:18px;height:18px;fill:var(--white);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding-top:26px;font-size:13px;color:rgba(255,255,255,.5);}
+.footer-bottom a{color:rgba(255,255,255,.5);}.footer-bottom a:hover{color:var(--white);}
+.footer-v2_bottom{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(18px,3vw,32px);padding:clamp(28px,4vw,38px) 0;margin-top:clamp(6px,1vw,10px);border-bottom:1px solid var(--line-on-navy);}
+.footer-v2_bottom-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);flex:0 0 auto;padding-right:clamp(10px,2vw,20px);}
+.footer-v2_bottom-list{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(24px,4vw,44px);flex:1 1 auto;}
+.footer-v2_bottom-item{display:flex;align-items:center;}
+.footer-v2_bottom-img{height:clamp(26px,3vw,34px);width:auto;filter:brightness(0) invert(1) opacity(.55);transition:filter .25s var(--ease),opacity .25s var(--ease);}
+.footer-v2_bottom-item:hover .footer-v2_bottom-img{filter:brightness(0) invert(1) opacity(.95);}
+@media (max-width:860px){.footer-top{grid-template-columns:1fr 1fr;}}
+@media (max-width:520px){.footer-top{grid-template-columns:1fr;}}
+@media (max-width:640px){.footer-v2_bottom{flex-direction:column;align-items:flex-start;}.footer-v2_bottom-list{gap:clamp(20px,6vw,30px);}}
+
+/* CURSOR FOLLOWER */
+.cursor-dot{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--yellow);border-radius:50%;pointer-events:none;z-index:200;mix-blend-mode:difference;transition:width .3s var(--ease),height .3s var(--ease),opacity .3s var(--ease);opacity:0;}
+.cursor-dot.is-visible{opacity:1;}
+.cursor-dot.is-hover{width:40px;height:40px;background:rgba(255,247,55,0.25);}
+@media (hover:none){.cursor-dot{display:none;}}
+</style>
+</head>
+<body>
+
+<div class="aus-preloader" id="preloader">
+  <img class="aus-preloader-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+  <div class="aus-preloader-bar"></div>
+</div>
+
+<div class="cursor-dot" id="cursorDot"></div>
+
+<div class="archive-tab" id="archiveTab" tabindex="0">
+  <span class="archive-tab-num" id="archiveTabNum">01</span>
+  <span class="archive-tab-label" id="archiveTabLabel">Overview</span>
+  <nav class="archive-tab-toc" id="archiveTabToc" aria-label="Jump to section"></nav>
+</div>
+
+<nav class="aus-nav" id="nav">
+  <a href="aus-home-demo.html" class="aus-wordmark" aria-label="AUS Business School">
+    <img class="logo-white" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+    <img class="logo-color" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a558e03f97cbda4768f37bb_aus-logo.avif" alt="AUS Business School">
+  </a>
+  <div class="aus-nav-links">
+    <button type="button" data-open-panel="programs">Programs</button>
+    <button type="button" data-open-panel="about">About</button>
+    <button type="button" data-open-panel="student-life">Student Life</button>
+  </div>
+  <div class="aus-nav-right">
+    <a href="#" class="aus-nav-apply">Apply</a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="sidePanel">
+      <span>Menu</span>
+      <span class="menu-toggle-bars"><span></span><span></span><span></span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="side-panel" id="sidePanel">
+  <div class="side-panel-backdrop" id="sidePanelBackdrop"></div>
+  <aside class="side-panel-canvas">
+    <div class="side-panel-head">
+      <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+      <button class="side-panel-close" id="sidePanelClose" aria-label="Close menu"><span></span></button>
+    </div>
+    <nav class="side-panel-nav">
+      <div class="accordion-item" data-panel-key="programs">
+        <button class="accordion-trigger">Programs <span class="accordion-icon"></span></button>
+        <div class="accordion-panel"><div class="accordion-panel-inner">
+          <div class="accordion-group">
+            <a href="aus-programs.html" style="font-weight:600;">Programs Overview</a>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-group-title">Bachelor's Degree</div>
+            <a href="aus-bachelor-accounting.html">Accounting</a><a href="#">Business Management</a><a href="#">Healthcare Administration</a><a href="#">Human Resource Management</a><a href="#">Integrated &amp; Digital Marketing</a><a href="#">International Business</a><a href="#">Sports Management</a><a href="#">Hospitality Management</a><a href="#">Aviation Management</a><a href="#">Data Analytics &amp; AI</a>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-group-title">Master's Degree</div>
+            <a href="#">Finance</a><a href="#">Data Analytics</a><a href="#">Healthcare Administration</a><a href="#">Human Resource Management</a><a href="#">International Business</a><a href="#">Leadership &amp; Change</a><a href="#">Sports Management</a><a href="#">Strategic Brand &amp; Digital Marketing</a><a href="#">Aviation Management</a>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-group-title">Doctorate &amp; Diploma</div>
+            <a href="#">Doctorate in Business Administration</a><a href="#">Swiss Federal Diploma</a>
+          </div>
+        </div></div>
+      </div>
+      <div class="accordion-item" data-panel-key="about">
+        <button class="accordion-trigger">About <span class="accordion-icon"></span></button>
+        <div class="accordion-panel"><div class="accordion-panel-inner">
+          <div class="accordion-group"><a href="#">About AUS</a><a href="#">Faculty</a><a href="#">Accreditations</a></div>
+        </div></div>
+      </div>
+      <div class="accordion-item" data-panel-key="student-life">
+        <button class="accordion-trigger">Student Life <span class="accordion-icon"></span></button>
+        <div class="accordion-panel"><div class="accordion-panel-inner">
+          <div class="accordion-group"><a href="#">Campus &amp; Housing</a><a href="#">Clubs &amp; Activities</a><a href="#">Lake Geneva Life</a></div>
+        </div></div>
+      </div>
+      <a href="#" class="side-panel-link">Admissions &amp; Financing</a>
+      <a href="#" class="side-panel-link">Contact</a>
+    </nav>
+    <div class="side-panel-foot">
+      <a href="#" class="hero-cta">Apply now &rarr;</a>
+      <div class="side-panel-socials footer-social-grid">
+        <a class="footer-social-tile" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.62.07 4.81s-.01 3.56-.07 4.81c-.15 3.23-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07-3.2 0-3.6 0-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92-.06-1.25-.07-1.62-.07-4.81s.01-3.56.07-4.81c.15-3.23 1.66-4.77 4.92-4.92C8.4 2.2 8.8 2.2 12 2.2zm0 3.5a6.3 6.3 0 100 12.6 6.3 6.3 0 000-12.6zm0 2.1a4.2 4.2 0 110 8.4 4.2 4.2 0 010-8.4zm6.55-2.35a1.47 1.47 0 100 2.94 1.47 1.47 0 000-2.94z"/></svg></a>
+        <a class="footer-social-tile" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21H18v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21H10V9z"/></svg></a>
+        <a class="footer-social-tile" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.2a2.9 2.9 0 11-2.9-2.9c.2 0 .4 0 .6.05V9a6.2 6.2 0 00-.6-.03A6.13 6.13 0 004.3 15.1 6.13 6.13 0 0010.4 21.2a6.13 6.13 0 006.1-6.1V8.4a8.2 8.2 0 004.8 1.5V6.6A5 5 0 0116.6 2z"/></svg></a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- HERO -->
+<header class="hero chapter" data-chapter="01" data-chapter-label="Overview">
+  <div class="hero-media">
+    <img class="archive-plate" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1800&auto=format&fit=crop" alt="AUS Business School students">
+  </div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow-row reveal">
+      <span class="eyebrow on-navy">Chapter 01</span>
+    </div>
+    <h1 class="reveal d1"><em>Every level.<br>One method.</em></h1>
+    <p class="hero-sub reveal d2">Twenty-two programs designed around real organizational problems. Practice-led from the first semester, built for people who intend to lead, not just graduate.</p>
+    <div class="hero-bottom-row reveal d3">
+      <a href="#bachelor" class="hero-cta">Explore programs &rarr;</a>
+      <span class="hero-meta">22 programs<br>4 levels</span>
+    </div>
+  </div>
+</header>
+
+<!-- PROGRAMS WRAPPER (limits sticky filter bar) -->
+<div class="programs-wrapper">
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filterBar">
+  <div class="wrap">
+    <div class="filter-pills">
+      <a href="#bachelor" class="filter-pill is-active" data-filter="bachelor">Bachelor's <span>11</span></a>
+      <a href="#master" class="filter-pill" data-filter="master">Master's <span>9</span></a>
+      <a href="#doctorate" class="filter-pill" data-filter="doctorate">Doctorate <span>1</span></a>
+      <a href="#diploma" class="filter-pill" data-filter="diploma">Federal Diploma <span>1</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- BACHELOR'S -->
+<section class="program-section chapter" id="bachelor" data-chapter="02" data-chapter-label="Bachelor's">
+  <div class="wrap">
+    <div class="chapter-label reveal"><span class="num">02</span> Bachelor's Degree</div>
+    <div class="program-section-head reveal d1">
+      <h2>Start with a foundation that doesn't need replacing.</h2>
+      <p>Three years, one method. Every bachelor's program is built around case work and real organizational problems, so graduates arrive at their first job with a portfolio of decisions, not just a transcript.</p>
+    </div>
+    <div class="bento">
+      <a href="#" class="prog-card reveal"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&auto=format&fit=crop" alt="Accounting"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Bachelor's</span><span class="prog-card-num">01</span></div><h3 class="prog-card-name">Accounting</h3><div class="prog-card-detail"><span class="prog-card-duration">3 Years</span><p class="prog-card-desc">The language of business, mastered.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal d1"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&auto=format&fit=crop" alt="Business Management"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Bachelor's</span><span class="prog-card-num">02</span></div><h3 class="prog-card-name">Business Management</h3><div class="prog-card-detail"><span class="prog-card-duration">3 Years</span><p class="prog-card-desc">Lead organizations from day one.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal d2"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&auto=format&fit=crop" alt="Healthcare Administration"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Bachelor's</span><span class="prog-card-num">03</span></div><h3 class="prog-card-name">Healthcare Administration</h3><div class="prog-card-detail"><span class="prog-card-duration">3 Years</span><p class="prog-card-desc">Healthcare needs better leaders.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=600&auto=format&fit=crop" alt="Human Resource Management"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Bachelor's</span><span class="prog-card-num">04</span></div><h3 class="prog-card-name">Human Resource Management</h3><div class="prog-card-detail"><span class="prog-card-duration">3 Years</span><p class="prog-card-desc">People are the strategy.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal d1"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1533750349088-cd871a92f17e?w=800&h=600&auto=format&fit=crop" alt="Integrated & Digital Marketing"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Bachelor's</span><span class="prog-card-num">05</span></div><h3 class="prog-card-name">Integrated &amp; Digital Marketing</h3><div class="prog-card-detail"><span class="prog-card-duration">3 Years</span><p class="prog-card-desc">Strategy meets execution.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal d2"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=800&h=600&auto=format&fit=crop" alt="International Business"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Bachelor's</span><span class="prog-card-num">06</span></div><h3 class="prog-card-name">International Business</h3><div class="prog-card-detail"><span class="prog-card-duration">3 Years</span><p class="prog-card-desc">Think beyond borders.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1461896836934-bd45ba8e85b0?w=800&h=600&auto=format&fit=crop" alt="Sports Management"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Bachelor's</span><span class="prog-card-num">07</span></div><h3 class="prog-card-name">Sports Management &mdash; Athletic Administration</h3><div class="prog-card-detail"><span class="prog-card-duration">3 Years</span><p class="prog-card-desc">Run the game, not the sidelines.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal d1"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=600&auto=format&fit=crop" alt="Sports Marketing"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Bachelor's</span><span class="prog-card-num">08</span></div><h3 class="prog-card-name">Sports Management &mdash; Sports Marketing</h3><div class="prog-card-detail"><span class="prog-card-duration">3 Years</span><p class="prog-card-desc">Build brands that move people.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal d2"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&auto=format&fit=crop" alt="Hospitality Management"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Bachelor's</span><span class="prog-card-num">09</span></div><h3 class="prog-card-name">Hospitality Management</h3><div class="prog-card-detail"><span class="prog-card-duration">3 Years</span><p class="prog-card-desc">Excellence is the experience.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=800&h=600&auto=format&fit=crop" alt="Aviation Management"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Bachelor's</span><span class="prog-card-num">10</span></div><h3 class="prog-card-name">Aviation Management</h3><div class="prog-card-detail"><span class="prog-card-duration">3 Years</span><p class="prog-card-desc">The business of getting there.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal d1"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&auto=format&fit=crop" alt="Data Analytics & AI"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Bachelor's</span><span class="prog-card-num">11</span></div><h3 class="prog-card-name">Data Analytics &amp; AI for Business</h3><div class="prog-card-detail"><span class="prog-card-duration">3 Years</span><p class="prog-card-desc">Decisions backed by evidence.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- MASTER'S -->
+<section class="program-section program-section--alt chapter" id="master" data-chapter="03" data-chapter-label="Master's">
+  <div class="wrap">
+    <div class="chapter-label reveal"><span class="num">03</span> Master's Degree</div>
+    <div class="program-section-head reveal d1">
+      <h2>Already leading? Go deeper.</h2>
+      <p>One year, built for people already in the workforce. Each master's program sharpens the skills that organizations actually hire for, with faculty who practice what they teach.</p>
+    </div>
+    <div class="bento">
+      <a href="#" class="prog-card reveal"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=600&auto=format&fit=crop" alt="Finance"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Master's</span><span class="prog-card-num">01</span></div><h3 class="prog-card-name">Finance</h3><div class="prog-card-detail"><span class="prog-card-duration">1 Year</span><p class="prog-card-desc">Markets reward precision.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal d1"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&auto=format&fit=crop" alt="Data Analytics"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Master's</span><span class="prog-card-num">02</span></div><h3 class="prog-card-name">Data Analytics</h3><div class="prog-card-detail"><span class="prog-card-duration">1 Year</span><p class="prog-card-desc">Turn noise into signal.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal d2"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&h=600&auto=format&fit=crop" alt="Healthcare Administration"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Master's</span><span class="prog-card-num">03</span></div><h3 class="prog-card-name">Healthcare Administration</h3><div class="prog-card-detail"><span class="prog-card-duration">1 Year</span><p class="prog-card-desc">Systems that save lives.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&auto=format&fit=crop" alt="Human Resource Management"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Master's</span><span class="prog-card-num">04</span></div><h3 class="prog-card-name">Human Resource Management</h3><div class="prog-card-detail"><span class="prog-card-duration">1 Year</span><p class="prog-card-desc">Talent is the competitive edge.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal d1"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&auto=format&fit=crop" alt="International Business"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Master's</span><span class="prog-card-num">05</span></div><h3 class="prog-card-name">International Business</h3><div class="prog-card-detail"><span class="prog-card-duration">1 Year</span><p class="prog-card-desc">Lead across markets.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal d2"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&auto=format&fit=crop" alt="Leadership & Change"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Master's</span><span class="prog-card-num">06</span></div><h3 class="prog-card-name">Leadership &amp; Change</h3><div class="prog-card-detail"><span class="prog-card-duration">1 Year</span><p class="prog-card-desc">Move organizations forward.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=600&auto=format&fit=crop" alt="Sports Management"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Master's</span><span class="prog-card-num">07</span></div><h3 class="prog-card-name">Sports Management</h3><div class="prog-card-detail"><span class="prog-card-duration">1 Year</span><p class="prog-card-desc">The business behind the game.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal d1"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=600&auto=format&fit=crop" alt="Strategic Brand & Digital Marketing"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Master's</span><span class="prog-card-num">08</span></div><h3 class="prog-card-name">Strategic Brand &amp; Digital Marketing</h3><div class="prog-card-detail"><span class="prog-card-duration">1 Year</span><p class="prog-card-desc">Brand is the business model.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+      <a href="#" class="prog-card reveal d2"><div class="prog-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&auto=format&fit=crop" alt="Aviation Management"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">Master's</span><span class="prog-card-num">09</span></div><h3 class="prog-card-name">Aviation Management</h3><div class="prog-card-detail"><span class="prog-card-duration">1 Year</span><p class="prog-card-desc">Altitude requires strategy.</p><span class="prog-card-arrow">Explore</span></div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTORATE & DIPLOMA -->
+<section class="program-section chapter" id="doctorate" data-chapter="04" data-chapter-label="Doctorate">
+  <div class="wrap">
+    <div class="chapter-label reveal"><span class="num">04</span> Doctorate &amp; Federal Diploma</div>
+    <div class="program-section-head reveal d1">
+      <h2>The highest level of practice.</h2>
+      <p>For senior professionals ready to contribute original research to their field, or earn the nationally recognized Swiss Federal Diploma in Business Administration.</p>
+    </div>
+    <div class="doc-grid">
+      <a href="#" class="doc-card reveal d2">
+        <div class="doc-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=800&auto=format&fit=crop" alt="Doctorate in Business Administration"></div>
+        <div class="doc-card-content">
+          <span class="doc-card-tag">Doctorate</span>
+          <h3>Business Administration (DBA)</h3>
+          <p>Original research that advances practice. For senior leaders who want to contribute new knowledge to their field while remaining in active professional life.</p>
+        </div>
+      </a>
+      <a href="#" class="doc-card reveal d3" id="diploma">
+        <div class="doc-card-bg"><img class="archive-plate" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=800&auto=format&fit=crop" alt="Swiss Federal Diploma"></div>
+        <div class="doc-card-content">
+          <span class="doc-card-tag">Federal Diploma</span>
+          <h3>Business Administration</h3>
+          <p>The nationally recognized Swiss qualification. Combines academic study with professional experience, delivering a diploma valued across European industries.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</div><!-- end programs-wrapper -->
+
+<!-- WHY AUS -->
+<section class="why-aus chapter" id="why-aus" data-chapter="05" data-chapter-label="Why AUS">
+  <div class="wrap">
+    <div class="chapter-label reveal"><span class="num">05</span> Why AUS</div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <span class="why-num">30+</span>
+        <span class="why-label">Years of excellence</span>
+        <p>Combining Swiss and American education traditions since 1991.</p>
+      </div>
+      <div class="why-card reveal d1">
+        <span class="why-num">80%</span>
+        <span class="why-label">Graduate employment</span>
+        <p>Of graduates state their occupation is related to their studies at AUS.</p>
+      </div>
+      <div class="why-card reveal d2">
+        <span class="why-num">40+</span>
+        <span class="why-label">Nationalities</span>
+        <p>A truly diverse and multicultural learning environment.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-num">20</span>
+        <span class="why-label">Max students per class</span>
+        <p>Small class sizes for personalized attention and collaboration.</p>
+      </div>
+      <div class="why-card reveal d1">
+        <span class="why-num">1:7</span>
+        <span class="why-label">Faculty to student ratio</span>
+        <p>Direct access to professors who know your name and goals.</p>
+      </div>
+      <div class="why-card reveal d2">
+        <span class="why-num">&gt;70%</span>
+        <span class="why-label">Employed within 6 months</span>
+        <p>Of graduates find employment within six months of graduating.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DUAL DEGREE -->
+<section class="dual-degree chapter" id="dual-degree" data-chapter="06" data-chapter-label="Dual Degree">
+  <div class="wrap">
+    <div class="chapter-label reveal"><span class="num">06</span> Dual Degree</div>
+    <div class="dual-inner">
+      <div class="dual-copy reveal">
+        <h2>Two countries. One degree. <em>Global advantage.</em></h2>
+        <p>At AUS, students earn a prestigious Dual Degree — graduating with two highly recognized qualifications: one from Switzerland and another from the United States. This global academic experience equips graduates with a competitive edge, opening doors to international opportunities and careers worldwide.</p>
+      </div>
+      <div class="dual-logos reveal d1">
+        <div class="dual-flag"><img src="https://flagcdn.com/w160/ch.png" alt="Switzerland"></div>
+        <span class="dual-plus">+</span>
+        <div class="dual-flag"><img src="https://flagcdn.com/w160/us.png" alt="United States"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RANKINGS -->
+<section class="rankings-section chapter" id="rankings" data-chapter="07" data-chapter-label="Rankings">
+  <div class="wrap">
+    <div class="chapter-label reveal"><span class="num">07</span> Rankings &amp; Recognition</div>
+    <div class="rankings-grid">
+      <div class="ranking-card reveal">
+        <span class="ranking-source">QS World University Rankings 2025</span>
+        <span class="ranking-num">Top 2</span>
+        <span class="ranking-detail">in Switzerland for Business Masters</span>
+      </div>
+      <div class="ranking-card reveal d1">
+        <span class="ranking-source">QS World University Rankings 2025</span>
+        <span class="ranking-num">Top 200</span>
+        <span class="ranking-detail">globally for Business Masters</span>
+      </div>
+    </div>
+    <div class="accreditations reveal d2">
+      <span class="accred-label">Accreditations &amp; Memberships</span>
+      <div class="accred-track-wrap">
+        <div class="accred-track">
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild6236-3633-4565-a139-373135636265/acbsp.svg" alt="ACBSP"></div>
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild6261-3834-4665-b762-663933633738/prme.svg" alt="PRME"></div>
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild6264-3866-4635-b331-383639623735/eurasche.svg" alt="EURASHE"></div>
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild3936-3365-4133-a364-633232396339/whed.svg" alt="WHED"></div>
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild6664-6334-4338-b933-386635343237/chea.svg" alt="CHEA"></div>
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild3438-3439-4333-b639-376135373932/iacbe.svg" alt="IACBE"></div>
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild6363-6633-4861-b633-663766343937/hlc.svg" alt="HLC"></div>
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild6564-3965-4935-b861-313764616461/avdep.svg" alt="AVDEP"></div>
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild3566-6139-4235-b639-326532396563/cis.svg" alt="CIS"></div>
+          <!-- duplicate for seamless loop -->
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild6236-3633-4565-a139-373135636265/acbsp.svg" alt="ACBSP"></div>
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild6261-3834-4665-b762-663933633738/prme.svg" alt="PRME"></div>
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild6264-3866-4635-b331-383639623735/eurasche.svg" alt="EURASHE"></div>
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild3936-3365-4133-a364-633232396339/whed.svg" alt="WHED"></div>
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild6664-6334-4338-b933-386635343237/chea.svg" alt="CHEA"></div>
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild3438-3439-4333-b639-376135373932/iacbe.svg" alt="IACBE"></div>
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild6363-6633-4861-b633-663766343937/hlc.svg" alt="HLC"></div>
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild6564-3965-4935-b861-313764616461/avdep.svg" alt="AVDEP"></div>
+          <div class="accred-logo"><img src="https://static.tildacdn.one/tild3566-6139-4235-b639-326532396563/cis.svg" alt="CIS"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL BAND -->
+<section class="band chapter" id="method" data-chapter="08" data-chapter-label="The Method">
+  <div class="wrap">
+    <div class="chapter-label reveal"><span class="num">08</span> The Method</div>
+  </div>
+  <div class="band-media reveal">
+    <img class="archive-plate" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1800&auto=format&fit=crop" alt="Students in a seminar discussion">
+  </div>
+  <div class="wrap">
+    <div class="band-copy reveal d1">
+      <h2>Practice-led, not <em>theory-bound</em>.</h2>
+      <p>Every course is built around real organizational problems. Students leave with a portfolio of decisions they made, not just a transcript of lectures they attended, prepared to lead from day one rather than catch up.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section chapter" data-chapter="09" data-chapter-label="Apply">
+  <div class="wrap cta-inner">
+    <span class="eyebrow on-navy reveal" style="justify-content:center;">Chapter 09</span>
+    <h2 class="reveal d1">Your next chapter starts here.</h2>
+    <p class="reveal d2">Applications are open for the upcoming intake. Browse the programs, pick the level that fits, and start the process. It takes less time than you think.</p>
+    <a href="#" class="cta-btn reveal d3">Start your application &rarr;</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <img class="footer-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+        <p>American Institute of Applied Sciences. Modern heritage, built for the leaders business hasn't met yet.</p>
+        <div class="footer-social-title footer-col-title">Follow</div>
+        <div class="footer-social-grid">
+          <a class="footer-social-tile" href="https://www.linkedin.com/school/aus-swiss/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M14.6666 7.3335C16.1253 7.3335 17.5243 7.91296 18.5557 8.94441C19.5872 9.97586 20.1666 11.3748 20.1666 12.8335V19.2502H16.5V12.8335C16.5 12.3473 16.3068 11.881 15.963 11.5371C15.6192 11.1933 15.1529 11.0002 14.6666 11.0002C14.1804 11.0002 13.7141 11.1933 13.3703 11.5371C13.0264 11.881 12.8333 12.3473 12.8333 12.8335V19.2502H9.16663V12.8335C9.16663 11.3748 9.74609 9.97586 10.7775 8.94441C11.809 7.91296 13.2079 7.3335 14.6666 7.3335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M5.50004 8.25H1.83337V19.25H5.50004V8.25Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M3.66671 5.50016C4.67923 5.50016 5.50004 4.67935 5.50004 3.66683C5.50004 2.65431 4.67923 1.8335 3.66671 1.8335C2.65419 1.8335 1.83337 2.65431 1.83337 3.66683C1.83337 4.67935 2.65419 5.50016 3.66671 5.50016Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="footer-social-tile" href="https://www.facebook.com/american.institute.switzerland" target="_blank" aria-label="Facebook"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M16.5 1.8335H13.75C12.5344 1.8335 11.3686 2.31638 10.5091 3.17592C9.64951 4.03547 9.16663 5.20125 9.16663 6.41683V9.16683H6.41663V12.8335H9.16663V20.1668H12.8333V12.8335H15.5833L16.5 9.16683H12.8333V6.41683C12.8333 6.17371 12.9299 5.94056 13.1018 5.76865C13.2737 5.59674 13.5068 5.50016 13.75 5.50016H16.5V1.8335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="footer-social-tile" href="https://www.instagram.com/aus.swiss/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M15.5834 1.8335H6.41671C3.8854 1.8335 1.83337 3.88552 1.83337 6.41683V15.5835C1.83337 18.1148 3.8854 20.1668 6.41671 20.1668H15.5834C18.1147 20.1668 20.1667 18.1148 20.1667 15.5835V6.41683C20.1667 3.88552 18.1147 1.8335 15.5834 1.8335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M14.6667 10.4223C14.7799 11.1852 14.6495 11.9643 14.2943 12.6489C13.9391 13.3335 13.3771 13.8886 12.6882 14.2353C11.9993 14.5821 11.2186 14.7028 10.4572 14.5802C9.69576 14.4577 8.99234 14.0982 8.44699 13.5529C7.90165 13.0075 7.54214 12.3041 7.41962 11.5427C7.29709 10.7812 7.41778 10.0005 7.76452 9.31163C8.11126 8.62274 8.66639 8.06072 9.35096 7.70551C10.0355 7.3503 10.8147 7.21999 11.5776 7.33312C12.3557 7.44852 13.0762 7.81113 13.6324 8.3674C14.1887 8.92368 14.5513 9.64411 14.6667 10.4223Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M16.0416 5.9585H16.0516" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="footer-social-tile" href="https://www.tiktok.com/@aus.swiss" target="_blank" aria-label="TikTok"><svg viewBox="0 0 22 22" fill="none"><path d="M17.9575 6.13266C17.0437 5.93172 16.2171 5.44648 15.5962 4.74656C14.9753 4.04665 14.5921 3.16804 14.5016 2.23683V1.8335H11.3391V14.3643C11.2523 15.0017 10.9366 15.5858 10.4508 16.0074C9.965 16.4291 9.34238 16.6597 8.69912 16.656C7.99651 16.656 7.32269 16.3769 6.82587 15.8801C6.32906 15.3833 6.04995 14.7094 6.04995 14.0068C6.04995 13.3042 6.32906 12.6304 6.82587 12.1336C7.32269 11.6368 7.99651 11.3577 8.69912 11.3577C8.95578 11.3577 9.19412 11.3943 9.42328 11.4493V8.25933C9.1831 8.22882 8.94123 8.21351 8.69912 8.2135C7.15777 8.2135 5.67955 8.8258 4.58965 9.91569C3.49975 11.0056 2.88745 12.4838 2.88745 14.0252C2.88745 14.7884 3.03777 15.5441 3.32984 16.2492C3.6219 16.9543 4.04999 17.595 4.58965 18.1346C5.67955 19.2245 7.15777 19.8368 8.69912 19.8368C10.2389 19.8344 11.7147 19.221 12.8027 18.1314C13.8906 17.0418 14.5016 15.5649 14.5016 14.0252V7.966C15.7802 8.87783 17.3129 9.36519 18.8833 9.35933V6.1785C18.5739 6.19552 18.2636 6.18016 17.9575 6.13266Z" fill="currentColor"/></svg></a>
+          <a class="footer-social-tile" href="https://www.youtube.com/channel/UCKUFsoxwPuaH8bi0vMoSTaQ" target="_blank" aria-label="YouTube"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M2.29167 15.5833C1.65131 12.5613 1.65131 9.43867 2.29167 6.41667C2.37581 6.10977 2.53838 5.83007 2.7634 5.60506C2.98841 5.38004 3.26812 5.21747 3.57501 5.13333C8.4915 4.31884 13.5085 4.31884 18.425 5.13333C18.7319 5.21747 19.0116 5.38004 19.2366 5.60506C19.4616 5.83007 19.6242 6.10977 19.7083 6.41667C20.3487 9.43867 20.3487 12.5613 19.7083 15.5833C19.6242 15.8902 19.4616 16.1699 19.2366 16.3949C19.0116 16.62 18.7319 16.7825 18.425 16.8667C13.5085 17.6813 8.49149 17.6813 3.57501 16.8667C3.26812 16.7825 2.98841 16.62 2.7634 16.3949C2.53838 16.1699 2.37581 15.8902 2.29167 15.5833Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M9.16663 13.75L13.75 11L9.16663 8.25V13.75Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col"><div class="footer-col-title">Programs</div><a href="#">Bachelor's</a><a href="#">Master's</a><a href="#">Doctorate</a><a href="#">Federal Diploma</a></div>
+      <div class="footer-col"><div class="footer-col-title">School</div><a href="#">About</a><a href="#">Faculty</a><a href="#">Campus life</a></div>
+      <div class="footer-col"><div class="footer-col-title">Connect</div><a href="#">Admissions</a><a href="#">Events</a><a href="#">Contact</a></div>
+    </div>
+    <div class="footer-v2_bottom">
+      <div class="footer-v2_bottom-title">Accredited &amp; Recognized Worldwide</div>
+      <div class="footer-v2_bottom-list">
+        <div class="footer-v2_bottom-item"><img loading="lazy" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e79_698275eb6f621e22c0ea62fc_Clip%20path%20group%20(1)%201.svg" alt="" class="footer-v2_bottom-img"></div>
+        <div class="footer-v2_bottom-item"><img loading="lazy" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e7d_697cf79ce10c6540765924cd_Clip%20path%20group%201.svg" alt="" class="footer-v2_bottom-img"></div>
+        <div class="footer-v2_bottom-item"><img loading="lazy" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e7c_698275bd119470d073f42434_Clip%20path%20group%20(2)%201.svg" alt="" class="footer-v2_bottom-img"></div>
+        <div class="footer-v2_bottom-item"><img loading="lazy" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e78_697cf79cc3d5271cd7269eeb_Group%201.svg" alt="" class="footer-v2_bottom-img"></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 AUS Business School. All rights reserved.</span>
+      <span><a href="#">Privacy</a> &nbsp;&middot;&nbsp; <a href="#">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isTouch = window.matchMedia('(hover:none)').matches;
+  if(window.gsap && window.ScrollTrigger){ gsap.registerPlugin(ScrollTrigger); }
+
+  // Preloader
+  document.documentElement.classList.add('has-preloader');
+  var preloader = document.getElementById('preloader');
+  function hidePreloader(){
+    preloader.classList.add('is-hidden');
+    document.documentElement.classList.remove('has-preloader');
+    setTimeout(function(){ if(preloader.parentNode) preloader.parentNode.removeChild(preloader); },700);
+  }
+  var minShow = new Promise(function(res){ setTimeout(res,900); });
+  var ready = new Promise(function(res){ if(document.readyState==='complete') res(); else window.addEventListener('load',res); });
+  Promise.all([minShow,ready]).then(hidePreloader);
+
+  // Nav scroll
+  var nav = document.getElementById('nav');
+  function onScrollNav(){ nav.classList.toggle('is-scrolled',window.scrollY>40); }
+  window.addEventListener('scroll',onScrollNav,{passive:true});
+  onScrollNav();
+
+  // Side panel
+  var menuToggle=document.getElementById('menuToggle'),sidePanel=document.getElementById('sidePanel'),sidePanelClose=document.getElementById('sidePanelClose'),sidePanelBackdrop=document.getElementById('sidePanelBackdrop'),sidePanelNav=document.querySelector('.side-panel-nav'),accordionItems=document.querySelectorAll('.accordion-item');
+  function openPanel(expandKey){document.documentElement.classList.add('panel-open');menuToggle.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';if(expandKey){accordionItems.forEach(function(item){if(item.getAttribute('data-panel-key')===expandKey)item.classList.add('is-open');});var t=document.querySelector('.accordion-item[data-panel-key="'+expandKey+'"]');if(t&&sidePanelNav)setTimeout(function(){t.scrollIntoView({block:'start',behavior:reduceMotion?'auto':'smooth'});},60);}}
+  function closePanel(){document.documentElement.classList.remove('panel-open');menuToggle.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  menuToggle.addEventListener('click',function(){openPanel();});
+  sidePanelClose.addEventListener('click',closePanel);
+  sidePanelBackdrop.addEventListener('click',closePanel);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closePanel();});
+  document.querySelectorAll('[data-open-panel]').forEach(function(btn){btn.addEventListener('click',function(){openPanel(btn.getAttribute('data-open-panel'));});});
+  accordionItems.forEach(function(item){item.querySelector('.accordion-trigger').addEventListener('click',function(){item.classList.toggle('is-open');});});
+
+  // Scroll reveal
+  if('IntersectionObserver' in window){
+    document.documentElement.classList.add('js-reveal-ready');
+    var revealObserver=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target);}});},{threshold:.15,rootMargin:'0px 0px -60px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){revealObserver.observe(el);});
+  }
+
+  // Count-up stats
+  var metricEls=document.querySelectorAll('[data-count-to]');
+  if(metricEls.length&&'IntersectionObserver' in window){
+    var countObserver=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(!entry.isIntersecting)return;var el=entry.target,end=parseFloat(el.getAttribute('data-count-to')),suffix=el.getAttribute('data-suffix')||'';countObserver.unobserve(el);if(reduceMotion){el.textContent=end+suffix;return;}var start=0,duration=1200,startTime=null;function step(ts){if(!startTime)startTime=ts;var p=Math.min((ts-startTime)/duration,1),eased=1-Math.pow(1-p,3);el.textContent=Math.round(start+(end-start)*eased)+suffix;if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);});},{threshold:.5});
+    metricEls.forEach(function(el){countObserver.observe(el);});
+  }
+
+  // Magnetic tilt on program cards
+  if(!isTouch&&!reduceMotion){
+    var progCards=document.querySelectorAll('.prog-card,.doc-card');
+    progCards.forEach(function(card){
+      card.addEventListener('mousemove',function(e){
+        var r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+        card.style.transform='perspective(800px) rotateX('+(y*-10)+'deg) rotateY('+(x*10)+'deg) scale(1.02)';
+        var img=card.querySelector('img');
+        if(img) img.style.transform='translate('+(-x*8)+'px,'+(-y*8)+'px) scale(1.08)';
+      });
+      card.addEventListener('mouseleave',function(){
+        card.style.transform='';
+        var img=card.querySelector('img');
+        if(img) img.style.transform='';
+      });
+    });
+  }
+
+  // Cursor follower
+  if(!isTouch){
+    var dot=document.getElementById('cursorDot');
+    var mx=0,my=0,dx=0,dy=0;
+    document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.classList.add('is-visible');});
+    document.addEventListener('mouseleave',function(){dot.classList.remove('is-visible');});
+    var hoverEls=document.querySelectorAll('a,button,.prog-card,.doc-card');
+    hoverEls.forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('is-hover');});el.addEventListener('mouseleave',function(){dot.classList.remove('is-hover');});});
+    function animateDot(){dx+=(mx-dx)*.15;dy+=(my-dy)*.15;dot.style.transform='translate('+(dx-5)+'px,'+(dy-5)+'px)';requestAnimationFrame(animateDot);}
+    animateDot();
+  }
+
+  // Filter bar active state on scroll
+  var filterPills=document.querySelectorAll('.filter-pill');
+  var sections=document.querySelectorAll('.program-section');
+  if(sections.length&&'IntersectionObserver' in window){
+    var sectionObserver=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){var id=entry.target.id;filterPills.forEach(function(p){p.classList.toggle('is-active',p.getAttribute('data-filter')===id);});}});},{threshold:0,rootMargin:'-40% 0px -55% 0px'});
+    sections.forEach(function(s){sectionObserver.observe(s);});
+  }
+  // Smooth scroll for filter pills
+  filterPills.forEach(function(pill){
+    pill.addEventListener('click',function(e){
+      e.preventDefault();
+      var target=document.querySelector(pill.getAttribute('href'));
+      if(target) target.scrollIntoView({block:'start',behavior:reduceMotion?'auto':'smooth'});
+    });
+  });
+
+  // Archive tab
+  var tab=document.getElementById('archiveTab'),tabNum=document.getElementById('archiveTabNum'),tabLabel=document.getElementById('archiveTabLabel'),chapters=document.querySelectorAll('[data-chapter]'),toc=document.getElementById('archiveTabToc');
+  if(tab&&chapters.length&&toc){
+    chapters.forEach(function(el){
+      var num=el.getAttribute('data-chapter'),label=el.getAttribute('data-chapter-label');
+      var item=document.createElement('button');item.type='button';item.className='archive-tab-toc-item';
+      item.setAttribute('data-toc-target',num);item.innerHTML='<span class="num">'+num+'</span><span>'+label+'</span>';
+      item.addEventListener('click',function(){el.scrollIntoView({block:'start',behavior:reduceMotion?'auto':'smooth'});});
+      toc.appendChild(item);
+    });
+  }
+  if(tab&&chapters.length&&'IntersectionObserver' in window){
+    var tocItems=toc?toc.querySelectorAll('.archive-tab-toc-item'):[];
+    var chapterObserver=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){var num=entry.target.getAttribute('data-chapter');tabNum.textContent=num;tabLabel.textContent=entry.target.getAttribute('data-chapter-label');tocItems.forEach(function(item){item.classList.toggle('is-current',item.getAttribute('data-toc-target')===num);});}});},{threshold:0,rootMargin:'-45% 0px -45% 0px'});
+    chapters.forEach(function(el){chapterObserver.observe(el);});
+  }
+
+  // Smooth anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    var hash=a.getAttribute('href');if(!hash||hash==='#')return;
+    var target=document.querySelector(hash);if(!target)return;
+    a.addEventListener('click',function(e){e.preventDefault();target.scrollIntoView({block:'start',behavior:reduceMotion?'auto':'smooth'});});
+  });
+})();
+</script>
+</body>
+</html>

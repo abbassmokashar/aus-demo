@@ -101,6 +101,12 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .archive-tab-label{font-family:var(--font-serif);font-style:italic;font-size:12px;color:var(--ink-soft);white-space:nowrap;}
 @media (max-width:960px){.archive-tab{display:none;}}
 
+/* CURSOR FOLLOWER */
+.cursor-dot{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--yellow);border-radius:50%;pointer-events:none;z-index:200;mix-blend-mode:difference;transition:width .3s var(--ease),height .3s var(--ease),opacity .3s var(--ease);opacity:0;}
+.cursor-dot.is-visible{opacity:1;}
+.cursor-dot.is-hover{width:40px;height:40px;background:rgba(255,247,55,0.25);}
+@media (hover:none){.cursor-dot{display:none;}}
+
 /* ---------- NAV ---------- */
 .aus-nav{
   position:fixed;top:0;left:0;right:0;z-index:110;
@@ -129,9 +135,9 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .aus-wordmark .logo-color{opacity:0;}
 @keyframes navIn{to{opacity:1;transform:translateY(0);}}
 .aus-nav-links{display:flex;align-items:center;gap:26px;opacity:0;animation:navIn .8s var(--ease) .4s forwards;}
-.aus-nav-links button{font-weight:500;font-size:14.5px;}
-.aus-nav-links button::after{content:"";display:block;width:0;height:1px;background:currentColor;transition:width .3s var(--ease);margin-top:3px;}
-.aus-nav-links button:hover::after{width:100%;}
+.aus-nav-links button,.aus-nav-links a{font-weight:500;font-size:14.5px;}
+.aus-nav-links button::after,.aus-nav-links a::after{content:"";display:block;width:0;height:1px;background:currentColor;transition:width .3s var(--ease);margin-top:3px;}
+.aus-nav-links button:hover::after,.aus-nav-links a:hover::after{width:100%;}
 .aus-nav-right{display:flex;align-items:center;gap:22px;opacity:0;animation:navIn .8s var(--ease) .45s forwards;}
 .aus-nav-apply{
   font-weight:600;font-size:14px;padding:10px 20px;border:1px solid currentColor;border-radius:100px;
@@ -623,6 +629,7 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
 </style>
 </head>
 <body>
+<div class="cursor-dot" id="cursorDot"></div>
 
 <div class="aus-preloader" id="preloader">
   <img class="aus-preloader-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
@@ -666,8 +673,11 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
         <button class="accordion-trigger">Programs <span class="accordion-icon"></span></button>
         <div class="accordion-panel"><div class="accordion-panel-inner">
           <div class="accordion-group">
+            <a href="aus-programs.html" style="font-weight:600;">Programs Overview</a>
+          </div>
+          <div class="accordion-group">
             <div class="accordion-group-title">Bachelor's Degree</div>
-            <a href="#">Accounting</a>
+            <a href="aus-bachelor-accounting.html">Accounting</a>
             <a href="#">Business Management</a>
             <a href="#">International Business</a>
             <a href="#">Human Resource Management</a>
@@ -1347,6 +1357,20 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
       });
     }, {threshold:0, rootMargin:'-45% 0px -45% 0px'});
     chapters.forEach(function(el){ chapterObserver.observe(el); });
+  }
+})();
+// Cursor follower
+(function(){
+  var isTouch=window.matchMedia('(hover:none)').matches;
+  if(!isTouch){
+    var dot=document.getElementById('cursorDot');
+    var mx=0,my=0,dx=0,dy=0;
+    document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.classList.add('is-visible');});
+    document.addEventListener('mouseleave',function(){dot.classList.remove('is-visible');});
+    var hoverEls=document.querySelectorAll('a,button');
+    hoverEls.forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('is-hover');});el.addEventListener('mouseleave',function(){dot.classList.remove('is-hover');});});
+    function animateDot(){dx+=(mx-dx)*.15;dy+=(my-dy)*.15;dot.style.transform='translate('+(dx-5)+'px,'+(dy-5)+'px)';requestAnimationFrame(animateDot);}
+    animateDot();
   }
 })();
 </script>
