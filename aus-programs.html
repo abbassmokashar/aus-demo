@@ -145,6 +145,23 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .hero-scroll::after{content:"";width:1px;height:32px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);}
 @keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
 
+/* MOBILE HERO */
+.hero-mobile{display:none;}
+@media (max-width:760px){
+  .hero{display:none!important;}
+  .hero-mobile{display:block;background:var(--navy);overflow:hidden;}
+  .hero-mob-img{width:100%;height:40vh;min-height:220px;position:relative;}
+  .hero-mob-img img{width:100%;height:100%;object-fit:cover;}
+  .hero-mob-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,14,34,.2) 0%,rgba(12,14,34,.85) 100%);}
+  .hero-mob-content{padding:clamp(20px,5vw,32px) clamp(16px,4vw,24px) clamp(24px,6vw,40px);color:var(--white);}
+  .hero-mob-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;border:1px solid rgba(255,255,255,.2);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:clamp(12px,2vw,20px);}
+  .hero-mob-content h1{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,7vw,42px);line-height:1.05;}
+  .hero-mob-content h1 em{font-style:normal;font-weight:800;font-family:var(--font-display);color:var(--sky);}
+  .hero-mob-sub{margin-top:12px;font-size:clamp(13px,3vw,15px);line-height:1.6;color:rgba(255,255,255,.7);}
+  .hero-mob-ctas{display:flex;flex-direction:column;gap:10px;margin-top:clamp(16px,3vw,24px);}
+  .hero-mob-ctas .hero-cta{width:100%;justify-content:center;text-align:center;}
+}
+
 /* PROGRAMS WRAPPER */
 .programs-wrapper{position:relative;}
 
@@ -494,6 +511,21 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
     </div>
   </div>
 </header>
+
+<!-- MOBILE HERO -->
+<div class="hero-mobile">
+  <div class="hero-mob-img">
+    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1800&auto=format&fit=crop" alt="AUS Business School students">
+  </div>
+  <div class="hero-mob-content">
+    <span class="hero-mob-badge">Overview</span>
+    <h1><em>Every level.<br>One method.</em></h1>
+    <p class="hero-mob-sub">Twenty-two programs designed around real organizational problems. Practice-led from the first semester, built for people who intend to lead, not just graduate.</p>
+    <div class="hero-mob-ctas">
+      <a href="#bachelor" class="hero-cta">Explore programs &rarr;</a>
+    </div>
+  </div>
+</div>
 
 <!-- PROGRAMS WRAPPER (limits sticky filter bar) -->
 <div class="programs-wrapper">
