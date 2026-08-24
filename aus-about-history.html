@@ -713,7 +713,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
           tocItems.forEach(function(ti){ti.classList.remove('is-active');if(ti.getAttribute('data-toc-target')===num)ti.classList.add('is-active');});
         }
       });
-    },{threshold:0.3,rootMargin:'-80px 0px -40% 0px'});
+    },{threshold:0, rootMargin:'-45% 0px -45% 0px'});
     chapters.forEach(function(ch){chapterObserver.observe(ch);});
   }
 })();
