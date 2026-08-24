@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>History | AUS Business School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#22295f;--crimson:#be1f3d;--yellow:#fff737;--sky:#bbddf8;--sky-tint:#eef6fd;--slate:#768cb0;
+  --white:#fff;--ink:#10132d;--ink-soft:#585b7a;--line:rgba(34,41,95,.1);
+  --line-on-navy:rgba(255,255,255,.12);
+  --font-body:'Inter',sans-serif;--font-display:'Inter',sans-serif;--font-serif:'Playfair Display',Georgia,serif;
+  --ease:cubic-bezier(.25,.46,.45,.94);--ease-soft:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+body{font-family:var(--font-body);color:var(--ink);background:var(--white);overflow-x:hidden;}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;background:none;border:none;cursor:pointer;color:inherit;}
+.wrap{max-width:1360px;margin:0 auto;padding-left:clamp(20px,5vw,64px);padding-right:clamp(20px,5vw,64px);}
+
+/* PRELOADER */
+.aus-preloader{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:22px;background:var(--navy);transition:opacity .7s var(--ease),visibility .7s var(--ease);}
+.aus-preloader-mark{height:clamp(64px,9vw,92px);width:auto;opacity:0;transform:translateY(10px);animation:preloaderIn .9s var(--ease) forwards;}
+.aus-preloader-bar{width:140px;height:1px;background:var(--line-on-navy);overflow:hidden;position:relative;margin-top:6px;}
+.aus-preloader-bar::after{content:"";position:absolute;inset:0;width:34%;background:var(--yellow);animation:preloaderBar 1.15s ease-in-out infinite;}
+@keyframes preloaderIn{to{opacity:1;transform:translateY(0);}}
+@keyframes preloaderBar{0%{transform:translateX(-120%);}100%{transform:translateX(400%);}}
+.aus-preloader.is-hidden{opacity:0;visibility:hidden;pointer-events:none;}
+@media (prefers-reduced-motion: reduce){.aus-preloader{display:none;}}
+
+/* SIDE PANEL */
+.side-panel{position:fixed;inset:0;z-index:120;pointer-events:none;}
+.side-panel-backdrop{position:absolute;inset:0;background:rgba(15,17,38,.55);opacity:0;transition:opacity .5s var(--ease);}
+.side-panel-canvas{position:absolute;top:0;right:0;bottom:0;width:min(460px,92vw);background:var(--navy);color:var(--white);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .55s var(--ease);box-shadow:-30px 0 60px rgba(15,17,38,.28);}
+.panel-open .side-panel{pointer-events:auto;}.panel-open .side-panel-backdrop{opacity:1;}.panel-open .side-panel-canvas{transform:translateX(0);}
+.side-panel-head{display:flex;align-items:center;justify-content:space-between;padding:26px clamp(24px,4vw,36px);border-bottom:1px solid var(--line-on-navy);flex:0 0 auto;}
+.side-panel-head img{height:36px;width:auto;}
+.side-panel-close{width:38px;height:38px;border-radius:50%;border:1px solid var(--line-on-navy);display:flex;align-items:center;justify-content:center;}
+.side-panel-close span{position:relative;width:14px;height:14px;}
+.side-panel-close span::before,.side-panel-close span::after{content:"";position:absolute;top:50%;left:0;width:100%;height:1.4px;background:var(--white);}
+.side-panel-close span::before{transform:rotate(45deg);}.side-panel-close span::after{transform:rotate(-45deg);}
+.side-panel-nav{flex:1 1 auto;overflow-y:auto;padding:10px clamp(24px,4vw,36px) 20px;}
+.accordion-item{border-bottom:1px solid var(--line-on-navy);}
+.accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:-.01em;text-align:left;color:var(--white);}
+.accordion-icon{width:20px;height:20px;position:relative;flex:0 0 auto;}
+.accordion-icon::before,.accordion-icon::after{content:"";position:absolute;top:50%;left:50%;background:var(--yellow);transform:translate(-50%,-50%);transition:transform .35s var(--ease),opacity .35s var(--ease);}
+.accordion-icon::before{width:14px;height:1.6px;}.accordion-icon::after{width:1.6px;height:14px;}
+.accordion-item.is-open .accordion-icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0;}
+.accordion-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease);}
+.accordion-panel-inner{overflow:hidden;}
+.accordion-item.is-open .accordion-panel{grid-template-rows:1fr;}
+.accordion-group{padding:4px 0 18px;}
+.accordion-group-title{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--slate);margin:14px 0 8px;}
+.accordion-group-title:first-child{margin-top:0;}
+.accordion-group a{display:block;font-size:15px;padding:7px 0;color:rgba(255,255,255,.72);transition:color .2s var(--ease),transform .2s var(--ease),padding-left .2s var(--ease);}
+.accordion-group a:hover{color:var(--white);padding-left:6px;}
+.side-panel-link{display:block;padding:20px 0;font-family:var(--font-display);font-weight:700;font-size:19px;border-bottom:1px solid var(--line-on-navy);letter-spacing:-.01em;color:var(--white);}
+.side-panel-link:hover{color:var(--white);}
+.side-panel-foot{flex:0 0 auto;padding:22px clamp(24px,4vw,36px) 28px;border-top:1px solid var(--line-on-navy);display:flex;flex-direction:column;gap:18px;}
+.side-panel-foot .hero-cta{background:var(--white);color:var(--navy);align-self:flex-start;border:1px solid var(--line);}
+.side-panel-foot .hero-cta:hover{background:var(--crimson);color:var(--white);}
+.side-panel-socials{display:flex;gap:9px;}
+.side-panel-socials .footer-social-tile{border-color:var(--line-on-navy);}
+.side-panel-socials .footer-social-tile svg{fill:var(--white);}
+
+/* NAV */
+.aus-nav{position:fixed;top:0;left:0;right:0;z-index:110;display:flex;align-items:center;justify-content:space-between;padding:clamp(18px,2.6vw,30px) clamp(20px,4vw,56px);color:var(--white);transition:padding .4s var(--ease),color .4s var(--ease);}
+.aus-nav.is-scrolled{padding-top:14px;padding-bottom:14px;color:var(--white);}
+.aus-nav::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom, rgba(15,17,38,.55) 0%, rgba(15,17,38,0) 100%);opacity:1;transition:opacity .4s var(--ease),background .4s var(--ease);}
+.aus-nav.is-scrolled::before{background:var(--navy);opacity:1;box-shadow:0 1px 0 var(--line-on-navy);}
+.aus-wordmark{position:relative;display:block;height:clamp(40px,4.4vw,52px);width:clamp(180px,19vw,230px);opacity:0;transform:translateY(-10px);animation:navIn .8s var(--ease) .35s forwards;}
+.aus-wordmark img{position:absolute;left:0;top:0;height:100%;width:auto;max-width:none;transition:opacity .4s var(--ease);}
+.aus-wordmark .logo-white{opacity:1;}.aus-wordmark .logo-color{opacity:0;}
+@keyframes navIn{to{opacity:1;transform:translateY(0);}}
+.aus-nav-links{display:flex;align-items:center;gap:26px;opacity:0;animation:navIn .8s var(--ease) .4s forwards;}
+.aus-nav-links button{font-weight:500;font-size:14.5px;}
+.aus-nav-links button::after{content:"";display:block;width:0;height:1px;background:currentColor;transition:width .3s var(--ease);margin-top:3px;}
+.aus-nav-links button:hover::after{width:100%;}
+.aus-nav-right{display:flex;align-items:center;gap:22px;opacity:0;animation:navIn .8s var(--ease) .45s forwards;}
+.aus-nav-apply{font-weight:600;font-size:14px;padding:10px 20px;border:1px solid currentColor;border-radius:100px;transition:background .3s var(--ease),color .3s var(--ease);}
+.aus-nav-apply:hover{background:var(--crimson);border-color:var(--crimson);color:var(--white);}
+.menu-toggle{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;}
+.menu-toggle-bars{width:22px;height:14px;position:relative;}
+.menu-toggle-bars span{position:absolute;left:0;right:0;height:1.5px;background:currentColor;}
+.menu-toggle-bars span:nth-child(1){top:0;}.menu-toggle-bars span:nth-child(2){top:6px;width:70%;}.menu-toggle-bars span:nth-child(3){top:12px;}
+@media (max-width:760px){.aus-nav-links{display:none;}}
+
+/* EYEBROW */
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+.eyebrow.on-navy{color:rgba(255,255,255,.7);}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy);}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,14,34,.92) 0%,rgba(12,14,34,.5) 40%,rgba(12,14,34,.15) 100%);}
+.hero-inner{position:relative;z-index:1;width:100%;padding:clamp(60px,8vw,100px) clamp(20px,5vw,64px) clamp(40px,6vw,70px);color:var(--white);}
+.hero-sub{margin-top:clamp(12px,1.5vw,20px);max-width:42ch;font-size:clamp(15px,1.3vw,17px);line-height:1.6;color:rgba(255,255,255,.65);}
+.hero-scroll{position:absolute;bottom:clamp(24px,3vw,40px);right:clamp(20px,5vw,64px);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.35);font-size:10px;letter-spacing:.12em;text-transform:uppercase;z-index:2;}
+.hero-scroll::after{content:"";width:1px;height:28px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent);animation:scrollPulse 2s ease-in-out infinite;}
+@keyframes scrollPulse{0%,100%{opacity:.35;}50%{opacity:.7;}}
+
+/* MOBILE HERO */
+.hero-mobile{display:none;}
+@media (max-width:760px){
+  .hero{display:none!important;}
+  .hero-mobile{display:block;background:var(--navy);overflow:hidden;}
+  .hero-mob-img{width:100%;height:40vh;min-height:220px;position:relative;}
+  .hero-mob-img img{width:100%;height:100%;object-fit:cover;}
+  .hero-mob-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,14,34,.2) 0%,rgba(12,14,34,.85) 100%);}
+  .hero-mob-content{padding:clamp(20px,5vw,32px) clamp(16px,4vw,24px) clamp(24px,6vw,40px);color:var(--white);}
+  .hero-mob-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);padding:5px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.85);margin-bottom:clamp(10px,2vw,16px);}
+  .hero-mob-content h1{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,9vw,44px);line-height:1.05;letter-spacing:-.02em;margin-bottom:clamp(8px,1.5vw,12px);}
+  .hero-mob-sub{font-size:clamp(13px,2.6vw,15px);line-height:1.5;color:rgba(255,255,255,.6);margin-bottom:clamp(16px,3vw,24px);}
+  .hero-mob-ctas{display:flex;flex-direction:column;gap:10px;}
+  .hero-mob-ctas .hero-cta{width:100%;justify-content:center;text-align:center;}
+}
+
+/* CTA BUTTONS */
+.hero-cta{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:14px 28px;border-radius:100px;transition:all .3s var(--ease);}
+
+/* BREADCRUMB */
+.breadcrumb{padding:clamp(24px,3vw,40px) 0 clamp(16px,2vw,24px);border-bottom:1px solid var(--line);}
+.breadcrumb a{font-size:14px;color:var(--ink-soft);transition:color .25s var(--ease);}
+.breadcrumb a:hover{color:var(--navy);}
+.breadcrumb span{font-size:14px;color:var(--ink-soft);margin:0 8px;}
+
+/* CTA */
+.cta-section{background:var(--navy);color:var(--white);padding:clamp(70px,9vw,120px) 0;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.cta-inner{position:relative;z-index:1;}
+.cta-inner .eyebrow{justify-content:center;margin-bottom:clamp(16px,2vw,24px);}
+.cta-inner h2{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4.2vw,52px);line-height:1.15;margin-bottom:clamp(12px,1.5vw,20px);}
+.cta-inner p{font-size:clamp(14px,1.1vw,16px);line-height:1.7;color:rgba(255,255,255,.65);max-width:50ch;margin:0 auto clamp(28px,3.5vw,44px);}
+.cta-btn{display:inline-flex;align-items:center;gap:12px;background:var(--white);color:var(--navy);font-weight:700;font-size:15px;padding:18px 32px;border-radius:100px;transition:transform .35s var(--ease),box-shadow .35s var(--ease);border:1px solid var(--line);}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(34,41,95,.12);}
+
+/* FOOTER */
+.site-footer{background:var(--navy);color:var(--white);padding:clamp(70px,9vw,110px) 0 32px;}
+.footer-top{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:clamp(30px,4vw,50px);padding-bottom:clamp(50px,7vw,80px);border-bottom:1px solid var(--line-on-navy);}
+.footer-mark{height:44px;width:auto;margin-bottom:18px;}
+.footer-top p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.62);max-width:32ch;}
+.footer-col-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
+.footer-col a{display:block;font-size:14.5px;color:rgba(255,255,255,.82);padding:6px 0;transition:color .25s var(--ease);}
+.footer-col a:hover{color:var(--yellow);}
+.footer-social-title{margin-top:34px;}
+.footer-social-grid{display:flex;gap:10px;margin-top:14px;}
+.footer-social-tile{
+  width:44px;height:44px;border-radius:10px;border:1px solid var(--line-on-navy);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);
+}
+.footer-social-tile:hover{border-color:rgba(255,255,255,.3);}
+.footer-social-tile svg{width:18px;height:18px;fill:var(--white);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding-top:26px;font-size:13px;color:rgba(255,255,255,.5);}
+.footer-bottom a{color:rgba(255,255,255,.5);}
+@media (max-width:860px){.footer-top{grid-template-columns:1fr 1fr;}}
+@media (max-width:520px){.footer-top{grid-template-columns:1fr;}}
+
+.footer-v2_bottom{
+  display:flex;align-items:center;flex-wrap:wrap;gap:clamp(18px,3vw,32px);
+  padding:clamp(28px,4vw,38px) 0;margin-top:clamp(6px,1vw,10px);border-bottom:1px solid var(--line-on-navy);
+}
+.footer-v2_bottom-title{
+  font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);
+  flex:0 0 auto;padding-right:clamp(10px,2vw,20px);
+}
+.footer-v2_bottom-list{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(24px,4vw,44px);flex:1 1 auto;}
+.footer-v2_bottom-item{display:flex;align-items:center;}
+.footer-v2_bottom-img{
+  height:clamp(26px,3vw,34px);width:auto;
+  filter:brightness(0) invert(1) opacity(.55);
+  transition:filter .25s var(--ease),opacity .25s var(--ease);
+}
+.footer-v2_bottom-item:hover .footer-v2_bottom-img{filter:brightness(0) invert(1) opacity(.9);}
+
+/* REVEAL */
+.js-reveal-ready .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease-soft),transform .9s var(--ease-soft);}
+.js-reveal-ready .reveal.is-visible{opacity:1;transform:none;}
+.js-reveal-ready .reveal.d1{transition-delay:.08s;}
+.js-reveal-ready .reveal.d2{transition-delay:.16s;}
+.js-reveal-ready .reveal.d3{transition-delay:.24s;}
+.js-reveal-ready .reveal.d4{transition-delay:.32s;}
+
+/* NEW ANIMATION SYSTEM */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
+.reveal.is-visible{opacity:1;transform:translateY(0);}
+.reveal.d1{transition-delay:.1s;}.reveal.d2{transition-delay:.2s;}.reveal.d3{transition-delay:.3s;}.reveal.d4{transition-delay:.4s;}.reveal.d5{transition-delay:.5s;}
+.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
+.reveal-scale.is-visible{opacity:1;transform:scale(1);}
+.reveal-clip{clip-path:inset(100% 0 0 0);transition:clip-path 1s var(--ease-soft);}
+.reveal-clip.is-visible{clip-path:inset(0 0 0 0);}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+.float{animation:float 5s ease-in-out infinite;}
+.stagger-grid > *{opacity:0;transform:translateY(30px);transition:opacity .6s var(--ease-soft),transform .6s var(--ease-soft);}
+.stagger-grid.is-visible > *:nth-child(1){transition-delay:.05s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(2){transition-delay:.12s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(3){transition-delay:.19s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(4){transition-delay:.26s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(5){transition-delay:.33s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(6){transition-delay:.40s;opacity:1;transform:translateY(0);}
+.img-zoom{overflow:hidden;}
+.img-zoom img{transition:transform .7s var(--ease-soft);}
+.img-zoom:hover img{transform:scale(1.06);}
+
+/* PARALLAX */
+.parallax{will-change:transform;}
+
+/* CARD TILT on hover */
+.tilt-card{transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
+.tilt-card:hover{transform:translateY(-6px) rotate(.5deg);box-shadow:0 20px 50px rgba(34,41,95,.1);}
+
+/* SECTION NAVIGATOR (archive tab) */
+.archive-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding:14px 22px 14px 30px;background:var(--white);border-top-left-radius:6px;border-bottom-left-radius:6px;box-shadow:-6px 0 24px rgba(34,41,95,0.08);transition:background .4s var(--ease),box-shadow .4s var(--ease);}
+.archive-tab-num{font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.04em;color:var(--navy);}
+.archive-tab-label{font-family:var(--font-serif);font-style:italic;font-size:12px;color:var(--ink-soft);white-space:nowrap;}
+.archive-tab-toc{position:absolute;right:100%;top:50%;transform:translateY(-50%) translateX(12px);width:236px;background:var(--white);box-shadow:-6px 0 24px rgba(34,41,95,0.14);padding:10px 0;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);border-radius:8px;}
+.archive-tab:hover .archive-tab-toc,.archive-tab:focus-within .archive-tab-toc{opacity:1;transform:translateY(-50%) translateX(0);pointer-events:auto;}
+.archive-tab-toc-item{display:flex;align-items:baseline;gap:12px;width:100%;text-align:left;padding:8px 20px;font-size:12.5px;color:var(--ink-soft);transition:color .2s var(--ease),background .2s var(--ease);}
+.archive-tab-toc-item:hover{color:var(--navy);background:var(--sky-tint);}
+.archive-tab-toc-item .num{font-family:var(--font-display);font-weight:700;font-size:11px;color:var(--crimson);min-width:18px;}
+.archive-tab-toc-item.is-active{color:var(--navy);font-weight:600;}
+.archive-tab-toc-item.is-active .num{color:var(--crimson);}
+@media (max-width:960px){.archive-tab{display:none;}}
+
+/* TIMELINE */
+.timeline{position:relative;max-width:900px;margin:0 auto;}
+.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--line),var(--crimson),var(--line));transform:translateX(-50%);}
+.timeline-item{position:relative;width:50%;padding:0 clamp(24px,4vw,48px) clamp(40px,5vw,60px);}
+.timeline-item:nth-child(odd){left:0;text-align:right;padding-right:clamp(32px,5vw,60px);padding-left:0;}
+.timeline-item:nth-child(even){left:50%;text-align:left;padding-left:clamp(32px,5vw,60px);padding-right:0;}
+.timeline-item::before{content:"";position:absolute;top:8px;width:14px;height:14px;border-radius:50%;background:var(--white);border:3px solid var(--crimson);z-index:2;}
+.timeline-item:nth-child(odd)::before{right:-7px;}
+.timeline-item:nth-child(even)::before{left:-7px;}
+.timeline-item::after{content:"";position:absolute;top:14px;width:clamp(20px,3vw,40px);height:2px;background:var(--line);z-index:1;}
+.timeline-item:nth-child(odd)::after{right:0;}
+.timeline-item:nth-child(even)::after{left:0;}
+.timeline-year{font-family:var(--font-display);font-weight:800;font-size:clamp(32px,3.5vw,48px);color:var(--navy);line-height:1;margin-bottom:8px;}
+.timeline-text h3{font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;}
+.timeline-text p{font-size:14px;line-height:1.65;color:var(--ink-soft);}
+@media (max-width:760px){
+  .timeline::before{left:20px;}
+  .timeline-item,.timeline-item:nth-child(odd),.timeline-item:nth-child(even){left:0;width:100%;text-align:left;padding-left:48px;padding-right:0;}
+  .timeline-item::before,.timeline-item:nth-child(odd)::before,.timeline-item:nth-child(even)::before{left:13px;right:auto;}
+  .timeline-item::after,.timeline-item:nth-child(odd)::after,.timeline-item:nth-child(even)::after{left:27px;right:auto;width:20px;}
+}
+
+@media (max-width:960px){
+  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr)!important;}
+}
+@media (max-width:760px){
+  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
+  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
+  .wrap>[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  .cta-section{padding:clamp(40px,6vw,60px) 0;}
+  .cta-section h2{font-size:clamp(20px,5vw,30px);}
+}
+@media (max-width:600px){
+  .wrap{padding-left:clamp(16px,4vw,24px);padding-right:clamp(16px,4vw,24px);}
+  .footer-top{grid-template-columns:1fr!important;gap:clamp(20px,4vw,28px);}
+}
+</style>
+</head>
+<body>
+
+<div class="aus-preloader" id="preloader">
+  <img class="aus-preloader-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+  <div class="aus-preloader-bar"></div>
+</div>
+
+<nav class="aus-nav" id="nav">
+  <a href="aus-home-demo.html" class="aus-wordmark" aria-label="AUS Business School — home">
+    <img class="logo-white" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+    <img class="logo-color" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a558e03f97cbda4768f37bb_aus-logo.avif" alt="AUS Business School">
+  </a>
+  <div class="aus-nav-links">
+    <button type="button" data-open-panel="programs">Programs</button>
+    <button type="button" data-open-panel="about">About</button>
+    <button type="button" data-open-panel="student-life">Student Life</button>
+  </div>
+  <div class="aus-nav-right">
+    <a href="#" class="aus-nav-apply">Apply</a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="sidePanel">
+      <span>Menu</span>
+      <span class="menu-toggle-bars"><span></span><span></span><span></span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="side-panel" id="sidePanel">
+  <div class="side-panel-backdrop" id="sidePanelBackdrop"></div>
+  <aside class="side-panel-canvas">
+    <div class="side-panel-head">
+      <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+      <button class="side-panel-close" id="sidePanelClose" aria-label="Close menu"><span></span></button>
+    </div>
+    <nav class="side-panel-nav">
+      <div class="accordion-item" data-panel-key="programs">
+        <button class="accordion-trigger">Programs <span class="accordion-icon"></span></button>
+        <div class="accordion-panel"><div class="accordion-panel-inner">
+          <div class="accordion-group">
+            <a href="aus-programs.html" style="font-weight:600;">Programs Overview</a>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-group-title">Bachelor's Degree</div>
+            <a href="aus-bachelor-accounting.html">Accounting</a>
+            <a href="aus-bachelor-business-management.html">Business Management</a>
+            <a href="aus-bachelor-healthcare-administration.html">Healthcare Administration</a>
+            <a href="aus-bachelor-human-resource-management.html">Human Resource Management</a>
+            <a href="aus-bachelor-integrated-digital-marketing.html">Integrated &amp; Digital Marketing</a>
+            <a href="aus-bachelor-international-business.html">International Business</a>
+            <a href="aus-bachelor-sports-management-athletic.html">Sports Management — Athletic Administration</a>
+            <a href="aus-bachelor-sports-management-marketing.html">Sports Management — Sports Marketing</a>
+            <a href="aus-bachelor-hospitality-management.html">Hospitality Management</a>
+            <a href="aus-bachelor-aviation-management.html">Aviation Management</a>
+            <a href="aus-bachelor-data-analytics-ai.html">Data Analytics &amp; AI for Business</a>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-group-title">Master's Degree</div>
+            <a href="aus-master-finance.html">Finance</a>
+            <a href="aus-master-data-analytics.html">Data Analytics</a>
+            <a href="aus-master-healthcare-administration.html">Healthcare Administration</a>
+            <a href="aus-master-human-resource-management.html">Human Resource Management</a>
+            <a href="aus-master-international-business.html">International Business</a>
+            <a href="aus-master-leadership-change.html">Leadership &amp; Change</a>
+            <a href="aus-master-sports-management.html">Sports Management</a>
+            <a href="aus-master-strategic-brand-digital-marketing.html">Strategic Brand &amp; Digital Marketing</a>
+            <a href="aus-master-aviation-management.html">Aviation Management</a>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-group-title">Doctorate &amp; Diploma</div>
+            <a href="aus-dba.html">Doctorate in Business Administration</a>
+            <a href="aus-federal-diploma.html">Swiss Federal Diploma</a>
+          </div>
+        </div></div>
+      </div>
+      <div class="accordion-item" data-panel-key="about">
+        <button class="accordion-trigger">About <span class="accordion-icon"></span></button>
+        <div class="accordion-panel"><div class="accordion-panel-inner">
+          <div class="accordion-group">
+            <a href="aus-about.html">About AUS</a>
+            <a href="aus-about-history.html">History</a>
+            <a href="#">Faculty</a>
+            <a href="#">Accreditations</a>
+          </div>
+        </div></div>
+      </div>
+      <div class="accordion-item" data-panel-key="student-life">
+        <button class="accordion-trigger">Student Life <span class="accordion-icon"></span></button>
+        <div class="accordion-panel"><div class="accordion-panel-inner">
+          <div class="accordion-group">
+            <a href="#">Campus &amp; Housing</a>
+            <a href="#">Clubs &amp; Activities</a>
+            <a href="#">Events</a>
+          </div>
+        </div></div>
+      </div>
+      <a href="#" class="side-panel-link">Admissions &amp; Financing</a>
+      <a href="#" class="side-panel-link">Contact</a>
+    </nav>
+    <div class="side-panel-foot">
+      <a href="#" class="hero-cta">Apply now &rarr;</a>
+      <div class="side-panel-socials footer-social-grid">
+        <a class="footer-social-tile" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.62.07 4.81s-.01 3.56-.07 4.81c-.15 3.23-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07-3.2 0-3.6 0-4.85-.07-3.26-.15-4.77-1.69-4.92-4.92-.06-1.25-.07-1.62-.07-4.81s.01-3.56.07-4.81c.15-3.23 1.66-4.77 4.92-4.92 1.25-.06 1.6-.07 4.85-.07zm0-2.2c-3.27 0-3.67 0-4.95.08-4.3.2-6.78 2.68-6.98 6.98-.08 1.28-.08 1.68-.08 4.95s0 3.67.08 4.95c.2 4.3 2.68 6.78 6.98 6.98 1.28.08 1.68.08 4.95.08s3.67 0 4.95-.08c4.3-.2 6.78-2.68 6.98-6.98.08-1.28.08-1.68.08-4.95s0-3.67-.08-4.95c-.2-4.3-2.68-6.78-6.98-6.98-1.28-.08-1.68-.08-4.95-.08zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.4-11.85a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg></a>
+        <a class="footer-social-tile" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0z"/></svg></a>
+        <a class="footer-social-tile" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46v-7.2a8.16 8.16 0 005.58 2.18v-3.45a4.85 4.85 0 01-3.59-1.59V6.69h3.59z"/></svg></a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<header class="hero" style="min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy);">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS campus" class="parallax" data-speed="0.12">
+  </div>
+  <div class="hero-inner" style="z-index:2;width:100%;padding:clamp(60px,8vw,100px) clamp(20px,5vw,64px) clamp(40px,6vw,70px);color:var(--white);">
+    <div class="hero-badge" style="margin-bottom:clamp(12px,1.5vw,20px);">
+      <svg viewBox="0 0 24 24" width="14" height="14"><path d="M22 10v6M2 10l10-5 10 5-10 5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12v5c3 3 9 3 12 0v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      About AUS
+    </div>
+    <h1 style="font-size:clamp(48px,8vw,96px);line-height:.95;">Our History</h1>
+    <p class="hero-sub" style="max-width:48ch;">From a visionary idea in 1963 to a leading international business school in Switzerland.</p>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</header>
+
+<!-- MOBILE HERO -->
+<div class="hero-mobile">
+  <div class="hero-mob-img">
+    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS campus Lake Geneva">
+  </div>
+  <div class="hero-mob-content">
+    <span class="hero-mob-badge">About AUS</span>
+    <h1>Our History</h1>
+    <p class="hero-mob-sub">From a visionary idea in 1963 to a leading international business school in Switzerland.</p>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="wrap">
+    <a href="aus-home-demo.html">Home</a><span>/</span>
+    <a href="aus-about.html">About</a><span>/</span>
+    History
+  </div>
+</div>
+
+<!-- SECTION NAVIGATOR (archive tab) -->
+<div class="archive-tab" id="archiveTab" tabindex="0">
+  <span class="archive-tab-num" id="archiveTabNum">01</span>
+  <span class="archive-tab-label" id="archiveTabLabel">Founding</span>
+  <nav class="archive-tab-toc" id="archiveTabToc" aria-label="Jump to section"></nav>
+</div>
+
+<!-- FOUNDING STORY -->
+<section id="founding" data-chapter="01" data-chapter-label="Founding" style="padding:clamp(60px,8vw,100px) 0;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:var(--sky);opacity:.3;filter:blur(80px);z-index:0;" class="parallax" data-speed="0.06"></div>
+  <div class="wrap" style="position:relative;z-index:1;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center;">
+      <div class="reveal">
+        <span class="eyebrow">Where It All Began</span>
+        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">The Founding Story</h2>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);margin-bottom:16px;">The story of the AUS Business School began in 1963, at the creation of the American College of Switzerland, whose academic body had the vision of combining both the effectiveness of American graduate education with the Swiss work ethic.</p>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);margin-bottom:16px;">Building upon this vision, four of the ACS teachers created the <strong style="color:var(--navy);">American Graduate School of Business in 1991</strong>, which flourished into one of the leading international business schools in Switzerland.</p>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);">In 2019, the school changed its name from the American Graduate School of Business to the <strong style="color:var(--navy);">AUS Business School</strong> to reflect its growing international education status.</p>
+      </div>
+      <div style="position:relative;" class="reveal-scale">
+        <div style="border-radius:12px;overflow:hidden;position:relative;z-index:1;box-shadow:0 30px 60px rgba(34,41,95,.12);">
+          <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&auto=format&fit=crop&q=80" alt="Swiss landscape" style="width:100%;height:clamp(300px,30vw,480px);object-fit:cover;">
+        </div>
+        <div style="position:absolute;bottom:-20px;left:-20px;background:var(--crimson);color:var(--white);padding:20px 28px;border-radius:12px;z-index:2;box-shadow:0 15px 40px rgba(190,31,61,.25);">
+          <div style="font-family:var(--font-display);font-weight:800;font-size:32px;">1963</div>
+          <div style="font-size:11px;opacity:.8;margin-top:2px;">The Beginning</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND EVOLUTION -->
+<section id="brand" data-chapter="02" data-chapter-label="Brand" style="padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);position:relative;overflow:hidden;">
+  <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:var(--sky);opacity:.4;filter:blur(80px);"></div>
+  <div class="wrap" style="position:relative;z-index:1;">
+    <span class="eyebrow reveal">Brand Identity</span>
+    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 clamp(32px,4vw,48px);">Evolution of the Logo</h2>
+    <div class="stagger-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,32px);text-align:center;">
+      <div class="tilt-card" style="padding:clamp(28px,3vw,40px) clamp(16px,2vw,24px);border:1px solid var(--line);border-radius:16px;background:var(--white);position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--sky);"></div>
+        <div style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(36px,4vw,52px);color:var(--navy);line-height:1;margin-bottom:12px;">ACS</div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink-soft);margin-bottom:4px;">1963</div>
+        <div style="font-size:14px;color:var(--ink-soft);line-height:1.5;">American College of Switzerland</div>
+      </div>
+      <div class="tilt-card" style="padding:clamp(28px,3vw,40px) clamp(16px,2vw,24px);border:1px solid var(--line);border-radius:16px;background:var(--white);position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--navy);"></div>
+        <div style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(36px,4vw,52px);color:var(--navy);line-height:1;margin-bottom:12px;">AGSB</div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink-soft);margin-bottom:4px;">1991</div>
+        <div style="font-size:14px;color:var(--ink-soft);line-height:1.5;">American Graduate School of Business</div>
+      </div>
+      <div class="tilt-card" style="padding:clamp(28px,3vw,40px) clamp(16px,2vw,24px);border:1px solid var(--line);border-radius:16px;background:var(--white);position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--crimson);"></div>
+        <div style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(36px,4vw,52px);color:var(--navy);line-height:1;margin-bottom:12px;">AUS</div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink-soft);margin-bottom:4px;">2019</div>
+        <div style="font-size:14px;color:var(--ink-soft);line-height:1.5;">AUS Business School</div>
+      </div>
+      <div class="tilt-card" style="padding:clamp(28px,3vw,40px) clamp(16px,2vw,24px);background:var(--navy);color:var(--white);border-radius:16px;border:1px solid transparent;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--yellow);"></div>
+        <div style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(36px,4vw,52px);color:var(--white);line-height:1;margin-bottom:12px;">AUS</div>
+        <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,.6);margin-bottom:4px;">Today</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.7);line-height:1.5;">AUS Business School</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline" data-chapter="03" data-chapter-label="Timeline" style="padding:clamp(60px,8vw,100px) 0;">
+  <div class="wrap">
+    <span class="eyebrow reveal">Milestones</span>
+    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 clamp(32px,4vw,48px);">History Through the Years</h2>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-year">1991</div>
+        <div class="timeline-text">
+          <h3>AGSB founded</h3>
+          <p>Four ACS teachers create the American Graduate School of Business in La Tour-de-Peilz, Switzerland.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-year">1992</div>
+        <div class="timeline-text">
+          <h3>Campus established</h3>
+          <p>AGSB sets up its permanent campus in La Tour-de-Peilz, welcoming its first cohorts.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-year">1993</div>
+        <div class="timeline-text">
+          <h3>AVDEP recognition</h3>
+          <p>Recognized by the Association of Private Schools in Canton Vaud.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-year">1994</div>
+        <div class="timeline-text">
+          <h3>SFPS membership</h3>
+          <p>Joins the Swiss Federation of Private Schools.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-year">1996</div>
+        <div class="timeline-text">
+          <h3>ECIS membership</h3>
+          <p>Becomes a member of the European Council of International Schools.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-year">1998</div>
+        <div class="timeline-text">
+          <h3>College Board &amp; VA approval</h3>
+          <p>Gains College Board membership and approval by the U.S. Department of Veteran Affairs.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-year">2013</div>
+        <div class="timeline-text">
+          <h3>AAHEA accreditation</h3>
+          <p>Accredited by the American Association for Higher Education.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-year">2014</div>
+        <div class="timeline-text">
+          <h3>ASIC accreditation</h3>
+          <p>Gains Accreditation Service for International Schools, Colleges &amp; Universities.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-year">2016</div>
+        <div class="timeline-text">
+          <h3>New campus inauguration</h3>
+          <p>Opens the doors to its expanded, modern campus in La Tour-de-Peilz.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-year">2017</div>
+        <div class="timeline-text">
+          <h3>Global partnerships</h3>
+          <p>Signs academic agreements with institutions in Mexico, Colombia, Georgia, Lebanon, and India. Reaccredited by IACBE.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-year">2018</div>
+        <div class="timeline-text">
+          <h3>ECBE &amp; expansion</h3>
+          <p>Reaccredited by ECBE. Partnerships with institutions in Saudi Arabia. Establishment of AGSB S.A.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-year">2019</div>
+        <div class="timeline-text">
+          <h3>AUS is born</h3>
+          <p>Renamed to AUS Business School. IATA certification. Dual degree partnership with Tiffin University. New partnerships in Malaysia, Jordan, and Saudi Arabia.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-year">2020</div>
+        <div class="timeline-text">
+          <h3>29th anniversary</h3>
+          <p>AUS celebrates nearly three decades of academic excellence and international education.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="wrap cta-inner">
+    <span class="eyebrow on-navy reveal">What's Next</span>
+    <h2 class="reveal d1">Let's Make History Together</h2>
+    <p class="reveal d2">Join a legacy of academic excellence. Take the first step toward your future at AUS.</p>
+    <div class="reveal d3">
+      <a href="#" class="cta-btn">Apply for Admission &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <img class="footer-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+        <p>AUS Business School — preparing tomorrow's business leaders since 1991.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Programs</div>
+        <a href="aus-bachelor-accounting.html">Bachelor's Degrees</a>
+        <a href="aus-master-finance.html">Master's Degrees</a>
+        <a href="aus-dba.html">Doctorate</a>
+        <a href="aus-federal-diploma.html">Swiss Federal Diploma</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">About</div>
+        <a href="aus-about.html">About AUS</a>
+        <a href="aus-about-history.html">History</a>
+        <a href="#">Faculty</a>
+        <a href="#">Accreditations</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <a href="#">Chemin du Levant 5</a>
+        <a href="#">CH-1814 La Tour-de-Peilz</a>
+        <a href="#">+41 21 944 95 01</a>
+        <a href="#">info@aus.swiss</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2024 AUS Business School. All rights reserved.</span>
+      <div style="display:flex;gap:20px;">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* PRELOADER */
+(function(){
+  var done=false;
+  function finish(){if(done)return;done=true;document.getElementById('preloader').classList.add('is-hidden');document.documentElement.classList.remove('has-preloader');}
+  if(typeof Promise!=='undefined'){
+    new Promise(function(r){if(document.readyState==='complete')r();else window.addEventListener('load',r);}).then(function(){setTimeout(finish,600);});
+  }else{window.addEventListener('load',function(){setTimeout(finish,100);});}
+  setTimeout(finish,4000);
+})();
+
+/* NAV SCROLL */
+(function(){
+  var nav=document.getElementById('nav'),last=0;
+  window.addEventListener('scroll',function(){var s=window.pageYOffset;if(s>60){nav.classList.add('is-scrolled');}else{nav.classList.remove('is-scrolled');}last=s;},{passive:true});
+})();
+
+/* SIDE PANEL */
+(function(){
+  var panel=document.getElementById('sidePanel'),backdrop=document.getElementById('sidePanelBackdrop'),closeBtn=document.getElementById('sidePanelClose'),toggle=document.getElementById('menuToggle');
+  function openPanel(){document.body.classList.add('panel-open');panel.style.pointerEvents='auto';toggle.setAttribute('aria-expanded','true');}
+  function closePanel(){document.body.classList.remove('panel-open');panel.style.pointerEvents='none';toggle.setAttribute('aria-expanded','false');}
+  toggle.addEventListener('click',openPanel);closeBtn.addEventListener('click',closePanel);backdrop.addEventListener('click',closePanel);
+  document.querySelectorAll('[data-open-panel]').forEach(function(btn){btn.addEventListener('click',function(){openPanel();});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('panel-open'))closePanel();});
+})();
+
+/* ACCORDION */
+(function(){
+  document.querySelectorAll('.accordion-trigger').forEach(function(trigger){
+    trigger.addEventListener('click',function(){
+      var item=this.closest('.accordion-item');var wasOpen=item.classList.contains('is-open');
+      item.closest('.side-panel-nav').querySelectorAll('.accordion-item.is-open').forEach(function(o){o.classList.remove('is-open');});
+      if(!wasOpen)item.classList.add('is-open');
+    });
+  });
+  var aboutPanel=document.querySelector('[data-panel-key="about"]');
+  if(aboutPanel)aboutPanel.classList.add('is-open');
+})();
+
+/* REVEAL */
+(function(){
+  document.documentElement.classList.add('js-reveal-ready');
+  var els=document.querySelectorAll('.reveal,.reveal-scale,.reveal-clip,.reveal-rotate,.stagger-grid');
+  if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('is-visible');});return;}
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){io.observe(el);});
+})();
+
+/* SECTION NAVIGATOR (archive tab) */
+(function(){
+  var tab=document.getElementById('archiveTab');
+  var tabNum=document.getElementById('archiveTabNum');
+  var tabLabel=document.getElementById('archiveTabLabel');
+  var chapters=document.querySelectorAll('[data-chapter]');
+  var toc=document.getElementById('archiveTabToc');
+  if(tab&&chapters.length&&toc){
+    chapters.forEach(function(el){
+      var num=el.getAttribute('data-chapter');
+      var label=el.getAttribute('data-chapter-label');
+      var item=document.createElement('button');
+      item.type='button';
+      item.className='archive-tab-toc-item';
+      item.setAttribute('data-toc-target',num);
+      item.innerHTML='<span class="num">'+num+'</span><span>'+label+'</span>';
+      item.addEventListener('click',function(){
+        el.scrollIntoView({block:'start',behavior:'smooth'});
+      });
+      toc.appendChild(item);
+    });
+  }
+  if(tab&&chapters.length&&'IntersectionObserver' in window){
+    var tocItems=toc?toc.querySelectorAll('.archive-tab-toc-item'):[];
+    var chapterObserver=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          var num=entry.target.getAttribute('data-chapter');
+          tabNum.textContent=num;
+          tabLabel.textContent=entry.target.getAttribute('data-chapter-label');
+          tocItems.forEach(function(ti){ti.classList.remove('is-active');if(ti.getAttribute('data-toc-target')===num)ti.classList.add('is-active');});
+        }
+      });
+    },{threshold:0.3,rootMargin:'-80px 0px -40% 0px'});
+    chapters.forEach(function(ch){chapterObserver.observe(ch);});
+  }
+})();
+</script>
+</body>
+</html>
