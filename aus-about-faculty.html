@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>History | AUS Business School</title>
+<title>Faculty | AUS Business School</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -117,8 +117,6 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   .hero-mob-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);padding:5px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.85);margin-bottom:clamp(10px,2vw,16px);}
   .hero-mob-content h1{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,9vw,44px);line-height:1.05;letter-spacing:-.02em;margin-bottom:clamp(8px,1.5vw,12px);}
   .hero-mob-sub{font-size:clamp(13px,2.6vw,15px);line-height:1.5;color:rgba(255,255,255,.6);margin-bottom:clamp(16px,3vw,24px);}
-  .hero-mob-ctas{display:flex;flex-direction:column;gap:10px;}
-  .hero-mob-ctas .hero-cta{width:100%;justify-content:center;text-align:center;}
 }
 
 /* CTA BUTTONS */
@@ -150,11 +148,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .footer-col a:hover{color:var(--yellow);}
 .footer-social-title{margin-top:34px;}
 .footer-social-grid{display:flex;gap:10px;margin-top:14px;}
-.footer-social-tile{
-  width:44px;height:44px;border-radius:10px;border:1px solid var(--line-on-navy);
-  display:flex;align-items:center;justify-content:center;
-  transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);
-}
+.footer-social-tile{width:44px;height:44px;border-radius:10px;border:1px solid var(--line-on-navy);display:flex;align-items:center;justify-content:center;transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);}
 .footer-social-tile:hover{border-color:rgba(255,255,255,.3);}
 .footer-social-tile svg{width:18px;height:18px;fill:var(--white);}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding-top:26px;font-size:13px;color:rgba(255,255,255,.5);}
@@ -162,32 +156,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 @media (max-width:860px){.footer-top{grid-template-columns:1fr 1fr;}}
 @media (max-width:520px){.footer-top{grid-template-columns:1fr;}}
 
-.footer-v2_bottom{
-  display:flex;align-items:center;flex-wrap:wrap;gap:clamp(18px,3vw,32px);
-  padding:clamp(28px,4vw,38px) 0;margin-top:clamp(6px,1vw,10px);border-bottom:1px solid var(--line-on-navy);
-}
-.footer-v2_bottom-title{
-  font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);
-  flex:0 0 auto;padding-right:clamp(10px,2vw,20px);
-}
-.footer-v2_bottom-list{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(24px,4vw,44px);flex:1 1 auto;}
-.footer-v2_bottom-item{display:flex;align-items:center;}
-.footer-v2_bottom-img{
-  height:clamp(26px,3vw,34px);width:auto;
-  filter:brightness(0) invert(1) opacity(.55);
-  transition:filter .25s var(--ease),opacity .25s var(--ease);
-}
-.footer-v2_bottom-item:hover .footer-v2_bottom-img{filter:brightness(0) invert(1) opacity(.9);}
-
 /* REVEAL */
-.js-reveal-ready .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease-soft),transform .9s var(--ease-soft);}
-.js-reveal-ready .reveal.is-visible{opacity:1;transform:none;}
-.js-reveal-ready .reveal.d1{transition-delay:.08s;}
-.js-reveal-ready .reveal.d2{transition-delay:.16s;}
-.js-reveal-ready .reveal.d3{transition-delay:.24s;}
-.js-reveal-ready .reveal.d4{transition-delay:.32s;}
-
-/* NEW ANIMATION SYSTEM */
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
 .reveal.is-visible{opacity:1;transform:translateY(0);}
 .reveal.d1{transition-delay:.1s;}.reveal.d2{transition-delay:.2s;}.reveal.d3{transition-delay:.3s;}.reveal.d4{transition-delay:.4s;}.reveal.d5{transition-delay:.5s;}
@@ -207,11 +176,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .img-zoom{overflow:hidden;}
 .img-zoom img{transition:transform .7s var(--ease-soft);}
 .img-zoom:hover img{transform:scale(1.06);}
-
-/* PARALLAX */
 .parallax{will-change:transform;}
-
-/* CARD TILT on hover */
 .tilt-card{transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
 .tilt-card:hover{transform:translateY(-6px) rotate(.5deg);box-shadow:0 20px 50px rgba(34,41,95,.1);}
 
@@ -228,31 +193,18 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .archive-tab-toc-item.is-active .num{color:var(--crimson);}
 @media (max-width:960px){.archive-tab{display:none;}}
 
-/* TIMELINE */
-.timeline{position:relative;max-width:900px;margin:0 auto;}
-.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--line),var(--crimson),var(--line));transform:translateX(-50%);}
-.timeline-item{position:relative;width:50%;padding:0 clamp(24px,4vw,48px) clamp(40px,5vw,60px);}
-.timeline-item:nth-child(odd){left:0;text-align:right;padding-right:clamp(32px,5vw,60px);padding-left:0;}
-.timeline-item:nth-child(even){left:50%;text-align:left;padding-left:clamp(32px,5vw,60px);padding-right:0;}
-.timeline-item::before{content:"";position:absolute;top:8px;width:14px;height:14px;border-radius:50%;background:var(--white);border:3px solid var(--crimson);z-index:2;}
-.timeline-item:nth-child(odd)::before{right:-7px;}
-.timeline-item:nth-child(even)::before{left:-7px;}
-.timeline-item::after{content:"";position:absolute;top:14px;width:clamp(20px,3vw,40px);height:2px;background:var(--line);z-index:1;}
-.timeline-item:nth-child(odd)::after{right:0;}
-.timeline-item:nth-child(even)::after{left:0;}
-.timeline-year{font-family:var(--font-display);font-weight:800;font-size:clamp(32px,3.5vw,48px);color:var(--navy);line-height:1;margin-bottom:8px;}
-.timeline-text h3{font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;}
-.timeline-text p{font-size:14px;line-height:1.65;color:var(--ink-soft);}
-@media (max-width:760px){
-  .timeline::before{left:20px;}
-  .timeline-item,.timeline-item:nth-child(odd),.timeline-item:nth-child(even){left:0;width:100%;text-align:left;padding-left:48px;padding-right:0;}
-  .timeline-item::before,.timeline-item:nth-child(odd)::before,.timeline-item:nth-child(even)::before{left:13px;right:auto;}
-  .timeline-item::after,.timeline-item:nth-child(odd)::after,.timeline-item:nth-child(even)::after{left:27px;right:auto;width:20px;}
-}
+/* FACULTY GRID */
+.faculty-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,32px);}
+.faculty-card{border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease);background:var(--white);}
+.faculty-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(34,41,95,.1);}
+.faculty-card-img{width:100%;aspect-ratio:3/4;object-fit:cover;background:var(--sky-tint);}
+.faculty-card-body{padding:clamp(20px,2.5vw,28px);}
+.faculty-card-name{font-family:var(--font-display);font-weight:700;font-size:clamp(16px,1.4vw,19px);color:var(--navy);margin-bottom:4px;}
+.faculty-card-title{font-size:13px;color:var(--crimson);font-weight:600;margin-bottom:8px;}
+.faculty-card-bio{font-size:14px;line-height:1.6;color:var(--ink-soft);}
+@media (max-width:960px){.faculty-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:600px){.faculty-grid{grid-template-columns:1fr;}}
 
-@media (max-width:960px){
-  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr)!important;}
-}
 @media (max-width:760px){
   .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
   .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
@@ -346,8 +298,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
         <div class="accordion-panel"><div class="accordion-panel-inner">
           <div class="accordion-group">
             <a href="aus-about.html">About AUS</a>
-            <a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a>
-            
+            <a href="aus-about-history.html">History</a>
+            <a href="aus-about-faculty.html">Faculty</a>
             <a href="#">Accreditations</a>
           </div>
         </div></div>
@@ -376,17 +328,24 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   </aside>
 </div>
 
-<header class="hero" style="min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy);">
+<!-- SECTION NAVIGATOR (archive tab) -->
+<div class="archive-tab" id="archiveTab" tabindex="0">
+  <span class="archive-tab-num" id="archiveTabNum">01</span>
+  <span class="archive-tab-label" id="archiveTabLabel">Our Faculty</span>
+  <nav class="archive-tab-toc" id="archiveTabToc" aria-label="Jump to section"></nav>
+</div>
+
+<header class="hero">
   <div class="hero-bg">
-    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS campus" class="parallax" data-speed="0.12">
+    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1800&auto=format&fit=crop&q=80" alt="Classroom" class="parallax" data-speed="0.12">
   </div>
-  <div class="hero-inner" style="z-index:2;width:100%;padding:clamp(60px,8vw,100px) clamp(20px,5vw,64px) clamp(40px,6vw,70px);color:var(--white);">
+  <div class="hero-inner">
     <div class="hero-badge" style="margin-bottom:clamp(12px,1.5vw,20px);">
       <svg viewBox="0 0 24 24" width="14" height="14"><path d="M22 10v6M2 10l10-5 10 5-10 5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12v5c3 3 9 3 12 0v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       About AUS
     </div>
-    <h1 style="font-size:clamp(48px,8vw,96px);line-height:.95;">Our History</h1>
-    <p class="hero-sub" style="max-width:48ch;">From a visionary idea in 1963 to a leading international business school in Switzerland.</p>
+    <h1 style="font-size:clamp(48px,8vw,96px);line-height:.95;">Our Faculty</h1>
+    <p class="hero-sub">World-class educators and industry practitioners committed to your growth.</p>
   </div>
   <div class="hero-scroll">Scroll</div>
 </header>
@@ -394,12 +353,12 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 <!-- MOBILE HERO -->
 <div class="hero-mobile">
   <div class="hero-mob-img">
-    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS campus Lake Geneva">
+    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1800&auto=format&fit=crop&q=80" alt="Classroom">
   </div>
   <div class="hero-mob-content">
     <span class="hero-mob-badge">About AUS</span>
-    <h1>Our History</h1>
-    <p class="hero-mob-sub">From a visionary idea in 1963 to a leading international business school in Switzerland.</p>
+    <h1>Our Faculty</h1>
+    <p class="hero-mob-sub">World-class educators and industry practitioners committed to your growth.</p>
   </div>
 </div>
 
@@ -408,173 +367,81 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   <div class="wrap">
     <a href="aus-home-demo.html">Home</a><span>/</span>
     <a href="aus-about.html">About</a><span>/</span>
-    History
+    Faculty
   </div>
 </div>
 
-<!-- SECTION NAVIGATOR (archive tab) -->
-<div class="archive-tab" id="archiveTab" tabindex="0">
-  <span class="archive-tab-num" id="archiveTabNum">01</span>
-  <span class="archive-tab-label" id="archiveTabLabel">Founding</span>
-  <nav class="archive-tab-toc" id="archiveTabToc" aria-label="Jump to section"></nav>
-</div>
-
-<!-- FOUNDING STORY -->
-<section id="founding" data-chapter="01" data-chapter-label="Founding" style="padding:clamp(60px,8vw,100px) 0;position:relative;overflow:hidden;">
-  <div style="position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:var(--sky);opacity:.3;filter:blur(80px);z-index:0;" class="parallax" data-speed="0.06"></div>
-  <div class="wrap" style="position:relative;z-index:1;">
+<!-- FACULTY OVERVIEW -->
+<section id="overview" data-chapter="01" data-chapter-label="Overview" style="padding:clamp(60px,8vw,100px) 0;">
+  <div class="wrap">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center;">
       <div class="reveal">
-        <span class="eyebrow">Where It All Began</span>
-        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">The Founding Story</h2>
-        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);margin-bottom:16px;">The story of the AUS Business School began in 1963, at the creation of the American College of Switzerland, whose academic body had the vision of combining both the effectiveness of American graduate education with the Swiss work ethic.</p>
-        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);margin-bottom:16px;">Building upon this vision, four of the ACS teachers created the <strong style="color:var(--navy);">American Graduate School of Business in 1991</strong>, which flourished into one of the leading international business schools in Switzerland.</p>
-        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);">In 2019, the school changed its name from the American Graduate School of Business to the <strong style="color:var(--navy);">AUS Business School</strong> to reflect its growing international education status.</p>
+        <span class="eyebrow">Academic Excellence</span>
+        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">Meet Our Faculty</h2>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);margin-bottom:16px;">Our faculty brings together distinguished academics and seasoned industry professionals from around the world. With diverse backgrounds in business, finance, marketing, and leadership, they deliver a learning experience that bridges theory and practice.</p>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);">Every instructor at AUS is committed to small-class engagement, mentorship, and preparing students for real-world challenges in international business.</p>
       </div>
       <div style="position:relative;" class="reveal-scale">
         <div style="border-radius:12px;overflow:hidden;position:relative;z-index:1;box-shadow:0 30px 60px rgba(34,41,95,.12);">
-          <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&auto=format&fit=crop&q=80" alt="Swiss landscape" style="width:100%;height:clamp(300px,30vw,480px);object-fit:cover;">
-        </div>
-        <div style="position:absolute;bottom:-20px;left:-20px;background:var(--crimson);color:var(--white);padding:20px 28px;border-radius:12px;z-index:2;box-shadow:0 15px 40px rgba(190,31,61,.25);">
-          <div style="font-family:var(--font-display);font-weight:800;font-size:32px;">1963</div>
-          <div style="font-size:11px;opacity:.8;margin-top:2px;">The Beginning</div>
+          <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&auto=format&fit=crop&q=80" alt="Faculty collaboration" style="width:100%;height:clamp(300px,30vw,480px);object-fit:cover;">
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BRAND EVOLUTION -->
-<section id="brand" data-chapter="02" data-chapter-label="Brand" style="padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);position:relative;overflow:hidden;">
-  <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:var(--sky);opacity:.4;filter:blur(80px);"></div>
-  <div class="wrap" style="position:relative;z-index:1;">
-    <span class="eyebrow reveal">Brand Identity</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 clamp(32px,4vw,48px);">Evolution of the Logo</h2>
-    <div class="stagger-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,32px);text-align:center;">
-      <div class="tilt-card" style="padding:clamp(28px,3vw,40px) clamp(16px,2vw,24px);border:1px solid var(--line);border-radius:16px;background:var(--white);position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--sky);"></div>
-        <div style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(36px,4vw,52px);color:var(--navy);line-height:1;margin-bottom:12px;">ACS</div>
-        <div style="font-size:13px;font-weight:600;color:var(--ink-soft);margin-bottom:4px;">1963</div>
-        <div style="font-size:14px;color:var(--ink-soft);line-height:1.5;">American College of Switzerland</div>
-      </div>
-      <div class="tilt-card" style="padding:clamp(28px,3vw,40px) clamp(16px,2vw,24px);border:1px solid var(--line);border-radius:16px;background:var(--white);position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--navy);"></div>
-        <div style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(36px,4vw,52px);color:var(--navy);line-height:1;margin-bottom:12px;">AGSB</div>
-        <div style="font-size:13px;font-weight:600;color:var(--ink-soft);margin-bottom:4px;">1991</div>
-        <div style="font-size:14px;color:var(--ink-soft);line-height:1.5;">American Graduate School of Business</div>
-      </div>
-      <div class="tilt-card" style="padding:clamp(28px,3vw,40px) clamp(16px,2vw,24px);border:1px solid var(--line);border-radius:16px;background:var(--white);position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--crimson);"></div>
-        <div style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(36px,4vw,52px);color:var(--navy);line-height:1;margin-bottom:12px;">AUS</div>
-        <div style="font-size:13px;font-weight:600;color:var(--ink-soft);margin-bottom:4px;">2019</div>
-        <div style="font-size:14px;color:var(--ink-soft);line-height:1.5;">AUS Business School</div>
-      </div>
-      <div class="tilt-card" style="padding:clamp(28px,3vw,40px) clamp(16px,2vw,24px);background:var(--navy);color:var(--white);border-radius:16px;border:1px solid transparent;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--yellow);"></div>
-        <div style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(36px,4vw,52px);color:var(--white);line-height:1;margin-bottom:12px;">AUS</div>
-        <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,.6);margin-bottom:4px;">Today</div>
-        <div style="font-size:14px;color:rgba(255,255,255,.7);line-height:1.5;">AUS Business School</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TIMELINE -->
-<section id="timeline" data-chapter="03" data-chapter-label="Timeline" style="padding:clamp(60px,8vw,100px) 0;">
+<!-- FACULTY GRID -->
+<section id="team" data-chapter="02" data-chapter-label="Team" style="padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);">
   <div class="wrap">
-    <span class="eyebrow reveal">Milestones</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 clamp(32px,4vw,48px);">History Through the Years</h2>
-
-    <div class="timeline">
-      <div class="timeline-item reveal">
-        <div class="timeline-year">1991</div>
-        <div class="timeline-text">
-          <h3>AGSB founded</h3>
-          <p>Four ACS teachers create the American Graduate School of Business in La Tour-de-Peilz, Switzerland.</p>
+    <span class="eyebrow reveal">Our Team</span>
+    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 clamp(32px,4vw,48px);">Academic Faculty</h2>
+    <div class="stagger-grid faculty-grid">
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop&q=80" alt="Dr. M. El Khansa">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. M. El Khansa</div>
+          <div class="faculty-card-title">President &amp; Professor</div>
+          <div class="faculty-card-bio">Over 30 years of leadership in international education. PhD in Business Administration.</div>
         </div>
       </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-year">1992</div>
-        <div class="timeline-text">
-          <h3>Campus established</h3>
-          <p>AGSB sets up its permanent campus in La Tour-de-Peilz, welcoming its first cohorts.</p>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80" alt="Dr. S. Martin">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. S. Martin</div>
+          <div class="faculty-card-title">Dean of Faculty &amp; Professor of Finance</div>
+          <div class="faculty-card-bio">Former investment banker with 20 years in international finance. PhD in Finance, CFA charterholder.</div>
         </div>
       </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-year">1993</div>
-        <div class="timeline-text">
-          <h3>AVDEP recognition</h3>
-          <p>Recognized by the Association of Private Schools in Canton Vaud.</p>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80" alt="Prof. A. Rossi">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Prof. A. Rossi</div>
+          <div class="faculty-card-title">Professor of Marketing</div>
+          <div class="faculty-card-bio">Award-winning marketing strategist. Former VP at L'Oreal. MBA from INSEAD.</div>
         </div>
       </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-year">1994</div>
-        <div class="timeline-text">
-          <h3>SFPS membership</h3>
-          <p>Joins the Swiss Federation of Private Schools.</p>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80" alt="Dr. J. Chen">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. J. Chen</div>
+          <div class="faculty-card-title">Professor of Data Analytics</div>
+          <div class="faculty-card-bio">AI and machine learning specialist. Published 40+ research papers. PhD in Computer Science.</div>
         </div>
       </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-year">1996</div>
-        <div class="timeline-text">
-          <h3>ECIS membership</h3>
-          <p>Becomes a member of the European Council of International Schools.</p>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&auto=format&fit=crop&q=80" alt="Dr. L. Amiri">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. L. Amiri</div>
+          <div class="faculty-card-title">Professor of International Business</div>
+          <div class="faculty-card-bio">Former World Bank consultant. Expert in emerging markets and cross-cultural management. PhD in Economics.</div>
         </div>
       </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-year">1998</div>
-        <div class="timeline-text">
-          <h3>College Board &amp; VA approval</h3>
-          <p>Gains College Board membership and approval by the U.S. Department of Veteran Affairs.</p>
-        </div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-year">2013</div>
-        <div class="timeline-text">
-          <h3>AAHEA accreditation</h3>
-          <p>Accredited by the American Association for Higher Education.</p>
-        </div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-year">2014</div>
-        <div class="timeline-text">
-          <h3>ASIC accreditation</h3>
-          <p>Gains Accreditation Service for International Schools, Colleges &amp; Universities.</p>
-        </div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-year">2016</div>
-        <div class="timeline-text">
-          <h3>New campus inauguration</h3>
-          <p>Opens the doors to its expanded, modern campus in La Tour-de-Peilz.</p>
-        </div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-year">2017</div>
-        <div class="timeline-text">
-          <h3>Global partnerships</h3>
-          <p>Signs academic agreements with institutions in Mexico, Colombia, Georgia, Lebanon, and India. Reaccredited by IACBE.</p>
-        </div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-year">2018</div>
-        <div class="timeline-text">
-          <h3>ECBE &amp; expansion</h3>
-          <p>Reaccredited by ECBE. Partnerships with institutions in Saudi Arabia. Establishment of AGSB S.A.</p>
-        </div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-year">2019</div>
-        <div class="timeline-text">
-          <h3>AUS is born</h3>
-          <p>Renamed to AUS Business School. IATA certification. Dual degree partnership with Tiffin University. New partnerships in Malaysia, Jordan, and Saudi Arabia.</p>
-        </div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-year">2020</div>
-        <div class="timeline-text">
-          <h3>29th anniversary</h3>
-          <p>AUS celebrates nearly three decades of academic excellence and international education.</p>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80" alt="Prof. R. Keller">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Prof. R. Keller</div>
+          <div class="faculty-card-title">Professor of Hospitality Management</div>
+          <div class="faculty-card-bio">25 years in luxury hospitality. Former GM at Four Seasons. MBA from Cornell.</div>
         </div>
       </div>
     </div>
@@ -585,8 +452,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 <section class="cta-section">
   <div class="wrap cta-inner">
     <span class="eyebrow on-navy reveal">What's Next</span>
-    <h2 class="reveal d1">Let's Make History Together</h2>
-    <p class="reveal d2">Join a legacy of academic excellence. Take the first step toward your future at AUS.</p>
+    <h2 class="reveal d1">Learn from the Best</h2>
+    <p class="reveal d2">Our faculty are here to guide you. Take the first step toward your future at AUS.</p>
     <div class="reveal d3">
       <a href="#" class="cta-btn">Apply for Admission &rarr;</a>
     </div>
@@ -611,8 +478,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
       <div class="footer-col">
         <div class="footer-col-title">About</div>
         <a href="aus-about.html">About AUS</a>
-        <a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a>
-        
+        <a href="aus-about-history.html">History</a>
+        <a href="aus-about-faculty.html">Faculty</a>
         <a href="#">Accreditations</a>
       </div>
       <div class="footer-col">
@@ -715,7 +582,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
           tocItems.forEach(function(ti){ti.classList.remove('is-active');if(ti.getAttribute('data-toc-target')===num)ti.classList.add('is-active');});
         }
       });
-    },{threshold:0, rootMargin:'-45% 0px -45% 0px'});
+    },{threshold:0,rootMargin:'-45% 0px -45% 0px'});
     chapters.forEach(function(ch){chapterObserver.observe(ch);});
   }
 })();

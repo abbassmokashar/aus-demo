@@ -101,12 +101,6 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .archive-tab-label{font-family:var(--font-serif);font-style:italic;font-size:12px;color:var(--ink-soft);white-space:nowrap;}
 @media (max-width:960px){.archive-tab{display:none;}}
 
-/* CURSOR FOLLOWER */
-.cursor-dot{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--yellow);border-radius:50%;pointer-events:none;z-index:200;mix-blend-mode:difference;transition:width .3s var(--ease),height .3s var(--ease),opacity .3s var(--ease);opacity:0;}
-.cursor-dot.is-visible{opacity:1;}
-.cursor-dot.is-hover{width:40px;height:40px;background:rgba(255,247,55,0.25);}
-@media (hover:none){.cursor-dot{display:none;}}
-
 /* ---------- NAV ---------- */
 .aus-nav{
   position:fixed;top:0;left:0;right:0;z-index:110;
@@ -538,11 +532,13 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   display:flex;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
 }
 .partners-item{
-  flex:1 1 180px;display:flex;align-items:center;gap:14px;
+  flex:1 1 180px;display:flex;align-items:center;justify-content:center;gap:14px;
   padding:clamp(22px,2.4vw,28px) clamp(16px,2vw,22px);
   border-right:1px solid var(--line);
 }
 .partners-item:last-child{border-right:none;}
+.partners-item img{height:40px;width:auto;opacity:.7;transition:opacity .3s var(--ease);filter:grayscale(20%);}
+.partners-item img:hover{opacity:1;filter:grayscale(0);}
 .partners-badge{
   flex:0 0 auto;width:38px;height:38px;border-radius:50%;background:var(--navy);color:var(--white);
   display:flex;align-items:center;justify-content:center;
@@ -634,8 +630,6 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
 </style>
 </head>
 <body>
-<div class="cursor-dot" id="cursorDot"></div>
-
 <div class="aus-preloader" id="preloader">
   <img class="aus-preloader-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
   <div class="aus-preloader-bar"></div>
@@ -692,7 +686,6 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
             <a href="aus-bachelor-sports-management-marketing.html">Sports Management — Sports Marketing</a>
             <a href="aus-bachelor-hospitality-management.html">Hospitality Management</a>
             <a href="aus-bachelor-aviation-management.html">Aviation Management</a>
-            <a href="aus-bachelor-data-analytics-ai.html">Data Analytics &amp; AI for Business</a>
           </div>
           <div class="accordion-group">
             <div class="accordion-group-title">Master's Degree</div>
@@ -707,9 +700,12 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
             <a href="aus-master-aviation-management.html">Aviation Management</a>
           </div>
           <div class="accordion-group">
-            <div class="accordion-group-title">Doctorate &amp; Diploma</div>
+            <div class="accordion-group-title">Doctorate</div>
             <a href="aus-dba.html">Doctorate in Business Administration</a>
-            <a href="aus-federal-diploma.html">Swiss Federal Diploma</a>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-group-title">Swiss Federal Diploma</div>
+            <a href="aus-federal-diploma.html">Business Administration</a>
           </div>
         </div></div>
       </div>
@@ -718,7 +714,7 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
         <div class="accordion-panel"><div class="accordion-panel-inner">
           <div class="accordion-group">
             <a href="aus-about.html">About AUS</a>
-            <a href="aus-about-history.html">History</a><a href="#">Faculty</a>
+            <a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a>
             <a href="#">Accreditations</a>
           </div>
         </div></div>
@@ -804,10 +800,16 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
         </div>
         <div class="program-level" data-level="doctorate" data-img="doctorate">
           <span class="program-level-index">03</span>
-          <span class="program-level-name">Doctorate &amp; Diploma</span>
+<span class="program-level-name">Doctorate</span>
           <div class="program-level-list"><div class="program-level-list-inner">
-            <a href="#">Doctorate in Business Administration</a>
-            <a href="#">Swiss Federal Diploma</a>
+            <a href="aus-dba.html">Doctorate in Business Administration</a>
+          </div></div>
+        </div>
+        <div class="program-level" data-level="diploma" data-img="diploma">
+          <span class="program-level-index">04</span>
+          <span class="program-level-name">Swiss Federal Diploma</span>
+          <div class="program-level-list"><div class="program-level-list-inner">
+            <a href="aus-federal-diploma.html">Business Administration</a>
           </div></div>
         </div>
       </div>
@@ -868,24 +870,16 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
     </div>
     <div class="rankings-grid reveal d2">
       <div class="rankings-tile">
-        <svg class="rankings-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8.5" r="5"/><path d="M8.2 12.8 6 21l6-3 6 3-2.2-8.2"/></svg>
-        <span class="rankings-tile-name">AACSB</span><span class="rankings-tile-cap">Accredited</span>
+        <img class="rankings-tile-logo" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e79_698275eb6f621e22c0ea62fc_Clip%20path%20group%20(1)%201.svg" alt="IACBE" style="height:48px;width:auto;">
       </div>
       <div class="rankings-tile">
-        <svg class="rankings-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8.5" r="5"/><path d="M8.2 12.8 6 21l6-3 6 3-2.2-8.2"/></svg>
-        <span class="rankings-tile-name">EQUIS</span><span class="rankings-tile-cap">Accredited</span>
+        <img class="rankings-tile-logo" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e7d_697cf79ce10c6540765924cd_Clip%20path%20group%201.svg" alt="EURASHE" style="height:48px;width:auto;">
       </div>
       <div class="rankings-tile">
-        <svg class="rankings-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19V9l8-5 8 5v10"/><path d="M9 19v-6h6v6"/></svg>
-        <span class="rankings-tile-name">Financial Times</span><span class="rankings-tile-cap">Top 100, Europe</span>
+        <img class="rankings-tile-logo" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e7c_698275bd119470d073f42434_Clip%20path%20group%20(2)%201.svg" alt="EUA" style="height:48px;width:auto;">
       </div>
       <div class="rankings-tile">
-        <svg class="rankings-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20V10M10 20V4M16 20v-7M20 20v-3"/></svg>
-        <span class="rankings-tile-name">QS World</span><span class="rankings-tile-cap">2025 Rankings</span>
-      </div>
-      <div class="rankings-tile">
-        <svg class="rankings-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
-        <span class="rankings-tile-name">Bloomberg</span><span class="rankings-tile-cap">Businessweek listed</span>
+        <img class="rankings-tile-logo" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e78_697cf79cc3d5271cd7269eeb_Group%201.svg" alt="Higher Learning Commission" style="height:48px;width:auto;">
       </div>
     </div>
     <div class="rankings-highlight reveal d3">
@@ -1036,24 +1030,17 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
     </div>
     <div class="partners-strip reveal d2">
       <div class="partners-item">
-        <span class="partners-badge">IBM</span>
-        <span class="partners-name">IBM SkillsBuild</span>
+        <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a4b4de19ea900cf0076d259_ibm.webp" alt="IBM SkillsBuild" style="height:36px;width:auto;">
       </div>
       <div class="partners-item">
-        <span class="partners-badge">TU</span>
-        <span class="partners-name">Tiffin</span>
+        <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a4b4de2dcacc8e0c146994b_apple.webp" alt="Apple" style="height:36px;width:auto;">
       </div>
       <div class="partners-item">
-        <span class="partners-badge">A</span>
-        <span class="partners-name">Apple</span>
       </div>
       <div class="partners-item">
-        <span class="partners-badge">IE</span>
-        <span class="partners-name">IELTS</span>
+        <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a5738e264c0fa47e0098ec6_Copy%20of%20Eurashe-color-02.png" alt="EURASHE" style="height:36px;width:auto;">
       </div>
       <div class="partners-item">
-        <span class="partners-badge">AG</span>
-        <span class="partners-name">AGSB S.A.</span>
       </div>
     </div>
   </div>
@@ -1098,7 +1085,7 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
       <div class="footer-col">
         <div class="footer-col-title">School</div>
         <a href="#">About</a>
-        <a href="aus-about-history.html">History</a><a href="#">Faculty</a>
+        <a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a>
         <a href="#">Campus life</a>
       </div>
       <div class="footer-col">
@@ -1230,7 +1217,7 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
     ScrollTrigger.create({
       trigger: reasonsSpread,
       start: 'top top',
-      end: '+=' + (steps * 90) + '%',
+      end: '+=' + (steps * 100) + 'vh',
       pin: true,
       scrub: 0.35,
       anticipatePin: 1,
@@ -1372,20 +1359,6 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
       });
     }, {threshold:0, rootMargin:'-45% 0px -45% 0px'});
     chapters.forEach(function(el){ chapterObserver.observe(el); });
-  }
-})();
-// Cursor follower
-(function(){
-  var isTouch=window.matchMedia('(hover:none)').matches;
-  if(!isTouch){
-    var dot=document.getElementById('cursorDot');
-    var mx=0,my=0,dx=0,dy=0;
-    document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.classList.add('is-visible');});
-    document.addEventListener('mouseleave',function(){dot.classList.remove('is-visible');});
-    var hoverEls=document.querySelectorAll('a,button');
-    hoverEls.forEach(function(el){el.addEventListener('mouseenter',function(){dot.classList.add('is-hover');});el.addEventListener('mouseleave',function(){dot.classList.remove('is-hover');});});
-    function animateDot(){dx+=(mx-dx)*.15;dy+=(my-dy)*.15;dot.style.transform='translate('+(dx-5)+'px,'+(dy-5)+'px)';requestAnimationFrame(animateDot);}
-    animateDot();
   }
 })();
 </script>

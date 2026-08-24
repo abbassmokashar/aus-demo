@@ -143,7 +143,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 
 /* CURRICULUM */
 .curriculum{padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);}
-.curr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,20px);margin-top:clamp(32px,4vw,48px);}
+.curr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.6vw,20px);margin-top:clamp(32px,4vw,48px);}
 .curr-card{background:var(--white);padding:clamp(24px,3vw,32px);border-radius:4px;border:1px solid var(--line);}
 .curr-year{font-family:var(--font-display);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;}
 .curr-card h3{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(18px,1.8vw,22px);color:var(--navy);margin-bottom:10px;}
@@ -153,7 +153,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 
 /* CAREERS */
 .careers{padding:clamp(40px,6vw,70px) 0;}
-.careers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,20px);margin-top:clamp(32px,4vw,48px);}
+.careers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.6vw,20px);margin-top:clamp(32px,4vw,48px);}
 .career-card{padding:clamp(24px,3vw,32px);border-radius:4px;background:var(--navy);color:var(--white);}
 .career-card h3{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(18px,1.8vw,22px);margin-bottom:8px;}
 .career-card p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);}
@@ -421,7 +421,6 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
             <a href="aus-bachelor-sports-management-marketing.html">Sports Management — Sports Marketing</a>
             <a href="aus-bachelor-hospitality-management.html">Hospitality Management</a>
             <a href="aus-bachelor-aviation-management.html">Aviation Management</a>
-            <a href="aus-bachelor-data-analytics-ai.html">Data Analytics &amp; AI for Business</a>
           </div>
           <div class="accordion-group">
             <div class="accordion-group-title">Master's Degree</div>
@@ -436,9 +435,12 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
             <a href="aus-master-aviation-management.html">Aviation Management</a>
           </div>
           <div class="accordion-group">
-            <div class="accordion-group-title">Doctorate &amp; Diploma</div>
+            <div class="accordion-group-title">Doctorate</div>
             <a href="aus-dba.html">Doctorate in Business Administration</a>
-            <a href="aus-federal-diploma.html">Swiss Federal Diploma</a>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-group-title">Swiss Federal Diploma</div>
+            <a href="aus-federal-diploma.html">Business Administration</a>
           </div>
         </div></div>
       </div>
@@ -447,7 +449,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
         <div class="accordion-panel"><div class="accordion-panel-inner">
           <div class="accordion-group">
             <a href="aus-about.html">About AUS</a>
-            <a href="aus-about-history.html">History</a><a href="#">Faculty</a>
+            <a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a>
             <a href="#">Accreditations</a>
           </div>
         </div></div>
@@ -519,7 +521,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   <div class="wrap">
     <a href="aus-home-demo.html">Home</a><span>/</span>
     <a href="aus-programs.html">Programs</a><span>/</span>
-    <a href="aus-programs.html#bachelor">Bachelor's</a><span>/</span>
+    <a href="aus-programs.html#diploma">Swiss Federal Diploma</a><span>/</span>
     Swiss Federal Diploma in Business Administration
   </div>
 </div>
@@ -534,7 +536,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
       </div>
       <div class="reveal d1">
         <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(32px,4vw,48px);color:var(--navy);line-height:1;"><span class="counter" data-target="94">0</span><span style="font-size:.6em;">%</span></div>
-        <div style="font-size:13px;color:var(--ink-soft);margin-top:6px;">Employed within 6 months</div>
+        <div style="font-size:13px;color:var(--ink-soft);margin-top:6px;">Employed or in Graduate School within six months of graduation</div>
       </div>
       <div class="reveal d2">
         <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(32px,4vw,48px);color:var(--navy);line-height:1;"><span class="counter" data-target="40">0</span><span style="font-size:.6em;">+</span></div>
@@ -609,8 +611,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Practical capstone project</li>
           </ul>
         </div>
-        <button class="expand-toggle" onclick="var el=document.getElementById('overviewExpand');el.classList.toggle('is-collapsed');el.classList.toggle('is-expanded');this.classList.toggle('is-open');this.textContent=el.classList.contains('is-collapsed')?'Read more ?':'Read less ?';">
-          Read more ?
+        <button class="expand-toggle" onclick="var el=document.getElementById('overviewExpand');el.classList.toggle('is-collapsed');el.classList.toggle('is-expanded');this.classList.toggle('is-open');this.textContent=el.classList.contains('is-collapsed')?'Read more →':'Read less →';">
+          Read more →
         </button>
       </div>
       <div class="reveal d1">
@@ -640,11 +642,11 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
         <div class="term-bar"><span></span><span></span><span></span></div>
         <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);">3 TERMS</div>
         <ul style="margin-top:16px;">
-          <li>Principles of Accounting</li>
-          <li>Microeconomics &amp; Macroeconomics</li>
+          <li>Business Fundamentals</li>
+          <li>Swiss Business Environment</li>
           <li>Business Mathematics</li>
-          <li>Introduction to Business Law</li>
-          <li>Academic Writing &amp; Research</li>
+          <li>Swiss Business Law</li>
+          <li>Academic Writing</li>
           <li>Business Communication</li>
         </ul>
       </div>
@@ -653,56 +655,18 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
         <div class="term-bar"><span></span><span></span><span></span></div>
         <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);">3 TERMS</div>
         <ul style="margin-top:16px;">
-          <li>Financial Accounting &amp; Reporting</li>
-          <li>Cost &amp; Management Accounting</li>
-          <li>Auditing Principles</li>
-          <li>Taxation</li>
+          <li>Financial Accounting</li>
+          <li>Management Accounting</li>
+          <li>Business Ethics</li>
+          <li>Swiss Taxation</li>
           <li>Corporate Finance</li>
           <li>Business Statistics</li>
         </ul>
       </div>
-      <div class="curr-card">
-        <div style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:22px;color:var(--navy);">Year 3</div>
-        <div class="term-bar"><span></span><span></span><span></span></div>
-        <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);">3 TERMS</div>
-        <ul style="margin-top:16px;">
-          <li>Advanced Auditing</li>
-          <li>International Accounting Standards</li>
-          <li>Data Analytics for Finance</li>
-          <li>Ethics &amp; Governance</li>
-          <li>Strategic Management</li>
-          <li>Bachelor's Thesis</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+      </div></div></div></section>
 
 <!-- DUAL DEGREE -->
-<section class="dual-degree" style="background:var(--navy);color:var(--white);padding:clamp(40px,6vw,70px) 0;position:relative;overflow:hidden;">
-  <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&auto=format&fit=crop&q=80" alt="Swiss Alps and Lake Geneva" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.12;">
-  <div class="wrap" style="position:relative;z-index:1;">
-    <div class="dual-inner" style="display:flex;align-items:center;gap:clamp(40px,6vw,80px);">
-      <div class="dual-copy" style="flex:1;">
-        <span class="eyebrow on-navy">Dual Swiss and US Degree</span>
-        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4vw,48px);line-height:1.15;margin-top:12px;margin-bottom:20px;">Graduate with two degrees. <em style="color:var(--sky);">From two continents.</em></h2>
-        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.7;color:rgba(255,255,255,.75);max-width:48ch;">The Bachelor of Science in International Business Administration at AUS is offered exclusively as a dual degree in collaboration with Tiffin in the United States. All enrolled students graduate with two degrees: a BSc from AUS and a BBA from Tiffin University.</p>
-        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.7;color:rgba(255,255,255,.55);max-width:48ch;margin-top:12px;">Tiffin University is accredited by the Higher Learning Commission in the United States, supporting the international credibility and recognition of the degree pathway.</p>
-      </div>
-      <div class="dual-logos reveal d1" style="display:flex;align-items:center;gap:24px;flex-shrink:0;">
-        <div style="text-align:center;">
-          <div style="width:100px;height:100px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.15);box-shadow:0 4px 20px rgba(0,0,0,.3);margin:0 auto 8px;"><img src="https://flagcdn.com/w160/ch.png" alt="Switzerland" style="width:100%;height:100%;object-fit:cover;"></div>
-          <span style="font-size:12px;color:rgba(255,255,255,.6);">Switzerland</span>
-        </div>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        <div style="text-align:center;">
-          <div style="width:100px;height:100px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.15);box-shadow:0 4px 20px rgba(0,0,0,.3);margin:0 auto 8px;"><img src="https://flagcdn.com/w160/us.png" alt="United States" style="width:100%;height:100%;object-fit:cover;"></div>
-          <span style="font-size:12px;color:rgba(255,255,255,.6);">United States</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- WHY AUS -->
 <section style="padding:clamp(40px,6vw,70px) 0;position:relative;overflow:hidden;">
@@ -720,13 +684,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
         <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;color:var(--navy);margin:0 0 8px;">Focused Learning</h3>
         <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">With a 7:1 student-to-staff ratio and classes limited to 20 students, you receive personal attention and meaningful interaction.</p>
       </div>
-      <div class="reveal d1" style="padding:clamp(20px,2.5vw,28px);border:1px solid var(--line);border-radius:4px;">
-        <div style="width:40px;height:40px;background:var(--sky);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;color:var(--navy);margin:0 0 8px;">Dual Degree</h3>
-        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Earn two separate degrees at the same time. This gives graduates a stronger international profile.</p>
-      </div>
+      
       <div class="reveal d2" style="padding:clamp(20px,2.5vw,28px);border:1px solid var(--line);border-radius:4px;">
         <div style="width:40px;height:40px;background:var(--sky);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -872,19 +830,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 </section>
 
 <!-- CERTIFICATIONS -->
-<section style="padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);">
-  <div class="wrap" style="text-align:center;">
-    <span class="eyebrow reveal">Certification Partners</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;margin-bottom:clamp(16px,2vw,24px);">Build Practical Digital Skills.</h2>
-    <p class="reveal d2" style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);max-width:60ch;margin:0 auto clamp(32px,4vw,48px);">Alongside their dual degree, students can earn certifications through AUS partnerships with leading technology firms in AI, digital tools, and data analytics.</p>
-    <div class="reveal d3" style="display:flex;justify-content:center;gap:clamp(48px,6vw,80px);align-items:center;flex-wrap:wrap;">
-      <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a4b4de19ea900cf0076d259_ibm.webp" alt="IBM" style="height:80px;">
-      <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a4b4de2dcacc8e0c146994b_apple.webp" alt="Apple" style="height:80px;">
-      <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a4b4de2eb31681d4fd191aa_prme.webp" alt="PRME" style="height:80px;">
-      <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a57391f9feaf5c0c9691157_Copy%20of%20higher-learning-commission-logo_0.png" alt="HLC" style="height:80px;">
-    </div>
-  </div>
-</section>
+
 
 <!-- TESTIMONIAL -->
 <section style="padding:clamp(40px,6vw,70px) 0;">
@@ -960,8 +906,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
           <a class="footer-social-tile" href="https://www.youtube.com/channel/UCKUFsoxwPuaH8bi0vMoSTaQ" target="_blank" aria-label="YouTube"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M2.29167 15.5833C1.65131 12.5613 1.65131 9.43867 2.29167 6.41667C2.37581 6.10977 2.53838 5.83007 2.7634 5.60506C2.98841 5.38004 3.26812 5.21747 3.57501 5.13333C8.4915 4.31884 13.5085 4.31884 18.425 5.13333C18.7319 5.21747 19.0116 5.38004 19.2366 5.60506C19.4616 5.83007 19.6242 6.10977 19.7083 6.41667C20.3487 9.43867 20.3487 12.5613 19.7083 15.5833C19.6242 15.8902 19.4616 16.1699 19.2366 16.3949C19.0116 16.62 18.7319 16.7825 18.425 16.8667C13.5085 17.6813 8.49149 17.6813 3.57501 16.8667C3.26812 16.7825 2.98841 16.62 2.7634 16.3949C2.53838 16.1699 2.37581 15.8902 2.29167 15.5833Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M9.16663 13.75L13.75 11L9.16663 8.25V13.75Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
-      <div class="footer-col"><div class="footer-col-title">Programs</div><a href="aus-programs.html#bachelor">Bachelor's</a><a href="aus-programs.html#master">Master's</a><a href="aus-programs.html#doctorate">Doctorate</a><a href="#">Federal Diploma</a></div>
-      <div class="footer-col"><div class="footer-col-title">School</div><a href="#">About</a><a href="aus-about-history.html">History</a><a href="#">Faculty</a><a href="#">Campus life</a></div>
+      <div class="footer-col"><div class="footer-col-title">Programs</div><a href="aus-programs.html#diploma">Swiss Federal Diploma</a><a href="aus-programs.html#master">Master's</a><a href="aus-programs.html#doctorate">Doctorate</a><a href="#">Federal Diploma</a></div>
+      <div class="footer-col"><div class="footer-col-title">School</div><a href="#">About</a><a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a><a href="#">Campus life</a></div>
       <div class="footer-col"><div class="footer-col-title">Connect</div><a href="#">Admissions</a><a href="#">Events</a><a href="#">Contact</a></div>
     </div>
     <div class="footer-v2_bottom">
