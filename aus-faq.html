@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About AUS | AUS Business School</title>
+<title>FAQ | AUS Business School</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -106,7 +106,6 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .hero-scroll{position:absolute;bottom:clamp(24px,3vw,40px);right:clamp(20px,5vw,64px);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.35);font-size:10px;letter-spacing:.12em;text-transform:uppercase;z-index:2;}
 .hero-scroll::after{content:"";width:1px;height:28px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent);animation:scrollPulse 2s ease-in-out infinite;}
 @keyframes scrollPulse{0%,100%{opacity:.35;}50%{opacity:.7;}}
-@media (max-width:760px){.hero{min-height:auto;}.hero-bg{position:relative;height:50vh;}.hero-inner{padding:clamp(32px,5vw,48px) clamp(20px,5vw,64px);}.hero-scroll{display:none;}}
 
 /* MOBILE HERO */
 .hero-mobile{display:none;}
@@ -190,56 +189,16 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .js-reveal-ready .reveal.d3{transition-delay:.24s;}
 .js-reveal-ready .reveal.d4{transition-delay:.32s;}
 
-/* SECTION FADE-IN */
-@keyframes sectionFadeIn{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:none;}}
-.section-animate{animation:sectionFadeIn .8s var(--ease-soft) forwards;}
-
-/* STAT COUNTER */
-.counter{font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,56px);color:var(--navy);line-height:1;}
-
-/* ═══════════════════════════════════════
-   NEW ANIMATION SYSTEM
-   ═══════════════════════════════════════ */
-
-/* REVEAL SYSTEM */
+/* NEW ANIMATION SYSTEM */
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
 .reveal.is-visible{opacity:1;transform:translateY(0);}
 .reveal.d1{transition-delay:.1s;}.reveal.d2{transition-delay:.2s;}.reveal.d3{transition-delay:.3s;}.reveal.d4{transition-delay:.4s;}.reveal.d5{transition-delay:.5s;}
-
-/* SCALE REVEAL */
 .reveal-scale{opacity:0;transform:scale(.92);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
 .reveal-scale.is-visible{opacity:1;transform:scale(1);}
-
-/* CLIP REVEAL — image wipe */
 .reveal-clip{clip-path:inset(100% 0 0 0);transition:clip-path 1s var(--ease-soft);}
 .reveal-clip.is-visible{clip-path:inset(0 0 0 0);}
-
-/* SPLIT TEXT */
-.split-text .word{display:inline-block;opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease-soft),transform .5s var(--ease-soft);}
-.split-text.is-visible .word{opacity:1;transform:translateY(0);}
-
-/* PARALLAX */
-.parallax{will-change:transform;}
-
-/* FLOAT */
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
 .float{animation:float 5s ease-in-out infinite;}
-
-/* ROTATE IN */
-@keyframes rotateIn{from{opacity:0;transform:rotate(-8deg) scale(.9);}to{opacity:1;transform:rotate(0) scale(1);}}
-.reveal-rotate{opacity:0;transform:rotate(-8deg) scale(.9);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
-.reveal-rotate.is-visible{opacity:1;transform:rotate(0) scale(1);}
-
-/* MARQUEE */
-@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.marquee-track{display:flex;width:max-content;animation:marquee 25s linear infinite;}
-.marquee-track:hover{animation-play-state:paused;}
-
-/* LINE DRAW */
-.line-draw{stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset 1.2s var(--ease-soft);}
-.line-draw.is-visible{stroke-dashoffset:0;}
-
-/* STAGGER GRID > children */
 .stagger-grid > *{opacity:0;transform:translateY(30px);transition:opacity .6s var(--ease-soft),transform .6s var(--ease-soft);}
 .stagger-grid.is-visible > *:nth-child(1){transition-delay:.05s;opacity:1;transform:translateY(0);}
 .stagger-grid.is-visible > *:nth-child(2){transition-delay:.12s;opacity:1;transform:translateY(0);}
@@ -247,47 +206,64 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .stagger-grid.is-visible > *:nth-child(4){transition-delay:.26s;opacity:1;transform:translateY(0);}
 .stagger-grid.is-visible > *:nth-child(5){transition-delay:.33s;opacity:1;transform:translateY(0);}
 .stagger-grid.is-visible > *:nth-child(6){transition-delay:.40s;opacity:1;transform:translateY(0);}
+.img-zoom{overflow:hidden;}
+.img-zoom img{transition:transform .7s var(--ease-soft);}
+.img-zoom:hover img{transform:scale(1.06);}
+
+/* PARALLAX */
+.parallax{will-change:transform;}
 
 /* CARD TILT on hover */
 .tilt-card{transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
 .tilt-card:hover{transform:translateY(-6px) rotate(.5deg);box-shadow:0 20px 50px rgba(34,41,95,.1);}
 
-/* IMAGE HOVER ZOOM */
-.img-zoom{overflow:hidden;}
-.img-zoom img{transition:transform .7s var(--ease-soft);}
-.img-zoom:hover img{transform:scale(1.06);}
+/* SECTION NAVIGATOR (archive tab) */
+.archive-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding:14px 22px 14px 30px;background:var(--white);border-top-left-radius:6px;border-bottom-left-radius:6px;box-shadow:-6px 0 24px rgba(34,41,95,0.08);transition:background .4s var(--ease),box-shadow .4s var(--ease);}
+.archive-tab-num{font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.04em;color:var(--navy);}
+.archive-tab-label{font-family:var(--font-serif);font-style:italic;font-size:12px;color:var(--ink-soft);white-space:nowrap;}
+.archive-tab-toc{position:absolute;right:100%;top:50%;transform:translateY(-50%) translateX(12px);width:236px;background:var(--white);box-shadow:-6px 0 24px rgba(34,41,95,0.14);padding:10px 0;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);border-radius:8px;}
+.archive-tab:hover .archive-tab-toc,.archive-tab:focus-within .archive-tab-toc{opacity:1;transform:translateY(-50%) translateX(0);pointer-events:auto;}
+.archive-tab-toc-item{display:flex;align-items:baseline;gap:12px;width:100%;text-align:left;padding:8px 20px;font-size:12.5px;color:var(--ink-soft);transition:color .2s var(--ease),background .2s var(--ease);}
+.archive-tab-toc-item:hover{color:var(--navy);background:var(--sky-tint);}
+.archive-tab-toc-item .num{font-family:var(--font-display);font-weight:700;font-size:11px;color:var(--crimson);min-width:18px;}
+.archive-tab-toc-item.is-active{color:var(--navy);font-weight:600;}
+.archive-tab-toc-item.is-active .num{color:var(--crimson);}
+@media (max-width:960px){.archive-tab{display:none;}}
 
-/* MAGNETIC BUTTON */
-.mag-btn{position:relative;transition:transform .3s var(--ease);}
-
-@media (hover:none){.prog-card-detail{max-height:120px!important;opacity:1!important;transform:translateY(0)!important;}}
-
-@media (max-width:960px){
-  .hero h1{font-size:clamp(28px,7vw,52px);}
-  .hero-sub{font-size:clamp(14px,2.8vw,16px);}
-}
-
+/* TIMELINE */
+.timeline{position:relative;max-width:900px;margin:0 auto;}
+.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--line),var(--crimson),var(--line));transform:translateX(-50%);}
+.timeline-item{position:relative;width:50%;padding:0 clamp(24px,4vw,48px) clamp(40px,5vw,60px);}
+.timeline-item:nth-child(odd){left:0;text-align:right;padding-right:clamp(32px,5vw,60px);padding-left:0;}
+.timeline-item:nth-child(even){left:50%;text-align:left;padding-left:clamp(32px,5vw,60px);padding-right:0;}
+.timeline-item::before{content:"";position:absolute;top:8px;width:14px;height:14px;border-radius:50%;background:var(--white);border:3px solid var(--crimson);z-index:2;}
+.timeline-item:nth-child(odd)::before{right:-7px;}
+.timeline-item:nth-child(even)::before{left:-7px;}
+.timeline-item::after{content:"";position:absolute;top:14px;width:clamp(20px,3vw,40px);height:2px;background:var(--line);z-index:1;}
+.timeline-item:nth-child(odd)::after{right:0;}
+.timeline-item:nth-child(even)::after{left:0;}
+.timeline-year{font-family:var(--font-display);font-weight:800;font-size:clamp(32px,3.5vw,48px);color:var(--navy);line-height:1;margin-bottom:8px;}
+.timeline-text h3{font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;}
+.timeline-text p{font-size:14px;line-height:1.65;color:var(--ink-soft);}
 @media (max-width:760px){
-  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr)!important;}
-  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,1fr)!important;}
-  .cta-section{padding:clamp(40px,6vw,60px) 0;}
-  .cta-section h2{font-size:clamp(20px,5vw,30px);}
+  .timeline::before{left:20px;}
+  .timeline-item,.timeline-item:nth-child(odd),.timeline-item:nth-child(even){left:0;width:100%;text-align:left;padding-left:48px;padding-right:0;}
+  .timeline-item::before,.timeline-item:nth-child(odd)::before,.timeline-item:nth-child(even)::before{left:13px;right:auto;}
+  .timeline-item::after,.timeline-item:nth-child(odd)::after,.timeline-item:nth-child(even)::after{left:27px;right:auto;width:20px;}
 }
 
 @media (max-width:960px){
   .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr)!important;}
-  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,1fr)!important;}
 }
 @media (max-width:760px){
   .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
   .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
   .wrap>[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
-  .wrap>[style*="grid-template-columns:1fr 1.4fr"]{grid-template-columns:1fr!important;}
+  .cta-section{padding:clamp(40px,6vw,60px) 0;}
+  .cta-section h2{font-size:clamp(20px,5vw,30px);}
 }
 @media (max-width:600px){
   .wrap{padding-left:clamp(16px,4vw,24px);padding-right:clamp(16px,4vw,24px);}
-  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
-  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
   .footer-top{grid-template-columns:1fr!important;gap:clamp(20px,4vw,28px);}
 }
 /* SITE SEARCH */
@@ -392,6 +368,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
           <a href="aus-faq.html">FAQ</a>
           <a href="#" style="display:none">Accreditations_TEMP &amp; Memberships</a>
             
+            
           </div>
         </div></div>
       </div>
@@ -401,250 +378,384 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
           <div class="accordion-group">
             <a href="#">Campus &amp; Housing</a>
             <a href="#">Clubs &amp; Activities</a>
-            <a href="#">Lake Geneva Life</a>
+            <a href="#">Events</a>
           </div>
         </div></div>
       </div>
       <a href="#" class="side-panel-link">Admissions &amp; Financing</a>
       <a href="#" class="side-panel-link">Contact</a>
-</nav>
+    </nav>
     <div class="side-panel-foot">
       <a href="#" class="hero-cta">Apply now &rarr;</a>
       <div class="side-panel-socials footer-social-grid">
-        <a class="footer-social-tile" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.62.07 4.81s-.01 3.56-.07 4.81c-.15 3.23-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07-3.2 0-3.6 0-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92-.06-1.25-.07-1.62-.07-4.81s.01-3.56.07-4.81c.15-3.23 1.66-4.77 4.92-4.92C8.4 2.2 8.8 2.2 12 2.2zm0 3.5a6.3 6.3 0 100 12.6 6.3 6.3 0 000-12.6zm0 2.1a4.2 4.2 0 110 8.4 4.2 4.2 0 010-8.4zm6.55-2.35a1.47 1.47 0 100 2.94 1.47 1.47 0 000-2.94z"/></svg></a>
-        <a class="footer-social-tile" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21H18v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21H10V9z"/></svg></a>
-        <a class="footer-social-tile" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.2a2.9 2.9 0 11-2.9-2.9c.2 0 .4 0 .6.05V9a6.2 6.2 0 00-.6-.03A6.13 6.13 0 004.3 15.1 6.13 6.13 0 0010.4 21.2a6.13 6.13 0 006.1-6.1V8.4a8.2 8.2 0 004.8 1.5V6.6A5 5 0 0116.6 2z"/></svg></a>
+        <a class="footer-social-tile" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.62.07 4.81s-.01 3.56-.07 4.81c-.15 3.23-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07-3.2 0-3.6 0-4.85-.07-3.26-.15-4.77-1.69-4.92-4.92-.06-1.25-.07-1.62-.07-4.81s.01-3.56.07-4.81c.15-3.23 1.66-4.77 4.92-4.92 1.25-.06 1.6-.07 4.85-.07zm0-2.2c-3.27 0-3.67 0-4.95.08-4.3.2-6.78 2.68-6.98 6.98-.08 1.28-.08 1.68-.08 4.95s0 3.67.08 4.95c.2 4.3 2.68 6.78 6.98 6.98 1.28.08 1.68.08 4.95.08s3.67 0 4.95-.08c4.3-.2 6.78-2.68 6.98-6.98.08-1.28.08-1.68.08-4.95s0-3.67-.08-4.95c-.2-4.3-2.68-6.78-6.98-6.98-1.28-.08-1.68-.08-4.95-.08zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.4-11.85a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg></a>
+        <a class="footer-social-tile" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0z"/></svg></a>
+        <a class="footer-social-tile" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46v-7.2a8.16 8.16 0 005.58 2.18v-3.45a4.85 4.85 0 01-3.59-1.59V6.69h3.59z"/></svg></a>
       </div>
     </div>
   </aside>
 </div>
 
-<!-- ═══════════════════════════════════════
-     HERO — Full-screen with floating year badge
-     ═══════════════════════════════════════ -->
-<header class="hero">
+<style>.stagger-grid.is-visible > *:nth-child(7){transition-delay:.47s;opacity:1;transform:translateY(0);} .stagger-grid.is-visible > *:nth-child(8){transition-delay:.54s;opacity:1;transform:translateY(0);} .stagger-grid.is-visible > *:nth-child(9){transition-delay:.61s;opacity:1;transform:translateY(0);} .stagger-grid.is-visible > *:nth-child(10){transition-delay:.68s;opacity:1;transform:translateY(0);} .stagger-grid.is-visible > *:nth-child(11){transition-delay:.75s;opacity:1;transform:translateY(0);} .stagger-grid.is-visible > *:nth-child(12){transition-delay:.82s;opacity:1;transform:translateY(0);}/* SITE SEARCH */
+.aus-search{position:relative;flex:0 1 280px;max-width:32vw;display:flex;align-items:center;}
+.aus-search input{width:100%;padding:10px 38px 10px 14px;border-radius:100px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:var(--white);font-size:13.5px;outline:none;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);}
+.aus-search input::placeholder{color:currentColor;opacity:.55;}
+.aus-search input:focus{border-color:var(--white);background:var(--white);color:var(--navy);}
+.aus-nav.is-scrolled .aus-search input{border-color:var(--line);background:var(--white);color:var(--navy);}
+.aus-search-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:var(--white);color:var(--navy);display:flex;align-items:center;justify-content:center;pointer-events:none;}
+.aus-search-drop{position:absolute;top:calc(100% + 10px);right:0;width:min(420px,92vw);max-height:min(60vh,520px);overflow:auto;background:var(--white);border-radius:16px;box-shadow:0 20px 50px rgba(12,14,34,.18);border:1px solid var(--line);padding:8px;display:grid;gap:6px;z-index:120;}
+.aus-search-drop[hidden]{display:none !important;}
+.aus-search-drop a:hover{background:var(--sky-tint);}
+@media (max-width:900px){.aus-search{display:none;}}</style><header class="hero" style="min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy);">
   <div class="hero-bg">
-    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS campus">
+    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS campus" class="parallax" data-speed="0.12">
   </div>
-  <div class="hero-inner">
+  <div class="hero-inner" style="z-index:2;width:100%;padding:clamp(60px,8vw,100px) clamp(20px,5vw,64px) clamp(40px,6vw,70px);color:var(--white);">
     <div class="hero-badge" style="margin-bottom:clamp(14px,1.6vw,22px);">
       <span class="hero-badge-icon"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M22 10v6M2 10l10-5 10 5-10 5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12v5c3 3 9 3 12 0v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       About AUS
     </div>
-    <h1 style="font-size:clamp(48px,8vw,96px);line-height:.95;">Shaping Tomorrow's Business Leaders</h1>
-    <p class="hero-sub">For over three decades, AUS has equipped international students with the global business expertise and practical skills that drive organizational success.</p>
+    <h1 style="font-size:clamp(48px,8vw,96px);line-height:.95;">Frequently Asked<br><em style="font-family:var(--font-serif);font-style:italic;font-weight:400;">Questions</em></h1>
+    <p class="hero-sub" style="max-width:48ch;">Everything you need to know about studying at AUS â€” from admissions and visas to housing, registration and arrival.</p>
   </div>
   <div class="hero-scroll">Scroll</div>
-</header>
-
-<!-- MOBILE HERO -->
+</header><!-- MOBILE HERO -->
 <div class="hero-mobile">
   <div class="hero-mob-img">
-    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS campus Lake Geneva">
+    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS campus">
   </div>
   <div class="hero-mob-content">
     <span class="hero-mob-badge">About AUS</span>
-    <h1>Shaping Tomorrow's Business Leaders</h1>
-    <p class="hero-mob-sub">For over three decades, AUS has equipped international students with the global business expertise and practical skills that drive organizational success.</p>
-    <div class="hero-mob-ctas">
-      <a href="#" class="hero-cta hero-cta-primary">Start your Application <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-    </div>
+    <h1>Frequently Asked Questions</h1>
+    <p class="hero-mob-sub">Admissions, fees, visas, housing, registration and arrival â€” answered.</p>
   </div>
 </div>
-
-<!-- BREADCRUMB -->
 <div class="breadcrumb">
   <div class="wrap">
     <a href="aus-home-demo.html">Home</a><span>/</span>
-    About
+    <a href="aus-about.html">About</a><span>/</span>
+    FAQ
   </div>
 </div>
-
-<!-- MISSION & VISION -->
-<section style="padding:clamp(40px,6vw,70px) 0;">
+<div class="archive-tab" id="archiveTab" tabindex="0">
+  <span class="archive-tab-num" id="archiveTabNum">01</span>
+  <span class="archive-tab-label" id="archiveTabLabel">All Questions</span>
+  <nav class="archive-tab-toc" id="archiveTabToc" aria-label="Jump to section"></nav>
+</div><!-- FAQ CONTENT -->
+<section id="faq-intro" data-chapter="01" data-chapter-label="FAQ" style="padding:clamp(36px,5vw,48px) 0 0;">
   <div class="wrap">
-    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;">
-      <div>
-        <span class="eyebrow">Our Purpose</span>
-        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">Mission</h2>
-        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);">AUS equips its students pursuing a degree in international business with the knowledge, skills, and tools necessary to make a significant contribution to the development and success of any business organization. Through practice-oriented studies based on the application of scientific methods, research and development, AUS graduates will be prepared to become competent and confident leaders in the business world.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:24px;">
+      <div class="reveal" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+        <div style="position:relative;flex:1 1 320px;max-width:520px;">
+          <input id="faqSearch" type="search" placeholder="Search questions — e.g. visa, tuition, accommodation" aria-label="Search FAQs" style="width:100%;padding:14px 44px 14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--white);font-size:14px;outline:none;transition:border-color .2s var(--ease),box-shadow .2s var(--ease);">
+          <span style="position:absolute;right:12px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;color:var(--white);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
+        </div>
+        <span id="faqCount" style="font-size:13px;color:var(--ink-soft);white-space:nowrap;"></span>
       </div>
-      <div class="reveal d1">
-        <span class="eyebrow">Where We're Going</span>
-        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">Vision</h2>
-        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);">Our vision is to build a reputation as a prestigious and well-known private higher education institution in Switzerland that attracts students and faculty from all over the world.</p>
-      </div>
+    </div>
+    <div class="reveal d1" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:clamp(24px,3vw,36px);">
+      <button type="button" data-filter="all" class="faq-pill is-active" style="padding:8px 14px;border-radius:100px;border:1px solid var(--navy);background:var(--navy);color:var(--white);font-size:13px;font-weight:700;letter-spacing:.02em;">All</button>
+      <button type="button" data-filter="about" class="faq-pill" style="padding:8px 14px;border-radius:100px;border:1px solid var(--line);background:var(--white);color:var(--navy);font-size:13px;font-weight:600;">About AUS</button>
+      <button type="button" data-filter="admissions" class="faq-pill" style="padding:8px 14px;border-radius:100px;border:1px solid var(--line);background:var(--white);color:var(--navy);font-size:13px;font-weight:600;">Admissions</button>
+      <button type="button" data-filter="fees" class="faq-pill" style="padding:8px 14px;border-radius:100px;border:1px solid var(--line);background:var(--white);color:var(--navy);font-size:13px;font-weight:600;">Fees &amp; Finance</button>
+      <button type="button" data-filter="visa" class="faq-pill" style="padding:8px 14px;border-radius:100px;border:1px solid var(--line);background:var(--white);color:var(--navy);font-size:13px;font-weight:600;">Visa &amp; Insurance</button>
+      <button type="button" data-filter="housing" class="faq-pill" style="padding:8px 14px;border-radius:100px;border:1px solid var(--line);background:var(--white);color:var(--navy);font-size:13px;font-weight:600;">Accommodation</button>
+      <button type="button" data-filter="registration" class="faq-pill" style="padding:8px 14px;border-radius:100px;border:1px solid var(--line);background:var(--white);color:var(--navy);font-size:13px;font-weight:600;">Registration</button>
+      <button type="button" data-filter="arrival" class="faq-pill" style="padding:8px 14px;border-radius:100px;border:1px solid var(--line);background:var(--white);color:var(--navy);font-size:13px;font-weight:600;">Arrival</button>
+      <button type="button" data-filter="gibill" class="faq-pill" style="padding:8px 14px;border-radius:100px;border:1px solid var(--line);background:var(--white);color:var(--navy);font-size:13px;font-weight:600;">GI Bill</button>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     PRESIDENT'S MESSAGE — Large quote with floating portrait
-     ═══════════════════════════════════════ -->
-<section style="padding:clamp(60px,8vw,100px) 0;background:var(--navy);color:var(--white);position:relative;overflow:hidden;">
-  <!-- Decorative circle -->
-  <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;border:1px solid rgba(255,255,255,.06);" class="parallax" data-speed="0.05"></div>
-  <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:var(--crimson);opacity:.08;filter:blur(80px);"></div>
-  
-  <div class="wrap" style="position:relative;z-index:1;">
-    <span class="eyebrow on-navy reveal">President's Message</span>
-    
-    <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(40px,6vw,80px);align-items:center;margin-top:clamp(32px,4vw,48px);">
-      <!-- Floating portrait -->
-      <div class="reveal-scale" style="position:relative;">
-        <div style="width:clamp(280px,22vw,400px);height:clamp(340px,28vw,480px);border-radius:16px;overflow:hidden;position:relative;z-index:1;">
-          <img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a571c91ccb0b5ae96c73d73_khansa.webp" alt="Dr. M. El Khansa" style="width:100%;height:100%;object-fit:cover;">
-        </div>
-        <!-- Floating accent card -->
-        <div style="position:absolute;bottom:-20px;right:-30px;background:var(--crimson);color:var(--white);padding:20px 28px;border-radius:12px;z-index:2;box-shadow:0 15px 40px rgba(190,31,61,.3);" class="float">
-          <div style="font-family:var(--font-display);font-weight:800;font-size:28px;">30+</div>
-          <div style="font-size:12px;opacity:.8;margin-top:2px;">Years Leading AUS</div>
-        </div>
-      </div>
-      
-      <!-- Quote -->
-      <div class="reveal d2">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--crimson)" opacity=".3" style="margin-bottom:20px;"><path d="M10 11H6C6 7.686 8.686 5 12 5V3C7.582 3 4 6.582 4 11v7a2 2 0 002 2h4a2 2 0 002-2v-5a2 2 0 00-2-2zm10 0h-4c0-3.314 2.686-6 6-6V3c-4.418 0-8 3.582-8 8v7a2 2 0 002 2h4a2 2 0 002-2v-5a2 2 0 00-2-2z"/></svg>
-        <p class="split-text" style="font-family:var(--font-serif);font-style:italic;font-size:clamp(18px,2vw,26px);line-height:1.6;color:var(--white);margin-bottom:24px;">The entire world of higher education is evolving at an accelerating pace. The AUS history is characterized by continued transformation, growth, and improvement in a world of tremendous change.</p>
-        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:rgba(255,255,255,.6);margin-bottom:28px;">Internally, we are on an accelerated path of capacity building. Externally, we are strengthening new partnerships as part of our community engagement strategy that builds on existing networks of alumni and representatives.</p>
-        <div style="display:flex;align-items:center;gap:16px;">
-          <div style="width:1px;height:40px;background:var(--crimson);"></div>
-          <div>
-            <div style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:18px;">Dr. M. El Khansa</div>
-            <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px;">President, AUS</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VALUES -->
-<section style="padding:clamp(40px,6vw,70px) 0;">
+<!-- FAQ ACCORDIONS -->
+<section style="padding:0 0 clamp(60px,8vw,90px);">
   <div class="wrap">
-    <span class="eyebrow reveal">What We Stand For</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 clamp(32px,4vw,48px);">Our Values</h2>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,32px);">
-      <div class="reveal" style="padding:clamp(24px,3vw,32px);border:1px solid var(--line);border-radius:8px;">
-        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <!-- About AUS -->
+    <section data-chapter="02" data-chapter-label="About AUS"><div class="faq-group reveal" data-group="about" style="margin-bottom:clamp(28px,4vw,44px);">
+      <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(22px,3vw,30px);margin-bottom:16px;display:flex;align-items:center;gap:12px;">About AUS <span style="height:1px;flex:1;background:var(--line);"></span></h2>
+      <div class="faq-list" style="display:grid;gap:10px;">
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Where is the American Institute of Applied Sciences in Switzerland located? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:transform .3s var(--ease),background .3s var(--ease),color .3s var(--ease);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">The American Institute of Applied Sciences in Switzerland is in the French-speaking region of Switzerland, in La Tour-de-Peilz in Canton of Vaud. AUS campus is approximately one hour from Geneva and 25 minutes from Lausanne by train.<br><br>AUS offers the ideal environment for obtaining your business degree, nestled in the Swiss Riviera. La Tour-de-Peilz is located between the lakeside towns of Vevey, home of the world-renowned Nestlé, and Montreux, known for its famous Jazz Festival. The region has convenient rail and air connections to all the major European cities, and it is also an excellent location for exploring the splendor of the Swiss Alps.</div>
         </div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--navy);margin-bottom:8px;">Respect</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">We value professional behavior and conduct based on respectful communication and actions.</p>
-      </div>
-      <div class="reveal d1" style="padding:clamp(24px,3vw,32px);border:1px solid var(--line);border-radius:8px;">
-        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Is the American Institute of Applied Sciences in Switzerland an accredited institution? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">AUS is accredited by the International Accreditation Council for Business Education (IACBE, USA).<br><br>Students who are enrolled in the Dual Degree program have their degrees also accredited by the Higher Learning Commission (HLC), the Accreditation Council for Business Schools and Programs (ACBSP) and the Ohio Department of Higher Education.<br><br>AUS is a member of diverse professional organizations such as the Awards for Training in Higher Education (ATHE), Vaudoise Association of Private Schools (AVDEP), Swiss Federation of Private Schools (FSEP).</div>
         </div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--navy);margin-bottom:8px;">Excellence</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">We provide value for money and are transformational in our approaches to learning and teaching.</p>
-      </div>
-      <div class="reveal d2" style="padding:clamp(24px,3vw,32px);border:1px solid var(--line);border-radius:8px;">
-        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">How can I receive more information about AUS? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Office of Admissions is happy to assist applicants and their families with any inquiries regarding the institution and its programs. Please get in touch with our team.<br><br><a href="https://form.aus.swiss/speak-to-students" target="_blank" rel="noopener" style="color:var(--crimson);font-weight:600;">Book a Call</a> &nbsp;·&nbsp; <a href="https://form.aus.swiss/contact" target="_blank" rel="noopener" style="color:var(--crimson);font-weight:600;">Contact Form</a></div>
         </div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--navy);margin-bottom:8px;">Accountability</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">We hold ourselves accountable and adhere to the highest integrity and ethical standards.</p>
-      </div>
-      <div class="reveal d3" style="padding:clamp(24px,3vw,32px);border:1px solid var(--line);border-radius:8px;">
-        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Does AUS collaborate with other institutions? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Yes, AUS has a range of collaborations with other institutions to offer students an enriched learning experience. We currently have exciting collaborations with institutions such as Tiffin University, Apple, IBM, Ferrari Fashion School, and more.<br><br><a href="aus-accreditations.html" style="color:var(--crimson);font-weight:600;">Discover all the Educational Partnerships →</a></div>
         </div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--navy);margin-bottom:8px;">Leadership</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">We lead students through developing their knowledge and abilities so they can become impactful leaders of the future.</p>
       </div>
+    </div>
+
+    <!-- Admissions -->
+    </section><section data-chapter="03" data-chapter-label="Admissions"><div class="faq-group reveal" data-group="admissions" style="margin-bottom:clamp(28px,4vw,44px);">
+      <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(22px,3vw,30px);margin-bottom:16px;display:flex;align-items:center;gap:12px;">Admissions &amp; Applications <span style="height:1px;flex:1;background:var(--line);"></span></h2>
+      <div class="faq-list" style="display:grid;gap:10px;">
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Do I have to pay an application fee? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">The American Institute of Applied Sciences in Switzerland charges a <strong>CHF 250</strong> Application Fee for Bachelor or Master Degrees, payable online by Visa or MasterCard during the online application. Non-refundable and non-transferable. <a href="https://form.aus.swiss/application" target="_blank" rel="noopener" style="color:var(--crimson);font-weight:600;">Start Your Application →</a></div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">How do I submit my application? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Complete the application form online or download the PDF form. The Office of Admissions only evaluates completed applications with all required documents. <a href="https://form.aus.swiss/application" target="_blank" rel="noopener" style="color:var(--crimson);font-weight:600;">Complete the Online Application →</a></div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">What documents are required? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);"><strong>Bachelor:</strong> completed application form, passport copy, Swiss permit if applicable, high school transcripts &amp; diploma, 2 recommendation letters, motivation letter, CV, proof of English proficiency.<br><br><strong>Master:</strong> completed form, passport copy, Swiss permit if applicable, bachelor diploma &amp; transcripts, 2 recommendation letters, motivation letter, CV, proof of English proficiency.<br><br><a href="https://aus.swiss/admissions/eligibility" target="_blank" rel="noopener" style="color:var(--crimson);font-weight:600;">Eligibility Requirements →</a></div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">What are the English language requirements? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Non-native English speakers must either have completed at least three full academic years where English is the sole language of instruction, or provide proof of English proficiency via an accepted test (IELTS, TOEFL, etc.). <a href="#" style="color:var(--crimson);font-weight:600;">View accepted tests →</a></div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Does AUS accept transfer credits? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">AUS accepts transfer students from other recognized universities. Provide the official academic transcript in English; the academic team will review eligible courses and credits for transfer. <a href="https://docs.google.com/document/d/1tBEyZ-02v58ubs3li3EVotM-BLQv9ysk/edit" target="_blank" rel="noopener" style="color:var(--crimson);font-weight:600;">Contact us to transfer →</a></div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">I received an Offer Letter — what next? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Congratulations! Please review and sign the Offer Letter and return it by the defined deadline, then proceed with the Admission Fee payment to confirm your place.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Can I get help completing my application? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Yes, the Office of Admissions is delighted to help you complete your application. Get in touch by phone or via our online contact form.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">How long until I get a decision? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">The Admissions Committee meets weekly to review completed applications. Expect a response within <strong>10–14 days</strong> after submitting your complete application.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Can I defer my entry? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Yes, you can defer your entry once within an academic year. For longer deferrals you may need to re-apply.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">How much time from application to enrollment? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">We recommend allowing at least <strong>three months</strong> from application to admission. Visa processing may take longer for international students requiring a student visa.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">How many IB points do I need for the Bachelor? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">We require students to have at least <strong>26 points</strong> at the IB to apply to AUS.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fees & Finance -->
+    </section><section data-chapter="04" data-chapter-label="Fees"><div class="faq-group reveal" data-group="fees" style="margin-bottom:clamp(28px,4vw,44px);">
+      <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(22px,3vw,30px);margin-bottom:16px;display:flex;align-items:center;gap:12px;">Fees &amp; Finance <span style="height:1px;flex:1;background:var(--line);"></span></h2>
+      <div class="faq-list" style="display:grid;gap:10px;">
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">When do I need to pay the Admission Fee? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">The AUS Admission Fee must be paid by the deadline specified in the Offer Letter. If the deadline is missed, the application will be automatically rejected.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">How do I pay the Admission and Tuition Fees? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">You can pay by bank transfer or online with a credit card. Payment options and banking details are indicated in the Offer Letter.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">How much do I have to pay for tuition fees? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Your tuition fees will be detailed in your offer letter. Please see the Tuition Fees page for more information.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Do you offer flexible payment plans? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">We offer two payment plan options: <strong>termly</strong> or <strong>annually</strong>.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">I have paid my Admission Fee — what happens next? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Once you have paid the Admission Fee and sent proof of payment, the Office of Admissions will send a confirmation of receipt and instructions for the next steps.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visa -->
+    </section><section data-chapter="05" data-chapter-label="Visa"><div class="faq-group reveal" data-group="visa" style="margin-bottom:clamp(28px,4vw,44px);">
+      <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(22px,3vw,30px);margin-bottom:16px;display:flex;align-items:center;gap:12px;">Student Visa &amp; Health Insurance <span style="height:1px;flex:1;background:var(--line);"></span></h2>
+      <div class="faq-list" style="display:grid;gap:10px;">
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Do I require health insurance? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Yes, all students are required to have health insurance in Switzerland. AUS works with various providers — you register only upon arrival and our Administration staff will assist you.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Do I require a student visa? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Non-EU/EFTA students must apply for a visa. After your application is completed, the Office of Admissions will send the documents you need for the embassy/consulate. Visa processing may take up to three months — apply early. Upon arrival you apply for a Swiss Residence Permit, which allows free travel in Switzerland and the Schengen area.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Does AUS help with visas? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">We provide all relevant documentation to support your visa application to the embassy. You must contact the embassy for specific requirements and to schedule an appointment.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">How do I apply for my student visa? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Contact the local Swiss embassy or consulate in your country. If you have questions, contact the AUS Administration team.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">How long does it take to get a student visa? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Up to three months, depending on the time of year and the State Secretariat for Migration. AUS is unable to expedite the process.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">What if my visa is rejected? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">If your visa is rejected you are eligible to appeal. Please contact the AUS Administration team for more information regarding the appeal process.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Do I need to pay for my visa application? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Please contact your local Swiss embassy or consulate to see if they have any payable application fees.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Can I work on a student visa? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Foreign students may work a maximum of 15 hours per week during studies and up to 100% during semester breaks (reported to immigration authorities). Students from outside the EU/EFTA may only start working six months after the beginning of their studies.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Do I have to leave Switzerland after my studies? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Your visa specifies the length of stay or departure date set by the immigration authorities and must be followed accordingly.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accommodation -->
+    </section><section data-chapter="06" data-chapter-label="Housing"><div class="faq-group reveal" data-group="housing" style="margin-bottom:clamp(28px,4vw,44px);">
+      <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(22px,3vw,30px);margin-bottom:16px;display:flex;align-items:center;gap:12px;">Accommodation <span style="height:1px;flex:1;background:var(--line);"></span></h2>
+      <div class="faq-list" style="display:grid;gap:10px;">
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Does AUS have accommodation? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Yes, AUS provides several housing options, including single and shared rooms. Accommodation is not included in the tuition fees. <a href="https://aus.swiss/university-life-aus-accomodation" target="_blank" rel="noopener" style="color:var(--crimson);font-weight:600;">Learn more →</a></div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Where is the accommodation located? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);"><strong>La Tour-de-Peilz</strong> — center of town, 1 min from the lakeside, 10 min walk from campus, 5 min to train station.<br><strong>Vevey</strong> — close to Vevey station and shopping, 2 min by train and 10 min by bus to La Tour-de-Peilz. All options are close to local amenities.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">What type of accommodation is available? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Choose between shared and single rooms (single rooms higher cost). All rooms are fully furnished with bathroom. Shared kitchen, dining area and laundry facility included.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">When can I move in? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">You can move in one week before the start of the term. For earlier arrival, contact the administration team to confirm availability.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Are there other accommodation providers? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">We provide AUS housing on a first-come, first-served basis. Students may search for private accommodation, but we advise staying in AUS accommodation for at least the first year for ease and convenience.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Registration -->
+    </section><section data-chapter="07" data-chapter-label="Registration"><div class="faq-group reveal" data-group="registration" style="margin-bottom:clamp(28px,4vw,44px);">
+      <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(22px,3vw,30px);margin-bottom:16px;display:flex;align-items:center;gap:12px;">Registration &amp; Enrollment <span style="height:1px;flex:1;background:var(--line);"></span></h2>
+      <div class="faq-list" style="display:grid;gap:10px;">
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">When does the term start? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">The academic year has three start dates: January, April, and September. For 2024–2025: Fall Term 2024 — Sep 23, 2024 · Winter Term 2025 — Jan 13, 2025 · Spring Term 2025 — Apr 28, 2025</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">How do I register as a student? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Once you have arrived in Switzerland, you will meet with the AUS Administration team, who will complete your registration as a student at AUS.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">How do I get my student ID card? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Your Student ID card will be issued upon registration as a student at AUS.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">When will I get my timetable? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">You will receive your timetable two weeks before the term starts.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Do I need to do anything specific before arriving on campus? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Before you arrive, you will receive a ‘New Student Guide’ by email with important information regarding your arrival, what to prepare in advance and what to bring with you to Switzerland.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrival -->
+    </section><section data-chapter="08" data-chapter-label="Arrival"><div class="faq-group reveal" data-group="arrival" style="margin-bottom:clamp(28px,4vw,44px);">
+      <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(22px,3vw,30px);margin-bottom:16px;display:flex;align-items:center;gap:12px;">Arrival in Switzerland <span style="height:1px;flex:1;background:var(--line);"></span></h2>
+      <div class="faq-list" style="display:grid;gap:10px;">
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">When should I plan to arrive in Switzerland? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">We recommend arriving at least one week before the start of the term to settle in and complete registration.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">What is the nearest airport to the campus? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Geneva Airport is the closest — approximately 75–90 minutes by train. Check trains and timetables on the <a href="https://www.sbb.ch/en" target="_blank" rel="noopener" style="color:var(--crimson);font-weight:600;">SBB website →</a></div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">Where can I get the train? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">The train station of La Tour-de-Peilz is within a 2-minute walk from the center of town and a 5-minute walk from the AUS campus. From there, you can take the train to Vevey, Montreux, Lausanne, and Geneva, with fast connections to many other European cities.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">What do I need to do when I arrive in Switzerland? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Upon arrival, our administration team will contact you to schedule a meeting and guide you through the processes of registration as a resident in Switzerland and as a student at AUS.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GI Bill -->
+    </section><section data-chapter="09" data-chapter-label="GI Bill"><div class="faq-group reveal" data-group="gibill" style="margin-bottom:clamp(28px,4vw,44px);">
+      <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(22px,3vw,30px);margin-bottom:16px;display:flex;align-items:center;gap:12px;">Using your GI Bill to Study in Switzerland <span style="height:1px;flex:1;background:var(--line);"></span></h2>
+      <div class="faq-list" style="display:grid;gap:10px;">
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">What is the GI Bill? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">The GI Bill® is an education benefit earned by members of Active Duty, Selected Reserve and National Guard Armed Forces and their families. Eligibility is determined by the <a href="https://benefits.va.gov/gibill/" target="_blank" rel="noopener" style="color:var(--crimson);font-weight:600;">U.S. Department of Veterans Affairs (VA)</a>. Benefits can cover a percentage of tuition and mandatory fees based on length of active duty service.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">What benefits can I get? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">You may be able to get money for school and money for your housing costs during enrollment.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">How do I access VA benefits to study at AUS? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">AUS is an approved institution by the VA, allowing veterans to use GI Bill benefits for undergraduate or graduate programs in Switzerland.</div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">What is the Institution Code of AUS? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Facility code: <strong>21001578</strong> — <a href="https://www.va.gov/education/gi-bill-comparison-tool/institution/21001578" target="_blank" rel="noopener" style="color:var(--crimson);font-weight:600;">View on VA website →</a></div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">How do I apply for VA benefits at AUS? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">1) Submit your application 120 days before departure. 2) Provide your Certificate of Eligibility (COE) to AUS’s Certifying Official, who submits VA Form 22-1999. 3) Prepare funds, housing, travel and insurance. 4) Grant written permission for AUS to share info with the VA. 5) For multi-year attendance, notify 120 days before re-enrollment. <a href="https://www.va.gov/education/about-gi-bill-benefits/how-to-use-benefits/study-at-foreign-schools/" target="_blank" rel="noopener" style="color:var(--crimson);font-weight:600;">Full guide →</a></div>
+        </div>
+        <div class="faq-item" style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+          <button type="button" class="faq-q" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);">What if I need more help with my GI Bill? <span class="faq-icon" style="flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <div class="faq-a" hidden style="padding:0 20px 18px;font-size:14.5px;line-height:1.7;color:var(--ink-soft);">Contact VA: <a href="https://www.va.gov/contact-us" target="_blank" rel="noopener" style="color:var(--crimson);">Ask VA online</a>, or call 888-442-4551 (US, TTY:711) Mon–Fri 8am–7pm ET, or +1-918-781-5678 from outside the US. Also find a <a href="https://www.va.gov/find-locations/?facilityType=benefits" target="_blank" rel="noopener" style="color:var(--crimson);">VA regional office</a>.</div>
+        </div>
+      </div>
+    </div>
+
+    </section><div id="faqNoResults" hidden style="text-align:center;padding:32px 20px;background:var(--sky-tint);border-radius:14px;margin-top:16px;">
+      <p style="font-weight:700;color:var(--navy);">No results</p>
+      <p style="font-size:14px;color:var(--ink-soft);margin-top:6px;">Try a different term or select another category.</p>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<section style="padding:clamp(40px,6vw,70px) 0;background:var(--navy);color:var(--white);">
-  <div class="wrap">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,40px);text-align:center;">
-      <div class="reveal">
-        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,56px);color:var(--white);">30<span style="color:var(--crimson);">+</span></div>
-        <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:6px;">Years of Excellence</div>
-      </div>
-      <div class="reveal d1">
-        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,56px);color:var(--white);">40<span style="color:var(--crimson);">+</span></div>
-        <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:6px;">Nationalities</div>
-      </div>
-      <div class="reveal d2">
-        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,56px);color:var(--white);">80<span style="color:var(--crimson);">%</span></div>
-        <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:6px;">Graduate Employment</div>
-      </div>
-      <div class="reveal d3">
-        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,56px);color:var(--white);">20</div>
-        <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:6px;">Max Students Per Class</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     SUB-PAGES — Bento grid with hover effects
-     ═══════════════════════════════════════ -->
-<section style="padding:clamp(60px,8vw,100px) 0;background:var(--sky-tint);">
-  <div class="wrap">
-    <span class="eyebrow reveal">Explore</span>
-    <h2 class="reveal d1 split-text" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 clamp(32px,4vw,48px);">Learn More About AUS</h2>
-    
-    <div class="stagger-grid" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:clamp(16px,2vw,24px);">
-      <a href="#" class="tilt-card img-zoom" style="display:block;border-radius:12px;overflow:hidden;position:relative;grid-row:1/3;">
-        <img src="https://images.unsplash.com/photo-1461360228754-6e81c478b882?w=600&auto=format&fit=crop&q=80" alt="History" style="width:100%;height:100%;object-fit:cover;">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(12,14,34,.85) 0%,rgba(12,14,34,.2) 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(20px,3vw,32px);">
-          <h3 style="font-family:var(--font-display);font-weight:700;font-size:clamp(20px,2vw,26px);color:var(--white);margin-bottom:6px;">Our History</h3>
-          <p style="font-size:14px;color:rgba(255,255,255,.7);margin-bottom:12px;">From 1963 to today</p>
-          <span style="display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:var(--crimson);">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      </a>
-      
-      <a href="#" class="tilt-card" style="display:block;padding:clamp(24px,3vw,32px);background:var(--white);border:1px solid var(--line);border-radius:12px;">
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--navy);margin-bottom:8px;">Accreditation</h3>
-        <p style="font-size:14px;line-height:1.6;color:var(--ink-soft);">Internationally recognized accreditations and memberships.</p>
-        <span style="display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:var(--crimson);margin-top:16px;">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-      </a>
-      
-      <a href="#" class="tilt-card" style="display:block;padding:clamp(24px,3vw,32px);background:var(--navy);color:var(--white);border-radius:12px;">
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--white);margin-bottom:8px;">Faculty</h3>
-        <p style="font-size:14px;line-height:1.6;color:rgba(255,255,255,.65);">Meet our international team of expert educators.</p>
-        <span style="display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:var(--crimson);margin-top:16px;">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-      </a>
-      
-      <a href="#" class="tilt-card" style="display:block;padding:clamp(24px,3vw,32px);background:var(--white);border:1px solid var(--line);border-radius:12px;">
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--navy);margin-bottom:8px;">Governance</h3>
-        <p style="font-size:14px;line-height:1.6;color:var(--ink-soft);">Our leadership structure and principles.</p>
-        <span style="display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:var(--crimson);margin-top:16px;">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-      </a>
-      
-      <a href="#" class="tilt-card" style="display:block;padding:clamp(24px,3vw,32px);background:var(--crimson);color:var(--white);border-radius:12px;">
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--white);margin-bottom:8px;">Rankings</h3>
-        <p style="font-size:14px;line-height:1.6;color:rgba(255,255,255,.7);">QS World Rankings and other recognitions.</p>
-        <span style="display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:var(--white);margin-top:16px;">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     CTA
-     ═══════════════════════════════════════ -->
+<style>
+.faq-item.is-open{border-color:var(--navy) !important;background:var(--white) !important;box-shadow:0 8px 24px rgba(34,41,95,.06);}
+.faq-item.is-open .faq-icon{transform:rotate(45deg);background:var(--navy);color:var(--white);border-color:var(--navy);}
+.faq-pill.is-active{background:var(--navy) !important;color:var(--white) !important;border-color:var(--navy) !important;}
+/* SITE SEARCH */
+.aus-search{position:relative;flex:0 1 280px;max-width:32vw;display:flex;align-items:center;}
+.aus-search input{width:100%;padding:10px 38px 10px 14px;border-radius:100px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:var(--white);font-size:13.5px;outline:none;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);}
+.aus-search input::placeholder{color:currentColor;opacity:.55;}
+.aus-search input:focus{border-color:var(--white);background:var(--white);color:var(--navy);}
+.aus-nav.is-scrolled .aus-search input{border-color:var(--line);background:var(--white);color:var(--navy);}
+.aus-search-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:var(--white);color:var(--navy);display:flex;align-items:center;justify-content:center;pointer-events:none;}
+.aus-search-drop{position:absolute;top:calc(100% + 10px);right:0;width:min(420px,92vw);max-height:min(60vh,520px);overflow:auto;background:var(--white);border-radius:16px;box-shadow:0 20px 50px rgba(12,14,34,.18);border:1px solid var(--line);padding:8px;display:grid;gap:6px;z-index:120;}
+.aus-search-drop[hidden]{display:none !important;}
+.aus-search-drop a:hover{background:var(--sky-tint);}
+@media (max-width:900px){.aus-search{display:none;}}</style>
 <section class="cta-section">
   <div class="wrap cta-inner">
     <span class="eyebrow on-navy reveal">What's Next</span>
-    <h2 class="reveal d1">Take the Next Step</h2>
-    <p class="reveal d2">Talk to an Admissions Advisor, request a Program Overview, or book a campus visit to experience AUS firsthand.</p>
-    <div class="reveal d3" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-      <a href="#" class="cta-btn mag-btn">Talk to an Admissions Advisor &rarr;</a>
-      <a href="#" class="cta-btn mag-btn" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,.3);">Request a Program Overview</a>
-      <a href="#" class="cta-btn mag-btn" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,.3);">Book a Campus Visit</a>
+    <h2 class="reveal d1">Let's Make History Together</h2>
+    <p class="reveal d2">Join a legacy of academic excellence. Take the first step toward your future at AUS.</p>
+    <div class="reveal d3">
+      <a href="#" class="cta-btn">Apply for Admission &rarr;</a>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     FOOTER
-     ═══════════════════════════════════════ -->
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-top">
@@ -685,108 +796,148 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 </footer>
 
 <script>
+/* PRELOADER */
 (function(){
-  // Preloader
-  document.documentElement.classList.add('has-preloader');
-  var preloader = document.getElementById('preloader');
-  function hidePreloader(){
-      preloader.classList.add('is-hidden');
-      document.documentElement.classList.remove('has-preloader');
-      setTimeout(function(){ if(preloader.parentNode) preloader.parentNode.removeChild(preloader); },700);
-  }
-  var minShow = new Promise(function(res){ setTimeout(res,900); });
-  var ready = new Promise(function(res){ if(document.readyState==='complete') res(); else window.addEventListener('load',res); });
-  Promise.all([minShow,ready]).then(hidePreloader);
+  var done=false;
+  function finish(){if(done)return;done=true;document.getElementById('preloader').classList.add('is-hidden');document.documentElement.classList.remove('has-preloader');}
+  if(typeof Promise!=='undefined'){
+    new Promise(function(r){if(document.readyState==='complete')r();else window.addEventListener('load',r);}).then(function(){setTimeout(finish,600);});
+  }else{window.addEventListener('load',function(){setTimeout(finish,100);});}
+  setTimeout(finish,4000);
+})();
 
-  // Nav scroll
-  var nav=document.getElementById('nav');
-  window.addEventListener('scroll',function(){
-    nav.classList.toggle('is-scrolled',window.scrollY>40);
-  },{passive:true});
+/* NAV SCROLL */
+(function(){
+  var nav=document.getElementById('nav'),last=0;
+  window.addEventListener('scroll',function(){var s=window.pageYOffset;if(s>60){nav.classList.add('is-scrolled');}else{nav.classList.remove('is-scrolled');}last=s;},{passive:true});
+})();
 
-  // Side panel
-  var menuToggle=document.getElementById('menuToggle'),sidePanel=document.getElementById('sidePanel'),sidePanelClose=document.getElementById('sidePanelClose'),sidePanelBackdrop=document.getElementById('sidePanelBackdrop'),sidePanelNav=document.querySelector('.side-panel-nav'),accordionItems=document.querySelectorAll('.accordion-item');
-  function openPanel(expandKey){document.documentElement.classList.add('panel-open');menuToggle.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';if(expandKey){accordionItems.forEach(function(item){if(item.getAttribute('data-panel-key')===expandKey)item.classList.add('is-open');});var t=document.querySelector('.accordion-item[data-panel-key="'+expandKey+'"]');if(t&&sidePanelNav)setTimeout(function(){t.scrollIntoView({block:'start',behavior:'smooth'});},60);}}
-  function closePanel(){document.documentElement.classList.remove('panel-open');menuToggle.setAttribute('aria-expanded','false');document.body.style.overflow='';}
-  menuToggle.addEventListener('click',function(){openPanel();});
-  sidePanelClose.addEventListener('click',closePanel);
-  sidePanelBackdrop.addEventListener('click',closePanel);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')closePanel();});
+/* SIDE PANEL */
+(function(){
+  var panel=document.getElementById('sidePanel'),backdrop=document.getElementById('sidePanelBackdrop'),closeBtn=document.getElementById('sidePanelClose'),toggle=document.getElementById('menuToggle');
+  function openPanel(expandKey){document.documentElement.classList.add('panel-open');document.body.classList.add('panel-open');panel.style.pointerEvents='auto';toggle.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';if(expandKey){document.querySelectorAll('.accordion-item').forEach(function(item){var open=undefined;if(item.getAttribute('data-panel-key')===expandKey)open=true;if(open!==undefined){var btn=item.querySelector('.accordion-trigger');var ans=item.querySelector('.accordion-panel');if(btn&&ans){item.classList.toggle('is-open',open);btn.setAttribute('aria-expanded',open);ans.hidden=!open;}}});var target=document.querySelector('.accordion-item[data-panel-key="'+expandKey+'"]');if(target){setTimeout(function(){target.scrollIntoView({block:"start",behavior:"smooth"});},60);}}}
+  function closePanel(){document.documentElement.classList.remove('panel-open');document.body.classList.remove('panel-open');panel.style.pointerEvents='none';toggle.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  toggle.addEventListener('click',openPanel);closeBtn.addEventListener('click',closePanel);backdrop.addEventListener('click',closePanel);
   document.querySelectorAll('[data-open-panel]').forEach(function(btn){btn.addEventListener('click',function(){openPanel(btn.getAttribute('data-open-panel'));});});
-  accordionItems.forEach(function(item){item.querySelector('.accordion-trigger').addEventListener('click',function(){item.classList.toggle('is-open');});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('panel-open'))closePanel();});
+})();
 
-  // Reveal
-  var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if('IntersectionObserver' in window&&!reduceMotion){
-    document.documentElement.classList.add('js-reveal-ready');
-    var revealTargets=document.querySelectorAll('.reveal,.reveal-scale,.reveal-clip,.reveal-rotate,.split-text,.stagger-grid,.line-draw');
-    var revealObserver=new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          entry.target.classList.add('is-visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },{threshold:0,rootMargin:'0px 0px -60px 0px'});
-    revealTargets.forEach(function(el){revealObserver.observe(el);});
-  }
-
-  // Split text into words
-  document.querySelectorAll('.split-text').forEach(function(el){
-    var text=el.textContent.trim();
-    el.innerHTML=text.split(/\s+/).map(function(w){return '<span class="word">'+w+'</span>';}).join(' ');
-  });
-
-  // Magnetic buttons
-  document.querySelectorAll('.mag-btn').forEach(function(btn){
-    btn.addEventListener('mousemove',function(e){
-      var rect=btn.getBoundingClientRect();
-      var x=e.clientX-rect.left-rect.width/2;
-      var y=e.clientY-rect.top-rect.height/2;
-      btn.style.transform='translate('+x*.15+'px,'+y*.15+'px)';
+/* ACCORDION */
+(function(){
+  document.querySelectorAll('.accordion-trigger').forEach(function(trigger){
+    trigger.addEventListener('click',function(){
+      var item=this.closest('.accordion-item');var wasOpen=item.classList.contains('is-open');
+      item.closest('.side-panel-nav').querySelectorAll('.accordion-item.is-open').forEach(function(o){o.classList.remove('is-open');});
+      if(!wasOpen)item.classList.add('is-open');
     });
-    btn.addEventListener('mouseleave',function(){btn.style.transform='';});
   });
+  var aboutPanel=document.querySelector('[data-panel-key="about"]');
+  if(aboutPanel)aboutPanel.classList.add('is-open');
+})();
 
-  // Parallax on scroll
-  if(!reduceMotion){
-    var parallaxEls=document.querySelectorAll('.parallax');
-    window.addEventListener('scroll',function(){
-      parallaxEls.forEach(function(el){
-        var rect=el.getBoundingClientRect();
-        var speed=parseFloat(el.getAttribute('data-speed'))||0.15;
-        var y=(rect.top-window.innerHeight)*speed;
-        el.style.transform='translateY('+y+'px)';
+/* REVEAL */
+(function(){
+  document.documentElement.classList.add('js-reveal-ready');
+  var els=document.querySelectorAll('.reveal,.reveal-scale,.reveal-clip,.reveal-rotate,.stagger-grid');
+  if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('is-visible');});return;}
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){io.observe(el);});
+})();
+
+/* SECTION NAVIGATOR (archive tab) */
+(function(){
+  var tab=document.getElementById('archiveTab');
+  var tabNum=document.getElementById('archiveTabNum');
+  var tabLabel=document.getElementById('archiveTabLabel');
+  var chapters=document.querySelectorAll('[data-chapter]');
+  var toc=document.getElementById('archiveTabToc');
+  if(tab&&chapters.length&&toc){
+    chapters.forEach(function(el){
+      var num=el.getAttribute('data-chapter');
+      var label=el.getAttribute('data-chapter-label');
+      var item=document.createElement('button');
+      item.type='button';
+      item.className='archive-tab-toc-item';
+      item.setAttribute('data-toc-target',num);
+      item.innerHTML='<span class="num">'+num+'</span><span>'+label+'</span>';
+      item.addEventListener('click',function(){
+        el.scrollIntoView({block:'start',behavior:'smooth'});
       });
-    },{passive:true});
+      toc.appendChild(item);
+    });
   }
-
-  // Counter animation
-  var counters=document.querySelectorAll('.counter');
-  if('IntersectionObserver' in window&&!reduceMotion){
-    var counterObserver=new IntersectionObserver(function(entries){
+  if(tab&&chapters.length&&'IntersectionObserver' in window){
+    var tocItems=toc?toc.querySelectorAll('.archive-tab-toc-item'):[];
+    var chapterObserver=new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if(entry.isIntersecting){
-          var el=entry.target;
-          var target=parseInt(el.getAttribute('data-target'));
-          var duration=1500;
-          var start=0;
-          var startTime=null;
-          function animate(time){
-            if(!startTime)startTime=time;
-            var progress=Math.min((time-startTime)/duration,1);
-            var eased=1-Math.pow(1-progress,3);
-            el.textContent=Math.floor(eased*target);
-            if(progress<1)requestAnimationFrame(animate);
-            else el.textContent=target;
-          }
-          requestAnimationFrame(animate);
-          counterObserver.unobserve(el);
+          var num=entry.target.getAttribute('data-chapter');
+          tabNum.textContent=num;
+          tabLabel.textContent=entry.target.getAttribute('data-chapter-label');
+          tocItems.forEach(function(ti){ti.classList.remove('is-active');if(ti.getAttribute('data-toc-target')===num)ti.classList.add('is-active');});
         }
       });
-    },{threshold:0.5});
-    counters.forEach(function(c){counterObserver.observe(c);});
+    },{threshold:0, rootMargin:'-45% 0px -45% 0px'});
+    chapters.forEach(function(ch){chapterObserver.observe(ch);});
   }
+})();
+(function(){
+  document.querySelectorAll(".faq-q").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var item=this.closest(".faq-item");
+      var ans=item.querySelector(".faq-a");
+      var isOpen=item.classList.contains("is-open");
+      if(isOpen){ item.classList.remove("is-open"); this.setAttribute("aria-expanded","false"); ans.hidden=true; }
+      else { item.classList.add("is-open"); this.setAttribute("aria-expanded","true"); ans.hidden=false; }
+    });
+  });
+  var pills=document.querySelectorAll(".faq-pill");
+  var groups=document.querySelectorAll(".faq-group");
+  var search=document.getElementById("faqSearch");
+  var countEl=document.getElementById("faqCount");
+  var noResults=document.getElementById("faqNoResults");
+  function applyFilter(){
+    var active=document.querySelector(".faq-pill.is-active");
+    var filter=active?active.getAttribute("data-filter"):"all";
+    var q=(search.value||"").toLowerCase().trim();
+    var totalVisible=0;
+    groups.forEach(function(g){
+      var groupKey=g.getAttribute("data-group");
+      var showGroup = (filter==="all" || groupKey===filter);
+      var items=g.querySelectorAll(".faq-item");
+      var groupHasMatch=false;
+      items.forEach(function(it){
+        var text=it.textContent.toLowerCase();
+        var matchQ = !q || text.indexOf(q)!==-1;
+        var visible = matchQ && showGroup;
+        it.style.display = visible ? "" : "none";
+        if(visible){ groupHasMatch=true; totalVisible++; }
+      });
+      var section=g.closest("section[data-chapter]");
+      if(section){
+        var isIntro = section.id==="faq-intro";
+        if(!isIntro){
+          section.style.display = groupHasMatch ? "" : "none";
+        }
+        g.style.display = groupHasMatch ? "" : "none";
+      } else {
+        g.style.display = groupHasMatch ? "" : "none";
+      }
+    });
+    var intro=document.getElementById("faq-intro");
+    if(intro) intro.style.display="";
+    noResults.hidden = totalVisible>0;
+    if(countEl) countEl.textContent = totalVisible>0 ? totalVisible + " questions" : "";
+  }
+  pills.forEach(function(p){
+    p.addEventListener("click", function(){
+      pills.forEach(function(x){ x.classList.remove("is-active"); x.style.background="var(--white)"; x.style.color="var(--navy)"; x.style.borderColor="var(--line)"; });
+      this.classList.add("is-active"); this.style.background="var(--navy)"; this.style.color="var(--white)"; this.style.borderColor="var(--navy)";
+      applyFilter();
+    });
+  });
+  if(search) search.addEventListener("input", applyFilter);
+  applyFilter();
 })();
 /* SITE SEARCH â€” INDEX: add new pages here to appear in dropdown */
 (function(){
@@ -914,6 +1065,31 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     if(e.key==="Enter"){ var a=drop.querySelector("a"); if(a) location.href=a.getAttribute("href"); }
   });
   document.addEventListener("click", function(e){ if(!wrap.contains(e.target)) drop.hidden=true; });
+})();/* FAQ deep-link ?q= */
+(function(){
+  var q=new URLSearchParams(location.search).get("q");
+  var hash=location.hash && location.hash.slice(1);
+  var query = q ? q.toLowerCase() : (hash ? decodeURIComponent(hash).toLowerCase() : "");
+  if(!query) return;
+  var inp=document.getElementById("faqSearch");
+  if(inp && q){ inp.value=q; }
+  // trigger filter then open first match
+  setTimeout(function(){
+    var first=null;
+    document.querySelectorAll(".faq-item").forEach(function(it){
+      if(!first && it.textContent.toLowerCase().indexOf(query)!==-1){ first=it; }
+    });
+    if(first){
+      var btn=first.querySelector(".faq-q");
+      var ans=first.querySelector(".faq-a");
+      if(btn&&ans && first.style.display!=="none"){
+        first.classList.add("is-open"); btn.setAttribute("aria-expanded","true"); ans.hidden=false;
+        first.scrollIntoView({behavior:"smooth",block:"center"});
+      }
+    }
+    // also trigger search input event to filter
+    if(inp) inp.dispatchEvent(new Event("input"));
+  }, 300);
 })();/* SEARCH HIGHLIGHT & SCROLL â€” scrolls to term from ?q= like FAQ */
 (function(){
   var q=new URLSearchParams(location.search).get("q");
