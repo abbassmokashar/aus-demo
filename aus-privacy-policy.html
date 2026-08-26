@@ -3,25 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Accreditations &amp; Memberships | AUS Business School</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<title>Privacy Policy | AUS Business School</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600;1,700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
 :root{
-  --navy:#22295f;--crimson:#be1f3d;--yellow:#fff737;--sky:#bbddf8;--sky-tint:#eef6fd;--slate:#768cb0;
-  --white:#fff;--ink:#10132d;--ink-soft:#585b7a;--line:rgba(34,41,95,.1);
-  --line-on-navy:rgba(255,255,255,.12);
-  --font-body:'Inter',sans-serif;--font-display:'Inter',sans-serif;--font-serif:'Playfair Display',Georgia,serif;
-  --ease:cubic-bezier(.25,.46,.45,.94);--ease-soft:cubic-bezier(.22,1,.36,1);
+  --white:#ffffff;--navy:#22295f;--crimson:#be1f3d;--sky:#bbddf8;--sky-tint:#eef6fd;
+  --yellow:#fff737;--slate:#768cb0;--ink:var(--navy);--ink-soft:#565f8c;
+  --line:rgba(34,41,95,0.12);--line-on-navy:rgba(255,255,255,0.16);
+  --ease:cubic-bezier(.22,1,.36,1);--ease-soft:cubic-bezier(.16,1,.3,1);
+  --font-display:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;
+  --font-serif:'Playfair Display',Georgia,'Times New Roman',serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
-body{font-family:var(--font-body);color:var(--ink);background:var(--white);overflow-x:hidden;}
-img{display:block;max-width:100%;}
-a{color:inherit;text-decoration:none;}
+html.has-preloader body{overflow:hidden;}
+html,body{background:var(--white);}
+body{font-family:var(--font-display);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+a{color:inherit;text-decoration:none;}img{display:block;max-width:100%;}ul{list-style:none;}
 button{font-family:inherit;background:none;border:none;cursor:pointer;color:inherit;}
-.wrap{max-width:1360px;margin:0 auto;padding-left:clamp(20px,5vw,64px);padding-right:clamp(20px,5vw,64px);}
+.eyebrow{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:15px;letter-spacing:.01em;color:var(--crimson);display:inline-flex;align-items:center;gap:10px;}
+.eyebrow::before{content:"";width:26px;height:1px;background:currentColor;display:inline-block;}
+.eyebrow.on-navy{color:rgba(255,255,255,.7);}
 
 /* PRELOADER */
 .aus-preloader{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:22px;background:var(--navy);transition:opacity .7s var(--ease),visibility .7s var(--ease);}
@@ -32,6 +37,28 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 @keyframes preloaderBar{0%{transform:translateX(-120%);}100%{transform:translateX(400%);}}
 .aus-preloader.is-hidden{opacity:0;visibility:hidden;pointer-events:none;}
 @media (prefers-reduced-motion: reduce){.aus-preloader{display:none;}}
+
+/* NAV */
+.aus-nav{position:fixed;top:0;left:0;right:0;z-index:110;display:flex;align-items:center;justify-content:space-between;padding:clamp(18px,2.6vw,30px) clamp(20px,4vw,56px);color:var(--white);transition:padding .4s var(--ease),color .4s var(--ease);}
+.aus-nav.is-scrolled{padding-top:14px;padding-bottom:14px;color:var(--white);}
+.aus-nav::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom, rgba(15,17,38,.55) 0%, rgba(15,17,38,0) 100%);opacity:1;transition:opacity .4s var(--ease),background .4s var(--ease);}
+.aus-nav.is-scrolled::before{background:var(--navy);opacity:1;box-shadow:0 1px 0 var(--line-on-navy);}
+.aus-wordmark{position:relative;display:block;height:clamp(40px,4.4vw,52px);width:clamp(180px,19vw,230px);opacity:0;transform:translateY(-10px);animation:navIn .8s var(--ease) .35s forwards;}
+.aus-wordmark img{position:absolute;left:0;top:0;height:100%;width:auto;max-width:none;transition:opacity .4s var(--ease);}
+.aus-wordmark .logo-white{opacity:1;}.aus-wordmark .logo-color{opacity:0;}
+@keyframes navIn{to{opacity:1;transform:translateY(0);}}
+.aus-nav-links{display:flex;align-items:center;gap:26px;opacity:0;animation:navIn .8s var(--ease) .4s forwards;}
+.aus-nav-links button{font-weight:500;font-size:14.5px;}
+.aus-nav-links button::after{content:"";display:block;width:0;height:1px;background:currentColor;transition:width .3s var(--ease);margin-top:3px;}
+.aus-nav-links button:hover::after{width:100%;}
+.aus-nav-right{display:flex;align-items:center;gap:22px;opacity:0;animation:navIn .8s var(--ease) .45s forwards;}
+.aus-nav-apply{font-weight:600;font-size:14px;padding:10px 20px;border:1px solid currentColor;border-radius:100px;transition:background .3s var(--ease),color .3s var(--ease);}
+.aus-nav-apply:hover{background:var(--crimson);border-color:var(--crimson);color:var(--white);}
+.menu-toggle{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;}
+.menu-toggle-bars{width:22px;height:14px;position:relative;}
+.menu-toggle-bars span{position:absolute;left:0;right:0;height:1.5px;background:currentColor;}
+.menu-toggle-bars span:nth-child(1){top:0;}.menu-toggle-bars span:nth-child(2){top:6px;width:70%;}.menu-toggle-bars span:nth-child(3){top:12px;}
+@media (max-width:760px){.aus-nav-links{display:none;}}
 
 /* SIDE PANEL */
 .side-panel{position:fixed;inset:0;z-index:120;pointer-events:none;}
@@ -68,79 +95,43 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .side-panel-socials .footer-social-tile{border-color:var(--line-on-navy);}
 .side-panel-socials .footer-social-tile svg{fill:var(--white);}
 
-/* NAV */
-.aus-nav{position:fixed;top:0;left:0;right:0;z-index:110;display:flex;align-items:center;justify-content:space-between;padding:clamp(18px,2.6vw,30px) clamp(20px,4vw,56px);color:var(--white);transition:padding .4s var(--ease),color .4s var(--ease);}
-.aus-nav.is-scrolled{padding-top:14px;padding-bottom:14px;color:var(--white);}
-.aus-nav::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom, rgba(15,17,38,.55) 0%, rgba(15,17,38,0) 100%);opacity:1;transition:opacity .4s var(--ease),background .4s var(--ease);}
-.aus-nav.is-scrolled::before{background:var(--navy);opacity:1;box-shadow:0 1px 0 var(--line-on-navy);}
-.aus-wordmark{position:relative;display:block;height:clamp(40px,4.4vw,52px);width:clamp(180px,19vw,230px);opacity:0;transform:translateY(-10px);animation:navIn .8s var(--ease) .35s forwards;}
-.aus-wordmark img{position:absolute;left:0;top:0;height:100%;width:auto;max-width:none;transition:opacity .4s var(--ease);}
-.aus-wordmark .logo-white{opacity:1;}.aus-wordmark .logo-color{opacity:0;}
-@keyframes navIn{to{opacity:1;transform:translateY(0);}}
-.aus-nav-links{display:flex;align-items:center;gap:26px;opacity:0;animation:navIn .8s var(--ease) .4s forwards;}
-.aus-nav-links button{font-weight:500;font-size:14.5px;}
-.aus-nav-links button::after{content:"";display:block;width:0;height:1px;background:currentColor;transition:width .3s var(--ease);margin-top:3px;}
-.aus-nav-links button:hover::after{width:100%;}
-.aus-nav-right{display:flex;align-items:center;gap:22px;opacity:0;animation:navIn .8s var(--ease) .45s forwards;}
-.aus-nav-apply{font-weight:600;font-size:14px;padding:10px 20px;border:1px solid currentColor;border-radius:100px;transition:background .3s var(--ease),color .3s var(--ease);}
-.aus-nav-apply:hover{background:var(--crimson);border-color:var(--crimson);color:var(--white);}
-.menu-toggle{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;}
-.menu-toggle-bars{width:22px;height:14px;position:relative;}
-.menu-toggle-bars span{position:absolute;left:0;right:0;height:1.5px;background:currentColor;}
-.menu-toggle-bars span:nth-child(1){top:0;}.menu-toggle-bars span:nth-child(2){top:6px;width:70%;}.menu-toggle-bars span:nth-child(3){top:12px;}
-@media (max-width:760px){.aus-nav-links{display:none;}}
 
-/* EYEBROW */
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
-.eyebrow.on-navy{color:rgba(255,255,255,.7);}
-.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:6px 14px 6px 6px;border-radius:100px;background:rgba(255,255,255,.11);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.16);font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.92);}
-.hero-badge-icon{width:28px;height:28px;border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;color:var(--navy);flex:0 0 auto;}
+.panel-link{display:block;font-size:14px;color:rgba(255,255,255,.65);padding:6px 2px;transition:color .25s var(--ease),padding-left .25s var(--ease);}
+.panel-link:hover{color:var(--white);padding-left:6px;}
+.panel-section-title{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4);margin:16px 0 4px;padding-left:2px;}
+.panel-section-title:first-child{margin-top:0;}
+/* REVEAL */
+.reveal{opacity:1;transform:none;}
+.js-reveal-ready .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease-soft),transform .9s var(--ease-soft);}
+.js-reveal-ready .reveal.is-visible{opacity:1;transform:none;}
+.js-reveal-ready .reveal.d1{transition-delay:.08s;}.js-reveal-ready .reveal.d2{transition-delay:.16s;}.js-reveal-ready .reveal.d3{transition-delay:.24s;}
 
-/* HERO */
-.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy);}
-.hero-bg{position:absolute;inset:0;z-index:0;}
-.hero-bg img{width:100%;height:100%;object-fit:cover;}
-.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,14,34,.92) 0%,rgba(12,14,34,.5) 40%,rgba(12,14,34,.15) 100%);}
-.hero-inner{position:relative;z-index:1;width:100%;padding:clamp(60px,8vw,100px) clamp(20px,5vw,64px) clamp(40px,6vw,70px);color:var(--white);}
-.hero-sub{margin-top:clamp(12px,1.5vw,20px);max-width:42ch;font-size:clamp(15px,1.3vw,17px);line-height:1.6;color:rgba(255,255,255,.65);}
-.hero-scroll{position:absolute;bottom:clamp(24px,3vw,40px);right:clamp(20px,5vw,64px);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.35);font-size:10px;letter-spacing:.12em;text-transform:uppercase;z-index:2;}
-.hero-scroll::after{content:"";width:1px;height:28px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent);animation:scrollPulse 2s ease-in-out infinite;}
-@keyframes scrollPulse{0%,100%{opacity:.35;}50%{opacity:.7;}}
+/* SECTION SHELL */
+.chapter{position:relative;}
+.chapter-label{display:flex;align-items:center;gap:14px;margin-bottom:clamp(28px,4vw,44px);font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;}
+.chapter-label .num{color:var(--crimson);}
+.chapter-label::after{content:"";flex:1;height:1px;background:var(--line);}
+.wrap{max-width:1360px;margin:0 auto;padding-left:clamp(20px,5vw,64px);padding-right:clamp(20px,5vw,64px);}
 
-/* MOBILE HERO */
-.hero-mobile{display:none;}
-@media (max-width:760px){
-  .hero{display:none!important;}
-  .hero-mobile{display:block;background:var(--navy);overflow:hidden;}
-  .hero-mob-img{width:100%;height:40vh;min-height:220px;position:relative;}
-  .hero-mob-img img{width:100%;height:100%;object-fit:cover;}
-  .hero-mob-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,14,34,.2) 0%,rgba(12,14,34,.85) 100%);}
-  .hero-mob-content{padding:clamp(20px,5vw,32px) clamp(16px,4vw,24px) clamp(24px,6vw,40px);color:var(--white);}
-  .hero-mob-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);padding:5px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.85);margin-bottom:clamp(10px,2vw,16px);}
-  .hero-mob-content h1{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,9vw,44px);line-height:1.05;letter-spacing:-.02em;margin-bottom:clamp(8px,1.5vw,12px);}
-  .hero-mob-sub{font-size:clamp(13px,2.6vw,15px);line-height:1.5;color:rgba(255,255,255,.6);margin-bottom:clamp(16px,3vw,24px);}
-  .hero-mob-ctas{display:flex;flex-direction:column;gap:10px;}
-  .hero-mob-ctas .hero-cta{width:100%;justify-content:center;text-align:center;}
-}
+/* HERO CTA */
+.hero-cta{display:inline-block;font-weight:600;font-size:14px;color:var(--white);background:transparent;padding:12px 28px;border-radius:100px;transition:all .3s var(--ease);border:1px solid rgba(255,255,255,.3);}
+.hero-cta:hover{background:var(--white);color:var(--navy);border-color:var(--white);transform:translateY(-2px);}
 
-/* CTA BUTTONS */
-.hero-cta{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:14px 28px;border-radius:100px;transition:all .3s var(--ease);}
+/* PAGE HERO */
+.breadcrumb{padding:120px 0 0;font-size:13px;color:var(--ink-soft);}
+.breadcrumb a{text-decoration:underline;text-underline-offset:3px;}
+.breadcrumb span{margin:0 6px;opacity:.4;}
+.pp-hero{padding:clamp(40px,6vw,70px) 0 clamp(20px,3vw,40px);}
+.pp-hero h1{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4vw,48px);color:var(--navy);margin-bottom:12px;}
+.pp-hero p{font-size:15px;color:var(--ink-soft);line-height:1.6;}
 
-/* BREADCRUMB */
-.breadcrumb{padding:clamp(24px,3vw,40px) 0 clamp(16px,2vw,24px);border-bottom:1px solid var(--line);}
-.breadcrumb a{font-size:14px;color:var(--ink-soft);transition:color .25s var(--ease);}
-.breadcrumb a:hover{color:var(--navy);}
-.breadcrumb span{font-size:14px;color:var(--ink-soft);margin:0 8px;}
-
-/* CTA */
-.cta-section{background:var(--navy);color:var(--white);padding:clamp(70px,9vw,120px) 0;text-align:center;position:relative;overflow:hidden;}
-.cta-section::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
-.cta-inner{position:relative;z-index:1;}
-.cta-inner .eyebrow{justify-content:center;margin-bottom:clamp(16px,2vw,24px);}
-.cta-inner h2{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4.2vw,52px);line-height:1.15;margin-bottom:clamp(12px,1.5vw,20px);}
-.cta-inner p{font-size:clamp(14px,1.1vw,16px);line-height:1.7;color:rgba(255,255,255,.65);max-width:50ch;margin:0 auto clamp(28px,3.5vw,44px);}
-.cta-btn{display:inline-flex;align-items:center;gap:12px;background:var(--white);color:var(--navy);font-weight:700;font-size:15px;padding:18px 32px;border-radius:100px;transition:transform .35s var(--ease),box-shadow .35s var(--ease);border:1px solid var(--line);}
-.cta-btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(34,41,95,.12);}
+/* PRIVACY CONTENT */
+.pp-body{padding:0 0 clamp(60px,8vw,100px);}
+.pp-body h2{font-family:var(--font-display);font-weight:700;font-size:clamp(18px,1.6vw,22px);color:var(--navy);margin:clamp(32px,4vw,48px) 0 12px;}
+.pp-body h2:first-child{margin-top:0;}
+.pp-body p{font-size:clamp(14px,1.05vw,15.5px);line-height:1.75;color:var(--ink-soft);margin-bottom:14px;}
+.pp-body ul{margin:0 0 14px 20px;}
+.pp-body li{font-size:clamp(14px,1.05vw,15.5px);line-height:1.75;color:var(--ink-soft);margin-bottom:6px;}
 
 /* FOOTER */
 .site-footer{background:var(--navy);color:var(--white);padding:clamp(70px,9vw,110px) 0 32px;}
@@ -149,123 +140,31 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .footer-top p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.62);max-width:32ch;}
 .footer-col-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:16px;}
 .footer-col a{display:block;font-size:14.5px;color:rgba(255,255,255,.82);padding:6px 0;transition:color .25s var(--ease);}
-.footer-col a:hover{color:var(--yellow);}
+.footer-col a:hover{color:var(--white);}
 .footer-social-title{margin-top:34px;}
 .footer-social-grid{display:flex;gap:10px;margin-top:14px;}
-.footer-social-tile{
-  width:44px;height:44px;border-radius:10px;border:1px solid var(--line-on-navy);
-  display:flex;align-items:center;justify-content:center;
-  transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);
-}
-.footer-social-tile:hover{border-color:rgba(255,255,255,.3);}
+.footer-social-tile{width:44px;height:44px;border-radius:10px;border:1px solid var(--line-on-navy);display:flex;align-items:center;justify-content:center;transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);}
+.footer-social-tile:hover{background:var(--crimson);border-color:var(--crimson);transform:translateY(-3px);}
 .footer-social-tile svg{width:18px;height:18px;fill:var(--white);}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding-top:26px;font-size:13px;color:rgba(255,255,255,.5);}
-.footer-bottom a{color:rgba(255,255,255,.5);}
-@media (max-width:860px){.footer-top{grid-template-columns:1fr 1fr;}}
-@media (max-width:520px){.footer-top{grid-template-columns:1fr;}}
-
-.footer-v2_bottom{
-  display:flex;align-items:center;flex-wrap:wrap;gap:clamp(18px,3vw,32px);
-  padding:clamp(28px,4vw,38px) 0;margin-top:clamp(6px,1vw,10px);border-bottom:1px solid var(--line-on-navy);
-}
-.footer-v2_bottom-title{
-  font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);
-  flex:0 0 auto;padding-right:clamp(10px,2vw,20px);
-}
+.footer-bottom a{color:rgba(255,255,255,.5);}.footer-bottom a:hover{color:var(--white);}
+.footer-v2_bottom{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(18px,3vw,32px);padding:clamp(28px,4vw,38px) 0;margin-top:clamp(6px,1vw,10px);border-bottom:1px solid var(--line-on-navy);}
+.footer-v2_bottom-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);flex:0 0 auto;padding-right:clamp(10px,2vw,20px);}
 .footer-v2_bottom-list{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(24px,4vw,44px);flex:1 1 auto;}
 .footer-v2_bottom-item{display:flex;align-items:center;}
-.footer-v2_bottom-img{
-  height:clamp(26px,3vw,34px);width:auto;
-  filter:brightness(0) invert(1) opacity(.55);
-  transition:filter .25s var(--ease),opacity .25s var(--ease);
-}
-.footer-v2_bottom-item:hover .footer-v2_bottom-img{filter:brightness(0) invert(1) opacity(.9);}
+.footer-v2_bottom-img{height:clamp(26px,3vw,34px);width:auto;filter:brightness(0) invert(1) opacity(.55);transition:filter .25s var(--ease),opacity .25s var(--ease);}
+.footer-v2_bottom-item:hover .footer-v2_bottom-img{filter:brightness(0) invert(1) opacity(.95);}
+@media (max-width:860px){.footer-top{grid-template-columns:1fr 1fr;}}
+@media (max-width:520px){.footer-top{grid-template-columns:1fr;}}
+@media (max-width:640px){.footer-v2_bottom{flex-direction:column;align-items:flex-start;}.footer-v2_bottom-list{gap:clamp(20px,6vw,30px);}}
 
-/* REVEAL */
-.js-reveal-ready .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease-soft),transform .9s var(--ease-soft);}
-.js-reveal-ready .reveal.is-visible{opacity:1;transform:none;}
-.js-reveal-ready .reveal.d1{transition-delay:.08s;}
-.js-reveal-ready .reveal.d2{transition-delay:.16s;}
-.js-reveal-ready .reveal.d3{transition-delay:.24s;}
-.js-reveal-ready .reveal.d4{transition-delay:.32s;}
-
-/* NEW ANIMATION SYSTEM */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
-.reveal.is-visible{opacity:1;transform:translateY(0);}
-.reveal.d1{transition-delay:.1s;}.reveal.d2{transition-delay:.2s;}.reveal.d3{transition-delay:.3s;}.reveal.d4{transition-delay:.4s;}.reveal.d5{transition-delay:.5s;}
-.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
-.reveal-scale.is-visible{opacity:1;transform:scale(1);}
-.reveal-clip{clip-path:inset(100% 0 0 0);transition:clip-path 1s var(--ease-soft);}
-.reveal-clip.is-visible{clip-path:inset(0 0 0 0);}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
-.float{animation:float 5s ease-in-out infinite;}
-.stagger-grid > *{opacity:0;transform:translateY(30px);transition:opacity .6s var(--ease-soft),transform .6s var(--ease-soft);}
-.stagger-grid.is-visible > *:nth-child(1){transition-delay:.05s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(2){transition-delay:.12s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(3){transition-delay:.19s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(4){transition-delay:.26s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(5){transition-delay:.33s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(6){transition-delay:.40s;opacity:1;transform:translateY(0);}
-.img-zoom{overflow:hidden;}
-.img-zoom img{transition:transform .7s var(--ease-soft);}
-.img-zoom:hover img{transform:scale(1.06);}
-
-/* PARALLAX */
-.parallax{will-change:transform;}
-
-/* CARD TILT on hover */
-.tilt-card{transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
-.tilt-card:hover{transform:translateY(-6px) rotate(.5deg);box-shadow:0 20px 50px rgba(34,41,95,.1);}
-
-/* SECTION NAVIGATOR (archive tab) */
-.archive-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding:14px 22px 14px 30px;background:var(--white);border-top-left-radius:6px;border-bottom-left-radius:6px;box-shadow:-6px 0 24px rgba(34,41,95,0.08);transition:background .4s var(--ease),box-shadow .4s var(--ease);}
-.archive-tab-num{font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.04em;color:var(--navy);}
-.archive-tab-label{font-family:var(--font-serif);font-style:italic;font-size:12px;color:var(--ink-soft);white-space:nowrap;}
-.archive-tab-toc{position:absolute;right:100%;top:50%;transform:translateY(-50%) translateX(12px);width:236px;background:var(--white);box-shadow:-6px 0 24px rgba(34,41,95,0.14);padding:10px 0;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);border-radius:8px;}
-.archive-tab:hover .archive-tab-toc,.archive-tab:focus-within .archive-tab-toc{opacity:1;transform:translateY(-50%) translateX(0);pointer-events:auto;}
-.archive-tab-toc-item{display:flex;align-items:baseline;gap:12px;width:100%;text-align:left;padding:8px 20px;font-size:12.5px;color:var(--ink-soft);transition:color .2s var(--ease),background .2s var(--ease);}
-.archive-tab-toc-item:hover{color:var(--navy);background:var(--sky-tint);}
-.archive-tab-toc-item .num{font-family:var(--font-display);font-weight:700;font-size:11px;color:var(--crimson);min-width:18px;}
-.archive-tab-toc-item.is-active{color:var(--navy);font-weight:600;}
-.archive-tab-toc-item.is-active .num{color:var(--crimson);}
-@media (max-width:960px){.archive-tab{display:none;}}
-
-/* TIMELINE */
-.timeline{position:relative;max-width:900px;margin:0 auto;}
-.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--line),var(--crimson),var(--line));transform:translateX(-50%);}
-.timeline-item{position:relative;width:50%;padding:0 clamp(24px,4vw,48px) clamp(40px,5vw,60px);}
-.timeline-item:nth-child(odd){left:0;text-align:right;padding-right:clamp(32px,5vw,60px);padding-left:0;}
-.timeline-item:nth-child(even){left:50%;text-align:left;padding-left:clamp(32px,5vw,60px);padding-right:0;}
-.timeline-item::before{content:"";position:absolute;top:8px;width:14px;height:14px;border-radius:50%;background:var(--white);border:3px solid var(--crimson);z-index:2;}
-.timeline-item:nth-child(odd)::before{right:-7px;}
-.timeline-item:nth-child(even)::before{left:-7px;}
-.timeline-item::after{content:"";position:absolute;top:14px;width:clamp(20px,3vw,40px);height:2px;background:var(--line);z-index:1;}
-.timeline-item:nth-child(odd)::after{right:0;}
-.timeline-item:nth-child(even)::after{left:0;}
-.timeline-year{font-family:var(--font-display);font-weight:800;font-size:clamp(32px,3.5vw,48px);color:var(--navy);line-height:1;margin-bottom:8px;}
-.timeline-text h3{font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;}
-.timeline-text p{font-size:14px;line-height:1.65;color:var(--ink-soft);}
 @media (max-width:760px){
-  .timeline::before{left:20px;}
-  .timeline-item,.timeline-item:nth-child(odd),.timeline-item:nth-child(even){left:0;width:100%;text-align:left;padding-left:48px;padding-right:0;}
-  .timeline-item::before,.timeline-item:nth-child(odd)::before,.timeline-item:nth-child(even)::before{left:13px;right:auto;}
-  .timeline-item::after,.timeline-item:nth-child(odd)::after,.timeline-item:nth-child(even)::after{left:27px;right:auto;width:20px;}
+  .breadcrumb{padding:100px 0 0;}
+  .wrap{padding-left:clamp(16px,4vw,32px);padding-right:clamp(16px,4vw,32px);}
+  .footer-top{grid-template-columns:1fr;gap:clamp(24px,4vw,32px);}
+  .footer-v2_bottom{flex-direction:column;align-items:flex-start;}
 }
 
-@media (max-width:960px){
-  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr)!important;}
-}
-@media (max-width:760px){
-  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
-  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
-  .wrap>[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
-  .cta-section{padding:clamp(40px,6vw,60px) 0;}
-  .cta-section h2{font-size:clamp(20px,5vw,30px);}
-}
-@media (max-width:600px){
-  .wrap{padding-left:clamp(16px,4vw,24px);padding-right:clamp(16px,4vw,24px);}
-  .footer-top{grid-template-columns:1fr!important;gap:clamp(20px,4vw,28px);}
-}
 /* SITE SEARCH */
 .aus-search{position:relative;flex:0 1 280px;max-width:32vw;display:flex;align-items:center;}
 .aus-search input{width:100%;padding:10px 38px 10px 14px;border-radius:100px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:var(--white);font-size:13.5px;outline:none;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);}
@@ -286,7 +185,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 </div>
 
 <nav class="aus-nav" id="nav">
-  <a href="aus-home-demo.html" class="aus-wordmark" aria-label="AUS Business School — home">
+  <a href="aus-home-demo.html" class="aus-wordmark" aria-label="AUS Business School">
     <img class="logo-white" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
     <img class="logo-color" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a558e03f97cbda4768f37bb_aus-logo.avif" alt="AUS Business School">
   </a>
@@ -295,11 +194,12 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     <button type="button" data-open-panel="about">About</button>
     <button type="button" data-open-panel="student-life">Student Life</button>
   </div>
-  <div class="aus-search" id="siteSearch">
-      <input id="siteSearchInput" type="search" placeholder="Ask AUS Anything" aria-label="Site search" autocomplete="off">
-      <span class="aus-search-btn" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
-      <div id="siteSearchDrop" class="aus-search-drop" hidden></div>
-    </div><div class="aus-nav-right">
+  <div class="aus-nav-right">
+    <div class="aus-search" id="siteSearch">
+      <input type="text" id="siteSearchInput" placeholder="Search about anything" autocomplete="off">
+      <div class="aus-search-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <div class="aus-search-drop" id="siteSearchDrop" hidden></div>
+    </div>
     <a href="#" class="aus-nav-apply">Apply</a>
     <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="sidePanel">
       <span>Menu</span>
@@ -330,8 +230,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
             <a href="aus-bachelor-human-resource-management.html">Human Resource Management</a>
             <a href="aus-bachelor-integrated-digital-marketing.html">Integrated &amp; Digital Marketing</a>
             <a href="aus-bachelor-international-business.html">International Business</a>
-            <a href="aus-bachelor-sports-management-athletic.html">Sports Management — Athletic Administration</a>
-            <a href="aus-bachelor-sports-management-marketing.html">Sports Management — Sports Marketing</a>
+            <a href="aus-bachelor-sports-management-athletic.html">Sports Management &mdash; Athletic Administration</a>
+            <a href="aus-bachelor-sports-management-marketing.html">Sports Management &mdash; Sports Marketing</a>
             <a href="aus-bachelor-hospitality-management.html">Hospitality Management</a>
             <a href="aus-bachelor-aviation-management.html">Aviation Management</a>
           </div>
@@ -362,13 +262,11 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
         <div class="accordion-panel"><div class="accordion-panel-inner">
           <div class="accordion-group">
             <a href="aus-about.html">About AUS</a>
-            <a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a>
-          <a href="aus-accreditations.html">Accreditations &amp; Memberships</a>
-          <a href="aus-governance.html">Governance</a>
-          <a href="aus-faq.html">FAQ</a>
-          <a href="#" style="display:none">Accreditations_TEMP &amp; Memberships</a>
-            
-            
+            <a href="aus-about-history.html">History</a>
+            <a href="aus-about-faculty.html">Faculty</a>
+            <a href="aus-accreditations.html">Accreditations &amp; Memberships</a>
+            <a href="aus-governance.html">Governance</a>
+            <a href="aus-faq.html">FAQ</a>
           </div>
         </div></div>
       </div>
@@ -378,7 +276,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
           <div class="accordion-group">
             <a href="#">Campus &amp; Housing</a>
             <a href="#">Clubs &amp; Activities</a>
-            <a href="#">Events</a>
+            <a href="#">Lake Geneva Life</a>
           </div>
         </div></div>
       </div>
@@ -388,311 +286,198 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     <div class="side-panel-foot">
       <a href="#" class="hero-cta">Apply now &rarr;</a>
       <div class="side-panel-socials footer-social-grid">
-        <a class="footer-social-tile" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.62.07 4.81s-.01 3.56-.07 4.81c-.15 3.23-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07-3.2 0-3.6 0-4.85-.07-3.26-.15-4.77-1.69-4.92-4.92-.06-1.25-.07-1.62-.07-4.81s.01-3.56.07-4.81c.15-3.23 1.66-4.77 4.92-4.92 1.25-.06 1.6-.07 4.85-.07zm0-2.2c-3.27 0-3.67 0-4.95.08-4.3.2-6.78 2.68-6.98 6.98-.08 1.28-.08 1.68-.08 4.95s0 3.67.08 4.95c.2 4.3 2.68 6.78 6.98 6.98 1.28.08 1.68.08 4.95.08s3.67 0 4.95-.08c4.3-.2 6.78-2.68 6.98-6.98.08-1.28.08-1.68.08-4.95s0-3.67-.08-4.95c-.2-4.3-2.68-6.78-6.98-6.98-1.28-.08-1.68-.08-4.95-.08zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.4-11.85a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg></a>
-        <a class="footer-social-tile" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0z"/></svg></a>
-        <a class="footer-social-tile" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46v-7.2a8.16 8.16 0 005.58 2.18v-3.45a4.85 4.85 0 01-3.59-1.59V6.69h3.59z"/></svg></a>
+        <a class="footer-social-tile" href="https://www.instagram.com/aus.swiss/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M15.5834 1.8335H6.41671C3.8854 1.8335 1.83337 3.88552 1.83337 6.41683V15.5835C1.83337 18.1148 3.8854 20.1668 6.41671 20.1668H15.5834C18.1147 20.1668 20.1667 18.1148 20.1667 15.5835V6.41683C20.1667 3.88552 18.1147 1.8335 15.5834 1.8335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M14.6667 10.4223C14.7799 11.1852 14.6495 11.9643 14.2943 12.6489C13.9391 13.3335 13.3771 13.8886 12.6882 14.2353C11.9993 14.5821 11.2186 14.7028 10.4572 14.5802C9.69576 14.4577 8.99234 14.0982 8.44699 13.5529C7.90165 13.0075 7.54214 12.3041 7.41962 11.5427C7.29709 10.7812 7.41778 10.0005 7.76452 9.31163C8.11126 8.62274 8.66639 8.06072 9.35096 7.70551C10.0355 7.3503 10.8147 7.21999 11.5776 7.33312C12.3557 7.44852 13.0762 7.81113 13.6324 8.3674C14.1887 8.92368 14.5513 9.64411 14.6667 10.4223Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M16.0416 5.9585H16.0516" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="footer-social-tile" href="https://www.linkedin.com/school/aus-swiss/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M14.6666 7.3335C16.1253 7.3335 17.5243 7.91296 18.5557 8.94441C19.5872 9.97586 20.1666 11.3748 20.1666 12.8335V19.2502H16.5V12.8335C16.5 12.3473 16.3068 11.881 15.963 11.5371C15.6192 11.1933 15.1529 11.0002 14.6666 11.0002C14.1804 11.0002 13.7141 11.1933 13.3703 11.5371C13.0264 11.881 12.8333 12.3473 12.8333 12.8335V19.2502H9.16663V12.8335C9.16663 11.3748 9.74609 9.97586 10.7775 8.94441C11.809 7.91296 13.2079 7.3335 14.6666 7.3335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M5.50004 8.25H1.83337V19.25H5.50004V8.25Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M3.66671 5.50016C4.67923 5.50016 5.50004 4.67935 5.50004 3.66683C5.50004 2.65431 4.67923 1.8335 3.66671 1.8335C2.65419 1.8335 1.83337 2.65431 1.83337 3.66683C1.83337 4.67935 2.65419 5.50016 3.66671 5.50016Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="footer-social-tile" href="https://www.tiktok.com/@aus.swiss" target="_blank" aria-label="TikTok"><svg viewBox="0 0 22 22" fill="none"><path d="M17.9575 6.13266C17.0437 5.93172 16.2171 5.44648 15.5962 4.74656C14.9753 4.04665 14.5921 3.16804 14.5016 2.23683V1.8335H11.3391V14.3643C11.2523 15.0017 10.9366 15.5858 10.4508 16.0074C9.965 16.4291 9.34238 16.6597 8.69912 16.656C7.99651 16.656 7.32269 16.3769 6.82587 15.8801C6.32906 15.3833 6.04995 14.7094 6.04995 14.0068C6.04995 13.3042 6.32906 12.6304 6.82587 12.1336C7.32269 11.6368 7.99651 11.3577 8.69912 11.3577C8.95578 11.3577 9.19412 11.3943 9.42328 11.4493V8.25933C9.1831 8.22882 8.94123 8.21351 8.69912 8.2135C7.15777 8.2135 5.67955 8.8258 4.58965 9.91569C3.49975 11.0056 2.88745 12.4838 2.88745 14.0252C2.88745 14.7884 3.03777 15.5441 3.32984 16.2492C3.6219 16.9543 4.04999 17.595 4.58965 18.1346C5.67955 19.2245 7.15777 19.8368 8.69912 19.8368C10.2389 19.8344 11.7147 19.221 12.8027 18.1314C13.8906 17.0418 14.5016 15.5649 14.5016 14.0252V7.966C15.7802 8.87783 17.3129 9.36519 18.8833 9.35933V6.1785C18.5739 6.19552 18.2636 6.18016 17.9575 6.13266Z" fill="currentColor"/></svg></a>
       </div>
     </div>
   </aside>
 </div>
 
-<style>
-.stagger-grid.is-visible > *:nth-child(7){transition-delay:.47s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(8){transition-delay:.54s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(9){transition-delay:.61s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(10){transition-delay:.68s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(11){transition-delay:.75s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(12){transition-delay:.82s;opacity:1;transform:translateY(0);}
-.partner-logo{height:clamp(96px,8vw,132px);max-width:100%;width:auto;object-fit:contain;mix-blend-mode:multiply;background:transparent;}
-/* SITE SEARCH */
-.aus-search{position:relative;flex:0 1 280px;max-width:32vw;display:flex;align-items:center;}
-.aus-search input{width:100%;padding:10px 38px 10px 14px;border-radius:100px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:var(--white);font-size:13.5px;outline:none;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);}
-.aus-search input::placeholder{color:currentColor;opacity:.55;}
-.aus-search input:focus{border-color:var(--white);background:var(--white);color:var(--navy);}
-.aus-nav.is-scrolled .aus-search input{border-color:var(--line);background:var(--white);color:var(--navy);}
-.aus-search-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:var(--white);color:var(--navy);display:flex;align-items:center;justify-content:center;pointer-events:none;}
-.aus-search-drop{position:absolute;top:calc(100% + 10px);right:0;width:min(420px,92vw);max-height:min(60vh,520px);overflow:auto;background:var(--white);border-radius:16px;box-shadow:0 20px 50px rgba(12,14,34,.18);border:1px solid var(--line);padding:8px;display:grid;gap:6px;z-index:120;}
-.aus-search-drop[hidden]{display:none !important;}
-.aus-search-drop a:hover{background:var(--sky-tint);}
-@media (max-width:900px){.aus-search{display:none;}}</style><style>
-/* — More dynamic treatments — */
-#accreditations .tilt-card{position:relative;overflow:hidden;}
-#accreditations .tilt-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--crimson);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
-#accreditations .tilt-card:hover::before{transform:scaleX(1);}
-#accreditations .tilt-card:hover{border-color:rgba(34,41,95,.12);transform:translateY(-8px) rotate(.4deg);box-shadow:0 22px 50px rgba(34,41,95,.12);}
-#ranking .reveal-scale{transition:transform .35s var(--ease),box-shadow .35s var(--ease);}
-#ranking .reveal-scale:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.2);}
-#disclosures .tilt-card:hover{border-color:var(--navy);transform:translateY(-4px);}
-#partnerships .tilt-card:hover{border-color:var(--line);transform:translateY(-6px);box-shadow:0 18px 40px rgba(34,41,95,.08);}
-#partnerships .tilt-card:hover .partner-logo{transform:scale(1.04);}
-.partner-logo{transition:transform .35s var(--ease);}
-/* SITE SEARCH */
-.aus-search{position:relative;flex:0 1 280px;max-width:32vw;display:flex;align-items:center;}
-.aus-search input{width:100%;padding:10px 38px 10px 14px;border-radius:100px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:var(--white);font-size:13.5px;outline:none;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);}
-.aus-search input::placeholder{color:currentColor;opacity:.55;}
-.aus-search input:focus{border-color:var(--white);background:var(--white);color:var(--navy);}
-.aus-nav.is-scrolled .aus-search input{border-color:var(--line);background:var(--white);color:var(--navy);}
-.aus-search-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:var(--white);color:var(--navy);display:flex;align-items:center;justify-content:center;pointer-events:none;}
-.aus-search-drop{position:absolute;top:calc(100% + 10px);right:0;width:min(420px,92vw);max-height:min(60vh,520px);overflow:auto;background:var(--white);border-radius:16px;box-shadow:0 20px 50px rgba(12,14,34,.18);border:1px solid var(--line);padding:8px;display:grid;gap:6px;z-index:120;}
-.aus-search-drop[hidden]{display:none !important;}
-.aus-search-drop a:hover{background:var(--sky-tint);}
-@media (max-width:900px){.aus-search{display:none;}}</style><header class="hero" style="min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy);">
-  <div class="hero-bg">
-    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS campus" class="parallax" data-speed="0.12">
-  </div>
-  <div class="hero-inner" style="z-index:2;width:100%;padding:clamp(60px,8vw,100px) clamp(20px,5vw,64px) clamp(40px,6vw,70px);color:var(--white);">
-    <div class="hero-badge" style="margin-bottom:clamp(14px,1.6vw,22px);">
-      <span class="hero-badge-icon"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M22 10v6M2 10l10-5 10 5-10 5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12v5c3 3 9 3 12 0v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      About AUS
-    </div>
-    <h1 style="font-size:clamp(48px,8vw,96px);line-height:.95;">Accreditations<br><em style="font-family:var(--font-serif);font-style:italic;font-weight:400;">&amp; Memberships</em></h1>
-    <p class="hero-sub" style="max-width:48ch;">Recognized by leading international bodies for academic excellence and quality assurance.</p>
-  </div>
-  <div class="hero-scroll">Scroll</div>
-</header><!-- MOBILE HERO -->
-<div class="hero-mobile">
-  <div class="hero-mob-img">
-    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS campus">
-  </div>
-  <div class="hero-mob-content">
-    <span class="hero-mob-badge">About AUS</span>
-    <h1>Accreditations &amp; Memberships</h1>
-    <p class="hero-mob-sub">Recognized by leading international bodies for academic excellence and quality assurance.</p>
-  </div>
-</div>
 <div class="breadcrumb">
   <div class="wrap">
     <a href="aus-home-demo.html">Home</a><span>/</span>
-    <a href="aus-about.html">About</a><span>/</span>
-    Accreditations &amp; Memberships
+    Privacy Policy
   </div>
 </div>
-<div class="archive-tab" id="archiveTab" tabindex="0">
-  <span class="archive-tab-num" id="archiveTabNum">01</span>
-  <span class="archive-tab-label" id="archiveTabLabel">Accreditations</span>
-  <nav class="archive-tab-toc" id="archiveTabToc" aria-label="Jump to section"></nav>
-</div><!-- ACCREDITATIONS & MEMBERSHIPS -->
-<section id="accreditations" data-chapter="01" data-chapter-label="Accreditations" style="padding:clamp(60px,8vw,100px) 0;position:relative;overflow:hidden;">
+
+<div class="pp-hero">
   <div class="wrap">
-    <span class="eyebrow reveal" style="display:flex;align-items:center;gap:8px;">Accreditations &amp; Memberships</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4vw,48px);line-height:1.15;margin-top:clamp(12px,1.5vw,20px);max-width:20ch;">Recognized worldwide</h2>
-    <p class="reveal d2" style="font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:var(--ink-soft);max-width:62ch;margin-top:12px;">AUS is accredited, listed and recognized by leading international bodies — from specialized business-education accreditors to ministries, UNESCO and the United Nations.</p>
-    <div class="stagger-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:clamp(32px,4vw,48px);">
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c32c5d4871e84ccdffb_prme.png" alt="PRME" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">PRME — Principles for Responsible Management Education</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is a signatory of PRME, a United Nations-supported initiative with over 800 signatories worldwide, committed to embedding sustainability and the SDGs into management education.</p>
-        <a href="https://www.unprme.org/" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c4c5f40eac49da26803_unesco.webp" alt="UNESCO WHED" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">UNESCO WHED — World Higher Education Database</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is listed in the UNESCO World Higher Education Database. Institution Code: IAU-029651</p>
-        <a href="https://www.whed.net/institutions/IAU-029651" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c5a97397e19ff5bbaa6_vateran_us.webp" alt="US Department of Veterans Affairs" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">United States Department of Veterans Affairs</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is a recognized university by the US Department of Veterans Affairs. US veterans can apply to study at AUS and obtain a GI Bill. Facility Code: 21001578</p>
-        <a href="https://www.va.gov/education/gi-bill-comparison-tool/institution/21001578" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Assess your VA benefits &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c68ce553c3f34eb9a9f_ielts.webp" alt="IELTS" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">IELTS — Official Preparation and Testing Center</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is an Official IELTS Preparation and Testing Center, recognized by more than 10,000 organizations in over 140 countries.</p>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c7b8589f504b7ed1dc7_cis.svg" alt="CIS" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">Council of International Schools (CIS)</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS has been granted membership by CIS, a global non-profit organization dedicated to high-quality international education, joining a network of over 1,500 institutions worldwide.</p>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c845b040ef12c733acc_ohio.webp" alt="Ohio Department of Higher Education" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">Ohio Department of Higher Education</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">Tiffin University's seated and online programs are authorized by the Ohio Department of Higher Education.</p>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c8d3210aeaac6c80a11_acbsp.jpg" alt="ACBSP" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">ACBSP — Accreditation Council for Business Schools and Programs</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">Tiffin University's School of Business is accredited by ACBSP, a leading specialized accreditation body for business education at all degree levels worldwide.</p>
-        <a href="https://acbsp.org/" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563ca06ac461eb8d7d5ba3_hlc.png" alt="HLC" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">Higher Learning Commission (HLC) — Tiffin University</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">The dual degree programs are accredited by the HLC, one of the six regional accreditation bodies recognized by major colleges and universities in America.</p>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563cec6361ad7bd1c6d426_ministry_jordan.webp" alt="Ministry — Jordan" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">Ministry of Higher Education — Hashemite Kingdom of Jordan</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is accredited by the Ministry of Higher Education in the Hashemite Kingdom of Jordan.</p>
-        <a href="https://rce.mohe.gov.jo/en/RecognizedUniversities" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563cf8826f0f64152c33a2_ministry_sa.webp" alt="Ministry — Saudi Arabia" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">Ministry of Higher Education — Kingdom of Saudi Arabia</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is accredited by the Ministry of Higher Education in the Kingdom of Saudi Arabia, ensuring that degrees earned by Saudi students are recognized upon return to the Kingdom.</p>
-        <a href="https://ru.moe.gov.sa/Search#/University/13058" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563d01e87b055975389ff1_chea.png" alt="CHEA" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">CHEA — Council for Higher Education Accreditation</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS's IACBE accreditation has gained CHEA recognition since January 2011.</p>
-        <a href="https://www.chea.org/international-accreditation-council-business-education" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">CHEA Member Status Page &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563d0f6361ad7bd1c6f24b_iacbe.png" alt="IACBE" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">IACBE — International Accreditation Council for Business Education</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS has received specialized accreditation for its business programs through the IACBE, located in Overland Park, Kansas, USA.</p>
-        <a href="https://iacbe.org/memberpdf/AmericanInstituteofAppliedSciencesinSwitzerland.pdf" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">IACBE Member Status Page &rarr;</a>
-      </div>
-    </div>
+    <h1>Privacy Policy</h1>
+    <p>Last updated: August 2025</p>
   </div>
-</section>
-<!-- RANKING — centered 3-grid, smaller, not scrollable -->
-<section id="ranking" data-chapter="02" data-chapter-label="Ranking" style="background:var(--navy);color:var(--white);padding:clamp(60px,8vw,100px) 0;overflow:hidden;">
-  <div class="wrap" style="text-align:center;">
-    <span class="eyebrow on-navy reveal" style="justify-content:center;">Ranking</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4vw,48px);line-height:1.15;margin-top:12px;">QS World University Rankings</h2>
-    <p class="reveal d2" style="font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:rgba(255,255,255,.7);max-width:72ch;margin:16px auto 0;">The American Institute of Applied Sciences in Switzerland has been awarded a four-star rating in the QS Stars University Ratings — five stars in "Teaching" and "Business and Management Studies", four stars for Facilities and Employability.</p>
-    <p class="reveal d2" style="font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:rgba(255,255,255,.7);max-width:72ch;margin:12px auto 0;">AUS is ranked <strong style="color:var(--white);">#2 in Switzerland</strong> and among the <strong style="color:var(--white);">top 200 globally</strong> for its Masters in Management programs by the 2026 QS World University Rankings.</p>
-    <div class="stagger-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;grid-auto-rows:1fr;align-items:stretch;margin-top:clamp(36px,5vw,52px);text-align:center;">
-      <div class="reveal-scale" style="background:var(--white);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;height:100%;">
-        <div class="img-zoom" style="background:var(--white);"><img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a5771f466851487a31ba537_2026%20ranking.png" alt="QS Rankings 2026" style="width:100%;height:190px;object-fit:contain;padding:14px;"></div>
-        <div style="padding:20px 18px 22px;flex:1;display:flex;flex-direction:column;">
-          <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);margin-bottom:8px;">QS World University Rankings 2026</h3>
-          <p style="font-size:13.5px;line-height:1.5;color:var(--ink-soft);">Master in Management: Top 2 in Switzerland, Top 200 globally. Global MBA: Top 3 in Switzerland, Top 250 globally.</p>
-        </div>
-      </div>
-      <div class="reveal-scale" style="background:var(--white);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;height:100%;">
-        <div class="img-zoom" style="background:var(--white);"><img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a5771f466851487a31ba53b_Ranking%202025.png" alt="QS Rankings 2025" style="width:100%;height:190px;object-fit:contain;padding:14px;"></div>
-        <div style="padding:20px 18px 22px;flex:1;display:flex;flex-direction:column;">
-          <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);margin-bottom:8px;">QS World University Rankings 2025</h3>
-          <p style="font-size:13.5px;line-height:1.5;color:var(--ink-soft);">Master in Management: Top 2 in Switzerland, Top 200 globally. Global MBA: Top 3 in Switzerland, Top 250 globally.</p>
-        </div>
-      </div>
-      <div class="reveal-scale" style="background:var(--white);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;height:100%;">
-        <div class="img-zoom" style="background:var(--white);"><img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a5771f466851487a31ba53f_2024%20ranking.png" alt="QS Rankings 2024" style="width:100%;height:190px;object-fit:contain;padding:14px;"></div>
-        <div style="padding:20px 18px 22px;flex:1;display:flex;flex-direction:column;">
-          <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);margin-bottom:8px;">QS World University Rankings 2024</h3>
-          <p style="font-size:13.5px;line-height:1.5;color:var(--ink-soft);">Master in Management: Top 2 in Switzerland, Top 150 globally (Rank 141–150).</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- IACBE PUBLIC DISCLOSURES -->
-<section id="disclosures" data-chapter="03" data-chapter-label="Disclosures" style="padding:clamp(60px,8vw,100px) 0;background:var(--sky-tint);position:relative;overflow:hidden;">
+</div>
+
+<div class="pp-body">
   <div class="wrap">
-    <span class="eyebrow reveal">IACBE</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(24px,3vw,36px);line-height:1.2;margin-top:12px;max-width:30ch;">Public Disclosures of Student Achievement</h2>
-    <div class="stagger-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:clamp(32px,4vw,48px);">
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca7efeb0eacfbbdd955dcd_Public-Disclosure-of%20(1).jpg" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2018–2019</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca7f78ee9984abf9d052a6_Public-Disclosure-of%202019-2020.jpg" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2019–2020</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca7fc6962816d53422803f_Public-Disclosure-of%202020-2021.jpg" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2020–2021</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca80047c5ab0940b88e725_Public-Disclosure-of%202021-2022.jpg" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2021–2022</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca803f6c5d999f2d6d2970_Public-Disclosure-of%202022-2023.jpg" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2022–2023</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca809025ddc26560ffeb4f_Public-Disclosure-of%202023-2024.webp" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2023–2024</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69cbee294e60818ab2f994f3_Public-Disclosure-of-Student-Achievement-Template.pdf" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2024–2025</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-    </div>
+
+    <h2>Introduction</h2>
+    <p>The American Institute of Applied Sciences in Switzerland (AUS) needs to create, collect, process, and retain certain information about its employees, workers, students, clients, agents, and other individuals for various purposes. These purposes include managing the progress of students, managing staff, recruiting and employing staff, and complying with legal and statutory regulations. The institution is committed to protecting the rights and freedoms of individuals with respect to managing the personal information that it processes.</p>
+    <p>This policy sets out the responsibilities and actions that the institution will take to meet this commitment in accordance with our obligations and ensure compliance with the Swiss Federal Act on Data Protection (FADP) and the European General Data Protection Regulation (GDPR).</p>
+    <p>This policy applies to all staff and students and all personal data that are created, collected, stored, and processed through the activity of the institution. It also sets out the responsibilities of the institution, its staff, and its students to comply with the provisions of the above-mentioned regulations and laws.</p>
+    <p>AGSB S.A., Chemin du Levant 5, 1814 La Tour-de-Peilz, Switzerland is the Data Controller of the personal data you provide to AUS. AUS determines the purposes for which, and the manner in which, any personal data (e.g., relating to students and their families, employees, suppliers, business contacts, and other third parties) is to be collected and processed. Personal data shall mean any information that relates to an identified or identifiable living natural person.</p>
+    <p>The AUS President, Mohamad El Khansa, acts as a representative for AUS and as its Data Protection Officer. Responsibilities include: overseeing and monitoring AUS's data protection procedures and ensuring they are compliant with the Swiss data protection regulations (such as the Swiss Federal Act on Data Protection of 1 September 2023), and EU data protection regulations (General Data Protection Regulation 2016/679 of 27 April 2016 or GDPR), each as amended or replaced from time to time. He may be contacted at info@aus.swiss</p>
+
+    <h2>The Data We Collect</h2>
+    <p>The categories of personal data that we collect and process include the categories included below.</p>
+    <p><strong>In general:</strong></p>
+    <ul>
+      <li>personal identifiers (such as name, business affiliation, contact details, and address)</li>
+      <li>payment details</li>
+      <li>content of AUS's communication with you</li>
+      <li>engagement with AUS, including events attended, donations received, volunteer services</li>
+      <li>security information (such as CCTV footage)</li>
+      <li>cookies and other website usage data</li>
+    </ul>
+    <p><strong>Regarding students and their families:</strong></p>
+    <ul>
+      <li>personal identifiers (such as name, unique student number, family relationships, contact details and address)</li>
+      <li>characteristics (such as gender, age, language and nationality)</li>
+      <li>attendance information (such as classes attended, number of absences, absence reasons and any previous studies attended)</li>
+      <li>assessment information (such as data scores, tracking, and internal and external testing)</li>
+      <li>relevant medical information (such as insurance information, health conditions, physical and mental health care, immunizations and allergies, dietary requirements, and medication)</li>
+      <li>special educational needs information (such as care or support plans)</li>
+      <li>safeguarding information</li>
+      <li>photographs and videos (see below)</li>
+      <li>behavioral information (such as exclusions and any relevant provisions put in place)</li>
+      <li>information regarding student support</li>
+      <li>information on residency in Switzerland (such as visa application details, Swiss student permit, details from Swiss authorities)</li>
+    </ul>
+
+    <h2>Why We Collect Personal Data</h2>
+    <p>Personal data is generally used for the purposes of managing our relationship with you, communicating with you, and/or providing you with information you may request from us. More specifically, in line with applicable law, personal data may be used for the following purposes and for other purposes compatible with the purposes described below:</p>
+    <ul>
+      <li>to support student learning</li>
+      <li>to monitor and report on student progress</li>
+      <li>to provide appropriate first-aid and pastoral care</li>
+      <li>to assess the quality of our services</li>
+      <li>to meet the statutory requirements placed upon us by the cantonal and federal authorities</li>
+      <li>to support our admissions process</li>
+      <li>to inform parents about events, activities, and other things happening in the institution</li>
+      <li>to help investigate any concerns or complaints you may have</li>
+      <li>to establish, defend or exercise claims</li>
+      <li>to terminate our contractual relationship</li>
+      <li>build and maintain the AUS community</li>
+      <li>make you aware and inform you about our services, news, events, and activities</li>
+      <li>alumni: respond to your request regarding historical information about your time at AUS</li>
+    </ul>
+    <p>Personal data may further be used for any other purpose you give your explicit consent to, or for purposes that may be of legitimate interest to AUS.</p>
+    <p>Most of the personal data mentioned is provided by you during the admission process and in the course of our contractual relationship or collected through the use of AUS online services. Insofar as permitted, we may also hold personal data about our business partners, students, and their families that we have received from publicly accessible sources (e.g., social media channels), authorities, or other third parties.</p>
+    <p>When submitting personal data please make sure that the data is correct. When providing personal data about a person other than yourself, please make sure that you are permitted to provide the data and that this other person is aware of this Privacy Notice.</p>
+    <p>Personal data is essential for AUS's operational use. While the majority of personal data you provide to us is mandatory for the conclusion and performance of our contractual relationship, some of it may be provided on a voluntary basis. We will inform you when providing personal data is voluntary, or necessary to fulfill our contractual obligations.</p>
+
+    <h2>Special Rule on Camera Surveillance, Photographs, and Videos</h2>
+    <p>For security and safety reasons, the AUS campus is under camera surveillance. AUS retains video images for a maximum of 30 days after which they are deleted, unless the images must be retained for further investigation or law enforcement processes.</p>
+    <p>Photographs and videos of students, parents, and employees may be taken to record and share daily campus life during the course of the academic year. Students, parents, and employees may be identifiable in these photographs or videos. Such photographs and videos may be used for educational and internal informational purposes (e.g. keeping records of lessons, field trips, sports, events, employee training, yearbook, and internal newsletter), for the identification of students, parents, or employees for health-related purposes (e.g. allergies), or for marketing and publication purposes, if and to the extent you gave us your consent where required under applicable data protection laws.</p>
+
+    <h2>Data Protection Principles</h2>
+    <p>The institution shall comply with the Data Protection Principles set out in the aforementioned. In summary, these state:</p>
+    <ul>
+      <li>Personal data shall be processed fairly and lawfully.</li>
+      <li>An individual's personal data should be made available to them upon request and they should be able to contact the entity collecting this information.</li>
+      <li>Personal data shall be obtained only for specified and lawful purposes, and shall not be further processed in any manner incompatible with that purpose.</li>
+      <li>The processing must be carried out in good faith and be proportionate.</li>
+      <li>Personal data shall be adequate, relevant, and not excessive in relation to the purpose for which they are processed.</li>
+      <li>Personal data shall be accurate and, where necessary, kept up to date.</li>
+      <li>Personal data processed for any purpose shall not be kept longer than is necessary for that purpose or those purposes.</li>
+      <li>Personal data shall be processed in accordance with the rights of the data subjects under the FADP and GDPR.</li>
+    </ul>
+    <p>Any person who processes personal data must satisfy themselves that the data are accurate. They must take all appropriate measures to correct, delete or destroy data that are incorrect or incomplete insofar as the purpose for which they are collected or processed is concerned.</p>
+    <p>Appropriate security and organizational measures shall be taken against unauthorized or unlawful processing of personal data and against accidental loss or destruction of, or damage to, personal data.</p>
+    <p>Personal data shall not be transferred to another country unless that country ensures an adequate level of protection for the rights of data subjects in relation to the processing of personal data.</p>
+
+    <h2>Definitions</h2>
+    <p><strong>Data Subject</strong> &mdash; Identified or identifiable natural person.</p>
+    <p><strong>Personal data</strong> &mdash; Any information relating to an identified or identifiable natural person ('data subject'); an identifiable natural person is one who can be identified, directly or indirectly, in particular by reference to an identifier such as a name, an identification number, location data, online identifiers or to one or more factors specific to the physical, physiological, genetic, mental, economic, cultural or social identity of that natural person.</p>
+    <p><strong>Sensitive personal data</strong> &mdash; data relating to religious, philosophical, political, or trade union-related views or activities, data relating to health, the private sphere, or affiliation to a race or ethnicity, genetic data, biometric data that uniquely identifies a natural person, data relating to administrative and criminal proceedings or sanctions, data relating to social assistance measures.</p>
+    <p><strong>Data Controller</strong> &mdash; An individual or legal person, public authority, agency, or other body who determines the purposes and means of processing personal data.</p>
+    <p><strong>Data Processor</strong> &mdash; An individual or legal person, public authority, agency, or other body that processes personal data on behalf of the controller.</p>
+    <p><strong>Processing</strong> &mdash; Any operation or set of operations that is performed on personal data or on sets of personal data, whether or not by automated means, such as collection, recording, organization, structuring, storage, adaptation or alteration, retrieval, consultation, use, disclosure by transmission, dissemination or otherwise making available, alignment or combination, restriction, erasure or destruction.</p>
+    <p><strong>Breach of data security</strong> &mdash; a breach of security that leads to the accidental or unlawful loss, deletion, destruction, modification, or unauthorized disclosure or access to personal data.</p>
+
+    <h2>Roles and Responsibilities</h2>
+    <p>All Data Processors are expected to read this policy and to ensure that the processing of personal data is in accordance with the Data Protection principles established earlier and the Institution's policy and guidelines around them. The Line Managers shall be responsible for ensuring that their teams conform to this policy and the Data Protection principles and guidelines within it.</p>
+    <p>The Vice President shall be responsible for ensuring that all documents that are used to collect personal information on staff e.g. Staff Contracts, surveys, etc., include appropriate Data Protection statements that inform the data subject of information being collected, its purpose, and to whom it may be disclosed.</p>
+    <p>The Institution will maintain a record of processing activities, which records information relating to the processing of personal data. Users must ensure that the data they process is kept securely and that any personal information is not disclosed accidentally or otherwise to any unauthorized third party.</p>
+    <p>Staff and students who have any queries with respect to Data Protection should seek advice from the administration.</p>
+    <p>Students are required to follow this policy when processing any personal information as part of their studies and with the knowledge and express consent of an appropriate staff member(s).</p>
+    <p>Students are responsible for ensuring that they conform to this policy and any Guidelines based on it when requesting and using personal information in undertaking their studies in and on behalf of the institution.</p>
+    <p>Students are obliged to seek the approval of the Research Committee prior to conducting any research or academic activity that implies Personal Data and human subjects, in line with the regulations and guidelines provided by the Committee.</p>
+
+    <h2>Rights of the Data Subjects</h2>
+    <p>Under the data protection legislation, you have some rights regarding your personal data processed by us in order to verify the lawfulness of processing. In particular, you have the right to:</p>
+    <ul>
+      <li>request information about your personal data processed by AUS</li>
+      <li>request a copy of the personal data AUS holds on you; this includes the right to data portability, i.e., the right to receive your personal data in a structured, commonly used format</li>
+      <li>restrict processing and/or object to the processing of personal data, in which case we may, however, no longer be in a position to provide any related services or perform our contractual obligations</li>
+      <li>request that your personal data is erased where there is no compelling reason for its continued processing</li>
+      <li>request that your personal data is amended if it is inaccurate or incomplete</li>
+    </ul>
+    <p>Where the processing of your personal data is based on your consent, you have the right to withdraw this consent at any time. Such withdrawal of consent will not affect the lawfulness of the processing based on consent before the withdrawal.</p>
+    <p>Please note that your rights pursuant to this section may be limited in order to preserve any preponderant interest of AUS or any third parties.</p>
+    <p>In addition, you have the right to lodge a complaint with the competent data protection authority. The competent data protection authority of Switzerland is the Federal Data Protection and Information Commissioner (http://www.edoeb.admin.ch).</p>
+    <p>The institution will ensure that arrangements are made to provide for the rights available to Data Subjects under FADP and GDPR:</p>
+    <ul>
+      <li>The right to be informed.</li>
+      <li>The right of access.</li>
+      <li>The right to rectification.</li>
+      <li>The right to erasure.</li>
+      <li>The right to restrict processing.</li>
+      <li>The right to data portability.</li>
+      <li>The right to object.</li>
+      <li>Rights in relation to automated decision-making and profiling.</li>
+      <li>The right to data security and confidentiality.</li>
+    </ul>
+
+    <h2>Storing Personal Data</h2>
+    <p>Personal data is stored in line with the Swiss data protection regulations and EU GDPR on servers located in Switzerland, EU-EFTA countries, and the USA. AUS maintains appropriate technical and organizational measures to preserve the confidentiality and integrity of your personal data (protection against unauthorized or unlawful access or processing, accidental loss, destruction or damage, cyber-security).</p>
+    <p>AUS does not store personal data indefinitely; data is only stored for as long as is necessary to serve the purposes described above. It may be processed beyond the end of our contractual relationship to establish, defend, or exercise claims (during the applicable limitation period), meet legal or post-contractual obligations, including legal documentation requirements, and to safeguard other legitimate interests of AUS.</p>
+
+    <h2>Who We Share Personal Information With</h2>
+    <p>AUS restricts the use of and access to personal data to those who have an absolute need to know in order to provide the services and serve the purposes described above (authorized personnel or agents). AUS will not share your personal data with any external parties other than those set out in this policy, or except with your explicit prior consent, or as required under applicable laws or regulations.</p>
+    <p>External recipients whom AUS routinely shares personal data with are the following:</p>
+    <ul>
+      <li>any company or provider where sharing the information is necessary to make payments or book benefits to you</li>
+      <li>institutions that the students attend after leaving us</li>
+      <li>our local, cantonal, and federal authorities to meet our legal obligations</li>
+      <li>the Swiss education authorities</li>
+      <li>the student's family and representatives</li>
+      <li>educators and examining bodies</li>
+      <li>service providers to enable them to provide the service we have contracted them for (e.g., providers of IT services; academic service providers; providers of extra-curricular activities, internships, and field trips; tertiary education institutions)</li>
+      <li>our auditors</li>
+      <li>health authorities</li>
+      <li>police forces, courts, tribunals</li>
+    </ul>
+    <p>Where necessary, AUS will oblige external recipients to comply with this policy and to process personal data securely and exclusively for the purposes allowed by AUS.</p>
+    <p>Transfer of personal data is usually limited to recipients located in Switzerland. However, transfer of personal data may occur to recipients located in the EU-EFTA countries and the USA. If external recipients or external service providers are located in countries whose legislation does not guarantee an adequate level of data protection, AUS will implement suitable safeguards in the form of appropriate contractual clauses, namely standard contractual clauses and model contracts for data transfers recognized by the Swiss Federal Data Protection and Information Commissioner, in order to ensure compliance with this Privacy Notice and applicable laws.</p>
+
+    <h2>Data Security</h2>
+    <p>All personal data must be kept secure from unauthorized access. For computer-based information, this would include the use of passwords, password-protected screensavers, cryptographic mechanisms, and physical forms of security including, portable media such as USB pens being locked away, etc.</p>
+    <p>Personal Data must not be held for longer than required and it must be destroyed securely. A Data Processor must periodically review if the Data Subjects' data is accurate, up to date, and still necessary.</p>
+    <p>Particular care must be taken when holding personal information on laptops. Personal information held on laptops should be deleted as soon as it is no longer required.</p>
+    <p>Personal data held on paper should be kept in locked cupboards and/or drawers unless it is being worked on. Personal data/information should not be downloaded to non-encrypted laptops/devices.</p>
+    <p>In the event that personal data, including any special category data, is unlawfully destroyed, lost, stolen, corrupted, disclosed, or released to an unauthorized person(s), the administrative staff must be informed.</p>
+    <p>Data breaches should be contained and responded to immediately upon discovering the breach. Data Processors should not try to manage the breach on their own but instead, report the incident and cooperate by providing information relating to the scope of the incident.</p>
+    <p>A Data Protection Impact Assessment should be undertaken immediately to identify the measures required to contain or limit potential damage and recovery from the incident. Any discussion of the data breach or circulation of information must be restricted to those directly involved in the investigation.</p>
+    <p>The communication of any data breach that involves personal data must be handled with care. Wider communication of a data breach, including notification to the regulatory authorities or research sponsors will be managed by the Institution.</p>
+
+    <h2>Accountability and Governance</h2>
+    <p>The institution shall implement appropriate technical and organizational measures such as pseudonymization, data-protection principles, and data minimization in order to effectively protect the rights of data subjects.</p>
+    <p>The institution shall implement proper technical measures to ensure that personal data that are essential for a specific purpose are processed. Obligation shall be based on the amount of data of collected personal data, extent of processing, period of storage, and accessibility.</p>
+    <p>These measures will serve to ensure that by default, personal data are not accessed without the data subject's intervention.</p>
+    <p>Requests by Data Subjects who are not members of the institution for access, rectification, erasure, portability, and/or objections to the processing of their Personal Data should be made through the institution's website. Similar requests by staff members or students may be submitted via their work or student email accounts to the administration. The administration will be accountable for ensuring FADP and GDPR compliance by the organization, as well as evaluating and implementing data protection policies.</p>
+
+    <h2>Website Analytics</h2>
+    <p>We use website statistic packages such as Google Analytics to analyze trends in how our website is accessed and utilized. Information monitored includes internet protocol (IP) addresses, kind of device used, geographic location of visitors, browser type, internet service provider (ISP), referring/exit pages, platform type, date/time stamp, time spent on pages, and keywords used to find our site via search engines. This information is anonymous and cannot be directly linked to individual users. We may use it to identify high-use or low-use areas of the site, pinpoint problem areas of the site, analyze broad demographic trends in our visitors and make decisions about how to make it easier for people to find and navigate our website.</p>
+    <p>If you do not want analytics to be used in your browser, you can install the Google Analytics browser add-on.</p>
+    <p>The AUS website may contain links to other sites. Please be aware that AUS is not responsible for the privacy practices of such other sites. We encourage our users to be aware when they leave our site and to read the privacy statements of each and every website that collects personally identifiable information.</p>
+    <p>The AUS website may use "cookies" to help you personalize your online experience. A cookie is a text file that is placed on your hard disk by a web page server. Cookies cannot be used to run programs or deliver viruses to your computer. Cookies are uniquely assigned to you and can only be read by a web server in the domain that issued the cookie to you.</p>
+    <p>One of the primary purposes of cookies is to provide a convenience feature to save you time. The purpose of a cookie is to tell the Web server that you have returned to a specific page.</p>
+    <p>You have the ability to accept or decline cookies. Most Web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. If you choose to decline cookies, you may not be able to fully experience the interactive features of the AUS website.</p>
+    <p>If you wish to disable cookies, you may do so through your individual browser options. More detailed information about cookie management with specific web browsers can be found on the browsers' respective websites.</p>
+
   </div>
-</section>
-<!-- EDUCATIONAL PARTNERSHIPS — logo images no white box, bigger -->
-<section id="partnerships" data-chapter="04" data-chapter-label="Partnerships" style="padding:clamp(60px,8vw,100px) 0;background:var(--white);position:relative;overflow:hidden;background-image:radial-gradient(circle, rgba(34,41,95,.06) 1px, transparent 1px);background-size:24px 24px;">
-  <div class="wrap">
-    <span class="eyebrow reveal">Educational Partnerships</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(24px,3vw,36px);line-height:1.2;margin-top:12px;max-width:30ch;">Our partner institutions</h2>
-    <p class="reveal d2" style="font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:var(--ink-soft);max-width:62ch;margin-top:12px;">Academic cooperation with leading universities across Europe, Asia, the Middle East and the Americas.</p>
-    <div class="stagger-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;grid-auto-rows:1fr;align-items:stretch;margin-top:clamp(36px,5vw,52px);">
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild6137-3962-4732-b231-366433303765/tiffin.jpg" alt="Tiffin University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Tiffin University</h3>
-        <a href="https://www.tiffin.edu/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild3533-3337-4435-a334-353966316362/meiju.jpg" alt="Meiji University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Meiji University</h3>
-        <a href="https://www.meiji.ac.jp/cip/english/index.html" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild3366-3138-4264-a133-373236663237/aust.jpg" alt="American University of Science and Technology"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">American University of Science and Technology</h3>
-        <a href="https://www.aust.edu.lb/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild6639-6232-4137-b437-626438306633/dah-logo.jpg" alt="Dar Al-Hekma University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Dar Al-Hekma University</h3>
-        <a href="https://www.dah.edu.sa/en/Pages/default.aspx" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild6564-6461-4733-b763-393238356466/upm-logo-1.jpg" alt="University of Prince Mugrin"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">University of Prince Mugrin</h3>
-        <a href="https://www.upm.edu.sa/en" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild6336-6532-4965-b064-666461363334/tiblisi-university.jpg" alt="Tbilisi State University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Tbilisi State University</h3>
-        <a href="https://www.tsu.ge/en" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild3831-3437-4337-a562-356438666565/ferrari-fashion-scho.jpg" alt="Ferrari Fashion School"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Ferrari Fashion School</h3>
-        <a href="https://ferrarifashionschool.it/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild6638-6234-4438-a562-386339626439/mahsa-university.jpg" alt="MAHSA University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">MAHSA University</h3>
-        <a href="https://mahsa.edu.my/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild6362-6639-4565-b731-323737313663/Group_253.png" alt="Anahuac University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Anahuac University</h3>
-        <a href="https://www.anahuac.mx/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild6431-3938-4234-b833-376131376166/Universidad-de-Guada.jpg" alt="Universidad de Guadalajara"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Universidad de Guadalajara</h3>
-        <a href="https://www.udg.mx/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild6665-6530-4136-b664-366161353739/cun-logo.jpg" alt="CUN"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">The National Unified Corporation of Higher Education (CUN)</h3>
-        <a href="https://cun.edu.co/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="cta-section">
-  <div class="wrap cta-inner">
-    <span class="eyebrow on-navy reveal">What's Next</span>
-    <h2 class="reveal d1">Let's Make History Together</h2>
-    <p class="reveal d2">Join a legacy of academic excellence. Take the first step toward your future at AUS.</p>
-    <div class="reveal d3">
-      <a href="#" class="cta-btn">Apply for Admission &rarr;</a>
-    </div>
-  </div>
-</section>
+</div>
 
 <!-- FOOTER -->
 <footer class="site-footer">
@@ -710,12 +495,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
           <a class="footer-social-tile" href="https://www.youtube.com/channel/UCKUFsoxwPuaH8bi0vMoSTaQ" target="_blank" aria-label="YouTube"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M2.29167 15.5833C1.65131 12.5613 1.65131 9.43867 2.29167 6.41667C2.37581 6.10977 2.53838 5.83007 2.7634 5.60506C2.98841 5.38004 3.26812 5.21747 3.57501 5.13333C8.4915 4.31884 13.5085 4.31884 18.425 5.13333C18.7319 5.21747 19.0116 5.38004 19.2366 5.60506C19.4616 5.83007 19.6242 6.10977 19.7083 6.41667C20.3487 9.43867 20.3487 12.5613 19.7083 15.5833C19.6242 15.8902 19.4616 16.1699 19.2366 16.3949C19.0116 16.62 18.7319 16.7825 18.425 16.8667C13.5085 17.6813 8.49149 17.6813 3.57501 16.8667C3.26812 16.7825 2.98841 16.62 2.7634 16.3949C2.53838 16.1699 2.37581 15.8902 2.29167 15.5833Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M9.16663 13.75L13.75 11L9.16663 8.25V13.75Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
-      <div class="footer-col"><div class="footer-col-title">Programs</div><a href="aus-programs.html#bachelor">Bachelors</a><a href="aus-programs.html#master">Masters</a><a href="aus-programs.html#doctorate">Doctorate</a><a href="#">Federal Diploma</a></div>
-      <div class="footer-col"><div class="footer-col-title">School</div><a href="#">About</a><a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a>
-          <a href="aus-accreditations.html">Accreditations &amp; Memberships</a>
-          <a href="aus-governance.html">Governance</a>
-          <a href="aus-faq.html">FAQ</a>
-          <a href="#" style="display:none">Accreditations_TEMP &amp; Memberships</a><a href="#">Campus life</a></div>
+      <div class="footer-col"><div class="footer-col-title">Programs</div><a href="aus-programs.html#bachelor">Bachelors</a><a href="aus-programs.html#master">Masters</a><a href="aus-programs.html#doctorate">Doctorate</a><a href="aus-federal-diploma.html">Federal Diploma</a></div>
+      <div class="footer-col"><div class="footer-col-title">School</div><a href="aus-about.html">About</a><a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a><a href="aus-accreditations.html">Accreditations &amp; Memberships</a><a href="aus-governance.html">Governance</a><a href="aus-faq.html">FAQ</a></div>
       <div class="footer-col"><div class="footer-col-title">Connect</div><a href="aus-admissions.html">Admissions</a><a href="#">Events</a><a href="#">Contact</a></div>
     </div>
     <div class="footer-v2_bottom">
@@ -735,92 +516,49 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 </footer>
 
 <script>
-/* PRELOADER */
 (function(){
-  var done=false;
-  function finish(){if(done)return;done=true;document.getElementById('preloader').classList.add('is-hidden');document.documentElement.classList.remove('has-preloader');}
-  if(typeof Promise!=='undefined'){
-    new Promise(function(r){if(document.readyState==='complete')r();else window.addEventListener('load',r);}).then(function(){setTimeout(finish,600);});
-  }else{window.addEventListener('load',function(){setTimeout(finish,100);});}
-  setTimeout(finish,4000);
-})();
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isTouch = window.matchMedia('(hover:none)').matches;
+  if(window.gsap && window.ScrollTrigger){ gsap.registerPlugin(ScrollTrigger); }
 
-/* NAV SCROLL */
-(function(){
-  var nav=document.getElementById('nav'),last=0;
-  window.addEventListener('scroll',function(){var s=window.pageYOffset;if(s>60){nav.classList.add('is-scrolled');}else{nav.classList.remove('is-scrolled');}last=s;},{passive:true});
-})();
+  // Preloader
+  document.documentElement.classList.add('has-preloader');
+  var preloader = document.getElementById('preloader');
+  function hidePreloader(){
+    preloader.classList.add('is-hidden');
+    document.documentElement.classList.remove('has-preloader');
+    setTimeout(function(){ if(preloader.parentNode) preloader.parentNode.removeChild(preloader); },700);
+  }
+  var minShow = new Promise(function(res){ setTimeout(res,900); });
+  var ready = new Promise(function(res){ if(document.readyState==='complete') res(); else window.addEventListener('load',res); });
+  Promise.all([minShow,ready]).then(hidePreloader);
 
-/* SIDE PANEL */
-(function(){
-  var panel=document.getElementById('sidePanel'),backdrop=document.getElementById('sidePanelBackdrop'),closeBtn=document.getElementById('sidePanelClose'),toggle=document.getElementById('menuToggle');
-  function openPanel(expandKey){document.documentElement.classList.add('panel-open');document.body.classList.add('panel-open');panel.style.pointerEvents='auto';toggle.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';if(expandKey){document.querySelectorAll('.accordion-item').forEach(function(item){var open=undefined;if(item.getAttribute('data-panel-key')===expandKey)open=true;if(open!==undefined){var btn=item.querySelector('.accordion-trigger');var ans=item.querySelector('.accordion-panel');if(btn&&ans){item.classList.toggle('is-open',open);btn.setAttribute('aria-expanded',open);ans.hidden=!open;}}});var target=document.querySelector('.accordion-item[data-panel-key="'+expandKey+'"]');if(target){setTimeout(function(){target.scrollIntoView({block:"start",behavior:"smooth"});},60);}}}
-  function closePanel(){document.documentElement.classList.remove('panel-open');document.body.classList.remove('panel-open');panel.style.pointerEvents='none';toggle.setAttribute('aria-expanded','false');document.body.style.overflow='';}
-  toggle.addEventListener('click',openPanel);closeBtn.addEventListener('click',closePanel);backdrop.addEventListener('click',closePanel);
+  // Nav scroll
+  var nav = document.getElementById('nav');
+  function onScrollNav(){ nav.classList.toggle('is-scrolled',window.scrollY>40); }
+  window.addEventListener('scroll',onScrollNav,{passive:true});
+  onScrollNav();
+
+  // Side panel
+  var menuToggle=document.getElementById('menuToggle'),sidePanel=document.getElementById('sidePanel'),sidePanelClose=document.getElementById('sidePanelClose'),sidePanelBackdrop=document.getElementById('sidePanelBackdrop'),sidePanelNav=document.querySelector('.side-panel-nav'),accordionItems=document.querySelectorAll('.accordion-item');
+  function openPanel(expandKey){document.documentElement.classList.add('panel-open');menuToggle.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';if(expandKey){accordionItems.forEach(function(item){if(item.getAttribute('data-panel-key')===expandKey)item.classList.add('is-open');});var t=document.querySelector('.accordion-item[data-panel-key="'+expandKey+'"]');if(t&&sidePanelNav)setTimeout(function(){t.scrollIntoView({block:'start',behavior:reduceMotion?'auto':'smooth'});},60);}}
+  function closePanel(){document.documentElement.classList.remove('panel-open');menuToggle.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  menuToggle.addEventListener('click',function(){openPanel();});
+  sidePanelClose.addEventListener('click',closePanel);
+  sidePanelBackdrop.addEventListener('click',closePanel);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closePanel();});
   document.querySelectorAll('[data-open-panel]').forEach(function(btn){btn.addEventListener('click',function(){openPanel(btn.getAttribute('data-open-panel'));});});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('panel-open'))closePanel();});
-})();
+  accordionItems.forEach(function(item){item.querySelector('.accordion-trigger').addEventListener('click',function(){item.classList.toggle('is-open');});});
 
-/* ACCORDION */
-(function(){
-  document.querySelectorAll('.accordion-trigger').forEach(function(trigger){
-    trigger.addEventListener('click',function(){
-      var item=this.closest('.accordion-item');var wasOpen=item.classList.contains('is-open');
-      item.closest('.side-panel-nav').querySelectorAll('.accordion-item.is-open').forEach(function(o){o.classList.remove('is-open');});
-      if(!wasOpen)item.classList.add('is-open');
-    });
-  });
-  var aboutPanel=document.querySelector('[data-panel-key="about"]');
-  if(aboutPanel)aboutPanel.classList.add('is-open');
-})();
-
-/* REVEAL */
-(function(){
-  document.documentElement.classList.add('js-reveal-ready');
-  var els=document.querySelectorAll('.reveal,.reveal-scale,.reveal-clip,.reveal-rotate,.stagger-grid');
-  if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('is-visible');});return;}
-  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
-  els.forEach(function(el){io.observe(el);});
-})();
-
-/* SECTION NAVIGATOR (archive tab) */
-(function(){
-  var tab=document.getElementById('archiveTab');
-  var tabNum=document.getElementById('archiveTabNum');
-  var tabLabel=document.getElementById('archiveTabLabel');
-  var chapters=document.querySelectorAll('[data-chapter]');
-  var toc=document.getElementById('archiveTabToc');
-  if(tab&&chapters.length&&toc){
-    chapters.forEach(function(el){
-      var num=el.getAttribute('data-chapter');
-      var label=el.getAttribute('data-chapter-label');
-      var item=document.createElement('button');
-      item.type='button';
-      item.className='archive-tab-toc-item';
-      item.setAttribute('data-toc-target',num);
-      item.innerHTML='<span class="num">'+num+'</span><span>'+label+'</span>';
-      item.addEventListener('click',function(){
-        el.scrollIntoView({block:'start',behavior:'smooth'});
-      });
-      toc.appendChild(item);
-    });
-  }
-  if(tab&&chapters.length&&'IntersectionObserver' in window){
-    var tocItems=toc?toc.querySelectorAll('.archive-tab-toc-item'):[];
-    var chapterObserver=new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          var num=entry.target.getAttribute('data-chapter');
-          tabNum.textContent=num;
-          tabLabel.textContent=entry.target.getAttribute('data-chapter-label');
-          tocItems.forEach(function(ti){ti.classList.remove('is-active');if(ti.getAttribute('data-toc-target')===num)ti.classList.add('is-active');});
-        }
-      });
-    },{threshold:0, rootMargin:'-45% 0px -45% 0px'});
-    chapters.forEach(function(ch){chapterObserver.observe(ch);});
+  // Scroll reveal
+  if('IntersectionObserver' in window){
+    document.documentElement.classList.add('js-reveal-ready');
+    var reveals=document.querySelectorAll('.reveal,.reveal-scale,.reveal-clip,.reveal-rotate,.stagger-grid');
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+    reveals.forEach(function(el){io.observe(el);});
   }
 })();
-/* SITE SEARCH â€” INDEX: add new pages here to appear in dropdown */
+/* SITE SEARCH */
 (function(){
         var idx=[
     {title:"Home",url:"aus-home-demo.html",cat:"Home",keys:"Chapter 01 Where precision meets ambition. A Swiss business education built on scientific method and practice, for students who intend to lead, not just graduate. Explore the archive ? Founded 1991 La Tour-de-Peilz, Switzerland 02 Programs Choose your level. Every program is built around the same practice-led method. Hover a level to see what's inside. 01 Bachelors Degree Accounting Aviation Management Business Management Healthcare Administration Human Resource Management Integrated & Digital Marketing International Business Sports Management — Athletic Administration Sports Management — Sports Marketing 02 Masters Degree Data Analytics Finance Healthcare Administration Human Resource Management International Business Leadership & Change Sports Management Strategic Brand & Digital Marketing 03 Doctorate Doctorate in Business Administration 04 Swiss Federal Diploma Business Administration Three years, seven majors, one method. One year, built for people already leading. For those researching the next standard. Swiss-recognized professional qualification. 03 The Approach Practice-led, not theory-bound . Every course is built around real organizational problems. Students leave with a portfolio of decisions they made, not just a transcript of lectures they attended, prepared to lead from day one rather than catch up. 04 In Numbers “A prestigious, well-known institution that attracts students and faculty from all over the world.” 0+ Years combining Swiss and American education traditions AUS institutional records, 2026 0%+ Of graduates say their role relates to their AUS studies Alumni outcomes survey, 2025 0+ Nationalities on campus AUS Registrar, Fall 2026 0 Maximum students per class Academic policy, 2026 1: 0 Faculty to student ratio AUS Registrar, Fall 2026 0%+ Employed within 6 months of graduating Alumni outcomes survey, 2025 05 Recognition Independently recognized, not self-declared. Accreditation bodies and ranking institutions evaluate AUS on the same criteria applied to the world's leading business schools. Top 2 In Switzerland, QS Business Masters 2025 Top 200 Globally, QS Business Masters 2025 06 Mission & Vision Mission AUS equips students pursuing a degree in international business with the knowledge, skills and tools to make a significant contribution to any organization. Through practice-oriented study grounded in scientific method, research and development, graduates are prepared to lead with competence and confidence. Vision To build a reputation as a prestigious, well-known private institution in Switzerland that attracts students and faculty from all over the world, and to shape decision-makers ready for a more sustainable future. 07 Why AUS Five reasons students choose AUS. 01 Join a genuinely international student body. Classrooms bring together students from across Europe, the Middle East and beyond, so every group project is already a cross-border negotiation. 02 Case work replaces the lecture hall. Assignments are built from real organizational problems, not textbook exercises, so the skills transfer directly to a first job. 03 The working language of international business. Every program runs entirely in English, preparing graduates to operate in global teams from day one. 04 Study where students actually want to live. The campus sits on the shores of Lake Geneva, close enough to Zurich and Lucerne to make the most of both. 05 Faculty who know your name, not your seat number. Small cohorts mean direct access to professors, real feedback on your work, and no getting lost in a lecture hall of hundreds. 08 Sustainability Shaping decision-makers for a sustainable future. Sustainability sits at the core of how AUS teaches. Through partnerships with associations and non-profits, sustainable practice is built into the classroom, so graduates can balance economic and environmental goals in line with the UN Sustainable Development Goals. 09 Learning from Experts Local and international voices, inside the classroom. The Speaker Series brings practitioners into the room to bridge academic theory with what's actually happening in business today. Speaker Series ? 10 Campus Archive Lecture Hall, Zurich The Reading Room Case Studio Main Courtyard Commencement 11 Our Partners Organizations that hire, train and collaborate with AUS. “Moving to Switzerland to study felt daunting at first, but AUS made it feel like a place I could actually belong.” Tomiwa “Going back to school after twenty years focused on family took courage. AUS is where I found the confidence to start again.” Umida"},    {title:"Admissions",url:"aus-admissions.html",cat:"Admissions",keys:"Admissions Your Journey Starts Here Everything you need to know about applying to AUS from eligibility and required documents to fees visas and arrival in Switzerland How to Apply Choose Your Program Submit Your Application Review and Decision Confirm and Enroll Entry Requirements Bachelor Master English Language Requirements IELTS TOEFL Duolingo Tuition and Fees Application Fee Important Dates Fall Semester Spring Semester Summer Term Visa Information EU EFTA Non-EU EFTA"},
@@ -948,7 +686,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     if(e.key==="Enter"){ var a=drop.querySelector("a"); if(a) location.href=a.getAttribute("href"); }
   });
   document.addEventListener("click", function(e){ if(!wrap.contains(e.target)) drop.hidden=true; });
-})();/* SEARCH HIGHLIGHT & SCROLL â€” scrolls to term from ?q= like FAQ */
+})();/* SEARCH HIGHLIGHT & SCROLL */
 (function(){
   var q=new URLSearchParams(location.search).get("q");
   if(!q) return;

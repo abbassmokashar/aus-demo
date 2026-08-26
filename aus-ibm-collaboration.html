@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Accreditations &amp; Memberships | AUS Business School</title>
+<title>IBM Collaboration | AUS Business School</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -106,6 +106,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .hero-scroll{position:absolute;bottom:clamp(24px,3vw,40px);right:clamp(20px,5vw,64px);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.35);font-size:10px;letter-spacing:.12em;text-transform:uppercase;z-index:2;}
 .hero-scroll::after{content:"";width:1px;height:28px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent);animation:scrollPulse 2s ease-in-out infinite;}
 @keyframes scrollPulse{0%,100%{opacity:.35;}50%{opacity:.7;}}
+@media (max-width:760px){.hero{min-height:auto;}.hero-bg{position:relative;height:50vh;}.hero-inner{padding:clamp(32px,5vw,48px) clamp(20px,5vw,64px);}.hero-scroll{display:none;}}
 
 /* MOBILE HERO */
 .hero-mobile{display:none;}
@@ -189,16 +190,52 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .js-reveal-ready .reveal.d3{transition-delay:.24s;}
 .js-reveal-ready .reveal.d4{transition-delay:.32s;}
 
-/* NEW ANIMATION SYSTEM */
+/* SECTION FADE-IN */
+@keyframes sectionFadeIn{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:none;}}
+.section-animate{animation:sectionFadeIn .8s var(--ease-soft) forwards;}
+
+/* STAT COUNTER */
+.counter{font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,56px);color:var(--navy);line-height:1;}
+
+/* REVEAL SYSTEM */
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
 .reveal.is-visible{opacity:1;transform:translateY(0);}
 .reveal.d1{transition-delay:.1s;}.reveal.d2{transition-delay:.2s;}.reveal.d3{transition-delay:.3s;}.reveal.d4{transition-delay:.4s;}.reveal.d5{transition-delay:.5s;}
+
+/* SCALE REVEAL */
 .reveal-scale{opacity:0;transform:scale(.92);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
 .reveal-scale.is-visible{opacity:1;transform:scale(1);}
+
+/* CLIP REVEAL */
 .reveal-clip{clip-path:inset(100% 0 0 0);transition:clip-path 1s var(--ease-soft);}
 .reveal-clip.is-visible{clip-path:inset(0 0 0 0);}
+
+/* SPLIT TEXT */
+.split-text .word{display:inline-block;opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease-soft),transform .5s var(--ease-soft);}
+.split-text.is-visible .word{opacity:1;transform:translateY(0);}
+
+/* PARALLAX */
+.parallax{will-change:transform;}
+
+/* FLOAT */
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
 .float{animation:float 5s ease-in-out infinite;}
+
+/* ROTATE IN */
+@keyframes rotateIn{from{opacity:0;transform:rotate(-8deg) scale(.9);}to{opacity:1;transform:rotate(0) scale(1);}}
+.reveal-rotate{opacity:0;transform:rotate(-8deg) scale(.9);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
+.reveal-rotate.is-visible{opacity:1;transform:rotate(0) scale(1);}
+
+/* MARQUEE */
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.marquee-track{display:flex;width:max-content;animation:marquee 25s linear infinite;}
+.marquee-track:hover{animation-play-state:paused;}
+
+/* LINE DRAW */
+.line-draw{stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset 1.2s var(--ease-soft);}
+.line-draw.is-visible{stroke-dashoffset:0;}
+
+/* STAGGER GRID */
 .stagger-grid > *{opacity:0;transform:translateY(30px);transition:opacity .6s var(--ease-soft),transform .6s var(--ease-soft);}
 .stagger-grid.is-visible > *:nth-child(1){transition-delay:.05s;opacity:1;transform:translateY(0);}
 .stagger-grid.is-visible > *:nth-child(2){transition-delay:.12s;opacity:1;transform:translateY(0);}
@@ -206,64 +243,47 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .stagger-grid.is-visible > *:nth-child(4){transition-delay:.26s;opacity:1;transform:translateY(0);}
 .stagger-grid.is-visible > *:nth-child(5){transition-delay:.33s;opacity:1;transform:translateY(0);}
 .stagger-grid.is-visible > *:nth-child(6){transition-delay:.40s;opacity:1;transform:translateY(0);}
-.img-zoom{overflow:hidden;}
-.img-zoom img{transition:transform .7s var(--ease-soft);}
-.img-zoom:hover img{transform:scale(1.06);}
-
-/* PARALLAX */
-.parallax{will-change:transform;}
 
 /* CARD TILT on hover */
 .tilt-card{transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
 .tilt-card:hover{transform:translateY(-6px) rotate(.5deg);box-shadow:0 20px 50px rgba(34,41,95,.1);}
 
-/* SECTION NAVIGATOR (archive tab) */
-.archive-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding:14px 22px 14px 30px;background:var(--white);border-top-left-radius:6px;border-bottom-left-radius:6px;box-shadow:-6px 0 24px rgba(34,41,95,0.08);transition:background .4s var(--ease),box-shadow .4s var(--ease);}
-.archive-tab-num{font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.04em;color:var(--navy);}
-.archive-tab-label{font-family:var(--font-serif);font-style:italic;font-size:12px;color:var(--ink-soft);white-space:nowrap;}
-.archive-tab-toc{position:absolute;right:100%;top:50%;transform:translateY(-50%) translateX(12px);width:236px;background:var(--white);box-shadow:-6px 0 24px rgba(34,41,95,0.14);padding:10px 0;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);border-radius:8px;}
-.archive-tab:hover .archive-tab-toc,.archive-tab:focus-within .archive-tab-toc{opacity:1;transform:translateY(-50%) translateX(0);pointer-events:auto;}
-.archive-tab-toc-item{display:flex;align-items:baseline;gap:12px;width:100%;text-align:left;padding:8px 20px;font-size:12.5px;color:var(--ink-soft);transition:color .2s var(--ease),background .2s var(--ease);}
-.archive-tab-toc-item:hover{color:var(--navy);background:var(--sky-tint);}
-.archive-tab-toc-item .num{font-family:var(--font-display);font-weight:700;font-size:11px;color:var(--crimson);min-width:18px;}
-.archive-tab-toc-item.is-active{color:var(--navy);font-weight:600;}
-.archive-tab-toc-item.is-active .num{color:var(--crimson);}
-@media (max-width:960px){.archive-tab{display:none;}}
+/* IMAGE HOVER ZOOM */
+.img-zoom{overflow:hidden;}
+.img-zoom img{transition:transform .7s var(--ease-soft);}
+.img-zoom:hover img{transform:scale(1.06);}
 
-/* TIMELINE */
-.timeline{position:relative;max-width:900px;margin:0 auto;}
-.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--line),var(--crimson),var(--line));transform:translateX(-50%);}
-.timeline-item{position:relative;width:50%;padding:0 clamp(24px,4vw,48px) clamp(40px,5vw,60px);}
-.timeline-item:nth-child(odd){left:0;text-align:right;padding-right:clamp(32px,5vw,60px);padding-left:0;}
-.timeline-item:nth-child(even){left:50%;text-align:left;padding-left:clamp(32px,5vw,60px);padding-right:0;}
-.timeline-item::before{content:"";position:absolute;top:8px;width:14px;height:14px;border-radius:50%;background:var(--white);border:3px solid var(--crimson);z-index:2;}
-.timeline-item:nth-child(odd)::before{right:-7px;}
-.timeline-item:nth-child(even)::before{left:-7px;}
-.timeline-item::after{content:"";position:absolute;top:14px;width:clamp(20px,3vw,40px);height:2px;background:var(--line);z-index:1;}
-.timeline-item:nth-child(odd)::after{right:0;}
-.timeline-item:nth-child(even)::after{left:0;}
-.timeline-year{font-family:var(--font-display);font-weight:800;font-size:clamp(32px,3.5vw,48px);color:var(--navy);line-height:1;margin-bottom:8px;}
-.timeline-text h3{font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;}
-.timeline-text p{font-size:14px;line-height:1.65;color:var(--ink-soft);}
+/* MAGNETIC BUTTON */
+.mag-btn{position:relative;transition:transform .3s var(--ease);}
+
+@media (hover:none){.prog-card-detail{max-height:120px!important;opacity:1!important;transform:translateY(0)!important;}}
+
+@media (max-width:960px){
+  .hero h1{font-size:clamp(28px,7vw,52px);}
+  .hero-sub{font-size:clamp(14px,2.8vw,16px);}
+}
+
 @media (max-width:760px){
-  .timeline::before{left:20px;}
-  .timeline-item,.timeline-item:nth-child(odd),.timeline-item:nth-child(even){left:0;width:100%;text-align:left;padding-left:48px;padding-right:0;}
-  .timeline-item::before,.timeline-item:nth-child(odd)::before,.timeline-item:nth-child(even)::before{left:13px;right:auto;}
-  .timeline-item::after,.timeline-item:nth-child(odd)::after,.timeline-item:nth-child(even)::after{left:27px;right:auto;width:20px;}
+  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr)!important;}
+  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,1fr)!important;}
+  .cta-section{padding:clamp(40px,6vw,60px) 0;}
+  .cta-section h2{font-size:clamp(20px,5vw,30px);}
 }
 
 @media (max-width:960px){
   .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr)!important;}
+  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,1fr)!important;}
 }
 @media (max-width:760px){
   .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
   .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
   .wrap>[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
-  .cta-section{padding:clamp(40px,6vw,60px) 0;}
-  .cta-section h2{font-size:clamp(20px,5vw,30px);}
+  .wrap>[style*="grid-template-columns:1fr 1.4fr"]{grid-template-columns:1fr!important;}
 }
 @media (max-width:600px){
   .wrap{padding-left:clamp(16px,4vw,24px);padding-right:clamp(16px,4vw,24px);}
+  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
+  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
   .footer-top{grid-template-columns:1fr!important;gap:clamp(20px,4vw,28px);}
 }
 /* SITE SEARCH */
@@ -286,7 +306,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 </div>
 
 <nav class="aus-nav" id="nav">
-  <a href="aus-home-demo.html" class="aus-wordmark" aria-label="AUS Business School — home">
+  <a href="aus-home-demo.html" class="aus-wordmark" aria-label="AUS Business School - home">
     <img class="logo-white" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
     <img class="logo-color" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a558e03f97cbda4768f37bb_aus-logo.avif" alt="AUS Business School">
   </a>
@@ -362,13 +382,13 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
         <div class="accordion-panel"><div class="accordion-panel-inner">
           <div class="accordion-group">
             <a href="aus-about.html">About AUS</a>
-            <a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a>
-          <a href="aus-accreditations.html">Accreditations &amp; Memberships</a>
-          <a href="aus-governance.html">Governance</a>
-          <a href="aus-faq.html">FAQ</a>
-          <a href="#" style="display:none">Accreditations_TEMP &amp; Memberships</a>
-            
-            
+            <a href="aus-about-history.html">History</a>
+            <a href="aus-about-faculty.html">Faculty</a>
+            <a href="aus-accreditations.html">Accreditations &amp; Memberships</a>
+            <a href="aus-governance.html">Governance</a>
+            <a href="aus-faq.html">FAQ</a>
+            <a href="aus-ibm-collaboration.html" style="font-weight:600;">IBM Collaboration</a>
+            <a href="#" style="display:none">Accreditations_TEMP &amp; Memberships</a>
           </div>
         </div></div>
       </div>
@@ -378,318 +398,362 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
           <div class="accordion-group">
             <a href="#">Campus &amp; Housing</a>
             <a href="#">Clubs &amp; Activities</a>
-            <a href="#">Events</a>
+            <a href="#">Lake Geneva Life</a>
           </div>
         </div></div>
       </div>
       <a href="aus-admissions.html" class="side-panel-link">Admissions</a>
       <a href="#" class="side-panel-link">Contact</a>
-    </nav>
+</nav>
     <div class="side-panel-foot">
       <a href="#" class="hero-cta">Apply now &rarr;</a>
       <div class="side-panel-socials footer-social-grid">
-        <a class="footer-social-tile" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.62.07 4.81s-.01 3.56-.07 4.81c-.15 3.23-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07-3.2 0-3.6 0-4.85-.07-3.26-.15-4.77-1.69-4.92-4.92-.06-1.25-.07-1.62-.07-4.81s.01-3.56.07-4.81c.15-3.23 1.66-4.77 4.92-4.92 1.25-.06 1.6-.07 4.85-.07zm0-2.2c-3.27 0-3.67 0-4.95.08-4.3.2-6.78 2.68-6.98 6.98-.08 1.28-.08 1.68-.08 4.95s0 3.67.08 4.95c.2 4.3 2.68 6.78 6.98 6.98 1.28.08 1.68.08 4.95.08s3.67 0 4.95-.08c4.3-.2 6.78-2.68 6.98-6.98.08-1.28.08-1.68.08-4.95s0-3.67-.08-4.95c-.2-4.3-2.68-6.78-6.98-6.98-1.28-.08-1.68-.08-4.95-.08zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.4-11.85a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg></a>
-        <a class="footer-social-tile" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0z"/></svg></a>
-        <a class="footer-social-tile" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46v-7.2a8.16 8.16 0 005.58 2.18v-3.45a4.85 4.85 0 01-3.59-1.59V6.69h3.59z"/></svg></a>
+        <a class="footer-social-tile" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.62.07 4.81s-.01 3.56-.07 4.81c-.15 3.23-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07-3.2 0-3.6 0-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92-.06-1.25-.07-1.62-.07-4.81s.01-3.56.07-4.81c.15-3.23 1.66-4.77 4.92-4.92C8.4 2.2 8.8 2.2 12 2.2zm0 3.5a6.3 6.3 0 100 12.6 6.3 6.3 0 000-12.6zm0 2.1a4.2 4.2 0 110 8.4 4.2 4.2 0 010-8.4zm6.55-2.35a1.47 1.47 0 100 2.94 1.47 1.47 0 000-2.94z"/></svg></a>
+        <a class="footer-social-tile" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21H18v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21H10V9z"/></svg></a>
+        <a class="footer-social-tile" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.2a2.9 2.9 0 11-2.9-2.9c.2 0 .4 0 .6.05V9a6.2 6.2 0 00-.6-.03A6.13 6.13 0 004.3 15.1 6.13 6.13 0 0010.4 21.2a6.13 6.13 0 006.1-6.1V8.4a8.2 8.2 0 004.8 1.5V6.6A5 5 0 0116.6 2z"/></svg></a>
       </div>
     </div>
   </aside>
 </div>
 
-<style>
-.stagger-grid.is-visible > *:nth-child(7){transition-delay:.47s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(8){transition-delay:.54s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(9){transition-delay:.61s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(10){transition-delay:.68s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(11){transition-delay:.75s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(12){transition-delay:.82s;opacity:1;transform:translateY(0);}
-.partner-logo{height:clamp(96px,8vw,132px);max-width:100%;width:auto;object-fit:contain;mix-blend-mode:multiply;background:transparent;}
-/* SITE SEARCH */
-.aus-search{position:relative;flex:0 1 280px;max-width:32vw;display:flex;align-items:center;}
-.aus-search input{width:100%;padding:10px 38px 10px 14px;border-radius:100px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:var(--white);font-size:13.5px;outline:none;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);}
-.aus-search input::placeholder{color:currentColor;opacity:.55;}
-.aus-search input:focus{border-color:var(--white);background:var(--white);color:var(--navy);}
-.aus-nav.is-scrolled .aus-search input{border-color:var(--line);background:var(--white);color:var(--navy);}
-.aus-search-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:var(--white);color:var(--navy);display:flex;align-items:center;justify-content:center;pointer-events:none;}
-.aus-search-drop{position:absolute;top:calc(100% + 10px);right:0;width:min(420px,92vw);max-height:min(60vh,520px);overflow:auto;background:var(--white);border-radius:16px;box-shadow:0 20px 50px rgba(12,14,34,.18);border:1px solid var(--line);padding:8px;display:grid;gap:6px;z-index:120;}
-.aus-search-drop[hidden]{display:none !important;}
-.aus-search-drop a:hover{background:var(--sky-tint);}
-@media (max-width:900px){.aus-search{display:none;}}</style><style>
-/* — More dynamic treatments — */
-#accreditations .tilt-card{position:relative;overflow:hidden;}
-#accreditations .tilt-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--crimson);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
-#accreditations .tilt-card:hover::before{transform:scaleX(1);}
-#accreditations .tilt-card:hover{border-color:rgba(34,41,95,.12);transform:translateY(-8px) rotate(.4deg);box-shadow:0 22px 50px rgba(34,41,95,.12);}
-#ranking .reveal-scale{transition:transform .35s var(--ease),box-shadow .35s var(--ease);}
-#ranking .reveal-scale:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.2);}
-#disclosures .tilt-card:hover{border-color:var(--navy);transform:translateY(-4px);}
-#partnerships .tilt-card:hover{border-color:var(--line);transform:translateY(-6px);box-shadow:0 18px 40px rgba(34,41,95,.08);}
-#partnerships .tilt-card:hover .partner-logo{transform:scale(1.04);}
-.partner-logo{transition:transform .35s var(--ease);}
-/* SITE SEARCH */
-.aus-search{position:relative;flex:0 1 280px;max-width:32vw;display:flex;align-items:center;}
-.aus-search input{width:100%;padding:10px 38px 10px 14px;border-radius:100px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:var(--white);font-size:13.5px;outline:none;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);}
-.aus-search input::placeholder{color:currentColor;opacity:.55;}
-.aus-search input:focus{border-color:var(--white);background:var(--white);color:var(--navy);}
-.aus-nav.is-scrolled .aus-search input{border-color:var(--line);background:var(--white);color:var(--navy);}
-.aus-search-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:var(--white);color:var(--navy);display:flex;align-items:center;justify-content:center;pointer-events:none;}
-.aus-search-drop{position:absolute;top:calc(100% + 10px);right:0;width:min(420px,92vw);max-height:min(60vh,520px);overflow:auto;background:var(--white);border-radius:16px;box-shadow:0 20px 50px rgba(12,14,34,.18);border:1px solid var(--line);padding:8px;display:grid;gap:6px;z-index:120;}
-.aus-search-drop[hidden]{display:none !important;}
-.aus-search-drop a:hover{background:var(--sky-tint);}
-@media (max-width:900px){.aus-search{display:none;}}</style><header class="hero" style="min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy);">
+<!-- HERO -->
+<header class="hero">
   <div class="hero-bg">
-    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS campus" class="parallax" data-speed="0.12">
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1800&auto=format&fit=crop&q=80" alt="IBM technology and data">
   </div>
-  <div class="hero-inner" style="z-index:2;width:100%;padding:clamp(60px,8vw,100px) clamp(20px,5vw,64px) clamp(40px,6vw,70px);color:var(--white);">
+  <div class="hero-inner">
     <div class="hero-badge" style="margin-bottom:clamp(14px,1.6vw,22px);">
-      <span class="hero-badge-icon"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M22 10v6M2 10l10-5 10 5-10 5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12v5c3 3 9 3 12 0v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      About AUS
+      <span class="hero-badge-icon"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      IBM Partnership
     </div>
-    <h1 style="font-size:clamp(48px,8vw,96px);line-height:.95;">Accreditations<br><em style="font-family:var(--font-serif);font-style:italic;font-weight:400;">&amp; Memberships</em></h1>
-    <p class="hero-sub" style="max-width:48ch;">Recognized by leading international bodies for academic excellence and quality assurance.</p>
+    <h1 style="font-size:clamp(48px,8vw,96px);line-height:.95;">IBM Academic Initiative</h1>
+    <p class="hero-sub">Empowering students with cutting-edge technology skills through our strategic partnership with IBM SkillsBuild.</p>
   </div>
   <div class="hero-scroll">Scroll</div>
-</header><!-- MOBILE HERO -->
+</header>
+
+<!-- MOBILE HERO -->
 <div class="hero-mobile">
   <div class="hero-mob-img">
-    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS campus">
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1800&auto=format&fit=crop&q=80" alt="IBM technology and data">
   </div>
   <div class="hero-mob-content">
-    <span class="hero-mob-badge">About AUS</span>
-    <h1>Accreditations &amp; Memberships</h1>
-    <p class="hero-mob-sub">Recognized by leading international bodies for academic excellence and quality assurance.</p>
+    <span class="hero-mob-badge">IBM Partnership</span>
+    <h1>IBM Academic Initiative</h1>
+    <p class="hero-mob-sub">Empowering students with cutting-edge technology skills through our strategic partnership with IBM SkillsBuild.</p>
+    <div class="hero-mob-ctas">
+      <a href="#" class="hero-cta hero-cta-primary">Start your Application <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
   </div>
 </div>
+
+<!-- BREADCRUMB -->
 <div class="breadcrumb">
   <div class="wrap">
     <a href="aus-home-demo.html">Home</a><span>/</span>
     <a href="aus-about.html">About</a><span>/</span>
-    Accreditations &amp; Memberships
+    IBM Collaboration
   </div>
 </div>
-<div class="archive-tab" id="archiveTab" tabindex="0">
-  <span class="archive-tab-num" id="archiveTabNum">01</span>
-  <span class="archive-tab-label" id="archiveTabLabel">Accreditations</span>
-  <nav class="archive-tab-toc" id="archiveTabToc" aria-label="Jump to section"></nav>
-</div><!-- ACCREDITATIONS & MEMBERSHIPS -->
-<section id="accreditations" data-chapter="01" data-chapter-label="Accreditations" style="padding:clamp(60px,8vw,100px) 0;position:relative;overflow:hidden;">
+
+<!-- ABOUT THE PARTNERSHIP -->
+<section style="padding:clamp(40px,6vw,70px) 0;">
   <div class="wrap">
-    <span class="eyebrow reveal" style="display:flex;align-items:center;gap:8px;">Accreditations &amp; Memberships</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4vw,48px);line-height:1.15;margin-top:clamp(12px,1.5vw,20px);max-width:20ch;">Recognized worldwide</h2>
-    <p class="reveal d2" style="font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:var(--ink-soft);max-width:62ch;margin-top:12px;">AUS is accredited, listed and recognized by leading international bodies — from specialized business-education accreditors to ministries, UNESCO and the United Nations.</p>
-    <div class="stagger-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:clamp(32px,4vw,48px);">
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c32c5d4871e84ccdffb_prme.png" alt="PRME" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">PRME — Principles for Responsible Management Education</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is a signatory of PRME, a United Nations-supported initiative with over 800 signatories worldwide, committed to embedding sustainability and the SDGs into management education.</p>
-        <a href="https://www.unprme.org/" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Learn more &rarr;</a>
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;">
+      <div>
+        <span class="eyebrow">About the Partnership</span>
+        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">A Strategic Alliance</h2>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);">Since 2021, AUS has been an accredited institution with the IBM Academic Initiative, now known as IBM SkillsBuild. This strategic partnership provides our students with access to a wide range of industry-relevant certifications and cutting-edge technology resources. By collaborating with IBM's experts in curriculum development, skills, and academic research, AUS ensures its graduates are prepared for the jobs of the 21st century.</p>
       </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c4c5f40eac49da26803_unesco.webp" alt="UNESCO WHED" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">UNESCO WHED — World Higher Education Database</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is listed in the UNESCO World Higher Education Database. Institution Code: IAU-029651</p>
-        <a href="https://www.whed.net/institutions/IAU-029651" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c5a97397e19ff5bbaa6_vateran_us.webp" alt="US Department of Veterans Affairs" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">United States Department of Veterans Affairs</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is a recognized university by the US Department of Veterans Affairs. US veterans can apply to study at AUS and obtain a GI Bill. Facility Code: 21001578</p>
-        <a href="https://www.va.gov/education/gi-bill-comparison-tool/institution/21001578" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Assess your VA benefits &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c68ce553c3f34eb9a9f_ielts.webp" alt="IELTS" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">IELTS — Official Preparation and Testing Center</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is an Official IELTS Preparation and Testing Center, recognized by more than 10,000 organizations in over 140 countries.</p>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c7b8589f504b7ed1dc7_cis.svg" alt="CIS" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">Council of International Schools (CIS)</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS has been granted membership by CIS, a global non-profit organization dedicated to high-quality international education, joining a network of over 1,500 institutions worldwide.</p>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c845b040ef12c733acc_ohio.webp" alt="Ohio Department of Higher Education" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">Ohio Department of Higher Education</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">Tiffin University's seated and online programs are authorized by the Ohio Department of Higher Education.</p>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c8d3210aeaac6c80a11_acbsp.jpg" alt="ACBSP" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">ACBSP — Accreditation Council for Business Schools and Programs</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">Tiffin University's School of Business is accredited by ACBSP, a leading specialized accreditation body for business education at all degree levels worldwide.</p>
-        <a href="https://acbsp.org/" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563ca06ac461eb8d7d5ba3_hlc.png" alt="HLC" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">Higher Learning Commission (HLC) — Tiffin University</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">The dual degree programs are accredited by the HLC, one of the six regional accreditation bodies recognized by major colleges and universities in America.</p>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563cec6361ad7bd1c6d426_ministry_jordan.webp" alt="Ministry — Jordan" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">Ministry of Higher Education — Hashemite Kingdom of Jordan</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is accredited by the Ministry of Higher Education in the Hashemite Kingdom of Jordan.</p>
-        <a href="https://rce.mohe.gov.jo/en/RecognizedUniversities" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563cf8826f0f64152c33a2_ministry_sa.webp" alt="Ministry — Saudi Arabia" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">Ministry of Higher Education — Kingdom of Saudi Arabia</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is accredited by the Ministry of Higher Education in the Kingdom of Saudi Arabia, ensuring that degrees earned by Saudi students are recognized upon return to the Kingdom.</p>
-        <a href="https://ru.moe.gov.sa/Search#/University/13058" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563d01e87b055975389ff1_chea.png" alt="CHEA" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">CHEA — Council for Higher Education Accreditation</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS's IACBE accreditation has gained CHEA recognition since January 2011.</p>
-        <a href="https://www.chea.org/international-accreditation-council-business-education" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">CHEA Member Status Page &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563d0f6361ad7bd1c6f24b_iacbe.png" alt="IACBE" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">IACBE — International Accreditation Council for Business Education</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS has received specialized accreditation for its business programs through the IACBE, located in Overland Park, Kansas, USA.</p>
-        <a href="https://iacbe.org/memberpdf/AmericanInstituteofAppliedSciencesinSwitzerland.pdf" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">IACBE Member Status Page &rarr;</a>
+      <div class="reveal d1">
+        <span class="eyebrow">Why IBM Matters</span>
+        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">Industry-Relevant Skills</h2>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);">Businesses today are constantly evolving to find new ways to increase productivity and leverage data. By 2025, companies are expected to restructure their workforces in response to technologies like cloud computing, big data analytics, IoT, and cybersecurity. AUS recognized the need to enhance its programs with the latest technologies by joining the IBM Academic Initiative.</p>
       </div>
     </div>
   </div>
 </section>
-<!-- RANKING — centered 3-grid, smaller, not scrollable -->
-<section id="ranking" data-chapter="02" data-chapter-label="Ranking" style="background:var(--navy);color:var(--white);padding:clamp(60px,8vw,100px) 0;overflow:hidden;">
-  <div class="wrap" style="text-align:center;">
-    <span class="eyebrow on-navy reveal" style="justify-content:center;">Ranking</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4vw,48px);line-height:1.15;margin-top:12px;">QS World University Rankings</h2>
-    <p class="reveal d2" style="font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:rgba(255,255,255,.7);max-width:72ch;margin:16px auto 0;">The American Institute of Applied Sciences in Switzerland has been awarded a four-star rating in the QS Stars University Ratings — five stars in "Teaching" and "Business and Management Studies", four stars for Facilities and Employability.</p>
-    <p class="reveal d2" style="font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:rgba(255,255,255,.7);max-width:72ch;margin:12px auto 0;">AUS is ranked <strong style="color:var(--white);">#2 in Switzerland</strong> and among the <strong style="color:var(--white);">top 200 globally</strong> for its Masters in Management programs by the 2026 QS World University Rankings.</p>
-    <div class="stagger-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;grid-auto-rows:1fr;align-items:stretch;margin-top:clamp(36px,5vw,52px);text-align:center;">
-      <div class="reveal-scale" style="background:var(--white);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;height:100%;">
-        <div class="img-zoom" style="background:var(--white);"><img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a5771f466851487a31ba537_2026%20ranking.png" alt="QS Rankings 2026" style="width:100%;height:190px;object-fit:contain;padding:14px;"></div>
-        <div style="padding:20px 18px 22px;flex:1;display:flex;flex-direction:column;">
-          <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);margin-bottom:8px;">QS World University Rankings 2026</h3>
-          <p style="font-size:13.5px;line-height:1.5;color:var(--ink-soft);">Master in Management: Top 2 in Switzerland, Top 200 globally. Global MBA: Top 3 in Switzerland, Top 250 globally.</p>
+
+<!-- WHAT STUDENTS GET -->
+<section style="padding:clamp(40px,6vw,70px) 0;">
+  <div class="wrap">
+    <span class="eyebrow reveal">Opportunities</span>
+    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 clamp(32px,4vw,48px);">What Students Get</h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,32px);">
+      <div class="reveal" style="padding:clamp(24px,3vw,32px);border:1px solid var(--line);border-radius:8px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-10 10c0 4.4 2.9 8.1 6.8 9.4.5.1.7-.2.7-.5v-1.5c-2.8.6-3.4-1.3-3.4-1.3-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.4-1.1.7-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.2-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5C19.1 20.1 22 16.4 22 12A10 10 0 0 0 12 2z"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--navy);margin-bottom:8px;">Artificial Intelligence</h3>
+        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">Access to AI courses, tutorials, and practical business use cases powered by IBM technologies.</p>
+      </div>
+      <div class="reveal d1" style="padding:clamp(24px,3vw,32px);border:1px solid var(--line);border-radius:8px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--navy);margin-bottom:8px;">Cloud Computing</h3>
+        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">Hands-on experience with IBM Cloud platform resources for real business projects and case studies.</p>
+      </div>
+      <div class="reveal d2" style="padding:clamp(24px,3vw,32px);border:1px solid var(--line);border-radius:8px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--navy);margin-bottom:8px;">Cybersecurity</h3>
+        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">Industry-recognized training in cybersecurity practices and technologies.</p>
+      </div>
+      <div class="reveal d3" style="padding:clamp(24px,3vw,32px);border:1px solid var(--line);border-radius:8px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--navy);margin-bottom:8px;">Data Science</h3>
+        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">Comprehensive data science curriculum covering analytics, visualization, and machine learning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IBM SKILLSBUILD -->
+<section style="padding:clamp(60px,8vw,100px) 0;background:var(--navy);color:var(--white);position:relative;overflow:hidden;">
+  <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;border:1px solid rgba(255,255,255,.06);" class="parallax" data-speed="0.05"></div>
+  <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:var(--crimson);opacity:.08;filter:blur(80px);"></div>
+
+  <div class="wrap" style="position:relative;z-index:1;">
+    <span class="eyebrow on-navy reveal">IBM SkillsBuild</span>
+    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4.2vw,52px);color:var(--white);margin:12px 0 clamp(32px,4vw,48px);">Your Gateway to Professional Excellence</h2>
+
+    <div class="reveal d2" style="max-width:800px;">
+      <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:rgba(255,255,255,.7);margin-bottom:20px;">IBM SkillsBuild offers an enhanced, free education experience with access to more than 1,000 online courses and shareable digital credentials. Course topics range from professional workplace proficiencies to technical skills for many industries, roles, and technologies, including hybrid cloud computing, AI, cybersecurity, data analytics, technical support, and project management.</p>
+      <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:rgba(255,255,255,.7);margin-bottom:clamp(32px,4vw,48px);">AUS students can choose to earn professional certifications in Generative AI, Cybersecurity, and Data Science alongside their degree — skills in high demand by employers worldwide.</p>
+    </div>
+
+    <div class="stagger-grid reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,32px);">
+      <div style="padding:clamp(24px,3vw,32px);border:1px solid var(--line-on-navy);border-radius:8px;">
+        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,48px);color:var(--white);margin-bottom:6px;">1,000<span style="color:var(--crimson);">+</span></div>
+        <div style="font-size:14px;color:rgba(255,255,255,.6);">Online Courses</div>
+      </div>
+      <div style="padding:clamp(24px,3vw,32px);border:1px solid var(--line-on-navy);border-radius:8px;">
+        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,48px);color:var(--white);margin-bottom:6px;">92<span style="color:var(--crimson);">%</span></div>
+        <div style="font-size:14px;color:rgba(255,255,255,.6);">Say badges improve employability</div>
+      </div>
+      <div style="padding:clamp(24px,3vw,32px);border:1px solid var(--line-on-navy);border-radius:8px;">
+        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,48px);color:var(--white);margin-bottom:6px;">6<span style="color:var(--crimson);">+</span></div>
+        <div style="font-size:14px;color:rgba(255,255,255,.6);">Key Technology Areas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIGITAL BADGES -->
+<section style="padding:clamp(60px,8vw,100px) 0;background:var(--sky-tint);">
+  <div class="wrap">
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center;">
+      <div>
+        <span class="eyebrow">Digital Credentials</span>
+        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">IBM Digital Badges</h2>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);margin-bottom:16px;">IBM digital badges serve as shareable digital records that verify your skills and achievements. They act as a proxy transcript, providing employers with a trusted, verified way to confirm your competencies in specific technology areas.</p>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);">According to recent research, 92% of survey respondents said that IBM digital badges improve their employability. These industry-recognized credentials give AUS graduates a competitive edge in the global job market.</p>
+      </div>
+      <div class="reveal d1" style="position:relative;">
+        <div style="background:var(--white);border:1px solid var(--line);border-radius:16px;padding:clamp(32px,4vw,48px);position:relative;">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3 style="font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--navy);margin-bottom:12px;">Verified & Shareable</h3>
+          <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:16px;">Each badge contains verified metadata about your achievement, skills earned, and the criteria required — making it easy for employers to understand your qualifications.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <span style="padding:6px 14px;border-radius:100px;background:var(--sky-tint);font-size:12px;font-weight:600;color:var(--navy);">LinkedIn Ready</span>
+            <span style="padding:6px 14px;border-radius:100px;background:var(--sky-tint);font-size:12px;font-weight:600;color:var(--navy);">Employer Trusted</span>
+            <span style="padding:6px 14px;border-radius:100px;background:var(--sky-tint);font-size:12px;font-weight:600;color:var(--navy);">Globally Recognized</span>
+          </div>
+          <div style="position:absolute;top:-16px;right:-16px;width:56px;height:56px;border-radius:50%;background:var(--crimson);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(190,31,61,.3);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
         </div>
       </div>
-      <div class="reveal-scale" style="background:var(--white);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;height:100%;">
-        <div class="img-zoom" style="background:var(--white);"><img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a5771f466851487a31ba53b_Ranking%202025.png" alt="QS Rankings 2025" style="width:100%;height:190px;object-fit:contain;padding:14px;"></div>
-        <div style="padding:20px 18px 22px;flex:1;display:flex;flex-direction:column;">
-          <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);margin-bottom:8px;">QS World University Rankings 2025</h3>
-          <p style="font-size:13.5px;line-height:1.5;color:var(--ink-soft);">Master in Management: Top 2 in Switzerland, Top 200 globally. Global MBA: Top 3 in Switzerland, Top 250 globally.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AVAILABLE CERTIFICATIONS -->
+<section style="padding:clamp(60px,8vw,100px) 0;">
+  <div class="wrap">
+    <span class="eyebrow reveal">Certifications</span>
+    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 clamp(32px,4vw,48px);">IBM SkillsBuild Professional Certificates</h2>
+    <p class="reveal d2" style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);max-width:900px;margin-bottom:clamp(32px,4vw,48px);">Through our partnership with IBM, AUS students have access to industry-recognized certificates that can be completed alongside their degree programs. Each certificate includes rigorous coursework, practical assessments, and a capstone project.</p>
+
+    <!-- Two main certificate cards -->
+    <div class="stagger-grid reveal" style="display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,32px);margin-bottom:clamp(32px,4vw,48px);">
+
+      <!-- Cybersecurity Certificate -->
+      <div class="tilt-card" style="padding:clamp(28px,3.5vw,40px);background:var(--white);border:1px solid var(--line);border-radius:12px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--navy);margin-bottom:10px;">IBM SkillsBuild Cybersecurity Certificate</h3>
+        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:20px;">This certificate develops advanced technical skills in cybersecurity, including security posture evaluation, vulnerability assessment, network architecture, cloud infrastructure security, security operations, and incident reporting.</p>
+        <ul style="list-style:none;padding:0;margin:0 0 20px;">
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;">
+            <svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Governance, Risk, Compliance &amp; Data Privacy
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;">
+            <svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Vulnerability Management
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;">
+            <svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            System and Network Security
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;">
+            <svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Cloud Security
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;">
+            <svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Security Operations Management
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);">
+            <svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Incident Response &amp; System Forensics
+          </li>
+        </ul>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <span style="padding:6px 14px;border-radius:100px;background:var(--sky-tint);font-size:12px;font-weight:600;color:var(--navy);">60-65 Hours</span>
+          <span style="padding:6px 14px;border-radius:100px;background:var(--sky-tint);font-size:12px;font-weight:600;color:var(--navy);">ACE Recommended Credits</span>
         </div>
       </div>
-      <div class="reveal-scale" style="background:var(--white);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;height:100%;">
-        <div class="img-zoom" style="background:var(--white);"><img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a5771f466851487a31ba53f_2024%20ranking.png" alt="QS Rankings 2024" style="width:100%;height:190px;object-fit:contain;padding:14px;"></div>
-        <div style="padding:20px 18px 22px;flex:1;display:flex;flex-direction:column;">
-          <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);margin-bottom:8px;">QS World University Rankings 2024</h3>
-          <p style="font-size:13.5px;line-height:1.5;color:var(--ink-soft);">Master in Management: Top 2 in Switzerland, Top 150 globally (Rank 141–150).</p>
+
+      <!-- Data Analytics Certificate -->
+      <div class="tilt-card" style="padding:clamp(28px,3.5vw,40px);background:var(--white);border:1px solid var(--line);border-radius:12px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--navy);margin-bottom:10px;">IBM SkillsBuild Data Analytics Certificate</h3>
+        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:20px;">Build expertise in data analytics with skills in data classification, statistical analysis, data visualization, and presentation — preparing you for in-demand roles across multiple industries.</p>
+        <ul style="list-style:none;padding:0;margin:0 0 20px;">
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;">
+            <svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Data Classification
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;">
+            <svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Data Usability for Organizations
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;">
+            <svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Inferential and Descriptive Statistics
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;">
+            <svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Data Collection and Analysis
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;">
+            <svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Data Preparation for Analysis
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);">
+            <svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Data Visualization and Presentation
+          </li>
+        </ul>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <span style="padding:6px 14px;border-radius:100px;background:var(--sky-tint);font-size:12px;font-weight:600;color:var(--navy);">60-65 Hours</span>
+          <span style="padding:6px 14px;border-radius:100px;background:var(--sky-tint);font-size:12px;font-weight:600;color:var(--navy);">ACE Recommended Credits</span>
         </div>
       </div>
+
+    </div>
+
+    <!-- Additional credential areas -->
+    <div class="stagger-grid reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,24px);">
+
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:8px;">Generative AI</h3>
+        <p style="font-size:13px;line-height:1.65;color:var(--ink-soft);">Explore prompt engineering, AI ethics, and practical applications of generative AI in business.</p>
+      </div>
+
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:8px;">Cloud Computing</h3>
+        <p style="font-size:13px;line-height:1.65;color:var(--ink-soft);">Learn cloud architecture, deployment, and management with IBM Cloud technologies.</p>
+      </div>
+
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:8px;">AI &amp; Machine Learning</h3>
+        <p style="font-size:13px;line-height:1.65;color:var(--ink-soft);">Build foundational skills in artificial intelligence, machine learning, and deep learning.</p>
+      </div>
+
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:8px;">Professional Workplace Skills</h3>
+        <p style="font-size:13px;line-height:1.65;color:var(--ink-soft);">Develop essential workplace competencies including design thinking and project management.</p>
+      </div>
+
     </div>
   </div>
 </section>
-<!-- IACBE PUBLIC DISCLOSURES -->
-<section id="disclosures" data-chapter="03" data-chapter-label="Disclosures" style="padding:clamp(60px,8vw,100px) 0;background:var(--sky-tint);position:relative;overflow:hidden;">
+
+<!-- BENEFITS -->
+<section style="padding:clamp(60px,8vw,100px) 0;">
   <div class="wrap">
-    <span class="eyebrow reveal">IACBE</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(24px,3vw,36px);line-height:1.2;margin-top:12px;max-width:30ch;">Public Disclosures of Student Achievement</h2>
-    <div class="stagger-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:clamp(32px,4vw,48px);">
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca7efeb0eacfbbdd955dcd_Public-Disclosure-of%20(1).jpg" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2018–2019</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca7f78ee9984abf9d052a6_Public-Disclosure-of%202019-2020.jpg" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2019–2020</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca7fc6962816d53422803f_Public-Disclosure-of%202020-2021.jpg" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2020–2021</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca80047c5ab0940b88e725_Public-Disclosure-of%202021-2022.jpg" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2021–2022</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca803f6c5d999f2d6d2970_Public-Disclosure-of%202022-2023.jpg" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2022–2023</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca809025ddc26560ffeb4f_Public-Disclosure-of%202023-2024.webp" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2023–2024</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69cbee294e60818ab2f994f3_Public-Disclosure-of-Student-Achievement-Template.pdf" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2024–2025</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-    </div>
-  </div>
-</section>
-<!-- EDUCATIONAL PARTNERSHIPS — logo images no white box, bigger -->
-<section id="partnerships" data-chapter="04" data-chapter-label="Partnerships" style="padding:clamp(60px,8vw,100px) 0;background:var(--white);position:relative;overflow:hidden;background-image:radial-gradient(circle, rgba(34,41,95,.06) 1px, transparent 1px);background-size:24px 24px;">
-  <div class="wrap">
-    <span class="eyebrow reveal">Educational Partnerships</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(24px,3vw,36px);line-height:1.2;margin-top:12px;max-width:30ch;">Our partner institutions</h2>
-    <p class="reveal d2" style="font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:var(--ink-soft);max-width:62ch;margin-top:12px;">Academic cooperation with leading universities across Europe, Asia, the Middle East and the Americas.</p>
-    <div class="stagger-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;grid-auto-rows:1fr;align-items:stretch;margin-top:clamp(36px,5vw,52px);">
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild6137-3962-4732-b231-366433303765/tiffin.jpg" alt="Tiffin University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Tiffin University</h3>
-        <a href="https://www.tiffin.edu/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
+    <span class="eyebrow reveal">Advantages</span>
+    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 clamp(32px,4vw,48px);">Benefits of the IBM Partnership</h2>
+
+    <div class="stagger-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,32px);">
+      <div class="tilt-card" style="padding:clamp(28px,3.5vw,40px);background:var(--white);border:1px solid var(--line);border-radius:12px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--navy);margin-bottom:10px;">Curriculum Integration</h3>
+        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">IBM technologies and resources are seamlessly integrated into our BSBA and MIBA programs, ensuring students learn with tools used by industry leaders worldwide.</p>
       </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild3533-3337-4435-a334-353966316362/meiju.jpg" alt="Meiji University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Meiji University</h3>
-        <a href="https://www.meiji.ac.jp/cip/english/index.html" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
+
+      <div class="tilt-card" style="padding:clamp(28px,3.5vw,40px);background:var(--white);border:1px solid var(--line);border-radius:12px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--navy);margin-bottom:10px;">Certification Training</h3>
+        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">Access to IBM certification training programs and tutorials that prepare students for industry-recognized credentials in high-demand technology areas.</p>
       </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild3366-3138-4264-a133-373236663237/aust.jpg" alt="American University of Science and Technology"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">American University of Science and Technology</h3>
-        <a href="https://www.aust.edu.lb/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
+
+      <div class="tilt-card" style="padding:clamp(28px,3.5vw,40px);background:var(--white);border:1px solid var(--line);border-radius:12px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--navy);margin-bottom:10px;">Real Business Cases</h3>
+        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">Work on real business cases and projects using IBM cloud resources, applying theoretical knowledge to practical, industry-relevant challenges.</p>
       </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild6639-6232-4137-b437-626438306633/dah-logo.jpg" alt="Dar Al-Hekma University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Dar Al-Hekma University</h3>
-        <a href="https://www.dah.edu.sa/en/Pages/default.aspx" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild6564-6461-4733-b763-393238356466/upm-logo-1.jpg" alt="University of Prince Mugrin"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">University of Prince Mugrin</h3>
-        <a href="https://www.upm.edu.sa/en" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild6336-6532-4965-b064-666461363334/tiblisi-university.jpg" alt="Tbilisi State University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Tbilisi State University</h3>
-        <a href="https://www.tsu.ge/en" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild3831-3437-4337-a562-356438666565/ferrari-fashion-scho.jpg" alt="Ferrari Fashion School"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Ferrari Fashion School</h3>
-        <a href="https://ferrarifashionschool.it/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild6638-6234-4438-a562-386339626439/mahsa-university.jpg" alt="MAHSA University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">MAHSA University</h3>
-        <a href="https://mahsa.edu.my/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild6362-6639-4565-b731-323737313663/Group_253.png" alt="Anahuac University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Anahuac University</h3>
-        <a href="https://www.anahuac.mx/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild6431-3938-4234-b833-376131376166/Universidad-de-Guada.jpg" alt="Universidad de Guadalajara"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Universidad de Guadalajara</h3>
-        <a href="https://www.udg.mx/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:var(--sky-tint);border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img class="partner-logo" src="https://static.tildacdn.one/tild6665-6530-4136-b664-366161353739/cun-logo.jpg" alt="CUN"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">The National Unified Corporation of Higher Education (CUN)</h3>
-        <a href="https://cun.edu.co/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Learn more &rarr;</a>
+
+      <div class="tilt-card" style="padding:clamp(28px,3.5vw,40px);background:var(--white);border:1px solid var(--line);border-radius:12px;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--navy);margin-bottom:10px;">Professional Credibility</h3>
+        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">Validate your skills and enhance your professional credibility with industry-recognized IBM digital badges that can be shared across professional networks.</p>
       </div>
     </div>
   </div>
 </section>
+
+<!-- CTA -->
 <section class="cta-section">
   <div class="wrap cta-inner">
     <span class="eyebrow on-navy reveal">What's Next</span>
-    <h2 class="reveal d1">Let's Make History Together</h2>
-    <p class="reveal d2">Join a legacy of academic excellence. Take the first step toward your future at AUS.</p>
-    <div class="reveal d3">
-      <a href="#" class="cta-btn">Apply for Admission &rarr;</a>
+    <h2 class="reveal d1">Ready to Advance Your Skills?</h2>
+    <p class="reveal d2">Start your application today and gain access to IBM SkillsBuild certifications alongside your degree at AUS Business School.</p>
+    <div class="reveal d3" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="#" class="cta-btn mag-btn">Start your Application &rarr;</a>
+      <a href="#" class="cta-btn mag-btn" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,.3);">Contact Admissions</a>
     </div>
   </div>
 </section>
@@ -711,10 +775,11 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
         </div>
       </div>
       <div class="footer-col"><div class="footer-col-title">Programs</div><a href="aus-programs.html#bachelor">Bachelors</a><a href="aus-programs.html#master">Masters</a><a href="aus-programs.html#doctorate">Doctorate</a><a href="#">Federal Diploma</a></div>
-      <div class="footer-col"><div class="footer-col-title">School</div><a href="#">About</a><a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a>
+      <div class="footer-col"><div class="footer-col-title">School</div><a href="aus-about.html">About</a><a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a>
           <a href="aus-accreditations.html">Accreditations &amp; Memberships</a>
           <a href="aus-governance.html">Governance</a>
           <a href="aus-faq.html">FAQ</a>
+          <a href="aus-ibm-collaboration.html">IBM Collaboration</a>
           <a href="#" style="display:none">Accreditations_TEMP &amp; Memberships</a><a href="#">Campus life</a></div>
       <div class="footer-col"><div class="footer-col-title">Connect</div><a href="aus-admissions.html">Admissions</a><a href="#">Events</a><a href="#">Contact</a></div>
     </div>
@@ -735,92 +800,110 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 </footer>
 
 <script>
-/* PRELOADER */
 (function(){
-  var done=false;
-  function finish(){if(done)return;done=true;document.getElementById('preloader').classList.add('is-hidden');document.documentElement.classList.remove('has-preloader');}
-  if(typeof Promise!=='undefined'){
-    new Promise(function(r){if(document.readyState==='complete')r();else window.addEventListener('load',r);}).then(function(){setTimeout(finish,600);});
-  }else{window.addEventListener('load',function(){setTimeout(finish,100);});}
-  setTimeout(finish,4000);
-})();
-
-/* NAV SCROLL */
-(function(){
-  var nav=document.getElementById('nav'),last=0;
-  window.addEventListener('scroll',function(){var s=window.pageYOffset;if(s>60){nav.classList.add('is-scrolled');}else{nav.classList.remove('is-scrolled');}last=s;},{passive:true});
-})();
-
-/* SIDE PANEL */
-(function(){
-  var panel=document.getElementById('sidePanel'),backdrop=document.getElementById('sidePanelBackdrop'),closeBtn=document.getElementById('sidePanelClose'),toggle=document.getElementById('menuToggle');
-  function openPanel(expandKey){document.documentElement.classList.add('panel-open');document.body.classList.add('panel-open');panel.style.pointerEvents='auto';toggle.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';if(expandKey){document.querySelectorAll('.accordion-item').forEach(function(item){var open=undefined;if(item.getAttribute('data-panel-key')===expandKey)open=true;if(open!==undefined){var btn=item.querySelector('.accordion-trigger');var ans=item.querySelector('.accordion-panel');if(btn&&ans){item.classList.toggle('is-open',open);btn.setAttribute('aria-expanded',open);ans.hidden=!open;}}});var target=document.querySelector('.accordion-item[data-panel-key="'+expandKey+'"]');if(target){setTimeout(function(){target.scrollIntoView({block:"start",behavior:"smooth"});},60);}}}
-  function closePanel(){document.documentElement.classList.remove('panel-open');document.body.classList.remove('panel-open');panel.style.pointerEvents='none';toggle.setAttribute('aria-expanded','false');document.body.style.overflow='';}
-  toggle.addEventListener('click',openPanel);closeBtn.addEventListener('click',closePanel);backdrop.addEventListener('click',closePanel);
-  document.querySelectorAll('[data-open-panel]').forEach(function(btn){btn.addEventListener('click',function(){openPanel(btn.getAttribute('data-open-panel'));});});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('panel-open'))closePanel();});
-})();
-
-/* ACCORDION */
-(function(){
-  document.querySelectorAll('.accordion-trigger').forEach(function(trigger){
-    trigger.addEventListener('click',function(){
-      var item=this.closest('.accordion-item');var wasOpen=item.classList.contains('is-open');
-      item.closest('.side-panel-nav').querySelectorAll('.accordion-item.is-open').forEach(function(o){o.classList.remove('is-open');});
-      if(!wasOpen)item.classList.add('is-open');
-    });
-  });
-  var aboutPanel=document.querySelector('[data-panel-key="about"]');
-  if(aboutPanel)aboutPanel.classList.add('is-open');
-})();
-
-/* REVEAL */
-(function(){
-  document.documentElement.classList.add('js-reveal-ready');
-  var els=document.querySelectorAll('.reveal,.reveal-scale,.reveal-clip,.reveal-rotate,.stagger-grid');
-  if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('is-visible');});return;}
-  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
-  els.forEach(function(el){io.observe(el);});
-})();
-
-/* SECTION NAVIGATOR (archive tab) */
-(function(){
-  var tab=document.getElementById('archiveTab');
-  var tabNum=document.getElementById('archiveTabNum');
-  var tabLabel=document.getElementById('archiveTabLabel');
-  var chapters=document.querySelectorAll('[data-chapter]');
-  var toc=document.getElementById('archiveTabToc');
-  if(tab&&chapters.length&&toc){
-    chapters.forEach(function(el){
-      var num=el.getAttribute('data-chapter');
-      var label=el.getAttribute('data-chapter-label');
-      var item=document.createElement('button');
-      item.type='button';
-      item.className='archive-tab-toc-item';
-      item.setAttribute('data-toc-target',num);
-      item.innerHTML='<span class="num">'+num+'</span><span>'+label+'</span>';
-      item.addEventListener('click',function(){
-        el.scrollIntoView({block:'start',behavior:'smooth'});
-      });
-      toc.appendChild(item);
-    });
+  // Preloader
+  document.documentElement.classList.add('has-preloader');
+  var preloader = document.getElementById('preloader');
+  function hidePreloader(){
+      preloader.classList.add('is-hidden');
+      document.documentElement.classList.remove('has-preloader');
+      setTimeout(function(){ if(preloader.parentNode) preloader.parentNode.removeChild(preloader); },700);
   }
-  if(tab&&chapters.length&&'IntersectionObserver' in window){
-    var tocItems=toc?toc.querySelectorAll('.archive-tab-toc-item'):[];
-    var chapterObserver=new IntersectionObserver(function(entries){
+  var minShow = new Promise(function(res){ setTimeout(res,900); });
+  var ready = new Promise(function(res){ if(document.readyState==='complete') res(); else window.addEventListener('load',res); });
+  Promise.all([minShow,ready]).then(hidePreloader);
+
+  // Nav scroll
+  var nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){
+    nav.classList.toggle('is-scrolled',window.scrollY>40);
+  },{passive:true});
+
+  // Side panel
+  var menuToggle=document.getElementById('menuToggle'),sidePanel=document.getElementById('sidePanel'),sidePanelClose=document.getElementById('sidePanelClose'),sidePanelBackdrop=document.getElementById('sidePanelBackdrop'),sidePanelNav=document.querySelector('.side-panel-nav'),accordionItems=document.querySelectorAll('.accordion-item');
+  function openPanel(expandKey){document.documentElement.classList.add('panel-open');menuToggle.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';if(expandKey){accordionItems.forEach(function(item){if(item.getAttribute('data-panel-key')===expandKey)item.classList.add('is-open');});var t=document.querySelector('.accordion-item[data-panel-key="'+expandKey+'"]');if(t&&sidePanelNav)setTimeout(function(){t.scrollIntoView({block:'start',behavior:'smooth'});},60);}}
+  function closePanel(){document.documentElement.classList.remove('panel-open');menuToggle.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  menuToggle.addEventListener('click',function(){openPanel();});
+  sidePanelClose.addEventListener('click',closePanel);
+  sidePanelBackdrop.addEventListener('click',closePanel);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closePanel();});
+  document.querySelectorAll('[data-open-panel]').forEach(function(btn){btn.addEventListener('click',function(){openPanel(btn.getAttribute('data-open-panel'));});});
+  accordionItems.forEach(function(item){item.querySelector('.accordion-trigger').addEventListener('click',function(){item.classList.toggle('is-open');});});
+
+  // Reveal
+  var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if('IntersectionObserver' in window&&!reduceMotion){
+    document.documentElement.classList.add('js-reveal-ready');
+    var revealTargets=document.querySelectorAll('.reveal,.reveal-scale,.reveal-clip,.reveal-rotate,.split-text,.stagger-grid,.line-draw');
+    var revealObserver=new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if(entry.isIntersecting){
-          var num=entry.target.getAttribute('data-chapter');
-          tabNum.textContent=num;
-          tabLabel.textContent=entry.target.getAttribute('data-chapter-label');
-          tocItems.forEach(function(ti){ti.classList.remove('is-active');if(ti.getAttribute('data-toc-target')===num)ti.classList.add('is-active');});
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
         }
       });
-    },{threshold:0, rootMargin:'-45% 0px -45% 0px'});
-    chapters.forEach(function(ch){chapterObserver.observe(ch);});
+    },{threshold:0,rootMargin:'0px 0px -60px 0px'});
+    revealTargets.forEach(function(el){revealObserver.observe(el);});
+  }
+
+  // Split text into words
+  document.querySelectorAll('.split-text').forEach(function(el){
+    var text=el.textContent.trim();
+    el.innerHTML=text.split(/\s+/).map(function(w){return '<span class="word">'+w+'</span>';}).join(' ');
+  });
+
+  // Magnetic buttons
+  document.querySelectorAll('.mag-btn').forEach(function(btn){
+    btn.addEventListener('mousemove',function(e){
+      var rect=btn.getBoundingClientRect();
+      var x=e.clientX-rect.left-rect.width/2;
+      var y=e.clientY-rect.top-rect.height/2;
+      btn.style.transform='translate('+x*.15+'px,'+y*.15+'px)';
+    });
+    btn.addEventListener('mouseleave',function(){btn.style.transform='';});
+  });
+
+  // Parallax on scroll
+  if(!reduceMotion){
+    var parallaxEls=document.querySelectorAll('.parallax');
+    window.addEventListener('scroll',function(){
+      parallaxEls.forEach(function(el){
+        var rect=el.getBoundingClientRect();
+        var speed=parseFloat(el.getAttribute('data-speed'))||0.15;
+        var y=(rect.top-window.innerHeight)*speed;
+        el.style.transform='translateY('+y+'px)';
+      });
+    },{passive:true});
+  }
+
+  // Counter animation
+  var counters=document.querySelectorAll('.counter');
+  if('IntersectionObserver' in window&&!reduceMotion){
+    var counterObserver=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          var el=entry.target;
+          var target=parseInt(el.getAttribute('data-target'));
+          var duration=1500;
+          var start=0;
+          var startTime=null;
+          function animate(time){
+            if(!startTime)startTime=time;
+            var progress=Math.min((time-startTime)/duration,1);
+            var eased=1-Math.pow(1-progress,3);
+            el.textContent=Math.floor(eased*target);
+            if(progress<1)requestAnimationFrame(animate);
+            else el.textContent=target;
+          }
+          requestAnimationFrame(animate);
+          counterObserver.unobserve(el);
+        }
+      });
+    },{threshold:0.5});
+    counters.forEach(function(c){counterObserver.observe(c);});
   }
 })();
-/* SITE SEARCH â€” INDEX: add new pages here to appear in dropdown */
+/* SITE SEARCH */
 (function(){
         var idx=[
     {title:"Home",url:"aus-home-demo.html",cat:"Home",keys:"Chapter 01 Where precision meets ambition. A Swiss business education built on scientific method and practice, for students who intend to lead, not just graduate. Explore the archive ? Founded 1991 La Tour-de-Peilz, Switzerland 02 Programs Choose your level. Every program is built around the same practice-led method. Hover a level to see what's inside. 01 Bachelors Degree Accounting Aviation Management Business Management Healthcare Administration Human Resource Management Integrated & Digital Marketing International Business Sports Management — Athletic Administration Sports Management — Sports Marketing 02 Masters Degree Data Analytics Finance Healthcare Administration Human Resource Management International Business Leadership & Change Sports Management Strategic Brand & Digital Marketing 03 Doctorate Doctorate in Business Administration 04 Swiss Federal Diploma Business Administration Three years, seven majors, one method. One year, built for people already leading. For those researching the next standard. Swiss-recognized professional qualification. 03 The Approach Practice-led, not theory-bound . Every course is built around real organizational problems. Students leave with a portfolio of decisions they made, not just a transcript of lectures they attended, prepared to lead from day one rather than catch up. 04 In Numbers “A prestigious, well-known institution that attracts students and faculty from all over the world.” 0+ Years combining Swiss and American education traditions AUS institutional records, 2026 0%+ Of graduates say their role relates to their AUS studies Alumni outcomes survey, 2025 0+ Nationalities on campus AUS Registrar, Fall 2026 0 Maximum students per class Academic policy, 2026 1: 0 Faculty to student ratio AUS Registrar, Fall 2026 0%+ Employed within 6 months of graduating Alumni outcomes survey, 2025 05 Recognition Independently recognized, not self-declared. Accreditation bodies and ranking institutions evaluate AUS on the same criteria applied to the world's leading business schools. Top 2 In Switzerland, QS Business Masters 2025 Top 200 Globally, QS Business Masters 2025 06 Mission & Vision Mission AUS equips students pursuing a degree in international business with the knowledge, skills and tools to make a significant contribution to any organization. Through practice-oriented study grounded in scientific method, research and development, graduates are prepared to lead with competence and confidence. Vision To build a reputation as a prestigious, well-known private institution in Switzerland that attracts students and faculty from all over the world, and to shape decision-makers ready for a more sustainable future. 07 Why AUS Five reasons students choose AUS. 01 Join a genuinely international student body. Classrooms bring together students from across Europe, the Middle East and beyond, so every group project is already a cross-border negotiation. 02 Case work replaces the lecture hall. Assignments are built from real organizational problems, not textbook exercises, so the skills transfer directly to a first job. 03 The working language of international business. Every program runs entirely in English, preparing graduates to operate in global teams from day one. 04 Study where students actually want to live. The campus sits on the shores of Lake Geneva, close enough to Zurich and Lucerne to make the most of both. 05 Faculty who know your name, not your seat number. Small cohorts mean direct access to professors, real feedback on your work, and no getting lost in a lecture hall of hundreds. 08 Sustainability Shaping decision-makers for a sustainable future. Sustainability sits at the core of how AUS teaches. Through partnerships with associations and non-profits, sustainable practice is built into the classroom, so graduates can balance economic and environmental goals in line with the UN Sustainable Development Goals. 09 Learning from Experts Local and international voices, inside the classroom. The Speaker Series brings practitioners into the room to bridge academic theory with what's actually happening in business today. Speaker Series ? 10 Campus Archive Lecture Hall, Zurich The Reading Room Case Studio Main Courtyard Commencement 11 Our Partners Organizations that hire, train and collaborate with AUS. “Moving to Switzerland to study felt daunting at first, but AUS made it feel like a place I could actually belong.” Tomiwa “Going back to school after twenty years focused on family took courage. AUS is where I found the confidence to start again.” Umida"},    {title:"Admissions",url:"aus-admissions.html",cat:"Admissions",keys:"Admissions Your Journey Starts Here Everything you need to know about applying to AUS from eligibility and required documents to fees visas and arrival in Switzerland How to Apply Choose Your Program Submit Your Application Review and Decision Confirm and Enroll Entry Requirements Bachelor Master English Language Requirements IELTS TOEFL Duolingo Tuition and Fees Application Fee Important Dates Fall Semester Spring Semester Summer Term Visa Information EU EFTA Non-EU EFTA"},
@@ -904,7 +987,6 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   ,{title:"Privacy Policy",url:"aus-privacy-policy.html",cat:"About",keys:"Privacy Policy American Institute of Applied Sciences in Switzerland AUS needs to create collect process and retain certain information about its employees workers students clients agents and other individuals. Swiss Federal Act on Data Protection FADP European General Data Protection Regulation GDPR. Data Controller AGSB S.A. Chemin du Levant 5 1814 La Tour-de-Peilz Switzerland. Data Protection Officer President Mohamad El Khansa. Personal data identifiers name contact details address payment. Students families attendance assessment medical information. Camera surveillance photographs videos. Data Protection Principles fair lawful specified adequate relevant accurate secure. Rights of Data Subjects access rectification erasure portability objection. Storing personal data Switzerland EU-EFTA USA. Data Security breach response. Website Analytics Google Analytics cookies."},
     {title:"IBM Collaboration",url:"aus-ibm-collaboration.html",cat:"About",keys:"About AUS IBM Collaboration Empowering students with industry-recognized skills through our partnership with IBM. Scroll About AUS IBM Collaboration Empowering students with industry-recognized skills through our partnership with IBM. Home / About / IBM Collaboration AUS and IBM A Partnership Built on Innovation AUS has partnered with IBM to provide students with access to cutting-edge technology skills and industry-recognized certifications. Through the IBM SkillsBuild platform and our collaboration, students gain practical competencies that employers actively seek. IBM SkillsBuild Access free IBM training courses covering AI, cloud computing, data science, cybersecurity, and more through the IBM SkillsBuild platform. Industry Certifications Earn verified digital credentials in high-demand technology areas that complement your business degree. Practical Skills Develop technical competencies alongside your business education, making you a more versatile and competitive graduate. Career Advantage Join a network of IBM-skilled professionals and gain access to exclusive career opportunities. Certifications Available Cybersecurity Learn to protect systems, networks, and data from digital attacks. Data Analytics Master the tools and techniques to analyze complex datasets. Generative AI Explore the fundamentals of AI and large language models. Cloud Computing Build and deploy applications on cloud platforms. What is Next Start Your IBM Journey Combine business expertise with technology skills. Apply for Admission ?"}
 ];
-  // allow pages to extend idx via window.AUS_SEARCH_EXTRA
   if(window.AUS_SEARCH_EXTRA && Array.isArray(window.AUS_SEARCH_EXTRA)){ idx = idx.concat(window.AUS_SEARCH_EXTRA); }
   var input=document.getElementById("siteSearchInput");
   var drop=document.getElementById("siteSearchDrop");
@@ -948,7 +1030,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     if(e.key==="Enter"){ var a=drop.querySelector("a"); if(a) location.href=a.getAttribute("href"); }
   });
   document.addEventListener("click", function(e){ if(!wrap.contains(e.target)) drop.hidden=true; });
-})();/* SEARCH HIGHLIGHT & SCROLL â€” scrolls to term from ?q= like FAQ */
+})();/* SEARCH HIGHLIGHT & SCROLL */
 (function(){
   var q=new URLSearchParams(location.search).get("q");
   if(!q) return;
@@ -975,6 +1057,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     }
   });
   if(firstMark) setTimeout(function(){ firstMark.scrollIntoView({behavior:"smooth",block:"center"}); firstMark.style.outline="2px solid var(--crimson)"; firstMark.style.outlineOffset="2px"; }, 400);
-})();</script>
+})();
+</script>
 </body>
 </html>
