@@ -705,6 +705,97 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
 .compare-table .compare-section-row{background:var(--white) !important;}
 .compare-empty{color:var(--ink-soft);font-style:italic;}
 @media(max-width:640px){.compare-selectors{grid-template-columns:1fr;}.compare-vs{text-align:center;padding:0;}.compare-header{padding:22px 18px;}.compare-table thead th,.compare-table th,.compare-table td{padding:10px 14px;font-size:13px;}}
+
+/* ==========================================================================
+   FIND MY BEST-FIT PROGRAM — QUESTIONNAIRE
+   ========================================================================== */
+#finderModal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;}
+#finderModal.is-open{display:flex;}
+#finderModal .finder-backdrop{position:absolute;inset:0;background:rgba(34,41,95,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;transition:opacity .4s var(--ease);}
+#finderModal.is-open .finder-backdrop{opacity:1;}
+#finderModal .finder-panel{position:relative;z-index:1;width:min(960px,94vw);max-height:90vh;background:var(--white);border-radius:12px;box-shadow:0 32px 80px rgba(34,41,95,.22);overflow:hidden;display:flex;flex-direction:column;transform:translateY(20px) scale(.97);opacity:0;transition:transform .45s var(--ease),opacity .45s var(--ease);}
+#finderModal.is-open .finder-panel{transform:translateY(0) scale(1);opacity:1;}
+.finder-close{position:absolute;top:16px;right:16px;z-index:10;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sky-tint);color:var(--navy);transition:background .2s;}
+.finder-close:hover{background:var(--sky);}
+.finder-close svg{width:16px;height:16px;}
+.finder-body{flex:1;overflow-y:auto;padding:clamp(28px,4vw,48px) clamp(24px,4vw,56px);-webkit-overflow-scrolling:touch;}
+.finder-progress{display:flex;align-items:center;gap:14px;margin-bottom:clamp(20px,3vw,32px);}
+.finder-progress-num{font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.04em;color:var(--navy);white-space:nowrap;}
+.finder-progress-track{flex:1;height:3px;background:var(--line);border-radius:2px;overflow:hidden;}
+.finder-progress-fill{height:100%;background:var(--navy);border-radius:2px;transition:width .5s var(--ease);}
+.finder-intro-title{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4vw,44px);color:var(--navy);line-height:1.15;margin-bottom:16px;}
+.finder-intro-title em{color:var(--crimson);}
+.finder-intro-sub{font-size:clamp(14px,1.1vw,16px);line-height:1.7;color:var(--ink-soft);max-width:52ch;margin-bottom:clamp(24px,3vw,40px);}
+.finder-q-label{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;}
+.finder-q-title{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(22px,2.8vw,32px);color:var(--navy);line-height:1.2;margin-bottom:6px;}
+.finder-q-hint{font-size:13px;color:var(--ink-soft);margin-bottom:clamp(16px,2vw,24px);}
+.finder-answers{display:flex;flex-direction:column;gap:10px;margin-bottom:clamp(20px,3vw,32px);}
+.finder-card{display:flex;align-items:flex-start;gap:14px;padding:clamp(14px,1.8vw,18px) clamp(16px,2vw,22px);border:1px solid var(--line);border-radius:8px;cursor:pointer;transition:border-color .2s,background .2s,box-shadow .2s;user-select:none;}
+.finder-card:hover{border-color:var(--sky);background:var(--sky-tint);}
+.finder-card.is-selected{border-color:var(--navy);background:var(--sky-tint);box-shadow:0 0 0 1px var(--navy);}
+.finder-card.is-disabled{opacity:.45;cursor:not-allowed;pointer-events:none;}
+.finder-card-check{width:20px;height:20px;border-radius:50%;border:2px solid var(--line);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:border-color .2s,background .2s;}
+.finder-card.is-radio .finder-card-check{border-radius:50%;}
+.finder-card.is-checkbox .finder-card-check{border-radius:4px;}
+.finder-card.is-selected .finder-card-check{border-color:var(--navy);background:var(--navy);}
+.finder-card.is-selected .finder-card-check::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--white);}
+.finder-card.is-checkbox.is-selected .finder-card-check::after{border-radius:2px;width:10px;height:10px;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.5 6L5 8.5L9.5 3.5' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;width:10px;height:10px;}
+.finder-card-text{flex:1;}
+.finder-card-title{font-weight:600;font-size:14px;color:var(--navy);line-height:1.4;}
+.finder-card-desc{font-size:12px;color:var(--ink-soft);line-height:1.5;margin-top:2px;}
+.finder-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:8px;border-top:1px solid var(--line);}
+.finder-btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:12px 24px;border-radius:100px;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s,color .2s;}
+.finder-btn-back{color:var(--ink-soft);border:1px solid var(--line);}
+.finder-btn-back:hover{background:var(--sky-tint);color:var(--navy);}
+.finder-btn-next{background:var(--navy);color:var(--white);}
+.finder-btn-next:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(34,41,95,.2);}
+.finder-btn-next:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none;}
+.finder-btn-start{background:var(--yellow);color:var(--navy);font-weight:700;font-size:15px;padding:16px 32px;}
+.finder-btn-start:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,247,55,.3);}
+.finder-result-header{text-align:center;margin-bottom:clamp(24px,3vw,40px);}
+.finder-result-eyebrow{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:15px;color:var(--crimson);margin-bottom:8px;}
+.finder-result-title{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(24px,3.5vw,40px);color:var(--navy);line-height:1.15;}
+.finder-result-sub{font-size:14px;color:var(--ink-soft);margin-top:8px;max-width:52ch;margin-left:auto;margin-right:auto;}
+.finder-primary{background:var(--navy);color:var(--white);border-radius:12px;padding:clamp(24px,3vw,40px);margin-bottom:clamp(20px,3vw,32px);position:relative;overflow:hidden;}
+.finder-primary::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(187,221,248,.08);}
+.finder-primary-name{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(22px,2.5vw,32px);line-height:1.2;}
+.finder-primary-meta{display:flex;align-items:center;gap:12px;margin-top:8px;flex-wrap:wrap;}
+.finder-primary-level{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sky);background:rgba(255,255,255,.1);padding:4px 12px;border-radius:100px;}
+.finder-primary-match{font-size:14px;font-weight:700;color:var(--yellow);}
+.finder-primary-desc{font-size:14px;line-height:1.7;color:rgba(255,255,255,.8);margin-top:16px;max-width:56ch;}
+.finder-primary-why{margin-top:20px;}
+.finder-primary-why-title{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px;}
+.finder-primary-why-list{display:flex;flex-direction:column;gap:6px;}
+.finder-primary-why-item{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.85);}
+.finder-primary-why-item::before{content:"✓";color:var(--sky);font-weight:700;}
+.finder-primary-cta{display:inline-flex;align-items:center;gap:8px;margin-top:24px;background:var(--yellow);color:var(--navy);font-weight:700;font-size:14px;padding:14px 28px;border-radius:100px;transition:transform .25s var(--ease),box-shadow .25s var(--ease);}
+.finder-primary-cta:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,247,55,.3);}
+.finder-alt-title{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(18px,2vw,24px);color:var(--navy);margin-bottom:16px;}
+.finder-alt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:clamp(24px,3vw,40px);}
+.finder-alt-card{border:1px solid var(--line);border-radius:8px;padding:clamp(16px,2vw,22px);display:flex;flex-direction:column;}
+.finder-alt-name{font-weight:600;font-size:15px;color:var(--navy);line-height:1.3;}
+.finder-alt-level{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px;}
+.finder-alt-match{font-size:13px;font-weight:700;color:var(--crimson);margin-top:6px;}
+.finder-alt-desc{font-size:12px;line-height:1.6;color:var(--ink-soft);margin-top:8px;flex:1;}
+.finder-alt-cta{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:var(--navy);margin-top:14px;transition:color .2s;}
+.finder-alt-cta:hover{color:var(--crimson);}
+.finder-result-footer{text-align:center;padding-top:24px;border-top:1px solid var(--line);}
+.finder-result-footer h4{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:18px;color:var(--navy);margin-bottom:8px;}
+.finder-result-footer p{font-size:13px;color:var(--ink-soft);max-width:52ch;margin:0 auto 20px;line-height:1.6;}
+.finder-result-footer-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+.finder-result-footer-btns a{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13px;padding:10px 20px;border-radius:100px;border:1px solid var(--line);transition:background .2s,color .2s;}
+.finder-result-footer-btns a:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
+.finder-retake{font-size:13px;color:var(--ink-soft);text-decoration:underline;cursor:pointer;background:none;border:none;font-family:inherit;}
+.finder-retake:hover{color:var(--navy);}
+@media(max-width:700px){
+  #finderModal .finder-panel{width:100vw;max-height:100vh;border-radius:0;height:100vh;}
+  .finder-alt-grid{grid-template-columns:1fr;}
+  .finder-body{padding:20px 16px 24px;}
+}
+@media(prefers-reduced-motion:reduce){
+  #finderModal .finder-backdrop,#finderModal .finder-panel{transition:none;}
+  .finder-btn,.finder-card{transition:none;}
+}
 </style>
 </head>
 <body>
@@ -843,7 +934,7 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
     <h1 class="reveal d1">Where <em>precision</em><br>meets ambition.</h1>
     <p class="hero-sub reveal d2">A Swiss business education built on scientific method and practice, for students who intend to lead, not just graduate.</p>
     <div class="hero-bottom-row reveal d3">
-      <a href="#programs" class="hero-cta">Find My Best-Fit Program &rarr;</a>
+      <a href="#programs" class="hero-cta" id="finderCta">Find My Best-Fit Program &rarr;</a>
       <span class="hero-meta">Founded 1991<br>La Tour-de-Peilz, Switzerland</span>
     </div>
   </div>
@@ -1816,6 +1907,401 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
   closeBtn.addEventListener('click',closeCompare);
   overlay.addEventListener('click',function(e){if(e.target===overlay)closeCompare();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&overlay.classList.contains('is-visible'))closeCompare();});
-})();</script>
+})();
+</script>
+
+
+<!-- FIND MY BEST-FIT PROGRAM MODAL -->
+<div id="finderModal" role="dialog" aria-modal="true" aria-label="Find My Best-Fit Program">
+  <div class="finder-backdrop" tabindex="-1"></div>
+  <div class="finder-panel">
+    <button class="finder-close" aria-label="Close questionnaire" id="finderClose">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="finder-body" id="finderBody"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+/* ======================================================================
+   DATA
+   ====================================================================== */
+var questions=[
+{id:"level",type:"radio",label:"1",title:"Where are you right now?",hint:"Select one",max:1,options:[
+  {id:"secondary",title:"I'm finishing secondary school",desc:"Looking for my first university degree."},
+  {id:"bachelor_done",title:"I have a Bachelor's degree",desc:"Ready to specialize at Master's level."},
+  {id:"working",title:"I'm working and want to advance",desc:"Need a qualification that fits around my career."},
+  {id:"senior",title:"I'm a senior leader or executive",desc:"Looking for doctoral or executive-level education."},
+  {id:"unsure",title:"Not sure yet",desc:"Help me figure out the right level."}
+]},
+{id:"interests",type:"checkbox",label:"2",title:"What draws you to business?",hint:"Pick up to 3",max:3,options:[
+  {id:"finance",title:"Numbers, money & financial strategy"},
+  {id:"management",title:"Leading people & building organizations"},
+  {id:"global",title:"International markets & cross-border business"},
+  {id:"marketing",title:"Brands, digital strategy & customer engagement"},
+  {id:"people",title:"Talent, culture & organizational development"},
+  {id:"tech",title:"Data, analytics & technology"},
+  {id:"healthcare",title:"Healthcare systems & services"},
+  {id:"aviation",title:"Airlines, airports & aerospace"},
+  {id:"sports",title:"Sports organizations & events"},
+  {id:"hospitality",title:"Hotels, tourism & guest experience"}
+]},
+{id:"work",type:"radio",label:"3",title:"What would you do every day?",hint:"Pick the one that fits best",max:1,options:[
+  {id:"numbers",title:"Analyze financial data and business performance"},
+  {id:"leading",title:"Lead teams and make strategic decisions"},
+  {id:"brands",title:"Build brands, campaigns and digital experiences"},
+  {id:"people",title:"Develop people and shape organizational culture"},
+  {id:"insights",title:"Turn data into insights that drive decisions"},
+  {id:"sector",title:"Work in a specific industry — healthcare, aviation, sports or hospitality"}
+]},
+{id:"ambition",type:"radio",label:"4",title:"What's the goal?",hint:"Select one",max:1,options:[
+  {id:"foundation",title:"Get a strong start in business"},
+  {id:"specialist",title:"Become a deep specialist in my field"},
+  {id:"lead",title:"Move into leadership and management"},
+  {id:"global",title:"Build an international career"},
+  {id:"transform",title:"Drive change and transform organizations"},
+  {id:"executive",title:"Reach the C-suite or board level"}
+]},
+{id:"priorities",type:"checkbox",label:"5",title:"What matters most in a program?",hint:"Pick up to 3",max:3,options:[
+  {id:"practical",title:"Hands-on, career-focused learning"},
+  {id:"international",title:"A genuinely international experience"},
+  {id:"leadership",title:"Developing real leadership capability"},
+  {id:"industry",title:"Deep specialization in a specific sector"},
+  {id:"analytical",title:"Building strong analytical skills"},
+  {id:"flexible",title:"Flexibility to study while working"},
+  {id:"network",title:"Access to a global professional network"},
+  {id:"prestige",title:"A recognized, accredited qualification"}
+]},
+{id:"format",type:"radio",label:"6",title:"How would you like to study?",hint:"Select one",max:1,options:[
+  {id:"fulltime",title:"Full-time — immersive on campus"},
+  {id:"parttime",title:"Part-time — while I work"},
+  {id:"either",title:"Open to either, depending on the program"}
+]}
+];
+
+var programData=[
+  {id:"bsc_accounting",name:"Accounting",level:"Bachelor",levelLabel:"Bachelor's Degree",url:"aus-bachelor-accounting.html",interests:["finance"],career:["finance"],work:["numbers"],ambition:["foundation","specialist"],priorities:["practical","analytical"],format:["fulltime"]},
+  {id:"bsc_business",name:"Business Management",level:"Bachelor",levelLabel:"Bachelor's Degree",url:"aus-bachelor-business-management.html",interests:["management"],career:["management"],work:["leading"],ambition:["foundation","lead"],priorities:["practical","leadership"],format:["fulltime"]},
+  {id:"bsc_healthcare",name:"Healthcare Administration",level:"Bachelor",levelLabel:"Bachelor's Degree",url:"aus-bachelor-healthcare-administration.html",interests:["healthcare"],career:["healthcare"],work:["sector"],ambition:["foundation","specialist"],priorities:["practical","industry"],format:["fulltime"]},
+  {id:"bsc_hr",name:"Human Resource Management",level:"Bachelor",levelLabel:"Bachelor's Degree",url:"aus-bachelor-human-resource-management.html",interests:["people"],career:["people"],work:["people"],ambition:["foundation"],priorities:["practical","leadership"],format:["fulltime"]},
+  {id:"bsc_marketing",name:"Integrated & Digital Marketing",level:"Bachelor",levelLabel:"Bachelor's Degree",url:"aus-bachelor-integrated-digital-marketing.html",interests:["marketing"],career:["marketing"],work:["brands"],ambition:["foundation"],priorities:["practical","analytical"],format:["fulltime"]},
+  {id:"bsc_intl",name:"International Business",level:"Bachelor",levelLabel:"Bachelor's Degree",url:"aus-bachelor-international-business.html",interests:["global"],career:["global"],work:["leading"],ambition:["foundation","global"],priorities:["international","practical"],format:["fulltime"]},
+  {id:"bsc_sports_athletic",name:"Sports Management — Athletic Administration",level:"Bachelor",levelLabel:"Bachelor's Degree",url:"aus-bachelor-sports-management-athletic.html",interests:["sports"],career:["sports"],work:["sector"],ambition:["foundation","specialist"],priorities:["practical","industry"],format:["fulltime"]},
+  {id:"bsc_sports_marketing",name:"Sports Management — Sports Marketing",level:"Bachelor",levelLabel:"Bachelor's Degree",url:"aus-bachelor-sports-management-marketing.html",interests:["sports","marketing"],career:["sports","marketing"],work:["brands"],ambition:["foundation"],priorities:["practical","industry"],format:["fulltime"]},
+  {id:"bsc_hospitality",name:"Hospitality Management",level:"Bachelor",levelLabel:"Bachelor's Degree",url:"aus-bachelor-hospitality-management.html",interests:["hospitality"],career:["hospitality"],work:["sector"],ambition:["foundation","global"],priorities:["practical","international"],format:["fulltime"]},
+  {id:"bsc_aviation",name:"Aviation Management",level:"Bachelor",levelLabel:"Bachelor's Degree",url:"aus-bachelor-aviation-management.html",interests:["aviation"],career:["aviation"],work:["sector"],ambition:["foundation","specialist"],priorities:["practical","industry"],format:["fulltime"]},
+  {id:"msc_finance",name:"Finance",level:"Master",levelLabel:"Master's Degree",url:"aus-master-finance.html",interests:["finance"],career:["finance"],work:["numbers"],ambition:["specialist","lead"],priorities:["analytical","practical"],format:["fulltime"]},
+  {id:"msc_data",name:"Data Analytics",level:"Master",levelLabel:"Master's Degree",url:"aus-master-data-analytics.html",interests:["tech"],career:["tech"],work:["insights"],ambition:["specialist"],priorities:["analytical","practical"],format:["fulltime"]},
+  {id:"msc_healthcare",name:"Healthcare Administration",level:"Master",levelLabel:"Master's Degree",url:"aus-master-healthcare-administration.html",interests:["healthcare"],career:["healthcare"],work:["sector"],ambition:["lead","specialist"],priorities:["leadership","industry"],format:["fulltime"]},
+  {id:"msc_hr",name:"Human Resource Management",level:"Master",levelLabel:"Master's Degree",url:"aus-master-human-resource-management.html",interests:["people"],career:["people"],work:["people"],ambition:["lead"],priorities:["leadership","practical"],format:["fulltime"]},
+  {id:"msc_intl",name:"International Business",level:"Master",levelLabel:"Master's Degree",url:"aus-master-international-business.html",interests:["global","management"],career:["global"],work:["leading"],ambition:["global","lead"],priorities:["international","leadership"],format:["fulltime"]},
+  {id:"msc_leadership",name:"Leadership & Change",level:"Master",levelLabel:"Master's Degree",url:"aus-master-leadership-change.html",interests:["management"],career:["management"],work:["leading"],ambition:["transform","lead"],priorities:["leadership","practical"],format:["fulltime"]},
+  {id:"msc_sports",name:"Sports Management",level:"Master",levelLabel:"Master's Degree",url:"aus-master-sports-management.html",interests:["sports"],career:["sports"],work:["sector"],ambition:["lead","specialist"],priorities:["industry","leadership"],format:["fulltime"]},
+  {id:"msc_brand",name:"Strategic Brand & Digital Marketing",level:"Master",levelLabel:"Master's Degree",url:"aus-master-strategic-brand-digital-marketing.html",interests:["marketing"],career:["marketing"],work:["brands"],ambition:["specialist","lead"],priorities:["industry","analytical"],format:["fulltime"]},
+  {id:"msc_aviation",name:"Aviation Management",level:"Master",levelLabel:"Master's Degree",url:"aus-master-aviation-management.html",interests:["aviation"],career:["aviation"],work:["sector"],ambition:["lead","specialist"],priorities:["industry","leadership"],format:["fulltime"]},
+  {id:"dba",name:"Doctorate in Business Administration",level:"Doctorate",levelLabel:"Doctorate",url:"aus-dba.html",interests:["management"],career:["management"],work:["leading"],ambition:["executive","transform"],priorities:["leadership","prestige"],format:["parttime"]},
+  {id:"fed_diploma",name:"Business Administration (Federal Diploma)",level:"Federal Diploma",levelLabel:"Swiss Federal Diploma",url:"aus-federal-diploma.html",interests:["management"],career:["management"],work:["leading"],ambition:["foundation","lead"],priorities:["practical","flexible"],format:["parttime"]}
+];
+
+/* ======================================================================
+   STATE
+   ====================================================================== */
+var currentStep=-1;
+var answers={};
+var modal=document.getElementById("finderModal");
+var body=document.getElementById("finderBody");
+var closeBtn=document.getElementById("finderClose");
+var cta=document.getElementById("finderCta");
+var scrollY=0;
+
+/* ======================================================================
+   OPEN / CLOSE
+   ====================================================================== */
+function openFinder(){
+  scrollY=window.scrollY;
+  document.body.style.position="fixed";
+  document.body.style.top=-scrollY+"px";
+  document.body.style.width="100%";
+  modal.classList.add("is-open");
+  currentStep=-1;
+  answers={};
+  render();
+}
+function closeFinder(){
+  modal.classList.remove("is-open");
+  document.body.style.position="";
+  document.body.style.top="";
+  document.body.style.width="";
+  window.scrollTo(0,scrollY);
+}
+cta.addEventListener("click",function(e){e.preventDefault();openFinder();});
+closeBtn.addEventListener("click",closeFinder);
+modal.querySelector(".finder-backdrop").addEventListener("click",closeFinder);
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&modal.classList.contains("is-open"))closeFinder();});
+
+/* ======================================================================
+   RENDER
+   ====================================================================== */
+function render(){
+  if(currentStep===-1) renderIntro();
+  else if(currentStep<questions.length) renderQuestion(currentStep);
+  else renderResults();
+}
+
+function renderIntro(){
+  body.innerHTML='<div class="finder-intro-title">Find your<br><em>best-fit program</em></div>'
+    +'<div class="finder-intro-sub">Six quick questions. We\'ll match you with the AUS programs that fit your goals.</div>'
+    +'<button class="finder-btn finder-btn-start" id="finderStart">Let\'s Go &rarr;</button>';
+  document.getElementById("finderStart").addEventListener("click",function(){currentStep=0;render();});
+}
+
+function renderQuestion(idx){
+  var q=questions[idx];
+  var sel=answers[q.id]||[];
+  var pct=Math.round(((idx)/questions.length)*100);
+  var html='<div class="finder-progress"><span class="finder-progress-num">'+q.label+' / '+questions.length+'</span><div class="finder-progress-track"><div class="finder-progress-fill" style="width:'+pct+'%"></div></div></div>';
+  html+='<div class="finder-q-title">'+q.title+'</div>';
+  html+='<div class="finder-q-hint">'+q.hint+'</div>';
+  html+='<div class="finder-answers">';
+  q.options.forEach(function(o){
+    var selected=sel.indexOf(o.id)!==-1;
+    var atMax=q.type==="checkbox"&&sel.length>=q.max&&!selected;
+    var cls="finder-card"+(q.type==="radio"?" is-radio":" is-checkbox")+(selected?" is-selected":"")+(atMax?" is-disabled":"");
+    html+='<div class="'+cls+'" data-qid="'+q.id+'" data-oid="'+o.id+'"><div class="finder-card-check"></div><div class="finder-card-text"><div class="finder-card-title">'+o.title+'</div>';
+    if(o.desc) html+='<div class="finder-card-desc">'+o.desc+'</div>';
+    html+='</div></div>';
+  });
+  html+='</div>';
+  html+='<div class="finder-nav">';
+  if(idx>0) html+='<button class="finder-btn finder-btn-back" id="finderBack">&larr; Back</button>';
+  else html+='<span></span>';
+  var canContinue=sel.length>0;
+  if(idx===questions.length-1) html+='<button class="finder-btn finder-btn-next" id="finderNext"'+(canContinue?'':' disabled')+'>See My Results &rarr;</button>';
+  else html+='<button class="finder-btn finder-btn-next" id="finderNext"'+(canContinue?'':' disabled')+'>Continue &rarr;</button>';
+  html+='</div>';
+  body.innerHTML=html;
+
+  var autoAdvance=q.type==="radio";
+  body.querySelectorAll(".finder-card:not(.is-disabled)").forEach(function(card){
+    card.addEventListener("click",function(){
+      var qid=card.dataset.qid, oid=card.dataset.oid;
+      var q=questions.find(function(x){return x.id===qid;});
+      if(q.type==="radio"){
+        answers[qid]=[oid];
+        if(autoAdvance){
+          setTimeout(function(){
+            if(currentStep<questions.length-1){currentStep++;render();}
+            else{currentStep++;render();}
+          },220);
+          return;
+        }
+      } else {
+        var arr=answers[qid]||[];
+        var pos=arr.indexOf(oid);
+        if(pos!==-1) arr.splice(pos,1);
+        else if(arr.length<q.max) arr.push(oid);
+        answers[qid]=arr;
+      }
+      renderQuestion(idx);
+    });
+  });
+  var backBtn=document.getElementById("finderBack");
+  if(backBtn) backBtn.addEventListener("click",function(){currentStep--;render();});
+  var nextBtn=document.getElementById("finderNext");
+  if(nextBtn) nextBtn.addEventListener("click",function(){
+    currentStep++;render();
+  });
+}
+
+/* ======================================================================
+   SCORING ENGINE
+   ====================================================================== */
+function scorePrograms(){
+  var levelAnswer=(answers.level||[])[0]||"unsure";
+  var interests=answers.interests||[];
+  var work=(answers.work||[])[0]||"";
+  var ambition=(answers.ambition||[])[0]||"";
+  var priorities=answers.priorities||[];
+  var format=(answers.format||[])[0]||"either";
+
+  // Determine eligible levels
+  var eligibleLevels=[];
+  if(levelAnswer==="secondary") eligibleLevels=["Bachelor"];
+  else if(levelAnswer==="bachelor_done") eligibleLevels=["Master"];
+  else if(levelAnswer==="working") eligibleLevels=["Master","Federal Diploma"];
+  else if(levelAnswer==="senior") eligibleLevels=["Master","Doctorate","Federal Diploma"];
+  else eligibleLevels=["Bachelor","Master","Doctorate","Federal Diploma"];
+
+  var scored=programData.filter(function(p){
+    if(eligibleLevels.indexOf(p.level)===-1) return false;
+    return true;
+  }).map(function(p){
+    var s=0;
+    s+=10; // base for eligibility
+
+    // Format preference (soft bonus, not hard filter)
+    if(format!=="either"&&p.format.indexOf(format)!==-1) s+=5;
+
+    // Interest match (25%)
+    var interestScore=0;
+    interests.forEach(function(i){if(p.interests.indexOf(i)!==-1) interestScore++;});
+    if(interests.length>0) s+=Math.round((interestScore/interests.length)*18);
+
+    // Work preference (20%)
+    if(work&&p.work.indexOf(work)!==-1) s+=15;
+
+    // Career direction — derived from interests + work (20%)
+    var careerScore=0;
+    if(work&&p.work.indexOf(work)!==-1) careerScore++;
+    interests.forEach(function(i){if(p.interests.indexOf(i)!==-1) careerScore++;});
+    if(careerScore>=2) s+=15;
+    else if(careerScore===1) s+=8;
+
+    // Ambition (15%)
+    if(ambition&&p.ambition.indexOf(ambition)!==-1) s+=12;
+
+    // Priorities (10%)
+    var priorityScore=0;
+    priorities.forEach(function(pr){
+      if(pr==="practical"&&(p.level==="Bachelor"||p.level==="Federal Diploma")) priorityScore++;
+      if(pr==="international"&&(p.id==="msc_intl"||p.id==="bsc_intl"||p.id==="bsc_hospitality")) priorityScore++;
+      if(pr==="leadership"&&(p.level==="Master"||p.level==="Doctorate")) priorityScore++;
+      if(pr==="industry"&&(p.id.indexOf("sports")!==-1||p.id.indexOf("aviation")!==-1||p.id.indexOf("healthcare")!==-1||p.id.indexOf("hospitality")!==-1||p.id.indexOf("brand")!==-1)) priorityScore++;
+      if(pr==="analytical"&&(p.id==="msc_data"||p.id==="msc_finance"||p.id==="bsc_accounting")) priorityScore++;
+      if(pr==="flexible"&&p.level==="Federal Diploma") priorityScore++;
+      if(pr==="network"&&(p.level==="Master"||p.level==="Doctorate")) priorityScore++;
+      if(pr==="prestige"&&(p.level==="Doctorate"||p.level==="Federal Diploma")) priorityScore++;
+    });
+    if(priorities.length>0) s+=Math.round((priorityScore/priorities.length)*10);
+
+    return{id:p.id,score:s,program:p};
+  });
+
+  scored.sort(function(a,b){return b.score-a.score;});
+  return scored;
+}
+
+function generateExplanation(answers,program,isPrimary){
+  var interests=answers.interests||[];
+  var work=(answers.work||[])[0]||"";
+  var ambition=(answers.ambition||[])[0]||"";
+
+  var intLabels={finance:"financial strategy",management:"business leadership",global:"international markets",marketing:"brand and digital strategy",people:"people and talent development",tech:"data and technology",healthcare:"healthcare management",aviation:"the aviation industry",sports:"sports business",hospitality:"hospitality and guest experience"};
+  var workLabels={numbers:"financial analysis",leading:"strategic leadership",brands:"brand building",people:"people development",insights:"data-driven decision-making",sector:"industry-specific expertise"};
+  var ambLabels={foundation:"building a strong foundation",specialist:"developing deep expertise",lead:"moving into leadership",global:"an international career",transform:"driving organizational change",executive:"reaching senior leadership"};
+
+  var parts=[];
+  interests.forEach(function(i){if(intLabels[i]) parts.push(intLabels[i]);});
+  if(workLabels[work]) parts.push(workLabels[work]);
+  if(ambLabels[ambition]) parts.push(ambLabels[ambition]);
+
+  if(parts.length===0) return "This program aligns well with your goals.";
+  if(isPrimary){
+    if(parts.length===1) return "You're drawn to "+parts[0]+" — this program is built around exactly that.";
+    if(parts.length===2) return "Your interest in "+parts[0]+" combined with "+parts[1]+" makes this the strongest match for you.";
+    return "With your focus on "+parts[0]+", "+parts[1]+" and "+parts[parts.length-1]+", this program fits your profile closely.";
+  }
+  if(parts.length===1) return "Also strong if you're interested in "+parts[0]+".";
+  return "Worth exploring if "+parts[0]+" and "+parts[1]+" matter to you.";
+}
+
+function generateWhy(answers,program){
+  var reasons=[];
+  var interests=answers.interests||[];
+  var work=(answers.work||[])[0]||"";
+  var ambition=(answers.ambition||[])[0]||"";
+  var priorities=answers.priorities||[];
+
+  var reasonPool=[];
+  var intReasons={finance:"Aligns with your interest in financial strategy",management:"Matches your focus on business leadership",global:"Built for your international career goals",marketing:"Matches your interest in brands and digital strategy",people:"Focused on people and organizational development",tech:"Built around data and technology skills",healthcare:"Specialized for healthcare management",aviation:"Tailored to the aviation industry",sports:"Designed for sports business careers",hospitality:"Built for hospitality and tourism careers"};
+  interests.forEach(function(i){if(intReasons[i]) reasonPool.push({text:intReasons[i],score:3});});
+
+  var workReasons={numbers:"Matches your preference for analytical, data-driven work",leading:"Matches your preference for strategic leadership roles",brands:"Matches your preference for creative, brand-focused work",people:"Matches your preference for people-centered work",insights:"Matches your preference for turning data into decisions",sector:"Matches your preference for industry-specific work"};
+  if(workReasons[work]) reasonPool.push({text:workReasons[work],score:2});
+
+  var ambReasons={foundation:"Strong foundation for your career stage",specialist:"Builds the specialist depth you're looking for",lead:"Develops the leadership skills you need",global:"Supports your international career ambitions",transform:"Prepares you to drive organizational change",executive:"Designed for senior executive development"};
+  if(ambReasons[ambition]) reasonPool.push({text:ambReasons[ambition],score:2});
+
+  priorities.forEach(function(pr){
+    if(pr==="practical") reasonPool.push({text:"Emphasizes practical, hands-on learning",score:1});
+    if(pr==="international") reasonPool.push({text:"Strong international focus and global network",score:1});
+    if(pr==="leadership") reasonPool.push({text:"Develops genuine leadership capability",score:1});
+    if(pr==="industry") reasonPool.push({text:"Deep specialization in your chosen sector",score:1});
+    if(pr==="analytical") reasonPool.push({text:"Builds strong analytical and problem-solving skills",score:1});
+    if(pr==="flexible") reasonPool.push({text:"Designed for working professionals",score:1});
+    if(pr==="network") reasonPool.push({text:"Access to a global professional network",score:1});
+    if(pr==="prestige") reasonPool.push({text:"A recognized, accredited qualification",score:1});
+  });
+
+  reasonPool.sort(function(a,b){return b.score-a.score;});
+  reasonPool.forEach(function(r){if(reasons.length<3&&reasons.indexOf(r.text)===-1) reasons.push(r.text);});
+  while(reasons.length<3) reasons.push("Practice-led learning from day one");
+  return reasons.slice(0,3);
+}
+
+/* ======================================================================
+   RESULTS
+   ====================================================================== */
+function renderResults(){
+  var scored=scorePrograms();
+  if(scored.length===0){
+    body.innerHTML='<div class="finder-result-header"><div class="finder-result-eyebrow">Your Results</div><div class="finder-result-title">No matching programs found</div><div class="finder-result-sub">Try adjusting your answers — particularly your study format and academic level.</div></div><div style="text-align:center;"><button class="finder-btn finder-btn-start" id="finderRetake">Start Over &rarr;</button></div>';
+document.getElementById("finderRetake").addEventListener("click",function(){currentStep=-1;answers={};render();});
+    return;
+  }
+
+  var top=scored[0];
+  var maxScore=top.score;
+  function pct(s){return Math.min(96,Math.max(68,Math.round(68+((s/maxScore)*28))));}
+
+  var html='<div class="finder-result-header"><div class="finder-result-eyebrow">Your Results</div><div class="finder-result-title">Your Best-Fit Program</div><div class="finder-result-sub">Based on your answers, here\'s the program that matches you best.</div></div>';
+
+  // Primary
+  var topPct=pct(top.score);
+  html+='<div class="finder-primary">';
+  html+='<div class="finder-primary-name">'+top.program.name+'</div>';
+  html+='<div class="finder-primary-meta"><span class="finder-primary-level">'+top.program.levelLabel+'</span><span class="finder-primary-match">'+topPct+'% Match</span></div>';
+  html+='<div class="finder-primary-desc">'+generateExplanation(answers,top.program,true)+'</div>';
+  html+='<div class="finder-primary-why"><div class="finder-primary-why-title">Why it fits you</div><div class="finder-primary-why-list">';
+  generateWhy(answers,top.program).forEach(function(r){html+='<div class="finder-primary-why-item">'+r+'</div>';});
+  html+='</div></div>';
+  html+='<a href="'+top.program.url+'" class="finder-primary-cta">Explore Program &rarr;</a>';
+  html+='</div>';
+
+  // Alternatives
+  var alts=scored.slice(1,4);
+  if(alts.length>0){
+    html+='<div class="finder-alt-title">Also Worth Exploring</div>';
+    html+='<div class="finder-alt-grid">';
+    alts.forEach(function(a){
+      var aPct=pct(a.score);
+      html+='<div class="finder-alt-card">';
+      html+='<div class="finder-alt-name">'+a.program.name+'</div>';
+      html+='<div class="finder-alt-level">'+a.program.levelLabel+'</div>';
+      html+='<div class="finder-alt-match">'+aPct+'% Match</div>';
+      html+='<div class="finder-alt-desc">'+generateExplanation(answers,a.program,false)+'</div>';
+      html+='<a href="'+a.program.url+'" class="finder-alt-cta">Explore Program &rarr;</a>';
+      html+='</div>';
+    });
+    html+='</div>';
+  }
+
+  // Footer
+  html+='<div class="finder-result-footer">';
+  html+='<h4>Still deciding?</h4>';
+  html+='<p>Your results are a starting point. Explore the full portfolio or talk to admissions to find the right fit.</p>';
+  html+='<div class="finder-result-footer-btns">';
+  html+='<a href="aus-programs.html">Explore All Programs &rarr;</a>';
+  html+='<a href="aus-faq.html">Contact Admissions &rarr;</a>';
+  html+='</div>';
+  html+='<button class="finder-retake" id="finderRetake">Start Over</button>';
+  html+='</div>';
+
+  body.innerHTML=html;
+  document.getElementById("finderRetake").addEventListener("click",function(){currentStep=-1;answers={};render();});
+}
+})();
+</script>
 </body>
 </html>
