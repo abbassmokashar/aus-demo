@@ -140,10 +140,10 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 /* CURRICULUM */
 .curriculum{padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);}
 .curr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,20px);margin-top:clamp(32px,4vw,48px);}
-.curr-card{background:var(--white);padding:clamp(24px,3vw,32px);border-radius:12px;border:1px solid var(--line);transition:border-color .3s var(--ease),box-shadow .3s var(--ease);cursor:pointer;overflow:hidden;}.curr-card:hover{border-color:var(--navy);box-shadow:0 8px 32px rgba(34,41,95,.12);}
+.curr-card{background:var(--white);padding:clamp(24px,3vw,32px);border-radius:12px;border:1px solid var(--line);transition:border-color .3s var(--ease),box-shadow .3s var(--ease);cursor:pointer;overflow:visible;}.curr-card:hover{border-color:var(--navy);box-shadow:0 8px 32px rgba(34,41,95,.12);}
 .curr-year{font-family:var(--font-display);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;}
 .curr-card h3{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(18px,1.8vw,22px);color:var(--navy);margin-bottom:10px;}
-.curr-card ul{list-style:none;max-height:0;overflow:hidden;transition:max-height .5s ease,margin .4s ease,opacity .4s ease;margin-top:0;opacity:0;}.curr-scroll:hover .curr-card ul{max-height:500px;margin-top:16px;opacity:1;}
+.curr-card ul{list-style:none;max-height:0;overflow:hidden;transition:max-height .5s ease,margin .4s ease,opacity .4s ease;margin-top:0;opacity:0;}.curr-card:hover ul{max-height:500px;margin-top:16px;opacity:1;}
 .curr-card li{font-size:13px;line-height:1.6;color:var(--ink-soft);padding:4px 0;border-bottom:1px solid var(--line);}.curr-card li:last-child{border-bottom:none;}
 @media (max-width:760px){.curr-grid{grid-template-columns:1fr;}}
 
@@ -237,8 +237,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 /* HORIZONTAL SCROLL CURRICULUM */
 .curr-scroll-wrap{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-snap-type:x mandatory;padding-bottom:20px;}
 .curr-scroll-wrap::-webkit-scrollbar{display:none;}
-.curr-scroll{display:flex;gap:clamp(14px,1.6vw,20px);padding:0 clamp(20px,5vw,64px);justify-content:center;}
-.curr-scroll .curr-card{min-width:clamp(280px,30vw,340px);flex-shrink:0;scroll-snap-align:start;background:var(--white);padding:clamp(24px,3vw,32px);border-radius:12px;border:1px solid var(--line);position:relative;}
+.curr-scroll{display:flex;align-items:flex-start;gap:clamp(14px,1.6vw,20px);padding:0 clamp(20px,5vw,64px);justify-content:center;}
+.curr-scroll .curr-card{min-width:clamp(280px,30vw,340px);flex-shrink:0;scroll-snap-align:start;background:var(--white);padding:clamp(24px,3vw,32px);border-radius:12px;border:1px solid var(--line);position:relative;align-self:flex-start;}
 .curr-scroll-nav{display:flex;gap:10px;margin-top:20px;justify-content:center;}
 .curr-scroll-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;background:var(--white);transition:all .3s var(--ease);}
 .curr-scroll-btn:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
@@ -424,7 +424,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
       <span class="aus-search-btn" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
       <div id="siteSearchDrop" class="aus-search-drop" hidden></div>
     </div><div class="aus-nav-right">
-    <a href="#" class="aus-nav-apply">Apply</a>
+    <a href="https://study.aus.swiss/application" class="aus-nav-apply">Apply</a>
     <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="sidePanel">
       <span>Menu</span>
       <span class="menu-toggle-bars"><span></span><span></span><span></span></span>
@@ -516,10 +516,10 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
       </div>
       <a href="aus-admissions.html" class="side-panel-link">Admissions</a>
       <a href="aus-cost-calculator.html" class="side-panel-link">Cost Calculator</a>
-      <a href="#" class="side-panel-link">Contact</a>
+      <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24" class="side-panel-link">Contact</a>
 </nav>
     <div class="side-panel-foot">
-      <a href="#" class="hero-cta">Apply now &rarr;</a>
+      <a href="https://study.aus.swiss/application" class="hero-cta">Apply now &rarr;</a>
       <div class="side-panel-socials footer-social-grid">
         <a class="footer-social-tile" href="https://www.linkedin.com/school/aus-swiss/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M14.6666 7.3335C16.1253 7.3335 17.5243 7.91296 18.5557 8.94441C19.5872 9.97586 20.1666 11.3748 20.1666 12.8335V19.2502H16.5V12.8335C16.5 12.3473 16.3068 11.881 15.963 11.5371C15.6192 11.1933 15.1529 11.0002 14.6666 11.0002C14.1804 11.0002 13.7141 11.1933 13.3703 11.5371C13.0264 11.881 12.8333 12.3473 12.8333 12.8335V19.2502H9.16663V12.8335C9.16663 11.3748 9.74609 9.97586 10.7775 8.94441C11.809 7.91296 13.2079 7.3335 14.6666 7.3335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M5.50004 8.25H1.83337V19.25H5.50004V8.25Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M3.66671 5.50016C4.67923 5.50016 5.50004 4.67935 5.50004 3.66683C5.50004 2.65431 4.67923 1.8335 3.66671 1.8335C2.65419 1.8335 1.83337 2.65431 1.83337 3.66683C1.83337 4.67935 2.65419 5.50016 3.66671 5.50016Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <a class="footer-social-tile" href="https://www.facebook.com/american.institute.switzerland" target="_blank" aria-label="Facebook"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M16.5 1.8335H13.75C12.5344 1.8335 11.3686 2.31638 10.5091 3.17592C9.64951 4.03547 9.16663 5.20125 9.16663 6.41683V9.16683H6.41663V12.8335H9.16663V20.1668H12.8333V12.8335H15.5833L16.5 9.16683H12.8333V6.41683C12.8333 6.17371 12.9299 5.94056 13.1018 5.76865C13.2737 5.59674 13.5068 5.50016 13.75 5.50016H16.5V1.8335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -547,7 +547,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     </span>
     <h1 class="reveal d1" style="font-size:clamp(56px,10vw,120px);line-height:.95;">Healthcare Administration</h1>
     <div class="hero-row reveal d2">
-      <a href="#" class="hero-cta hero-cta-primary">Start your Application <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="https://study.aus.swiss/application" class="hero-cta hero-cta-primary">Start your Application <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
       <a href="#" class="hero-cta hero-cta-secondary">Download Brochure</a>
     </div>
   </div>
@@ -564,7 +564,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     <h1>Healthcare Administration</h1>
     <p class="hero-mob-sub">Two years, six academic terms plus capstone, 83 CH | 135 ECTS.</p>
     <div class="hero-mob-ctas">
-      <a href="#" class="hero-cta hero-cta-primary">Start your Application <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="https://study.aus.swiss/application" class="hero-cta hero-cta-primary">Start your Application <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
       <a href="#" class="hero-cta hero-cta-secondary">Download Brochure</a>
     </div>
   </div>
@@ -913,7 +913,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
       <div style="font-size:14px;color:var(--ink-soft);margin-top:4px;">EU/EFTA Deadline: July 15 &nbsp;&middot;&nbsp; International Deadline: July 15</div>
     </div>
     <div style="display:flex;gap:12px;">
-      <a href="#" class="cta-btn">Start your Application &rarr;</a>
+      <a href="https://study.aus.swiss/application" class="cta-btn">Start your Application &rarr;</a>
     </div>
   </div>
 </section>
@@ -984,7 +984,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     <div class="reveal d3" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
       <a href="#" class="cta-btn">Talk to an Admissions Advisor &rarr;</a>
       <a href="#" class="cta-btn" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,.3);">Request a Program Overview</a>
-      <a href="#" class="cta-btn" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,.3);">Book a Campus Visit</a>
+      <a href="https://share-eu1.hsforms.com/1t_dizG4cT7-D9bCyPSDnAwfwv24" class="cta-btn" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,.3);">Book a Campus Visit</a>
     </div>
   </div>
 </section>
@@ -996,7 +996,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
       <div>
         <img class="footer-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
         <p>American Institute of Applied Sciences. Modern heritage, built for the leaders business hasn't met yet.</p>
-        <div class="footer-social-title footer-col-title">Follow</div>
+        <div class="footer-social-title footer-col-title">#AUSmoments on</div>
         <div class="footer-social-grid">
           <a class="footer-social-tile" href="https://www.linkedin.com/school/aus-swiss/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M14.6666 7.3335C16.1253 7.3335 17.5243 7.91296 18.5557 8.94441C19.5872 9.97586 20.1666 11.3748 20.1666 12.8335V19.2502H16.5V12.8335C16.5 12.3473 16.3068 11.881 15.963 11.5371C15.6192 11.1933 15.1529 11.0002 14.6666 11.0002C14.1804 11.0002 13.7141 11.1933 13.3703 11.5371C13.0264 11.881 12.8333 12.3473 12.8333 12.8335V19.2502H9.16663V12.8335C9.16663 11.3748 9.74609 9.97586 10.7775 8.94441C11.809 7.91296 13.2079 7.3335 14.6666 7.3335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M5.50004 8.25H1.83337V19.25H5.50004V8.25Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M3.66671 5.50016C4.67923 5.50016 5.50004 4.67935 5.50004 3.66683C5.50004 2.65431 4.67923 1.8335 3.66671 1.8335C2.65419 1.8335 1.83337 2.65431 1.83337 3.66683C1.83337 4.67935 2.65419 5.50016 3.66671 5.50016Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <a class="footer-social-tile" href="https://www.facebook.com/american.institute.switzerland" target="_blank" aria-label="Facebook"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M16.5 1.8335H13.75C12.5344 1.8335 11.3686 2.31638 10.5091 3.17592C9.64951 4.03547 9.16663 5.20125 9.16663 6.41683V9.16683H6.41663V12.8335H9.16663V20.1668H12.8333V12.8335H15.5833L16.5 9.16683H12.8333V6.41683C12.8333 6.17371 12.9299 5.94056 13.1018 5.76865C13.2737 5.59674 13.5068 5.50016 13.75 5.50016H16.5V1.8335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -1005,13 +1005,9 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
           <a class="footer-social-tile" href="https://www.youtube.com/channel/UCKUFsoxwPuaH8bi0vMoSTaQ" target="_blank" aria-label="YouTube"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M2.29167 15.5833C1.65131 12.5613 1.65131 9.43867 2.29167 6.41667C2.37581 6.10977 2.53838 5.83007 2.7634 5.60506C2.98841 5.38004 3.26812 5.21747 3.57501 5.13333C8.4915 4.31884 13.5085 4.31884 18.425 5.13333C18.7319 5.21747 19.0116 5.38004 19.2366 5.60506C19.4616 5.83007 19.6242 6.10977 19.7083 6.41667C20.3487 9.43867 20.3487 12.5613 19.7083 15.5833C19.6242 15.8902 19.4616 16.1699 19.2366 16.3949C19.0116 16.62 18.7319 16.7825 18.425 16.8667C13.5085 17.6813 8.49149 17.6813 3.57501 16.8667C3.26812 16.7825 2.98841 16.62 2.7634 16.3949C2.53838 16.1699 2.37581 15.8902 2.29167 15.5833Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M9.16663 13.75L13.75 11L9.16663 8.25V13.75Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
-      <div class="footer-col"><div class="footer-col-title">Programs</div><a href="aus-programs.html#master">Masters</a><a href="aus-programs.html#master">Masters</a><a href="aus-programs.html#doctorate">Doctorate</a><a href="#">Federal Diploma</a></div>
-      <div class="footer-col"><div class="footer-col-title">School</div><a href="#">About</a><a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a>
-          <a href="aus-accreditations.html">Accreditations &amp; Memberships</a>
-          <a href="aus-governance.html">Governance</a>
-          <a href="aus-faq.html">FAQ</a>
-          <a href="#" style="display:none">Accreditations_TEMP &amp; Memberships</a><a href="#">Campus life</a></div>
-      <div class="footer-col"><div class="footer-col-title">Connect</div><a href="aus-admissions.html">Admissions</a><a href="#">Events</a><a href="#">Contact</a></div>
+            <div class="footer-col"><div class="footer-col-title">Programs</div><a href="aus-programs.html#bachelor">Bachelors</a><a href="aus-programs.html#master">Masters</a><a href="aus-programs.html#doctorate">Doctorate</a><a href="aus-programs.html#doctorate">Federal Diploma</a><div style="margin-top:14px;"></div><div class="footer-col-title" style="margin-top:6px;">Connect</div><a href="aus-admissions.html">Admissions</a><a href="#">Events</a><a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24">Contact</a></div>
+      <div class="footer-col"><div class="footer-col-title">School</div><a href="aus-about.html">About</a><a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a><a href="aus-accreditations.html">Accreditations &amp; Memberships</a><a href="aus-governance.html">Governance</a><a href="aus-faq.html">FAQ</a><a href="aus-speaker-series.html">Campus life</a></div>
+      <div class="footer-col"><div class="footer-col-title">For AUS Students</div><a href="https://search.ebscohost.com/login.aspx" target="_blank" rel="noopener">E-Library</a><a href="https://openstax.org/" target="_blank" rel="noopener">OpenStax</a><a href="https://www.oecd.org/en/publications.html" target="_blank" rel="noopener">OECD Publications</a></div>
     </div>
     <div class="footer-v2_bottom">
       <div class="footer-v2_bottom-title">Accredited &amp; Recognized Worldwide</div>
@@ -1024,7 +1020,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 AUS Business School. All rights reserved.</span>
-      <span><a href="aus-rights-policy.html">Policies &amp; Privacy</a> &nbsp;&middot;&nbsp; <a href="#">Terms</a></span>
+      <span><a href="aus-rights-policy.html">Privacy Policy</a></span>
     </div>
   </div>
 </footer>
@@ -1047,7 +1043,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
         <div class="aus-popup-benefit"><div class="aus-popup-benefit-icon">&#x2713;</div><div class="aus-popup-benefit-text">Swiss Riviera<span>La Tour-de-Peilz campus</span></div></div>
       </div>
       <div class="aus-popup-cta">
-        <a href="aus-admissions.html" class="aus-popup-cta-primary">Start Your Application</a>
+        <a href="https://study.aus.swiss/application" class="aus-popup-cta-primary">Start Your Application</a>
         <a href="aus-programs.html" class="aus-popup-cta-secondary">View Programs</a>
       </div>
     </div>
@@ -1247,10 +1243,11 @@ if(!reduceMotion){
     {title:"What is the Institution Code of AUS?",url:"aus-faq.html?q=What%20is%20the%20Institution%20Code%20of%20AUS%3F",cat:"FAQ",keys:"What is the Institution Code of AUS? Facility code: 21001578 — View on VA website →"},
     {title:"How do I apply for VA benefits at AUS?",url:"aus-faq.html?q=How%20do%20I%20apply%20for%20VA%20benefits%20at%20AUS%3F",cat:"FAQ",keys:"How do I apply for VA benefits at AUS? 1) Submit your application 120 days before departure. 2) Provide your Certificate of Eligibility (COE) to AUS’s Certifying Official, who submits VA Form 22-1999. 3) Prepare funds, housing, travel and insurance. 4) Grant written permission for AUS to share info with the VA. 5) For multi-year attendance, notify 120 days before re-enrollment. Full guide →"},
     {title:"What if I need more help with my GI Bill?",url:"aus-faq.html?q=What%20if%20I%20need%20more%20help%20with%20my%20GI%20Bill%3F",cat:"FAQ",keys:"What if I need more help with my GI Bill? Contact VA: Ask VA online , or call 888-442-4551 (US, TTY:711) Mon–Fri 8am–7pm ET, or +1-918-781-5678 from outside the US. Also find a VA regional office ."},
-    {title:"Policies & Privacy",url:"aus-rights-policy.html",cat:"About",keys:"Policies Privacy GDPR data protection FADP institutional policies AUS audit assessment credit transfer continuous professional development internship program management staff performance scholarships admissions recognition prior learning teaching learning staff leave quality assurance equality diversity risk management student agreement code of conduct disciplinary student finance staffing attendance personal data"},
+    {title:"Privacy Policy",url:"aus-rights-policy.html",cat:"About",keys:"Policies Privacy GDPR data protection FADP institutional policies AUS audit assessment credit transfer continuous professional development internship program management staff performance scholarships admissions recognition prior learning teaching learning staff leave quality assurance equality diversity risk management student agreement code of conduct disciplinary student finance staffing attendance personal data"},
     {title:"IBM Collaboration",url:"aus-ibm-collaboration.html",cat:"About",keys:"About AUS IBM Collaboration Empowering students with industry-recognized skills through our partnership with IBM. Scroll About AUS IBM Collaboration Empowering students with industry-recognized skills through our partnership with IBM. Home / About / IBM Collaboration AUS and IBM A Partnership Built on Innovation AUS has partnered with IBM to provide students with access to cutting-edge technology skills and industry-recognized certifications. Through the IBM SkillsBuild platform and our collaboration, students gain practical competencies that employers actively seek. IBM SkillsBuild Access free IBM training courses covering AI, cloud computing, data science, cybersecurity, and more through the IBM SkillsBuild platform. Industry Certifications Earn verified digital credentials in high-demand technology areas that complement your business degree. Practical Skills Develop technical competencies alongside your business education, making you a more versatile and competitive graduate. Career Advantage Join a network of IBM-skilled professionals and gain access to exclusive career opportunities. Certifications Available Cybersecurity Learn to protect systems, networks, and data from digital attacks. Data Analytics Master the tools and techniques to analyze complex datasets. Generative AI Explore the fundamentals of AI and large language models. Cloud Computing Build and deploy applications on cloud platforms. What is Next Start Your IBM Journey Combine business expertise with technology skills. Apply for Admission ?"}
     ,{title:"Cost Calculator",url:"aus-cost-calculator.html",cat:"Tools",keys:"Cost Calculator Plan Your AUS Investment Estimate tuition living costs Switzerland Program Scholarship Accommodation Monthly expenses Visa Permit Calculate Expenses Financial planning budget"}
-];
+,
+    {title:"AUS Speaker Series",url:"aus-speaker-series.html",cat:"Campus Life",keys:"AUS Speaker Series Industry experts networking with AUS students Monthly seminars lectures leading experts Commencement speakers Industrial visits Campus Life"}];
   // allow pages to extend idx via window.AUS_SEARCH_EXTRA
   if(window.AUS_SEARCH_EXTRA && Array.isArray(window.AUS_SEARCH_EXTRA)){ idx = idx.concat(window.AUS_SEARCH_EXTRA); }
   var input=document.getElementById("siteSearchInput");

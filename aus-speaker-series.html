@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Strategic Brand & Digital Marketing — Masters Degree | AUS Business School</title>
+<title>AUS Speaker Series | AUS Business School</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -32,6 +32,28 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 @keyframes preloaderBar{0%{transform:translateX(-120%);}100%{transform:translateX(400%);}}
 .aus-preloader.is-hidden{opacity:0;visibility:hidden;pointer-events:none;}
 @media (prefers-reduced-motion: reduce){.aus-preloader{display:none;}}
+
+/* NAV */
+.aus-nav{position:fixed;top:0;left:0;right:0;z-index:110;display:flex;align-items:center;justify-content:space-between;padding:clamp(18px,2.6vw,30px) clamp(20px,4vw,56px);color:var(--white);transition:padding .4s var(--ease),color .4s var(--ease);}
+.aus-nav.is-scrolled{padding-top:14px;padding-bottom:14px;color:var(--white);}
+.aus-nav::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom, rgba(15,17,38,.55) 0%, rgba(15,17,38,0) 100%);opacity:1;transition:opacity .4s var(--ease),background .4s var(--ease);}
+.aus-nav.is-scrolled::before{background:var(--navy);opacity:1;box-shadow:0 1px 0 var(--line-on-navy);}
+.aus-wordmark{position:relative;display:block;height:clamp(40px,4.4vw,52px);width:clamp(180px,19vw,230px);opacity:0;transform:translateY(-10px);animation:navIn .8s var(--ease) .35s forwards;}
+.aus-wordmark img{position:absolute;left:0;top:0;height:100%;width:auto;max-width:none;transition:opacity .4s var(--ease);}
+.aus-wordmark .logo-white{opacity:1;}.aus-wordmark .logo-color{opacity:0;}
+@keyframes navIn{to{opacity:1;transform:translateY(0);}}
+.aus-nav-links{display:flex;align-items:center;gap:26px;opacity:0;animation:navIn .8s var(--ease) .4s forwards;}
+.aus-nav-links button{font-weight:500;font-size:14.5px;}
+.aus-nav-links button::after{content:"";display:block;width:0;height:1px;background:currentColor;transition:width .3s var(--ease);margin-top:3px;}
+.aus-nav-links button:hover::after{width:100%;}
+.aus-nav-right{display:flex;align-items:center;gap:22px;opacity:0;animation:navIn .8s var(--ease) .45s forwards;}
+.aus-nav-apply{font-weight:600;font-size:14px;padding:10px 20px;border:1px solid currentColor;border-radius:100px;transition:background .3s var(--ease),color .3s var(--ease);}
+.aus-nav-apply:hover{background:var(--crimson);border-color:var(--crimson);color:var(--white);}
+.menu-toggle{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;}
+.menu-toggle-bars{width:22px;height:14px;position:relative;}
+.menu-toggle-bars span{position:absolute;left:0;right:0;height:1.5px;background:currentColor;}
+.menu-toggle-bars span:nth-child(1){top:0;}.menu-toggle-bars span:nth-child(2){top:6px;width:70%;}.menu-toggle-bars span:nth-child(3){top:12px;}
+@media (max-width:760px){.aus-nav-links{display:none;}}
 
 /* SIDE PANEL */
 .side-panel{position:fixed;inset:0;z-index:120;pointer-events:none;}
@@ -64,52 +86,9 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .side-panel-socials .footer-social-tile{border-color:var(--line-on-navy);}
 .side-panel-socials .footer-social-tile svg{fill:var(--white);}
 
-/* NAV */
-.aus-nav{position:fixed;top:0;left:0;right:0;z-index:110;display:flex;align-items:center;justify-content:space-between;padding:clamp(18px,2.6vw,30px) clamp(20px,4vw,56px);color:var(--white);transition:padding .4s var(--ease),color .4s var(--ease);}
-.aus-nav.is-scrolled{padding-top:14px;padding-bottom:14px;color:var(--white);}
-.aus-nav::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom, rgba(15,17,38,.55) 0%, rgba(15,17,38,0) 100%);opacity:1;transition:opacity .4s var(--ease),background .4s var(--ease);}
-.aus-nav.is-scrolled::before{background:var(--navy);opacity:1;box-shadow:0 1px 0 var(--line-on-navy);}
-.aus-wordmark{position:relative;display:block;height:clamp(40px,4.4vw,52px);width:clamp(180px,19vw,230px);opacity:0;transform:translateY(-10px);animation:navIn .8s var(--ease) .35s forwards;}
-.aus-wordmark img{position:absolute;left:0;top:0;height:100%;width:auto;max-width:none;transition:opacity .4s var(--ease);}
-.aus-wordmark .logo-white{opacity:1;}.aus-wordmark .logo-color{opacity:0;}
-@keyframes navIn{to{opacity:1;transform:translateY(0);}}
-.aus-nav-links{display:flex;align-items:center;gap:26px;opacity:0;animation:navIn .8s var(--ease) .4s forwards;}
-.aus-nav-links button{font-weight:500;font-size:14.5px;}
-.aus-nav-links button::after{content:"";display:block;width:0;height:1px;background:currentColor;transition:width .3s var(--ease);margin-top:3px;}
-.aus-nav-links button:hover::after{width:100%;}
-.aus-nav-right{display:flex;align-items:center;gap:22px;opacity:0;animation:navIn .8s var(--ease) .45s forwards;}
-.aus-nav-apply{font-weight:600;font-size:14px;padding:10px 20px;border:1px solid currentColor;border-radius:100px;transition:background .3s var(--ease),color .3s var(--ease);}
-.aus-nav-apply:hover{background:var(--crimson);border-color:var(--crimson);color:var(--white);}
-.menu-toggle{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;}
-.menu-toggle-bars{width:22px;height:14px;position:relative;}
-.menu-toggle-bars span{position:absolute;left:0;right:0;height:1.5px;background:currentColor;}
-.menu-toggle-bars span:nth-child(1){top:0;}.menu-toggle-bars span:nth-child(2){top:6px;width:70%;}.menu-toggle-bars span:nth-child(3){top:12px;}
-@media (max-width:760px){.aus-nav-links{display:none;}}
-
 /* EYEBROW */
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
 .eyebrow.on-navy{color:rgba(255,255,255,.7);}
-
-/* HERO */
-.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy);}
-.hero-bg{position:absolute;inset:0;z-index:0;}
-.hero-bg img{width:100%;height:100%;object-fit:cover;}
-.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,14,34,.92) 0%,rgba(12,14,34,.5) 40%,rgba(12,14,34,.15) 100%);}
-.hero-inner{position:relative;z-index:1;width:100%;padding:clamp(60px,8vw,100px) clamp(20px,5vw,64px) clamp(40px,6vw,70px);color:var(--white);}
-.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:clamp(16px,2vw,24px);flex-wrap:wrap;}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);padding:6px 14px;border-radius:100px;font-size:12px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.85);}
-.hero-badge svg{width:14px;height:14px;stroke:var(--sky);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-.hero h1{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(48px,8vw,96px);line-height:1;letter-spacing:-.02em;max-width:none;}
-.hero h1 em{font-style:normal;font-weight:800;font-family:var(--font-display);color:var(--white);display:block;}
-.hero-sub{margin-top:clamp(12px,1.5vw,20px);max-width:42ch;font-size:clamp(15px,1.3vw,17px);line-height:1.6;color:rgba(255,255,255,.65);}
-.hero-row{display:flex;align-items:center;gap:clamp(16px,2vw,28px);margin-top:clamp(24px,3vw,40px);flex-wrap:wrap;}
-.hero-cta{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:14px 28px;border-radius:100px;transition:all .3s var(--ease);}
-.hero-cta-primary{color:var(--navy);background:var(--white);border:1px solid var(--white);}
-.hero-cta-secondary{color:var(--white);background:transparent;border:1px solid rgba(255,255,255,.25);}
-.hero-scroll{position:absolute;bottom:clamp(24px,3vw,40px);right:clamp(20px,5vw,64px);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.35);font-size:10px;letter-spacing:.12em;text-transform:uppercase;z-index:2;}
-.hero-scroll::after{content:"";width:1px;height:28px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent);animation:scrollPulse 2s ease-in-out infinite;}
-@keyframes scrollPulse{0%,100%{opacity:.35;}50%{opacity:.7;}}
-@media (max-width:760px){.hero{min-height:auto;}.hero-bg{position:relative;height:50vh;}.hero-inner{padding:clamp(32px,5vw,48px) clamp(20px,5vw,64px);}.hero-scroll{display:none;}}
 
 /* BREADCRUMB */
 .breadcrumb{padding:clamp(24px,3vw,40px) 0 clamp(16px,2vw,24px);border-bottom:1px solid var(--line);}
@@ -117,55 +96,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .breadcrumb a:hover{color:var(--navy);}
 .breadcrumb span{font-size:14px;color:var(--ink-soft);margin:0 8px;}
 
-/* PROGRAM META */
-.program-meta{padding:clamp(40px,5vw,64px) 0;border-bottom:1px solid var(--line);}
-.meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,40px);margin-top:clamp(24px,3vw,36px);}
-.meta-item{border-left:2px solid var(--sky);padding-left:16px;}
-.meta-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:4px;}
-.meta-value{font-family:var(--font-display);font-weight:700;font-size:clamp(18px,2vw,24px);color:var(--navy);}
-@media (max-width:760px){.meta-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:500px){.meta-grid{grid-template-columns:1fr;}}
-
-/* OVERVIEW */
-.overview{padding:clamp(40px,6vw,70px) 0;}
-.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;margin-top:clamp(32px,4vw,48px);}
-.overview h2{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);line-height:1.15;color:var(--navy);margin-bottom:20px;}
-.overview h2 em{font-weight:700;color:var(--crimson);font-style:italic;}
-.overview p{font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);margin-bottom:16px;}
-.overview-list{list-style:none;margin-top:24px;}
-.overview-list li{padding:12px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--ink);display:flex;align-items:center;gap:10px;}
-.overview-list li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sky);flex-shrink:0;}
-@media (max-width:760px){.overview-grid{grid-template-columns:1fr;}}
-
-/* CURRICULUM */
-.curriculum{padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);}
-.curr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,20px);margin-top:clamp(32px,4vw,48px);}
-.curr-card{background:var(--white);padding:clamp(24px,3vw,32px);border-radius:12px;border:1px solid var(--line);transition:border-color .3s var(--ease),box-shadow .3s var(--ease);cursor:pointer;overflow:visible;}.curr-card:hover{border-color:var(--navy);box-shadow:0 8px 32px rgba(34,41,95,.12);}
-.curr-year{font-family:var(--font-display);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;}
-.curr-card h3{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(18px,1.8vw,22px);color:var(--navy);margin-bottom:10px;}
-.curr-card ul{list-style:none;max-height:0;overflow:hidden;transition:max-height .5s ease,margin .4s ease,opacity .4s ease;margin-top:0;opacity:0;}.curr-card:hover ul{max-height:500px;margin-top:16px;opacity:1;}
-.curr-card li{font-size:13px;line-height:1.6;color:var(--ink-soft);padding:4px 0;border-bottom:1px solid var(--line);}.curr-card li:last-child{border-bottom:none;}
-@media (max-width:760px){.curr-grid{grid-template-columns:1fr;}}
-
-/* CAREERS */
-.careers{padding:clamp(40px,6vw,70px) 0;}
-.careers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,20px);margin-top:clamp(32px,4vw,48px);}
-.career-card{padding:clamp(24px,3vw,32px);border-radius:4px;background:var(--navy);color:var(--white);}
-.career-card h3{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(18px,1.8vw,22px);margin-bottom:8px;}
-.career-card p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);}
-@media (max-width:760px){.careers-grid{grid-template-columns:1fr;}}
-
-/* ADMISSIONS */
-.admissions{padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);}
-.adm-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;margin-top:clamp(32px,4vw,48px);}
-.adm-req{background:var(--white);padding:clamp(28px,3.5vw,40px);border-radius:4px;border:1px solid var(--line);}
-.adm-req h3{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(18px,1.8vw,22px);color:var(--navy);margin-bottom:16px;}
-.adm-req ul{list-style:none;}
-.adm-req li{font-size:14px;line-height:1.6;color:var(--ink-soft);padding:6px 0;display:flex;align-items:flex-start;gap:8px;}
-.adm-req li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sky);flex-shrink:0;margin-top:7px;}
-@media (max-width:760px){.adm-grid{grid-template-columns:1fr;}}
-
-/* CTA */
+/* CTA SECTION */
 .cta-section{background:var(--navy);color:var(--white);padding:clamp(70px,9vw,120px) 0;text-align:center;position:relative;overflow:hidden;}
 .cta-section::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
 .cta-inner{position:relative;z-index:1;}
@@ -185,11 +116,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .footer-col a:hover{color:var(--yellow);}
 .footer-social-title{margin-top:34px;}
 .footer-social-grid{display:flex;gap:10px;margin-top:14px;}
-.footer-social-tile{
-  width:44px;height:44px;border-radius:10px;border:1px solid var(--line-on-navy);
-  display:flex;align-items:center;justify-content:center;
-  transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);
-}
+.footer-social-tile{width:44px;height:44px;border-radius:10px;border:1px solid var(--line-on-navy);display:flex;align-items:center;justify-content:center;transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);}
 .footer-social-tile:hover{border-color:rgba(255,255,255,.3);}
 .footer-social-tile svg{width:18px;height:18px;fill:var(--white);}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding-top:26px;font-size:13px;color:rgba(255,255,255,.5);}
@@ -197,21 +124,11 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 @media (max-width:860px){.footer-top{grid-template-columns:1fr 1fr;}}
 @media (max-width:520px){.footer-top{grid-template-columns:1fr;}}
 
-.footer-v2_bottom{
-  display:flex;align-items:center;flex-wrap:wrap;gap:clamp(18px,3vw,32px);
-  padding:clamp(28px,4vw,38px) 0;margin-top:clamp(6px,1vw,10px);border-bottom:1px solid var(--line-on-navy);
-}
-.footer-v2_bottom-title{
-  font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);
-  flex:0 0 auto;padding-right:clamp(10px,2vw,20px);
-}
+.footer-v2_bottom{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(18px,3vw,32px);padding:clamp(28px,4vw,38px) 0;margin-top:clamp(6px,1vw,10px);border-bottom:1px solid var(--line-on-navy);}
+.footer-v2_bottom-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);flex:0 0 auto;padding-right:clamp(10px,2vw,20px);}
 .footer-v2_bottom-list{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(24px,4vw,44px);flex:1 1 auto;}
 .footer-v2_bottom-item{display:flex;align-items:center;}
-.footer-v2_bottom-img{
-  height:clamp(26px,3vw,34px);width:auto;
-  filter:brightness(0) invert(1) opacity(.55);
-  transition:filter .25s var(--ease),opacity .25s var(--ease);
-}
+.footer-v2_bottom-img{height:clamp(26px,3vw,34px);width:auto;filter:brightness(0) invert(1) opacity(.55);transition:filter .25s var(--ease),opacity .25s var(--ease);}
 .footer-v2_bottom-item:hover .footer-v2_bottom-img{filter:brightness(0) invert(1) opacity(.9);}
 
 /* REVEAL */
@@ -222,158 +139,6 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .js-reveal-ready .reveal.d3{transition-delay:.24s;}
 .js-reveal-ready .reveal.d4{transition-delay:.32s;}
 
-/* CARD HOVER EFFECTS — removed per request */
-
-/* STAT PULSE — removed */
-
-/* OVERVIEW LIST STAGGER — removed per request */
-
-/* CTA GLOW — removed per request */
-
-/* SECTION FADE-IN */
-@keyframes sectionFadeIn{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:none;}}
-.section-animate{animation:sectionFadeIn .8s var(--ease-soft) forwards;}
-
-/* HORIZONTAL SCROLL CURRICULUM */
-.curr-scroll-wrap{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-snap-type:x mandatory;padding-bottom:20px;}
-.curr-scroll-wrap::-webkit-scrollbar{display:none;}
-.curr-scroll{display:flex;align-items:flex-start;gap:clamp(14px,1.6vw,20px);padding:0 clamp(20px,5vw,64px);justify-content:center;}
-.curr-scroll .curr-card{min-width:clamp(280px,30vw,340px);flex-shrink:0;scroll-snap-align:start;background:var(--white);padding:clamp(24px,3vw,32px);border-radius:12px;border:1px solid var(--line);position:relative;align-self:flex-start;}
-.curr-scroll-nav{display:flex;gap:10px;margin-top:20px;justify-content:center;}
-.curr-scroll-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;background:var(--white);transition:all .3s var(--ease);}
-.curr-scroll-btn:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
-.curr-scroll-btn svg{width:18px;height:18px;}
-.term-bar{display:flex;gap:8px;margin:12px 0;}
-.term-bar span{flex:1;height:4px;border-radius:2px;background:var(--crimson);}
-
-/* EXPANDABLE CARDS */
-.expandable{overflow:hidden;transition:max-height .5s var(--ease-soft);}
-.expandable.is-collapsed{max-height:120px;}
-.expandable.is-expanded{max-height:800px;}
-.expand-toggle{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:var(--navy);cursor:pointer;border:none;background:none;padding:8px 0;font-family:inherit;}
-.expand-toggle svg{width:14px;height:14px;transition:transform .3s var(--ease);}
-.expand-toggle.is-open svg{transform:rotate(180deg);}
-
-/* MARQUEE / INFINITE SCROLL */
-.marquee-track{display:flex;gap:40px;animation:marqueeScroll 20s linear infinite;width:max-content;}
-.marquee-track:hover{animation-play-state:paused;}
-@keyframes marqueeScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-
-/* FLOATING ELEMENTS */
-.float-badge{position:absolute;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);padding:10px 18px;border-radius:100px;font-size:13px;font-weight:600;color:var(--navy);box-shadow:0 4px 20px rgba(0,0,0,.08);z-index:3;animation:floatBob 3s ease-in-out infinite;}
-@keyframes floatBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
-
-/* IMAGE STACK */
-.img-stack{position:relative;height:clamp(300px,40vw,420px);}
-.img-stack img{position:absolute;border-radius:6px;box-shadow:0 8px 30px rgba(0,0,0,.12);transition:transform .5s var(--ease-soft);}
-.img-stack img:nth-child(1){width:65%;height:80%;object-fit:cover;top:0;left:0;z-index:1;}
-.img-stack img:nth-child(2){width:55%;height:70%;object-fit:cover;bottom:0;right:0;z-index:2;transform:rotate(2deg);}
-.img-stack:hover img:nth-child(1){transform:rotate(-2deg) translateX(-8px);}
-.img-stack:hover img:nth-child(2){transform:rotate(0deg) translateX(8px);}
-
-/* STAT COUNTER */
-.counter{font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,56px);color:var(--navy);line-height:1;}
-
-/* CURSOR FOLLOWER — removed */
-
-@media (hover:none){.prog-card-detail{max-height:120px!important;opacity:1!important;transform:translateY(0)!important;}}
-
-@media (max-width:960px){
-  .hero h1{font-size:clamp(28px,7vw,52px);}
-  .hero-sub{font-size:clamp(14px,2.8vw,16px);}
-}
-
-@media (max-width:760px){
-  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr)!important;}
-  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,1fr)!important;}
-  .curr-scroll-wrap .curr-scroll{gap:12px;}
-  .curr-scroll-wrap .curr-card{min-width:80vw;flex-shrink:0;}
-  .dual-inner{flex-direction:column;text-align:center;gap:clamp(16px,3vw,24px);}
-  .dual-copy h2{font-size:clamp(20px,5vw,28px);}
-  .dual-copy p{margin:0 auto;}
-  .dual-logos{justify-content:center;}
-  [style*="grid-template-columns:repeat(4"][style*="200px"]{grid-template-columns:1fr 1fr!important;grid-template-rows:auto!important;}
-  [style*="grid-template-columns:repeat(4"][style*="200px"]>div{height:auto;}
-  .adm-grid{grid-template-columns:1fr!important;gap:24px;}
-  .testimonial-quote{font-size:clamp(18px,4vw,24px);}
-  .cta-section{padding:clamp(40px,6vw,60px) 0;}
-  .cta-section h2{font-size:clamp(20px,5vw,30px);}
-}
-
-@media (max-width:600px){
-  .wrap{padding-left:clamp(16px,4vw,24px);padding-right:clamp(16px,4vw,24px);}
-  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
-  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
-  [style*="grid-template-columns:repeat(4"][style*="200px"]{grid-template-columns:1fr!important;}
-  [style*="grid-template-columns:repeat(4"][style*="200px"]>div{height:auto;}
-  .footer-top{grid-template-columns:1fr!important;gap:clamp(20px,4vw,28px);}
-}
-
-/* MOBILE HERO */
-.hero-mobile{display:none;}
-@media (max-width:760px){
-  .hero{display:none!important;}
-  .hero-mobile{display:block;background:var(--navy);overflow:hidden;}
-  .hero-mob-img{width:100%;height:40vh;min-height:220px;position:relative;}
-  .hero-mob-img img{width:100%;height:100%;object-fit:cover;}
-  .hero-mob-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,14,34,.2) 0%,rgba(12,14,34,.85) 100%);}
-  .hero-mob-content{padding:clamp(20px,5vw,32px) clamp(16px,4vw,24px) clamp(24px,6vw,40px);color:var(--white);}
-  .hero-mob-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);padding:5px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.85);margin-bottom:clamp(10px,2vw,16px);}
-  .hero-mob-content h1{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,9vw,44px);line-height:1.05;letter-spacing:-.02em;margin-bottom:clamp(8px,1.5vw,12px);}
-  .hero-mob-sub{font-size:clamp(13px,2.6vw,15px);line-height:1.5;color:rgba(255,255,255,.6);margin-bottom:clamp(16px,3vw,24px);}
-  .hero-mob-ctas{display:flex;flex-direction:column;gap:10px;}
-  .hero-mob-ctas .hero-cta{width:100%;justify-content:center;text-align:center;}
-}
-
-@media (max-width:760px){
-  .curr-scroll{justify-content:flex-start!important;padding-left:clamp(16px,4vw,24px)!important;}
-  .curr-scroll-wrap .curr-scroll{padding-left:clamp(16px,4vw,24px);}
-  .curr-scroll-wrap .curr-scroll::-webkit-scrollbar{display:none;}
-  .curr-scroll-wrap .curr-scroll{scroll-snap-type:x mandatory;}
-  .curr-scroll-wrap .curr-card{scroll-snap-align:start;}
-}
-
-/* ANIMATION SYSTEM */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
-.reveal.is-visible{opacity:1;transform:translateY(0);}
-.reveal.d1{transition-delay:.1s;}.reveal.d2{transition-delay:.2s;}.reveal.d3{transition-delay:.3s;}.reveal.d4{transition-delay:.4s;}.reveal.d5{transition-delay:.5s;}
-.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
-.reveal-scale.is-visible{opacity:1;transform:scale(1);}
-.reveal-clip{clip-path:inset(100% 0 0 0);transition:clip-path 1s var(--ease-soft);}
-.reveal-clip.is-visible{clip-path:inset(0 0 0 0);}
-.reveal-rotate{opacity:0;transform:rotate(-8deg) scale(.9);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
-.reveal-rotate.is-visible{opacity:1;transform:rotate(0) scale(1);}
-.split-text .word{display:inline-block;opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease-soft),transform .5s var(--ease-soft);}
-.split-text.is-visible .word{opacity:1;transform:translateY(0);}
-.parallax{will-change:transform;}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
-.float{animation:float 5s ease-in-out infinite;}
-@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.marquee-track{display:flex;width:max-content;animation:marquee 25s linear infinite;}
-.marquee-track:hover{animation-play-state:paused;}
-.stagger-grid > *{opacity:0;transform:translateY(30px);transition:opacity .6s var(--ease-soft),transform .6s var(--ease-soft);}
-.stagger-grid.is-visible > *:nth-child(1){transition-delay:.05s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(2){transition-delay:.12s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(3){transition-delay:.19s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(4){transition-delay:.26s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(5){transition-delay:.33s;opacity:1;transform:translateY(0);}
-.tilt-card{transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
-.tilt-card:hover{transform:translateY(-6px) rotate(.5deg);box-shadow:0 20px 50px rgba(34,41,95,.1);}
-.img-zoom{overflow:hidden;}
-.img-zoom img{transition:transform .7s var(--ease-soft);}
-.img-zoom:hover img{transform:scale(1.06);}
-.mag-btn{position:relative;transition:transform .3s var(--ease);}
-/* SITE SEARCH */
-.aus-search{position:relative;flex:0 1 280px;max-width:32vw;display:flex;align-items:center;}
-.aus-search input{width:100%;padding:10px 38px 10px 14px;border-radius:100px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:var(--white);font-size:13.5px;outline:none;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);}
-.aus-search input::placeholder{color:currentColor;opacity:.55;}
-.aus-search input:focus{border-color:var(--white);background:var(--white);color:var(--navy);}
-.aus-nav.is-scrolled .aus-search input{border-color:var(--line);background:var(--white);color:var(--navy);}
-.aus-search-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:var(--white);color:var(--navy);display:flex;align-items:center;justify-content:center;pointer-events:none;}
-.aus-search-drop{position:absolute;top:calc(100% + 10px);right:0;width:min(420px,92vw);max-height:min(60vh,520px);overflow:auto;background:var(--white);border-radius:16px;box-shadow:0 20px 50px rgba(12,14,34,.18);border:1px solid var(--line);padding:8px;display:grid;gap:6px;z-index:120;}
-.aus-search-drop[hidden]{display:none !important;}
-.aus-search-drop a:hover{background:var(--sky-tint);}
-@media (max-width:900px){.aus-search{display:none;}}
 /* ---------- PROMO POPUP ---------- */
 .aus-popup-overlay{position:fixed;inset:0;z-index:999;background:rgba(12,14,34,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s var(--ease);display:flex;align-items:center;justify-content:center;padding:20px;}
 .aus-popup-overlay.is-visible{opacity:1;visibility:visible;}
@@ -400,6 +165,122 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .aus-popup-cta-secondary{background:transparent;color:var(--navy);border:2px solid var(--line);}
 .aus-popup-cta-secondary:hover{border-color:var(--navy);transform:translateY(-2px);}
 @media(max-width:540px){.aus-popup-body{padding:22px 18px 20px;}.aus-popup-benefits{grid-template-columns:1fr;}.aus-popup-hero{height:140px;}}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy);}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,14,34,.92) 0%,rgba(12,14,34,.5) 40%,rgba(12,14,34,.15) 100%);}
+.hero-inner{position:relative;z-index:1;width:100%;padding:clamp(60px,8vw,100px) clamp(20px,5vw,64px) clamp(40px,6vw,70px);color:var(--white);}
+.hero-sub{margin-top:clamp(12px,1.5vw,20px);max-width:42ch;font-size:clamp(15px,1.3vw,17px);line-height:1.6;color:rgba(255,255,255,.65);}
+.hero-scroll{position:absolute;bottom:clamp(24px,3vw,40px);right:clamp(20px,5vw,64px);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.35);font-size:10px;letter-spacing:.12em;text-transform:uppercase;z-index:2;}
+.hero-scroll::after{content:"";width:1px;height:28px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent);animation:scrollPulse 2s ease-in-out infinite;}
+@keyframes scrollPulse{0%,100%{opacity:.35;}50%{opacity:.7;}}
+@media (max-width:760px){.hero{min-height:auto;}.hero-bg{position:relative;height:50vh;}.hero-inner{padding:clamp(32px,5vw,48px) clamp(20px,5vw,64px);}.hero-scroll{display:none;}}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:6px 14px 6px 6px;border-radius:100px;background:rgba(255,255,255,.11);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.16);font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.92);}
+.hero-badge-icon{width:28px;height:28px;border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;color:var(--navy);flex:0 0 auto;}
+
+/* MOBILE HERO */
+.hero-mobile{display:none;}
+@media (max-width:760px){
+  .hero{display:none!important;}
+  .hero-mobile{display:block;background:var(--navy);overflow:hidden;}
+  .hero-mob-img{width:100%;height:40vh;min-height:220px;position:relative;}
+  .hero-mob-img img{width:100%;height:100%;object-fit:cover;}
+  .hero-mob-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,14,34,.2) 0%,rgba(12,14,34,.85) 100%);}
+  .hero-mob-content{padding:clamp(20px,5vw,32px) clamp(16px,4vw,24px) clamp(24px,6vw,40px);color:var(--white);}
+  .hero-mob-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);padding:5px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.85);margin-bottom:clamp(10px,2vw,16px);}
+  .hero-mob-content h1{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,9vw,44px);line-height:1.05;letter-spacing:-.02em;margin-bottom:clamp(8px,1.5vw,12px);}
+  .hero-mob-sub{font-size:clamp(13px,2.6vw,15px);line-height:1.5;color:rgba(255,255,255,.6);margin-bottom:clamp(16px,3vw,24px);}
+  .hero-mob-ctas{display:flex;flex-direction:column;gap:10px;}
+  .hero-mob-ctas .hero-cta{width:100%;justify-content:center;text-align:center;}
+}
+
+/* CTA BUTTONS */
+.hero-cta{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:14px 28px;border-radius:100px;transition:all .3s var(--ease);}
+/* SITE SEARCH */
+.aus-search{position:relative;flex:0 1 280px;max-width:32vw;display:flex;align-items:center;}
+.aus-search input{width:100%;padding:10px 38px 10px 14px;border-radius:100px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:var(--white);font-size:13.5px;outline:none;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);}
+.aus-search input::placeholder{color:currentColor;opacity:.55;}
+.aus-search input:focus{border-color:var(--white);background:var(--white);color:var(--navy);}
+.aus-nav.is-scrolled .aus-search input{border-color:var(--line);background:var(--white);color:var(--navy);}
+.aus-search-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:var(--white);color:var(--navy);display:flex;align-items:center;justify-content:center;pointer-events:none;}
+.aus-search-drop{position:absolute;top:calc(100% + 10px);right:0;width:min(420px,92vw);max-height:min(60vh,520px);overflow:auto;background:var(--white);border-radius:16px;box-shadow:0 20px 50px rgba(12,14,34,.18);border:1px solid var(--line);padding:8px;display:grid;gap:6px;z-index:120;}
+.aus-search-drop[hidden]{display:none !important;}
+.aus-search-drop a:hover{background:var(--sky-tint);}
+@media (max-width:900px){.aus-search{display:none;}}
+@media (max-width:960px){
+  .hero h1{font-size:clamp(28px,7vw,52px);}
+  .hero-sub{font-size:clamp(14px,2.8vw,16px);}
+}
+@media (max-width:760px){
+  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr)!important;}
+  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,1fr)!important;}
+  .cta-section{padding:clamp(40px,6vw,60px) 0;}
+  .cta-section h2{font-size:clamp(20px,5vw,30px);}
+}
+@media (max-width:960px){
+  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr)!important;}
+  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,1fr)!important;}
+}
+@media (max-width:760px){
+  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
+  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
+  .wrap>[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  .wrap>[style*="grid-template-columns:1fr 1.4fr"]{grid-template-columns:1fr!important;}
+}
+@media (max-width:600px){
+  .wrap{padding-left:clamp(16px,4vw,24px);padding-right:clamp(16px,4vw,24px);}
+  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
+  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
+  .footer-top{grid-template-columns:1fr!important;gap:clamp(20px,4vw,28px);}
+}
+/* SECTION FADE-IN */
+@keyframes sectionFadeIn{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:none;}}
+.section-animate{animation:sectionFadeIn .8s var(--ease-soft) forwards;}
+
+/* STAT COUNTER */
+.counter{font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,56px);color:var(--navy);line-height:1;}
+
+/* SCALE REVEAL */
+.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
+.reveal-scale.is-visible{opacity:1;transform:scale(1);}
+
+/* CLIP REVEAL */
+.reveal-clip{clip-path:inset(100% 0 0 0);transition:clip-path 1s var(--ease-soft);}
+.reveal-clip.is-visible{clip-path:inset(0 0 0 0);}
+
+/* SPLIT TEXT */
+.split-text .word{display:inline-block;opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease-soft),transform .5s var(--ease-soft);}
+.split-text.is-visible .word{opacity:1;transform:translateY(0);}
+
+/* PARALLAX */
+.parallax{will-change:transform;}
+
+/* FLOAT */
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+.float{animation:float 5s ease-in-out infinite;}
+
+/* STAGGER GRID */
+.stagger-grid > *{opacity:0;transform:translateY(30px);transition:opacity .6s var(--ease-soft),transform .6s var(--ease-soft);}
+.stagger-grid.is-visible > *:nth-child(1){transition-delay:.05s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(2){transition-delay:.12s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(3){transition-delay:.19s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(4){transition-delay:.26s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(5){transition-delay:.33s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(6){transition-delay:.40s;opacity:1;transform:translateY(0);}
+
+/* CARD TILT */
+.tilt-card{transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
+.tilt-card:hover{transform:translateY(-6px) rotate(.5deg);box-shadow:0 20px 50px rgba(34,41,95,.1);}
+
+/* IMAGE HOVER ZOOM */
+.img-zoom{overflow:hidden;}
+.img-zoom img{transition:transform .7s var(--ease-soft);}
+.img-zoom:hover img{transform:scale(1.06);}
+
+/* MAGNETIC BUTTON */
+.mag-btn{position:relative;transition:transform .3s var(--ease);}
 </style>
 </head>
 <body>
@@ -419,11 +300,12 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     <button type="button" data-open-panel="about">About</button>
     <button type="button" data-open-panel="student-life">Student Life</button>
   </div>
-  <div class="aus-search" id="siteSearch">
+      <div class="aus-search" id="siteSearch">
       <input id="siteSearchInput" type="search" placeholder="Ask AUS Anything" aria-label="Site search" autocomplete="off">
       <span class="aus-search-btn" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
       <div id="siteSearchDrop" class="aus-search-drop" hidden></div>
-    </div><div class="aus-nav-right">
+    </div>
+  <div class="aus-nav-right">
     <a href="https://study.aus.swiss/application" class="aus-nav-apply">Apply</a>
     <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="sidePanel">
       <span>Menu</span>
@@ -475,81 +357,54 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
               <a href="aus-master-aviation-management.html">Aviation Management</a>
             </div></div>
           </div>
-          <div class="accordion-group" data-sub-accordion="doctorate">
-            <button class="accordion-group-trigger">Doctorate <span class="accordion-group-icon"></span></button>
-            <div class="accordion-group-panel"><div class="accordion-group-panel-inner">
-              <a href="aus-dba.html">Doctorate in Business Administration</a>
-            </div></div>
-          </div>
-          <div class="accordion-group" data-sub-accordion="diploma">
-            <button class="accordion-group-trigger">Swiss Federal Diploma <span class="accordion-group-icon"></span></button>
-            <div class="accordion-group-panel"><div class="accordion-group-panel-inner">
-              <a href="aus-federal-diploma.html">Business Administration</a>
-            </div></div>
-          </div>
+          <a href="aus-dba.html" class="side-panel-link">Doctorate</a>
+          <a href="aus-federal-diploma.html" class="side-panel-link">Federal Diploma</a>
         </div></div>
       </div>
       <div class="accordion-item" data-panel-key="about">
         <button class="accordion-trigger">About <span class="accordion-icon"></span></button>
         <div class="accordion-panel"><div class="accordion-panel-inner">
-          <div class="accordion-group">
-            <a href="aus-about.html">About AUS</a>
-            <a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a>
-          <a href="aus-accreditations.html">Accreditations &amp; Memberships</a>
+          <a href="aus-about.html">About AUS</a>
+          <a href="aus-about-history.html">Our History</a>
+          <a href="aus-about-faculty.html">Faculty</a>
           <a href="aus-governance.html">Governance</a>
+          <a href="aus-accreditations.html">Accreditation</a>
           <a href="aus-faq.html">FAQ</a>
-            <a href="aus-ibm-collaboration.html">IBM Collaboration</a>
-          <a href="#" style="display:none">Accreditations_TEMP &amp; Memberships</a>
-            
-          </div>
         </div></div>
       </div>
       <div class="accordion-item" data-panel-key="student-life">
         <button class="accordion-trigger">Student Life <span class="accordion-icon"></span></button>
         <div class="accordion-panel"><div class="accordion-panel-inner">
-          <div class="accordion-group">
-            <a href="#">Campus &amp; Housing</a>
-            <a href="#">Clubs &amp; Activities</a>
-            <a href="#">Lake Geneva Life</a>
-          </div>
+          <a href="aus-speaker-series.html" style="color:var(--yellow);font-weight:600;">Speaker Series</a>
+          <a href="aus-about.html#campus">Campus Facilities</a>
         </div></div>
       </div>
-      <a href="aus-admissions.html" class="side-panel-link">Admissions</a>
-      <a href="aus-cost-calculator.html" class="side-panel-link">Cost Calculator</a>
-      <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24" class="side-panel-link">Contact</a>
-</nav>
+      <a href="aus-ibm-collaboration.html" class="side-panel-link">IBM Collaboration</a>
+      <a href="aus-about-faculty.html" class="side-panel-link">Faculty</a>
+    </nav>
     <div class="side-panel-foot">
-      <a href="https://study.aus.swiss/application" class="hero-cta">Apply now &rarr;</a>
-      <div class="side-panel-socials footer-social-grid">
+      <a href="https://study.aus.swiss/application" class="hero-cta">Start Your Application</a>
+      <div class="side-panel-socials">
         <a class="footer-social-tile" href="https://www.linkedin.com/school/aus-swiss/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M14.6666 7.3335C16.1253 7.3335 17.5243 7.91296 18.5557 8.94441C19.5872 9.97586 20.1666 11.3748 20.1666 12.8335V19.2502H16.5V12.8335C16.5 12.3473 16.3068 11.881 15.963 11.5371C15.6192 11.1933 15.1529 11.0002 14.6666 11.0002C14.1804 11.0002 13.7141 11.1933 13.3703 11.5371C13.0264 11.881 12.8333 12.3473 12.8333 12.8335V19.2502H9.16663V12.8335C9.16663 11.3748 9.74609 9.97586 10.7775 8.94441C11.809 7.91296 13.2079 7.3335 14.6666 7.3335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M5.50004 8.25H1.83337V19.25H5.50004V8.25Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M3.66671 5.50016C4.67923 5.50016 5.50004 4.67935 5.50004 3.66683C5.50004 2.65431 4.67923 1.8335 3.66671 1.8335C2.65419 1.8335 1.83337 2.65431 1.83337 3.66683C1.83337 4.67935 2.65419 5.50016 3.66671 5.50016Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <a class="footer-social-tile" href="https://www.facebook.com/american.institute.switzerland" target="_blank" aria-label="Facebook"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M16.5 1.8335H13.75C12.5344 1.8335 11.3686 2.31638 10.5091 3.17592C9.64951 4.03547 9.16663 5.20125 9.16663 6.41683V9.16683H6.41663V12.8335H9.16663V20.1668H12.8333V12.8335H15.5833L16.5 9.16683H12.8333V6.41683C12.8333 6.17371 12.9299 5.94056 13.1018 5.76865C13.2737 5.59674 13.5068 5.50016 13.75 5.50016H16.5V1.8335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <a class="footer-social-tile" href="https://www.instagram.com/aus.swiss/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M15.5834 1.8335H6.41671C3.8854 1.8335 1.83337 3.88552 1.83337 6.41683V15.5835C1.83337 18.1148 3.8854 20.1668 6.41671 20.1668H15.5834C18.1147 20.1668 20.1667 18.1148 20.1667 15.5835V6.41683C20.1667 3.88552 18.1147 1.8335 15.5834 1.8335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M14.6667 10.4223C14.7799 11.1852 14.6495 11.9643 14.2943 12.6489C13.9391 13.3335 13.3771 13.8886 12.6882 14.2353C11.9993 14.5821 11.2186 14.7028 10.4572 14.5802C9.69576 14.4577 8.99234 14.0982 8.44699 13.5529C7.90165 13.0075 7.54214 12.3041 7.41962 11.5427C7.29709 10.7812 7.41778 10.0005 7.76452 9.31163C8.11126 8.62274 8.66639 8.06072 9.35096 7.70551C10.0355 7.3503 10.8147 7.21999 11.5776 7.33312C12.3557 7.44852 13.0762 7.81113 13.6324 8.3674C14.1887 8.92368 14.5513 9.64411 14.6667 10.4223Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M16.0416 5.9585H16.0516" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a class="footer-social-tile" href="https://www.tiktok.com/@aus.swiss" target="_blank" aria-label="TikTok"><svg viewBox="0 0 22 22" fill="none"><path d="M17.9575 6.13266C17.0437 5.93172 16.2171 5.44648 15.5962 4.74656C14.9753 4.04665 14.5921 3.16804 14.5016 2.23683V1.8335H11.3391V14.3643C11.2523 15.0017 10.9366 15.5858 10.4508 16.0074C9.965 16.4291 9.34238 16.6597 8.69912 16.656C7.99651 16.656 7.32269 16.3769 6.82587 15.8801C6.32906 15.3833 6.04995 14.7094 6.04995 14.0068C6.04995 13.3042 6.32906 12.6304 6.82587 12.1336C7.32269 11.6368 7.99651 11.3577 8.69912 11.3577C8.95578 11.3577 9.19412 11.3943 9.42328 11.4493V8.25933C9.1831 8.22882 8.94123 8.21351 8.69912 8.2135C7.15777 8.2135 5.67955 8.8258 4.58965 9.91569C3.49975 11.0056 2.88745 12.4838 2.88745 14.0252C2.88745 14.7884 3.03777 15.5441 3.32984 16.2492C3.6219 16.9543 4.04999 17.595 4.58965 18.1346C5.67955 19.2245 7.15777 19.8368 8.69912 19.8368C10.2389 19.8344 11.7147 19.221 12.8027 18.1314C13.8906 17.0418 14.5016 15.5649 14.5016 14.0252V7.966C15.7802 8.87783 17.3129 9.36519 18.8833 9.35933V6.1785C18.5739 6.19552 18.2636 6.18016 17.9575 6.13266Z" fill="currentColor"/></svg></a>
         <a class="footer-social-tile" href="https://www.youtube.com/channel/UCKUFsoxwPuaH8bi0vMoSTaQ" target="_blank" aria-label="YouTube"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M2.29167 15.5833C1.65131 12.5613 1.65131 9.43867 2.29167 6.41667C2.37581 6.10977 2.53838 5.83007 2.7634 5.60506C2.98841 5.38004 3.26812 5.21747 3.57501 5.13333C8.4915 4.31884 13.5085 4.31884 18.425 5.13333C18.7319 5.21747 19.0116 5.38004 19.2366 5.60506C19.4616 5.83007 19.6242 6.10977 19.7083 6.41667C20.3487 9.43867 20.3487 12.5613 19.7083 15.5833C19.6242 15.8902 19.4616 16.1699 19.2366 16.3949C19.0116 16.62 18.7319 16.7825 18.425 16.8667C13.5085 17.6813 8.49149 17.6813 3.57501 16.8667C3.26812 16.7825 2.98841 16.62 2.7634 16.3949C2.53838 16.1699 2.37581 15.8902 2.29167 15.5833Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M9.16663 13.75L13.75 11L9.16663 8.25V13.75Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
   </aside>
 </div>
 
-<!-- HERO -->
 <header class="hero">
   <div class="hero-bg">
-    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1800&auto=format&fit=crop&q=80" alt="Accounting and finance workspace">
-  </div>
-  <div class="float-badge" style="top:clamp(100px,14vw,180px);right:clamp(20px,5vw,64px);">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-    QS Ranked — 5-Star Teaching
+    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS Speaker Series">
   </div>
   <div class="hero-inner">
-    <span class="hero-badge reveal" style="margin-bottom:clamp(12px,1.5vw,20px);">
-      <svg viewBox="0 0 24 24" width="14" height="14"><path d="M22 10v6M2 10l10-5 10 5-10 5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12v5c3 3 9 3 12 0v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      MSc in International Business Administration
-    </span>
-    <h1 class="reveal d1" style="font-size:clamp(56px,10vw,120px);line-height:.95;">Strategic Brand & Digital Marketing</h1>
-    <div class="hero-row reveal d2">
-      <a href="https://study.aus.swiss/application" class="hero-cta hero-cta-primary">Start your Application <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      <a href="#" class="hero-cta hero-cta-secondary">Download Brochure</a>
+    <div class="hero-badge" style="margin-bottom:clamp(14px,1.6vw,22px);">
+      <span class="hero-badge-icon"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M23 21v-2a4 4 0 0 0-3-3.87" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 3.13a4 4 0 0 1 0 7.75" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      Student Life
     </div>
+    <h1 style="font-size:clamp(48px,8vw,96px);line-height:.95;">AUS Speaker Series</h1>
+    <p class="hero-sub">Guest speakers, commencement ceremonies, and industrial visits that bring classroom learning to life.</p>
   </div>
   <div class="hero-scroll">Scroll</div>
 </header>
@@ -557,439 +412,182 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 <!-- MOBILE HERO -->
 <div class="hero-mobile">
   <div class="hero-mob-img">
-    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1800&auto=format&fit=crop&q=80" alt="Strategic Brand & Digital Marketing">
+    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS Speaker Series">
   </div>
   <div class="hero-mob-content">
-    <span class="hero-mob-badge">MSc in International Business Administration</span>
-    <h1>Strategic Brand & Digital Marketing</h1>
-    <p class="hero-mob-sub">Two years, six academic terms plus capstone, 83 CH | 135 ECTS.</p>
+    <span class="hero-mob-badge">Student Life</span>
+    <h1>AUS Speaker Series</h1>
+    <p class="hero-mob-sub">Guest speakers, commencement ceremonies, and industrial visits that bring classroom learning to life.</p>
     <div class="hero-mob-ctas">
       <a href="https://study.aus.swiss/application" class="hero-cta hero-cta-primary">Start your Application <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      <a href="#" class="hero-cta hero-cta-secondary">Download Brochure</a>
     </div>
   </div>
 </div>
-<!-- BREADCRUMB -->
-<div class="breadcrumb">
-  <div class="wrap">
+
+<div class="wrap">
+  <div class="breadcrumb">
     <a href="aus-home-demo.html">Home</a><span>/</span>
-    <a href="aus-programs.html">Programs</a><span>/</span>
-    <a href="aus-programs.html#master">Masters</a><span>/</span>
-    Strategic Brand & Digital Marketing
+    <a href="#">Campus Life</a><span>/</span>
+    AUS Speaker Series
   </div>
 </div>
 
-<!-- STATS BAR -->
-<section style="padding:clamp(32px,4vw,48px) 0;border-bottom:1px solid var(--line);">
+<section style="padding:clamp(40px,6vw,80px) 0;">
   <div class="wrap">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,40px);text-align:center;">
-      <div class="reveal">
-        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(32px,4vw,48px);color:var(--navy);line-height:1;"><span class="counter" data-target="7">0</span><span style="font-size:.6em;">:1</span></div>
-        <div style="font-size:13px;color:var(--ink-soft);margin-top:6px;">Student-to-staff ratio</div>
+    <div class="eyebrow reveal" style="margin-bottom:clamp(12px,1.5vw,20px);">Campus Life</div>
+    <h1 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(32px,4.5vw,56px);color:var(--navy);line-height:1.12;letter-spacing:-.02em;margin-bottom:clamp(16px,2vw,28px);" class="reveal d1">AUS Speaker Series</h1>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,60px);margin-top:clamp(32px,4vw,56px);" class="reveal d2">
+      <div>
+        <p style="font-size:clamp(15px,1.2vw,17px);line-height:1.7;color:var(--ink-soft);">The American Institute of Applied Sciences in Switzerland prepares students with skills needed for the future. Interlaced with AUS courses, classroom discussions, and projects, guest speakers regularly enhance the learning experience. Monthly seminars/lectures given by different leading experts sharing their experiences and insights with our students.</p>
       </div>
-      <div class="reveal d1">
-        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(32px,4vw,48px);color:var(--navy);line-height:1;"><span class="counter" data-target="94">0</span><span style="font-size:.6em;">%</span></div>
-        <div style="font-size:13px;color:var(--ink-soft);margin-top:6px;">Employed or in Graduate School within six months of graduation</div>
-      </div>
-      <div class="reveal d2">
-        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(32px,4vw,48px);color:var(--navy);line-height:1;"><span class="counter" data-target="40">0</span><span style="font-size:.6em;">+</span></div>
-        <div style="font-size:13px;color:var(--ink-soft);margin-top:6px;">Nationalities</div>
-      </div>
-      <div class="reveal d3">
-        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(32px,4vw,48px);color:var(--navy);line-height:1;"><span class="counter" data-target="850">0</span><span style="font-size:.6em;">+</span></div>
-        <div style="font-size:13px;color:var(--ink-soft);margin-top:6px;">Multinational HQs nearby</div>
+      <div>
+        <p style="font-size:clamp(15px,1.2vw,17px);line-height:1.7;color:var(--ink-soft);">Future speakers will cover best practices, lessons learned, and tips in various fields and topics, including entrepreneurship, future business realities, and leadership. The speakers will span the industry spectrum and represent commodities, marketing, hospitality, recruiting, communications, pharmacology, tech, and other industries.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- QUICK FACTS -->
-<section style="padding:clamp(32px,4vw,48px) 0;background:var(--sky-tint);">
+<section style="padding:clamp(40px,6vw,80px) 0;background:var(--sky-tint);">
   <div class="wrap">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(34,41,95,.08);border-radius:8px;overflow:hidden;">
-      <div style="background:var(--white);padding:clamp(20px,2.5vw,28px);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Overview</div>
-        <div style="font-weight:700;font-size:15px;color:var(--navy);line-height:1.4;">Master of Science in International Business Administration</div>
+    <div class="eyebrow reveal" style="margin-bottom:clamp(12px,1.5vw,20px);">Commencement Speakers</div>
+    <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,42px);color:var(--navy);line-height:1.15;letter-spacing:-.015em;margin-bottom:clamp(32px,4vw,50px);" class="reveal d1">Distinguished Commencement Speakers</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;" class="reveal d2">
+      <div style="padding:24px;border:1px solid var(--line);border-radius:12px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:8px;">2014</div>
+        <h3 style="font-weight:700;font-size:16px;margin-bottom:4px;">Dr. Yvon-Pierre Pfeifer</h3>
+        <p style="font-size:13px;color:var(--ink-soft);">Chair MBA Faculty</p>
       </div>
-      <div style="background:var(--white);padding:clamp(20px,2.5vw,28px);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">TU Degree</div>
-        <div style="font-weight:700;font-size:15px;color:var(--navy);line-height:1.4;">Master of Business Administration</div>
+      <div style="padding:24px;border:1px solid var(--line);border-radius:12px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:8px;">2015</div>
+        <h3 style="font-weight:700;font-size:16px;margin-bottom:4px;">Lyonel Kaufmann</h3>
+        <p style="font-size:13px;color:var(--ink-soft);">Mayor of La Tour-de-Peilz</p>
       </div>
-      <div style="background:var(--white);padding:clamp(20px,2.5vw,28px);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Specialization</div>
-        <div style="font-weight:700;font-size:15px;color:var(--crimson);line-height:1.4;">Strategic Brand & Digital Marketing</div>
+      <div style="padding:24px;border:1px solid var(--line);border-radius:12px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:8px;">2015</div>
+        <h3 style="font-weight:700;font-size:16px;margin-bottom:4px;">Killko A. Caballero</h3>
+        <p style="font-size:13px;color:var(--ink-soft);">Advisor, Blue Jeans Network, Inc.</p>
       </div>
-      <div style="background:var(--white);padding:clamp(20px,2.5vw,28px);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Entry Dates</div>
-        <div style="font-weight:700;font-size:15px;color:var(--navy);line-height:1.4;">September, January, April</div>
+      <div style="padding:24px;border:1px solid var(--line);border-radius:12px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:8px;">2016</div>
+        <h3 style="font-weight:700;font-size:16px;margin-bottom:4px;">J. William Tavelli</h3>
+        <p style="font-size:13px;color:var(--ink-soft);">AGSB Alumnus, Marketing &amp; Communications Director</p>
       </div>
-      <div style="background:var(--white);padding:clamp(20px,2.5vw,28px);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Duration</div>
-        <div style="font-weight:700;font-size:15px;color:var(--navy);line-height:1.4;">2 Years</div>
+      <div style="padding:24px;border:1px solid var(--line);border-radius:12px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:8px;">2016</div>
+        <h3 style="font-weight:700;font-size:16px;margin-bottom:4px;">Maryse Gabbay</h3>
+        <p style="font-size:13px;color:var(--ink-soft);">Senior Learning Management Specialist, VP, Credit Suisse</p>
       </div>
-      <div style="background:var(--white);padding:clamp(20px,2.5vw,28px);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Structure</div>
-        <div style="font-weight:700;font-size:15px;color:var(--navy);line-height:1.4;">6 Academic Terms + Capstone</div>
+      <div style="padding:24px;border:1px solid var(--line);border-radius:12px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:8px;">2019</div>
+        <h3 style="font-weight:700;font-size:16px;margin-bottom:4px;">Bryan Holden</h3>
+        <p style="font-size:13px;color:var(--ink-soft);">Executive Director, European Council for Business Education</p>
       </div>
-      <div style="background:var(--white);padding:clamp(20px,2.5vw,28px);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Study Mode</div>
-        <div style="font-weight:700;font-size:15px;color:var(--navy);line-height:1.4;">Full-Time</div>
+      <div style="padding:24px;border:1px solid var(--line);border-radius:12px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:8px;">2019</div>
+        <h3 style="font-weight:700;font-size:16px;margin-bottom:4px;">H.E. Amb. Marta Kos</h3>
+        <p style="font-size:13px;color:var(--ink-soft);">Ambassador of Slovenia to Switzerland</p>
       </div>
-      <div style="background:var(--white);padding:clamp(20px,2.5vw,28px);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Credits</div>
-        <div style="font-weight:700;font-size:15px;color:var(--navy);line-height:1.4;">83 CH | 135 ECTS</div>
+      <div style="padding:24px;border:1px solid var(--line);border-radius:12px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:8px;">2019</div>
+        <h3 style="font-weight:700;font-size:16px;margin-bottom:4px;">Paul Mallette</h3>
+        <p style="font-size:13px;color:var(--ink-soft);">Director of European Operations, Peregrine Global Services</p>
+      </div>
+      <div style="padding:24px;border:1px solid var(--line);border-radius:12px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:8px;">2019</div>
+        <h3 style="font-weight:700;font-size:16px;margin-bottom:4px;">Laurent Wehrli</h3>
+        <p style="font-size:13px;color:var(--ink-soft);">Mayor of Montreux, Swiss National Council member</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- OVERVIEW -->
-<section class="overview">
+<section style="padding:clamp(40px,6vw,80px) 0;">
   <div class="wrap">
-    <div class="overview-grid">
-      <div class="reveal">
-        <span class="eyebrow">Program Overview</span>
-        <h2>Master the art and science of modern brand leadership.</h2>
-        <div class="expandable is-collapsed" id="overviewExpand">
-          <p>The Strategic Brand & Digital Marketing specialization at the master's level prepares senior marketing professionals to lead brand strategy, digital transformation, and omnichannel marketing. Covering brand architecture, digital ecosystems, marketing analytics, and creative direction, graduates are ready for CMO and VP-level roles in the world's leading brands.</p>
-          <p style="margin-top:12px;">The dual degree allows students enrolled in the program to earn a Degree from Switzerland and a Degree from the United States of America whilst studying entirely in Switzerland.</p>
-          <ul class="overview-list" style="margin-top:16px;">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Brand strategy and architecture</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Digital marketing ecosystems</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Marketing analytics and attribution</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Creative direction and design thinking</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Content strategy and storytelling</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Social media and influencer marketing</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Omnichannel customer experience</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Marketing technology and automation</li>
-          </ul>
-        </div>
-        <button class="expand-toggle" onclick="var el=document.getElementById('overviewExpand');el.classList.toggle('is-collapsed');el.classList.toggle('is-expanded');this.classList.toggle('is-open');this.textContent=el.classList.contains('is-collapsed')?'Read more &rarr;':'Read less ?';">
-          Read more &rarr;
-        </button>
+    <div class="eyebrow reveal" style="margin-bottom:clamp(12px,1.5vw,20px);">Industrial Visits</div>
+    <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,42px);color:var(--navy);line-height:1.15;letter-spacing:-.015em;margin-bottom:clamp(12px,1.5vw,20px);" class="reveal d1">Industrial Visits</h2>
+    <p style="font-size:clamp(15px,1.2vw,17px);line-height:1.7;color:var(--ink-soft);max-width:70ch;margin-bottom:clamp(32px,4vw,50px);" class="reveal d2">Industrial visits offer opportunities to glimpse the real insight working procedures of established organizations and fulfill the curriculum demand.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;" class="reveal d3">
+      <div style="padding:20px;background:var(--sky-tint);border-radius:10px;border:1px solid var(--line);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;">November 2022</div>
+        <h3 style="font-weight:600;font-size:15px;">Geneva Airport</h3>
       </div>
-      <div class="reveal d1">
-        <div class="img-stack" style="margin-bottom:20px;">
-          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&auto=format&fit=crop&q=80" alt="Finance workspace">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80" alt="Business analytics">
-        </div>
-        <div style="background:var(--sky-tint);padding:clamp(20px,2.5vw,28px);border-radius:4px;text-align:center;">
-          <span class="counter" data-target="94">0</span><span style="font-family:var(--font-display);font-weight:800;font-size:clamp(28px,3vw,40px);color:var(--navy);">%</span>
-          <div style="font-size:13px;color:var(--ink-soft);margin-top:4px;">Employed or in grad school within six months</div>
-        </div>
+      <div style="padding:20px;background:var(--sky-tint);border-radius:10px;border:1px solid var(--line);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;">November 2022</div>
+        <h3 style="font-weight:600;font-size:15px;">ECOM Agroindustrial Corporation</h3>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- CURRICULUM -->
-<section class="curriculum">
-  <div class="wrap">
-    <span class="eyebrow reveal">Curriculum</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;">Two years — six academic terms plus capstone — 83 CH | 135 ECTS.</h2>
-  </div>
-  <div class="curr-scroll-wrap reveal d3" id="currScroll">
-    <div class="curr-scroll">
-      <div class="curr-card">
-        <div style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:22px;color:var(--navy);">Year 1</div>
-        <div class="term-bar"><span></span><span></span><span></span></div>
-        <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);">3 TERMS</div>
-        <ul style="margin-top:16px;">
-          <li>International Business Strategy</li>
-          <li>Digital Transformation</li>
-          <li>Global Intercultural Management</li>
-          <li>Digital Information Systems for Marketing</li>
-          <li>Strategic Brand Management</li>
-          <li>Marketing Management</li>
-        </ul>
+      <div style="padding:20px;background:var(--sky-tint);border-radius:10px;border:1px solid var(--line);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;">October 2022</div>
+        <h3 style="font-weight:600;font-size:15px;">Sion Airport</h3>
       </div>
-      <div class="curr-card">
-        <div style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:22px;color:var(--navy);">Year 2</div>
-        <div class="term-bar"><span></span><span></span><span></span></div>
-        <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);">3 TERMS</div>
-        <ul style="margin-top:16px;">
-          <li>Global &amp; Transnational Management</li>
-          <li>Executive Leadership</li>
-          <li>Digital Analytical Global Marketing Management</li>
-          <li>Digital Marketing Analytics</li>
-          <li>Innovative Decision Making</li>
-          <li>Capstone Project</li>
-        </ul>
+      <div style="padding:20px;background:var(--sky-tint);border-radius:10px;border:1px solid var(--line);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;">April 2022</div>
+        <h3 style="font-weight:600;font-size:15px;">Geneva Airport</h3>
       </div>
-      </div></div>
-  <div class="wrap" style="margin-top:24px;">
-    <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);font-style:italic;">Above listed modules are subject to change at any time, this overview serves only as an indicative guideline of key subjects.</p>
-  </div>
-</div></section>
-
-<!-- CAREERS -->
-<section class="careers" style="position:relative;overflow:hidden;">
-  <div style="position:absolute;inset:0;z-index:0;">
-    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1800&auto=format&fit=crop&q=80" alt="Finance workspace" style="width:100%;height:100%;object-fit:cover;opacity:.04;">
-  </div>
-  <div class="wrap" style="position:relative;z-index:1;">
-    <span class="eyebrow reveal">Career Outcomes</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;">Your Future in Strategic Brand & Digital Marketing</h2>
-    <p class="reveal d2" style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);max-width:60ch;margin-top:12px;margin-bottom:clamp(24px,3vw,36px);">The Strategic Brand & Digital Marketing specialization prepares students for senior leadership roles in brand management, digital marketing, and creative direction. Students develop strategic and creative capabilities.</p>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.6vw,20px);">
-      <div class="career-card reveal " style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Chief Marketing Officer</h3>
-        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Lead enterprise marketing strategy, brand management, and customer acquisition across all channels.</p>
+      <div style="padding:20px;background:var(--sky-tint);border-radius:10px;border:1px solid var(--line);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;">November 2021</div>
+        <h3 style="font-weight:600;font-size:15px;">The Work Hub Vevey</h3>
       </div>
-      <div class="career-card reveal d1" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Brand Director</h3>
-        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Lead brand strategy, positioning, and architecture for global brands across markets.</p>
+      <div style="padding:20px;background:var(--sky-tint);border-radius:10px;border:1px solid var(--line);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;">November 2018</div>
+        <h3 style="font-weight:600;font-size:15px;">La Poste — Eclépens Letter Center</h3>
       </div>
-      <div class="career-card reveal d2" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Digital Marketing VP</h3>
-        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Oversee digital marketing strategy, channels, and technology across the organization.</p>
+      <div style="padding:20px;background:var(--sky-tint);border-radius:10px;border:1px solid var(--line);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;">February 2018</div>
+        <h3 style="font-weight:600;font-size:15px;">Nestlé's HQ</h3>
       </div>
-      <div class="career-card reveal d3" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Creative Director</h3>
-        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Lead creative vision, design direction, and brand expression across all touchpoints.</p>
+      <div style="padding:20px;background:var(--sky-tint);border-radius:10px;border:1px solid var(--line);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;">2018</div>
+        <h3 style="font-weight:600;font-size:15px;">Rive-Reine Nestlé International Training Centre</h3>
       </div>
-      <div class="career-card reveal " style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Content Strategy Director</h3>
-        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Develop and manage content strategies that drive engagement, authority, and conversion.</p>
+      <div style="padding:20px;background:var(--sky-tint);border-radius:10px;border:1px solid var(--line);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;">May 2017</div>
+        <h3 style="font-weight:600;font-size:15px;">La Poste — Parcel Center Daillens</h3>
       </div>
-      <div class="career-card reveal d1" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Social Media Director</h3>
-        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Lead social media strategy, community management, and influencer partnerships.</p>
+      <div style="padding:20px;background:var(--sky-tint);border-radius:10px;border:1px solid var(--line);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;">February 2017</div>
+        <h3 style="font-weight:600;font-size:15px;">WTO</h3>
       </div>
-      <div class="career-card reveal d2" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Marketing Analytics Director</h3>
-        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Use data and analytics to optimize marketing performance and drive ROI across channels.</p>
+      <div style="padding:20px;background:var(--sky-tint);border-radius:10px;border:1px solid var(--line);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;">February 2017</div>
+        <h3 style="font-weight:600;font-size:15px;">ECOM</h3>
       </div>
-      <div class="career-card reveal d3" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">E-Commerce Director</h3>
-        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Lead online sales strategy, digital storefronts, and conversion optimization.</p>
+      <div style="padding:20px;background:var(--sky-tint);border-radius:10px;border:1px solid var(--line);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;">February 2017</div>
+        <h3 style="font-weight:600;font-size:15px;">Jean Monnet Foundation for Europe</h3>
+      </div>
+      <div style="padding:20px;background:var(--sky-tint);border-radius:10px;border:1px solid var(--line);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;">May 2016</div>
+        <h3 style="font-weight:600;font-size:15px;">CERN</h3>
+      </div>
+      <div style="padding:20px;background:var(--sky-tint);border-radius:10px;border:1px solid var(--line);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;">February 2016</div>
+        <h3 style="font-weight:600;font-size:15px;">Hublot Factory</h3>
+      </div>
+      <div style="padding:20px;background:var(--sky-tint);border-radius:10px;border:1px solid var(--line);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;">February 2016</div>
+        <h3 style="font-weight:600;font-size:15px;">IKEA Switzerland</h3>
+      </div>
+      <div style="padding:20px;background:var(--sky-tint);border-radius:10px;border:1px solid var(--line);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px;">April 2015</div>
+        <h3 style="font-weight:600;font-size:15px;">UN Geneva</h3>
       </div>
     </div>
   </div>
 </section>
 
-
-
-<!-- DUAL DEGREE -->
-<section class="dual-degree" style="background:var(--navy);color:var(--white);padding:clamp(40px,6vw,70px) 0;position:relative;overflow:hidden;">
-  <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&auto=format&fit=crop&q=80" alt="Swiss Alps and Lake Geneva" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.12;">
-  <div class="wrap" style="position:relative;z-index:1;">
-    <div class="dual-inner" style="display:flex;align-items:center;gap:clamp(40px,6vw,80px);">
-      <div class="dual-copy" style="flex:1;">
-        <span class="eyebrow on-navy">Dual Swiss and US Degree</span>
-        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4vw,48px);line-height:1.15;margin-top:12px;margin-bottom:20px;">Graduate with two degrees. <em style="color:var(--sky);">From two continents.</em></h2>
-        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.7;color:rgba(255,255,255,.75);max-width:48ch;">The Master of Science in International Business Administration at AUS is offered exclusively as a dual degree in collaboration with Tiffin University in the United States. All enrolled students graduate with two degrees: a Master of Science in International Business Administration from AUS and a Master of Business Administration from Tiffin University. To complete the dual degree pathway, students must successfully complete the required AUS and Tiffin University courses. AUS courses are taught on campus in Switzerland, while Tiffin University courses may be completed on campus or remotely, with the option of student exchanges to either university under certain conditions. Upon successful completion of the dual degree program, students graduate with an MSc in International Business Administration from AUS and an MBA from Tiffin University. Tiffin University is accredited by the Higher Learning Commission in the United States, supporting the international credibility and recognition of the degree pathway.</p>
-        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.7;color:rgba(255,255,255,.55);max-width:48ch;margin-top:12px;">Tiffin University is accredited by the Higher Learning Commission in the United States, supporting the international credibility and recognition of the degree pathway.</p>
-      </div>
-      <div class="dual-logos reveal d1" style="display:flex;align-items:center;gap:24px;flex-shrink:0;">
-        <div style="text-align:center;">
-          <div style="width:100px;height:100px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.15);box-shadow:0 4px 20px rgba(0,0,0,.3);margin:0 auto 8px;"><img src="https://flagcdn.com/w160/ch.png" alt="Switzerland" style="width:100%;height:100%;object-fit:cover;"></div>
-          <span style="font-size:12px;color:rgba(255,255,255,.6);">Switzerland</span>
-        </div>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        <div style="text-align:center;">
-          <div style="width:100px;height:100px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.15);box-shadow:0 4px 20px rgba(0,0,0,.3);margin:0 auto 8px;"><img src="https://flagcdn.com/w160/us.png" alt="United States" style="width:100%;height:100%;object-fit:cover;"></div>
-          <span style="font-size:12px;color:rgba(255,255,255,.6);">United States</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY AUS -->
-<section style="padding:clamp(40px,6vw,70px) 0;position:relative;overflow:hidden;">
-  <div style="position:absolute;inset:0;z-index:0;">
-    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1800&auto=format&fit=crop&q=80" alt="AUS Campus" style="width:100%;height:100%;object-fit:cover;opacity:.06;">
-  </div>
-  <div class="wrap" style="position:relative;z-index:1;">
-    <span class="eyebrow reveal">The AUS Advantage</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;margin-bottom:clamp(32px,4vw,48px);">Why AUS Business School</h2>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.6vw,20px);">
-      <div class="reveal" style="padding:clamp(20px,2.5vw,28px);border:1px solid var(--line);border-radius:4px;">
-        <div style="width:40px;height:40px;background:var(--sky);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;color:var(--navy);margin:0 0 8px;">Focused Learning</h3>
-        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">With a 7:1 student-to-staff ratio and classes limited to 20 students, you receive personal attention and meaningful interaction.</p>
-      </div>
-      <div class="reveal d1" style="padding:clamp(20px,2.5vw,28px);border:1px solid var(--line);border-radius:4px;">
-        <div style="width:40px;height:40px;background:var(--sky);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;color:var(--navy);margin:0 0 8px;">Dual Degree</h3>
-        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Earn two separate degrees at the same time. This gives graduates a stronger international profile.</p>
-      </div>
-      <div class="reveal d2" style="padding:clamp(20px,2.5vw,28px);border:1px solid var(--line);border-radius:4px;">
-        <div style="width:40px;height:40px;background:var(--sky);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;color:var(--navy);margin:0 0 8px;">Top Ranked</h3>
-        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Top Ranked by the QS World University Rankings. 5-Star Rated for Teaching and class experience.</p>
-      </div>
-      <div class="reveal d3" style="padding:clamp(20px,2.5vw,28px);border:1px solid var(--line);border-radius:4px;">
-        <div style="width:40px;height:40px;background:var(--sky);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;color:var(--navy);margin:0 0 8px;">Career Focused</h3>
-        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Build practical business skills through specialization modules, industry visits, guest speakers, and networking opportunities.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TUITION -->
-<section style="padding:clamp(40px,5vw,64px) 0;border-bottom:1px solid var(--line);">
-  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
-    <div>
-      <span class="eyebrow">Tuition Fees</span>
-      <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(28px,3vw,40px);color:var(--navy);margin-top:8px;">25'050 CHF <span style="font-weight:400;font-size:16px;color:var(--ink-soft);">/ year</span></div>
-    </div>
-    <div style="display:flex;gap:12px;">
-      <a href="aus-cost-calculator.html?program=msc_brand" class="cta-btn" style="background:transparent;color:var(--navy);border:2px solid var(--navy);">Calculate Your Expenses →</a>
-      <a href="#" class="cta-btn">Admissions &amp; Financing &rarr;</a>
-    </div>
-  </div>
-</section>
-
-<!-- ADMISSIONS -->
-<section class="admissions" style="position:relative;overflow:hidden;">
-  <div style="position:absolute;inset:0;z-index:0;">
-    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1800&auto=format&fit=crop" alt="Students" style="width:100%;height:100%;object-fit:cover;opacity:.05;">
-  </div>
-  <div class="wrap" style="position:relative;z-index:1;">
-    <div class="adm-grid">
-      <div class="reveal">
-        <span class="eyebrow">Admissions</span>
-        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;margin-bottom:16px;">Join the AUS Community</h2>
-        <div class="adm-req" style="margin-bottom:20px;">
-          <h3>1 &nbsp;Core Requirements</h3>
-          <p style="font-size:14px;line-height:1.7;color:var(--ink-soft);margin-bottom:12px;">To qualify for this program, applicants must have successfully completed secondary education in their home country, earning a diploma or leaving certificate that grants university-level eligibility. No GMAT or entrance exam scores are required. Admission is based on a holistic review of your application and a mandatory online interview.</p>
-          <ul>
-            <li><strong>Language:</strong> English C-Level. CEFR B2 level considered after completing an oral interview.</li>
-            <li><strong>Education:</strong> Secondary school diploma with good academic achievements, or IELTS Overall 6.0 with no single element below 5.5.</li>
-            <li><strong>Motivation:</strong> Explain why you are pursuing this degree, your goals, and the specific value you will bring to your peer group.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="adm-req reveal d1">
-        <h3>2 &nbsp;Admissions Philosophy</h3>
-        <p style="font-size:14px;line-height:1.7;color:var(--ink-soft);margin-bottom:16px;">AUS offers a fair and transparent admissions process based on individual merit and potential. We look beyond basic eligibility to understand the specific context of your background, ensuring we balance high standards with true inclusivity.</p>
-        <p style="font-size:14px;line-height:1.7;color:var(--ink-soft);">Our goal is to align your prior experience and interests with the program that will best drive your future career.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- NEXT INTAKE -->
-<section style="padding:clamp(40px,5vw,64px) 0;border-bottom:1px solid var(--line);">
-  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
-    <div>
-      <span class="eyebrow">Next Intake</span>
-      <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(28px,3vw,40px);color:var(--navy);margin-top:8px;">Fall 2026</div>
-      <div style="font-size:14px;color:var(--ink-soft);margin-top:4px;">EU/EFTA Deadline: July 15 &nbsp;&middot;&nbsp; International Deadline: July 15</div>
-    </div>
-    <div style="display:flex;gap:12px;">
-      <a href="https://study.aus.swiss/application" class="cta-btn">Start your Application &rarr;</a>
-    </div>
-  </div>
-</section>
-
-<!-- CERTIFICATIONS -->
-<section style="padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);">
-  <div class="wrap" style="text-align:center;">
-    <span class="eyebrow reveal">Certification Partners</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;margin-bottom:clamp(16px,2vw,24px);">Build Practical Digital Skills.</h2>
-    <p class="reveal d2" style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);max-width:60ch;margin:0 auto clamp(32px,4vw,48px);">Alongside their dual degree, students can earn certifications through AUS partnerships with leading technology firms in AI, digital tools, and data analytics.</p>
-    <div class="reveal d3" style="display:flex;justify-content:center;gap:clamp(48px,6vw,80px);align-items:center;flex-wrap:wrap;">
-      <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a4b4de19ea900cf0076d259_ibm.webp" alt="IBM" style="height:100px;">
-      <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a4b4de2dcacc8e0c146994b_apple.webp" alt="Apple" style="height:100px;">
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIAL -->
-<section style="padding:clamp(40px,6vw,70px) 0;">
-  <div class="wrap">
-    <div class="reveal" style="max-width:800px;margin:0 auto;text-align:center;">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="var(--sky)" opacity=".3" style="margin-bottom:16px;"><path d="M10 11H6C6 7.686 8.686 5 12 5V3C7.582 3 4 6.582 4 11v7a2 2 0 002 2h4a2 2 0 002-2v-5a2 2 0 00-2-2zm10 0h-4c0-3.314 2.686-6 6-6V3c-4.418 0-8 3.582-8 8v7a2 2 0 002 2h4a2 2 0 002-2v-5a2 2 0 00-2-2z"/></svg>
-      <p style="font-family:var(--font-serif);font-style:italic;font-size:clamp(18px,2vw,24px);line-height:1.6;color:var(--navy);margin-bottom:20px;">"The Strategic Brand & Digital Marketing specialization gave me the creative and strategic skills to lead brand transformation. The dual degree opened global doors."</p>
-      <div style="display:flex;align-items:center;gap:12px;justify-content:center;">
-        <div style="width:44px;height:44px;border-radius:50%;overflow:hidden;background:var(--sky);display:flex;align-items:center;justify-content:center;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </div>
-        <div style="text-align:left;">
-          <div style="font-weight:700;font-size:14px;color:var(--navy);">Alumni testimonial</div>
-          <div style="font-size:13px;color:var(--ink-soft);">MSc in International Business Administration — Strategic Brand & Digital Marketing</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CAMPUS LIFE GALLERY -->
-<section style="padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);">
-  <div class="wrap">
-    <span class="eyebrow reveal">Student Life</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;margin-bottom:clamp(24px,3vw,36px);">Life at AUS</h2>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:200px 200px;gap:12px;">
-      <div class="reveal" style="grid-column:1/3;grid-row:1/3;border-radius:6px;overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop&q=80" alt="Campus life" style="width:100%;height:100%;object-fit:cover;">
-      </div>
-      <div class="reveal d1" style="border-radius:6px;overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&auto=format&fit=crop&q=80" alt="Students studying" style="width:100%;height:100%;object-fit:cover;">
-      </div>
-      <div class="reveal d2" style="border-radius:6px;overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&auto=format&fit=crop&q=80" alt="Group project" style="width:100%;height:100%;object-fit:cover;">
-      </div>
-      <div class="reveal d3" style="border-radius:6px;overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&auto=format&fit=crop&q=80" alt="Lake Geneva" style="width:100%;height:100%;object-fit:cover;">
-      </div>
-      <div class="reveal d4" style="border-radius:6px;overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&auto=format&fit=crop&q=80" alt="Graduation" style="width:100%;height:100%;object-fit:cover;">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
 <section class="cta-section">
   <div class="wrap cta-inner">
-    <span class="eyebrow on-navy reveal">What's Next</span>
-    <h2 class="reveal d1">Take the Next Step</h2>
-    <p class="reveal d2">Talk to an Admissions Advisor, request a Program Overview, or book a campus visit to experience AUS firsthand.</p>
+    <span class="eyebrow on-navy reveal">Get in Touch</span>
+    <h2 class="reveal d1">Ready to Experience AUS?</h2>
+    <p class="reveal d2">Join us for a campus visit or learn more about our programs and upcoming events.</p>
     <div class="reveal d3" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-      <a href="#" class="cta-btn">Talk to an Admissions Advisor &rarr;</a>
-      <a href="#" class="cta-btn" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,.3);">Request a Program Overview</a>
+      <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24" class="cta-btn">Contact Us</a>
       <a href="https://share-eu1.hsforms.com/1t_dizG4cT7-D9bCyPSDnAwfwv24" class="cta-btn" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,.3);">Book a Campus Visit</a>
+      <a href="aus-programs.html" class="cta-btn" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,.3);">Explore Programs</a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-top">
@@ -1001,11 +599,10 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
           <a class="footer-social-tile" href="https://www.linkedin.com/school/aus-swiss/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M14.6666 7.3335C16.1253 7.3335 17.5243 7.91296 18.5557 8.94441C19.5872 9.97586 20.1666 11.3748 20.1666 12.8335V19.2502H16.5V12.8335C16.5 12.3473 16.3068 11.881 15.963 11.5371C15.6192 11.1933 15.1529 11.0002 14.6666 11.0002C14.1804 11.0002 13.7141 11.1933 13.3703 11.5371C13.0264 11.881 12.8333 12.3473 12.8333 12.8335V19.2502H9.16663V12.8335C9.16663 11.3748 9.74609 9.97586 10.7775 8.94441C11.809 7.91296 13.2079 7.3335 14.6666 7.3335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M5.50004 8.25H1.83337V19.25H5.50004V8.25Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M3.66671 5.50016C4.67923 5.50016 5.50004 4.67935 5.50004 3.66683C5.50004 2.65431 4.67923 1.8335 3.66671 1.8335C2.65419 1.8335 1.83337 2.65431 1.83337 3.66683C1.83337 4.67935 2.65419 5.50016 3.66671 5.50016Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <a class="footer-social-tile" href="https://www.facebook.com/american.institute.switzerland" target="_blank" aria-label="Facebook"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M16.5 1.8335H13.75C12.5344 1.8335 11.3686 2.31638 10.5091 3.17592C9.64951 4.03547 9.16663 5.20125 9.16663 6.41683V9.16683H6.41663V12.8335H9.16663V20.1668H12.8333V12.8335H15.5833L16.5 9.16683H12.8333V6.41683C12.8333 6.17371 12.9299 5.94056 13.1018 5.76865C13.2737 5.59674 13.5068 5.50016 13.75 5.50016H16.5V1.8335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <a class="footer-social-tile" href="https://www.instagram.com/aus.swiss/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M15.5834 1.8335H6.41671C3.8854 1.8335 1.83337 3.88552 1.83337 6.41683V15.5835C1.83337 18.1148 3.8854 20.1668 6.41671 20.1668H15.5834C18.1147 20.1668 20.1667 18.1148 20.1667 15.5835V6.41683C20.1667 3.88552 18.1147 1.8335 15.5834 1.8335Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M14.6667 10.4223C14.7799 11.1852 14.6495 11.9643 14.2943 12.6489C13.9391 13.3335 13.3771 13.8886 12.6882 14.2353C11.9993 14.5821 11.2186 14.7028 10.4572 14.5802C9.69576 14.4577 8.99234 14.0982 8.44699 13.5529C7.90165 13.0075 7.54214 12.3041 7.41962 11.5427C7.29709 10.7812 7.41778 10.0005 7.76452 9.31163C8.11126 8.62274 8.66639 8.06072 9.35096 7.70551C10.0355 7.3503 10.8147 7.21999 11.5776 7.33312C12.3557 7.44852 13.0762 7.81113 13.6324 8.3674C14.1887 8.92368 14.5513 9.64411 14.6667 10.4223Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M16.0416 5.9585H16.0516" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          <a class="footer-social-tile" href="https://www.tiktok.com/@aus.swiss" target="_blank" aria-label="TikTok"><svg viewBox="0 0 22 22" fill="none"><path d="M17.9575 6.13266C17.0437 5.93172 16.2171 5.44648 15.5962 4.74656C14.9753 4.04665 14.5921 3.16804 14.5016 2.23683V1.8335H11.3391V14.3643C11.2523 15.0017 10.9366 15.5858 10.4508 16.0074C9.965 16.4291 9.34238 16.6597 8.69912 16.656C7.99651 16.656 7.32269 16.3769 6.82587 15.8801C6.32906 15.3833 6.04995 14.7094 6.04995 14.0068C6.04995 13.3042 6.32906 12.6304 6.82587 12.1336C7.32269 11.6368 7.99651 11.3577 8.69912 11.3577C8.95578 11.3577 9.19412 11.3943 9.42328 11.4493V8.25933C9.1831 8.22882 8.94123 8.21351 8.69912 8.2135C7.15777 8.2135 5.67955 8.8258 4.58965 9.91569C3.49975 11.0056 2.88745 12.4838 2.88745 14.0252C2.88745 14.7884 3.03777 15.5441 3.32984 16.2492C3.6219 16.9543 4.04999 17.595 4.58965 18.1346C5.67955 19.2245 7.15777 19.8368 8.69912 19.8368C10.2389 19.8344 11.7147 19.221 12.8027 18.1314C13.8906 17.0418 14.5016 15.5649 14.5016 14.0252V7.966C15.7802 8.87783 17.3129 9.36519 18.8833 9.35933V6.1785C18.5739 6.19552 18.2636 6.18016 17.9575 6.13266Z" fill="currentColor"/></svg></a>
           <a class="footer-social-tile" href="https://www.youtube.com/channel/UCKUFsoxwPuaH8bi0vMoSTaQ" target="_blank" aria-label="YouTube"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M2.29167 15.5833C1.65131 12.5613 1.65131 9.43867 2.29167 6.41667C2.37581 6.10977 2.53838 5.83007 2.7634 5.60506C2.98841 5.38004 3.26812 5.21747 3.57501 5.13333C8.4915 4.31884 13.5085 4.31884 18.425 5.13333C18.7319 5.21747 19.0116 5.38004 19.2366 5.60506C19.4616 5.83007 19.6242 6.10977 19.7083 6.41667C20.3487 9.43867 20.3487 12.5613 19.7083 15.5833C19.6242 15.8902 19.4616 16.1699 19.2366 16.3949C19.0116 16.62 18.7319 16.7825 18.425 16.8667C13.5085 17.6813 8.49149 17.6813 3.57501 16.8667C3.26812 16.7825 2.98841 16.62 2.7634 16.3949C2.53838 16.1699 2.37581 15.8902 2.29167 15.5833Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M9.16663 13.75L13.75 11L9.16663 8.25V13.75Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
-            <div class="footer-col"><div class="footer-col-title">Programs</div><a href="aus-programs.html#bachelor">Bachelors</a><a href="aus-programs.html#master">Masters</a><a href="aus-programs.html#doctorate">Doctorate</a><a href="aus-programs.html#doctorate">Federal Diploma</a><div style="margin-top:14px;"></div><div class="footer-col-title" style="margin-top:6px;">Connect</div><a href="aus-admissions.html">Admissions</a><a href="#">Events</a><a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24">Contact</a></div>
+      <div class="footer-col"><div class="footer-col-title">Programs</div><a href="aus-programs.html#bachelor">Bachelors</a><a href="aus-programs.html#master">Masters</a><a href="aus-programs.html#doctorate">Doctorate</a><a href="aus-programs.html#doctorate">Federal Diploma</a><div style="margin-top:14px;"></div><div class="footer-col-title" style="margin-top:6px;">Connect</div><a href="aus-admissions.html">Admissions</a><a href="#">Events</a><a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24">Contact</a></div>
       <div class="footer-col"><div class="footer-col-title">School</div><a href="aus-about.html">About</a><a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a><a href="aus-accreditations.html">Accreditations &amp; Memberships</a><a href="aus-governance.html">Governance</a><a href="aus-faq.html">FAQ</a><a href="aus-speaker-series.html">Campus life</a></div>
       <div class="footer-col"><div class="footer-col-title">For AUS Students</div><a href="https://search.ebscohost.com/login.aspx" target="_blank" rel="noopener">E-Library</a><a href="https://openstax.org/" target="_blank" rel="noopener">OpenStax</a><a href="https://www.oecd.org/en/publications.html" target="_blank" rel="noopener">OECD Publications</a></div>
     </div>
@@ -1025,7 +622,6 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   </div>
 </footer>
 
-<!-- Promo Popup -->
 <div class="aus-popup-overlay" id="ausPopup">
   <div class="aus-popup">
     <button class="aus-popup-close" id="ausPopupClose" aria-label="Close">&times;</button>
@@ -1052,7 +648,6 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 
 <script>
 (function(){
-  // Preloader
   document.documentElement.classList.add('has-preloader');
   var preloader = document.getElementById('preloader');
   function hidePreloader(){
@@ -1064,13 +659,11 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   var ready = new Promise(function(res){ if(document.readyState==='complete') res(); else window.addEventListener('load',res); });
   Promise.all([minShow,ready]).then(hidePreloader);
 
-  // Nav scroll
   var nav=document.getElementById('nav');
   window.addEventListener('scroll',function(){
     nav.classList.toggle('is-scrolled',window.scrollY>40);
   },{passive:true});
 
-  // Side panel
   var menuToggle=document.getElementById('menuToggle'),sidePanel=document.getElementById('sidePanel'),sidePanelClose=document.getElementById('sidePanelClose'),sidePanelBackdrop=document.getElementById('sidePanelBackdrop'),sidePanelNav=document.querySelector('.side-panel-nav'),accordionItems=document.querySelectorAll('.accordion-item');
   function openPanel(expandKey){document.documentElement.classList.add('panel-open');menuToggle.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';if(expandKey){accordionItems.forEach(function(item){if(item.getAttribute('data-panel-key')===expandKey)item.classList.add('is-open');});var t=document.querySelector('.accordion-item[data-panel-key="'+expandKey+'"]');if(t&&sidePanelNav)setTimeout(function(){t.scrollIntoView({block:'start',behavior:'smooth'});},60);}}
   function closePanel(){document.documentElement.classList.remove('panel-open');menuToggle.setAttribute('aria-expanded','false');document.body.style.overflow='';}
@@ -1080,7 +673,6 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closePanel();});
   document.querySelectorAll('[data-open-panel]').forEach(function(btn){btn.addEventListener('click',function(){openPanel(btn.getAttribute('data-open-panel'));});});
   accordionItems.forEach(function(item){item.querySelector('.accordion-trigger').addEventListener('click',function(){item.classList.toggle('is-open');});});
-  // Nested sub-accordion triggers (Bachelors, Masters, etc.)
   document.querySelectorAll('.accordion-group-trigger').forEach(function(trigger){
     trigger.addEventListener('click', function(e){
       e.stopPropagation();
@@ -1089,11 +681,10 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     });
   });
 
-  // Reveal
   var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if('IntersectionObserver' in window&&!reduceMotion){
     document.documentElement.classList.add('js-reveal-ready');
-    var reveals=document.querySelectorAll('.reveal,.reveal-scale,.reveal-clip,.reveal-rotate,.split-text,.stagger-grid,.line-draw');
+    var revealTargets=document.querySelectorAll('.reveal,.reveal-scale,.reveal-clip,.reveal-rotate,.split-text,.stagger-grid,.line-draw');
     var revealObserver=new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if(entry.isIntersecting){
@@ -1102,10 +693,36 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
         }
       });
     },{threshold:0,rootMargin:'0px 0px -60px 0px'});
-    reveals.forEach(function(el){revealObserver.observe(el);});
+    revealTargets.forEach(function(el){revealObserver.observe(el);});
   }
 
-  // Counter animation
+  document.querySelectorAll('.split-text').forEach(function(el){
+    var text=el.textContent.trim();
+    el.innerHTML=text.split(/\s+/).map(function(w){return '<span class="word">'+w+'</span>';}).join(' ');
+  });
+
+  document.querySelectorAll('.mag-btn').forEach(function(btn){
+    btn.addEventListener('mousemove',function(e){
+      var rect=btn.getBoundingClientRect();
+      var x=e.clientX-rect.left-rect.width/2;
+      var y=e.clientY-rect.top-rect.height/2;
+      btn.style.transform='translate('+x*.15+'px,'+y*.15+'px)';
+    });
+    btn.addEventListener('mouseleave',function(){btn.style.transform='';});
+  });
+
+  if(!reduceMotion){
+    var parallaxEls=document.querySelectorAll('.parallax');
+    window.addEventListener('scroll',function(){
+      parallaxEls.forEach(function(el){
+        var rect=el.getBoundingClientRect();
+        var speed=parseFloat(el.getAttribute('data-speed'))||0.15;
+        var y=(rect.top-window.innerHeight)*speed;
+        el.style.transform='translateY('+y+'px)';
+      });
+    },{passive:true});
+  }
+
   var counters=document.querySelectorAll('.counter');
   if('IntersectionObserver' in window&&!reduceMotion){
     var counterObserver=new IntersectionObserver(function(entries){
@@ -1132,39 +749,17 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     counters.forEach(function(c){counterObserver.observe(c);});
   }
 
-// Split text into words
-document.querySelectorAll('.split-text').forEach(function(el){
-  var text=el.textContent.trim();
-  el.innerHTML=text.split(/\s+/).map(function(w){return '<span class="word">'+w+'</span>';}).join(' ');
-});
-
-// Magnetic buttons
-document.querySelectorAll('.mag-btn').forEach(function(btn){
-  btn.addEventListener('mousemove',function(e){
-    var rect=btn.getBoundingClientRect();
-    var x=e.clientX-rect.left-rect.width/2;
-    var y=e.clientY-rect.top-rect.height/2;
-    btn.style.transform='translate('+x*.15+'px,'+y*.15+'px)';
-  });
-  btn.addEventListener('mouseleave',function(){btn.style.transform='';});
-});
-
-// Parallax on scroll
-if(!reduceMotion){
-  var parallaxEls=document.querySelectorAll('.parallax');
-  window.addEventListener('scroll',function(){
-    parallaxEls.forEach(function(el){
-      var rect=el.getBoundingClientRect();
-      var speed=parseFloat(el.getAttribute('data-speed'))||0.15;
-      var y=(rect.top-window.innerHeight)*speed;
-      el.style.transform='translateY('+y+'px)';
-    });
-  },{passive:true});
-}
+  
+  var popup=document.getElementById('ausPopup'),popupClose=document.getElementById('ausPopupClose');
+  if(popup){
+    setTimeout(function(){popup.classList.add('is-visible');},4000);
+    popupClose.addEventListener('click',function(){popup.classList.remove('is-visible');});
+    popup.addEventListener('click',function(e){if(e.target===popup)popup.classList.remove('is-visible');});
+  }
 })();
 /* SITE SEARCH — INDEX: add new pages here to appear in dropdown */
 (function(){
-        var idx=[
+  var idx=[
     {title:"Home",url:"aus-home-demo.html",cat:"Home",keys:"Chapter 01 Where precision meets ambition. A Swiss business education built on scientific method and practice, for students who intend to lead, not just graduate. Find My Program → Founded 1991 La Tour-de-Peilz, Switzerland 02 Programs Choose your level. Every program is built around the same practice-led method. Hover a level to see what's inside. 01 Bachelors Degree Accounting Aviation Management Business Management Healthcare Administration Human Resource Management Integrated & Digital Marketing International Business Sports Management — Athletic Administration Sports Management — Sports Marketing 02 Masters Degree Data Analytics Finance Healthcare Administration Human Resource Management International Business Leadership & Change Sports Management Strategic Brand & Digital Marketing 03 Doctorate Doctorate in Business Administration 04 Swiss Federal Diploma Business Administration Three years, seven majors, one method. One year, built for people already leading. For those researching the next standard. Swiss-recognized professional qualification. 03 The Approach Practice-led, not theory-bound . Every course is built around real organizational problems. Students leave with a portfolio of decisions they made, not just a transcript of lectures they attended, prepared to lead from day one rather than catch up. 04 In Numbers “A prestigious, well-known institution that attracts students and faculty from all over the world.” 0+ Years combining Swiss and American education traditions AUS institutional records, 2026 0%+ Of graduates say their role relates to their AUS studies Alumni outcomes survey, 2025 0+ Nationalities on campus AUS Registrar, Fall 2026 0 Maximum students per class Academic policy, 2026 1: 0 Faculty to student ratio AUS Registrar, Fall 2026 0%+ Employed within 6 months of graduating Alumni outcomes survey, 2025 05 Recognition Independently recognized, not self-declared. Accreditation bodies and ranking institutions evaluate AUS on the same criteria applied to the world's leading business schools. Top 2 In Switzerland, QS Business Masters 2025 Top 200 Globally, QS Business Masters 2025 06 Mission & Vision Mission AUS equips students pursuing a degree in international business with the knowledge, skills and tools to make a significant contribution to any organization. Through practice-oriented study grounded in scientific method, research and development, graduates are prepared to lead with competence and confidence. Vision To build a reputation as a prestigious, well-known private institution in Switzerland that attracts students and faculty from all over the world, and to shape decision-makers ready for a more sustainable future. 07 Why AUS Five reasons students choose AUS. 01 Join a genuinely international student body. Classrooms bring together students from across Europe, the Middle East and beyond, so every group project is already a cross-border negotiation. 02 Case work replaces the lecture hall. Assignments are built from real organizational problems, not textbook exercises, so the skills transfer directly to a first job. 03 The working language of international business. Every program runs entirely in English, preparing graduates to operate in global teams from day one. 04 Study where students actually want to live. The campus sits on the shores of Lake Geneva, close enough to Zurich and Lucerne to make the most of both. 05 Faculty who know your name, not your seat number. Small cohorts mean direct access to professors, real feedback on your work, and no getting lost in a lecture hall of hundreds. 08 Sustainability Shaping decision-makers for a sustainable future. Sustainability sits at the core of how AUS teaches. Through partnerships with associations and non-profits, sustainable practice is built into the classroom, so graduates can balance economic and environmental goals in line with the UN Sustainable Development Goals. 09 Learning from Experts Local and international voices, inside the classroom. The Speaker Series brings practitioners into the room to bridge academic theory with what's actually happening in business today. Speaker Series &rarr; 10 Campus Archive Lecture Hall, Zurich The Reading Room Case Studio Main Courtyard Commencement 11 Our Partners Organizations that hire, train and collaborate with AUS. “Moving to Switzerland to study felt daunting at first, but AUS made it feel like a place I could actually belong.” Tomiwa “Going back to school after twenty years focused on family took courage. AUS is where I found the confidence to start again.” Umida"},    {title:"Admissions",url:"aus-admissions.html",cat:"Admissions",keys:"Admissions Your Journey Starts Here Everything you need to know about applying to AUS from eligibility and required documents to fees visas and arrival in Switzerland How to Apply Choose Your Program Submit Your Application Review and Decision Confirm and Enroll Entry Requirements Bachelor Master English Language Requirements IELTS TOEFL Duolingo Tuition and Fees Application Fee Important Dates Fall Semester Spring Semester Summer Term Visa Information EU EFTA Non-EU EFTA"},
     {title:"Programs Overview",url:"aus-programs.html",cat:"Programs",keys:"Chapter 01 Every level. One method. Twenty-one programs designed around real organizational problems. Practice-led from the first semester, built for people who intend to lead, not just graduate. Explore programs → 21 programs 4 levels Overview Every level. One method. Twenty-one programs designed around real organizational problems. Practice-led from the first semester, built for people who intend to lead, not just graduate. Explore programs → Bachelors 10 Masters 9 Doctorate 1 Federal Diploma 1 02 Bachelors Degree Start with a foundation that doesn't need replacing. Three years, one method. Every bachelor's program is built around case work and real organizational problems, so graduates arrive at their first job with a portfolio of decisions, not just a transcript. Bachelors 01 Accounting 3 Years The language of business, mastered. Explore Bachelors 02 Business Management 3 Years Lead organizations from day one. Explore Bachelors 03 Healthcare Administration 3 Years Healthcare needs better leaders. Explore Bachelors 04 Human Resource Management 3 Years People are the strategy. Explore Bachelors 05 Integrated & Digital Marketing 3 Years Strategy meets execution. Explore Bachelors 06 International Business 3 Years Think beyond borders. Explore Bachelors 07 Sports Management — Athletic Administration 3 Years Run the game, not the sidelines. Explore Bachelors 08 Sports Management — Sports Marketing 3 Years Build brands that move people. Explore Bachelors 09 Hospitality Management 3 Years Excellence is the experience. Explore Bachelors 10 Aviation Management 3 Years The business of getting there. Explore 03 Masters Degree Already leading? Go deeper. One year, built for people already in the workforce. Each master's program sharpens the skills that organizations actually hire for, with faculty who practice what they teach. Masters 01 Finance 1 Year Markets reward precision. Explore Masters 02 Data Analytics 1 Year Turn noise into signal. Explore Masters 03 Healthcare Administration 1 Year Systems that save lives. Explore Masters 04 Human Resource Management 1 Year Talent is the competitive edge. Explore Masters 05 International Business 1 Year Lead across markets. Explore Masters 06 Leadership & Change 1 Year Move organizations forward. Explore Masters 07 Sports Management 1 Year The business behind the game. Explore Masters 08 Strategic Brand & Digital Marketing 1 Year Brand is the business model. Explore Masters 09 Aviation Management 1 Year Altitude requires strategy. Explore 04 Doctorate & Federal Diploma The highest level of practice. For senior professionals ready to contribute original research to their field, or earn the nationally recognized Swiss Federal Diploma in Business Administration. Doctorate Business Administration (DBA) Original research that advances practice. For senior leaders who want to contribute new knowledge to their field while remaining in active professional life. Federal Diploma Business Administration The nationally recognized Swiss qualification. Combines academic study with professional experience, delivering a diploma valued across European industries. 05 Why AUS 30+ Years of excellence Combining Swiss and American education traditions since 1991. 80% Graduate employment Of graduates state their occupation is related to their studies at AUS. 40+ Nationalities A truly diverse and multicultural learning environment. 20 Max students per class Small class sizes for personalized attention and collaboration. 1:7 Faculty to student ratio Direct access to professors who know your name and goals. >70% Employed within 6 months Of graduates find employment within six months of graduating. 06 Dual Degree Two countries. One degree. Global advantage. At AUS, students earn a prestigious Dual Degree — graduating with two highly recognized qualifications: one from Switzerland and another from the United States. This global academic experience equips graduates with a competitive edge, opening doors to international opportunities and careers worldwide. + 07 Rankings & Recognition QS World University Rankings 2025 Top 2 in Switzerland for Business Masters QS World University Rankings 2025 Top 200 globally for Business Masters Accreditations & Memberships 08 The Method Practice-led, not theory-bound . Every course is built around real organizational problems. Students leave with a portfolio of decisions they made, not just a transcript of lectures they attended, prepared to lead from day one rather than catch up. Chapter 09 Your next chapter starts here. Applications are open for the upcoming intake. Browse the programs, pick the level that fits, and start the process. It takes less time than you think. Start your application →"},
     {title:"BSc Accounting",url:"aus-bachelor-accounting.html",cat:"Programs Â· Bachelor",keys:"QS Ranked — 5-Star Teaching BSc in Business Administration Accounting Start your Application Download Brochure Scroll BSc in Business Administration Accounting Three years, nine academic terms, 135 CH | 225 ECTS. Start your Application Download Brochure Home / Programs / Bachelors / Accounting 0 :1 Student-to-staff ratio 0 % Employed or in Graduate School within six months of graduation 0 + Nationalities 0 + Multinational HQs nearby Overview Bachelor of Science in Business Administration TU Degree Bachelor of Business Administration Specialization Accounting Entry Dates September, January, April Duration 3 Years Structure 9 Academic Terms Study Mode Full-Time Credits 135 CH | 225 ECTS Program Overview A traditional accounting pathway, built for the modern workplace . The Accounting specialization gives students a strong foundation in accounting principles, financial analysis, taxation, and business decision-making. Designed for students who want to build a career in accounting, finance, auditing, taxation, or business management, it combines technical knowledge with the practical problem-solving used by today's accounting professionals. The double degree allows students enrolled in the program to earn a Degree from Switzerland and a Degree from the United States of America whilst studying entirely in Switzerland. Financial accounting and reporting Auditing and assurance services Tax planning and compliance Management and cost accounting Corporate finance fundamentals Business law and ethics Data analytics for accountants Professional certification preparation Read more → 0 % Employed or in grad school within six months Curriculum Three years — nine academic terms — 135 CH | 225 ECTS. Year 1 3 TERMS Principles of Accounting Microeconomics & Macroeconomics Business Mathematics Introduction to Business Law Academic Writing & Research Business Communication Year 2 3 TERMS Financial Accounting & Reporting Cost & Management Accounting Auditing Principles Taxation Corporate Finance Business Statistics Year 3 3 TERMS Advanced Auditing International Accounting Standards Data Analytics for Finance Ethics & Governance Strategic Management Bachelors Thesis Dual Swiss and US Degree Graduate with two degrees. From two continents. The Bachelor of Science in International Business Administration at AUS is offered exclusively as a dual degree in collaboration with Tiffin in the United States. All enrolled students graduate with two degrees: a BSc from AUS and a BBA from Tiffin University. Tiffin University is accredited by the Higher Learning Commission in the United States, supporting the international credibility and recognition of the degree pathway. Switzerland United States The AUS Advantage Why AUS Business School Focused Learning With a 7:1 student-to-staff ratio and classes limited to 20 students, you receive personal attention and meaningful interaction. Dual Degree Earn two separate degrees at the same time. This gives graduates a stronger international profile. Top Ranked Top Ranked by the QS World University Rankings. 5-Star Rated for Teaching and class experience. Career Focused Build practical business skills through specialization modules, industry visits, guest speakers, and networking opportunities. Tuition Fees 28'000 CHF / year Admissions & Financing → Career Outcomes Your Future in Accounting The Accounting Specialization prepares students for careers in accounting, finance, taxation, auditing, consulting, and business management. Students develop the technical knowledge, analytical skills, and ethical decision-making abilities needed to support organizations in measuring performance, managing risk, and making informed financial decisions. Accountant Prepare, analyze, and manage financial records for companies, organizations, or clients. Auditor Review financial statements, internal controls, and business processes to ensure accuracy, compliance, and transparency. Tax Consultant Support individuals and organizations with tax planning, tax research, compliance, and reporting. Financial Analyst Use accounting and financial data to evaluate business performance, forecast trends, and support strategic decisions. Cost Accountant Help organizations plan budgets, control costs, measure performance, and improve operational efficiency. Consulting Associate Advise businesses on financial processes, reporting systems, risk management, and performance improvement. Finance Associate Support investment decisions, budgeting, financial planning, and capital management within organizations. Accounting Manager With experience, graduates may progress into leadership roles overseeing accounting operations, financial reporting, and internal controls. Admissions Join the AUS Community 1 Core Requirements To qualify for this program, applicants must have successfully completed secondary education in their home country, earning a diploma or leaving certificate that grants university-level eligibility. No GMAT or entrance exam scores are required. Admission is based on a holistic review of your application and a mandatory online interview. Language: English C-Level. CEFR B2 level considered after completing an oral interview. Education: Secondary school diploma with good academic achievements, or IELTS Overall 5.5 with no single element below 4.5. Motivation: Explain why you are pursuing this degree, your goals, and the specific value you will bring to your peer group. 2 Admissions Philosophy AUS offers a fair and transparent admissions process based on individual merit and potential. We look beyond basic eligibility to understand the specific context of your background, ensuring we balance high standards with true inclusivity. Our goal is to align your prior experience and interests with the program that will best drive your future career. Next Intake Fall 2026 EU/EFTA Deadline: July 15 · International Deadline: July 15 Start your Application → Certification Partners Build Practical Digital Skills. Alongside their dual degree, students can earn certifications through AUS partnerships with leading technology firms in AI, digital tools, and data analytics. \"The Accounting specialization gave me the technical skills and confidence to succeed in a competitive industry. The dual degree with Tiffin opened doors I never expected.\" Alumni testimonial BSc in Business Administration — Accounting Student Life Life at AUS What's Next Take the Next Step Talk to an Admissions Advisor, request a Program Overview, or book a campus visit to experience AUS firsthand. Talk to an Admissions Advisor → Request a Program Overview Book a Campus Visit"},
@@ -1248,7 +843,6 @@ if(!reduceMotion){
     ,{title:"Cost Calculator",url:"aus-cost-calculator.html",cat:"Tools",keys:"Cost Calculator Plan Your AUS Investment Estimate tuition living costs Switzerland Program Scholarship Accommodation Monthly expenses Visa Permit Calculate Expenses Financial planning budget"}
 ,
     {title:"AUS Speaker Series",url:"aus-speaker-series.html",cat:"Campus Life",keys:"AUS Speaker Series Industry experts networking with AUS students Monthly seminars lectures leading experts Commencement speakers Industrial visits Campus Life"}];
-  // allow pages to extend idx via window.AUS_SEARCH_EXTRA
   if(window.AUS_SEARCH_EXTRA && Array.isArray(window.AUS_SEARCH_EXTRA)){ idx = idx.concat(window.AUS_SEARCH_EXTRA); }
   var input=document.getElementById("siteSearchInput");
   var drop=document.getElementById("siteSearchDrop");
@@ -1266,7 +860,7 @@ if(!reduceMotion){
     Object.keys(byCat).forEach(function(cat){
       html+="<div style=\"font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);padding:6px 10px 2px;\">"+cat+"</div>";
       byCat[cat].forEach(function(h){
-              var t=h.title.replace(new RegExp("("+esc(q)+")","ig"), "<mark style=\"background:var(--yellow);padding:0 2px;border-radius:3px;\">$1</mark>");
+        var t=h.title.replace(new RegExp("("+esc(q)+")","ig"), "<mark style=\"background:var(--yellow);padding:0 2px;border-radius:3px;\">$1</mark>");
         var lowerKeys=(h.keys||"").toLowerCase();
         var pos=lowerKeys.indexOf(qq);
         var excerpt="";
@@ -1275,10 +869,10 @@ if(!reduceMotion){
           var end=Math.min(h.keys.length,pos+qq.length+80);
           excerpt=h.keys.substring(start,end).trim();
           if(start>0) excerpt="..."+excerpt;
-          if(end < h.keys.length) excerpt=excerpt+"...";
+          if(end<h.keys.length) excerpt=excerpt+"...";
           excerpt=excerpt.replace(new RegExp("("+esc(q)+")","ig"), "<mark style=\"background:var(--yellow);padding:0 2px;border-radius:3px;\">$1</mark>");
         } else { excerpt=h.keys.substring(0,140).trim()+"..."; }
-                var href=h.url;
+        var href=h.url;
         if(href.indexOf("?q=")===-1) href+=(href.indexOf("?")!==-1?"&":"?")+"q="+encodeURIComponent(q);
         html+="<a href=\""+href+"\" style=\"display:block;padding:8px 10px;border-radius:10px;line-height:1.4;\"><span style=\"display:block;font-size:14px;font-weight:600;color:var(--navy);\">"+t+"</span><span style=\"display:block;font-size:12.5px;line-height:1.5;color:var(--ink-soft);margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;\">"+excerpt+"</span></a>";
       });
@@ -1292,71 +886,7 @@ if(!reduceMotion){
     if(e.key==="Enter"){ var a=drop.querySelector("a"); if(a) location.href=a.getAttribute("href"); }
   });
   document.addEventListener("click", function(e){ if(!wrap.contains(e.target)) drop.hidden=true; });
-})();/* SEARCH HIGHLIGHT & SCROLL — scrolls to term from ?q= like FAQ */
-(function(){
-  var q=new URLSearchParams(location.search).get("q");
-  if(!q) return;
-  var term=q.trim();
-  if(!term) return;
-  var re=new RegExp("("+term.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","gi");
-  var walker=document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
-  var firstMark=null;
-  var nodes=[];
-  var n;
-  while(n=walker.nextNode()){
-    if(n.parentElement.closest("script,style,noscript,.aus-search")) continue;
-    if(n.nodeValue.toLowerCase().indexOf(term.toLowerCase())!==-1) nodes.push(n);
-  }
-  nodes.forEach(function(node){
-    var html=node.nodeValue.replace(re, "<mark style=\"background:var(--yellow);padding:0 2px;border-radius:3px;\">$1</mark>");
-    if(html!==node.nodeValue){
-      var frag=document.createDocumentFragment();
-      var tmp=document.createElement("div");
-      tmp.innerHTML=html;
-      while(tmp.firstChild) frag.appendChild(tmp.firstChild);
-      node.parentNode.replaceChild(frag, node);
-      if(!firstMark) firstMark=document.querySelector("mark");
-    }
-  });
-  if(firstMark) setTimeout(function(){ firstMark.scrollIntoView({behavior:"smooth",block:"center"}); firstMark.style.outline="2px solid var(--crimson)"; firstMark.style.outlineOffset="2px"; }, 400);
 })();
-
-// ---------- PROMO POPUP ----------
-(function(){
-  var popup=document.getElementById('ausPopup');
-  var closeBtn=document.getElementById('ausPopupClose');
-  if(!popup||!closeBtn) return;
-  try{ if(sessionStorage.getItem('aus-popup-dismissed')==='1') return; }catch(e){}
-
-  function startPopupTimer(){
-    var delay=10000+Math.random()*4000;
-    setTimeout(function(){
-      popup.classList.add('is-visible');
-      document.body.style.overflow='hidden';
-    }, delay);
-  }
-
-  var preloader=document.getElementById('preloader');
-  if(preloader && !preloader.classList.contains('is-hidden')){
-    var obs=new MutationObserver(function(){
-      if(preloader.classList.contains('is-hidden')){
-        obs.disconnect();
-        startPopupTimer();
-      }
-    });
-    obs.observe(preloader,{attributes:true,attributeFilter:['class']});
-  } else {
-    startPopupTimer();
-  }
-
-  function dismiss(){
-    popup.classList.remove('is-visible');
-    document.body.style.overflow='';
-    try{ sessionStorage.setItem('aus-popup-dismissed','1'); }catch(e){}
-  }
-  closeBtn.addEventListener('click',dismiss);
-  popup.addEventListener('click',function(e){if(e.target===popup)dismiss();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')dismiss();});
-})();</script>
+</script>
 </body>
 </html>
