@@ -145,7 +145,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .curr-card h3{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(18px,1.8vw,22px);color:var(--navy);margin-bottom:10px;}
 .curr-card ul{list-style:none;max-height:0;overflow:hidden;transition:max-height .5s ease,margin .4s ease,opacity .4s ease;margin-top:0;opacity:0;}.curr-card:hover ul{max-height:500px;margin-top:16px;opacity:1;}
 .curr-card li{font-size:13px;line-height:1.6;color:var(--ink-soft);padding:4px 0;border-bottom:1px solid var(--line);}.curr-card li:last-child{border-bottom:none;}
-@media (max-width:760px){.curr-grid{grid-template-columns:1fr;}}
+@media (max-width:760px){.curr-grid{grid-template-columns:1fr;}.curr-card:hover{border-color:var(--line);box-shadow:none;}.curr-card ul{max-height:500px;margin-top:16px;opacity:1;}.curr-card{cursor:default;}}
 
 /* CAREERS */
 .careers{padding:clamp(40px,6vw,70px) 0;}
@@ -405,14 +405,14 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 <body>
 
 <div class="aus-preloader" id="preloader">
-  <img class="aus-preloader-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+  <img loading="lazy" decoding="async" class="aus-preloader-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
   <div class="aus-preloader-bar"></div>
 </div>
 
 <nav class="aus-nav" id="nav">
   <a href="aus-home-demo.html" class="aus-wordmark" aria-label="AUS Business School — home">
-    <img class="logo-white" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
-    <img class="logo-color" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a558e03f97cbda4768f37bb_aus-logo.avif" alt="AUS Business School">
+    <img loading="lazy" decoding="async" class="logo-white" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+    <img loading="lazy" decoding="async" class="logo-color" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a558e03f97cbda4768f37bb_aus-logo.avif" alt="AUS Business School">
   </a>
   <div class="aus-nav-links">
     <button type="button" data-open-panel="programs">Programs</button>
@@ -436,7 +436,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   <div class="side-panel-backdrop" id="sidePanelBackdrop"></div>
   <aside class="side-panel-canvas">
     <div class="side-panel-head">
-      <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+      <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
       <button class="side-panel-close" id="sidePanelClose" aria-label="Close menu"><span></span></button>
     </div>
     <nav class="side-panel-nav">
@@ -498,6 +498,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
           <a href="aus-accreditations.html">Accreditations &amp; Memberships</a>
           <a href="aus-governance.html">Governance</a>
           <a href="aus-faq.html">FAQ</a>
+            <a href="aus-rights-policy.html">Policies and Procedures</a>
             <a href="aus-ibm-collaboration.html">IBM Collaboration</a>
           <a href="#" style="display:none">Accreditations_TEMP &amp; Memberships</a>
             
@@ -534,7 +535,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 <!-- HERO -->
 <header class="hero">
   <div class="hero-bg">
-    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1800&auto=format&fit=crop&q=80" alt="Accounting and finance workspace">
+    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1800&auto=format&fit=crop&q=80" alt="Accounting and finance workspace">
   </div>
   <div class="float-badge" style="top:clamp(100px,14vw,180px);right:clamp(20px,5vw,64px);">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -557,7 +558,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 <!-- MOBILE HERO -->
 <div class="hero-mobile">
   <div class="hero-mob-img">
-    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1800&auto=format&fit=crop&q=80" alt="Finance">
+    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1800&auto=format&fit=crop&q=80" alt="Finance">
   </div>
   <div class="hero-mob-content">
     <span class="hero-mob-badge">MSc in International Business Administration</span>
@@ -670,8 +671,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
       </div>
       <div class="reveal d1">
         <div class="img-stack" style="margin-bottom:20px;">
-          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&auto=format&fit=crop&q=80" alt="Finance workspace">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80" alt="Business analytics">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&auto=format&fit=crop&q=80" alt="Finance workspace">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80" alt="Business analytics">
         </div>
         <div style="background:var(--sky-tint);padding:clamp(20px,2.5vw,28px);border-radius:4px;text-align:center;">
           <span class="counter" data-target="94">0</span><span style="font-family:var(--font-display);font-weight:800;font-size:clamp(28px,3vw,40px);color:var(--navy);">%</span>
@@ -725,7 +726,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 <!-- CAREERS -->
 <section class="careers" style="position:relative;overflow:hidden;">
   <div style="position:absolute;inset:0;z-index:0;">
-    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1800&auto=format&fit=crop&q=80" alt="Finance workspace" style="width:100%;height:100%;object-fit:cover;opacity:.04;">
+    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1800&auto=format&fit=crop&q=80" alt="Finance workspace" style="width:100%;height:100%;object-fit:cover;opacity:.04;">
   </div>
   <div class="wrap" style="position:relative;z-index:1;">
     <span class="eyebrow reveal">Career Outcomes</span>
@@ -796,7 +797,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 
 <!-- DUAL DEGREE -->
 <section class="dual-degree" style="background:var(--navy);color:var(--white);padding:clamp(40px,6vw,70px) 0;position:relative;overflow:hidden;">
-  <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&auto=format&fit=crop&q=80" alt="Swiss Alps and Lake Geneva" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.12;">
+  <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&auto=format&fit=crop&q=80" alt="Swiss Alps and Lake Geneva" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.12;">
   <div class="wrap" style="position:relative;z-index:1;">
     <div class="dual-inner" style="display:flex;align-items:center;gap:clamp(40px,6vw,80px);">
       <div class="dual-copy" style="flex:1;">
@@ -807,12 +808,12 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
       </div>
       <div class="dual-logos reveal d1" style="display:flex;align-items:center;gap:24px;flex-shrink:0;">
         <div style="text-align:center;">
-          <div style="width:100px;height:100px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.15);box-shadow:0 4px 20px rgba(0,0,0,.3);margin:0 auto 8px;"><img src="https://flagcdn.com/w160/ch.png" alt="Switzerland" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div style="width:100px;height:100px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.15);box-shadow:0 4px 20px rgba(0,0,0,.3);margin:0 auto 8px;"><img loading="lazy" decoding="async" src="https://flagcdn.com/w160/ch.png" alt="Switzerland" style="width:100%;height:100%;object-fit:cover;"></div>
           <span style="font-size:12px;color:rgba(255,255,255,.6);">Switzerland</span>
         </div>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         <div style="text-align:center;">
-          <div style="width:100px;height:100px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.15);box-shadow:0 4px 20px rgba(0,0,0,.3);margin:0 auto 8px;"><img src="https://flagcdn.com/w160/us.png" alt="United States" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div style="width:100px;height:100px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.15);box-shadow:0 4px 20px rgba(0,0,0,.3);margin:0 auto 8px;"><img loading="lazy" decoding="async" src="https://flagcdn.com/w160/us.png" alt="United States" style="width:100%;height:100%;object-fit:cover;"></div>
           <span style="font-size:12px;color:rgba(255,255,255,.6);">United States</span>
         </div>
       </div>
@@ -823,7 +824,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 <!-- WHY AUS -->
 <section style="padding:clamp(40px,6vw,70px) 0;position:relative;overflow:hidden;">
   <div style="position:absolute;inset:0;z-index:0;">
-    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1800&auto=format&fit=crop&q=80" alt="AUS Campus" style="width:100%;height:100%;object-fit:cover;opacity:.06;">
+    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1800&auto=format&fit=crop&q=80" alt="AUS Campus" style="width:100%;height:100%;object-fit:cover;opacity:.06;">
   </div>
   <div class="wrap" style="position:relative;z-index:1;">
     <span class="eyebrow reveal">The AUS Advantage</span>
@@ -870,7 +871,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     </div>
     <div style="display:flex;gap:12px;">
       <a href="aus-cost-calculator.html?program=msc_finance" class="cta-btn" style="background:transparent;color:var(--navy);border:2px solid var(--navy);">Calculate Your Expenses →</a>
-      <a href="#" class="cta-btn">Admissions &amp; Financing &rarr;</a>
+      <a href="aus-admissions.html" class="cta-btn">Admissions &amp; Financing &rarr;</a>
     </div>
   </div>
 </section>
@@ -878,7 +879,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 <!-- ADMISSIONS -->
 <section class="admissions" style="position:relative;overflow:hidden;">
   <div style="position:absolute;inset:0;z-index:0;">
-    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1800&auto=format&fit=crop" alt="Students" style="width:100%;height:100%;object-fit:cover;opacity:.05;">
+    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1800&auto=format&fit=crop" alt="Students" style="width:100%;height:100%;object-fit:cover;opacity:.05;">
   </div>
   <div class="wrap" style="position:relative;z-index:1;">
     <div class="adm-grid">
@@ -925,8 +926,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;margin-bottom:clamp(16px,2vw,24px);">Build Practical Digital Skills.</h2>
     <p class="reveal d2" style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);max-width:60ch;margin:0 auto clamp(32px,4vw,48px);">Alongside their dual degree, students can earn certifications through AUS partnerships with leading technology firms in AI, digital tools, and data analytics.</p>
     <div class="reveal d3" style="display:flex;justify-content:center;gap:clamp(48px,6vw,80px);align-items:center;flex-wrap:wrap;">
-      <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a4b4de19ea900cf0076d259_ibm.webp" alt="IBM" style="height:100px;">
-      <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a4b4de2dcacc8e0c146994b_apple.webp" alt="Apple" style="height:100px;">
+      <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a4b4de19ea900cf0076d259_ibm.webp" alt="IBM" style="height:100px;">
+      <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a4b4de2dcacc8e0c146994b_apple.webp" alt="Apple" style="height:100px;">
     </div>
   </div>
 </section>
@@ -957,19 +958,19 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;margin-bottom:clamp(24px,3vw,36px);">Life at AUS</h2>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:200px 200px;gap:12px;">
       <div class="reveal" style="grid-column:1/3;grid-row:1/3;border-radius:6px;overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop&q=80" alt="Campus life" style="width:100%;height:100%;object-fit:cover;">
+        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop&q=80" alt="Campus life" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div class="reveal d1" style="border-radius:6px;overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&auto=format&fit=crop&q=80" alt="Students studying" style="width:100%;height:100%;object-fit:cover;">
+        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&auto=format&fit=crop&q=80" alt="Students studying" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div class="reveal d2" style="border-radius:6px;overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&auto=format&fit=crop&q=80" alt="Group project" style="width:100%;height:100%;object-fit:cover;">
+        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&auto=format&fit=crop&q=80" alt="Group project" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div class="reveal d3" style="border-radius:6px;overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&auto=format&fit=crop&q=80" alt="Lake Geneva" style="width:100%;height:100%;object-fit:cover;">
+        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&auto=format&fit=crop&q=80" alt="Lake Geneva" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div class="reveal d4" style="border-radius:6px;overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&auto=format&fit=crop&q=80" alt="Graduation" style="width:100%;height:100%;object-fit:cover;">
+        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&auto=format&fit=crop&q=80" alt="Graduation" style="width:100%;height:100%;object-fit:cover;">
       </div>
     </div>
   </div>
@@ -982,7 +983,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     <h2 class="reveal d1">Take the Next Step</h2>
     <p class="reveal d2">Talk to an Admissions Advisor, request a Program Overview, or book a campus visit to experience AUS firsthand.</p>
     <div class="reveal d3" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-      <a href="#" class="cta-btn">Talk to an Admissions Advisor &rarr;</a>
+      <a href="https://meetings-eu1.hubspot.com/michiel-van-de-water?uuid=70eae9b0-a7aa-4dcb-856a-9672c6be2602" class="cta-btn">Talk to an Admissions Advisor &rarr;</a>
       <a href="#" class="cta-btn" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,.3);">Request a Program Overview</a>
       <a href="https://share-eu1.hsforms.com/1t_dizG4cT7-D9bCyPSDnAwfwv24" class="cta-btn" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,.3);">Book a Campus Visit</a>
     </div>
@@ -994,7 +995,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   <div class="wrap">
     <div class="footer-top">
       <div>
-        <img class="footer-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+        <img loading="lazy" decoding="async" class="footer-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
         <p>American Institute of Applied Sciences. Modern heritage, built for the leaders business hasn't met yet.</p>
         <div class="footer-social-title footer-col-title">#AUSmoments on</div>
         <div class="footer-social-grid">
@@ -1005,8 +1006,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
           <a class="footer-social-tile" href="https://www.youtube.com/channel/UCKUFsoxwPuaH8bi0vMoSTaQ" target="_blank" aria-label="YouTube"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M2.29167 15.5833C1.65131 12.5613 1.65131 9.43867 2.29167 6.41667C2.37581 6.10977 2.53838 5.83007 2.7634 5.60506C2.98841 5.38004 3.26812 5.21747 3.57501 5.13333C8.4915 4.31884 13.5085 4.31884 18.425 5.13333C18.7319 5.21747 19.0116 5.38004 19.2366 5.60506C19.4616 5.83007 19.6242 6.10977 19.7083 6.41667C20.3487 9.43867 20.3487 12.5613 19.7083 15.5833C19.6242 15.8902 19.4616 16.1699 19.2366 16.3949C19.0116 16.62 18.7319 16.7825 18.425 16.8667C13.5085 17.6813 8.49149 17.6813 3.57501 16.8667C3.26812 16.7825 2.98841 16.62 2.7634 16.3949C2.53838 16.1699 2.37581 15.8902 2.29167 15.5833Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M9.16663 13.75L13.75 11L9.16663 8.25V13.75Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
-            <div class="footer-col"><div class="footer-col-title">Programs</div><a href="aus-programs.html#bachelor">Bachelors</a><a href="aus-programs.html#master">Masters</a><a href="aus-programs.html#doctorate">Doctorate</a><a href="aus-programs.html#doctorate">Federal Diploma</a><div style="margin-top:14px;"></div><div class="footer-col-title" style="margin-top:6px;">Connect</div><a href="aus-admissions.html">Admissions</a><a href="#">Events</a><a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24">Contact</a></div>
-      <div class="footer-col"><div class="footer-col-title">School</div><a href="aus-about.html">About</a><a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a><a href="aus-accreditations.html">Accreditations &amp; Memberships</a><a href="aus-governance.html">Governance</a><a href="aus-faq.html">FAQ</a><a href="aus-speaker-series.html">Campus life</a></div>
+            <div class="footer-col"><div class="footer-col-title">Programs</div><a href="aus-programs.html#bachelor">Bachelors</a><a href="aus-programs.html#master">Masters</a><a href="aus-programs.html#doctorate">Doctorate</a><a href="aus-programs.html#doctorate">Federal Diploma</a><div style="margin-top:14px;"></div><div class="footer-col-title" style="margin-top:6px;">Connect</div><a href="aus-admissions.html">Admissions</a><a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24">Contact</a></div>
+      <div class="footer-col"><div class="footer-col-title">School</div><a href="aus-about.html">About</a><a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a><a href="aus-accreditations.html">Accreditations &amp; Memberships</a><a href="aus-governance.html">Governance</a><a href="aus-faq.html">FAQ</a><a href="aus-campus-life.html">Campus Life</a></div>
       <div class="footer-col"><div class="footer-col-title">For AUS Students</div><a href="https://search.ebscohost.com/login.aspx" target="_blank" rel="noopener">E-Library</a><a href="https://openstax.org/" target="_blank" rel="noopener">OpenStax</a><a href="https://www.oecd.org/en/publications.html" target="_blank" rel="noopener">OECD Publications</a></div>
     </div>
     <div class="footer-v2_bottom">
@@ -1020,8 +1021,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 AUS Business School. All rights reserved.</span>
-      <span><a href="aus-rights-policy.html">Privacy Policy</a></span>
-    </div>
+      </div>
   </div>
 </footer>
 
@@ -1030,7 +1030,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   <div class="aus-popup">
     <button class="aus-popup-close" id="ausPopupClose" aria-label="Close">&times;</button>
     <div class="aus-popup-hero">
-      <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&auto=format&fit=crop&q=80" alt="AUS campus">
+      <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&auto=format&fit=crop&q=80" alt="AUS campus">
       <div class="aus-popup-hero-badge">QS Ranked — 5-Star Teaching</div>
     </div>
     <div class="aus-popup-body">
@@ -1243,11 +1243,12 @@ if(!reduceMotion){
     {title:"What is the Institution Code of AUS?",url:"aus-faq.html?q=What%20is%20the%20Institution%20Code%20of%20AUS%3F",cat:"FAQ",keys:"What is the Institution Code of AUS? Facility code: 21001578 — View on VA website →"},
     {title:"How do I apply for VA benefits at AUS?",url:"aus-faq.html?q=How%20do%20I%20apply%20for%20VA%20benefits%20at%20AUS%3F",cat:"FAQ",keys:"How do I apply for VA benefits at AUS? 1) Submit your application 120 days before departure. 2) Provide your Certificate of Eligibility (COE) to AUS’s Certifying Official, who submits VA Form 22-1999. 3) Prepare funds, housing, travel and insurance. 4) Grant written permission for AUS to share info with the VA. 5) For multi-year attendance, notify 120 days before re-enrollment. Full guide →"},
     {title:"What if I need more help with my GI Bill?",url:"aus-faq.html?q=What%20if%20I%20need%20more%20help%20with%20my%20GI%20Bill%3F",cat:"FAQ",keys:"What if I need more help with my GI Bill? Contact VA: Ask VA online , or call 888-442-4551 (US, TTY:711) Mon–Fri 8am–7pm ET, or +1-918-781-5678 from outside the US. Also find a VA regional office ."},
-    {title:"Privacy Policy",url:"aus-rights-policy.html",cat:"About",keys:"Policies Privacy GDPR data protection FADP institutional policies AUS audit assessment credit transfer continuous professional development internship program management staff performance scholarships admissions recognition prior learning teaching learning staff leave quality assurance equality diversity risk management student agreement code of conduct disciplinary student finance staffing attendance personal data"},
+    {title:"Policies and Procedures",url:"aus-rights-policy.html",cat:"About",keys:"Policies Privacy GDPR data protection FADP institutional policies AUS audit assessment credit transfer continuous professional development internship program management staff performance scholarships admissions recognition prior learning teaching learning staff leave quality assurance equality diversity risk management student agreement code of conduct disciplinary student finance staffing attendance personal data"},
     {title:"IBM Collaboration",url:"aus-ibm-collaboration.html",cat:"About",keys:"About AUS IBM Collaboration Empowering students with industry-recognized skills through our partnership with IBM. Scroll About AUS IBM Collaboration Empowering students with industry-recognized skills through our partnership with IBM. Home / About / IBM Collaboration AUS and IBM A Partnership Built on Innovation AUS has partnered with IBM to provide students with access to cutting-edge technology skills and industry-recognized certifications. Through the IBM SkillsBuild platform and our collaboration, students gain practical competencies that employers actively seek. IBM SkillsBuild Access free IBM training courses covering AI, cloud computing, data science, cybersecurity, and more through the IBM SkillsBuild platform. Industry Certifications Earn verified digital credentials in high-demand technology areas that complement your business degree. Practical Skills Develop technical competencies alongside your business education, making you a more versatile and competitive graduate. Career Advantage Join a network of IBM-skilled professionals and gain access to exclusive career opportunities. Certifications Available Cybersecurity Learn to protect systems, networks, and data from digital attacks. Data Analytics Master the tools and techniques to analyze complex datasets. Generative AI Explore the fundamentals of AI and large language models. Cloud Computing Build and deploy applications on cloud platforms. What is Next Start Your IBM Journey Combine business expertise with technology skills. Apply for Admission ?"}
     ,{title:"Cost Calculator",url:"aus-cost-calculator.html",cat:"Tools",keys:"Cost Calculator Plan Your AUS Investment Estimate tuition living costs Switzerland Program Scholarship Accommodation Monthly expenses Visa Permit Calculate Expenses Financial planning budget"}
 ,
-    {title:"AUS Speaker Series",url:"aus-speaker-series.html",cat:"Campus Life",keys:"AUS Speaker Series Industry experts networking with AUS students Monthly seminars lectures leading experts Commencement speakers Industrial visits Campus Life"}];
+    {title:"AUS Speaker Series",url:"aus-speaker-series.html",cat:"Campus Life",keys:"AUS Speaker Series Industry experts networking with AUS students Monthly seminars lectures leading experts Commencement speakers Industrial visits Campus Life"},
+    {title:"Campus Life",url:"aus-campus-life.html",cat:"Campus Life",keys:"Campus Life Embrace Life in Switzerland AUS inclusive multicultural campus personalized education sports extra-curricular activities La Tour-de-Peilz Swiss Riviera Student events Welcome Week diversity celebrations guest speakers field trips coached sports social events Accommodation career support living in Switzerland campus facilities student visa health insurance"}];
   // allow pages to extend idx via window.AUS_SEARCH_EXTRA
   if(window.AUS_SEARCH_EXTRA && Array.isArray(window.AUS_SEARCH_EXTRA)){ idx = idx.concat(window.AUS_SEARCH_EXTRA); }
   var input=document.getElementById("siteSearchInput");
@@ -1326,14 +1327,12 @@ if(!reduceMotion){
   var popup=document.getElementById('ausPopup');
   var closeBtn=document.getElementById('ausPopupClose');
   if(!popup||!closeBtn) return;
-  try{ if(sessionStorage.getItem('aus-popup-dismissed')==='1') return; }catch(e){}
+  try{ if(localStorage.getItem('aus-popup-seen')==='1') return; }catch(e){}
 
   function startPopupTimer(){
-    var delay=10000+Math.random()*4000;
     setTimeout(function(){
       popup.classList.add('is-visible');
-      document.body.style.overflow='hidden';
-    }, delay);
+    },8000);
   }
 
   var preloader=document.getElementById('preloader');
@@ -1351,12 +1350,11 @@ if(!reduceMotion){
 
   function dismiss(){
     popup.classList.remove('is-visible');
-    document.body.style.overflow='';
-    try{ sessionStorage.setItem('aus-popup-dismissed','1'); }catch(e){}
+    try{ localStorage.setItem('aus-popup-seen','1'); }catch(e){}
   }
   closeBtn.addEventListener('click',dismiss);
   popup.addEventListener('click',function(e){if(e.target===popup)dismiss();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')dismiss();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&popup.classList.contains('is-visible'))dismiss();});
 })();</script>
 </body>
 </html>

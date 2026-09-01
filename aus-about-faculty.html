@@ -165,12 +165,13 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
 .float{animation:float 5s ease-in-out infinite;}
 .stagger-grid > *{opacity:0;transform:translateY(30px);transition:opacity .6s var(--ease-soft),transform .6s var(--ease-soft);}
-.stagger-grid.is-visible > *:nth-child(1){transition-delay:.05s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(2){transition-delay:.12s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(3){transition-delay:.19s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(4){transition-delay:.26s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(5){transition-delay:.33s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(6){transition-delay:.40s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *{opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(1){transition-delay:.05s;}
+.stagger-grid.is-visible > *:nth-child(2){transition-delay:.10s;}
+.stagger-grid.is-visible > *:nth-child(3){transition-delay:.15s;}
+.stagger-grid.is-visible > *:nth-child(4){transition-delay:.20s;}
+.stagger-grid.is-visible > *:nth-child(5){transition-delay:.25s;}
+.stagger-grid.is-visible > *:nth-child(6){transition-delay:.30s;}
 .img-zoom{overflow:hidden;}
 .img-zoom img{transition:transform .7s var(--ease-soft);}
 .img-zoom:hover img{transform:scale(1.06);}
@@ -191,17 +192,36 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .archive-tab-toc-item.is-active .num{color:var(--crimson);}
 @media (max-width:960px){.archive-tab{display:none;}}
 
+
 /* FACULTY GRID */
-.faculty-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,32px);}
-.faculty-card{border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease);background:var(--white);}
-.faculty-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(34,41,95,.1);}
+.faculty-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;}
+.faculty-card{flex:0 0 calc((100% - 64px) / 5);border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--white);animation:cardReveal linear both;animation-timeline:view();animation-range:entry 0% entry 100%;}
+.faculty-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(34,41,95,.1);}
 .faculty-card-img{width:100%;aspect-ratio:3/4;object-fit:cover;background:var(--sky-tint);}
-.faculty-card-body{padding:clamp(20px,2.5vw,28px);}
-.faculty-card-name{font-family:var(--font-display);font-weight:700;font-size:clamp(16px,1.4vw,19px);color:var(--navy);margin-bottom:4px;}
-.faculty-card-title{font-size:13px;color:var(--crimson);font-weight:600;margin-bottom:8px;}
-.faculty-card-bio{font-size:14px;line-height:1.6;color:var(--ink-soft);}
-@media (max-width:960px){.faculty-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:600px){.faculty-grid{grid-template-columns:1fr;}}
+.faculty-card-body{padding:14px 16px 16px;}
+.faculty-card-name{font-family:var(--font-display);font-weight:700;font-size:13px;color:var(--navy);margin-bottom:2px;line-height:1.3;}
+.faculty-card-title{font-size:11px;color:var(--crimson);font-weight:600;margin-bottom:0;line-height:1.35;}
+.faculty-card-bio{font-size:13px;line-height:1.6;color:var(--ink-soft);}
+@keyframes cardReveal{from{opacity:0;transform:translateY(40px) scale(.96);}to{opacity:1;transform:translateY(0) scale(1);}}
+@media (max-width:1100px){.faculty-card{flex:0 0 calc((100% - 48px) / 4);}}
+@media (max-width:860px){.faculty-card{flex:0 0 calc((100% - 32px) / 3);}}
+@media (max-width:600px){
+  @keyframes cardReveal{from{opacity:1;transform:none;}to{opacity:1;transform:none;}}
+  #team .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scrollbar-width:none;}
+  #team .wrap::-webkit-scrollbar{display:none;}
+  .faculty-grid{justify-content:flex-start!important;padding-bottom:16px;}
+  .faculty-card{flex:0 0 160px;scroll-snap-align:start;}
+  .faculty-card-body{padding:10px 12px 12px;}
+  .faculty-card-name{font-size:12px;}
+  .faculty-card-title{font-size:10px;}
+}
+
+/* DEAN CARD RESPONSIVE */
+@media (max-width:700px){
+  #overview .wrap>[style*="display:flex"][style*="border-radius:16px"]{flex-direction:column;}
+  #overview [style*="flex:0 0 260px"]{flex:0 0 auto!important;width:100%!important;padding:32px 24px!important;}
+  #overview [style*="flex:0 0 260px"] img{width:120px!important;height:120px!important;}
+}
 
 @media (max-width:760px){
   .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
@@ -276,14 +296,14 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 <body>
 
 <div class="aus-preloader" id="preloader">
-  <img class="aus-preloader-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+  <img loading="lazy" decoding="async" class="aus-preloader-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
   <div class="aus-preloader-bar"></div>
 </div>
 
 <nav class="aus-nav" id="nav">
   <a href="aus-home-demo.html" class="aus-wordmark" aria-label="AUS Business School — home">
-    <img class="logo-white" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
-    <img class="logo-color" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a558e03f97cbda4768f37bb_aus-logo.avif" alt="AUS Business School">
+    <img loading="lazy" decoding="async" class="logo-white" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+    <img loading="lazy" decoding="async" class="logo-color" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a558e03f97cbda4768f37bb_aus-logo.avif" alt="AUS Business School">
   </a>
   <div class="aus-nav-links">
     <button type="button" data-open-panel="programs">Programs</button>
@@ -307,7 +327,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   <div class="side-panel-backdrop" id="sidePanelBackdrop"></div>
   <aside class="side-panel-canvas">
     <div class="side-panel-head">
-      <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+      <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
       <button class="side-panel-close" id="sidePanelClose" aria-label="Close menu"><span></span></button>
     </div>
     <nav class="side-panel-nav">
@@ -370,6 +390,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
           <a href="aus-accreditations.html">Accreditations &amp; Memberships</a>
           <a href="aus-governance.html">Governance</a>
           <a href="aus-faq.html">FAQ</a>
+            <a href="aus-rights-policy.html">Policies and Procedures</a>
             <a href="aus-ibm-collaboration.html">IBM Collaboration</a>
           <a href="#" style="display:none">Accreditations_TEMP &amp; Memberships</a>
             
@@ -382,7 +403,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
           <div class="accordion-group">
             <a href="#">Campus &amp; Housing</a>
             <a href="#">Clubs &amp; Activities</a>
-            <a href="#">Events</a>
+            
           </div>
         </div></div>
       </div>
@@ -393,9 +414,9 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     <div class="side-panel-foot">
       <a href="https://study.aus.swiss/application" class="hero-cta">Apply now &rarr;</a>
       <div class="side-panel-socials footer-social-grid">
-        <a class="footer-social-tile" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.62.07 4.81s-.01 3.56-.07 4.81c-.15 3.23-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07-3.2 0-3.6 0-4.85-.07-3.26-.15-4.77-1.69-4.92-4.92-.06-1.25-.07-1.62-.07-4.81s.01-3.56.07-4.81c.15-3.23 1.66-4.77 4.92-4.92 1.25-.06 1.6-.07 4.85-.07zm0-2.2c-3.27 0-3.67 0-4.95.08-4.3.2-6.78 2.68-6.98 6.98-.08 1.28-.08 1.68-.08 4.95s0 3.67.08 4.95c.2 4.3 2.68 6.78 6.98 6.98 1.28.08 1.68.08 4.95.08s3.67 0 4.95-.08c4.3-.2 6.78-2.68 6.98-6.98.08-1.28.08-1.68.08-4.95s0-3.67-.08-4.95c-.2-4.3-2.68-6.78-6.98-6.98-1.28-.08-1.68-.08-4.95-.08zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.4-11.85a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg></a>
-        <a class="footer-social-tile" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0z"/></svg></a>
-        <a class="footer-social-tile" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46v-7.2a8.16 8.16 0 005.58 2.18v-3.45a4.85 4.85 0 01-3.59-1.59V6.69h3.59z"/></svg></a>
+        <a class="footer-social-tile" href="https://www.instagram.com/aus.swiss/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.62.07 4.81s-.01 3.56-.07 4.81c-.15 3.23-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07-3.2 0-3.6 0-4.85-.07-3.26-.15-4.77-1.69-4.92-4.92-.06-1.25-.07-1.62-.07-4.81s.01-3.56.07-4.81c.15-3.23 1.66-4.77 4.92-4.92 1.25-.06 1.6-.07 4.85-.07zm0-2.2c-3.27 0-3.67 0-4.95.08-4.3.2-6.78 2.68-6.98 6.98-.08 1.28-.08 1.68-.08 4.95s0 3.67.08 4.95c.2 4.3 2.68 6.78 6.98 6.98 1.28.08 1.68.08 4.95.08s3.67 0 4.95-.08c4.3-.2 6.78-2.68 6.98-6.98.08-1.28.08-1.68.08-4.95s0-3.67-.08-4.95c-.2-4.3-2.68-6.78-6.98-6.98-1.28-.08-1.68-.08-4.95-.08zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.4-11.85a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg></a>
+        <a class="footer-social-tile" href="https://www.linkedin.com/school/aus-swiss/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0z"/></svg></a>
+        <a class="footer-social-tile" href="https://www.tiktok.com/@aus.swiss" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46v-7.2a8.16 8.16 0 005.58 2.18v-3.45a4.85 4.85 0 01-3.59-1.59V6.69h3.59z"/></svg></a>
       </div>
     </div>
   </aside>
@@ -410,7 +431,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 
 <header class="hero">
   <div class="hero-bg">
-    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1800&auto=format&fit=crop&q=80" alt="Classroom" class="parallax" data-speed="0.12">
+    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1800&auto=format&fit=crop&q=80" alt="Classroom" class="parallax" data-speed="0.12">
   </div>
   <div class="hero-inner">
     <div class="hero-badge" style="margin-bottom:clamp(14px,1.6vw,22px);">
@@ -426,7 +447,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 <!-- MOBILE HERO -->
 <div class="hero-mobile">
   <div class="hero-mob-img">
-    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1800&auto=format&fit=crop&q=80" alt="Classroom">
+    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1800&auto=format&fit=crop&q=80" alt="Classroom">
   </div>
   <div class="hero-mob-content">
     <span class="hero-mob-badge">About AUS</span>
@@ -444,19 +465,39 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   </div>
 </div>
 
-<!-- FACULTY OVERVIEW -->
-<section id="overview" data-chapter="01" data-chapter-label="Overview" style="padding:clamp(60px,8vw,100px) 0;">
+<!-- FACULTY OVERVIEW -- Dean -->
+<section id="overview" data-chapter="01" data-chapter-label="Our Faculty" style="padding:clamp(60px,8vw,100px) 0;">
   <div class="wrap">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center;">
-      <div class="reveal">
-        <span class="eyebrow">Academic Excellence</span>
-        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">Meet Our Faculty</h2>
-        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);margin-bottom:16px;">Our faculty brings together distinguished academics and seasoned industry professionals from around the world. With diverse backgrounds in business, finance, marketing, and leadership, they deliver a learning experience that bridges theory and practice.</p>
-        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);">Every instructor at AUS is committed to small-class engagement, mentorship, and preparing students for real-world challenges in international business.</p>
+    <div style="text-align:center;margin-bottom:clamp(40px,5vw,64px);" class="reveal">
+      <span class="eyebrow">Program Description</span>
+      <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 0;">Get to know our faculty</h2>
+    </div>
+    <div style="display:flex;align-items:stretch;gap:0;background:var(--white);border-radius:16px;border:1px solid var(--line);overflow:hidden;max-width:900px;margin:0 auto;" class="reveal d1">
+      <div style="flex:0 0 260px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;padding:40px 32px;">
+        <img loading="eager" decoding="async" width="180" height="180" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a7e516c4716a23ae224_69beef82cd2cb66ca7df0b26_5.png" alt="Dean Dr. Dominic Szambowski" style="width:180px;height:180px;border-radius:50%;object-fit:cover;">
       </div>
-      <div style="position:relative;" class="reveal-scale">
-        <div style="border-radius:12px;overflow:hidden;position:relative;z-index:1;box-shadow:0 30px 60px rgba(34,41,95,.12);">
-          <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&auto=format&fit=crop&q=80" alt="Faculty collaboration" style="width:100%;height:clamp(300px,30vw,480px);object-fit:cover;">
+      <div style="flex:1;padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;justify-content:center;">
+        <span class="eyebrow" style="margin-bottom:8px;">Leadership</span>
+        <h3 style="font-family:var(--font-serif);font-weight:700;font-size:clamp(20px,2vw,28px);color:var(--navy);margin:0 0 4px;">Dean Dr. Dominic Szambowski</h3>
+        <div style="font-size:14px;color:var(--crimson);font-weight:600;margin-bottom:12px;">Executive Dean</div>
+        <a href="https://www.linkedin.com/in/dominic-szambowski-1615952/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-soft);text-decoration:none;margin-bottom:16px;transition:color .2s;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"><path fill="#0A66C2" d="M20.45 20.45H16.89V14.87C16.89 13.54 16.86 11.83 15.03 11.83C13.17 11.83 12.89 13.28 12.89 14.77V20.45H9.33V9H12.75V10.56H12.8C13.28 9.66 14.43 8.72 16.16 8.72C19.76 8.72 20.45 11.09 20.45 14.18V20.45ZM5.31 7.43C4.17 7.43 3.25 6.51 3.25 5.37C3.25 4.23 4.17 3.31 5.31 3.31C6.45 3.31 7.37 4.23 7.37 5.37C7.37 6.51 6.45 7.43 5.31 7.43ZM7.09 20.45H3.53V9H7.09V20.45ZM22 1H2C1.45 1 1 1.45 1 2V22C1 22.55 1.45 23 2 23H22C22.55 23 23 22.55 23 22V2C23 1.45 22.55 1 22 1Z"></path></svg>
+          Connect on LinkedIn
+        </a>
+        <p style="font-size:14px;line-height:1.7;color:var(--ink-soft);margin:0 0 20px;">When you become an AUS student, you step into a new role, joining a team of driven, diverse professionals from every continent, several languages and cultures.</p>
+        <div style="display:flex;gap:clamp(20px,3vw,36px);flex-wrap:wrap;">
+          <div style="min-width:80px;">
+            <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(24px,2.5vw,32px);color:var(--navy);line-height:1;">7</div>
+            <div style="font-size:12px;color:var(--ink-soft);line-height:1.4;margin-top:4px;">Years average<br>professional exp.</div>
+          </div>
+          <div style="min-width:80px;">
+            <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(24px,2.5vw,32px);color:var(--navy);line-height:1;">40+</div>
+            <div style="font-size:12px;color:var(--ink-soft);line-height:1.4;margin-top:4px;">Students<br>Recommend</div>
+          </div>
+          <div style="min-width:80px;">
+            <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(24px,2.5vw,32px);color:var(--navy);line-height:1;">7:1</div>
+            <div style="font-size:12px;color:var(--ink-soft);line-height:1.4;margin-top:4px;">Faculty<br>nationalities</div>
+          </div>
         </div>
       </div>
     </div>
@@ -464,57 +505,198 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 </section>
 
 <!-- FACULTY GRID -->
-<section id="team" data-chapter="02" data-chapter-label="Team" style="padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);">
+<section id="team" data-chapter="02" data-chapter-label="Faculty Directory" style="padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);">
   <div class="wrap">
-    <span class="eyebrow reveal">Our Team</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 clamp(32px,4vw,48px);">Academic Faculty</h2>
-    <div class="stagger-grid faculty-grid">
+    <span class="eyebrow reveal">Discover</span>
+    <h2 class="reveal" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 clamp(32px,4vw,48px);">AUS Faculty</h2>
+    <div class="faculty-grid">
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a7e516c4716a23ae224_69beef82cd2cb66ca7df0b26_5.png" alt="Dr. M. El Khansa">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569aa0c760068ebbf96511_69f9ab49f650b67fcea29ec8_Vittoria%2520Gambirasi%252016.9%2520-%25202560%2520x%25201440.png" alt="Vittoria Gambirasi">
         <div class="faculty-card-body">
-          <div class="faculty-card-name">Dr. M. El Khansa</div>
-          <div class="faculty-card-title">President &amp; Professor</div>
-          <div class="faculty-card-bio">Over 30 years of leadership in international education. PhD in Business Administration.</div>
+          <div class="faculty-card-name">Vittoria Gambirasi</div>
+          <div class="faculty-card-title">AI, Marketing and Organizational Transformation</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569aa0c760068ebbf96511_69f9ab49f650b67fcea29ec8_Vittoria%2520Gambirasi%252016.9%2520-%25202560%2520x%25201440.png" alt="Dr. S. Martin">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a9fc760068ebbf96409_69bef736ddd9b676349c9b7e_9.png" alt="Sandro Guidetti">
         <div class="faculty-card-body">
-          <div class="faculty-card-name">Dr. S. Martin</div>
-          <div class="faculty-card-title">Dean of Faculty &amp; Professor of Finance</div>
-          <div class="faculty-card-bio">Former investment banker with 20 years in international finance. PhD in Finance, CFA charterholder.</div>
+          <div class="faculty-card-name">Sandro Guidetti</div>
+          <div class="faculty-card-title">Aviation</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a9fc760068ebbf96409_69bef736ddd9b676349c9b7e_9.png" alt="Prof. A. Rossi">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a9d3637b5653ad0e543_69df6aaf41d781ac209c2d06_Prof.%2520Natan%2520Zimenkov%2520mobile.png" alt="Prof. Natan Zimenkov">
         <div class="faculty-card-body">
-          <div class="faculty-card-name">Prof. A. Rossi</div>
-          <div class="faculty-card-title">Professor of Marketing</div>
-          <div class="faculty-card-bio">Award-winning marketing strategist. Former VP at L'Oreal. MBA from INSEAD.</div>
+          <div class="faculty-card-name">Prof. Natan Zimenkov</div>
+          <div class="faculty-card-title">Economics and Financial Management</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a9d3637b5653ad0e543_69df6aaf41d781ac209c2d06_Prof.%2520Natan%2520Zimenkov%2520mobile.png" alt="Dr. J. Chen">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a9c457e5624d53b9ac0_69c10597949f161bd02377a5_21.B%2520(3).png" alt="Prof. Artur Decurtins">
         <div class="faculty-card-body">
-          <div class="faculty-card-name">Dr. J. Chen</div>
-          <div class="faculty-card-title">Professor of Data Analytics</div>
-          <div class="faculty-card-bio">AI and machine learning specialist. Published 40+ research papers. PhD in Computer Science.</div>
+          <div class="faculty-card-name">Prof. Artur Decurtins</div>
+          <div class="faculty-card-title">Swiss Law</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a9c457e5624d53b9ac0_69c10597949f161bd02377a5_21.B%2520(3).png" alt="Dr. L. Amiri">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a9af59c2869f813dec6_69bef0fa869a6d35000651e2_2.png" alt="Naggib Chakhane">
         <div class="faculty-card-body">
-          <div class="faculty-card-name">Dr. L. Amiri</div>
-          <div class="faculty-card-title">Professor of International Business</div>
-          <div class="faculty-card-bio">Former World Bank consultant. Expert in emerging markets and cross-cultural management. PhD in Economics.</div>
+          <div class="faculty-card-name">Naggib Chakhane</div>
+          <div class="faculty-card-title">Leadership</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a9af59c2869f813dec6_69bef0fa869a6d35000651e2_2.png" alt="Prof. R. Keller">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a99d522db9944947628_69bef62d5fdfdb88cf06d74c_7.png" alt="Sanja Fabrio">
         <div class="faculty-card-body">
-          <div class="faculty-card-name">Prof. R. Keller</div>
-          <div class="faculty-card-title">Professor of Hospitality Management</div>
-          <div class="faculty-card-bio">25 years in luxury hospitality. Former GM at Four Seasons. MBA from Cornell.</div>
+          <div class="faculty-card-name">Sanja Fabrio</div>
+          <div class="faculty-card-title">Adjunct Professor</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a987c388a8f5ec2e177_69bef74ebd86dbd41565aa6f_10.png" alt="Katarzyna Grzesik-Harz">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Katarzyna Grzesik-Harz</div>
+          <div class="faculty-card-title">Executive Leadership, and Psychology of Leadership</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a962dce41b19c4c6e0c_69bef6cffa140d1d97517974_8.png" alt="Robert Fontaine">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Robert Fontaine</div>
+          <div class="faculty-card-title">Blockchain Specialist</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a9591b80c8814ae975e_69befa9be2cb9ad1345d16c9_17.png" alt="Philippe Meyer">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Philippe Meyer</div>
+          <div class="faculty-card-title">Aviation</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a94b7d209d9c9362cad_69bef29645d89be974d58cee_6.png" alt="Humbert Costas Garcia">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Humbert Costas Garcia</div>
+          <div class="faculty-card-title">Aviation Safety and Quality and Operations Planning</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a9297ab7eadd2614efe_69c1058d7557b3e10be079bb_21.B%2520(4).png" alt="Dr. Suzanne Rosselet">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. Suzanne Rosselet</div>
+          <div class="faculty-card-title">Competitive Strategy, Global Competitiveness &amp; Sustainable Development</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a900d1b31fb851932a7_69bef89114387891f1f3e4b5_12.png" alt="Dr. Sajal Kabiraj">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. Sajal Kabiraj</div>
+          <div class="faculty-card-title">Strategic Management Consulting</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a8f25730dd0e28c82af_69bef0274b3985aa035bb2c3_1.png" alt="Dr. Ruby Bakshi Khurdi">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. Ruby Bakshi Khurdi</div>
+          <div class="faculty-card-title">Human Resource Management &amp; Communications</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a8e93ea36e79de9e936_69befb06744f5a0f2cc5b957_18.png" alt="Dr. Olivier Naray">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. Olivier Naray</div>
+          <div class="faculty-card-title">International Business, Trade Policy, and Economic Diplomacy</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a8d2500c0449d6168ae_69befb83e5e030b196beb590_19.png" alt="Dr. Natalia Raksha">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. Natalia Raksha</div>
+          <div class="faculty-card-title">Strategic Management, Leadership</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a8b080f9965a12636fd_69bef1630a688a4b23f3c611_4.png" alt="Dr. Mwata Chisha">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. Mwata Chisha</div>
+          <div class="faculty-card-title">Human Resource Management &amp; Economics</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a890d1b31fb851930ef_69befbcde4e9d6006ab3b93b_20.png" alt="Dr. Mario Saba">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. Mario Saba</div>
+          <div class="faculty-card-title">Finance, Banking, and Financial Markets</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a887108608651e6344f_69befa25300aa0b9c971967b_16.png" alt="Dr. Laure Matsoukis">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. Laure Matsoukis</div>
+          <div class="faculty-card-title">Finance</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a866d5a0a06a1957d7e_69bef9c6903e2b6992d9ee05_15.png" alt="Dr. Haruka Marufuji">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. Haruka Marufuji</div>
+          <div class="faculty-card-title">International Management, Cross-cultural Communication, and Asian Business</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a846bae73d154905602_69befcffaff16ece53af7811_23.png" alt="Dr. Haitao Zhang">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. Haitao Zhang</div>
+          <div class="faculty-card-title">Finance, Accounting, and International Business Management</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a83d5db028aec4e397a_69befc96a77ccc7dae438f55_22.png" alt="Dr. Fereshteh Vahidi">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. Fereshteh Vahidi</div>
+          <div class="faculty-card-title">Supply chain management &amp; analytical</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a816d5a0a06a1957be2_69bef9004605363c66251d61_13.png" alt="Dr. Eleanor T. Khonje">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. Eleanor T. Khonje</div>
+          <div class="faculty-card-title">Associate Professor</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a7e516c4716a23ae224_69beef82cd2cb66ca7df0b26_5.png" alt="Dr. Dominic Szambowski">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. Dominic Szambowski</div>
+          <div class="faculty-card-title">Executive Dean</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a7dd86c999a2c0c07a0_69bef96a7d5cd3d6d700960a_14.png" alt="Dr. Dmytro Kylymnyuk">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. Dmytro Kylymnyuk</div>
+          <div class="faculty-card-title">Microeconomics and Game Theory</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a7a4617b31b05dcd969_69befc4b427183d533c525ab_21.png" alt="Dr. Attila Shelley">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. Attila Shelley</div>
+          <div class="faculty-card-title">International management</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a7856d35dabdbccf732_69bef0537da20ad502121cc9_3.png" alt="Dr. Alessandro Bianchi">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. Alessandro Bianchi</div>
+          <div class="faculty-card-title">Global Strategic Leadership</div>
+        </div>
+      </div>
+      <div class="faculty-card tilt-card">
+        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a776d5a0a06a19573f1_69bef878d1c03ce6b41950c7_11.png" alt="Dr. Haluk Haksal">
+        <div class="faculty-card-body">
+          <div class="faculty-card-name">Dr. Haluk Haksal</div>
+          <div class="faculty-card-title">Economic Development and Sustainability</div>
         </div>
       </div>
     </div>
@@ -538,7 +720,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   <div class="wrap">
     <div class="footer-top">
       <div>
-        <img class="footer-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
+        <img loading="lazy" decoding="async" class="footer-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
         <p>American Institute of Applied Sciences. Modern heritage, built for the leaders business hasn't met yet.</p>
         <div class="footer-social-title footer-col-title">#AUSmoments on</div>
         <div class="footer-social-grid">
@@ -549,8 +731,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
           <a class="footer-social-tile" href="https://www.youtube.com/channel/UCKUFsoxwPuaH8bi0vMoSTaQ" target="_blank" aria-label="YouTube"><svg viewBox="0 0 22 22" fill="none"><path fill="none" d="M2.29167 15.5833C1.65131 12.5613 1.65131 9.43867 2.29167 6.41667C2.37581 6.10977 2.53838 5.83007 2.7634 5.60506C2.98841 5.38004 3.26812 5.21747 3.57501 5.13333C8.4915 4.31884 13.5085 4.31884 18.425 5.13333C18.7319 5.21747 19.0116 5.38004 19.2366 5.60506C19.4616 5.83007 19.6242 6.10977 19.7083 6.41667C20.3487 9.43867 20.3487 12.5613 19.7083 15.5833C19.6242 15.8902 19.4616 16.1699 19.2366 16.3949C19.0116 16.62 18.7319 16.7825 18.425 16.8667C13.5085 17.6813 8.49149 17.6813 3.57501 16.8667C3.26812 16.7825 2.98841 16.62 2.7634 16.3949C2.53838 16.1699 2.37581 15.8902 2.29167 15.5833Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" d="M9.16663 13.75L13.75 11L9.16663 8.25V13.75Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
-            <div class="footer-col"><div class="footer-col-title">Programs</div><a href="aus-programs.html#bachelor">Bachelors</a><a href="aus-programs.html#master">Masters</a><a href="aus-programs.html#doctorate">Doctorate</a><a href="aus-programs.html#doctorate">Federal Diploma</a><div style="margin-top:14px;"></div><div class="footer-col-title" style="margin-top:6px;">Connect</div><a href="aus-admissions.html">Admissions</a><a href="#">Events</a><a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24">Contact</a></div>
-      <div class="footer-col"><div class="footer-col-title">School</div><a href="aus-about.html">About</a><a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a><a href="aus-accreditations.html">Accreditations &amp; Memberships</a><a href="aus-governance.html">Governance</a><a href="aus-faq.html">FAQ</a><a href="aus-speaker-series.html">Campus life</a></div>
+            <div class="footer-col"><div class="footer-col-title">Programs</div><a href="aus-programs.html#bachelor">Bachelors</a><a href="aus-programs.html#master">Masters</a><a href="aus-programs.html#doctorate">Doctorate</a><a href="aus-programs.html#doctorate">Federal Diploma</a><div style="margin-top:14px;"></div><div class="footer-col-title" style="margin-top:6px;">Connect</div><a href="aus-admissions.html">Admissions</a><a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24">Contact</a></div>
+      <div class="footer-col"><div class="footer-col-title">School</div><a href="aus-about.html">About</a><a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a><a href="aus-accreditations.html">Accreditations &amp; Memberships</a><a href="aus-governance.html">Governance</a><a href="aus-faq.html">FAQ</a><a href="aus-campus-life.html">Campus Life</a></div>
       <div class="footer-col"><div class="footer-col-title">For AUS Students</div><a href="https://search.ebscohost.com/login.aspx" target="_blank" rel="noopener">E-Library</a><a href="https://openstax.org/" target="_blank" rel="noopener">OpenStax</a><a href="https://www.oecd.org/en/publications.html" target="_blank" rel="noopener">OECD Publications</a></div>
     </div>
     <div class="footer-v2_bottom">
@@ -564,8 +746,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 AUS Business School. All rights reserved.</span>
-      <span><a href="aus-rights-policy.html">Privacy Policy</a></span>
-    </div>
+      </div>
   </div>
 </footer>
 
@@ -744,11 +925,12 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     {title:"What is the Institution Code of AUS?",url:"aus-faq.html?q=What%20is%20the%20Institution%20Code%20of%20AUS%3F",cat:"FAQ",keys:"What is the Institution Code of AUS? Facility code: 21001578 — View on VA website →"},
     {title:"How do I apply for VA benefits at AUS?",url:"aus-faq.html?q=How%20do%20I%20apply%20for%20VA%20benefits%20at%20AUS%3F",cat:"FAQ",keys:"How do I apply for VA benefits at AUS? 1) Submit your application 120 days before departure. 2) Provide your Certificate of Eligibility (COE) to AUS’s Certifying Official, who submits VA Form 22-1999. 3) Prepare funds, housing, travel and insurance. 4) Grant written permission for AUS to share info with the VA. 5) For multi-year attendance, notify 120 days before re-enrollment. Full guide →"},
     {title:"What if I need more help with my GI Bill?",url:"aus-faq.html?q=What%20if%20I%20need%20more%20help%20with%20my%20GI%20Bill%3F",cat:"FAQ",keys:"What if I need more help with my GI Bill? Contact VA: Ask VA online , or call 888-442-4551 (US, TTY:711) Mon–Fri 8am–7pm ET, or +1-918-781-5678 from outside the US. Also find a VA regional office ."},
-    {title:"Privacy Policy",url:"aus-rights-policy.html",cat:"About",keys:"Policies Privacy GDPR data protection FADP institutional policies AUS audit assessment credit transfer continuous professional development internship program management staff performance scholarships admissions recognition prior learning teaching learning staff leave quality assurance equality diversity risk management student agreement code of conduct disciplinary student finance staffing attendance personal data"},
+    {title:"Policies and Procedures",url:"aus-rights-policy.html",cat:"About",keys:"Policies Privacy GDPR data protection FADP institutional policies AUS audit assessment credit transfer continuous professional development internship program management staff performance scholarships admissions recognition prior learning teaching learning staff leave quality assurance equality diversity risk management student agreement code of conduct disciplinary student finance staffing attendance personal data"},
     {title:"IBM Collaboration",url:"aus-ibm-collaboration.html",cat:"About",keys:"About AUS IBM Collaboration Empowering students with industry-recognized skills through our partnership with IBM. Scroll About AUS IBM Collaboration Empowering students with industry-recognized skills through our partnership with IBM. Home / About / IBM Collaboration AUS and IBM A Partnership Built on Innovation AUS has partnered with IBM to provide students with access to cutting-edge technology skills and industry-recognized certifications. Through the IBM SkillsBuild platform and our collaboration, students gain practical competencies that employers actively seek. IBM SkillsBuild Access free IBM training courses covering AI, cloud computing, data science, cybersecurity, and more through the IBM SkillsBuild platform. Industry Certifications Earn verified digital credentials in high-demand technology areas that complement your business degree. Practical Skills Develop technical competencies alongside your business education, making you a more versatile and competitive graduate. Career Advantage Join a network of IBM-skilled professionals and gain access to exclusive career opportunities. Certifications Available Cybersecurity Learn to protect systems, networks, and data from digital attacks. Data Analytics Master the tools and techniques to analyze complex datasets. Generative AI Explore the fundamentals of AI and large language models. Cloud Computing Build and deploy applications on cloud platforms. What is Next Start Your IBM Journey Combine business expertise with technology skills. Apply for Admission ?"}
     ,{title:"Cost Calculator",url:"aus-cost-calculator.html",cat:"Tools",keys:"Cost Calculator Plan Your AUS Investment Estimate tuition living costs Switzerland Program Scholarship Accommodation Monthly expenses Visa Permit Calculate Expenses Financial planning budget"}
 ,
-    {title:"AUS Speaker Series",url:"aus-speaker-series.html",cat:"Campus Life",keys:"AUS Speaker Series Industry experts networking with AUS students Monthly seminars lectures leading experts Commencement speakers Industrial visits Campus Life"}];
+    {title:"AUS Speaker Series",url:"aus-speaker-series.html",cat:"Campus Life",keys:"AUS Speaker Series Industry experts networking with AUS students Monthly seminars lectures leading experts Commencement speakers Industrial visits Campus Life"},
+    {title:"Campus Life",url:"aus-campus-life.html",cat:"Campus Life",keys:"Campus Life Embrace Life in Switzerland AUS inclusive multicultural campus personalized education sports extra-curricular activities La Tour-de-Peilz Swiss Riviera Student events Welcome Week diversity celebrations guest speakers field trips coached sports social events Accommodation career support living in Switzerland campus facilities student visa health insurance"}];
   // allow pages to extend idx via window.AUS_SEARCH_EXTRA
   if(window.AUS_SEARCH_EXTRA && Array.isArray(window.AUS_SEARCH_EXTRA)){ idx = idx.concat(window.AUS_SEARCH_EXTRA); }
   var input=document.getElementById("siteSearchInput");
@@ -827,14 +1009,12 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   var popup=document.getElementById('ausPopup');
   var closeBtn=document.getElementById('ausPopupClose');
   if(!popup||!closeBtn) return;
-  try{ if(sessionStorage.getItem('aus-popup-dismissed')==='1') return; }catch(e){}
+  try{ if(localStorage.getItem('aus-popup-seen')==='1') return; }catch(e){}
 
   function startPopupTimer(){
-    var delay=10000+Math.random()*4000;
     setTimeout(function(){
       popup.classList.add('is-visible');
-      document.body.style.overflow='hidden';
-    }, delay);
+    },8000);
   }
 
   var preloader=document.getElementById('preloader');
@@ -852,12 +1032,11 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 
   function dismiss(){
     popup.classList.remove('is-visible');
-    document.body.style.overflow='';
-    try{ sessionStorage.setItem('aus-popup-dismissed','1'); }catch(e){}
+    try{ localStorage.setItem('aus-popup-seen','1'); }catch(e){}
   }
   closeBtn.addEventListener('click',dismiss);
   popup.addEventListener('click',function(e){if(e.target===popup)dismiss();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')dismiss();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&popup.classList.contains('is-visible'))dismiss();});
 })();</script>
 </body>
 </html>
