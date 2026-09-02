@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Healthcare Administration — Masters Degree | AUS Business School</title>
+<title>AUS Collaboration with Tiffin University | AUS Business School</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -89,6 +89,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 /* EYEBROW */
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
 .eyebrow.on-navy{color:rgba(255,255,255,.7);}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:6px 14px 6px 6px;border-radius:100px;background:rgba(255,255,255,.11);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.16);font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.92);}
+.hero-badge-icon{width:28px;height:28px;border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;color:var(--navy);flex:0 0 auto;}
 
 /* HERO */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy);}
@@ -96,74 +98,36 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .hero-bg img{width:100%;height:100%;object-fit:cover;}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,14,34,.92) 0%,rgba(12,14,34,.5) 40%,rgba(12,14,34,.15) 100%);}
 .hero-inner{position:relative;z-index:1;width:100%;padding:clamp(60px,8vw,100px) clamp(20px,5vw,64px) clamp(40px,6vw,70px);color:var(--white);}
-.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:clamp(16px,2vw,24px);flex-wrap:wrap;}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);padding:6px 14px;border-radius:100px;font-size:12px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.85);}
-.hero-badge svg{width:14px;height:14px;stroke:var(--sky);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-.hero h1{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(48px,8vw,96px);line-height:1;letter-spacing:-.02em;max-width:none;}
-.hero h1 em{font-style:normal;font-weight:800;font-family:var(--font-display);color:var(--white);display:block;}
 .hero-sub{margin-top:clamp(12px,1.5vw,20px);max-width:42ch;font-size:clamp(15px,1.3vw,17px);line-height:1.6;color:rgba(255,255,255,.65);}
-.hero-row{display:flex;align-items:center;gap:clamp(16px,2vw,28px);margin-top:clamp(24px,3vw,40px);flex-wrap:wrap;}
-.hero-cta{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:14px 28px;border-radius:100px;transition:all .3s var(--ease);}
-.hero-cta-primary{color:var(--navy);background:var(--white);border:1px solid var(--white);}
-.hero-cta-secondary{color:var(--white);background:transparent;border:1px solid rgba(255,255,255,.25);}
 .hero-scroll{position:absolute;bottom:clamp(24px,3vw,40px);right:clamp(20px,5vw,64px);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.35);font-size:10px;letter-spacing:.12em;text-transform:uppercase;z-index:2;}
 .hero-scroll::after{content:"";width:1px;height:28px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent);animation:scrollPulse 2s ease-in-out infinite;}
 @keyframes scrollPulse{0%,100%{opacity:.35;}50%{opacity:.7;}}
 @media (max-width:760px){.hero{min-height:auto;}.hero-bg{position:relative;height:50vh;}.hero-inner{padding:clamp(32px,5vw,48px) clamp(20px,5vw,64px);}.hero-scroll{display:none;}}
+
+/* MOBILE HERO */
+.hero-mobile{display:none;}
+@media (max-width:760px){
+  .hero{display:none!important;}
+  .hero-mobile{display:block;background:var(--navy);overflow:hidden;}
+  .hero-mob-img{width:100%;height:40vh;min-height:220px;position:relative;}
+  .hero-mob-img img{width:100%;height:100%;object-fit:cover;}
+  .hero-mob-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,14,34,.2) 0%,rgba(12,14,34,.85) 100%);}
+  .hero-mob-content{padding:clamp(20px,5vw,32px) clamp(16px,4vw,24px) clamp(24px,6vw,40px);color:var(--white);}
+  .hero-mob-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);padding:5px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.85);margin-bottom:clamp(10px,2vw,16px);}
+  .hero-mob-content h1{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,9vw,44px);line-height:1.05;letter-spacing:-.02em;margin-bottom:clamp(8px,1.5vw,12px);}
+  .hero-mob-sub{font-size:clamp(13px,2.6vw,15px);line-height:1.5;color:rgba(255,255,255,.6);margin-bottom:clamp(16px,3vw,24px);}
+  .hero-mob-ctas{display:flex;flex-direction:column;gap:10px;}
+  .hero-mob-ctas .hero-cta{width:100%;justify-content:center;text-align:center;}
+}
+
+/* CTA BUTTONS */
+.hero-cta{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:14px 28px;border-radius:100px;transition:all .3s var(--ease);}
 
 /* BREADCRUMB */
 .breadcrumb{padding:clamp(24px,3vw,40px) 0 clamp(16px,2vw,24px);border-bottom:1px solid var(--line);}
 .breadcrumb a{font-size:14px;color:var(--ink-soft);transition:color .25s var(--ease);}
 .breadcrumb a:hover{color:var(--navy);}
 .breadcrumb span{font-size:14px;color:var(--ink-soft);margin:0 8px;}
-
-/* PROGRAM META */
-.program-meta{padding:clamp(40px,5vw,64px) 0;border-bottom:1px solid var(--line);}
-.meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,40px);margin-top:clamp(24px,3vw,36px);}
-.meta-item{border-left:2px solid var(--sky);padding-left:16px;}
-.meta-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:4px;}
-.meta-value{font-family:var(--font-display);font-weight:700;font-size:clamp(18px,2vw,24px);color:var(--navy);}
-@media (max-width:760px){.meta-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:500px){.meta-grid{grid-template-columns:1fr;}}
-
-/* OVERVIEW */
-.overview{padding:clamp(40px,6vw,70px) 0;}
-.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;margin-top:clamp(32px,4vw,48px);}
-.overview h2{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);line-height:1.15;color:var(--navy);margin-bottom:20px;}
-.overview h2 em{font-weight:700;color:var(--crimson);font-style:italic;}
-.overview p{font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);margin-bottom:16px;}
-.overview-list{list-style:none;margin-top:24px;}
-.overview-list li{padding:12px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--ink);display:flex;align-items:center;gap:10px;}
-.overview-list li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sky);flex-shrink:0;}
-@media (max-width:760px){.overview-grid{grid-template-columns:1fr;}}
-
-/* CURRICULUM */
-.curriculum{padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);}
-.curr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,20px);margin-top:clamp(32px,4vw,48px);}
-.curr-card{background:var(--white);padding:clamp(24px,3vw,32px);border-radius:12px;border:1px solid var(--line);transition:border-color .3s var(--ease),box-shadow .3s var(--ease);cursor:pointer;overflow:visible;}.curr-card:hover{border-color:var(--navy);box-shadow:0 8px 32px rgba(34,41,95,.12);}
-.curr-year{font-family:var(--font-display);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;}
-.curr-card h3{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(18px,1.8vw,22px);color:var(--navy);margin-bottom:10px;}
-.curr-card ul{list-style:none;max-height:0;overflow:hidden;transition:max-height .5s ease,margin .4s ease,opacity .4s ease;margin-top:0;opacity:0;}.curr-card:hover ul{max-height:500px;margin-top:16px;opacity:1;}
-.curr-card li{font-size:13px;line-height:1.6;color:var(--ink-soft);padding:4px 0;border-bottom:1px solid var(--line);}.curr-card li:last-child{border-bottom:none;}
-@media (max-width:760px){.curr-grid{grid-template-columns:1fr;}.curr-card:hover{border-color:var(--line);box-shadow:none;}.curr-card ul{max-height:500px;margin-top:16px;opacity:1;}.curr-card{cursor:default;}}
-
-/* CAREERS */
-.careers{padding:clamp(40px,6vw,70px) 0;}
-.careers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,20px);margin-top:clamp(32px,4vw,48px);}
-.career-card{padding:clamp(24px,3vw,32px);border-radius:4px;background:var(--navy);color:var(--white);}
-.career-card h3{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(18px,1.8vw,22px);margin-bottom:8px;}
-.career-card p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);}
-@media (max-width:760px){.careers-grid{grid-template-columns:1fr;}}
-
-/* ADMISSIONS */
-.admissions{padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);}
-.adm-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;margin-top:clamp(32px,4vw,48px);}
-.adm-req{background:var(--white);padding:clamp(28px,3.5vw,40px);border-radius:4px;border:1px solid var(--line);}
-.adm-req h3{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(18px,1.8vw,22px);color:var(--navy);margin-bottom:16px;}
-.adm-req ul{list-style:none;}
-.adm-req li{font-size:14px;line-height:1.6;color:var(--ink-soft);padding:6px 0;display:flex;align-items:flex-start;gap:8px;}
-.adm-req li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sky);flex-shrink:0;margin-top:7px;}
-@media (max-width:760px){.adm-grid{grid-template-columns:1fr;}}
 
 /* CTA */
 .cta-section{background:var(--navy);color:var(--white);padding:clamp(70px,9vw,120px) 0;text-align:center;position:relative;overflow:hidden;}
@@ -222,59 +186,71 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .js-reveal-ready .reveal.d3{transition-delay:.24s;}
 .js-reveal-ready .reveal.d4{transition-delay:.32s;}
 
-/* CARD HOVER EFFECTS — removed per request */
-
-/* STAT PULSE — removed */
-
-/* OVERVIEW LIST STAGGER — removed per request */
-
-/* CTA GLOW — removed per request */
-
 /* SECTION FADE-IN */
 @keyframes sectionFadeIn{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:none;}}
 .section-animate{animation:sectionFadeIn .8s var(--ease-soft) forwards;}
 
-/* HORIZONTAL SCROLL CURRICULUM */
-.curr-scroll-wrap{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-snap-type:x mandatory;padding-bottom:20px;}
-.curr-scroll-wrap::-webkit-scrollbar{display:none;}
-.curr-scroll{display:flex;align-items:flex-start;gap:clamp(14px,1.6vw,20px);padding:0 clamp(20px,5vw,64px);justify-content:center;}
-.curr-scroll .curr-card{min-width:clamp(280px,30vw,340px);flex-shrink:0;scroll-snap-align:start;background:var(--white);padding:clamp(24px,3vw,32px);border-radius:12px;border:1px solid var(--line);position:relative;align-self:flex-start;}
-.curr-scroll-nav{display:flex;gap:10px;margin-top:20px;justify-content:center;}
-.curr-scroll-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;background:var(--white);transition:all .3s var(--ease);}
-.curr-scroll-btn:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
-.curr-scroll-btn svg{width:18px;height:18px;}
-.term-bar{display:flex;gap:8px;margin:12px 0;}
-.term-bar span{flex:1;height:4px;border-radius:2px;background:var(--crimson);}
-
-/* EXPANDABLE CARDS */
-.expandable{overflow:hidden;transition:max-height .5s var(--ease-soft);}
-.expandable.is-collapsed{max-height:120px;}
-.expandable.is-expanded{max-height:800px;}
-.expand-toggle{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:var(--navy);cursor:pointer;border:none;background:none;padding:8px 0;font-family:inherit;}
-.expand-toggle svg{width:14px;height:14px;transition:transform .3s var(--ease);}
-.expand-toggle.is-open svg{transform:rotate(180deg);}
-
-/* MARQUEE / INFINITE SCROLL */
-.marquee-track{display:flex;gap:40px;animation:marqueeScroll 20s linear infinite;width:max-content;}
-.marquee-track:hover{animation-play-state:paused;}
-@keyframes marqueeScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-
-/* FLOATING ELEMENTS */
-.float-badge{position:absolute;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);padding:10px 18px;border-radius:100px;font-size:13px;font-weight:600;color:var(--navy);box-shadow:0 4px 20px rgba(0,0,0,.08);z-index:3;animation:floatBob 3s ease-in-out infinite;}
-@keyframes floatBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
-
-/* IMAGE STACK */
-.img-stack{position:relative;height:clamp(300px,40vw,420px);}
-.img-stack img{position:absolute;border-radius:6px;box-shadow:0 8px 30px rgba(0,0,0,.12);transition:transform .5s var(--ease-soft);}
-.img-stack img:nth-child(1){width:65%;height:80%;object-fit:cover;top:0;left:0;z-index:1;}
-.img-stack img:nth-child(2){width:55%;height:70%;object-fit:cover;bottom:0;right:0;z-index:2;transform:rotate(2deg);}
-.img-stack:hover img:nth-child(1){transform:rotate(-2deg) translateX(-8px);}
-.img-stack:hover img:nth-child(2){transform:rotate(0deg) translateX(8px);}
-
 /* STAT COUNTER */
 .counter{font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,56px);color:var(--navy);line-height:1;}
 
-/* CURSOR FOLLOWER — removed */
+/* REVEAL SYSTEM */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
+.reveal.is-visible{opacity:1;transform:translateY(0);}
+.reveal.d1{transition-delay:.1s;}.reveal.d2{transition-delay:.2s;}.reveal.d3{transition-delay:.3s;}.reveal.d4{transition-delay:.4s;}.reveal.d5{transition-delay:.5s;}
+
+/* SCALE REVEAL */
+.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
+.reveal-scale.is-visible{opacity:1;transform:scale(1);}
+
+/* CLIP REVEAL */
+.reveal-clip{clip-path:inset(100% 0 0 0);transition:clip-path 1s var(--ease-soft);}
+.reveal-clip.is-visible{clip-path:inset(0 0 0 0);}
+
+/* SPLIT TEXT */
+.split-text .word{display:inline-block;opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease-soft),transform .5s var(--ease-soft);}
+.split-text.is-visible .word{opacity:1;transform:translateY(0);}
+
+/* PARALLAX */
+.parallax{will-change:transform;}
+
+/* FLOAT */
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+.float{animation:float 5s ease-in-out infinite;}
+
+/* ROTATE IN */
+@keyframes rotateIn{from{opacity:0;transform:rotate(-8deg) scale(.9);}to{opacity:1;transform:rotate(0) scale(1);}}
+.reveal-rotate{opacity:0;transform:rotate(-8deg) scale(.9);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
+.reveal-rotate.is-visible{opacity:1;transform:rotate(0) scale(1);}
+
+/* MARQUEE */
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.marquee-track{display:flex;width:max-content;animation:marquee 25s linear infinite;}
+.marquee-track:hover{animation-play-state:paused;}
+
+/* LINE DRAW */
+.line-draw{stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset 1.2s var(--ease-soft);}
+.line-draw.is-visible{stroke-dashoffset:0;}
+
+/* STAGGER GRID */
+.stagger-grid > *{opacity:0;transform:translateY(30px);transition:opacity .6s var(--ease-soft),transform .6s var(--ease-soft);}
+.stagger-grid.is-visible > *:nth-child(1){transition-delay:.05s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(2){transition-delay:.12s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(3){transition-delay:.19s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(4){transition-delay:.26s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(5){transition-delay:.33s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(6){transition-delay:.40s;opacity:1;transform:translateY(0);}
+
+/* CARD TILT on hover */
+.tilt-card{transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
+.tilt-card:hover{transform:translateY(-6px) rotate(.5deg);box-shadow:0 20px 50px rgba(34,41,95,.1);}
+
+/* IMAGE HOVER ZOOM */
+.img-zoom{overflow:hidden;}
+.img-zoom img{transition:transform .7s var(--ease-soft);}
+.img-zoom:hover img{transform:scale(1.06);}
+
+/* MAGNETIC BUTTON */
+.mag-btn{position:relative;transition:transform .3s var(--ease);}
 
 @media (hover:none){.prog-card-detail{max-height:120px!important;opacity:1!important;transform:translateY(0)!important;}}
 
@@ -286,83 +262,26 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 @media (max-width:760px){
   .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr)!important;}
   .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,1fr)!important;}
-  .curr-scroll-wrap .curr-scroll{gap:12px;}
-  .curr-scroll-wrap .curr-card{min-width:80vw;flex-shrink:0;}
-  .dual-inner{flex-direction:column;text-align:center;gap:clamp(16px,3vw,24px);}
-  .dual-copy h2{font-size:clamp(20px,5vw,28px);}
-  .dual-copy p{margin:0 auto;}
-  .dual-logos{justify-content:center;}
-  [style*="grid-template-columns:repeat(4"][style*="200px"]{grid-template-columns:1fr 1fr!important;grid-template-rows:auto!important;}
-  [style*="grid-template-columns:repeat(4"][style*="200px"]>div{height:auto;}
-  .adm-grid{grid-template-columns:1fr!important;gap:24px;}
-  .testimonial-quote{font-size:clamp(18px,4vw,24px);}
   .cta-section{padding:clamp(40px,6vw,60px) 0;}
   .cta-section h2{font-size:clamp(20px,5vw,30px);}
 }
 
+@media (max-width:960px){
+  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr)!important;}
+  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,1fr)!important;}
+}
+@media (max-width:760px){
+  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
+  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
+  .wrap>[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  .wrap>[style*="grid-template-columns:1fr 1.4fr"]{grid-template-columns:1fr!important;}
+}
 @media (max-width:600px){
   .wrap{padding-left:clamp(16px,4vw,24px);padding-right:clamp(16px,4vw,24px);}
   .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
   .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
-  [style*="grid-template-columns:repeat(4"][style*="200px"]{grid-template-columns:1fr!important;}
-  [style*="grid-template-columns:repeat(4"][style*="200px"]>div{height:auto;}
   .footer-top{grid-template-columns:1fr!important;gap:clamp(20px,4vw,28px);}
 }
-
-/* MOBILE HERO */
-.hero-mobile{display:none;}
-@media (max-width:760px){
-  .hero{display:none!important;}
-  .hero-mobile{display:block;background:var(--navy);overflow:hidden;}
-  .hero-mob-img{width:100%;height:40vh;min-height:220px;position:relative;}
-  .hero-mob-img img{width:100%;height:100%;object-fit:cover;}
-  .hero-mob-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,14,34,.2) 0%,rgba(12,14,34,.85) 100%);}
-  .hero-mob-content{padding:clamp(20px,5vw,32px) clamp(16px,4vw,24px) clamp(24px,6vw,40px);color:var(--white);}
-  .hero-mob-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);padding:5px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.85);margin-bottom:clamp(10px,2vw,16px);}
-  .hero-mob-content h1{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,9vw,44px);line-height:1.05;letter-spacing:-.02em;margin-bottom:clamp(8px,1.5vw,12px);}
-  .hero-mob-sub{font-size:clamp(13px,2.6vw,15px);line-height:1.5;color:rgba(255,255,255,.6);margin-bottom:clamp(16px,3vw,24px);}
-  .hero-mob-ctas{display:flex;flex-direction:column;gap:10px;}
-  .hero-mob-ctas .hero-cta{width:100%;justify-content:center;text-align:center;}
-}
-
-@media (max-width:760px){
-  .curr-scroll{justify-content:flex-start!important;padding-left:clamp(16px,4vw,24px)!important;}
-  .curr-scroll-wrap .curr-scroll{padding-left:clamp(16px,4vw,24px);}
-  .curr-scroll-wrap .curr-scroll::-webkit-scrollbar{display:none;}
-  .curr-scroll-wrap .curr-scroll{scroll-snap-type:x mandatory;}
-  .curr-scroll-wrap .curr-card{scroll-snap-align:start;}
-}
-
-/* ANIMATION SYSTEM */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
-.reveal.is-visible{opacity:1;transform:translateY(0);}
-.reveal.d1{transition-delay:.1s;}.reveal.d2{transition-delay:.2s;}.reveal.d3{transition-delay:.3s;}.reveal.d4{transition-delay:.4s;}.reveal.d5{transition-delay:.5s;}
-.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
-.reveal-scale.is-visible{opacity:1;transform:scale(1);}
-.reveal-clip{clip-path:inset(100% 0 0 0);transition:clip-path 1s var(--ease-soft);}
-.reveal-clip.is-visible{clip-path:inset(0 0 0 0);}
-.reveal-rotate{opacity:0;transform:rotate(-8deg) scale(.9);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
-.reveal-rotate.is-visible{opacity:1;transform:rotate(0) scale(1);}
-.split-text .word{display:inline-block;opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease-soft),transform .5s var(--ease-soft);}
-.split-text.is-visible .word{opacity:1;transform:translateY(0);}
-.parallax{will-change:transform;}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
-.float{animation:float 5s ease-in-out infinite;}
-@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.marquee-track{display:flex;width:max-content;animation:marquee 25s linear infinite;}
-.marquee-track:hover{animation-play-state:paused;}
-.stagger-grid > *{opacity:0;transform:translateY(30px);transition:opacity .6s var(--ease-soft),transform .6s var(--ease-soft);}
-.stagger-grid.is-visible > *:nth-child(1){transition-delay:.05s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(2){transition-delay:.12s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(3){transition-delay:.19s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(4){transition-delay:.26s;opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(5){transition-delay:.33s;opacity:1;transform:translateY(0);}
-.tilt-card{transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
-.tilt-card:hover{transform:translateY(-6px) rotate(.5deg);box-shadow:0 20px 50px rgba(34,41,95,.1);}
-.img-zoom{overflow:hidden;}
-.img-zoom img{transition:transform .7s var(--ease-soft);}
-.img-zoom:hover img{transform:scale(1.06);}
-.mag-btn{position:relative;transition:transform .3s var(--ease);}
 /* SITE SEARCH */
 .aus-search{position:relative;flex:0 1 280px;max-width:32vw;display:flex;align-items:center;}
 .aus-search input{width:100%;padding:10px 38px 10px 14px;border-radius:100px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:var(--white);font-size:13.5px;outline:none;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);}
@@ -410,9 +329,9 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 </div>
 
 <nav class="aus-nav" id="nav">
-  <a href="aus-home-demo.html" class="aus-wordmark" aria-label="AUS Business School — home">
+  <a href="aus-home-demo.html" class="aus-wordmark" aria-label="AUS Business School - home">
     <img loading="lazy" decoding="async" class="logo-white" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
-    <img loading="lazy" decoding="async" class="logo-color" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a558e03f97cbda4768f37bb_aus-logo.avif" alt="AUS Business School">
+    <img loading="lazy" decoding="async" class="logo-color" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
   </a>
   <div class="aus-nav-links">
     <button type="button" data-open-panel="programs">Programs</button>
@@ -494,19 +413,18 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
         <div class="accordion-panel"><div class="accordion-panel-inner">
           <div class="accordion-group">
             <a href="aus-about.html">About AUS</a>
-            <a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a>
-          <a href="aus-accreditations.html">Accreditations &amp; Memberships</a>
-          <a href="aus-governance.html">Governance</a>
-          <a href="aus-faq.html">FAQ</a>
+            <a href="aus-about-history.html">History</a>
+            <a href="aus-about-faculty.html">Faculty</a>
+            <a href="aus-accreditations.html">Accreditations &amp; Memberships</a>
+            <a href="aus-governance.html">Governance</a>
+            <a href="aus-faq.html">FAQ</a>
             <a href="aus-rights-policy.html">Policies and Procedures</a>
             <a href="aus-ibm-collaboration.html">IBM Collaboration</a>
-            <a href="aus-tiffin-collaboration.html">Tiffin University Collaboration</a>
-          <a href="#" style="display:none">Accreditations_TEMP &amp; Memberships</a>
-            
+            <a href="aus-tiffin-collaboration.html" style="font-weight:600;">Tiffin University Collaboration</a>
           </div>
         </div></div>
       </div>
-            <div class="accordion-item" data-panel-key="student-life">
+      <div class="accordion-item" data-panel-key="student-life">
         <button class="accordion-trigger">Campus Life <span class="accordion-icon"></span></button>
         <div class="accordion-panel"><div class="accordion-panel-inner">
           <div class="accordion-group">
@@ -542,22 +460,15 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 <!-- HERO -->
 <header class="hero">
   <div class="hero-bg">
-    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1800&auto=format&fit=crop&q=80" alt="Accounting and finance workspace">
-  </div>
-  <div class="float-badge" style="top:clamp(100px,14vw,180px);right:clamp(20px,5vw,64px);">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-    QS Ranked — 5-Star Teaching
+    <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild3262-3635-4364-a434-656436353736/2148844743_1.jpg" alt="University campus">
   </div>
   <div class="hero-inner">
-    <span class="hero-badge reveal" style="margin-bottom:clamp(12px,1.5vw,20px);">
-      <svg viewBox="0 0 24 24" width="14" height="14"><path d="M22 10v6M2 10l10-5 10 5-10 5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12v5c3 3 9 3 12 0v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      MSc in International Business Administration
-    </span>
-    <h1 class="reveal d1" style="font-size:clamp(56px,10vw,120px);line-height:.95;">Healthcare Administration</h1>
-    <div class="hero-row reveal d2">
-      <a href="https://study.aus.swiss/application" class="hero-cta hero-cta-primary">Start your Application <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      <a href="#" class="hero-cta hero-cta-secondary">Download Brochure</a>
+    <div class="hero-badge" style="margin-bottom:clamp(14px,1.6vw,22px);">
+      <span class="hero-badge-icon"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      Dual Degree Partnership
     </div>
+    <h1 style="font-size:clamp(48px,8vw,96px);line-height:.95;">AUS Collaboration<br>with Tiffin University</h1>
+    <p class="hero-sub">Earn dual degrees from Switzerland and the United States through our partnership with Tiffin University, Ohio.</p>
   </div>
   <div class="hero-scroll">Scroll</div>
 </header>
@@ -565,420 +476,379 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 <!-- MOBILE HERO -->
 <div class="hero-mobile">
   <div class="hero-mob-img">
-    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1800&auto=format&fit=crop&q=80" alt="Healthcare Administration">
+    <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a558e03f97cbda4768f37bb_aus-logo.avif" alt="University campus">
   </div>
   <div class="hero-mob-content">
-    <span class="hero-mob-badge">MSc in International Business Administration</span>
-    <h1>Healthcare Administration</h1>
-    <p class="hero-mob-sub">Two years, six academic terms plus capstone, 83 CH | 135 ECTS.</p>
+    <span class="hero-mob-badge">Dual Degree Partnership</span>
+    <h1>AUS Collaboration with Tiffin University</h1>
+    <p class="hero-mob-sub">Earn dual degrees from Switzerland and the United States through our partnership with Tiffin University, Ohio.</p>
     <div class="hero-mob-ctas">
       <a href="https://study.aus.swiss/application" class="hero-cta hero-cta-primary">Start your Application <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      <a href="#" class="hero-cta hero-cta-secondary">Download Brochure</a>
     </div>
   </div>
 </div>
+
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
   <div class="wrap">
     <a href="aus-home-demo.html">Home</a><span>/</span>
-    <a href="aus-programs.html">Programs</a><span>/</span>
-    <a href="aus-programs.html#master">Masters</a><span>/</span>
-    Healthcare Administration
+    <a href="aus-about.html">About</a><span>/</span>
+    AUS Collaboration with Tiffin University
   </div>
 </div>
 
-<!-- STATS BAR -->
-<section style="padding:clamp(32px,4vw,48px) 0;border-bottom:1px solid var(--line);">
-  <div class="wrap">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,40px);text-align:center;">
-      <div class="reveal">
-        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(32px,4vw,48px);color:var(--navy);line-height:1;"><span class="counter" data-target="7">0</span><span style="font-size:.6em;">:1</span></div>
-        <div style="font-size:13px;color:var(--ink-soft);margin-top:6px;">Student-to-staff ratio</div>
-      </div>
-      <div class="reveal d1">
-        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(32px,4vw,48px);color:var(--navy);line-height:1;"><span class="counter" data-target="94">0</span><span style="font-size:.6em;">%</span></div>
-        <div style="font-size:13px;color:var(--ink-soft);margin-top:6px;">Employed or in Graduate School within six months of graduation</div>
-      </div>
-      <div class="reveal d2">
-        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(32px,4vw,48px);color:var(--navy);line-height:1;"><span class="counter" data-target="40">0</span><span style="font-size:.6em;">+</span></div>
-        <div style="font-size:13px;color:var(--ink-soft);margin-top:6px;">Nationalities</div>
-      </div>
-      <div class="reveal d3">
-        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(32px,4vw,48px);color:var(--navy);line-height:1;"><span class="counter" data-target="850">0</span><span style="font-size:.6em;">+</span></div>
-        <div style="font-size:13px;color:var(--ink-soft);margin-top:6px;">Multinational HQs nearby</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- QUICK FACTS -->
-<section style="padding:clamp(32px,4vw,48px) 0;background:var(--sky-tint);">
-  <div class="wrap">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(34,41,95,.08);border-radius:8px;overflow:hidden;">
-      <div style="background:var(--white);padding:clamp(20px,2.5vw,28px);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Overview</div>
-        <div style="font-weight:700;font-size:15px;color:var(--navy);line-height:1.4;">Master of Science in International Business Administration</div>
-      </div>
-      <div style="background:var(--white);padding:clamp(20px,2.5vw,28px);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">TU Degree</div>
-        <div style="font-weight:700;font-size:15px;color:var(--navy);line-height:1.4;">Master of Business Administration</div>
-      </div>
-      <div style="background:var(--white);padding:clamp(20px,2.5vw,28px);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Specialization</div>
-        <div style="font-weight:700;font-size:15px;color:var(--crimson);line-height:1.4;">Healthcare Administration</div>
-      </div>
-      <div style="background:var(--white);padding:clamp(20px,2.5vw,28px);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Entry Dates</div>
-        <div style="font-weight:700;font-size:15px;color:var(--navy);line-height:1.4;">September, January, April</div>
-      </div>
-      <div style="background:var(--white);padding:clamp(20px,2.5vw,28px);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Duration</div>
-        <div style="font-weight:700;font-size:15px;color:var(--navy);line-height:1.4;">2 Years</div>
-      </div>
-      <div style="background:var(--white);padding:clamp(20px,2.5vw,28px);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Structure</div>
-        <div style="font-weight:700;font-size:15px;color:var(--navy);line-height:1.4;">6 Academic Terms + Capstone</div>
-      </div>
-      <div style="background:var(--white);padding:clamp(20px,2.5vw,28px);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Study Mode</div>
-        <div style="font-weight:700;font-size:15px;color:var(--navy);line-height:1.4;">Full-Time</div>
-      </div>
-      <div style="background:var(--white);padding:clamp(20px,2.5vw,28px);">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Credits</div>
-        <div style="font-weight:700;font-size:15px;color:var(--navy);line-height:1.4;">83 CH | 135 ECTS</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- OVERVIEW -->
-<section class="overview">
-  <div class="wrap">
-    <div class="overview-grid">
-      <div class="reveal">
-        <span class="eyebrow">Program Overview</span>
-        <h2>Lead the future of healthcare delivery and management.</h2>
-        <div class="expandable is-collapsed" id="overviewExpand">
-          <p>The Healthcare Administration specialization at the master's level prepares senior professionals to lead healthcare organizations through an era of rapid change. Covering health policy, systems thinking, innovation management, and healthcare finance, graduates are ready to drive operational excellence and improve patient outcomes at scale.</p>
-          <p style="margin-top:12px;">The dual degree allows students enrolled in the program to earn a Degree from Switzerland and a Degree from the United States of America whilst studying entirely in Switzerland.</p>
-          <ul class="overview-list" style="margin-top:16px;">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Healthcare systems leadership</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Health policy and regulation</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Healthcare innovation and technology</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Strategic planning for health organizations</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Healthcare finance and economics</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Quality improvement and patient safety</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Global health management</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Healthcare analytics and informatics</li>
-          </ul>
-        </div>
-        <button class="expand-toggle" onclick="var el=document.getElementById('overviewExpand');el.classList.toggle('is-collapsed');el.classList.toggle('is-expanded');this.classList.toggle('is-open');this.textContent=el.classList.contains('is-collapsed')?'Read more &rarr;':'Read less ?';">
-          Read more &rarr;
-        </button>
-      </div>
-      <div class="reveal d1">
-        <div class="img-stack" style="margin-bottom:20px;">
-          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&auto=format&fit=crop&q=80" alt="Finance workspace">
-          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80" alt="Business analytics">
-        </div>
-        <div style="background:var(--sky-tint);padding:clamp(20px,2.5vw,28px);border-radius:4px;text-align:center;">
-          <span class="counter" data-target="94">0</span><span style="font-family:var(--font-display);font-weight:800;font-size:clamp(28px,3vw,40px);color:var(--navy);">%</span>
-          <div style="font-size:13px;color:var(--ink-soft);margin-top:4px;">Employed or in grad school within six months</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CURRICULUM -->
-<section class="curriculum">
-  <div class="wrap">
-    <span class="eyebrow reveal">Curriculum</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;">Two years — six academic terms plus capstone — 83 CH | 135 ECTS.</h2>
-  </div>
-  <div class="curr-scroll-wrap reveal d3" id="currScroll">
-    <div class="curr-scroll">
-      <div class="curr-card">
-        <div style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:22px;color:var(--navy);">Year 1</div>
-        <div class="term-bar"><span></span><span></span><span></span></div>
-        <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);">3 TERMS</div>
-        <ul style="margin-top:16px;">
-          <li>Contemporary Issues in Work &amp; Employment</li>
-          <li>Global Intercultural Management</li>
-          <li>Innovative Decision Making</li>
-          <li>Legal &amp; Ethical Issues in Management</li>
-          <li>Current Issues in Healthcare Administration</li>
-          <li>Healthcare Finance &amp; Process Management</li>
-        </ul>
-      </div>
-      <div class="curr-card">
-        <div style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:22px;color:var(--navy);">Year 2</div>
-        <div class="term-bar"><span></span><span></span><span></span></div>
-        <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);">3 TERMS</div>
-        <ul style="margin-top:16px;">
-          <li>Executive Leadership</li>
-          <li>International Relations &amp; Global Diplomacy</li>
-          <li>Management of Human Resources</li>
-          <li>Healthcare Policy, Law, &amp; Ethics</li>
-          <li>Managing Healthcare Systems</li>
-          <li>Capstone Project</li>
-        </ul>
-      </div>
-      </div></div>
-  <div class="wrap" style="margin-top:24px;">
-    <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);font-style:italic;">Above listed modules are subject to change at any time, this overview serves only as an indicative guideline of key subjects.</p>
-  </div>
-</div></section>
-
-<!-- CAREERS -->
-<section class="careers" style="position:relative;overflow:hidden;">
-  <div style="position:absolute;inset:0;z-index:0;">
-    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1800&auto=format&fit=crop&q=80" alt="Finance workspace" style="width:100%;height:100%;object-fit:cover;opacity:.04;">
-  </div>
-  <div class="wrap" style="position:relative;z-index:1;">
-    <span class="eyebrow reveal">Career Outcomes</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;">Your Future in Healthcare Administration</h2>
-    <p class="reveal d2" style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);max-width:60ch;margin-top:12px;margin-bottom:clamp(24px,3vw,36px);">The Healthcare Administration specialization prepares students for senior leadership roles in hospitals, health systems, public health, and healthcare consulting. Students develop strategic and operational skills for the healthcare industry.</p>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.6vw,20px);">
-      <div class="career-card reveal " style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Healthcare CEO</h3>
-        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Lead healthcare organizations, setting strategic direction and overseeing all operational functions.</p>
-      </div>
-      <div class="career-card reveal d1" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Hospital Director</h3>
-        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Manage hospital operations, staff, budgets, and quality initiatives across clinical departments.</p>
-      </div>
-      <div class="career-card reveal d2" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Health System Administrator</h3>
-        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Oversee multi-facility health systems, coordinating resources and strategy across locations.</p>
-      </div>
-      <div class="career-card reveal d3" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Healthcare Consulting Director</h3>
-        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Advise healthcare organizations on strategy, operations, technology, and regulatory compliance.</p>
-      </div>
-      <div class="career-card reveal " style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Public Health Director</h3>
-        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Lead public health agencies and initiatives that improve community and population health outcomes.</p>
-      </div>
-      <div class="career-card reveal d1" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Healthcare Innovation Manager</h3>
-        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Drive adoption of new technologies, processes, and models that improve healthcare delivery.</p>
-      </div>
-      <div class="career-card reveal d2" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Pharmaceutical Operations Director</h3>
-        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Manage pharmaceutical manufacturing, distribution, and supply chain operations.</p>
-      </div>
-      <div class="career-card reveal d3" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Health Policy Director</h3>
-        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Shape healthcare policy at organizational, national, or international levels through research and advocacy.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- DUAL DEGREE -->
-<section class="dual-degree" style="background:var(--navy);color:var(--white);padding:clamp(40px,6vw,70px) 0;position:relative;overflow:hidden;">
-  <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&auto=format&fit=crop&q=80" alt="Swiss Alps and Lake Geneva" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.12;">
-  <div class="wrap" style="position:relative;z-index:1;">
-    <div class="dual-inner" style="display:flex;align-items:center;gap:clamp(40px,6vw,80px);">
-      <div class="dual-copy" style="flex:1;">
-        <span class="eyebrow on-navy">Dual Swiss and US Degree</span>
-        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4vw,48px);line-height:1.15;margin-top:12px;margin-bottom:20px;">Graduate with two degrees. <em style="color:var(--sky);">From two continents.</em></h2>
-        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.7;color:rgba(255,255,255,.75);max-width:48ch;">The Master of Science in International Business Administration at AUS is offered exclusively as a dual degree in collaboration with Tiffin University in the United States. All enrolled students graduate with two degrees: a Master of Science in International Business Administration from AUS and a Master of Business Administration from Tiffin University. To complete the dual degree pathway, students must successfully complete the required AUS and Tiffin University courses. AUS courses are taught on campus in Switzerland, while Tiffin University courses may be completed on campus or remotely, with the option of student exchanges to either university under certain conditions. Upon successful completion of the dual degree program, students graduate with an MSc in International Business Administration from AUS and an MBA from Tiffin University. Tiffin University is accredited by the Higher Learning Commission in the United States, supporting the international credibility and recognition of the degree pathway.</p>
-        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.7;color:rgba(255,255,255,.55);max-width:48ch;margin-top:12px;">Tiffin University is accredited by the Higher Learning Commission in the United States, supporting the international credibility and recognition of the degree pathway.</p>
-      </div>
-      <div class="dual-logos reveal d1" style="display:flex;align-items:center;gap:24px;flex-shrink:0;">
-        <div style="text-align:center;">
-          <div style="width:100px;height:100px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.15);box-shadow:0 4px 20px rgba(0,0,0,.3);margin:0 auto 8px;"><img loading="lazy" decoding="async" src="https://flagcdn.com/w160/ch.png" alt="Switzerland" style="width:100%;height:100%;object-fit:cover;"></div>
-          <span style="font-size:12px;color:rgba(255,255,255,.6);">Switzerland</span>
-        </div>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        <div style="text-align:center;">
-          <div style="width:100px;height:100px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.15);box-shadow:0 4px 20px rgba(0,0,0,.3);margin:0 auto 8px;"><img loading="lazy" decoding="async" src="https://flagcdn.com/w160/us.png" alt="United States" style="width:100%;height:100%;object-fit:cover;"></div>
-          <span style="font-size:12px;color:rgba(255,255,255,.6);">United States</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY AUS -->
-<section style="padding:clamp(40px,6vw,70px) 0;position:relative;overflow:hidden;">
-  <div style="position:absolute;inset:0;z-index:0;">
-    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1800&auto=format&fit=crop&q=80" alt="AUS Campus" style="width:100%;height:100%;object-fit:cover;opacity:.06;">
-  </div>
-  <div class="wrap" style="position:relative;z-index:1;">
-    <span class="eyebrow reveal">The AUS Advantage</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;margin-bottom:clamp(32px,4vw,48px);">Why AUS Business School</h2>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.6vw,20px);">
-      <div class="reveal" style="padding:clamp(20px,2.5vw,28px);border:1px solid var(--line);border-radius:4px;">
-        <div style="width:40px;height:40px;background:var(--sky);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;color:var(--navy);margin:0 0 8px;">Focused Learning</h3>
-        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">With a 7:1 student-to-staff ratio and classes limited to 20 students, you receive personal attention and meaningful interaction.</p>
-      </div>
-      <div class="reveal d1" style="padding:clamp(20px,2.5vw,28px);border:1px solid var(--line);border-radius:4px;">
-        <div style="width:40px;height:40px;background:var(--sky);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;color:var(--navy);margin:0 0 8px;">Dual Degree</h3>
-        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Earn two separate degrees at the same time. This gives graduates a stronger international profile.</p>
-      </div>
-      <div class="reveal d2" style="padding:clamp(20px,2.5vw,28px);border:1px solid var(--line);border-radius:4px;">
-        <div style="width:40px;height:40px;background:var(--sky);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;color:var(--navy);margin:0 0 8px;">Top Ranked</h3>
-        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Top Ranked by the QS World University Rankings. 5-Star Rated for Teaching and class experience.</p>
-      </div>
-      <div class="reveal d3" style="padding:clamp(20px,2.5vw,28px);border:1px solid var(--line);border-radius:4px;">
-        <div style="width:40px;height:40px;background:var(--sky);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;color:var(--navy);margin:0 0 8px;">Career Focused</h3>
-        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Build practical business skills through specialization modules, industry visits, guest speakers, and networking opportunities.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TUITION -->
-<section style="padding:clamp(40px,5vw,64px) 0;border-bottom:1px solid var(--line);">
-  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
-    <div>
-      <span class="eyebrow">Tuition Fees</span>
-      <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(28px,3vw,40px);color:var(--navy);margin-top:8px;">25'050 CHF <span style="font-weight:400;font-size:16px;color:var(--ink-soft);">/ year</span></div>
-    </div>
-    <div style="display:flex;gap:12px;">
-      <a href="aus-cost-calculator.html?program=msc_healthcare" class="cta-btn" style="background:transparent;color:var(--navy);border:2px solid var(--navy);">Calculate Your Expenses →</a>
-      <a href="aus-admissions.html" class="cta-btn">Admissions &amp; Financing &rarr;</a>
-    </div>
-  </div>
-</section>
-
-<!-- ADMISSIONS -->
-<section class="admissions" style="position:relative;overflow:hidden;">
-  <div style="position:absolute;inset:0;z-index:0;">
-    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1800&auto=format&fit=crop" alt="Students" style="width:100%;height:100%;object-fit:cover;opacity:.05;">
-  </div>
-  <div class="wrap" style="position:relative;z-index:1;">
-    <div class="adm-grid">
-      <div class="reveal">
-        <span class="eyebrow">Admissions</span>
-        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;margin-bottom:16px;">Join the AUS Community</h2>
-        <div class="adm-req" style="margin-bottom:20px;">
-          <h3>1 &nbsp;Core Requirements</h3>
-          <p style="font-size:14px;line-height:1.7;color:var(--ink-soft);margin-bottom:12px;">To qualify for this program, applicants must have successfully completed secondary education in their home country, earning a diploma or leaving certificate that grants university-level eligibility. No GMAT or entrance exam scores are required. Admission is based on a holistic review of your application and a mandatory online interview.</p>
-          <ul>
-            <li><strong>Language:</strong> English C-Level. CEFR B2 level considered after completing an oral interview.</li>
-            <li><strong>Education:</strong> Secondary school diploma with good academic achievements, or IELTS Overall 6.0 with no single element below 5.5.</li>
-            <li><strong>Motivation:</strong> Explain why you are pursuing this degree, your goals, and the specific value you will bring to your peer group.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="adm-req reveal d1">
-        <h3>2 &nbsp;Admissions Philosophy</h3>
-        <p style="font-size:14px;line-height:1.7;color:var(--ink-soft);margin-bottom:16px;">AUS offers a fair and transparent admissions process based on individual merit and potential. We look beyond basic eligibility to understand the specific context of your background, ensuring we balance high standards with true inclusivity.</p>
-        <p style="font-size:14px;line-height:1.7;color:var(--ink-soft);">Our goal is to align your prior experience and interests with the program that will best drive your future career.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- NEXT INTAKE -->
-<section style="padding:clamp(40px,5vw,64px) 0;border-bottom:1px solid var(--line);">
-  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
-    <div>
-      <span class="eyebrow">Next Intake</span>
-      <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(28px,3vw,40px);color:var(--navy);margin-top:8px;">Fall 2026</div>
-      <div style="font-size:14px;color:var(--ink-soft);margin-top:4px;">EU/EFTA Deadline: July 15 &nbsp;&middot;&nbsp; International Deadline: July 15</div>
-    </div>
-    <div style="display:flex;gap:12px;">
-      <a href="https://study.aus.swiss/application" class="cta-btn">Start your Application &rarr;</a>
-    </div>
-  </div>
-</section>
-
-<!-- CERTIFICATIONS -->
-<section style="padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);">
-  <div class="wrap" style="text-align:center;">
-    <span class="eyebrow reveal">Certification Partners</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;margin-bottom:clamp(16px,2vw,24px);">Build Practical Digital Skills.</h2>
-    <p class="reveal d2" style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);max-width:60ch;margin:0 auto clamp(32px,4vw,48px);">Alongside their dual degree, students can earn certifications through AUS partnerships with leading technology firms in AI, digital tools, and data analytics.</p>
-    <div class="reveal d3" style="display:flex;justify-content:center;gap:clamp(48px,6vw,80px);align-items:center;flex-wrap:wrap;">
-      <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a4b4de19ea900cf0076d259_ibm.webp" alt="IBM" style="height:100px;">
-      <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a4b4de2dcacc8e0c146994b_apple.webp" alt="Apple" style="height:100px;">
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIAL -->
+<!-- DUAL DEGREE INTRO -->
 <section style="padding:clamp(40px,6vw,70px) 0;">
   <div class="wrap">
-    <div class="reveal" style="max-width:800px;margin:0 auto;text-align:center;">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="var(--sky)" opacity=".3" style="margin-bottom:16px;"><path d="M10 11H6C6 7.686 8.686 5 12 5V3C7.582 3 4 6.582 4 11v7a2 2 0 002 2h4a2 2 0 002-2v-5a2 2 0 00-2-2zm10 0h-4c0-3.314 2.686-6 6-6V3c-4.418 0-8 3.582-8 8v7a2 2 0 002 2h4a2 2 0 002-2v-5a2 2 0 00-2-2z"/></svg>
-      <p style="font-family:var(--font-serif);font-style:italic;font-size:clamp(18px,2vw,24px);line-height:1.6;color:var(--navy);margin-bottom:20px;">"The Healthcare Administration specialization gave me the strategic leadership skills to transform healthcare delivery. The dual degree opened global opportunities."</p>
-      <div style="display:flex;align-items:center;gap:12px;justify-content:center;">
-        <div style="width:44px;height:44px;border-radius:50%;overflow:hidden;background:var(--sky);display:flex;align-items:center;justify-content:center;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </div>
-        <div style="text-align:left;">
-          <div style="font-weight:700;font-size:14px;color:var(--navy);">Alumni testimonial</div>
-          <div style="font-size:13px;color:var(--ink-soft);">MSc in International Business Administration — Healthcare Administration</div>
+    <div class="reveal" style="max-width:900px;">
+      <span class="eyebrow">Dual Degree Program</span>
+      <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">Two Degrees, One Experience</h2>
+      <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);margin-bottom:16px;">The American Institute of Applied Sciences in Switzerland (AUS), located in La Tour-de-Peilz, Switzerland, and Tiffin University (TU), located in Tiffin, Ohio, USA, are offering a Dual Degree Program (DDP), allowing AUS students to obtain a degree from both institutions.</p>
+      <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);">Students enrolled in the program earn a degree from AUS in Switzerland and a degree from Tiffin University in the United States while studying entirely in Switzerland. This unique arrangement gives graduates the competitive advantage of holding qualifications from two countries and two accredited institutions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY TIFFIN UNIVERSITY -->
+<section style="padding:clamp(40px,6vw,70px) 0;background:var(--navy);color:var(--white);position:relative;overflow:hidden;">
+  <div style="position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;border:1px solid rgba(255,255,255,.06);"></div>
+  <div class="wrap" style="position:relative;z-index:1;">
+    <span class="eyebrow on-navy reveal">Why Tiffin University</span>
+    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4.2vw,52px);color:var(--white);margin:12px 0 clamp(32px,4vw,48px);">A Legacy of Academic Excellence</h2>
+    <div class="stagger-grid reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,24px);">
+      <div style="padding:clamp(20px,2.5vw,28px);border:1px solid var(--line-on-navy);border-radius:8px;">
+        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(32px,3.5vw,44px);color:var(--white);margin-bottom:4px;">1888</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.6);">Founded in Tiffin, Ohio</div>
+      </div>
+      <div style="padding:clamp(20px,2.5vw,28px);border:1px solid var(--line-on-navy);border-radius:8px;">
+        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(32px,3.5vw,44px);color:var(--white);margin-bottom:4px;">98.3%</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.6);">Alumni career outcome rate</div>
+      </div>
+      <div style="padding:clamp(20px,2.5vw,28px);border:1px solid var(--line-on-navy);border-radius:8px;">
+        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(32px,3.5vw,44px);color:var(--white);margin-bottom:4px;">4</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.6);">Academic schools</div>
+      </div>
+      <div style="padding:clamp(20px,2.5vw,28px);border:1px solid var(--line-on-navy);border-radius:8px;">
+        <div style="font-family:var(--font-display);font-weight:800;font-size:clamp(32px,3.5vw,44px);color:var(--white);margin-bottom:4px;">HLC</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.6);">&amp; ACBSP Accredited</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT TIFFIN UNIVERSITY -->
+<section style="padding:clamp(40px,6vw,70px) 0;">
+  <div class="wrap">
+    <div class="reveal" style="display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(40px,6vw,80px);align-items:center;">
+      <div class="img-zoom" style="border-radius:12px;overflow:hidden;">
+        <img loading="lazy" decoding="async" src="https://www.tiffin.edu/nitropack_static/rfNCIaqqEsrXKRRLbfCAeWQAhlVTQUEz/assets/images/optimized/rev-98b076d/www.tiffin.edu/wp-content/uploads/2022/10/MJC3447-scaled.jpg" alt="Tiffin University students in classroom" style="width:100%;height:auto;">
+      </div>
+      <div>
+        <span class="eyebrow">About Tiffin University</span>
+        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">Transforming Lives Through Education</h2>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);margin-bottom:16px;">Tiffin University is a private university in Tiffin, Ohio, founded in 1888. With four academic schools — Business, Criminal Justice and Social Sciences, Arts, Education and Humanities, and Science, Technology and Health — TU offers over 100 programs at the undergraduate, graduate, and doctoral levels.</p>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);margin-bottom:20px;">98.3% of TU undergraduate alumni have a career outcome — 13% higher than the national average. TU is accredited by the Higher Learning Commission (HLC) and the School of Business is accredited by ACBSP.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="https://www.tiffin.edu/about/" target="_blank" rel="noopener" class="hero-cta" style="background:var(--navy);color:var(--white);border:1px solid var(--navy);">Visit TU Website</a>
+          <a href="https://www.tiffin.edu/academics/school-of-business/" target="_blank" rel="noopener" class="hero-cta" style="background:transparent;color:var(--navy);border:1px solid var(--line);">School of Business</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CAMPUS LIFE GALLERY -->
+<!-- BSBA PROGRAM -->
 <section style="padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);">
   <div class="wrap">
-    <span class="eyebrow reveal">Student Life</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;margin-bottom:clamp(24px,3vw,36px);">Life at AUS</h2>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:200px 200px;gap:12px;">
-      <div class="reveal" style="grid-column:1/3;grid-row:1/3;border-radius:6px;overflow:hidden;">
-        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop&q=80" alt="Campus life" style="width:100%;height:100%;object-fit:cover;">
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center;">
+      <div>
+        <span class="eyebrow">Bachelor of Science</span>
+        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">BSBA from AUS</h2>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);margin-bottom:16px;">The Bachelor of Science in Business Administration (BSBA) program at AUS provides students with opportunities to build the necessary skills for the future with a deep understanding of business and technological trends on a global scale and with hands-on experience via close links to the industry. At this first level of study, AUS students earn a degree that qualifies them for a profession in business management and the opportunity to continue their studies further and earn a Master of Science in International Business Administration degree.</p>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;"><svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Financial accounting and reporting</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;"><svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Auditing and assurance services</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;"><svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Tax planning and compliance</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;"><svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Management and cost accounting</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;"><svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>3 Years | 9 Academic Terms | 135 CH | 225 ECTS</li>
+        </ul>
       </div>
-      <div class="reveal d1" style="border-radius:6px;overflow:hidden;">
-        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&auto=format&fit=crop&q=80" alt="Students studying" style="width:100%;height:100%;object-fit:cover;">
+      <div class="reveal d1 img-zoom" style="border-radius:12px;overflow:hidden;">
+        <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild3262-3635-4364-a434-656436353736/2148844743_1.jpg" alt="AUS students" style="width:100%;height:auto;">
       </div>
-      <div class="reveal d2" style="border-radius:6px;overflow:hidden;">
-        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&auto=format&fit=crop&q=80" alt="Group project" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+  </div>
+</section>
+
+<!-- TU BBA PROGRAM -->
+<section style="padding:clamp(40px,6vw,70px) 0;">
+  <div class="wrap">
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center;">
+      <div class="reveal d1 img-zoom" style="border-radius:12px;overflow:hidden;">
+        <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild3033-6539-4233-a135-633437633939/2149265684_2_1.jpg" alt="Tiffin University" style="width:100%;height:auto;">
       </div>
-      <div class="reveal d3" style="border-radius:6px;overflow:hidden;">
-        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&auto=format&fit=crop&q=80" alt="Lake Geneva" style="width:100%;height:100%;object-fit:cover;">
+      <div>
+        <span class="eyebrow">Bachelor of Business Administration</span>
+        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">TU BBA from Tiffin University</h2>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);margin-bottom:16px;">The Tiffin University Bachelor of Business Administration (BBA) degree program will prepare you for the challenge. The approach to higher education is that it shouldn't only exist in the classroom – it should be: applicable to real-world situations, relevant to career paths, and focused on attributes valued by modern employers.</p>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;"><svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>HLC &amp; ACBSP accredited</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;"><svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Applicable to real-world situations</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;"><svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Relevant to career paths</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);"><svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Choose from 8 specialization areas</li>
+        </ul>
       </div>
-      <div class="reveal d4" style="border-radius:6px;overflow:hidden;">
-        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&auto=format&fit=crop&q=80" alt="Graduation" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+  </div>
+</section>
+
+<!-- BACHELOR SPECIALIZATIONS -->
+<section style="padding:clamp(60px,8vw,100px) 0;background:var(--sky-tint);">
+  <div class="wrap">
+    <span class="eyebrow reveal">Bachelor Specializations</span>
+    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 clamp(32px,4vw,48px);">Choose Your Path</h2>
+    <p class="reveal d2" style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);max-width:800px;margin-bottom:clamp(32px,4vw,48px);">Select from eight specializations, each designed to prepare you for leadership roles in your chosen field. Click on any specialization to see the TU courses included.</p>
+
+    <div class="stagger-grid reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,24px);">
+
+      <!-- Accounting -->
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;" onclick="document.getElementById('popup-accounting').classList.add('is-visible')">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild3834-3432-4235-a563-636662393030/Accounting.svg" alt="" style="width:28px;height:28px;">
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;">Accounting</h3>
+        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Master financial reporting, auditing, and tax compliance.</p>
       </div>
+
+      <!-- Business Management -->
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;" onclick="document.getElementById('popup-business').classList.add('is-visible')">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild6164-3533-4861-b237-336466316330/Business_Management.svg" alt="" style="width:28px;height:28px;">
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;">Business Management</h3>
+        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Lead organizations with strategic management skills.</p>
+      </div>
+
+      <!-- Healthcare Administration -->
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;" onclick="document.getElementById('popup-healthcare').classList.add('is-visible')">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild3137-3730-4435-b638-653434386464/Healthcare_Administr.svg" alt="" style="width:28px;height:28px;">
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;">Healthcare Administration</h3>
+        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Manage healthcare organizations effectively.</p>
+      </div>
+
+      <!-- Human Resource Management -->
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;" onclick="document.getElementById('popup-hrm').classList.add('is-visible')">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild3630-6263-4434-b335-643436343831/Human_Resource_Manag.svg" alt="" style="width:28px;height:28px;">
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;">Human Resource Management</h3>
+        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Build and lead high-performing teams.</p>
+      </div>
+
+      <!-- Integrated & Digital Marketing -->
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;" onclick="document.getElementById('popup-marketing').classList.add('is-visible')">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild3731-3534-4331-a565-386663346163/marketing.svg" alt="" style="width:28px;height:28px;">
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;">Integrated &amp; Digital Marketing</h3>
+        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Master modern marketing and digital strategy.</p>
+      </div>
+
+      <!-- International Business -->
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;" onclick="document.getElementById('popup-intl').classList.add('is-visible')">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild3839-3932-4232-a461-626439363230/International.svg" alt="" style="width:28px;height:28px;">
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;">International Business</h3>
+        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Lead in the global economy.</p>
+      </div>
+
+      <!-- Athletic Administration -->
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;" onclick="document.getElementById('popup-athletic').classList.add('is-visible')">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild3066-3364-4232-b537-353035316637/Athletic_Administrat.svg" alt="" style="width:28px;height:28px;">
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;">Athletic Administration</h3>
+        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Run sports organizations and athletic programs.</p>
+      </div>
+
+      <!-- Sports Marketing -->
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;" onclick="document.getElementById('popup-sports').classList.add('is-visible')">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild3635-3734-4338-b336-393939386461/Sports_Marketing.svg" alt="" style="width:28px;height:28px;">
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;">Sports Marketing</h3>
+        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Build brands in the sports industry.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DUAL DEGREE ADVANTAGE -->
+<section style="padding:clamp(60px,8vw,100px) 0;background:var(--sky-tint);">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;max-width:800px;margin:0 auto clamp(40px,5vw,60px);">
+      <span class="eyebrow">The Dual Degree Advantage</span>
+      <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">Two Countries, Two Degrees, One Experience</h2>
+      <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);">Studying entirely in Switzerland, you earn a degree from AUS and a separate, fully accredited degree from Tiffin University in the United States. This gives graduates a rare competitive advantage: qualifications recognized on two continents, with the global perspective that comes from an American-accredited business education.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px);">
+      <div class="reveal" style="background:var(--white);border:1px solid var(--line);border-radius:12px;padding:clamp(24px,3vw,32px);">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--navy);color:var(--white);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px;font-weight:800;">CH</div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--navy);margin-bottom:8px;">Swiss Degree from AUS</h3>
+        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">A BSBA or MIBA from the American Institute of Applied Sciences in Switzerland, recognized under the Swiss education framework.</p>
+      </div>
+      <div class="reveal d1" style="background:var(--white);border:1px solid var(--line);border-radius:12px;padding:clamp(24px,3vw,32px);">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--crimson);color:var(--white);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px;font-weight:800;">US</div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--navy);margin-bottom:8px;">American Degree from TU</h3>
+        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">A BBA or MBA from Tiffin University, Ohio — HLC and ACBSP accredited, recognized by employers worldwide.</p>
+      </div>
+      <div class="reveal d2" style="background:var(--white);border:1px solid var(--line);border-radius:12px;padding:clamp(24px,3vw,32px);">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--yellow);color:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px;font-weight:800;">∞</div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--navy);margin-bottom:8px;">Global Career Access</h3>
+        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);">Graduate with dual qualifications opening doors in Europe, North America, and international markets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MIBA PROGRAM -->
+<section style="padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);">
+  <div class="wrap">
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center;">
+      <div>
+        <span class="eyebrow">Master of Science</span>
+        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">MIBA from AUS</h2>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);margin-bottom:16px;">The Master of Science in International Business Administration (MIBA) program at AUS ensures that our students are fully prepared to lead and manage in today’s competitive and changing global marketplace. We focus on integrating traditional business knowledge with practical decision-making, problem-solving, creativity, and strategic thinking while engaging in real-world projects. We create a practical learning and research environment that emphasizes collaboration and active engagement with industry leaders.</p>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;"><svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Practical decision-making &amp; problem-solving</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;"><svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Real-world projects &amp; industry engagement</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;"><svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Collaboration &amp; active engagement</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);"><svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>2 Years | 6 Terms + Capstone | 83 CH | 135 ECTS</li>
+        </ul>
+      </div>
+      <div class="reveal d1 img-zoom" style="border-radius:12px;overflow:hidden;">
+        <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild3232-3966-4662-a637-396532613662/young-students-atten.jpg" alt="AUS master students" style="width:100%;height:auto;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TU MBA PROGRAM -->
+<section style="padding:clamp(40px,6vw,70px) 0;">
+  <div class="wrap">
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center;">
+      <div class="reveal d1 img-zoom" style="border-radius:12px;overflow:hidden;">
+        <img loading="lazy" decoding="async" src="https://www.tiffin.edu/nitropack_static/rfNCIaqqEsrXKRRLbfCAeWQAhlVTQUEz/assets/images/optimized/rev-98b076d/www.tiffin.edu/wp-content/uploads/2022/10/MJC3447-scaled.jpg" alt="Tiffin University campus" style="width:100%;height:auto;">
+      </div>
+      <div>
+        <span class="eyebrow">Master of Business Administration</span>
+        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 20px;">TU MBA from Tiffin University</h2>
+        <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);margin-bottom:16px;">The Tiffin University Master of Business Administration (MBA) degree program helps students develop advanced competencies in communication, leadership, teamwork, information technology, and problem-solving. A distinguished faculty addresses current issues in management and prepares students for the technology-driven global workplace. Through case studies, research, and analyses of current business topics, you’ll learn to translate theories into practical business applications.</p>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;"><svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Advanced competencies in leadership &amp; teamwork</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;"><svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Case studies &amp; research-driven learning</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px;"><svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Technology-driven global workplace focus</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.65;color:var(--ink-soft);"><svg style="flex:0 0 auto;margin-top:3px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Choose from 9 specialization areas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MASTER SPECIALIZATIONS -->
+<section style="padding:clamp(60px,8vw,100px) 0;background:var(--sky-tint);">
+  <div class="wrap">
+    <span class="eyebrow reveal">Master Specializations</span>
+    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 clamp(32px,4vw,48px);">Advance Your Expertise</h2>
+    <p class="reveal d2" style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);max-width:800px;margin-bottom:clamp(32px,4vw,48px);">Select from nine master's specializations, each designed to deepen your expertise and accelerate your career. Click on any specialization to see the TU courses included.</p>
+
+    <div class="stagger-grid reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px);">
+
+      <!-- Aviation Management -->
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;" onclick="document.getElementById('popup-ms-aviation').classList.add('is-visible')">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild3865-6332-4831-b162-633462666632/airplane_1.svg" alt="" style="width:28px;height:28px;">
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;">Aviation Management</h3>
+        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Lead in the global aviation industry.</p>
+      </div>
+
+      <!-- Data Analytics -->
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;" onclick="document.getElementById('popup-ms-data').classList.add('is-visible')">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild6535-6238-4865-a262-363030663639/data.svg" alt="" style="width:28px;height:28px;">
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;">Data Analytics</h3>
+        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Transform data into strategic advantage.</p>
+      </div>
+
+      <!-- Finance -->
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;" onclick="document.getElementById('popup-ms-finance').classList.add('is-visible')">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild6230-3632-4438-b532-323935333662/fin.svg" alt="" style="width:28px;height:28px;">
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;">Finance</h3>
+        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Master corporate finance and investment.</p>
+      </div>
+
+      <!-- Healthcare Administration -->
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;" onclick="document.getElementById('popup-ms-healthcare').classList.add('is-visible')">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild3137-3730-4435-b638-653434386464/Healthcare_Administr.svg" alt="" style="width:28px;height:28px;">
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;">Healthcare Administration</h3>
+        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Lead healthcare organizations.</p>
+      </div>
+
+      <!-- Human Resource Management -->
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;" onclick="document.getElementById('popup-ms-hrm').classList.add('is-visible')">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild3630-6263-4434-b335-643436343831/Human_Resource_Manag.svg" alt="" style="width:28px;height:28px;">
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;">Human Resource Management</h3>
+        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Strategic people leadership.</p>
+      </div>
+
+      <!-- International Business -->
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;" onclick="document.getElementById('popup-ms-intl').classList.add('is-visible')">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild3839-3932-4232-a461-626439363230/International.svg" alt="" style="width:28px;height:28px;">
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;">International Business</h3>
+        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Global strategy and operations.</p>
+      </div>
+
+      <!-- Leadership & Change -->
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;" onclick="document.getElementById('popup-ms-leadership').classList.add('is-visible')">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild3037-3861-4439-b364-633361646231/leader.svg" alt="" style="width:28px;height:28px;">
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;">Leadership &amp; Change</h3>
+        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Lead organizational transformation.</p>
+      </div>
+
+      <!-- Sports Management -->
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;" onclick="document.getElementById('popup-ms-sports').classList.add('is-visible')">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild3635-3734-4338-b336-393939386461/Sports_Marketing.svg" alt="" style="width:28px;height:28px;">
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;">Sports Management</h3>
+        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Lead in the sports industry.</p>
+      </div>
+
+      <!-- Strategic Brand & Digital Marketing -->
+      <div class="tilt-card" style="padding:clamp(20px,2.5vw,28px);background:var(--white);border:1px solid var(--line);border-radius:12px;cursor:pointer;" onclick="document.getElementById('popup-ms-brand').classList.add('is-visible')">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.one/tild6134-3030-4832-a131-316563343866/strateg.svg" alt="" style="width:28px;height:28px;">
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px;">Strategic Brand &amp; Digital Marketing</h3>
+        <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">Master modern brand leadership.</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -987,12 +857,11 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 <section class="cta-section">
   <div class="wrap cta-inner">
     <span class="eyebrow on-navy reveal">What's Next</span>
-    <h2 class="reveal d1">Take the Next Step</h2>
-    <p class="reveal d2">Talk to an Admissions Advisor, request a Program Overview, or book a campus visit to experience AUS firsthand.</p>
+    <h2 class="reveal d1">Ready to Start Your Journey?</h2>
+    <p class="reveal d2">Apply now and earn dual degrees from AUS Business School in Switzerland and Tiffin University in the United States.</p>
     <div class="reveal d3" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-      <a href="https://meetings-eu1.hubspot.com/michiel-van-de-water?uuid=70eae9b0-a7aa-4dcb-856a-9672c6be2602" class="cta-btn">Talk to an Admissions Advisor &rarr;</a>
-      <a href="#" class="cta-btn" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,.3);">Request a Program Overview</a>
-      <a href="https://share-eu1.hsforms.com/1t_dizG4cT7-D9bCyPSDnAwfwv24" class="cta-btn" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,.3);">Book a Campus Visit</a>
+      <a href="https://study.aus.swiss/application" class="cta-btn mag-btn">Start your Application &rarr;</a>
+      <a href="https://www.tiffin.edu/academics/school-of-business/" target="_blank" rel="noopener" class="cta-btn mag-btn" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,.3);">Explore Tiffin University</a>
     </div>
   </div>
 </section>
@@ -1037,7 +906,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   <div class="aus-popup">
     <button class="aus-popup-close" id="ausPopupClose" aria-label="Close">&times;</button>
     <div class="aus-popup-hero">
-      <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&auto=format&fit=crop&q=80" alt="AUS campus">
+      <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a558e03f97cbda4768f37bb_aus-logo.avif" alt="AUS campus">
       <div class="aus-popup-hero-badge">QS Ranked — 5-Star Teaching</div>
     </div>
     <div class="aus-popup-body">
@@ -1100,7 +969,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if('IntersectionObserver' in window&&!reduceMotion){
     document.documentElement.classList.add('js-reveal-ready');
-    var reveals=document.querySelectorAll('.reveal,.reveal-scale,.reveal-clip,.reveal-rotate,.split-text,.stagger-grid,.line-draw');
+    var revealTargets=document.querySelectorAll('.reveal,.reveal-scale,.reveal-clip,.reveal-rotate,.split-text,.stagger-grid,.line-draw');
     var revealObserver=new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if(entry.isIntersecting){
@@ -1109,7 +978,37 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
         }
       });
     },{threshold:0,rootMargin:'0px 0px -60px 0px'});
-    reveals.forEach(function(el){revealObserver.observe(el);});
+    revealTargets.forEach(function(el){revealObserver.observe(el);});
+  }
+
+  // Split text into words
+  document.querySelectorAll('.split-text').forEach(function(el){
+    var text=el.textContent.trim();
+    el.innerHTML=text.split(/\s+/).map(function(w){return '<span class="word">'+w+'</span>';}).join(' ');
+  });
+
+  // Magnetic buttons
+  document.querySelectorAll('.mag-btn').forEach(function(btn){
+    btn.addEventListener('mousemove',function(e){
+      var rect=btn.getBoundingClientRect();
+      var x=e.clientX-rect.left-rect.width/2;
+      var y=e.clientY-rect.top-rect.height/2;
+      btn.style.transform='translate('+x*.15+'px,'+y*.15+'px)';
+    });
+    btn.addEventListener('mouseleave',function(){btn.style.transform='';});
+  });
+
+  // Parallax on scroll
+  if(!reduceMotion){
+    var parallaxEls=document.querySelectorAll('.parallax');
+    window.addEventListener('scroll',function(){
+      parallaxEls.forEach(function(el){
+        var rect=el.getBoundingClientRect();
+        var speed=parseFloat(el.getAttribute('data-speed'))||0.15;
+        var y=(rect.top-window.innerHeight)*speed;
+        el.style.transform='translateY('+y+'px)';
+      });
+    },{passive:true});
   }
 
   // Counter animation
@@ -1138,38 +1037,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     },{threshold:0.5});
     counters.forEach(function(c){counterObserver.observe(c);});
   }
-
-// Split text into words
-document.querySelectorAll('.split-text').forEach(function(el){
-  var text=el.textContent.trim();
-  el.innerHTML=text.split(/\s+/).map(function(w){return '<span class="word">'+w+'</span>';}).join(' ');
-});
-
-// Magnetic buttons
-document.querySelectorAll('.mag-btn').forEach(function(btn){
-  btn.addEventListener('mousemove',function(e){
-    var rect=btn.getBoundingClientRect();
-    var x=e.clientX-rect.left-rect.width/2;
-    var y=e.clientY-rect.top-rect.height/2;
-    btn.style.transform='translate('+x*.15+'px,'+y*.15+'px)';
-  });
-  btn.addEventListener('mouseleave',function(){btn.style.transform='';});
-});
-
-// Parallax on scroll
-if(!reduceMotion){
-  var parallaxEls=document.querySelectorAll('.parallax');
-  window.addEventListener('scroll',function(){
-    parallaxEls.forEach(function(el){
-      var rect=el.getBoundingClientRect();
-      var speed=parseFloat(el.getAttribute('data-speed'))||0.15;
-      var y=(rect.top-window.innerHeight)*speed;
-      el.style.transform='translateY('+y+'px)';
-    });
-  },{passive:true});
-}
 })();
-/* SITE SEARCH — INDEX: add new pages here to appear in dropdown */
+/* SITE SEARCH */
 (function(){
         var idx=[
     {title:"Home",url:"aus-home-demo.html",cat:"Home",keys:"Chapter 01 Where precision meets ambition. A Swiss business education built on scientific method and practice, for students who intend to lead, not just graduate. Find My Program → Founded 1991 La Tour-de-Peilz, Switzerland 02 Programs Choose your level. Every program is built around the same practice-led method. Hover a level to see what's inside. 01 Bachelors Degree Accounting Aviation Management Business Management Healthcare Administration Human Resource Management Integrated & Digital Marketing International Business Sports Management — Athletic Administration Sports Management — Sports Marketing 02 Masters Degree Data Analytics Finance Healthcare Administration Human Resource Management International Business Leadership & Change Sports Management Strategic Brand & Digital Marketing 03 Doctorate Doctorate in Business Administration 04 Swiss Federal Diploma Business Administration Three years, seven majors, one method. One year, built for people already leading. For those researching the next standard. Swiss-recognized professional qualification. 03 The Approach Practice-led, not theory-bound . Every course is built around real organizational problems. Students leave with a portfolio of decisions they made, not just a transcript of lectures they attended, prepared to lead from day one rather than catch up. 04 In Numbers “A prestigious, well-known institution that attracts students and faculty from all over the world.” 0+ Years combining Swiss and American education traditions AUS institutional records, 2026 0%+ Of graduates say their role relates to their AUS studies Alumni outcomes survey, 2025 0+ Nationalities on campus AUS Registrar, Fall 2026 0 Maximum students per class Academic policy, 2026 1: 0 Faculty to student ratio AUS Registrar, Fall 2026 0%+ Employed within 6 months of graduating Alumni outcomes survey, 2025 05 Recognition Independently recognized, not self-declared. Accreditation bodies and ranking institutions evaluate AUS on the same criteria applied to the world's leading business schools. Top 2 In Switzerland, QS Business Masters 2025 Top 200 Globally, QS Business Masters 2025 06 Mission & Vision Mission AUS equips students pursuing a degree in international business with the knowledge, skills and tools to make a significant contribution to any organization. Through practice-oriented study grounded in scientific method, research and development, graduates are prepared to lead with competence and confidence. Vision To build a reputation as a prestigious, well-known private institution in Switzerland that attracts students and faculty from all over the world, and to shape decision-makers ready for a more sustainable future. 07 Why AUS Five reasons students choose AUS. 01 Join a genuinely international student body. Classrooms bring together students from across Europe, the Middle East and beyond, so every group project is already a cross-border negotiation. 02 Case work replaces the lecture hall. Assignments are built from real organizational problems, not textbook exercises, so the skills transfer directly to a first job. 03 The working language of international business. Every program runs entirely in English, preparing graduates to operate in global teams from day one. 04 Study where students actually want to live. The campus sits on the shores of Lake Geneva, close enough to Zurich and Lucerne to make the most of both. 05 Faculty who know your name, not your seat number. Small cohorts mean direct access to professors, real feedback on your work, and no getting lost in a lecture hall of hundreds. 08 Sustainability Shaping decision-makers for a sustainable future. Sustainability sits at the core of how AUS teaches. Through partnerships with associations and non-profits, sustainable practice is built into the classroom, so graduates can balance economic and environmental goals in line with the UN Sustainable Development Goals. 09 Learning from Experts Local and international voices, inside the classroom. The Speaker Series brings practitioners into the room to bridge academic theory with what's actually happening in business today. Speaker Series &rarr; 10 Campus Archive Lecture Hall, Zurich The Reading Room Case Studio Main Courtyard Commencement 11 Our Partners Organizations that hire, train and collaborate with AUS. “Moving to Switzerland to study felt daunting at first, but AUS made it feel like a place I could actually belong.” Tomiwa “Going back to school after twenty years focused on family took courage. AUS is where I found the confidence to start again.” Umida"},    {title:"Admissions",url:"aus-admissions.html",cat:"Admissions",keys:"Admissions Your Journey Starts Here Everything you need to know about applying to AUS from eligibility and required documents to fees visas and arrival in Switzerland How to Apply Choose Your Program Submit Your Application Review and Decision Confirm and Enroll Entry Requirements Bachelor Master English Language Requirements IELTS TOEFL Duolingo Tuition and Fees Application Fee Important Dates Fall Semester Spring Semester Summer Term Visa Information EU EFTA Non-EU EFTA"},
@@ -1257,9 +1126,9 @@ if(!reduceMotion){
     {title:"AUS Speaker Series",url:"aus-speaker-series.html",cat:"Campus Life",keys:"AUS Speaker Series Industry experts networking with AUS students Monthly seminars lectures leading experts Commencement speakers Industrial visits Campus Life"},
     {title:"Campus Life",url:"aus-campus-life.html",cat:"Campus Life",keys:"Campus Life Embrace Life in Switzerland AUS inclusive multicultural campus personalized education sports extra-curricular activities La Tour-de-Peilz Swiss Riviera Student events Welcome Week diversity celebrations guest speakers field trips coached sports social events Accommodation career support living in Switzerland campus facilities student visa health insurance"},
 
-    {title:"Student Life",url:"aus-student-life.html",cat:"About",keys:"Student Life AUS campus student services accommodation visa health insurance academic advising career support Our Students 50 nationalities Class Profile 20 students per class Campus Life Swiss Riviera Lake Geneva events Welcome Week diversity"}
+    {title:"Student Life",url:"aus-student-life.html",cat:"About",keys:"Student Life AUS campus student services accommodation visa health insurance academic advising career support Our Students 50 nationalities Class Profile 20 students per class Campus Life Swiss Riviera Lake Geneva events Welcome Week diversity"},
+    {title:"AUS Collaboration with Tiffin University",url:"aus-tiffin-collaboration.html",cat:"About",keys:"AUS Collaboration Tiffin University Dual Degree Program DDP BSBA BBA MIBA MBA Ohio USA Bachelor Master Accounting Business Management Healthcare Administration Human Resource Management Marketing International Business Athletic Administration Sports Marketing Aviation Data Analytics Finance Leadership Strategic Brand Digital Marketing"}
 ];
-  // allow pages to extend idx via window.AUS_SEARCH_EXTRA
   if(window.AUS_SEARCH_EXTRA && Array.isArray(window.AUS_SEARCH_EXTRA)){ idx = idx.concat(window.AUS_SEARCH_EXTRA); }
   var input=document.getElementById("siteSearchInput");
   var drop=document.getElementById("siteSearchDrop");
@@ -1303,7 +1172,7 @@ if(!reduceMotion){
     if(e.key==="Enter"){ var a=drop.querySelector("a"); if(a) location.href=a.getAttribute("href"); }
   });
   document.addEventListener("click", function(e){ if(!wrap.contains(e.target)) drop.hidden=true; });
-})();/* SEARCH HIGHLIGHT & SCROLL — scrolls to term from ?q= like FAQ */
+})();/* SEARCH HIGHLIGHT & SCROLL */
 (function(){
   var q=new URLSearchParams(location.search).get("q");
   if(!q) return;
@@ -1329,43 +1198,73 @@ if(!reduceMotion){
       if(!firstMark) firstMark=document.querySelector("mark");
     }
   });
-  if(firstMark) setTimeout(function(){ firstMark.scrollIntoView({behavior:"smooth",block:"center"}); firstMark.style.outline="2px solid var(--crimson)"; firstMark.style.outlineOffset="2px"; },
-    {title:"AUS Collaboration with Tiffin University",url:"aus-tiffin-collaboration.html",cat:"About",keys:"AUS Collaboration Tiffin University Dual Degree Program DDP BSBA BBA MIBA MBA Ohio USA Bachelor Master Accounting Business Management Healthcare Administration Human Resource Management Marketing International Business Athletic Administration Sports Marketing Aviation Data Analytics Finance Leadership Strategic Brand Digital Marketing"}, 400);
+  if(firstMark) setTimeout(function(){ firstMark.scrollIntoView({behavior:"smooth",block:"center"}); firstMark.style.outline="2px solid var(--crimson)"; firstMark.style.outlineOffset="2px"; },400);
 })();
+  // ---------- PROMO POPUP ----------
+  (function(){
+    var popup=document.getElementById('ausPopup');
+    var closeBtn=document.getElementById('ausPopupClose');
+    if(!popup||!closeBtn) return;
+    try{ if(localStorage.getItem('aus-popup-seen')==='1') return; }catch(e){}
+    function startPopupTimer(){
+      setTimeout(function(){
+        popup.classList.add('is-visible');
+      },8000);
+    }
+    var preloader=document.getElementById('preloader');
+    if(preloader && !preloader.classList.contains('is-hidden')){
+      var obs=new MutationObserver(function(){
+        if(preloader.classList.contains('is-hidden')){obs.disconnect();startPopupTimer();}
+      });
+      obs.observe(preloader,{attributes:true,attributeFilter:['class']});
+    }else{startPopupTimer();}
+    function dismiss(){
+      popup.classList.remove('is-visible');
+      try{ localStorage.setItem('aus-popup-seen','1'); }catch(e){}
+    }
+    closeBtn.addEventListener('click',dismiss);
+    popup.addEventListener('click',function(e){if(e.target===popup)dismiss();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&popup.classList.contains('is-visible'))dismiss();});
+  })();
+</script>
+</body>
+</html>
 
-// ---------- PROMO POPUP ----------
-(function(){
-  var popup=document.getElementById('ausPopup');
-  var closeBtn=document.getElementById('ausPopupClose');
-  if(!popup||!closeBtn) return;
-  try{ if(localStorage.getItem('aus-popup-seen')==='1') return; }catch(e){}
+<!-- Bachelor Specialization Popups -->
+<div class="aus-popup-overlay" id="popup-accounting"><div class="aus-popup"><button class="aus-popup-close" onclick="this.closest('.aus-popup-overlay').classList.remove('is-visible')">&times;</button><div class="aus-popup-body"><div class="aus-popup-title">Accounting Specialization</div><div class="aus-popup-subtitle">The Accounting specialization will provide you a solid understanding of accounting principles and techniques, as well as the key decision-making and problem-solving skills used in a challenging and fulfilling career as a professional accountant.Tiffin University follows a fairly traditional Accounting curriculum with several distinct advantages. The accounting classes not only stress practical applications, but also include both tax research and problem solving. In addition, management courses are integrated into the curriculum during the entire four years, stressing real-world applications.</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin:16px 0 8px;">TU Courses:</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">CC 313 Cost Accounting</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">CC 314 Cost Accounting II</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">CC 385 Applied Analytics for Accounting</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">CC 400 Accounting Elective</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">CC 403 Accounting Information Systems</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">CC 404 Auditing</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">ST 285 Spreadsheet Appl. and Data Analysis</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">EC 320 Connections</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">EC 400 Impact</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 495 Organizational Strategy</li></ul></div></div></div>
 
-  function startPopupTimer(){
-    setTimeout(function(){
-      popup.classList.add('is-visible');
-    },8000);
-  }
+<div class="aus-popup-overlay" id="popup-business"><div class="aus-popup"><button class="aus-popup-close" onclick="this.closest('.aus-popup-overlay').classList.remove('is-visible')">&times;</button><div class="aus-popup-body"><div class="aus-popup-title">Business Management Specialization</div><div class="aus-popup-subtitle">The Business Management specialization will equip you with the knowledge and skills to confidently and successfully manage in today’s fast-paced, global business environment. The Business Management specialization takes a generalist approach and focuses on skill development and managerial problem-solving. The field of management is studied as a science and a craft, with emphasis on ethical conduct. The Business Management is a general business specialization that allows you to learn every facet of a business.</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin:16px 0 8px;">TU Courses:</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">EC 320 Connections</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">EC 400 Impact</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">AW 321 Employment and Labor Law</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 301 Organizational Behavior</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 317 Human Resource Management</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 351 Managing Diversity in the Workplace</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 359 Small Business Management</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 404 Organizational Theory</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 411 International Management</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 495 Organizational Strategy</li></ul></div></div></div>
 
-  var preloader=document.getElementById('preloader');
-  if(preloader && !preloader.classList.contains('is-hidden')){
-    var obs=new MutationObserver(function(){
-      if(preloader.classList.contains('is-hidden')){
-        obs.disconnect();
-        startPopupTimer();
-      }
-    });
-    obs.observe(preloader,{attributes:true,attributeFilter:['class']});
-  } else {
-    startPopupTimer();
-  }
+<div class="aus-popup-overlay" id="popup-healthcare"><div class="aus-popup"><button class="aus-popup-close" onclick="this.closest('.aus-popup-overlay').classList.remove('is-visible')">&times;</button><div class="aus-popup-body"><div class="aus-popup-title">Healthcare Administration Specialization</div><div class="aus-popup-subtitle">The Healthcare Administration specialization is designed to provide you with the knowledge, skills and competencies necessary for managing in the 21st century healthcare industry. Healthcare managers must have expertise not only in healthcare, but also a working knowledge in key business areas such as operations, accounting, finance, marketing, human resources, leadership, strategy and more.The knowledge gained from the Healthcare Management provides you with an excellent foundation of knowledge, skills and abilities for working effectively in a variety of management capacities. You’ll also be prepared to work in various non-clinical, non-management positions within the industry.</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin:16px 0 8px;">TU Courses:</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">EC 320 Connections</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">EC 400 Impact</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">CA 312 Healthcare Informatics</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">CA 403 Healthcare Law</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">CA 427 Healthcare Operations</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">CA 474 Social Aspects of Aging</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 301 Organizational Behavior</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 317 Human Resource Management</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 495 Organizational Strategy</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">HI 307 Medical Ethics</li></ul></div></div></div>
 
-  function dismiss(){
-    popup.classList.remove('is-visible');
-    try{ localStorage.setItem('aus-popup-seen','1'); }catch(e){}
-  }
-  closeBtn.addEventListener('click',dismiss);
-  popup.addEventListener('click',function(e){if(e.target===popup)dismiss();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&popup.classList.contains('is-visible'))dismiss();});
-})();</script>
+<div class="aus-popup-overlay" id="popup-hrm"><div class="aus-popup"><button class="aus-popup-close" onclick="this.closest('.aus-popup-overlay').classList.remove('is-visible')">&times;</button><div class="aus-popup-body"><div class="aus-popup-title">Human Resource Management Specialization</div><div class="aus-popup-subtitle">The Human Resource Management is a career-oriented specialization for those individuals who want to make a real difference in the careers and lives of others in the workforce. You’ll develop the skills needed for the effective acquisition, training, performance appraisal, laws and regulations that determine the rights and obligations of employees and employers, job analysis, job evaluation, establishing pay structures and benefits, risk management and loss prevention, management of safety &amp; workers’ compensation, employee assistance plans, preventative health issues, emergency response &amp; preparedness, rewarding and fair treatment of employees – whether you plan on pursuing a career with a Fortune 500 company or a small business.</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin:16px 0 8px;">TU Courses:</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">EC 320 Connections</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">EC 400 Impact</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">AW 321 Employment and Labor Law</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 317 Human Resource Management</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 318 Total Compensation Management</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 320 Human Resource Risk Management</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 351 Managing Diversity in the Workplace</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 402 Training and Development</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 443 Strategic Human Resource Management</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 495 Organizational Strategy</li></ul></div></div></div>
+
+<div class="aus-popup-overlay" id="popup-marketing"><div class="aus-popup"><button class="aus-popup-close" onclick="this.closest('.aus-popup-overlay').classList.remove('is-visible')">&times;</button><div class="aus-popup-body"><div class="aus-popup-title">Integrated & Digital Marketing Specialization</div><div class="aus-popup-subtitle">The Integrated and Digital Marketing provides an integrated approach to the discipline. Emphasis is on the development and implementation of marketing strategies and on the effective use of the marketing mix.Studying in small, personalized classes, you’ll take courses in your major right away, learning the latest in marketing theory. You’ll then be able to apply your knowledge in a “work-world” setting, as you engage in real-world marketing and consulting projects that can be added as experience to your resume.Marketing faculty bring to the classroom both academic accomplishments and extensive marketplace experience in a range of marketing disciplines, including financial services, marketing research and both domestic and international marketing consulting. These real-world experiences and perspectives ensure that your marketing studies are kept current and relevant.</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin:16px 0 8px;">TU Courses:</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">EC 320 Connections</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">EC 400 Impact</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 495 Organizational Strategy</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">KT 332 Omni-Channel Retailing</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">KT 354 Personal Selling</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">KT 370 Digital Marketing</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">KT 402 Marketing Research</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">KT 404 Global Marketing</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">KT 432 Social Media Marketing</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">KT 434 Digital Marketing Analytics</li></ul></div></div></div>
+
+<div class="aus-popup-overlay" id="popup-intl"><div class="aus-popup"><button class="aus-popup-close" onclick="this.closest('.aus-popup-overlay').classList.remove('is-visible')">&times;</button><div class="aus-popup-body"><div class="aus-popup-title">International Business Specialization</div><div class="aus-popup-subtitle">The global world of business is rapidly growing and ever-changing. International Business specialization will prepare you for the opportunities of doing business in a complex and fascinating global economy. You will acquire a solid foundation of knowledge in international finance, marketing, trade, and management. In addition to a broad-based business study, you will complete courses on global issues in management such as trade, competition, markets, organizational design, information technology, and human resource management. The impact of globalization on all businesses is explored.</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin:16px 0 8px;">TU Courses:</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">ST 285 Spreadsheet Appl. &amp; Data Analysis</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">EC 320 Connections</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">EC 400 Impact</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">CO 424 Global Trade</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">IN 426 International Finance</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 317 Human Resource Management</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 351 Managing Diversity in the Workplace</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 411 International Management</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 495 Organizational Strategy</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">KT 404 Global Marketing</li></ul></div></div></div>
+
+<div class="aus-popup-overlay" id="popup-athletic"><div class="aus-popup"><button class="aus-popup-close" onclick="this.closest('.aus-popup-overlay').classList.remove('is-visible')">&times;</button><div class="aus-popup-body"><div class="aus-popup-title">Athletic Administration Specialization</div><div class="aus-popup-subtitle">Sports Management – Athletic Administration specialization designed to help you build a solid base of knowledge in the core areas of business, while at the same time learning the basic principles and practices of sports administration. With a strong foundation from classes covering all aspects of the field, taught by industry-savvy instructors and enhanced by real-world experiences, you’ll be well prepared with an athletic administration education second to none.</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin:16px 0 8px;">TU Courses:</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">EC 320 Connections</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">EC 400 Impact</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 495 Organizational Strategy</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">MG 220 Principles of Athletic Development</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">MG 315 Supervision in Sports</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">MG 325 Facilities Design &amp; Management</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">MG 360 Business of Sports</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">MG 375 Sports Governance &amp; Administration</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">MG 405 Sports Analytics</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">MG 450 Revenue Generation &amp; Sponsorship</li></ul></div></div></div>
+
+<div class="aus-popup-overlay" id="popup-sports"><div class="aus-popup"><button class="aus-popup-close" onclick="this.closest('.aus-popup-overlay').classList.remove('is-visible')">&times;</button><div class="aus-popup-body"><div class="aus-popup-title">Sports Marketing Specialization</div><div class="aus-popup-subtitle">Sports Management - Sports Marketing specialization is designed to provide you the management and marketing fundamentals you’ll need to launch or enhance a sports business career. You’ll take a variety of courses covering all aspects of sports marketing, taught by faculty who bring years of industry experience. You’ll gain practical insights into the world of sports marketing, as well as professional connections – all part of a hands-on, real-world sports marketing education.</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin:16px 0 8px;">TU Courses:</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">EC 320 Connections</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">EC 400 Impact</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">GT 495 Organizational Strategy</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">KT 253 Marketing Communications</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">KT 370 Digital Marketing</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">MG 235 Sports Marketing and Promotions</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">MG 335 Sports Media Technology</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">MG 360 Business of Sports</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">MG 405 Sports Analytics</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">MG 450 Revenue Generation and Sponsorship</li></ul></div></div></div>
+
+<!-- Master Specialization Popups -->
+<div class="aus-popup-overlay" id="popup-ms-aviation"><div class="aus-popup"><button class="aus-popup-close" onclick="this.closest('.aus-popup-overlay').classList.remove('is-visible')">&times;</button><div class="aus-popup-body"><div class="aus-popup-title">Aviation Management (MSc)</div><div class="aus-popup-subtitle">The American Institute of Applied Sciences in Switzerland (AUS) is committed to offering a distinctive specialization in Aviation Management as part of its MIBA program to prepare future managers. The Aviation Management Specialization provides pertinent knowledge of the aviation industry and provides students with the necessary skills to fast-track their aviation careers. Grounded in cutting-edge business theory and experiential learning and directly taught by aviation professors, this MIBA program gives the students a well-rounded and hands-on exposure to the industry.The program is based on the AUS MIBA curriculum combined with several courses in Aviation and Airport Management along with Safety, Security, and Legal issues. The curriculum links cutting-edge business theory to practical research and applications as students are guided to solve real-world challenges in the aviation industry.AUS Courses – 18 Credit Hours / 24 ECTSAVI 500 Airline Business FoundationsAVI 510 Airline MarketingAVI 520 Airport Business ManagementAVI 600 Aviation Safety ManagementAVI 610 Aviation Sustainability Path and ChallengesAVI 620 Aviation Regulation Compliance</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin:16px 0 8px;">TU Courses:</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);">Contact for course details</li></ul></div></div></div>
+
+<div class="aus-popup-overlay" id="popup-ms-data"><div class="aus-popup"><button class="aus-popup-close" onclick="this.closest('.aus-popup-overlay').classList.remove('is-visible')">&times;</button><div class="aus-popup-body"><div class="aus-popup-title">Data Analytics (MSc)</div><div class="aus-popup-subtitle">The MBA with a specialization in Data Analytics will help you not only analyze data but understand it, translate it and incorporate it into strategy at the top levels of your organization. The Data Analytics specialization focuses on the development of adept decision-making related to statistics, accounting, economics, finance, computer information, policy, ethics, law, globalization and marketing.The program’s highly robust curriculum includes topics such as: data acquisition, management of data, use of statistical software to produce intelligent outcomes, knowledge of concepts that advance the understanding of “what and why to do” and data visualization and presentation. The program is designed with the idea of starting with a research question, gathering secondary data from various public resources, cleansing and preparing the data for analysis, proceeding through the analysis and ending with the communication of the results using various visualization techniques.</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin:16px 0 8px;">TU Courses:</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">AX 511 Database Design and Data Modeling</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">AX 521 Applied Statistics for Data Analytics</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">AX 631 Advanced Data Analysis Techniques</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">AX 641 Data Visualization, Design and Presentation</li></ul></div></div></div>
+
+<div class="aus-popup-overlay" id="popup-ms-finance"><div class="aus-popup"><button class="aus-popup-close" onclick="this.closest('.aus-popup-overlay').classList.remove('is-visible')">&times;</button><div class="aus-popup-body"><div class="aus-popup-title">Finance (MSc)</div><div class="aus-popup-subtitle">The Finance specialization enables you to build upon the core work in the MBA program with a focus on economic and financial business practices. The finance courses will provide an opportunity for you to learn about local, national and international economies in cooperating and competing markets. You’ll explore performance of stocks, bonds, commodities and other types of investments. The degree prepares you to work in the field of financial management either independently or with a corporation, bank, securities firm, nonprofit organization or an investment agency.You’ll learn from faculty who bring years of professional experience and terminal degrees in finance. You’ll study with students who bring their own diverse professional experiences – the average TU MBA student enters with nearly 10 years of post-graduate work experience. Faculty design courses for the program with the student-working professional in mind. The teaching and learning method is student-centered, personalized and interactive.</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin:16px 0 8px;">TU Courses:</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">IN 617 International Financial Management</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">IN 622 Financial Markets and Institutions</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">IN 623 Investment Analysis</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">IN 627 Emerging Markets Finance</li></ul></div></div></div>
+
+<div class="aus-popup-overlay" id="popup-ms-healthcare"><div class="aus-popup"><button class="aus-popup-close" onclick="this.closest('.aus-popup-overlay').classList.remove('is-visible')">&times;</button><div class="aus-popup-body"><div class="aus-popup-title">Healthcare Administration (MSc)</div><div class="aus-popup-subtitle">With the Healthcare Administration specialization, you can become a leader in the healthcare system to ensure that it stays a healthy, caring structure. With foundational business practices ranging from finance to human resources to marketing management, our program prepares you with the knowledge, decision-making tools and new technologies you’ll need to thrive as an administrator in the healthcare field. The Healthcare Administration specialization is designed for working professionals employed in the areas of healthcare, education, childcare, social services and business. The curriculum is comprehensive, offering various paths of study, including public health, mental health, long-term care administration and acute care administration. Courses focus on management systems, decision-making tools, new technologies, financial management and referral systems as well as current issues in healthcare law and ethics.</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin:16px 0 8px;">TU Courses:</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">CA 541 Managing Healthcare Systems</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">CA 553 Current Issues in Healthcare Administration</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">CA 634 Healthcare Finance &amp; Process Management</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">CA 643 Healthcare Policy, Law, and Ethics</li></ul></div></div></div>
+
+<div class="aus-popup-overlay" id="popup-ms-hrm"><div class="aus-popup"><button class="aus-popup-close" onclick="this.closest('.aus-popup-overlay').classList.remove('is-visible')">&times;</button><div class="aus-popup-body"><div class="aus-popup-title">Human Resource Management (MSc)</div><div class="aus-popup-subtitle">The MBA with a Human Resource Management specialization provides the knowledge and skills needed to address the issues and challenges faced by today’s human resource management professional. You’ll learn the latest theories and engage in applications that will enable you to acquire and develop talented employees, organize a workplace, handle company pressure and create innovative solutions to develop a human-centered employee experience.As a graduate of the program, you’ll have access to greater job opportunities. You’ll be armed with the knowledge and skills necessary to advance your career to positions such as human resources manager, human resources director, recruiting and staffing, compensation and benefits, and training and learning.</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin:16px 0 8px;">TU Courses:</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">RM 610 Negotiations and Conflict Resolution</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">RM 611 Human Resource Planning &amp; Talent Acquisition</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">RM 612 Talent Development &amp; Performance Management</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">RM 613 Strategic Human Resource Management</li></ul></div></div></div>
+
+<div class="aus-popup-overlay" id="popup-ms-intl"><div class="aus-popup"><button class="aus-popup-close" onclick="this.closest('.aus-popup-overlay').classList.remove('is-visible')">&times;</button><div class="aus-popup-body"><div class="aus-popup-title">International Business (MSc)</div><div class="aus-popup-subtitle">The International Business specialization will equip you with the in-depth knowledge and specialized skills you’ll need to thrive in this increasingly globalized business environment.A global mindset is essential in business today and will only increase in importance as globalization brings the world closer together. The International Business specialization will equip you with the specialized knowledge needed to function effectively as a manager in today’s competitive global economy. With classes that focus on international trade and investments, financial management, and organizational design and operation, you’ll study how multinational organizations work, and thrive, in a variety of cultural environments.</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin:16px 0 8px;">TU Courses:</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">IN 617 International Financial Management</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">IN 627 Emerging Markets Finance</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">RM 610 Negotiations and Conflict Resolution</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">KT 627 Global Marketing Management</li></ul></div></div></div>
+
+<div class="aus-popup-overlay" id="popup-ms-leadership"><div class="aus-popup"><button class="aus-popup-close" onclick="this.closest('.aus-popup-overlay').classList.remove('is-visible')">&times;</button><div class="aus-popup-body"><div class="aus-popup-title">Leadership & Change (MSc)</div><div class="aus-popup-subtitle">The Leadership &amp; Change specialization provides you with a comprehensive organizational perspective, combined with real-world applications. Exposure to individual and group theories and practice will prepare you to become a well-rounded business professional. Competencies covered include: ethical decision making, interdependence, inclusion, global perspective and technology, along with courses focused on individual leadership, behavior and change dynamics, systems thinking, negotiations and conflict resolution.Most learning in the program is team-based as well as case-based. By being an online program, this allows you to work across various mediums to gain practice in working virtually in teams, an ability that is in high demand in today’s complex working environment.</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin:16px 0 8px;">TU Courses:</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">DR 531 Individual Leadership &amp; Influence</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">DR 610 Leadership Behavior and Change Dynamics</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">DR 611 Systems Thinking &amp; Innovative Teamwork</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">RM 610 Negotiations &amp; Conflict Resolution</li></ul></div></div></div>
+
+<div class="aus-popup-overlay" id="popup-ms-sports"><div class="aus-popup"><button class="aus-popup-close" onclick="this.closest('.aus-popup-overlay').classList.remove('is-visible')">&times;</button><div class="aus-popup-body"><div class="aus-popup-title">Sports Management (MSc)</div><div class="aus-popup-subtitle">The Sports Management specialization is designed to maximize convenience while providing the necessary structure to enhance students’ marketability and to improve their business skills. Faculty are prepared to help students make connections with a growing network of alumni working in sports or with the extensive list of sports industry contacts that have professional relationships with our faculty.Sports management includes a wide range of business-related activities involved in overseeing sports and recreation, including team finances, logistics, acting as a liaison between all stakeholders, and more. Sports management focuses on the whole sport and team from a business perspective.</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin:16px 0 8px;">TU Courses:</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">MG 532 Communication and Fund Raising in Sports</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">MG 634 Business Strategies in Sports</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">MG 637 Personnel Management in Sport</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">MG 670 Sport Mentorship</li></ul></div></div></div>
+
+<div class="aus-popup-overlay" id="popup-ms-brand"><div class="aus-popup"><button class="aus-popup-close" onclick="this.closest('.aus-popup-overlay').classList.remove('is-visible')">&times;</button><div class="aus-popup-body"><div class="aus-popup-title">Strategic Brand & Digital Marketing (MSc)</div><div class="aus-popup-subtitle">The Strategic Brand &amp; Digital Marketing specialization enables you to build upon the solid foundation from the core coursework for the MBA degree, while advancing your knowledge in marketing products and services. You’ll explore the practices and techniques commonly used to increase exposure and market positions. You’ll acquire knowledge of marketing areas such as information systems, strategic brand management, global marketing management, and marketing field analysis. You’ll also be exposed to marketing in an international arena.The MBA with a specialization in Strategic Brand &amp; Digital&nbsp;Marketing will provide you the knowledge and skills needed to succeed and advance in your marketing career. You’ll acquire the marketing competencies you need to make a significant impact in your organization.</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin:16px 0 8px;">TU Courses:</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">KT 526 Digital Information Systems for Marketing</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">KT 623 Strategic Brand Management</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">KT 627 Digital Analytical Global Marketing Management</li><li style="padding:6px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);">KT 634 Digital Marketing Analytics</li></ul></div></div></div>
+
 </body>
 </html>

@@ -340,7 +340,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   <div class="aus-nav-links">
     <button type="button" data-open-panel="programs">Programs</button>
     <button type="button" data-open-panel="about">About</button>
-    <button type="button" data-open-panel="student-life">Student Life</button>
+    <button type="button" data-open-panel="student-life">Campus Life</button>
   </div>
   <div class="aus-search" id="siteSearch">
       <input id="siteSearchInput" type="search" placeholder="Ask AUS Anything" aria-label="Site search" autocomplete="off">
@@ -423,25 +423,32 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
           <a href="aus-faq.html">FAQ</a>
             <a href="aus-rights-policy.html">Policies and Procedures</a>
             <a href="aus-ibm-collaboration.html">IBM Collaboration</a>
+            <a href="aus-tiffin-collaboration.html">Tiffin University Collaboration</a>
           <a href="#" style="display:none">Accreditations_TEMP &amp; Memberships</a>
             
           </div>
         </div></div>
       </div>
-      <div class="accordion-item" data-panel-key="student-life">
-        <button class="accordion-trigger">Student Life <span class="accordion-icon"></span></button>
+            <div class="accordion-item" data-panel-key="student-life">
+        <button class="accordion-trigger">Campus Life <span class="accordion-icon"></span></button>
         <div class="accordion-panel"><div class="accordion-panel-inner">
           <div class="accordion-group">
-            <a href="#">Campus &amp; Housing</a>
-            <a href="#">Clubs &amp; Activities</a>
-            <a href="#">Lake Geneva Life</a>
+            <a href="aus-campus-life.html">Campus Life</a>
+            <a href="aus-student-life.html">Student Life</a>
           </div>
         </div></div>
       </div>
-      <a href="aus-admissions.html" class="side-panel-link">Admissions</a>
-      <a href="aus-cost-calculator.html" class="side-panel-link">Cost Calculator</a>
+      <div class="accordion-item" data-panel-key="admissions">
+        <button class="accordion-trigger">Admissions <span class="accordion-icon"></span></button>
+        <div class="accordion-panel"><div class="accordion-panel-inner">
+          <div class="accordion-group">
+            <a href="aus-admissions.html">Admissions &amp; Financing</a>
+            <a href="aus-cost-calculator.html">Cost Calculator</a>
+          </div>
+        </div></div>
+      </div>
       <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24" class="side-panel-link">Contact</a>
-</nav>
+    </nav>
     <div class="side-panel-foot">
       <a href="https://study.aus.swiss/application" class="hero-cta">Apply now &rarr;</a>
       <div class="side-panel-socials footer-social-grid">
@@ -696,7 +703,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
         </div>
       </div>
             <div class="footer-col"><div class="footer-col-title">Programs</div><a href="aus-programs.html#bachelor">Bachelors</a><a href="aus-programs.html#master">Masters</a><a href="aus-programs.html#doctorate">Doctorate</a><a href="aus-programs.html#doctorate">Federal Diploma</a><div style="margin-top:14px;"></div><div class="footer-col-title" style="margin-top:6px;">Connect</div><a href="aus-admissions.html">Admissions</a><a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24">Contact</a></div>
-      <div class="footer-col"><div class="footer-col-title">School</div><a href="aus-about.html">About</a><a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a><a href="aus-accreditations.html">Accreditations &amp; Memberships</a><a href="aus-governance.html">Governance</a><a href="aus-faq.html">FAQ</a><a href="aus-campus-life.html">Campus Life</a></div>
+      <div class="footer-col"><div class="footer-col-title">School</div><a href="aus-about.html">About</a><a href="aus-about-history.html">History</a><a href="aus-about-faculty.html">Faculty</a><a href="aus-accreditations.html">Accreditations &amp; Memberships</a><a href="aus-governance.html">Governance</a><a href="aus-faq.html">FAQ</a><a href="aus-campus-life.html">Campus Life</a><a href="aus-student-life.html">Student Life</a><a href="aus-tiffin-collaboration.html">Tiffin University Collaboration</a></div>
       <div class="footer-col"><div class="footer-col-title">For AUS Students</div><a href="https://search.ebscohost.com/login.aspx" target="_blank" rel="noopener">E-Library</a><a href="https://openstax.org/" target="_blank" rel="noopener">OpenStax</a><a href="https://www.oecd.org/en/publications.html" target="_blank" rel="noopener">OECD Publications</a></div>
     </div>
     <div class="footer-v2_bottom">
@@ -750,7 +757,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
       setTimeout(function(){ if(preloader.parentNode) preloader.parentNode.removeChild(preloader); },700);
   }
   var minShow = new Promise(function(res){ setTimeout(res,900); });
-  var ready = new Promise(function(res){ if(document.readyState==='complete') res(); else window.addEventListener('load',res); });
+  var ready = new Promise(function(res){ if(document.readyState==='complete'||document.readyState==='loaded'||document.readyState==='interactive') res(); else window.addEventListener('load',res); });
   Promise.all([minShow,ready]).then(hidePreloader);
 
   // Nav scroll
@@ -937,7 +944,10 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     ,{title:"Cost Calculator",url:"aus-cost-calculator.html",cat:"Tools",keys:"Cost Calculator Plan Your AUS Investment Estimate tuition living costs Switzerland Program Scholarship Accommodation Monthly expenses Visa Permit Calculate Expenses Financial planning budget"}
 ,
     {title:"AUS Speaker Series",url:"aus-speaker-series.html",cat:"Campus Life",keys:"AUS Speaker Series Industry experts networking with AUS students Monthly seminars lectures leading experts Commencement speakers Industrial visits Campus Life"},
-    {title:"Campus Life",url:"aus-campus-life.html",cat:"Campus Life",keys:"Campus Life Embrace Life in Switzerland AUS inclusive multicultural campus personalized education sports extra-curricular activities La Tour-de-Peilz Swiss Riviera Student events Welcome Week diversity celebrations guest speakers field trips coached sports social events Accommodation career support living in Switzerland campus facilities student visa health insurance"}];
+    {title:"Campus Life",url:"aus-campus-life.html",cat:"Campus Life",keys:"Campus Life Embrace Life in Switzerland AUS inclusive multicultural campus personalized education sports extra-curricular activities La Tour-de-Peilz Swiss Riviera Student events Welcome Week diversity celebrations guest speakers field trips coached sports social events Accommodation career support living in Switzerland campus facilities student visa health insurance"},
+
+    {title:"Student Life",url:"aus-student-life.html",cat:"About",keys:"Student Life AUS campus student services accommodation visa health insurance academic advising career support Our Students 50 nationalities Class Profile 20 students per class Campus Life Swiss Riviera Lake Geneva events Welcome Week diversity"}
+];
   // allow pages to extend idx via window.AUS_SEARCH_EXTRA
   if(window.AUS_SEARCH_EXTRA && Array.isArray(window.AUS_SEARCH_EXTRA)){ idx = idx.concat(window.AUS_SEARCH_EXTRA); }
   var input=document.getElementById("siteSearchInput");
@@ -1008,7 +1018,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
       if(!firstMark) firstMark=document.querySelector("mark");
     }
   });
-  if(firstMark) setTimeout(function(){ firstMark.scrollIntoView({behavior:"smooth",block:"center"}); firstMark.style.outline="2px solid var(--crimson)"; firstMark.style.outlineOffset="2px"; }, 400);
+  if(firstMark) setTimeout(function(){ firstMark.scrollIntoView({behavior:"smooth",block:"center"}); firstMark.style.outline="2px solid var(--crimson)"; firstMark.style.outlineOffset="2px"; },
+    {title:"AUS Collaboration with Tiffin University",url:"aus-tiffin-collaboration.html",cat:"About",keys:"AUS Collaboration Tiffin University Dual Degree Program DDP BSBA BBA MIBA MBA Ohio USA Bachelor Master Accounting Business Management Healthcare Administration Human Resource Management Marketing International Business Athletic Administration Sports Marketing Aviation Data Analytics Finance Leadership Strategic Brand Digital Marketing"}, 400);
 })();
 
 // ---------- PROMO POPUP ----------

@@ -679,7 +679,7 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
   <div class="aus-nav-links">
     <button type="button" data-open-panel="programs">Programs</button>
     <button type="button" data-open-panel="about">About</button>
-    <button type="button" data-open-panel="student-life">Student Life</button>
+    <button type="button" data-open-panel="student-life">Campus Life</button>
   </div>
   <div class="aus-search" id="siteSearch">
       <input id="siteSearchInput" type="search" placeholder="Ask AUS Anything" aria-label="Site search" autocomplete="off">
@@ -762,25 +762,32 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
           <a href="aus-faq.html">FAQ</a>
             <a href="aus-rights-policy.html">Policies and Procedures</a>
             <a href="aus-ibm-collaboration.html">IBM Collaboration</a>
+            <a href="aus-tiffin-collaboration.html">Tiffin University Collaboration</a>
           <a href="#" style="display:none">Accreditations_TEMP &amp; Memberships</a>
             
           </div>
         </div></div>
       </div>
-      <div class="accordion-item" data-panel-key="student-life">
-        <button class="accordion-trigger">Student Life <span class="accordion-icon"></span></button>
+            <div class="accordion-item" data-panel-key="student-life">
+        <button class="accordion-trigger">Campus Life <span class="accordion-icon"></span></button>
         <div class="accordion-panel"><div class="accordion-panel-inner">
           <div class="accordion-group">
-            <a href="#">Campus &amp; Housing</a>
-            <a href="#">Clubs &amp; Activities</a>
-            <a href="#">Lake Geneva Life</a>
+            <a href="aus-campus-life.html">Campus Life</a>
+            <a href="aus-student-life.html">Student Life</a>
           </div>
         </div></div>
       </div>
-      <a href="aus-admissions.html" class="side-panel-link">Admissions</a>
-      <a href="aus-cost-calculator.html" class="side-panel-link">Cost Calculator</a>
+      <div class="accordion-item" data-panel-key="admissions">
+        <button class="accordion-trigger">Admissions <span class="accordion-icon"></span></button>
+        <div class="accordion-panel"><div class="accordion-panel-inner">
+          <div class="accordion-group">
+            <a href="aus-admissions.html">Admissions &amp; Financing</a>
+            <a href="aus-cost-calculator.html">Cost Calculator</a>
+          </div>
+        </div></div>
+      </div>
       <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24" class="side-panel-link">Contact</a>
-</nav>
+    </nav>
     <div class="side-panel-foot">
       <a href="https://study.aus.swiss/application" class="hero-cta">Apply now &rarr;</a>
       <div class="side-panel-socials footer-social-grid">
@@ -1213,7 +1220,7 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
   }
   var minShow = new Promise(function(res){ setTimeout(res, 900); });
   var ready = new Promise(function(res){
-    if(document.readyState === 'complete') res(); else window.addEventListener('load', res);
+    if(document.readyState === 'complete' || document.readyState === 'loaded' || document.readyState === 'interactive') res(); else window.addEventListener('load', res);
   });
   Promise.all([minShow, ready]).then(hidePreloader);
 
@@ -1590,10 +1597,9 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
   if(!q) return;
   var term=q.trim();
   if(!term) return;
-  var re=new RegExp("("+term.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","gi");
-  var walker=document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
-  var firstMark=null;
-  var nodes=[];
+  var re=new RegExp("("+term.replace(/[.*+?^${},
+
+    {title:"Student Life",url:"aus-student-life.html",cat:"About",keys:"Student Life AUS campus student services accommodation visa health insurance academic advising career support Our Students 50 nationalities Class Profile 20 students per class Campus Life Swiss Riviera Lake Geneva events Welcome Week diversity"}];
   var n;
   while(n=walker.nextNode()){
     if(n.parentElement.closest("script,style,noscript,.aus-search")) continue;
@@ -1610,7 +1616,8 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
       if(!firstMark) firstMark=document.querySelector("mark");
     }
   });
-  if(firstMark) setTimeout(function(){ firstMark.scrollIntoView({behavior:"smooth",block:"center"}); firstMark.style.outline="2px solid var(--crimson)"; firstMark.style.outlineOffset="2px"; }, 400);
+  if(firstMark) setTimeout(function(){ firstMark.scrollIntoView({behavior:"smooth",block:"center"}); firstMark.style.outline="2px solid var(--crimson)"; firstMark.style.outlineOffset="2px"; },
+    {title:"AUS Collaboration with Tiffin University",url:"aus-tiffin-collaboration.html",cat:"About",keys:"AUS Collaboration Tiffin University Dual Degree Program DDP BSBA BBA MIBA MBA Ohio USA Bachelor Master Accounting Business Management Healthcare Administration Human Resource Management Marketing International Business Athletic Administration Sports Marketing Aviation Data Analytics Finance Leadership Strategic Brand Digital Marketing"}, 400);
 })();
 
 // ---------- PROMO POPUP ----------
