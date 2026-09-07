@@ -72,7 +72,8 @@ for (const file of files) {
     fail(file, 'side panel is not closed before page content');
   }
 
-  for (const match of source.matchAll(/(?:href|src)="([^"]+)"/g)) {
+  const markup = source.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '');
+  for (const match of markup.matchAll(/(?:href|src)="([^"]+)"/g)) {
     const original = match[1];
     if (/^(?:[a-z]+:|#|\/\/|data:)/i.test(original)) continue;
     const clean = original.split('#')[0].split('?')[0];
