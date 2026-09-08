@@ -5,3 +5,6 @@ Temp/
 # Build artifacts
 node_modules/
 partner-logos.zip
+
+# Office scratch/design docs (repo is website-only)
+*.docx
