@@ -3002,5 +3002,40 @@ document.getElementById("finderRetake").addEventListener("click",function(){curr
 }
 })();
 </script>
+
+<!-- cta-auto-fit -->
+<script>
+(function(){
+  function fitAll(){
+    var els = document.querySelectorAll("button,a[class*=btn],a[class*=cta]");
+    for (var i = 0; i < els.length; i++){
+      var el = els[i];
+      if (getComputedStyle(el).whiteSpace !== "nowrap") continue;
+      var orig = el.getAttribute("data-fit-orig");
+      if (orig === null){
+        orig = parseFloat(getComputedStyle(el).fontSize) || 14;
+        el.setAttribute("data-fit-orig", orig);
+      }
+      el.style.fontSize = orig + "px";
+      var cur = orig;
+      for (var g = 0; g < 40; g++){
+        if (el.scrollWidth <= el.clientWidth + 1) break;
+        cur = Math.max(7, cur - 0.5);
+        el.style.fontSize = cur + "px";
+      }
+    }
+  }
+  function run(){
+    if (document.readyState === "loading") return;
+    requestAnimationFrame(fitAll);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
+  window.addEventListener("load", run);
+  var t;
+  window.addEventListener("resize", function(){ clearTimeout(t); t = setTimeout(run, 120); });
+  var mo = new MutationObserver(function(){ clearTimeout(t); t = setTimeout(run, 120); });
+  if (document.body) mo.observe(document.body, { attributes: true, childList: true, subtree: true, attributeFilter: ["class"] });
+})();
+</script>
 </body>
 </html>
