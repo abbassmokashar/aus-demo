@@ -368,34 +368,46 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .aus-nav-links button,.aus-nav-links a{font-weight: 500; font-size: 13px; white-space: nowrap;}
 .aus-nav-links button::after,.aus-nav-links a::after{content: ""; display: block; width: 0px; height: 1px; background: currentcolor; transition: width .3s var(--ease); margin-top: 3px;}
 .aus-nav-links button:hover::after,.aus-nav-links a:hover::after{width: 100%;}
-.aus-nav-right{display: flex; align-items: center; gap: 22px; opacity: 0; animation: navIn .8s var(--ease) .45s forwards;}
-.aus-nav-contact{display: inline-flex; align-items: center; justify-content: center; line-height: 1; font-weight: 600; font-size: 14px; padding: 10px 20px; border: 1px solid; border-radius: 100px; transition: background .3s var(--ease),color .3s var(--ease);}
-.aus-nav-contact:hover{background: var(--white); color: var(--navy); border-color: var(--white);}
-.aus-nav-apply{display: inline-flex; align-items: center; justify-content: center; line-height: 1; font-weight: 600; font-size: 14px; padding: 10px 20px; border: 1px solid; border-radius: 100px; transition: background .3s var(--ease),color .3s var(--ease);}
-.aus-nav-apply:hover{background: var(--crimson); border-color: var(--crimson); color: var(--white);}
+.aus-nav-actions{display: flex; align-items: center; gap: 10px; opacity: 0; animation: navIn .8s var(--ease) .45s forwards;}
+.aus-nav-programs{display: inline-flex; align-items: center; justify-content: center; line-height: 1; font-weight: 650; font-size: 13px; white-space: nowrap; padding: 10px 8px; border-radius: 100px; transition: background .3s var(--ease),color .3s var(--ease);}
+.aus-nav-programs:hover{background: rgba(255, 255, 255, 0.12);}
+.aus-nav-talk{display: inline-flex; align-items: center; justify-content: center; line-height: 1; font-weight: 650; font-size: 13px; white-space: nowrap; padding: 10px 15px; border: 1px solid; border-radius: 100px; transition: background .3s var(--ease),color .3s var(--ease);}
+.aus-nav-talk:hover{background: var(--white); color: var(--navy); border-color: var(--white);}
+.aus-nav-apply{display: inline-flex; align-items: center; justify-content: center; line-height: 1; font-weight: 750; font-size: 14px; padding: 11px 20px; border: 1px solid var(--crimson); border-radius: 100px; background: var(--crimson); color: var(--white); box-shadow: rgba(190, 31, 61, 0.24) 0px 8px 24px; transition: background .3s var(--ease),color .3s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease);}
+.aus-nav-apply:hover{background: rgb(169, 25, 53); border-color: rgb(169, 25, 53); color: var(--white); transform: translateY(-2px); box-shadow: rgba(190, 31, 61, 0.34) 0px 12px 30px;}
+.aus-nav-action-short{display: none;}
 .menu-toggle{display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 14px;}
 .menu-toggle-bars{width: 22px; height: 14px; position: relative;}
 .menu-toggle-bars span{position: absolute; left: 0px; right: 0px; height: 1.5px; background: currentcolor;}
 .menu-toggle-bars span:nth-child(1){top: 0px;}
 .menu-toggle-bars span:nth-child(2){top: 6px; width: 70%;}
 .menu-toggle-bars span:nth-child(3){top: 12px;}
-@media (max-width: 760px) {.aus-nav-links{display: none;}}
-@media (max-width: 1280px) {.aus-search{display: none !important;}}
-@media (max-width: 760px) {.aus-nav{padding: 12px clamp(12px, 4vw, 20px);}
-.aus-nav.is-scrolled{padding-top: 10px; padding-bottom: 10px;}
-.aus-wordmark{height: 34px; width: min(42vw, 170px);}
-.aus-nav-right{gap: 10px;}
-.aus-nav-contact,.aus-nav-apply{display: inline-flex; align-items: center; justify-content: center; line-height: 1; min-height: 44px; padding: 9px 14px; font-size: 13.5px;}
-.menu-toggle{min-height: 44px; gap: 8px; padding: 0px 2px;}
-.menu-toggle-bars{width: 20px; height: 12px;}
+@media (max-width: 1480px) {.aus-nav-links{display: none;}}
+@media (max-width: 760px) {.aus-nav{display: grid; grid-template-columns: minmax(72px, 88px) minmax(44px, 1fr) auto auto auto; gap: 0px 3px; padding: 7px clamp(6px, 2vw, 10px);}
+.aus-nav.is-scrolled{padding-top: 7px; padding-bottom: 7px;}
+.aus-wordmark{grid-area: 1 / 1; height: 26px; width: 100%;}
+.aus-nav-actions{display: contents;}
+.aus-search{grid-area: 1 / 2; width: 100%; max-width: none; margin: 0px; display: flex !important;}
+.aus-search input{min-width: 0px; height: 30px; padding: 5px 23px 5px 6px; font-size: 9.5px;}
+.aus-search-btn{right: 3px; width: 21px; height: 21px;}
+.aus-nav-talk{grid-area: 1 / 3;}
+.aus-nav-apply{grid-area: 1 / 4;}
+.aus-nav-talk,.aus-nav-apply{min-width: 0px; min-height: 30px; text-align: center;}
+.aus-nav-talk{padding: 5px 6px; font-size: 8.5px; letter-spacing: -0.02em;}
+.aus-nav-apply{padding: 5px 7px; font-size: 9.5px;}
+.aus-nav-action-full{display: inline;}
+.aus-nav-action-short{display: none;}
+.menu-toggle{display: flex; grid-area: 1 / 5; min-width: 30px; min-height: 30px; justify-content: center; padding: 0px 3px;}
+.menu-toggle > span:first-child{display: none;}
+.menu-toggle-bars{width: 19px; height: 12px;}
 .menu-toggle-bars span:nth-child(2){top: 5px;}
 .menu-toggle-bars span:nth-child(3){top: 10px;}}
-@media (max-width: 420px) {.aus-nav{padding: 10px 12px;}
-.aus-wordmark{height: 30px; width: min(38vw, 150px);}
-.aus-nav-right{gap: 6px;}
-.aus-nav-contact{display: none;}
-.aus-nav-apply{padding: 9px 12px; font-size: 13px;}
-.menu-toggle{font-size: 13px; gap: 6px;}}
+@media (max-width: 420px) {.aus-nav{grid-template-columns: minmax(70px, 84px) minmax(42px, 1fr) auto auto auto; column-gap: 3px; padding: 7px 6px;}
+.aus-wordmark{height: 25px;}
+.aus-nav-talk{padding-left: 4px; padding-right: 4px; font-size: 8px;}
+.aus-nav-apply{padding-left: 6px; padding-right: 6px; font-size: 9px;}
+.aus-search input{height: 30px;}
+.menu-toggle{min-width: 28px; min-height: 30px; padding: 0px 2px;}}
 .side-panel{position: fixed; inset: 0px; z-index: 120; pointer-events: none;}
 .side-panel-backdrop{position: absolute; inset: 0px; background: rgba(15, 17, 38, 0.55); opacity: 0; transition: opacity .5s var(--ease);}
 .side-panel-canvas{position: absolute; top: 0px; right: 0px; bottom: 0px; width: min(460px, 92vw); background: var(--night); color: var(--white); display: flex; flex-direction: column; transform: translateX(100%); transition: transform .55s var(--ease); box-shadow: rgba(15, 17, 38, 0.28) -30px 0px 60px;}
@@ -477,16 +489,17 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .footer-v2_bottom-item:hover .footer-v2_bottom-img{opacity: 1;}
 @media (max-width: 640px) {.footer-v2_bottom{flex-direction: column; align-items: flex-start;}
 .footer-v2_bottom-list{gap: clamp(20px, 6vw, 30px);}}
-.aus-search{position: relative; flex: 0 1 280px; max-width: 32vw; display: flex; align-items: center; margin-left: clamp(22px, 2.4vw, 42px); margin-right: clamp(22px, 2.4vw, 42px);}
+.aus-search{position: relative; flex: 0 1 210px; width: clamp(150px, 13vw, 210px); display: flex; align-items: center; margin: 0px 4px;}
 .aus-search input{width: 100%; padding: 10px 38px 10px 14px; border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.28); background: rgba(255, 255, 255, 0.08); color: var(--white); font-size: 13.5px; outline: none; transition: background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);}
 .aus-search input::placeholder{color: currentcolor; opacity: 0.55;}
 .aus-search input:focus{border-color: var(--white); background: var(--white); color: var(--navy);}
 .aus-nav.is-scrolled .aus-search input{border-color: var(--line); background: var(--white); color: var(--navy);}
 .aus-search-btn{position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%; background: var(--white); color: var(--navy); display: flex; align-items: center; justify-content: center; pointer-events: none;}
-.aus-search-drop{position: absolute; top: calc(100% + 10px); right: 0px; width: min(420px, 92vw); max-height: min(60vh, 520px); overflow: auto; background: var(--white); border-radius: 16px; box-shadow: rgba(12, 14, 34, 0.18) 0px 20px 50px; border: 1px solid var(--line); padding: 8px; display: grid; gap: 6px; z-index: 120;}
+.aus-search-drop{position: fixed; top: 88px; left: 50%; right: auto; transform: translateX(-50%); width: min(560px, -24px + 100vw); max-height: min(60vh, 520px); overflow: auto; background: var(--white); border-radius: 16px; box-shadow: rgba(12, 14, 34, 0.18) 0px 20px 50px; border: 1px solid var(--line); padding: 8px; display: grid; gap: 6px; z-index: 120;}
 .aus-search-drop[hidden]{display: none !important;}
 .aus-search-drop a:hover{background: var(--sky-tint);}
-@media (max-width: 900px) {.aus-search{display: none;}}
+@media (max-width: 760px) {.aus-search-drop{top: 54px; width: calc(-20px + 100vw); max-height: calc(100dvh - 66px);}}
+@media (max-width: 420px) {.aus-search-drop{top: 50px; max-height: calc(100dvh - 62px);}}
 .side-panel-foot .hero-cta{width:auto;text-align:start;}
 </style>
 </head>
@@ -516,17 +529,19 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
     <button type="button" data-open-panel="student-life">Student Life</button>
     <button type="button" data-open-panel="about">About</button>
   </div>
-  <div class="aus-search" id="siteSearch">
-      <input id="siteSearchInput" type="search" placeholder="Ask AUS Anything" aria-label="Site search" autocomplete="off">
+  <div class="aus-nav-actions" aria-label="Quick actions">
+    <div class="aus-search" id="siteSearch">
+      <input id="siteSearchInput" type="search" placeholder="Ask AUS" aria-label="Search or ask AUS" autocomplete="off">
       <span class="aus-search-btn" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
       <div id="siteSearchDrop" class="aus-search-drop" hidden></div>
-    </div><div class="aus-nav-right">
-    <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24" class="aus-nav-contact">Contact</a><a href="https://study.aus.swiss/application" class="aus-nav-apply">Apply</a>
-    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="sidePanel">
-      <span>Menu</span>
-      <span class="menu-toggle-bars"><span></span><span></span><span></span></span>
-    </button>
+    </div>
+    <a href="https://meetings-eu1.hubspot.com/michiel-van-de-water?uuid=70eae9b0-a7aa-4dcb-856a-9672c6be2602" class="aus-nav-talk"><span class="aus-nav-action-full">Talk to Admissions</span><span class="aus-nav-action-short">Talk</span></a>
+    <a href="https://study.aus.swiss/application" class="aus-nav-apply">Apply</a>
   </div>
+  <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="sidePanel">
+    <span>Menu</span>
+    <span class="menu-toggle-bars"><span></span><span></span><span></span></span>
+  </button>
 </nav>
 
 <div class="side-panel" id="sidePanel">
@@ -566,7 +581,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
             <a href="../admissions/english-requirements.html">English Requirements</a>
             <a href="../admissions/international.html#visa">Visa &amp; Immigration</a>
             <a href="../admissions/transfer-requirements.html">Transfer Students</a>
-            <a href="../faq.html">FAQ</a>
+            <a href="../faq.html?category=admissions#faq-intro">FAQ</a>
           </div>
         </div></div>
       </div>
@@ -1017,7 +1032,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 
 <script>
 (function(){
-      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.documentElement.classList.add('has-preloader');
   var preloader = document.getElementById('preloader');
   function hidePreloader(){
@@ -1102,6 +1117,14 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
       if(group) group.classList.toggle('is-open');
     });
   });
+
+
+
+
+
+
+
+
 
 
 

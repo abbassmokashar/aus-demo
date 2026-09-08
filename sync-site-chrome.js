@@ -6,7 +6,7 @@ const vm = require('vm');
 const { chromium } = require('playwright');
 const root = __dirname;
 const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-const files = fs.readdirSync(root, {recursive:true}).filter(f => f.endsWith('.html') && !f.startsWith('history' + path.sep) && !f.startsWith('.chrome-backup' + path.sep) && f !== 'index.html');
+const files = fs.readdirSync(root, {recursive:true}).filter(f => f.endsWith('.html') && !f.startsWith('history' + path.sep) && !f.startsWith('.chrome-backup' + path.sep) && !f.startsWith('dist' + path.sep) && f !== 'index.html');
 function element(html, tag, marker) {
   const re = new RegExp('<' + tag + '\\b[^>]*' + marker + '[^>]*>', 'g');
   const start = re.exec(html);

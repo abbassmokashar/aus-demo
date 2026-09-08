@@ -6,7 +6,7 @@ const vm = require('vm');
 const root = __dirname;
 const skippedDirectories = new Set([
   'history', '.chrome-backup', 'browser-check', 'admissions-policy-render',
-  'navigation-docx-render', 'skills', 'news-images', 'instagram', 'partner-logos',
+  'navigation-docx-render', 'skills', 'news-images', 'instagram', 'partner-logos', 'dist',
 ]);
 
 function htmlFiles(directory) {

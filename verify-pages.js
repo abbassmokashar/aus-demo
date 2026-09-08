@@ -74,6 +74,14 @@ const targets = process.argv.slice(3).length ? process.argv.slice(3) : defaultTa
       const navRect = navLinks?.getBoundingClientRect();
       const searchRect = search?.getBoundingClientRect();
       const contactRect = contact?.getBoundingClientRect();
+      const admissionSections = [...document.querySelectorAll('.adm-page > section')];
+      const admissionTextColors = [...document.querySelectorAll('.adm-page *')]
+        .filter(element => element.children.length === 0 && element.textContent.trim() && getComputedStyle(element).display !== 'none')
+        .map(element => getComputedStyle(element).color);
+      const activeFaq = document.querySelector('.faq-pill.is-active')?.getAttribute('data-filter') || null;
+      const visibleFaqGroups = [...document.querySelectorAll('.faq-group')]
+        .filter(group => getComputedStyle(group).display !== 'none')
+        .map(group => group.getAttribute('data-group'));
       return {
         url: location.href,
         title: document.title,
@@ -97,13 +105,76 @@ const targets = process.argv.slice(3).length ? process.argv.slice(3) : defaultTa
           const rect = image.getBoundingClientRect();
           return [Math.round(rect.width), Math.round(rect.height)];
         }),
+        admissionSectionBackgrounds: admissionSections.map(section => getComputedStyle(section).backgroundColor),
+        admissionTextColors: [...new Set(admissionTextColors)],
+        admissionImages: document.querySelectorAll('.adm-page img').length,
+        admissionPhotoLinks: document.querySelectorAll('.adm-photo-card[href^="#"]').length,
+        admissionsFaqLink: document.querySelector('.accordion-item[data-panel-key="admissions"] a[href*="category=admissions"]')?.getAttribute('href') || null,
+        activeFaq,
+        visibleFaqGroups,
+        headerActions: {
+          search: Boolean(document.getElementById('siteSearch')?.getBoundingClientRect().width),
+          myPrograms: Boolean(document.querySelector('.aus-nav-programs')?.getBoundingClientRect().width),
+          talk: Boolean(document.querySelector('.aus-nav-talk')?.getBoundingClientRect().width),
+          apply: Boolean(document.querySelector('.aus-nav-apply')?.getBoundingClientRect().width),
+          applyBackground: document.querySelector('.aus-nav-apply') ? getComputedStyle(document.querySelector('.aus-nav-apply')).backgroundColor : null,
+          talkBackground: document.querySelector('.aus-nav-talk') ? getComputedStyle(document.querySelector('.aus-nav-talk')).backgroundColor : null,
+          overflow: document.getElementById('nav') ? document.getElementById('nav').scrollWidth > document.documentElement.clientWidth : null,
+        },
       };
     });
+
+    await page.setViewportSize({ width: 320, height: 844 });
+    await page.waitForTimeout(80);
+    await page.locator('#siteSearchInput').fill('business');
+    await page.waitForTimeout(80);
+    const mobileHeader = await page.evaluate(() => {
+      const centers = selectors => selectors.map(selector => document.querySelector(selector)).filter(Boolean).map(element => {
+        const rect = element.getBoundingClientRect();
+        return Math.round(rect.top + rect.height / 2);
+      });
+      const headerRow = centers(['.aus-wordmark', '#siteSearch', '.aus-nav-talk', '.aus-nav-apply', '#menuToggle']);
+      const drop = document.getElementById('siteSearchDrop')?.getBoundingClientRect();
+      const rowRects = ['.aus-wordmark', '#siteSearch', '.aus-nav-talk', '.aus-nav-apply', '#menuToggle']
+        .map(selector => document.querySelector(selector)?.getBoundingClientRect())
+        .filter(Boolean);
+      const talk = document.querySelector('.aus-nav-talk');
+      return {
+        search: Boolean(document.getElementById('siteSearch')?.getBoundingClientRect().width),
+        myPrograms: Boolean(document.querySelector('.aus-nav-programs')?.getBoundingClientRect().width),
+        talk: Boolean(document.querySelector('.aus-nav-talk')?.getBoundingClientRect().width),
+        apply: Boolean(document.querySelector('.aus-nav-apply')?.getBoundingClientRect().width),
+        applyBackground: document.querySelector('.aus-nav-apply') ? getComputedStyle(document.querySelector('.aus-nav-apply')).backgroundColor : null,
+        talkBackground: document.querySelector('.aus-nav-talk') ? getComputedStyle(document.querySelector('.aus-nav-talk')).backgroundColor : null,
+        menuVisible: Boolean(document.getElementById('menuToggle')?.getBoundingClientRect().width),
+        singleRow: headerRow.length === 5 && Math.max(...headerRow) - Math.min(...headerRow) <= 2,
+        noOverlap: rowRects.length === 5 && rowRects.every((rect,index) => index === rowRects.length - 1 || rect.right <= rowRects[index + 1].left + .5),
+        talkFullLabel: document.querySelector('.aus-nav-talk .aus-nav-action-full')?.textContent.trim() === 'Talk to Admissions' && getComputedStyle(document.querySelector('.aus-nav-talk .aus-nav-action-full')).display !== 'none',
+        talkFits: Boolean(talk) && talk.scrollWidth <= talk.clientWidth,
+        searchResultsCentered: Boolean(drop) && !document.getElementById('siteSearchDrop').hidden &&
+          Math.abs((drop.left + drop.right) / 2 - innerWidth / 2) <= 1 && drop.left >= 8 && drop.right <= innerWidth - 8,
+        overflow: document.getElementById('nav') ? document.getElementById('nav').scrollWidth > document.documentElement.clientWidth : null,
+      };
+    });
+    await page.locator('#menuToggle').click();
+    await page.waitForTimeout(80);
+    const mobileMenuOpen = await page.evaluate(() => document.documentElement.classList.contains('panel-open') && document.getElementById('menuToggle')?.getAttribute('aria-expanded') === 'true');
+    await page.locator('#sidePanelClose').click();
 
     const badgesMatch = state.rankingBadges.length !== 2 ||
       (state.rankingBadges[0][0] === state.rankingBadges[1][0] &&
        state.rankingBadges[0][1] === state.rankingBadges[1][1]);
 
+    const admissionsPaletteOk = !state.admissionSectionBackgrounds.length || (
+      state.admissionSectionBackgrounds.every(color => color === 'rgb(255, 255, 255)' || color === 'rgb(241, 241, 239)') &&
+      state.admissionTextColors.every(color => ['rgb(255, 255, 255)', 'rgb(34, 41, 95)', 'rgb(190, 31, 61)'].includes(color)) &&
+      state.admissionImages >= 4 && state.admissionPhotoLinks === 3
+    );
+    const faqRouteOk = state.activeFaq === null || (state.activeFaq === 'admissions' && state.visibleFaqGroups.length === 1 && state.visibleFaqGroups[0] === 'admissions');
+    const headerActionsOk = [state.headerActions, mobileHeader].every(actions =>
+      actions.search && !actions.myPrograms && actions.talk && actions.apply && !actions.overflow &&
+      actions.applyBackground === 'rgb(190, 31, 61)' && actions.talkBackground !== 'rgb(190, 31, 61)'
+    ) && mobileHeader.singleRow && mobileHeader.noOverlap && mobileHeader.talkFullLabel && mobileHeader.talkFits && mobileHeader.searchResultsCentered && mobileHeader.menuVisible && mobileMenuOpen;
     const ok = response && response.ok() && !errors.length && state.nav === 1 &&
       state.sidePanel === 1 && state.footer === 1 && state.mainText > 0 &&
       state.mainHeight > 0 && state.mainDisplay !== 'none' &&
@@ -111,10 +182,11 @@ const targets = process.argv.slice(3).length ? process.argv.slice(3) : defaultTa
       (state.finderText === null || state.finderText > 0) &&
       (state.compareOptions === null || state.compareOptions > 1) &&
       badgesMatch &&
+      admissionsPaletteOk && faqRouteOk && headerActionsOk && state.admissionsFaqLink !== null &&
       (finderComparison === null || (finderComparison.visible && finderComparison.optionsA > 2 && finderComparison.rows > 1));
 
     if (!ok) failed = true;
-    console.log(JSON.stringify({ target, ok, status: response && response.status(), timeline, state, finderComparison, errors }));
+    console.log(JSON.stringify({ target, ok, status: response && response.status(), timeline, state, mobileHeader, mobileMenuOpen, finderComparison, errors }));
     await page.close();
   }
 

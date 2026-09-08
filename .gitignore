@@ -1,3 +1,7 @@
 .chrome-backup/
 Temp/
 .git/
+
+# Build artifacts
+node_modules/
+partner-logos.zip
