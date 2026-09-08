@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#22295f;--crimson:#be1f3d;--yellow:#fff737;--sky:#bbddf8;--sky-tint:#eef6fd;--slate:#768cb0;
+  --navy:#22295f;--crimson:#be1f3d;--yellow:#fff737;--sky:#f1f1ef;--sky-tint:#f1f1ef;--slate:#768cb0;
   --white:#fff;--ink:#10132d;--ink-soft:#585b7a;--line:rgba(34,41,95,.1);
   --line-on-navy:rgba(255,255,255,.12);
   --font-body:'Inter',sans-serif;--font-display:'Inter',sans-serif;--font-serif:'Playfair Display',Georgia,serif;
@@ -449,7 +449,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 </style>
 <!-- Homepage chrome: kept inline for independent Webflow embeds. -->
 <style id="aus-shared-chrome">
-.aus-nav,.aus-preloader,.side-panel,.site-footer{--white: #ffffff; --navy: #22295f; --crimson: #be1f3d; --sky: #bbddf8; --sky-tint: #eef6fd; --yellow: #fff737; --slate: #768cb0; --night: #111827; --paper: #f1f1ef; --ink: var(--navy); --ink-soft: #565f8c; --line: rgba(34,41,95,0.12); --line-on-navy: rgba(255,255,255,0.16); --ease: cubic-bezier(.22,1,.36,1); --ease-soft: cubic-bezier(.16,1,.3,1); --font-display: 'Inter',-apple-system,'Segoe UI',Roboto,sans-serif; --font-serif: 'Playfair Display',Georgia,'Times New Roman',serif;font-family:var(--font-display);text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;}
+.aus-nav,.aus-preloader,.side-panel,.site-footer{--white: #ffffff; --navy: #22295f; --crimson: #be1f3d; --sky: #f1f1ef; --sky-tint: #f1f1ef; --yellow: #fff737; --slate: #768cb0; --night: #111827; --paper: #f1f1ef; --ink: var(--navy); --ink-soft: #565f8c; --line: rgba(34,41,95,0.12); --line-on-navy: rgba(255,255,255,0.16); --ease: cubic-bezier(.22,1,.36,1); --ease-soft: cubic-bezier(.16,1,.3,1); --font-display: 'Inter',-apple-system,'Segoe UI',Roboto,sans-serif; --font-serif: 'Playfair Display',Georgia,'Times New Roman',serif;font-family:var(--font-display);text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;}
 .aus-preloader{position: fixed; inset: 0px; z-index: 300; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 22px; background: var(--night); transition: opacity .7s var(--ease),visibility .7s var(--ease);}
 .aus-preloader-mark{height: clamp(64px, 9vw, 92px); width: auto; opacity: 0; transform: translateY(10px); animation: preloaderIn .9s var(--ease) forwards;}
 .aus-preloader-bar{width: 140px; height: 1px; background: var(--line-on-navy); overflow: hidden; position: relative; margin-top: 6px;}
@@ -605,7 +605,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .aus-search input:focus{border-color: var(--white); background: var(--white); color: var(--navy);}
 .aus-nav.is-scrolled .aus-search input{border-color: var(--line); background: var(--white); color: var(--navy);}
 .aus-search-btn{position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%; background: var(--white); color: var(--navy); display: flex; align-items: center; justify-content: center; pointer-events: none;}
-.aus-search-drop{position: fixed; top: 88px; left: 50%; right: auto; transform: translateX(-50%); width: min(560px, -24px + 100vw); max-height: min(60vh, 520px); overflow: auto; background: var(--white); border-radius: 16px; box-shadow: rgba(12, 14, 34, 0.18) 0px 20px 50px; border: 1px solid var(--line); padding: 8px; display: grid; gap: 6px; z-index: 120;}
+.aus-search-drop{position: fixed; top: 88px; left: 50vw; right: auto; transform: translateX(-50%); width: min(560px, -24px + 100vw); max-height: min(60vh, 520px); overflow: auto; background: var(--white); border-radius: 16px; box-shadow: rgba(12, 14, 34, 0.18) 0px 20px 50px; border: 1px solid var(--line); padding: 8px; display: grid; gap: 6px; z-index: 120;}
 .aus-search-drop[hidden]{display: none !important;}
 .aus-search-drop a:hover{background: var(--sky-tint);}
 @media (max-width: 760px) {.aus-search-drop{top: 54px; width: calc(-20px + 100vw); max-height: calc(100dvh - 66px);}}
@@ -615,6 +615,20 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 /* CTA buttons must stay on a single line (cta-nowrap-rule) */
 button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
 .faq-q,.accordion-trigger,.accordion-group-trigger,.expand-toggle{white-space:normal;}
+</style>
+<style id="mobile-header-width-fix">
+@media (max-width:760px){
+  .aus-nav .aus-search{width:100%;max-width:100%;min-width:0;margin:0;}
+  .aus-nav .aus-search input{min-width:0;height:30px;padding:5px 23px 5px 6px;font-size:9.5px;}
+  .aus-nav .aus-search-btn{right:3px;width:21px;height:21px;}
+}
+</style>
+<style id="mobile-header-action-fix">
+.aus-nav-apply-short{display:none;}
+@media (max-width:760px){
+  .aus-nav-apply-full{display:none;}
+  .aus-nav-apply-short{display:inline;}
+}
 </style>
 </head>
 <body>
@@ -650,9 +664,9 @@ button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
       <div id="siteSearchDrop" class="aus-search-drop" hidden></div>
     </div>
     <a href="https://meetings-eu1.hubspot.com/michiel-van-de-water?uuid=70eae9b0-a7aa-4dcb-856a-9672c6be2602" class="aus-nav-talk"><span class="aus-nav-action-full">Talk to Admissions</span><span class="aus-nav-action-short">Talk</span></a>
-    <a href="https://study.aus.swiss/application" class="aus-nav-apply">Apply Now</a>
+    <a href="https://study.aus.swiss/application" class="aus-nav-apply" aria-label="Apply now"><span class="aus-nav-apply-full">Apply Now</span><span class="aus-nav-apply-short">Apply</span></a>
   </div>
-  <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="sidePanel">
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="sidePanel">
     <span>Menu</span>
     <span class="menu-toggle-bars"><span></span><span></span><span></span></span>
   </button>
@@ -1037,7 +1051,7 @@ button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
     <div class="dual-inner" style="display:flex;align-items:center;gap:clamp(40px,6vw,80px);">
       <div class="dual-copy" style="flex:1;">
         <span class="eyebrow on-navy">Dual Swiss and US Degree</span>
-        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4vw,48px);line-height:1.15;margin-top:12px;margin-bottom:20px;">Graduate with two degrees. <em style="color:var(--sky);">From two continents.</em></h2>
+        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4vw,48px);line-height:1.15;margin-top:12px;margin-bottom:20px;">Graduate with two degrees. <em style="color:var(--white);">From two continents.</em></h2>
         <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.7;color:rgba(255,255,255,.75);max-width:48ch;">The Master of Science in International Business Administration at AUS is offered exclusively as a dual degree in collaboration with Tiffin University in the United States. All enrolled students graduate with two degrees: a Master of Science in International Business Administration from AUS and a Master of Business Administration from Tiffin University. To complete the dual degree pathway, students must successfully complete the required AUS and Tiffin University courses. AUS courses are taught on campus in Switzerland, while Tiffin University courses may be completed on campus or remotely, with the option of student exchanges to either university under certain conditions. Upon successful completion of the dual degree program, students graduate with an MSc in International Business Administration from AUS and an MBA from Tiffin University. Tiffin University is accredited by the Higher Learning Commission in the United States, supporting the international credibility and recognition of the degree pathway.</p>
         <p style="font-size:clamp(14px,1.1vw,16px);line-height:1.7;color:rgba(255,255,255,.55);max-width:48ch;margin-top:12px;">Tiffin University is accredited by the Higher Learning Commission in the United States, supporting the international credibility and recognition of the degree pathway.</p>
       </div>

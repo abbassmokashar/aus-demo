@@ -287,7 +287,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;
   font-size:clamp(44px,8.4vw,116px);line-height:.98;max-width:16ch;
 }
-.hero h1 em{font-family:var(--font-serif);font-style:italic;font-weight:500;color:var(--sky);}
+.hero h1 em{font-family:var(--font-serif);font-style:italic;font-weight:500;color:var(--white);}
 .hero-sub{
   margin-top:24px;max-width:44ch;font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:rgba(255,255,255,.82);
 }
@@ -738,7 +738,7 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
 .compare-table thead th:last-child{border-radius:0;}
 .compare-table tbody tr{transition:background .15s;}
 .compare-table tbody tr:nth-child(even){background:var(--sky-tint);}
-.compare-table tbody tr:hover{background:rgba(187,221,248,.35);}
+.compare-table tbody tr:hover{background:rgba(241,241,239,.35);}
 .compare-table th{text-align:left;font-size:13px;font-weight:600;color:var(--ink-soft);padding:14px 20px;border-bottom:1px solid var(--line);vertical-align:top;background:inherit;}
 .compare-table td{padding:14px 20px;border-bottom:1px solid var(--line);font-size:14px;color:#111827;line-height:1.6;vertical-align:top;}
 .compare-table td ul{margin:0 !important;}
@@ -774,7 +774,7 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
 .finder-q-hint{font-size:13px;color:var(--ink-soft);margin-bottom:clamp(16px,2vw,24px);}
 .finder-answers{display:flex;flex-direction:column;gap:10px;margin-bottom:clamp(20px,3vw,32px);}
 .finder-card{display:flex;align-items:flex-start;gap:14px;padding:clamp(14px,1.8vw,18px) clamp(16px,2vw,22px);border:1px solid #e5e7eb;border-radius:8px;cursor:pointer;transition:border-color .2s,background .2s,box-shadow .2s;user-select:none;}
-.finder-card:hover{border-color:var(--sky);background:var(--sky-tint);}
+.finder-card:hover{border-color:var(--white);background:var(--sky-tint);}
 .finder-card.is-selected{border-color:#111827;background:var(--sky-tint);box-shadow:0 0 0 1px #111827;}
 .finder-card.is-disabled{opacity:.45;cursor:not-allowed;pointer-events:none;}
 .finder-card-check{width:20px;height:20px;border-radius:50%;border:2px solid var(--line);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:border-color .2s,background .2s;}
@@ -800,7 +800,7 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
 .finder-result-title{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(24px,3.5vw,40px);color:#111827;line-height:1.15;}
 .finder-result-sub{font-size:14px;color:var(--ink-soft);margin-top:8px;max-width:52ch;margin-left:auto;margin-right:auto;}
 .finder-primary{background:#f8f9fa;color:var(--ink);border-radius:12px;padding:clamp(24px,3vw,40px);margin-bottom:clamp(20px,3vw,32px);position:relative;overflow:hidden;}
-.finder-primary::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(187,221,248,.08);}
+.finder-primary::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(241,241,239,.08);}
 .finder-primary-name{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(22px,2.5vw,32px);line-height:1.2;}
 .finder-primary-meta{display:flex;align-items:center;gap:12px;margin-top:8px;flex-wrap:wrap;}
 .finder-primary-level{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);background:rgba(0,0,0,.06);padding:4px 12px;border-radius:100px;}
@@ -840,6 +840,20 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
   .finder-btn,.finder-card{transition:none;}
 }
 </style>
+<style id="mobile-header-width-fix">
+@media (max-width:760px){
+  .aus-nav .aus-search{width:100%;max-width:100%;min-width:0;margin:0;}
+  .aus-nav .aus-search input{min-width:0;height:30px;padding:5px 23px 5px 6px;font-size:9.5px;}
+  .aus-nav .aus-search-btn{right:3px;width:21px;height:21px;}
+}
+</style>
+<style id="mobile-header-action-fix">
+.aus-nav-apply-short{display:none;}
+@media (max-width:760px){
+  .aus-nav-apply-full{display:none;}
+  .aus-nav-apply-short{display:inline;}
+}
+</style>
 </head>
 <body>
 <div class="aus-preloader" id="preloader">
@@ -868,8 +882,8 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
       <span class="aus-search-btn" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
       <div id="siteSearchDrop" class="aus-search-drop" hidden></div>
     </div><div class="aus-nav-right">
-    <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24" class="aus-nav-contact">Contact</a><a href="https://study.aus.swiss/application" class="aus-nav-apply">Apply Now</a>
-    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="sidePanel">
+    <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24" class="aus-nav-contact">Contact</a><a href="https://study.aus.swiss/application" class="aus-nav-apply" aria-label="Apply now"><span class="aus-nav-apply-full">Apply Now</span><span class="aus-nav-apply-short">Apply</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="sidePanel">
       <span>Menu</span>
       <span class="menu-toggle-bars"><span></span><span></span><span></span></span>
     </button>

@@ -26,8 +26,8 @@
   --white:#ffffff;
   --navy:#22295f;
   --crimson:#be1f3d;
-  --sky:#bbddf8;
-  --sky-tint:#eef6fd;
+  --sky:#f1f1ef;
+  --sky-tint:#f1f1ef;
   --yellow:#fff737;
   --slate:#768cb0;
 
@@ -261,7 +261,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;
   font-size:clamp(44px,8.4vw,116px);line-height:.98;max-width:16ch;
 }
-.hero h1 em{font-family:var(--font-serif);font-style:italic;font-weight:500;color:var(--sky);}
+.hero h1 em{font-family:var(--font-serif);font-style:italic;font-weight:500;color:var(--white);}
 .hero-sub{
   margin-top:24px;max-width:44ch;font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:rgba(255,255,255,.82);
 }
@@ -679,6 +679,20 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
 .aus-popup-cta-secondary:hover{border-color:var(--navy);transform:translateY(-2px);}
 @media(max-width:540px){.aus-popup-body{padding:22px 18px 20px;}.aus-popup-benefits{grid-template-columns:1fr;}.aus-popup-hero{height:140px;}}
 </style>
+<style id="mobile-header-width-fix">
+@media (max-width:760px){
+  .aus-nav .aus-search{width:100%;max-width:100%;min-width:0;margin:0;}
+  .aus-nav .aus-search input{min-width:0;height:30px;padding:5px 23px 5px 6px;font-size:9.5px;}
+  .aus-nav .aus-search-btn{right:3px;width:21px;height:21px;}
+}
+</style>
+<style id="mobile-header-action-fix">
+.aus-nav-apply-short{display:none;}
+@media (max-width:760px){
+  .aus-nav-apply-full{display:none;}
+  .aus-nav-apply-short{display:inline;}
+}
+</style>
 </head>
 <body>
 <div class="aus-preloader" id="preloader">
@@ -707,8 +721,8 @@ img.archive-plate{filter:grayscale(.38) contrast(1.07) saturate(.78);}
       <span class="aus-search-btn" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
       <div id="siteSearchDrop" class="aus-search-drop" hidden></div>
     </div><div class="aus-nav-right">
-    <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24" class="aus-nav-contact">Contact</a><a href="https://study.aus.swiss/application" class="aus-nav-apply">Apply Now</a>
-    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="sidePanel">
+    <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24" class="aus-nav-contact">Contact</a><a href="https://study.aus.swiss/application" class="aus-nav-apply" aria-label="Apply now"><span class="aus-nav-apply-full">Apply Now</span><span class="aus-nav-apply-short">Apply</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="sidePanel">
       <span>Menu</span>
       <span class="menu-toggle-bars"><span></span><span></span><span></span></span>
     </button>

@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#22295f;--crimson:#be1f3d;--yellow:#fff737;--sky:#bbddf8;--sky-tint:#eef6fd;--slate:#768cb0;
+  --navy:#22295f;--crimson:#be1f3d;--yellow:#fff737;--sky:#f1f1ef;--sky-tint:#f1f1ef;--slate:#768cb0;
   --white:#fff;--ink:#10132d;--ink-soft:#585b7a;--line:rgba(34,41,95,.1);
   --line-on-navy:rgba(255,255,255,.12);
   --font-body:'Inter',sans-serif;--font-display:'Inter',sans-serif;--font-serif:'Playfair Display',Georgia,serif;
@@ -215,9 +215,9 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 
 /* FACULTY GRID */
 .faculty-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;}
-.faculty-card{flex:0 0 calc((100% - 64px) / 5);border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--white);animation:cardReveal linear both;animation-timeline:view();animation-range:entry 0% entry 100%;}
+.faculty-card{flex:0 0 calc((100% - 64px) / 5);border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--white);content-visibility:auto;contain-intrinsic-size:300px 500px;animation:cardReveal linear both;animation-timeline:view();animation-range:entry 0% entry 100%;}
 .faculty-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(34,41,95,.1);}
-.faculty-card-img{width:100%;aspect-ratio:3/4;object-fit:cover;background:var(--sky-tint);}
+.faculty-card-img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;background:var(--paper);}
 .faculty-card-body{padding:14px 16px 16px;}
 .faculty-card-name{font-family:var(--font-display);font-weight:700;font-size:13px;color:var(--navy);margin-bottom:2px;line-height:1.3;}
 .faculty-card-title{font-size:11px;color:var(--crimson);font-weight:600;margin-bottom:0;line-height:1.35;}
@@ -314,7 +314,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 </style>
 <!-- Homepage chrome: kept inline for independent Webflow embeds. -->
 <style id="aus-shared-chrome">
-.aus-nav,.aus-preloader,.side-panel,.site-footer{--white: #ffffff; --navy: #22295f; --crimson: #be1f3d; --sky: #bbddf8; --sky-tint: #eef6fd; --yellow: #fff737; --slate: #768cb0; --night: #111827; --paper: #f1f1ef; --ink: var(--navy); --ink-soft: #565f8c; --line: rgba(34,41,95,0.12); --line-on-navy: rgba(255,255,255,0.16); --ease: cubic-bezier(.22,1,.36,1); --ease-soft: cubic-bezier(.16,1,.3,1); --font-display: 'Inter',-apple-system,'Segoe UI',Roboto,sans-serif; --font-serif: 'Playfair Display',Georgia,'Times New Roman',serif;font-family:var(--font-display);text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;}
+.aus-nav,.aus-preloader,.side-panel,.site-footer{--white: #ffffff; --navy: #22295f; --crimson: #be1f3d; --sky: #f1f1ef; --sky-tint: #f1f1ef; --yellow: #fff737; --slate: #768cb0; --night: #111827; --paper: #f1f1ef; --ink: var(--navy); --ink-soft: #565f8c; --line: rgba(34,41,95,0.12); --line-on-navy: rgba(255,255,255,0.16); --ease: cubic-bezier(.22,1,.36,1); --ease-soft: cubic-bezier(.16,1,.3,1); --font-display: 'Inter',-apple-system,'Segoe UI',Roboto,sans-serif; --font-serif: 'Playfair Display',Georgia,'Times New Roman',serif;font-family:var(--font-display);text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;}
 .aus-preloader{position: fixed; inset: 0px; z-index: 300; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 22px; background: var(--night); transition: opacity .7s var(--ease),visibility .7s var(--ease);}
 .aus-preloader-mark{height: clamp(64px, 9vw, 92px); width: auto; opacity: 0; transform: translateY(10px); animation: preloaderIn .9s var(--ease) forwards;}
 .aus-preloader-bar{width: 140px; height: 1px; background: var(--line-on-navy); overflow: hidden; position: relative; margin-top: 6px;}
@@ -470,7 +470,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .aus-search input:focus{border-color: var(--white); background: var(--white); color: var(--navy);}
 .aus-nav.is-scrolled .aus-search input{border-color: var(--line); background: var(--white); color: var(--navy);}
 .aus-search-btn{position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%; background: var(--white); color: var(--navy); display: flex; align-items: center; justify-content: center; pointer-events: none;}
-.aus-search-drop{position: fixed; top: 88px; left: 50%; right: auto; transform: translateX(-50%); width: min(560px, -24px + 100vw); max-height: min(60vh, 520px); overflow: auto; background: var(--white); border-radius: 16px; box-shadow: rgba(12, 14, 34, 0.18) 0px 20px 50px; border: 1px solid var(--line); padding: 8px; display: grid; gap: 6px; z-index: 120;}
+.aus-search-drop{position: fixed; top: 88px; left: 50vw; right: auto; transform: translateX(-50%); width: min(560px, -24px + 100vw); max-height: min(60vh, 520px); overflow: auto; background: var(--white); border-radius: 16px; box-shadow: rgba(12, 14, 34, 0.18) 0px 20px 50px; border: 1px solid var(--line); padding: 8px; display: grid; gap: 6px; z-index: 120;}
 .aus-search-drop[hidden]{display: none !important;}
 .aus-search-drop a:hover{background: var(--sky-tint);}
 @media (max-width: 760px) {.aus-search-drop{top: 54px; width: calc(-20px + 100vw); max-height: calc(100dvh - 66px);}}
@@ -480,6 +480,20 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 /* CTA buttons must stay on a single line (cta-nowrap-rule) */
 button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
 .faq-q,.accordion-trigger,.accordion-group-trigger,.expand-toggle{white-space:normal;}
+</style>
+<style id="mobile-header-width-fix">
+@media (max-width:760px){
+  .aus-nav .aus-search{width:100%;max-width:100%;min-width:0;margin:0;}
+  .aus-nav .aus-search input{min-width:0;height:30px;padding:5px 23px 5px 6px;font-size:9.5px;}
+  .aus-nav .aus-search-btn{right:3px;width:21px;height:21px;}
+}
+</style>
+<style id="mobile-header-action-fix">
+.aus-nav-apply-short{display:none;}
+@media (max-width:760px){
+  .aus-nav-apply-full{display:none;}
+  .aus-nav-apply-short{display:inline;}
+}
 </style>
 </head>
 <body>
@@ -509,9 +523,9 @@ button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
       <div id="siteSearchDrop" class="aus-search-drop" hidden></div>
     </div>
     <a href="https://meetings-eu1.hubspot.com/michiel-van-de-water?uuid=70eae9b0-a7aa-4dcb-856a-9672c6be2602" class="aus-nav-talk"><span class="aus-nav-action-full">Talk to Admissions</span><span class="aus-nav-action-short">Talk</span></a>
-    <a href="https://study.aus.swiss/application" class="aus-nav-apply">Apply Now</a>
+    <a href="https://study.aus.swiss/application" class="aus-nav-apply" aria-label="Apply now"><span class="aus-nav-apply-full">Apply Now</span><span class="aus-nav-apply-short">Apply</span></a>
   </div>
-  <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="sidePanel">
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="sidePanel">
     <span>Menu</span>
     <span class="menu-toggle-bars"><span></span><span></span><span></span></span>
   </button>
@@ -678,7 +692,7 @@ button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
     </div>
     <div style="display:flex;align-items:stretch;gap:0;background:var(--white);border-radius:16px;border:1px solid var(--line);overflow:hidden;max-width:900px;margin:0 auto;" class="reveal d1">
       <div style="flex:0 0 260px;background:var(--sky-tint);display:flex;align-items:center;justify-content:center;padding:40px 32px;">
-        <img loading="eager" decoding="async" width="180" height="180" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a7e516c4716a23ae224_69beef82cd2cb66ca7df0b26_5.png" alt="Dean Dr. Dominic Szambowski" style="width:180px;height:180px;border-radius:50%;object-fit:cover;">
+        <img loading="eager" decoding="async" fetchpriority="high" width="180" height="180" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc0e3242cee4a2ab0db_dr-dominic-szambowski.webp" alt="Dean Dr. Dominic Szambowski" style="width:180px;height:180px;border-radius:50%;object-fit:cover;">
       </div>
       <div style="flex:1;padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;justify-content:center;">
         <span class="eyebrow" style="margin-bottom:8px;">Leadership</span>
@@ -715,189 +729,182 @@ button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
     <h2 class="reveal" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin:12px 0 clamp(32px,4vw,48px);">AUS Faculty</h2>
     <div class="faculty-grid">
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569aa0c760068ebbf96511_69f9ab49f650b67fcea29ec8_Vittoria%2520Gambirasi%252016.9%2520-%25202560%2520x%25201440.png" alt="Vittoria Gambirasi">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc7c7b162a3710270e9_vittoria-gambirasi.webp" alt="Vittoria Gambirasi">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Vittoria Gambirasi</div>
           <div class="faculty-card-title">AI, Marketing and Organizational Transformation</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a9fc760068ebbf96409_69bef736ddd9b676349c9b7e_9.png" alt="Sandro Guidetti">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc5867bc7febcb2624d_sandro-guidetti.webp" alt="Sandro Guidetti">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Sandro Guidetti</div>
           <div class="faculty-card-title">Aviation</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a9d3637b5653ad0e543_69df6aaf41d781ac209c2d06_Prof.%2520Natan%2520Zimenkov%2520mobile.png" alt="Prof. Natan Zimenkov">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc5dfbf3d61bcf249a9_prof-natan-zimenkov.webp" alt="Prof. Natan Zimenkov">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Prof. Natan Zimenkov</div>
           <div class="faculty-card-title">Economics and Financial Management</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a9c457e5624d53b9ac0_69c10597949f161bd02377a5_21.B%2520(3).png" alt="Prof. Artur Decurtins">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc5d819cdf9a978483f_prof-artur-decurtins.webp" alt="Prof. Artur Decurtins">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Prof. Artur Decurtins</div>
           <div class="faculty-card-title">Swiss Law</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a9af59c2869f813dec6_69bef0fa869a6d35000651e2_2.png" alt="Naggib Chakhane">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc5999d9f89e26bfa8f_naggib-chakhane.webp" alt="Naggib Chakhane">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Naggib Chakhane</div>
           <div class="faculty-card-title">Leadership</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a99d522db9944947628_69bef62d5fdfdb88cf06d74c_7.png" alt="Sanja Fabrio">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc6199c18c57153dc3a_sanja-fabrio.webp" alt="Sanja Fabrio">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Sanja Fabrio</div>
           <div class="faculty-card-title">Adjunct Professor</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a987c388a8f5ec2e177_69bef74ebd86dbd41565aa6f_10.png" alt="Katarzyna Grzesik-Harz">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc5c73e2c87e7d6fa40_katarzyna-grzesik-harz.webp" alt="Katarzyna Grzesik-Harz">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Katarzyna Grzesik-Harz</div>
           <div class="faculty-card-title">Executive Leadership, and Psychology of Leadership</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a962dce41b19c4c6e0c_69bef6cffa140d1d97517974_8.png" alt="Robert Fontaine">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc5f15285d84e630fb6_robert-fontaine.webp" alt="Robert Fontaine">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Robert Fontaine</div>
           <div class="faculty-card-title">Blockchain Specialist</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a9591b80c8814ae975e_69befa9be2cb9ad1345d16c9_17.png" alt="Philippe Meyer">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc5613cbe4a14372d27_philippe-meyer.webp" alt="Philippe Meyer">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Philippe Meyer</div>
           <div class="faculty-card-title">Aviation</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a94b7d209d9c9362cad_69bef29645d89be974d58cee_6.png" alt="Humbert Costas Garcia">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc5dfff9ef80f866c13_humbert-costas-garcia.webp" alt="Humbert Costas Garcia">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Humbert Costas Garcia</div>
           <div class="faculty-card-title">Aviation Safety and Quality and Operations Planning</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a9297ab7eadd2614efe_69c1058d7557b3e10be079bb_21.B%2520(4).png" alt="Dr. Suzanne Rosselet">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc3c20b8c07a9981159_dr-suzanne-rosselet.webp" alt="Dr. Suzanne Rosselet">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Dr. Suzanne Rosselet</div>
           <div class="faculty-card-title">Competitive Strategy, Global Competitiveness &amp; Sustainable Development</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a900d1b31fb851932a7_69bef89114387891f1f3e4b5_12.png" alt="Dr. Sajal Kabiraj">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc3334e85b28360c186_dr-sajal-kabiraj.webp" alt="Dr. Sajal Kabiraj">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Dr. Sajal Kabiraj</div>
           <div class="faculty-card-title">Strategic Management Consulting</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a8f25730dd0e28c82af_69bef0274b3985aa035bb2c3_1.png" alt="Dr. Ruby Bakshi Khurdi">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc3d819cdf9a9784795_dr-ruby-bakshi-khurdi.webp" alt="Dr. Ruby Bakshi Khurdi">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Dr. Ruby Bakshi Khurdi</div>
           <div class="faculty-card-title">Human Resource Management &amp; Communications</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a8e93ea36e79de9e936_69befb06744f5a0f2cc5b957_18.png" alt="Dr. Olivier Naray">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc39094a639bba40321_dr-olivier-naray.webp" alt="Dr. Olivier Naray">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Dr. Olivier Naray</div>
           <div class="faculty-card-title">International Business, Trade Policy, and Economic Diplomacy</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a8d2500c0449d6168ae_69befb83e5e030b196beb590_19.png" alt="Dr. Natalia Raksha">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc2c73e2c87e7d6f962_dr-natalia-raksha.webp" alt="Dr. Natalia Raksha">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Dr. Natalia Raksha</div>
           <div class="faculty-card-title">Strategic Management, Leadership</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a8b080f9965a12636fd_69bef1630a688a4b23f3c611_4.png" alt="Dr. Mwata Chisha">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc3bfe5ae4453ddb5ad_dr-mwata-chisha.webp" alt="Dr. Mwata Chisha">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Dr. Mwata Chisha</div>
           <div class="faculty-card-title">Human Resource Management &amp; Economics</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a890d1b31fb851930ef_69befbcde4e9d6006ab3b93b_20.png" alt="Dr. Mario Saba">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc3ba3500bc25de1ff3_dr-mario-saba.webp" alt="Dr. Mario Saba">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Dr. Mario Saba</div>
           <div class="faculty-card-title">Finance, Banking, and Financial Markets</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a887108608651e6344f_69befa25300aa0b9c971967b_16.png" alt="Dr. Laure Matsoukis">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc2b3e35bec8644d998_dr-laure-matsoukis.webp" alt="Dr. Laure Matsoukis">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Dr. Laure Matsoukis</div>
           <div class="faculty-card-title">Finance</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a866d5a0a06a1957d7e_69bef9c6903e2b6992d9ee05_15.png" alt="Dr. Haruka Marufuji">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc0d57bbc1e46f22acc_dr-haruka-marufuji.webp" alt="Dr. Haruka Marufuji">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Dr. Haruka Marufuji</div>
           <div class="faculty-card-title">International Management, Cross-cultural Communication, and Asian Business</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a846bae73d154905602_69befcffaff16ece53af7811_23.png" alt="Dr. Haitao Zhang">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc0199c18c57153d9fe_dr-haitao-zhang.webp" alt="Dr. Haitao Zhang">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Dr. Haitao Zhang</div>
           <div class="faculty-card-title">Finance, Accounting, and International Business Management</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a83d5db028aec4e397a_69befc96a77ccc7dae438f55_22.png" alt="Dr. Fereshteh Vahidi">
-        <div class="faculty-card-body">
-          <div class="faculty-card-name">Dr. Fereshteh Vahidi</div>
-          <div class="faculty-card-title">Supply chain management &amp; analytical</div>
-        </div>
-      </div>
-      <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a816d5a0a06a1957be2_69bef9004605363c66251d61_13.png" alt="Dr. Eleanor T. Khonje">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc01e7135250f025379_dr-eleanor-t-khonje.webp" alt="Dr. Eleanor T. Khonje">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Dr. Eleanor T. Khonje</div>
           <div class="faculty-card-title">Associate Professor</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a7e516c4716a23ae224_69beef82cd2cb66ca7df0b26_5.png" alt="Dr. Dominic Szambowski">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc0e3242cee4a2ab0db_dr-dominic-szambowski.webp" alt="Dr. Dominic Szambowski">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Dr. Dominic Szambowski</div>
           <div class="faculty-card-title">Executive Dean</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a7dd86c999a2c0c07a0_69bef96a7d5cd3d6d700960a_14.png" alt="Dr. Dmytro Kylymnyuk">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc03139692c40693666_dr-dmytro-kylymnyuk.webp" alt="Dr. Dmytro Kylymnyuk">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Dr. Dmytro Kylymnyuk</div>
           <div class="faculty-card-title">Microeconomics and Game Theory</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a7a4617b31b05dcd969_69befc4b427183d533c525ab_21.png" alt="Dr. Attila Shelley">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc0e3242cee4a2ab0b1_dr-attila-shelley.webp" alt="Dr. Attila Shelley">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Dr. Attila Shelley</div>
           <div class="faculty-card-title">International management</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a7856d35dabdbccf732_69bef0537da20ad502121cc9_3.png" alt="Dr. Alessandro Bianchi">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc086074b0dd59f1f66_dr-alessandro-bianchi.webp" alt="Dr. Alessandro Bianchi">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Dr. Alessandro Bianchi</div>
           <div class="faculty-card-title">Global Strategic Leadership</div>
         </div>
       </div>
       <div class="faculty-card tilt-card">
-        <img class="faculty-card-img" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a569a776d5a0a06a19573f1_69bef878d1c03ce6b41950c7_11.png" alt="Dr. Haluk Haksal">
+        <img class="faculty-card-img" loading="lazy" decoding="async" fetchpriority="low" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc04fc7fe76a43c274c_dr-haluk-haksal.webp" alt="Dr. Haluk Haksal">
         <div class="faculty-card-body">
           <div class="faculty-card-name">Dr. Haluk Haksal</div>
           <div class="faculty-card-title">Economic Development and Sustainability</div>
