@@ -274,6 +274,10 @@ body{margin:0;padding:0;background:#fff!important;color:#1a1a2e!important;font-s
 @media (max-width: 760px) {.aus-search-drop{top: 54px; width: calc(-20px + 100vw); max-height: calc(100dvh - 66px);}}
 @media (max-width: 420px) {.aus-search-drop{top: 50px; max-height: calc(100dvh - 62px);}}
 .side-panel-foot .hero-cta{width:auto;text-align:start;}
+
+/* CTA buttons must stay on a single line (cta-nowrap-rule) */
+button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
+.faq-q,.accordion-trigger,.accordion-group-trigger,.expand-toggle{white-space:normal;}
 </style>
 </head>
 <body>
