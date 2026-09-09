@@ -5,6 +5,7 @@ Temp/
 # Build artifacts
 node_modules/
 partner-logos.zip
+webflow/
 
 # Image asset folders
 assets/
@@ -16,3 +17,6 @@ img/
 
 # Office scratch/design docs (repo is website-only)
 *.docx
+*.pptx
+*.ppt
+~$*
