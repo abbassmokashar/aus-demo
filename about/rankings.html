@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Accreditation &amp; Memberships | AUS Business School</title>
+<title>Rankings | AUS Business School</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -481,11 +481,11 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .aus-search input:focus{border-color: var(--white); background: var(--white); color: var(--navy);}
 .aus-nav.is-scrolled .aus-search input{border-color: var(--line); background: var(--white); color: var(--navy);}
 .aus-search-btn{position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%; background: var(--white); color: var(--navy); display: flex; align-items: center; justify-content: center; pointer-events: none;}
-.aus-search-drop{position: fixed; top: 88px; left: 50vw; right: auto; transform: translateX(-50%); width: min(560px, -24px + 100vw); max-height: min(60vh, 520px); overflow: auto; background: var(--white); border-radius: 16px; box-shadow: rgba(12, 14, 34, 0.18) 0px 20px 50px; border: 1px solid var(--line); padding: 8px; display: grid; gap: 6px; z-index: 120;}
+.aus-search-drop{position: fixed; top: 88px; right: auto; transform: translateX(-50%); width: min(560px, -24px + 100vw); max-height: min(60vh, 520px); overflow: auto; background: var(--white); border-radius: 16px; box-shadow: rgba(12, 14, 34, 0.18) 0px 20px 50px; border: 1px solid var(--line); padding: 8px; display: grid; gap: 6px; z-index: 120;}
 .aus-search-drop[hidden]{display: none !important;}
 .aus-search-drop a:hover{background:#f1f1ef;}
-@media (max-width: 760px) {.aus-search-drop{top: 54px; width: calc(-20px + 100vw); max-height: calc(100dvh - 66px);}}
-@media (max-width: 420px) {.aus-search-drop{top: 50px; max-height: calc(100dvh - 62px);}}
+@media (max-width: 760px) {.aus-search-drop{top: 54px; left: 50vw; width: calc(-20px + 100vw); max-height: calc(100dvh - 66px);}}
+@media (max-width: 420px) {.aus-search-drop{top: 50px; left: 50vw; max-height: calc(100dvh - 62px);}}
 .side-panel-foot .hero-cta{width:auto;text-align:start;}
 </style>
 <style id="mobile-header-width-fix">
@@ -510,7 +510,21 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   .footer-v2_bottom-item{min-width:0;justify-content:center;}
   .footer-v2_bottom-img{max-width:100%;object-fit:contain;}
 }
-</style></head>
+</style><style id="rankings-page-css">
+
+.rankings-hero{min-height:min(780px,88svh);display:flex;align-items:flex-end;position:relative;overflow:hidden;background:#111827;color:#fff}.rankings-hero .hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,24,39,.94),rgba(17,24,39,.55) 58%,rgba(17,24,39,.22))}.rankings-hero .hero-inner{position:relative;z-index:2;width:100%;padding:clamp(150px,16vw,220px) clamp(20px,5vw,64px) clamp(52px,7vw,88px)}.rankings-hero h1{font-family:var(--font-display);font-size:clamp(50px,8vw,100px);line-height:.94;max-width:10ch}.rankings-hero h1 em{font-family:var(--font-serif);font-weight:400}.rankings-hero p{max-width:54ch;margin-top:24px;color:rgba(255,255,255,.78);font-size:clamp(15px,1.3vw,18px);line-height:1.7}.ranking-page h2{font-family:var(--font-display);font-size:clamp(32px,4.7vw,60px);line-height:1.05;color:#22295f;margin:12px 0 20px}.ranking-intro,.ranking-results,.ranking-history{padding:clamp(64px,9vw,112px) 0}.ranking-intro,.ranking-history{background:#f1f1ef}.ranking-results{background:#fff}.ranking-intro-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);gap:clamp(36px,7vw,100px);align-items:center}.ranking-intro-grid>div:first-child p{max-width:65ch;color:var(--ink-soft);line-height:1.75}.star-panel{background:#111827;color:#fff;border-radius:24px;padding:clamp(28px,4vw,48px)}.star-panel>strong{font-family:var(--font-display);font-size:clamp(72px,9vw,118px);line-height:.8}.star-panel>strong span{font-size:.28em;color:rgba(255,255,255,.55)}.star-panel>p{margin:14px 0 26px;color:rgba(255,255,255,.7)}.rating-list{display:grid;gap:10px}.rating-list span{padding-top:10px;border-top:1px solid rgba(255,255,255,.16)}.rating-list b{color:#fff;margin-right:8px}.ranking-badges{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,4vw,46px);max-width:980px;margin:42px auto 0}.ranking-badge{display:grid;grid-template-columns:minmax(150px,280px) 1fr;align-items:center;gap:22px;padding:24px;border:1px solid rgba(34,41,95,.14);border-radius:20px;background:#fff;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}.ranking-badge:hover{transform:translateY(-5px);box-shadow:0 18px 48px rgba(34,41,95,.12)}.ranking-badge img{width:100%;height:190px;object-fit:contain}.ranking-badge strong{display:block;color:#22295f;font-size:clamp(28px,3vw,42px)}.ranking-badge span{display:block;margin-top:8px;color:var(--ink-soft);line-height:1.55}.ranking-years{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:36px}.ranking-years article{background:#fff;border:1px solid rgba(34,41,95,.14);border-radius:18px;padding:26px}.ranking-years article>span{display:block;color:var(--crimson);font-weight:800;font-size:13px;letter-spacing:.1em}.ranking-years h3{color:#22295f;margin:20px 0 7px;font-family:var(--font-display);font-size:20px}.ranking-years p{color:var(--ink-soft);line-height:1.55}.ranking-note{max-width:74ch;margin-top:24px;color:var(--ink-soft);font-size:13px;line-height:1.65}.ranking-cta{background:#111827;color:#fff;padding:clamp(64px,9vw,110px) 0;text-align:center}.ranking-cta h2{color:#fff}.ranking-cta>div>div{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.ranking-cta .secondary{background:#fff;color:#22295f}
+@media(max-width:800px){.ranking-intro-grid{grid-template-columns:1fr}.ranking-badges{grid-template-columns:1fr}.ranking-years{grid-template-columns:1fr 1fr}.rankings-mobile .hero-mob-img{height:42vh;min-height:260px}.rankings-mobile .hero-mob-content{padding:28px 20px 36px}.rankings-mobile h1{font-size:clamp(38px,11vw,56px)}}
+@media(max-width:560px){.ranking-badge{grid-template-columns:1fr;text-align:center;padding:20px}.ranking-badge img{height:160px}.ranking-years{grid-template-columns:1fr}.star-panel{border-radius:18px}.ranking-cta .cta-btn{width:100%}}
+
+</style>
+<style id="responsive-hardening">
+
+html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img,section img{max-width:100%}main [style*="display:grid"]>*{min-width:0}h1,h2,h3,p,a{overflow-wrap:break-word}
+@media(max-width:900px){main section .wrap>[style*="display:grid"],main section .wrap>.reveal[style*="display:grid"],main .stagger-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.hero-mob-content{min-width:0}.hero-mob-content h1{font-size:clamp(36px,10vw,58px)!important;overflow-wrap:anywhere}.destination-split,.sl-split{grid-template-columns:1fr!important}.destination-grid[style]{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:640px){main section .wrap>[style*="display:grid"],main section .wrap>.reveal[style*="display:grid"],main .stagger-grid,.destination-grid[style]{grid-template-columns:1fr!important}.destination-actions,.sl-hero-ctas{display:grid!important;grid-template-columns:1fr}.destination-btn,.sl-hero-ctas a{width:100%}.curr-scroll,.compare-table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.dual-logos{flex-wrap:wrap}.program-section h2{font-size:clamp(32px,10vw,48px)!important}}
+
+</style>
+</head>
 <body>
 
 <div class="aus-preloader" id="preloader">
@@ -686,255 +700,41 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 /* CTA buttons must stay on a single line (cta-nowrap-rule) */
 button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
 .faq-q,.accordion-trigger,.accordion-group-trigger,.expand-toggle{white-space:normal;}
-</style><header class="hero" style="min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#111827;">
-  <div class="hero-bg">
-    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS campus" class="parallax" data-speed="0.12">
-  </div>
-  <div class="hero-inner" style="z-index:2;width:100%;padding:clamp(60px,8vw,100px) clamp(20px,5vw,64px) clamp(40px,6vw,70px);color:var(--white);">
-    <div class="hero-badge" style="margin-bottom:clamp(14px,1.6vw,22px);">
-      <span class="hero-badge-icon"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M22 10v6M2 10l10-5 10 5-10 5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12v5c3 3 9 3 12 0v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      About AUS
-    </div>
-    <h1 style="font-size:clamp(48px,8vw,96px);line-height:.95;">Accreditations<br><em style="font-family:var(--font-serif);font-style:italic;font-weight:400;">&amp; Memberships</em></h1>
-
+</style><header class="hero rankings-hero">
+  <div class="hero-bg"><img decoding="async" fetchpriority="high" src="../bank%20of%20images/aus-presentation-2026/image45.jpg" alt="AUS students and graduates"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">About AUS</div>
+    <h1>Rankings &amp;<br><em>Recognition</em></h1>
+    <p>Independent measures of teaching, employability and business education quality.</p>
   </div>
   <div class="hero-scroll">Scroll</div>
-</header><!-- MOBILE HERO -->
-<div class="hero-mobile">
-  <div class="hero-mob-img">
-    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1562774053-701939374585?w=1800&auto=format&fit=crop&q=80" alt="AUS campus">
-  </div>
-  <div class="hero-mob-content">
-    <span class="hero-mob-badge">About AUS</span>
-    <h1>Accreditation &amp; Memberships</h1>
-
-  </div>
+</header>
+<div class="hero-mobile rankings-mobile">
+  <div class="hero-mob-img"><img decoding="async" src="../bank%20of%20images/aus-presentation-2026/image45.jpg" alt="AUS students and graduates"></div>
+  <div class="hero-mob-content"><span class="hero-mob-badge">About AUS</span><h1>Rankings &amp; Recognition</h1><p>Independent measures of teaching, employability and business education quality.</p></div>
 </div>
-<div class="breadcrumb">
-  <div class="wrap">
-    <a href="../index.html">Home</a><span>/</span>
-    <a href="../about.html">About</a><span>/</span>
-    Accreditation &amp; Memberships
-  </div>
-</div>
-<div class="archive-tab" id="archiveTab" tabindex="0">
-  <span class="archive-tab-num" id="archiveTabNum">01</span>
-  <span class="archive-tab-label" id="archiveTabLabel">Accreditations</span>
-  <nav class="archive-tab-toc" id="archiveTabToc" aria-label="Jump to section"></nav>
-</div><!-- ACCREDITATION & MEMBERSHIPS -->
-<section id="accreditations" data-chapter="01" data-chapter-label="Accreditations" style="padding:clamp(60px,8vw,100px) 0;position:relative;overflow:hidden;">
-  <div class="wrap">
-    <span class="eyebrow reveal" style="display:flex;align-items:center;gap:8px;">Accreditation &amp; Memberships</span>
-    <p class="reveal d1" style="font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:var(--ink-soft);max-width:62ch;margin-top:12px;">AUS is accredited, listed and recognized by leading international bodies — from specialized business-education accreditors to ministries, UNESCO and the United Nations.</p>
-    <div class="stagger-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:clamp(32px,4vw,48px);">
-      <div class="tilt-card" style="background:#f1f1ef;border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563d0f6361ad7bd1c6f24b_iacbe.png" alt="IACBE" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">IACBE — International Accreditation Council for Business Education</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS has received specialized accreditation for its business programs through the IACBE, located in Overland Park, Kansas, USA.</p>
-        <a href="https://iacbe.org/memberpdf/AmericanInstituteofAppliedSciencesinSwitzerland.pdf" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">IACBE Member Status Page &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c4c5f40eac49da26803_unesco.webp" alt="UNESCO WHED" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">UNESCO WHED — World Higher Education Database</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is listed in the UNESCO World Higher Education Database. Institution Code: IAU-029651</p>
-        <a href="https://www.whed.net/institutions/IAU-029651" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Visit Website &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c32c5d4871e84ccdffb_prme.png" alt="PRME" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">PRME — Principles for Responsible Management Education</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is a signatory of PRME, a United Nations-supported initiative with over 800 signatories worldwide, committed to embedding sustainability and the SDGs into management education.</p>
-        <a href="https://www.unprme.org/" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Visit Website &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c5a97397e19ff5bbaa6_vateran_us.webp" alt="US Department of Veterans Affairs" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">United States Department of Veterans Affairs</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is a recognized university by the US Department of Veterans Affairs. US veterans can apply to study at AUS and obtain a GI Bill. Facility Code: 21001578</p>
-        <a href="https://www.va.gov/education/gi-bill-comparison-tool/institution/21001578" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Assess your VA benefits &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c68ce553c3f34eb9a9f_ielts.webp" alt="IELTS" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">IELTS — Official Preparation and Testing Center</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is an Official IELTS Preparation and Testing Center, recognized by more than 10,000 organizations in over 140 countries.</p>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c7b8589f504b7ed1dc7_cis.svg" alt="CIS" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">Council of International Schools (CIS)</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS has been granted membership by CIS, a global non-profit organization dedicated to high-quality international education, joining a network of over 1,500 institutions worldwide.</p>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c845b040ef12c733acc_ohio.webp" alt="Ohio Department of Higher Education" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">Ohio Department of Higher Education</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">Tiffin University's seated and online programs are authorized by the Ohio Department of Higher Education.</p>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c8d3210aeaac6c80a11_acbsp.jpg" alt="ACBSP" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">ACBSP — Accreditation Council for Business Schools and Programs</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">Tiffin University's School of Business is accredited by ACBSP, a leading specialized accreditation body for business education at all degree levels worldwide.</p>
-        <a href="https://acbsp.org/" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Visit Website &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563ca06ac461eb8d7d5ba3_hlc.png" alt="HLC" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">Higher Learning Commission (HLC) — Tiffin University</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">The dual degree programs are accredited by the HLC, one of the six regional accreditation bodies recognized by major colleges and universities in America.</p>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563cec6361ad7bd1c6d426_ministry_jordan.webp" alt="Ministry — Jordan" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">Ministry of Higher Education — Hashemite Kingdom of Jordan</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is accredited by the Ministry of Higher Education in the Hashemite Kingdom of Jordan.</p>
-        <a href="https://rce.mohe.gov.jo/en/RecognizedUniversities" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Visit Website &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563cf8826f0f64152c33a2_ministry_sa.webp" alt="Ministry — Saudi Arabia" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">Ministry of Higher Education — Kingdom of Saudi Arabia</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS is accredited by the Ministry of Higher Education in the Kingdom of Saudi Arabia, ensuring that degrees earned by Saudi students are recognized upon return to the Kingdom.</p>
-        <a href="https://ru.moe.gov.sa/Search#/University/13058" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">Visit Website &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border-radius:12px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-        <div class="img-zoom" style="overflow:hidden;border-radius:8px;"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563d01e87b055975389ff1_chea.png" alt="CHEA" style="height:48px;width:auto;object-fit:contain;"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;">CHEA — Council for Higher Education Accreditation</h3>
-        <p style="font-size:14px;line-height:1.65;color:var(--ink-soft);flex:1;">AUS's IACBE accreditation has gained CHEA recognition since January 2011.</p>
-        <a href="https://www.chea.org/international-accreditation-council-business-education" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:6px;">CHEA Member Status Page &rarr;</a>
-      </div>
+<div class="breadcrumb"><div class="wrap"><a href="../index.html">Home</a><span>/</span><a href="../about.html">About</a><span>/</span>Rankings</div></div>
+<div class="archive-tab" id="archiveTab" tabindex="0"><span class="archive-tab-num" id="archiveTabNum">01</span><span class="archive-tab-label" id="archiveTabLabel">QS Stars</span><nav class="archive-tab-toc" id="archiveTabToc" aria-label="Jump to section"></nav></div>
+<main class="ranking-page">
+  <section class="ranking-intro" data-chapter="01" data-chapter-label="QS Stars">
+    <div class="wrap ranking-intro-grid">
+      <div><span class="eyebrow">QS Stars University Ratings</span><h2>Four stars overall.<br>Five stars where learning matters most.</h2><p>AUS holds a four-star overall QS Stars rating, including five stars for Teaching and Business and Management Studies, and four stars for Facilities and Employability.</p></div>
+      <div class="star-panel" aria-label="AUS QS Stars ratings"><strong>4<span>/5</span></strong><p>Overall QS Stars rating</p><div class="rating-list"><span><b>5 stars</b> Teaching</span><span><b>5 stars</b> Business &amp; Management</span><span><b>4 stars</b> Employability</span><span><b>4 stars</b> Facilities</span></div></div>
     </div>
-  </div>
-</section>
-<!-- RANKING — centered 3-grid, smaller, not scrollable -->
-<section id="ranking" data-chapter="02" data-chapter-label="Ranking" style="background:#111827;color:var(--white);padding:clamp(60px,8vw,100px) 0;overflow:hidden;">
-  <div class="wrap" style="text-align:center;">
-    <span class="eyebrow on-navy reveal" style="justify-content:center;">Ranking</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,4vw,48px);line-height:1.15;margin-top:12px;">QS World University Rankings</h2>
-    <p class="reveal d2" style="font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:rgba(255,255,255,.7);max-width:72ch;margin:16px auto 0;">The American Institute of Applied Sciences in Switzerland has been awarded a four-star rating in the QS Stars University Ratings — five stars in "Teaching" and "Business and Management Studies", four stars for Facilities and Employability.</p>
-    <p class="reveal d2" style="font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:rgba(255,255,255,.7);max-width:72ch;margin:12px auto 0;">AUS is ranked <strong style="color:var(--white);">#2 in Switzerland</strong> and among the <strong style="color:var(--white);">top 200 globally</strong> for its Masters in Management programs by the 2026 QS World University Rankings.</p>
-    <div class="stagger-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;grid-auto-rows:1fr;align-items:stretch;margin:clamp(36px,5vw,52px) auto 0;text-align:center;max-width:880px;">
-      <div class="reveal-scale" style="background:var(--white);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;height:100%;">
-        <div class="img-zoom" style="background:var(--white);"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a9dcf4a977a6a6c1b85f25f_2.png" alt="AUS ranked number 2 in Switzerland" style="width:100%;height:220px;object-fit:contain;padding:14px;"></div>
-        <div style="padding:20px 18px 22px;flex:1;display:flex;flex-direction:column;">
-          <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);margin-bottom:8px;">Number 2 in Switzerland</h3>
-          <p style="font-size:13.5px;line-height:1.5;color:var(--ink-soft);">Master in Management: Top 2 in Switzerland, Top 200 globally. Global MBA: Top 3 in Switzerland, Top 250 globally.</p>
-        </div>
-      </div>
-      <div class="reveal-scale" style="background:var(--white);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;height:100%;">
-        <div class="img-zoom" style="background:var(--white);"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a9dcf4b71caefbe2cebb61e_200.png" alt="AUS ranked among the top 200 globally" style="width:100%;height:220px;object-fit:contain;padding:14px;"></div>
-        <div style="padding:20px 18px 22px;flex:1;display:flex;flex-direction:column;">
-          <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);margin-bottom:8px;">Top 200 globally</h3>
-          <p style="font-size:13.5px;line-height:1.5;color:var(--ink-soft);">Master in Management: Top 2 in Switzerland, Top 200 globally. Global MBA: Top 3 in Switzerland, Top 250 globally.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- IACBE PUBLIC DISCLOSURES -->
-<section id="disclosures" data-chapter="03" data-chapter-label="Disclosures" style="padding:clamp(60px,8vw,100px) 0;background:#f1f1ef;position:relative;overflow:hidden;">
-  <div class="wrap">
-    <span class="eyebrow reveal">IACBE</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(24px,3vw,36px);line-height:1.2;margin-top:12px;max-width:30ch;">Public Disclosures of Student Achievement</h2>
-    <div class="stagger-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:clamp(32px,4vw,48px);">
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca7efeb0eacfbbdd955dcd_Public-Disclosure-of%20(1).jpg" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2018–2019</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca7f78ee9984abf9d052a6_Public-Disclosure-of%202019-2020.jpg" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2019–2020</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca7fc6962816d53422803f_Public-Disclosure-of%202020-2021.jpg" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2020–2021</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca80047c5ab0940b88e725_Public-Disclosure-of%202021-2022.jpg" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2021–2022</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca803f6c5d999f2d6d2970_Public-Disclosure-of%202022-2023.jpg" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2022–2023</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69ca809025ddc26560ffeb4f_Public-Disclosure-of%202023-2024.webp" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2023–2024</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-      <a href="https://cdn.prod.website-files.com/69776e396cae31b243d34a79/69cbee294e60818ab2f994f3_Public-Disclosure-of-Student-Achievement-Template.pdf" target="_blank" rel="noopener" class="tilt-card" style="display:flex;align-items:center;justify-content:space-between;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--line);">
-        <h4 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--navy);">2024–2025</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);flex-shrink:0;"><path d="M14 3h7v7"></path><path d="M10 14L21 3"></path><path d="M21 14v4a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h4"></path></svg>
-      </a>
-    </div>
-  </div>
-</section>
-<!-- EDUCATIONAL PARTNERSHIPS — logo images no white box, bigger -->
-<section id="partnerships" data-chapter="04" data-chapter-label="Partnerships" style="padding:clamp(60px,8vw,100px) 0;background:var(--white);position:relative;overflow:hidden;background-image:radial-gradient(circle, rgba(34,41,95,.06) 1px, transparent 1px);background-size:24px 24px;">
-  <div class="wrap">
-    <span class="eyebrow reveal">Educational Partnerships</span>
-    <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(24px,3vw,36px);line-height:1.2;margin-top:12px;max-width:30ch;">Our partner institutions</h2>
-    <p class="reveal d2" style="font-size:clamp(14px,1.05vw,16px);line-height:1.7;color:var(--ink-soft);max-width:62ch;margin-top:12px;">Academic cooperation with leading universities across Europe, Asia, the Middle East and the Americas.</p>
-    <div class="stagger-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;grid-auto-rows:1fr;align-items:stretch;margin-top:clamp(36px,5vw,52px);">
-      <div class="tilt-card" style="background:#f1f1ef;border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img loading="lazy" decoding="async" class="partner-logo" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a9ac1b3fb4e84ba658f3a8a_tiffin-university-logo.svg" alt="Tiffin University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Tiffin University</h3>
-        <a href="https://www.tiffin.edu/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Visit Website &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img loading="lazy" decoding="async" class="partner-logo" src="https://static.tildacdn.one/tild3533-3337-4435-a334-353966316362/meiju.jpg" alt="Meiji University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Meiji University</h3>
-        <a href="https://www.meiji.ac.jp/cip/english/index.html" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Visit Website &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img loading="lazy" decoding="async" class="partner-logo" src="https://static.tildacdn.one/tild3366-3138-4264-a133-373236663237/aust.jpg" alt="American University of Science and Technology"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">American University of Science and Technology</h3>
-        <a href="https://www.aust.edu.lb/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Visit Website &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img loading="lazy" decoding="async" class="partner-logo" src="https://static.tildacdn.one/tild6639-6232-4137-b437-626438306633/dah-logo.jpg" alt="Dar Al-Hekma University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Dar Al-Hekma University</h3>
-        <a href="https://www.dah.edu.sa/en/Pages/default.aspx" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Visit Website &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img loading="lazy" decoding="async" class="partner-logo" src="https://static.tildacdn.one/tild6564-6461-4733-b763-393238356466/upm-logo-1.jpg" alt="University of Prince Mugrin"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">University of Prince Mugrin</h3>
-        <a href="https://www.upm.edu.sa/en" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Visit Website &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img loading="lazy" decoding="async" class="partner-logo" src="https://static.tildacdn.one/tild6336-6532-4965-b064-666461363334/tiblisi-university.jpg" alt="Tbilisi State University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Tbilisi State University</h3>
-        <a href="https://www.tsu.ge/en" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Visit Website &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img loading="lazy" decoding="async" class="partner-logo" src="https://static.tildacdn.one/tild3831-3437-4337-a562-356438666565/ferrari-fashion-scho.jpg" alt="Ferrari Fashion School"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Ferrari Fashion School</h3>
-        <a href="https://ferrarifashionschool.it/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Visit Website &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img loading="lazy" decoding="async" class="partner-logo" src="https://static.tildacdn.one/tild6638-6234-4438-a562-386339626439/mahsa-university.jpg" alt="MAHSA University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">MAHSA University</h3>
-        <a href="https://mahsa.edu.my/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Visit Website &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img loading="lazy" decoding="async" class="partner-logo" src="https://static.tildacdn.one/tild6362-6639-4565-b731-323737313663/Group_253.png" alt="Anahuac University"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Anahuac University</h3>
-        <a href="https://www.anahuac.mx/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Visit Website &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img loading="lazy" decoding="async" class="partner-logo" src="https://static.tildacdn.one/tild6431-3938-4234-b833-376131376166/Universidad-de-Guada.jpg" alt="Universidad de Guadalajara"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">Universidad de Guadalajara</h3>
-        <a href="https://www.udg.mx/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Visit Website &rarr;</a>
-      </div>
-      <div class="tilt-card" style="background:#f1f1ef;border:1px solid transparent;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;height:100%;">
-        <div style="width:100%;height:136px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:10px;padding:12px;"><img loading="lazy" decoding="async" class="partner-logo" src="https://static.tildacdn.one/tild6665-6530-4136-b664-366161353739/cun-logo.jpg" alt="CUN"></div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--navy);line-height:1.3;">The National Unified Corporation of Higher Education (CUN)</h3>
-        <a href="https://cun.edu.co/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--crimson);display:inline-flex;align-items:center;gap:4px;">Visit Website &rarr;</a>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="cta-section">
-  <div class="wrap cta-inner">
-    <span class="eyebrow on-navy reveal">What's Next</span>
-    <h2 class="reveal d1">Let's Make History Together</h2>
-    <p class="reveal d2">Join a legacy of academic excellence. Take the first step toward your future at AUS.</p>
-    <div class="reveal d3">
-      <a href="https://study.aus.swiss/application" class="cta-btn">Apply Now</a>
-    </div>
-  </div>
-</section>
+  </section>
+  <section class="ranking-results" data-chapter="02" data-chapter-label="Business Masters">
+    <div class="wrap"><span class="eyebrow">QS Business Masters Rankings</span><h2>Recognized in Switzerland and worldwide.</h2><div class="ranking-badges">
+      <a href="https://www.topuniversities.com/universities/american-institute-applied-sciences-switzerland" target="_blank" rel="noopener" class="ranking-badge"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a9dcf4a977a6a6c1b85f25f_2.png" alt="AUS Top 2 in Switzerland badge"><div><strong>Top 2</strong><span>in Switzerland for Master in Management</span></div></a>
+      <a href="https://www.topuniversities.com/universities/american-institute-applied-sciences-switzerland" target="_blank" rel="noopener" class="ranking-badge"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a9dcf4b71caefbe2cebb61e_200.png" alt="AUS Top 200 globally badge"><div><strong>Top 200</strong><span>globally for Master in Management</span></div></a>
+    </div></div>
+  </section>
+  <section class="ranking-history" data-chapter="03" data-chapter-label="Ranking History"><div class="wrap"><span class="eyebrow">Ranking history</span><h2>Consistent international visibility.</h2><div class="ranking-years">
+    <article><span>2026</span><h3>Master in Management</h3><p>Top 2 in Switzerland and Top 200 globally.</p><h3>Global MBA</h3><p>Top 3 in Switzerland and Top 250 globally.</p></article>
+    <article><span>2025</span><h3>Master in Management</h3><p>Top 2 in Switzerland and Top 200 globally.</p><h3>Global MBA</h3><p>Top 3 in Switzerland and Top 250 globally.</p></article>
+    <article><span>2024</span><h3>Master in Management</h3><p>Top 2 in Switzerland and in the 141–150 band globally.</p></article>
+  </div><p class="ranking-note">Rankings and ratings are published by QS. Positions can change between editions as methodologies and participating institutions evolve.</p></div></section>
+  <section class="ranking-cta" data-chapter="04" data-chapter-label="Next Step"><div class="wrap"><span class="eyebrow on-navy">Your next step</span><h2>Choose a program built for practice.</h2><div><a class="cta-btn" href="../programs.html">Explore Programs</a><a class="cta-btn secondary" href="https://study.aus.swiss/application">Apply Now</a></div></div></section>
+</main>
 
 <!-- FOOTER -->
 <footer class="site-footer">

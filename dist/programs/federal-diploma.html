@@ -36,7 +36,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 /* SIDE PANEL */
 .side-panel{position:fixed;inset:0;z-index:120;pointer-events:none;}
 .side-panel-backdrop{position:absolute;inset:0;background:rgba(15,17,38,.55);opacity:0;transition:opacity .5s var(--ease);}
-.side-panel-canvas{position:absolute;top:0;right:0;bottom:0;width:min(460px,92vw);background:var(--navy);color:var(--white);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .55s var(--ease);box-shadow:-30px 0 60px rgba(15,17,38,.28);}
+.side-panel-canvas{position:absolute;top:0;right:0;bottom:0;width:min(460px,92vw);background:#111827;color:var(--white);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .55s var(--ease);box-shadow:-30px 0 60px rgba(15,17,38,.28);}
 .panel-open .side-panel{pointer-events:auto;}.panel-open .side-panel-backdrop{opacity:1;}.panel-open .side-panel-canvas{transform:translateX(0);}
 .side-panel-head{display:flex;align-items:center;justify-content:space-between;padding:26px clamp(24px,4vw,36px);border-bottom:1px solid var(--line-on-navy);flex:0 0 auto;}
 .side-panel-head img{height:36px;width:auto;}
@@ -111,7 +111,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .eyebrow.on-navy{color:rgba(255,255,255,.7);}
 
 /* HERO */
-.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy);}
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#111827;}
 .hero-bg{position:absolute;inset:0;z-index:0;}
 .hero-bg img{width:100%;height:100%;object-fit:cover;}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,14,34,.92) 0%,rgba(12,14,34,.5) 40%,rgba(12,14,34,.15) 100%);}
@@ -158,7 +158,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 @media (max-width:760px){.overview-grid{grid-template-columns:1fr;}}
 
 /* CURRICULUM */
-.curriculum{padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);}
+.curriculum{padding:clamp(40px,6vw,70px) 0;background:#f1f1ef;}
 .curr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.6vw,20px);margin-top:clamp(32px,4vw,48px);}
 .curr-card{background:var(--white);padding:clamp(24px,3vw,32px);border-radius:12px;border:1px solid var(--line);transition:border-color .3s var(--ease),box-shadow .3s var(--ease);cursor:pointer;overflow:visible;}.curr-card:hover{border-color:var(--navy);box-shadow:0 8px 32px rgba(34,41,95,.12);}
 .curr-year{font-family:var(--font-display);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;}
@@ -170,13 +170,13 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 /* CAREERS */
 .careers{padding:clamp(40px,6vw,70px) 0;}
 .careers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.6vw,20px);margin-top:clamp(32px,4vw,48px);}
-.career-card{padding:clamp(24px,3vw,32px);border-radius:4px;background:var(--navy);color:var(--white);}
+.career-card{padding:clamp(24px,3vw,32px);border-radius:4px;background:#111827;color:var(--white);}
 .career-card h3{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(18px,1.8vw,22px);margin-bottom:8px;}
 .career-card p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);}
 @media (max-width:760px){.careers-grid{grid-template-columns:1fr;}}
 
 /* ADMISSIONS */
-.admissions{padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);}
+.admissions{padding:clamp(40px,6vw,70px) 0;background:#f1f1ef;}
 .adm-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;margin-top:clamp(32px,4vw,48px);}
 .adm-req{background:var(--white);padding:clamp(28px,3.5vw,40px);border-radius:4px;border:1px solid var(--line);}
 .adm-req h3{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(18px,1.8vw,22px);color:var(--navy);margin-bottom:16px;}
@@ -186,7 +186,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 @media (max-width:760px){.adm-grid{grid-template-columns:1fr;}}
 
 /* CTA */
-.cta-section{background:var(--navy);color:var(--white);padding:clamp(70px,9vw,120px) 0;text-align:center;position:relative;overflow:hidden;}
+.cta-section{background:#111827;color:var(--white);padding:clamp(70px,9vw,120px) 0;text-align:center;position:relative;overflow:hidden;}
 .cta-section::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
 .cta-inner{position:relative;z-index:1;}
 .cta-inner .eyebrow{justify-content:center;margin-bottom:clamp(16px,2vw,24px);}
@@ -196,7 +196,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .cta-btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(34,41,95,.12);}
 
 /* FOOTER */
-.site-footer{background:var(--navy);color:var(--white);padding:clamp(70px,9vw,110px) 0 32px;}
+.site-footer{background:#111827;color:var(--white);padding:clamp(70px,9vw,110px) 0 32px;}
 .footer-top{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:clamp(30px,4vw,50px);padding-bottom:clamp(50px,7vw,80px);border-bottom:1px solid var(--line-on-navy);}
 .footer-mark{height:44px;width:auto;margin-bottom:18px;}
 .footer-top p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.62);max-width:32ch;}
@@ -261,7 +261,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .curr-scroll .curr-card{min-width:clamp(280px,30vw,340px);flex-shrink:0;scroll-snap-align:start;background:var(--white);padding:clamp(24px,3vw,32px);border-radius:12px;border:1px solid var(--line);position:relative;align-self:flex-start;}
 .curr-scroll-nav{display:flex;gap:10px;margin-top:20px;justify-content:center;}
 .curr-scroll-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;background:var(--white);transition:all .3s var(--ease);}
-.curr-scroll-btn:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
+.curr-scroll-btn:hover{background:#111827;color:var(--white);border-color:var(--navy);}
 .curr-scroll-btn svg{width:18px;height:18px;}
 .term-bar{display:flex;gap:8px;margin:12px 0;}
 .term-bar span{flex:1;height:4px;border-radius:2px;background:var(--crimson);}
@@ -330,7 +330,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .hero-mobile{display:none;}
 @media (max-width:760px){
   .hero{display:none!important;}
-  .hero-mobile{display:block;background:var(--navy);overflow:hidden;}
+  .hero-mobile{display:block;background:#111827;overflow:hidden;}
   .hero-mob-img{width:100%;height:40vh;min-height:220px;position:relative;}
   .hero-mob-img img{width:100%;height:100%;object-fit:cover;}
   .hero-mob-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,14,34,.2) 0%,rgba(12,14,34,.85) 100%);}
@@ -389,7 +389,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .aus-search-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:var(--white);color:var(--navy);display:flex;align-items:center;justify-content:center;pointer-events:none;}
 .aus-search-drop{position:absolute;top:calc(100% + 10px);right:0;width:min(420px,92vw);max-height:min(60vh,520px);overflow:auto;background:var(--white);border-radius:16px;box-shadow:0 20px 50px rgba(12,14,34,.18);border:1px solid var(--line);padding:8px;display:grid;gap:6px;z-index:120;}
 .aus-search-drop[hidden]{display:none !important;}
-.aus-search-drop a:hover{background:var(--sky-tint);}
+.aus-search-drop a:hover{background:#f1f1ef;}
 @media (max-width:900px){.aus-search{display:none;}}
 /* ---------- PROMO POPUP ---------- */
 .aus-popup-overlay{position:fixed;inset:0;z-index:999;background:rgba(12,14,34,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s var(--ease);display:flex;align-items:center;justify-content:center;padding:20px;}
@@ -398,7 +398,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .aus-popup-overlay.is-visible .aus-popup{transform:translateY(0) scale(1);}
 .aus-popup-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.9);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;transition:background .2s,transform .2s;font-size:18px;color:var(--ink-soft);}
 .aus-popup-close:hover{background:var(--white);transform:scale(1.1);color:var(--crimson);}
-.aus-popup-hero{position:relative;height:180px;overflow:hidden;background:var(--navy);}
+.aus-popup-hero{position:relative;height:180px;overflow:hidden;background:#111827;}
 .aus-popup-hero img{width:100%;height:100%;object-fit:cover;opacity:.65;}
 .aus-popup-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(34,41,95,.85) 0%,rgba(34,41,95,.2) 100%);}
 .aus-popup-hero-badge{position:absolute;bottom:16px;left:20px;z-index:2;display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--navy);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:100px;}
@@ -406,8 +406,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .aus-popup-title{font-family:var(--font-serif);font-style:italic;font-weight:600;font-size:clamp(22px,3vw,28px);color:var(--navy);line-height:1.25;margin-bottom:10px;}
 .aus-popup-subtitle{font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:20px;}
 .aus-popup-benefits{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;}
-.aus-popup-benefit{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:var(--sky-tint);border-radius:10px;}
-.aus-popup-benefit-icon{flex:0 0 auto;width:28px;height:28px;border-radius:8px;background:var(--navy);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;}
+.aus-popup-benefit{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:#f1f1ef;border-radius:10px;}
+.aus-popup-benefit-icon{flex:0 0 auto;width:28px;height:28px;border-radius:8px;background:#111827;color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;}
 .aus-popup-benefit-text{font-size:12px;font-weight:600;line-height:1.4;color:var(--navy);}
 .aus-popup-benefit-text span{display:block;font-weight:400;color:var(--ink-soft);font-size:11px;margin-top:2px;}
 .aus-popup-cta{display:flex;gap:10px;flex-wrap:wrap;}
@@ -439,7 +439,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   display:flex;align-items:baseline;gap:12px;width:100%;text-align:left;
   padding:8px 20px;font-size:12.5px;color:var(--ink-soft);transition:color .2s var(--ease),background .2s var(--ease);
 }
-.archive-tab-toc-item:hover{background:var(--sky-tint);color:var(--navy);}
+.archive-tab-toc-item:hover{background:#f1f1ef;color:var(--navy);}
 .archive-tab-toc-item .num{font-family:var(--font-display);font-weight:700;color:var(--crimson);width:18px;flex:0 0 auto;}
 .archive-tab-toc-item.is-current{color:var(--navy);font-weight:600;}
 @media (max-width:960px){.archive-tab,.archive-tab-toc{display:none;}}
@@ -451,10 +451,10 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .aus-preloader-mark{height: clamp(64px, 9vw, 92px); width: auto; opacity: 0; transform: translateY(10px); animation: preloaderIn .9s var(--ease) forwards;}
 .aus-preloader-bar{width: 140px; height: 1px; background: var(--line-on-navy); overflow: hidden; position: relative; margin-top: 6px;}
 .aus-preloader-bar::after{content: ""; position: absolute; inset: 0px; width: 34%; background: var(--yellow); animation: 1.15s ease-in-out 0s infinite normal none running preloaderBar;}
-@keyframes preloaderIn { 
+@keyframes preloaderIn {
   100% { opacity: 1; transform: translateY(0px); }
 }
-@keyframes preloaderBar { 
+@keyframes preloaderBar {
   0% { transform: translateX(-120%); }
   100% { transform: translateX(400%); }
 }
@@ -468,7 +468,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .aus-wordmark img{position: absolute; left: 0px; top: 0px; height: 100%; width: auto; max-width: none; transition: opacity .4s var(--ease);}
 .aus-wordmark .logo-white{opacity: 1;}
 .aus-wordmark .logo-color{opacity: 0;}
-@keyframes navIn { 
+@keyframes navIn {
   100% { opacity: 1; transform: translateY(0px); }
 }
 .aus-nav-links{display: flex; align-items: center; gap: 26px; opacity: 0; animation: navIn .8s var(--ease) .4s forwards;}
@@ -604,7 +604,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .aus-search-btn{position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%; background: var(--white); color: var(--navy); display: flex; align-items: center; justify-content: center; pointer-events: none;}
 .aus-search-drop{position: fixed; top: 88px; left: 50vw; right: auto; transform: translateX(-50%); width: min(560px, -24px + 100vw); max-height: min(60vh, 520px); overflow: auto; background: var(--white); border-radius: 16px; box-shadow: rgba(12, 14, 34, 0.18) 0px 20px 50px; border: 1px solid var(--line); padding: 8px; display: grid; gap: 6px; z-index: 120;}
 .aus-search-drop[hidden]{display: none !important;}
-.aus-search-drop a:hover{background: var(--sky-tint);}
+.aus-search-drop a:hover{background:#f1f1ef;}
 @media (max-width: 760px) {.aus-search-drop{top: 54px; width: calc(-20px + 100vw); max-height: calc(100dvh - 66px);}}
 @media (max-width: 420px) {.aus-search-drop{top: 50px; max-height: calc(100dvh - 62px);}}
 .side-panel-foot .hero-cta{width:auto;text-align:start;}
@@ -635,7 +635,14 @@ button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
   .footer-v2_bottom-item{min-width:0;justify-content:center;}
   .footer-v2_bottom-img{max-width:100%;object-fit:contain;}
 }
-</style></head>
+</style><style id="responsive-hardening">
+
+html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img,section img{max-width:100%}main [style*="display:grid"]>*{min-width:0}h1,h2,h3,p,a{overflow-wrap:break-word}
+@media(max-width:900px){main section .wrap>[style*="display:grid"],main section .wrap>.reveal[style*="display:grid"],main .stagger-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.hero-mob-content{min-width:0}.hero-mob-content h1{font-size:clamp(36px,10vw,58px)!important;overflow-wrap:anywhere}.destination-split,.sl-split{grid-template-columns:1fr!important}.destination-grid[style]{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:640px){main section .wrap>[style*="display:grid"],main section .wrap>.reveal[style*="display:grid"],main .stagger-grid,.destination-grid[style]{grid-template-columns:1fr!important}.destination-actions,.sl-hero-ctas{display:grid!important;grid-template-columns:1fr}.destination-btn,.sl-hero-ctas a{width:100%}.curr-scroll,.compare-table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.dual-logos{flex-wrap:wrap}.program-section h2{font-size:clamp(32px,10vw,48px)!important}}
+
+</style>
+</head>
 <body>
 
 <div class="aus-preloader" id="preloader">
@@ -757,7 +764,7 @@ button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
           <div class="accordion-group">
             <a href="../about.html">About AUS</a>
             <a href="../about/accreditation.html">Accreditation &amp; Recognition</a>
-            <a href="../about.html#rankings">Rankings</a>
+            <a href="../about/rankings.html">Rankings</a>
             <a href="../about/history.html">History</a>
             <a href="../about/faculty.html">Faculty</a>
             <a href="../about/meet-our-people.html">Meet Our People</a>
@@ -846,7 +853,7 @@ button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
 </section>
 
 <!-- QUICK FACTS -->
-<section style="padding:clamp(32px,4vw,48px) 0;background:var(--sky-tint);">
+<section style="padding:clamp(32px,4vw,48px) 0;background:#f1f1ef;">
   <div class="wrap">
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(34,41,95,.08);border-radius:8px;overflow:hidden;">
       <div style="background:var(--white);padding:clamp(20px,2.5vw,28px);">
@@ -914,7 +921,7 @@ button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
           <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&auto=format&fit=crop&q=80" alt="Finance workspace">
           <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80" alt="Business analytics">
         </div>
-        <div style="background:var(--sky-tint);padding:clamp(20px,2.5vw,28px);border-radius:4px;text-align:center;">
+        <div style="background:#f1f1ef;padding:clamp(20px,2.5vw,28px);border-radius:4px;text-align:center;">
           <span class="counter" data-target="94">0</span><span style="font-family:var(--font-display);font-weight:800;font-size:clamp(28px,3vw,40px);color:var(--navy);">%</span>
           <div style="font-size:13px;color:var(--ink-soft);margin-top:4px;">Employed or in grad school within six months</div>
         </div>
@@ -981,56 +988,56 @@ button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
     <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;">Your Future with a Swiss Federal Diploma</h2>
     <p class="reveal d2" style="font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--ink-soft);max-width:60ch;margin-top:12px;margin-bottom:clamp(24px,3vw,36px);">The Swiss Federal Diploma prepares experienced professionals for senior management roles with a nationally recognized qualification.</p>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.6vw,20px);">
-      <div class="career-card reveal " style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
+      <div class="career-card reveal " style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:#111827;color:var(--white);">
         <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
         </div>
         <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Senior Manager</h3>
         <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Lead teams and departments with formal recognition of advanced business competencies.</p>
       </div>
-      <div class="career-card reveal d1" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
+      <div class="career-card reveal d1" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:#111827;color:var(--white);">
         <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
         </div>
         <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Business Director</h3>
         <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Oversee business units or functions with the authority of a Swiss-recognized qualification.</p>
       </div>
-      <div class="career-card reveal d2" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
+      <div class="career-card reveal d2" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:#111827;color:var(--white);">
         <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
         </div>
         <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Operations Director</h3>
         <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Manage complex operations with the strategic and operational skills validated by the diploma.</p>
       </div>
-      <div class="career-card reveal d3" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
+      <div class="career-card reveal d3" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:#111827;color:var(--white);">
         <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         </div>
         <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Management Consultant</h3>
         <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Advise organizations with a qualification recognized across Swiss and European markets.</p>
       </div>
-      <div class="career-card reveal " style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
+      <div class="career-card reveal " style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:#111827;color:var(--white);">
         <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
         </div>
         <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Project Leader</h3>
         <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Lead major projects and initiatives with formal professional recognition.</p>
       </div>
-      <div class="career-card reveal d1" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
+      <div class="career-card reveal d1" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:#111827;color:var(--white);">
         <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
         </div>
         <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Department Head</h3>
         <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Manage departments in multinational organizations with Swiss-recognized credentials.</p>
       </div>
-      <div class="career-card reveal d2" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
+      <div class="career-card reveal d2" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:#111827;color:var(--white);">
         <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
         </div>
         <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;margin:0 0 8px;">Entrepreneur</h3>
         <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.65);">Launch and manage businesses with a formal professional qualification from Switzerland.</p>
       </div>
-      <div class="career-card reveal d3" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:var(--navy);color:var(--white);">
+      <div class="career-card reveal d3" style="padding:clamp(20px,2.5vw,28px);border-radius:4px;background:#111827;color:var(--white);">
         <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         </div>
@@ -1059,7 +1066,7 @@ button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
         <h3 style="font-family:var(--font-serif);font-style:italic;font-size:16px;color:var(--navy);margin:0 0 8px;">Focused Learning</h3>
         <p style="font-size:13px;line-height:1.6;color:var(--ink-soft);">With a 7:1 student-to-staff ratio and classes limited to 20 students, you receive personal attention and meaningful interaction.</p>
       </div>
-      
+
       <div class="reveal d2" style="padding:clamp(20px,2.5vw,28px);border:1px solid var(--line);border-radius:4px;">
         <div style="width:40px;height:40px;background:var(--sky);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1164,7 +1171,7 @@ button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
 </section>
 
 <!-- CAMPUS LIFE GALLERY -->
-<section style="padding:clamp(40px,6vw,70px) 0;background:var(--sky-tint);">
+<section style="padding:clamp(40px,6vw,70px) 0;background:#f1f1ef;">
   <div class="wrap">
     <span class="eyebrow reveal">Student Life</span>
     <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;margin-bottom:clamp(24px,3vw,36px);">Life at AUS</h2>
@@ -1227,7 +1234,7 @@ button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
         <div style="margin-top:14px;"></div>
         <div class="footer-col-title" style="margin-top:6px;">Connect</div>
         <a href="../admissions.html">Admissions</a>
-        
+
         <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24">Contact</a>
       </div>
       <div class="footer-col">
@@ -1473,7 +1480,7 @@ if(!reduceMotion){
 })();
 /* SITE SEARCH — INDEX: add new pages here to appear in dropdown */
 (function(){
-        var idx=[{title:'Find Your Program',url:'find-programs.html',cat:'Programs',keys:'find program quiz match best fit recommendation question'},{title:'Compare Programs',url:'compare-programs.html',cat:'Programs',keys:'compare programs side by side specialization curriculum'},
+        var idx=[{title:"Rankings",url:"../about/rankings.html",cat:"About",keys:"QS Stars University Ratings Teaching Business and Management Employability Facilities QS Business Masters Switzerland global rankings Master in Management Global MBA"},{title:'Find Your Program',url:'find-programs.html',cat:'Programs',keys:'find program quiz match best fit recommendation question'},{title:'Compare Programs',url:'compare-programs.html',cat:'Programs',keys:'compare programs side by side specialization curriculum'},
     {title:"Home",url:"../index.html",cat:"Home",keys:"Chapter 01 Where precision meets ambition. A Swiss business education built on scientific method and practice, for students who intend to lead, not just graduate. Find My Program → Founded 1991 La Tour-de-Peilz, Switzerland 02 Programs Choose your level. Every program is built around the same practice-led method. Hover a level to see what's inside. 01 Bachelors Degree Accounting Aviation Management Business Management Healthcare Administration Human Resource Management Integrated & Digital Marketing International Business Sports Management — Athletic Administration Sports Management — Sports Marketing 02 Masters Degree Data Analytics Finance Healthcare Administration Human Resource Management International Business Leadership & Change Sports Management Strategic Brand & Digital Marketing 03 Doctorate Doctorate in Business Administration 04 Swiss Federal Diploma Business Administration Three years, seven majors, one method. One year, built for people already leading. For those researching the next standard. Swiss-recognized professional qualification. 03 The Approach Practice-led, not theory-bound . Every course is built around real organizational problems. Students leave with a portfolio of decisions they made, not just a transcript of lectures they attended, prepared to lead from day one rather than catch up. 04 In Numbers “A prestigious, well-known institution that attracts students and faculty from all over the world.” 0+ Years combining Swiss and American education traditions AUS institutional records, 2026 0%+ Of graduates say their role relates to their AUS studies Alumni outcomes survey, 2025 0+ Nationalities on campus AUS Registrar, Fall 2026 0 Maximum students per class Academic policy, 2026 1: 0 Faculty to student ratio AUS Registrar, Fall 2026 0%+ Employed within 6 months of graduating Alumni outcomes survey, 2025 05 Recognition Independently recognized, not self-declared. Accreditation bodies and ranking institutions evaluate AUS on the same criteria applied to the world's leading business schools. Top 2 In Switzerland, QS Business Masters 2025 Top 200 Globally, QS Business Masters 2025 06 Mission & Vision Mission AUS equips students pursuing a degree in international business with the knowledge, skills and tools to make a significant contribution to any organization. Through practice-oriented study grounded in scientific method, research and development, graduates are prepared to lead with competence and confidence. Vision To build a reputation as a prestigious, well-known private institution in Switzerland that attracts students and faculty from all over the world, and to shape decision-makers ready for a more sustainable future. 07 Why AUS Five reasons students choose AUS. 01 Join a genuinely international student body. Classrooms bring together students from across Europe, the Middle East and beyond, so every group project is already a cross-border negotiation. 02 Case work replaces the lecture hall. Assignments are built from real organizational problems, not textbook exercises, so the skills transfer directly to a first job. 03 The working language of international business. Every program runs entirely in English, preparing graduates to operate in global teams from day one. 04 Study where students actually want to live. The campus sits on the shores of Lake Geneva, close enough to Zurich and Lucerne to make the most of both. 05 Faculty who know your name, not your seat number. Small cohorts mean direct access to professors, real feedback on your work, and no getting lost in a lecture hall of hundreds. 08 Sustainability Shaping decision-makers for a sustainable future. Sustainability sits at the core of how AUS teaches. Through partnerships with associations and non-profits, sustainable practice is built into the classroom, so graduates can balance economic and environmental goals in line with the UN Sustainable Development Goals. 09 Learning from Experts Local and international voices, inside the classroom. The Speaker Series brings practitioners into the room to bridge academic theory with what's actually happening in business today. Speaker Series &rarr; 10 Campus Archive Lecture Hall, Zurich The Reading Room Case Studio Main Courtyard Commencement 11 In Their Words Real stories from students who found their path at AUS. 12 Our Partners Organizations that hire, train and collaborate with AUS. “Moving to Switzerland to study felt daunting at first, but AUS made it feel like a place I could actually belong.” Tomiwa “Going back to school after twenty years focused on family took courage. AUS is where I found the confidence to start again.” Umida"},    {title:"Admissions",url:"../admissions.html",cat:"Admissions",keys:"Admissions Your Journey Starts Here Everything you need to know about applying to AUS from eligibility and required documents to fees visas and arrival in Switzerland How to Apply Choose Your Program Submit Your Application Review and Decision Confirm and Enroll Entry Requirements Bachelor Master English Language Requirements IELTS TOEFL Duolingo Tuition and Fees Application Fee Important Dates Fall Semester Spring Semester Summer Term Visa Information EU EFTA Non-EU EFTA"},
     {title:"Programs Overview",url:"../programs.html",cat:"Programs",keys:"Chapter 01 Every level. One method. Twenty-one programs designed around real organizational problems. Practice-led from the first semester, built for people who intend to lead, not just graduate. Explore programs → 21 programs 4 levels Overview Every level. One method. Twenty-one programs designed around real organizational problems. Practice-led from the first semester, built for people who intend to lead, not just graduate. Explore programs → Bachelors 10 Masters 9 Doctorate 1 Federal Diploma 1 02 Bachelors Degree Start with a foundation that doesn't need replacing. Three years, one method. Every bachelor's program is built around case work and real organizational problems, so graduates arrive at their first job with a portfolio of decisions, not just a transcript. Bachelors 01 Accounting 3 Years The language of business, mastered. Explore Bachelors 02 Business Management 3 Years Lead organizations from day one. Explore Bachelors 03 Healthcare Administration 3 Years Healthcare needs better leaders. Explore Bachelors 04 Human Resource Management 3 Years People are the strategy. Explore Bachelors 05 Integrated & Digital Marketing 3 Years Strategy meets execution. Explore Bachelors 06 International Business 3 Years Think beyond borders. Explore Bachelors 07 Sports Management — Athletic Administration 3 Years Run the game, not the sidelines. Explore Bachelors 08 Sports Management — Sports Marketing 3 Years Build brands that move people. Explore Bachelors 09 Hospitality Management 3 Years Excellence is the experience. Explore Bachelors 10 Aviation Management 3 Years The business of getting there. Explore 03 Masters Degree Already leading? Go deeper. One year, built for people already in the workforce. Each master's program sharpens the skills that organizations actually hire for, with faculty who practice what they teach. Masters 01 Finance 1 Year Markets reward precision. Explore Masters 02 Data Analytics 1 Year Turn noise into signal. Explore Masters 03 Healthcare Administration 1 Year Systems that save lives. Explore Masters 04 Human Resource Management 1 Year Talent is the competitive edge. Explore Masters 05 International Business 1 Year Lead across markets. Explore Masters 06 Leadership & Change 1 Year Move organizations forward. Explore Masters 07 Sports Management 1 Year The business behind the game. Explore Masters 08 Strategic Brand & Digital Marketing 1 Year Brand is the business model. Explore Masters 09 Aviation Management 1 Year Altitude requires strategy. Explore 04 Doctorate & Federal Diploma The highest level of practice. For senior professionals ready to contribute original research to their field, or earn the nationally recognized Swiss Federal Diploma in Business Administration. Doctorate Business Administration (DBA) Original research that advances practice. For senior leaders who want to contribute new knowledge to their field while remaining in active professional life. Federal Diploma Business Administration The nationally recognized Swiss qualification. Combines academic study with professional experience, delivering a diploma valued across European industries. 05 Why AUS 30+ Years of excellence Combining Swiss and American education traditions since 1991. 80% Graduate employment Of graduates state their occupation is related to their studies at AUS. 40+ Nationalities A truly diverse and multicultural learning environment. 20 Max students per class Small class sizes for personalized attention and collaboration. 1:7 Faculty to student ratio Direct access to professors who know your name and goals. >70% Employed within 6 months Of graduates find employment within six months of graduating. 06 Dual Degree Two countries. One degree. Global advantage. At AUS, students earn a prestigious Dual Degree — graduating with two highly recognized qualifications: one from Switzerland and another from the United States. This global academic experience equips graduates with a competitive edge, opening doors to international opportunities and careers worldwide. + 07 Rankings & Recognition QS World University Rankings 2025 Top 2 in Switzerland for Business Masters QS World University Rankings 2025 Top 200 globally for Business Masters Accreditation & Memberships 08 The Method Practice-led, not theory-bound . Every course is built around real organizational problems. Students leave with a portfolio of decisions they made, not just a transcript of lectures they attended, prepared to lead from day one rather than catch up. Chapter 09 Your next chapter starts here. Applications are open for the upcoming intake. Browse the programs, pick the level that fits, and start the process. It takes less time than you think. Start your application →"},
     {title:"BSc Accounting",url:"bachelors/accounting.html",cat:"Programs Â· Bachelor",keys:"QS Ranked — 5-Star Teaching BSc in Business Administration Accounting Start your Application Download Brochure Scroll BSc in Business Administration Accounting Three years, nine academic terms, 135 CH | 225 ECTS. Start your Application Download Brochure Home / Programs / Bachelors / Accounting 0 :1 Student-to-staff ratio 0 % Employed or in Graduate School within six months of graduation 0 + Nationalities 0 + Multinational HQs nearby Overview Bachelor of Science in Business Administration TU Degree Bachelor of Business Administration Specialization Accounting Entry Dates September, January, April Duration 3 Years Structure 9 Academic Terms Study Mode Full-Time Credits 135 CH | 225 ECTS Program Overview A traditional accounting pathway, built for the modern workplace . The Accounting specialization gives students a strong foundation in accounting principles, financial analysis, taxation, and business decision-making. Designed for students who want to build a career in accounting, finance, auditing, taxation, or business management, it combines technical knowledge with the practical problem-solving used by today's accounting professionals. The double degree allows students enrolled in the program to earn a Degree from Switzerland and a Degree from the United States of America whilst studying entirely in Switzerland. Financial accounting and reporting Auditing and assurance services Tax planning and compliance Management and cost accounting Corporate finance fundamentals Business law and ethics Data analytics for accountants Professional certification preparation Read more → 0 % Employed or in grad school within six months Curriculum Three years — nine academic terms — 135 CH | 225 ECTS. Year 1 3 TERMS Principles of Accounting Microeconomics & Macroeconomics Business Mathematics Introduction to Business Law Academic Writing & Research Business Communication Year 2 3 TERMS Financial Accounting & Reporting Cost & Management Accounting Auditing Principles Taxation Corporate Finance Business Statistics Year 3 3 TERMS Advanced Auditing International Accounting Standards Data Analytics for Finance Ethics & Governance Strategic Management Bachelors Thesis Dual Swiss and US Degree Graduate with two degrees. From two continents. The Bachelor of Science in International Business Administration at AUS is offered exclusively as a dual degree in collaboration with Tiffin in the United States. All enrolled students graduate with two degrees: a BSc from AUS and a BBA from Tiffin University. Tiffin University is accredited by the Higher Learning Commission in the United States, supporting the international credibility and recognition of the degree pathway. Switzerland United States The AUS Advantage Why AUS Business School Focused Learning With a 7:1 student-to-staff ratio and classes limited to 20 students, you receive personal attention and meaningful interaction. Dual Degree Earn two separate degrees at the same time. This gives graduates a stronger international profile. Top Ranked Top Ranked by the QS World University Rankings. 5-Star Rated for Teaching and class experience. Career Focused Build practical business skills through specialization modules, industry visits, guest speakers, and networking opportunities. Tuition Fees 28'000 CHF / year Admissions & Financing → Career Outcomes Your Future in Accounting The Accounting Specialization prepares students for careers in accounting, finance, taxation, auditing, consulting, and business management. Students develop the technical knowledge, analytical skills, and ethical decision-making abilities needed to support organizations in measuring performance, managing risk, and making informed financial decisions. Accountant Prepare, analyze, and manage financial records for companies, organizations, or clients. Auditor Review financial statements, internal controls, and business processes to ensure accuracy, compliance, and transparency. Tax Consultant Support individuals and organizations with tax planning, tax research, compliance, and reporting. Financial Analyst Use accounting and financial data to evaluate business performance, forecast trends, and support strategic decisions. Cost Accountant Help organizations plan budgets, control costs, measure performance, and improve operational efficiency. Consulting Associate Advise businesses on financial processes, reporting systems, risk management, and performance improvement. Finance Associate Support investment decisions, budgeting, financial planning, and capital management within organizations. Accounting Manager With experience, graduates may progress into leadership roles overseeing accounting operations, financial reporting, and internal controls. Admissions Join the AUS Community 1 Core Requirements To qualify for this program, applicants must have successfully completed secondary education in their home country, earning a diploma or leaving certificate that grants university-level eligibility. No GMAT or entrance exam scores are required. Admission is based on a holistic review of your application and a mandatory online interview. Language: English C-Level. CEFR B2 level considered after completing an oral interview. Education: Secondary school diploma with good academic achievements, or IELTS Overall 5.5 with no single element below 4.5. Motivation: Explain why you are pursuing this degree, your goals, and the specific value you will bring to your peer group. 2 Admissions Philosophy AUS offers a fair and transparent admissions process based on individual merit and potential. We look beyond basic eligibility to understand the specific context of your background, ensuring we balance high standards with true inclusivity. Our goal is to align your prior experience and interests with the program that will best drive your future career. Next Intake Fall 2026 EU/EFTA Deadline: July 15 · International Deadline: July 15 Start your Application → Certification Partners Build Practical Digital Skills. Alongside their dual degree, students can earn certifications through AUS partnerships with leading technology firms in AI, digital tools, and data analytics. \"The Accounting specialization gave me the technical skills and confidence to succeed in a competitive industry. The dual degree with Tiffin opened doors I never expected.\" Alumni testimonial BSc in Business Administration — Accounting Student Life Life at AUS What's Next Take the Next Step Talk to an Admissions Advisor, request a Program Overview, or book a campus visit to experience AUS firsthand. Talk to an Admissions Advisor → Request a Program Overview Book a Campus Visit"},
