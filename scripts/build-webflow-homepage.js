@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { canonicalizeDocument } = require('./rewrite-webflow-urls');
 const vm = require('vm');
 
 const root = path.resolve(__dirname, '..');
@@ -253,7 +254,7 @@ function splitHomepageScripts(html) {
 }
 
 function build() {
-  const html = normalize(fs.readFileSync(sourcePath, 'utf8'));
+  const html = normalize(canonicalizeDocument(fs.readFileSync(sourcePath, 'utf8'), sourcePath));
   const head = html.match(/<head>([\s\S]*?)<\/head>/i)?.[1] || '';
   const body = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i)?.[1];
   if (!body) throw new Error('Homepage body was not found.');

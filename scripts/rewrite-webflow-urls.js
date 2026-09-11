@@ -90,25 +90,47 @@ function canonicalize(value, currentFile) {
   const match = value.match(/^([^?#]+)([?#][\s\S]*)?$/);
   if (!match || !match[1].endsWith('.html')) return value;
   const currentDir = path.posix.dirname(sourceRelative(currentFile));
-  const target = path.posix.normalize(path.posix.join(currentDir, match[1]));
+  let target = path.posix.normalize(path.posix.join(currentDir, match[1]));
+  if (!destinations[target]) {
+    const rootRelative = path.posix.normalize(match[1]).replace(/^\.\//, '');
+    if (destinations[rootRelative]) target = rootRelative;
+  }
   const destination = destinations[target] || `/${target.replace(/\.html$/, '')}`;
   return destination + (match[2] || '');
 }
 
-let changedFiles = 0;
-for (const file of listHtml(root)) {
-  let source = fs.readFileSync(file, 'utf8');
-  const before = source;
-  source = source.replace(/(href|action)="([^"]+)"/g, (whole, attribute, value) => `${attribute}="${canonicalize(value, file)}"`);
-  source = source.replace(/url:"([^"]+)"/g, (whole, value) => `url:"${canonicalize(value, file)}"`);
+function canonicalizeDocument(source, file) {
+  source = source.replace(/(href|action)=(['"])([^'"]+)\2/g, (whole, attribute, quote, value) => `${attribute}=${quote}${canonicalize(value, file)}${quote}`);
+  source = source.replace(/\b(url|href):(['"])([^'"]+)\2/g, (whole, attribute, quote, value) => `${attribute}:${quote}${canonicalize(value, file)}${quote}`);
+  source = source.replace(/((?:window\.)?location(?:\.href)?\s*=\s*)(['"])([^'"]+)\2/g, (whole, prefix, quote, value) => `${prefix}${quote}${canonicalize(value, file)}${quote}`);
   source = source.replace(
     /var href=h\.url;\r?\n([ \t]*)if\(href\.indexOf\("\?q="\)===-1\) href\+=\(href\.indexOf\("\?"\)!==-1\?"&":"\?"\)\+"q="\+encodeURIComponent\(q\);/g,
     (_, indent) => `var href=h.url,hash="",hashAt=href.indexOf("#");\n${indent}if(hashAt!==-1){ hash=href.slice(hashAt); href=href.slice(0,hashAt); }\n${indent}if(href.indexOf("?q=")===-1) href+=(href.indexOf("?")!==-1?"&":"?")+"q="+encodeURIComponent(q);\n${indent}href+=hash;`
   );
-  if (source !== before) {
-    fs.writeFileSync(file, source);
-    changedFiles += 1;
-  }
+  return source;
 }
 
-console.log(`Canonicalized Webflow URLs in ${changedFiles} HTML files.`);
+function rewriteAll() {
+  let changedFiles = 0;
+  for (const file of listHtml(root)) {
+    let source = fs.readFileSync(file, 'utf8');
+    const before = source;
+    source = canonicalizeDocument(source, file);
+    if (source !== before) {
+      fs.writeFileSync(file, source);
+      changedFiles += 1;
+    }
+  }
+  console.log(`Canonicalized Webflow URLs in ${changedFiles} HTML files.`);
+}
+
+module.exports = {
+  canonicalize,
+  canonicalizeDocument,
+  customPaths,
+  destinations,
+  livePaths,
+  sourceRelative
+};
+
+if (require.main === module) rewriteAll();

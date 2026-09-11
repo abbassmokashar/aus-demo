@@ -11,6 +11,7 @@ const {
   targetLimit,
   wrapScript
 } = require('./build-webflow-homepage');
+const { canonicalizeDocument } = require('./rewrite-webflow-urls');
 
 const root = path.resolve(__dirname, '..');
 const outputRoot = path.join(root, 'webflow', 'pages');
@@ -200,7 +201,7 @@ function clearGeneratedPageFiles(directory) {
 
 function buildPage(sourcePath) {
   const sourceRelative = path.relative(root, sourcePath);
-  const html = normalize(fs.readFileSync(sourcePath, 'utf8'));
+  const html = normalize(canonicalizeDocument(fs.readFileSync(sourcePath, 'utf8'), sourcePath));
   const head = html.match(/<head>([\s\S]*?)<\/head>/i)?.[1] || '';
   const body = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i)?.[1];
   if (!body) throw new Error(`${sourceRelative} has no body element.`);
