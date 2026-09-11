@@ -11,6 +11,13 @@ let widgetCount = 0;
 let inlineScriptCount = 0;
 let largest = { file: '', characters: 0 };
 let searchIndexCount = 0;
+const requestedProgramRoutes = [
+  '/bachelors-degree/accounting',
+  '/masters-degree/finance',
+  '/doctorate-in-business-administration',
+  '/swiss-federal-diploma-business-administration'
+];
+const foundProgramRoutes = new Set();
 
 function walk(directory) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
@@ -26,6 +33,12 @@ function walk(directory) {
     const relative = path.relative(root, fullPath).replace(/\\/g, '/');
     if (source.length > largest.characters) largest = { file: relative, characters: source.length };
     if (source.length >= 50000) failures.push(`${relative} is ${source.length} characters.`);
+    if (/\/programs\/(?:bachelors|masters|doctorate|federal-diploma)/i.test(source)) {
+      failures.push(`${relative} contains a legacy /programs/ degree route.`);
+    }
+    requestedProgramRoutes.forEach((route) => {
+      if (source.includes(route)) foundProgramRoutes.add(route);
+    });
 
     for (const tag of ['script', 'style']) {
       const opens = (source.match(new RegExp(`<${tag}\\b`, 'gi')) || []).length;
@@ -55,6 +68,9 @@ function walk(directory) {
 }
 
 packageRoots.forEach(walk);
+requestedProgramRoutes.forEach((route) => {
+  if (!foundProgramRoutes.has(route)) failures.push(`Webflow output is missing ${route}.`);
+});
 
 if (failures.length) {
   failures.forEach((failure) => console.error(failure));

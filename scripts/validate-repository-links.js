@@ -17,7 +17,7 @@ function listHtml(directory, output = []) {
 function valuesFrom(source) {
   const values = [];
   for (const pattern of [
-    /(?:href|action)=(['"])([^'"]+)\1/g,
+    /(?:href|action|src|poster)=(['"])([^'"]+)\1/g,
     /\b(?:url|href):(['"])([^'"]+)\1/g,
     /(?:window\.)?location(?:\.href)?\s*=\s*(['"])([^'"]+)\1/g
   ]) {
@@ -39,10 +39,15 @@ for (const file of files) {
       broken.push(`${path.relative(root, file)} -> ${value} (root-absolute)`);
       continue;
     }
-    if (!/\.html(?:[?#]|$)/i.test(value) || /^(?:https?:|mailto:|tel:|javascript:|#|\/\/)/i.test(value)) continue;
+    if (/^(?:https?:|mailto:|tel:|javascript:|#|\/\/)/i.test(value)) continue;
+    const isHtml = /\.html(?:[?#]|$)/i.test(value);
+    const isDirectoryRoute = /\/(?:[?#]|$)/.test(value);
+    const isAsset = /\.(?:avif|gif|jpe?g|png|svg|webp)(?:[?#]|$)/i.test(value);
+    if (!isHtml && !isDirectoryRoute && !isAsset) continue;
     checked += 1;
     const pathname = value.split(/[?#]/, 1)[0];
-    const target = path.resolve(path.dirname(file), ...pathname.split('/'));
+    let target = path.resolve(path.dirname(file), ...pathname.split('/'));
+    if (isDirectoryRoute && !isAsset) target = path.join(target, 'index.html');
     if (!fs.existsSync(target) || !fs.statSync(target).isFile()) {
       broken.push(`${path.relative(root, file)} -> ${value}`);
     }

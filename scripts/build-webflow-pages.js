@@ -201,7 +201,7 @@ function clearGeneratedPageFiles(directory) {
 
 function buildPage(sourcePath) {
   const sourceRelative = path.relative(root, sourcePath);
-  const html = normalize(canonicalizeDocument(fs.readFileSync(sourcePath, 'utf8'), sourcePath));
+  const html = normalize(canonicalizeDocument(fs.readFileSync(sourcePath, 'utf8'), sourcePath, { externalizeAssets: true }));
   const head = html.match(/<head>([\s\S]*?)<\/head>/i)?.[1] || '';
   const body = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i)?.[1];
   if (!body) throw new Error(`${sourceRelative} has no body element.`);

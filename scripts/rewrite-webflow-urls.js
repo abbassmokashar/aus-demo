@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { programImageUrls } = require('./program-image-urls');
 
 const root = path.resolve(__dirname, '..');
 const skipped = new Set(['.chrome-backup', '.git', '.visual-check', 'history', 'node_modules', 'webflow']);
@@ -68,6 +69,11 @@ const customPaths = {
 };
 
 const destinations = { ...customPaths, ...livePaths };
+const cleanProgramRouteByPath = new Map(
+  Object.entries(destinations)
+    .filter(([source]) => source.startsWith('programs/'))
+    .map(([, route]) => [route.replace(/^\//, ''), route])
+);
 
 function listHtml(directory, output = []) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
@@ -88,21 +94,39 @@ function sourceRelative(file) {
 function canonicalize(value, currentFile) {
   if (!value || /^(?:https?:|mailto:|tel:|javascript:|#|\/)/i.test(value)) return value;
   const match = value.match(/^([^?#]+)([?#][\s\S]*)?$/);
-  if (!match || !match[1].endsWith('.html')) return value;
+  if (!match) return value;
   const currentDir = path.posix.dirname(sourceRelative(currentFile));
-  let target = path.posix.normalize(path.posix.join(currentDir, match[1]));
-  if (!destinations[target]) {
-    const rootRelative = path.posix.normalize(match[1]).replace(/^\.\//, '');
-    if (destinations[rootRelative]) target = rootRelative;
+  let destination;
+
+  if (match[1].endsWith('.html')) {
+    let target = path.posix.normalize(path.posix.join(currentDir, match[1]));
+    if (!destinations[target]) {
+      const rootRelative = path.posix.normalize(match[1]).replace(/^\.\//, '');
+      if (destinations[rootRelative]) target = rootRelative;
+    }
+    destination = destinations[target] || `/${target.replace(/\.html$/, '')}`;
+  } else {
+    const repositoryPath = path.posix.normalize(path.posix.join(currentDir, match[1])).replace(/\/+$/, '');
+    destination = cleanProgramRouteByPath.get(repositoryPath);
   }
-  const destination = destinations[target] || `/${target.replace(/\.html$/, '')}`;
+
+  if (!destination) return value;
   return destination + (match[2] || '');
 }
 
-function canonicalizeDocument(source, file) {
+function externalProgramMediaUrl(value) {
+  const match = value.match(/(?:^|\/)program-media\/([^?#]+)([?#][\s\S]*)?$/);
+  if (!match) return value;
+  return (programImageUrls[match[1]] || value) + (programImageUrls[match[1]] ? (match[2] || '') : '');
+}
+
+function canonicalizeDocument(source, file, options = {}) {
   source = source.replace(/(href|action)=(['"])([^'"]+)\2/g, (whole, attribute, quote, value) => `${attribute}=${quote}${canonicalize(value, file)}${quote}`);
   source = source.replace(/\b(url|href):(['"])([^'"]+)\2/g, (whole, attribute, quote, value) => `${attribute}:${quote}${canonicalize(value, file)}${quote}`);
   source = source.replace(/((?:window\.)?location(?:\.href)?\s*=\s*)(['"])([^'"]+)\2/g, (whole, prefix, quote, value) => `${prefix}${quote}${canonicalize(value, file)}${quote}`);
+  if (options.externalizeAssets) {
+    source = source.replace(/(src)=(['"])([^'"]+)\2/g, (whole, attribute, quote, value) => `${attribute}=${quote}${externalProgramMediaUrl(value)}${quote}`);
+  }
   source = source.replace(
     /var href=h\.url;\r?\n([ \t]*)if\(href\.indexOf\("\?q="\)===-1\) href\+=\(href\.indexOf\("\?"\)!==-1\?"&":"\?"\)\+"q="\+encodeURIComponent\(q\);/g,
     (_, indent) => `var href=h.url,hash="",hashAt=href.indexOf("#");\n${indent}if(hashAt!==-1){ hash=href.slice(hashAt); href=href.slice(0,hashAt); }\n${indent}if(href.indexOf("?q=")===-1) href+=(href.indexOf("?")!==-1?"&":"?")+"q="+encodeURIComponent(q);\n${indent}href+=hash;`
@@ -127,8 +151,10 @@ function rewriteAll() {
 module.exports = {
   canonicalize,
   canonicalizeDocument,
+  cleanProgramRouteByPath,
   customPaths,
   destinations,
+  externalProgramMediaUrl,
   livePaths,
   sourceRelative
 };

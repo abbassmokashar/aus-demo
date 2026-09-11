@@ -5,6 +5,17 @@ const { destinations } = require('./rewrite-webflow-urls');
 const root = path.resolve(__dirname, '..');
 const skipped = new Set(['.chrome-backup', '.git', '.visual-check', 'history', 'node_modules', 'webflow']);
 const sourceByRoute = new Map(Object.entries(destinations).map(([source, route]) => [route, source]));
+const repositoryTargetByRoute = new Map(
+  [...sourceByRoute].map(([route, source]) => [
+    route,
+    source.startsWith('programs/') ? `${route.replace(/^\//, '')}/index.html` : source
+  ])
+);
+const routeByRepositoryPath = new Map(
+  [...repositoryTargetByRoute]
+    .filter(([, target]) => target.endsWith('/index.html'))
+    .map(([route, target]) => [target.replace(/\/index\.html$/, ''), route])
+);
 
 function listHtml(directory, output = []) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
@@ -28,21 +39,27 @@ function repositoryUrl(value, currentFile) {
   if (!match) return value;
   const pathname = match[1] || '/';
   const currentDirectory = path.posix.dirname(sourceRelative(currentFile));
-  let target;
+  let route;
 
   if (/^\/(?!\/)/.test(pathname)) {
-    target = sourceByRoute.get(pathname);
+    const cleanRoute = pathname === '/' ? '/' : pathname.replace(/\/+$/, '');
+    if (sourceByRoute.has(cleanRoute)) route = cleanRoute;
   } else if (/\.html$/i.test(pathname)) {
     const resolved = path.posix.normalize(path.posix.join(currentDirectory, pathname));
-    if (destinations[resolved]) target = resolved;
+    if (destinations[resolved]) route = destinations[resolved];
     else {
       const rootRelative = path.posix.normalize(pathname).replace(/^\.\//, '');
-      if (destinations[rootRelative]) target = rootRelative;
+      if (destinations[rootRelative]) route = destinations[rootRelative];
     }
+  } else {
+    const resolved = path.posix.normalize(path.posix.join(currentDirectory, pathname)).replace(/\/+$/, '');
+    route = routeByRepositoryPath.get(resolved);
   }
 
+  const target = repositoryTargetByRoute.get(route);
   if (!target) return value;
-  const relative = path.posix.relative(currentDirectory, target) || path.posix.basename(target);
+  let relative = path.posix.relative(currentDirectory, target) || path.posix.basename(target);
+  if (target.endsWith('/index.html')) relative = relative.replace(/index\.html$/, '') || './';
   return relative + (match[2] || '');
 }
 
@@ -53,14 +70,26 @@ function rewriteDocument(source, file) {
     .replace(/((?:window\.)?location(?:\.href)?\s*=\s*)(['"])([^'"]+)\2/g, (whole, prefix, quote, value) => `${prefix}${quote}${repositoryUrl(value, file)}${quote}`);
 }
 
-let changedFiles = 0;
-for (const file of listHtml(root)) {
-  const source = fs.readFileSync(file, 'utf8');
-  const rewritten = rewriteDocument(source, file);
-  if (rewritten !== source) {
-    fs.writeFileSync(file, rewritten, 'utf8');
-    changedFiles += 1;
+function rewriteAll() {
+  let changedFiles = 0;
+  for (const file of listHtml(root)) {
+    const source = fs.readFileSync(file, 'utf8');
+    const rewritten = rewriteDocument(source, file);
+    if (rewritten !== source) {
+      fs.writeFileSync(file, rewritten, 'utf8');
+      changedFiles += 1;
+    }
   }
+  console.log(`Rewrote repository-safe URLs in ${changedFiles} HTML files.`);
 }
 
-console.log(`Rewrote repository-safe URLs in ${changedFiles} HTML files.`);
+module.exports = {
+  listHtml,
+  repositoryTargetByRoute,
+  repositoryUrl,
+  rewriteDocument,
+  routeByRepositoryPath,
+  sourceRelative
+};
+
+if (require.main === module) rewriteAll();

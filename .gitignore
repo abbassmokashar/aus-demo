@@ -15,8 +15,15 @@ images/
 img/
 **/img/
 
+# Local source library and temporary Webflow upload bundle
+Website Bank of Images/
+Website Bank of Images-*.zip
+program-media/
+AUS-selected-program-images.zip
+
 # Office scratch/design docs (repo is website-only)
 *.docx
 *.pptx
 *.ppt
+*.xlsx
 ~$*
