@@ -15,7 +15,7 @@ const {
 const root = path.resolve(__dirname, '..');
 const outputRoot = path.join(root, 'webflow', 'pages');
 const skippedDirectories = new Set([
-  '.chrome-backup', '.git', 'dist', 'history', 'node_modules', 'webflow'
+  '.chrome-backup', '.git', '.visual-check', 'dist', 'history', 'node_modules', 'webflow'
 ]);
 
 function listSourcePages(directory, pages = []) {
