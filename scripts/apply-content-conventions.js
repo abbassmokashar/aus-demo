@@ -67,6 +67,7 @@ let removedDates = 0;
 let scriptSeparatorEscapes = 0;
 let fontUrlRepairs = 0;
 let programGuideLinks = 0;
+let programGuideLabelReplacements = 0;
 
 for (const file of listHtml(root)) {
   let html = fs.readFileSync(file, 'utf8');
@@ -84,8 +85,11 @@ for (const file of listHtml(root)) {
     .replaceAll('Industrial Visits', 'Industry Visits')
     .replaceAll('Industrial visits', 'Industry visits');
 
+  programGuideLabelReplacements += html.split('Download Program Guide').length - 1;
+  html = html.replaceAll('Download Program Guide', 'Download Brochure');
+
   html = html.replace(
-    /<a\b([^>]*\bhref=)(["'])#["']([^>]*)>(\s*Download Program Guide\s*)<\/a>/gi,
+    /<a\b([^>]*\bhref=)(["'])(?:#|https:\/\/share-eu1\.hsforms\.com\/1_N5NamNWRLeBrDAYfIYx7Qfwv24)["']([^>]*)>(\s*Download Brochure\s*)<\/a>/gi,
     (anchor, beforeHref, quote, afterHref, label) => {
       programGuideLinks += 1;
       return `<a${beforeHref}${quote}${programGuideUrl}${quote}${afterHref}>${label}</a>`;
@@ -134,4 +138,5 @@ console.log(`Replaced ${imageReplacements} campus-life image references.`);
 console.log(`Converted ${numberReplacements} comma-grouped numbers to Swiss formatting.`);
 console.log(`Escaped ${scriptSeparatorEscapes} Swiss separators inside scripts.`);
 console.log(`Repaired ${fontUrlRepairs} Google Fonts URL values.`);
-console.log(`Linked ${programGuideLinks} Download Program Guide CTAs.`);
+console.log(`Renamed ${programGuideLabelReplacements} Download Program Guide references.`);
+console.log(`Linked ${programGuideLinks} Download Brochure CTAs.`);
