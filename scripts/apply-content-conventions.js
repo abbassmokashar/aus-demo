@@ -8,6 +8,7 @@ const skipped = new Set([
 ]);
 const oldCampusImage = 'https://images.unsplash.com/photo-1527004013197-933c4bb611b3?w=1800&auto=format&fit=crop&q=80';
 const newCampusImage = 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa7a8ffc8165c3077529ecb_campus-life.webp';
+const programGuideUrl = 'https://share-eu1.hsforms.com/1_N5NamNWRLeBrDAYfIYx7Qfwv24';
 const swissNumbers = [
   '1,000', '1,350', '1,380', '1,500', '1,780', '2,000', '2,500',
   '4,000', '10,000', '14,000', '25,000', '25,050', '26,000',
@@ -65,6 +66,7 @@ let numberReplacements = 0;
 let removedDates = 0;
 let scriptSeparatorEscapes = 0;
 let fontUrlRepairs = 0;
+let programGuideLinks = 0;
 
 for (const file of listHtml(root)) {
   let html = fs.readFileSync(file, 'utf8');
@@ -81,6 +83,14 @@ for (const file of listHtml(root)) {
   html = html
     .replaceAll('Industrial Visits', 'Industry Visits')
     .replaceAll('Industrial visits', 'Industry visits');
+
+  html = html.replace(
+    /<a\b([^>]*\bhref=)(["'])#["']([^>]*)>(\s*Download Program Guide\s*)<\/a>/gi,
+    (anchor, beforeHref, quote, afterHref, label) => {
+      programGuideLinks += 1;
+      return `<a${beforeHref}${quote}${programGuideUrl}${quote}${afterHref}>${label}</a>`;
+    }
+  );
 
   html = html.replace(/<link\b[^>]*fonts\.googleapis\.com[^>]*>/gi, (link) => {
     return link.replace(/(?<=\d)'(?=\d{3})/g, () => {
@@ -124,3 +134,4 @@ console.log(`Replaced ${imageReplacements} campus-life image references.`);
 console.log(`Converted ${numberReplacements} comma-grouped numbers to Swiss formatting.`);
 console.log(`Escaped ${scriptSeparatorEscapes} Swiss separators inside scripts.`);
 console.log(`Repaired ${fontUrlRepairs} Google Fonts URL values.`);
+console.log(`Linked ${programGuideLinks} Download Program Guide CTAs.`);
