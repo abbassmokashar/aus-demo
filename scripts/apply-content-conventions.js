@@ -64,6 +64,7 @@ let imageReplacements = 0;
 let numberReplacements = 0;
 let removedDates = 0;
 let scriptSeparatorEscapes = 0;
+let fontUrlRepairs = 0;
 
 for (const file of listHtml(root)) {
   let html = fs.readFileSync(file, 'utf8');
@@ -81,12 +82,23 @@ for (const file of listHtml(root)) {
     .replaceAll('Industrial Visits', 'Industry Visits')
     .replaceAll('Industrial visits', 'Industry visits');
 
-  for (const number of swissNumbers) {
-    const count = html.split(number).length - 1;
-    if (!count) continue;
-    numberReplacements += count;
-    html = html.replaceAll(number, number.replaceAll(',', "'"));
-  }
+  html = html.replace(/<link\b[^>]*fonts\.googleapis\.com[^>]*>/gi, (link) => {
+    return link.replace(/(?<=\d)'(?=\d{3})/g, () => {
+      fontUrlRepairs += 1;
+      return ',';
+    });
+  });
+
+  html = html.replace(/<[^>]+>|[^<]+/g, (chunk) => {
+    if (chunk.startsWith('<')) return chunk;
+    for (const number of swissNumbers) {
+      const count = chunk.split(number).length - 1;
+      if (!count) continue;
+      numberReplacements += count;
+      chunk = chunk.replaceAll(number, number.replaceAll(',', "'"));
+    }
+    return chunk;
+  });
 
   html = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, (script) => {
     return script.replace(/(?<=\d)'(?=\d{3}(?!\d))/g, () => {
@@ -111,3 +123,4 @@ console.log(`Removed ${removedDates} displayed event dates.`);
 console.log(`Replaced ${imageReplacements} campus-life image references.`);
 console.log(`Converted ${numberReplacements} comma-grouped numbers to Swiss formatting.`);
 console.log(`Escaped ${scriptSeparatorEscapes} Swiss separators inside scripts.`);
+console.log(`Repaired ${fontUrlRepairs} Google Fonts URL values.`);
