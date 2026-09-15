@@ -36,6 +36,7 @@ const livePaths = {
 };
 
 const customPaths = {
+  '404.html': '/404',
   'programs.html': '/programs',
   'compare-programs.html': '/compare-programs',
   'find-programs.html': '/find-programs',

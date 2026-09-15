@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Careers & Outcomes | AUS Business School</title>
+<title>Page Not Found | AUS Business School</title>
+<meta name="description" content="The page you requested could not be found. Return to AUS Business School or explore our programs and admissions information.">
+<meta name="robots" content="noindex,follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -122,6 +124,7 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .hero-scroll{position:absolute;bottom:clamp(24px,3vw,40px);right:clamp(20px,5vw,64px);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.35);font-size:10px;letter-spacing:.12em;text-transform:uppercase;z-index:2;}
 .hero-scroll::after{content:"";width:1px;height:28px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent);animation:scrollPulse 2s ease-in-out infinite;}
 @keyframes scrollPulse{0%,100%{opacity:.35;}50%{opacity:.7;}}
+@media (max-width:760px){.hero{min-height:auto;}.hero-bg{position:relative;height:50vh;}.hero-inner{padding:clamp(32px,5vw,48px) clamp(20px,5vw,64px);}.hero-scroll{display:none;}}
 
 /* MOBILE HERO */
 .hero-mobile{display:none;}
@@ -135,6 +138,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
   .hero-mob-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);padding:5px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.85);margin-bottom:clamp(10px,2vw,16px);}
   .hero-mob-content h1{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,9vw,44px);line-height:1.05;letter-spacing:-.02em;margin-bottom:clamp(8px,1.5vw,12px);}
   .hero-mob-sub{font-size:clamp(13px,2.6vw,15px);line-height:1.5;color:rgba(255,255,255,.6);margin-bottom:clamp(16px,3vw,24px);}
+  .hero-mob-ctas{display:flex;flex-direction:column;gap:10px;}
+  .hero-mob-ctas .hero-cta{width:100%;justify-content:center;text-align:center;}
 }
 
 /* CTA BUTTONS */
@@ -166,7 +171,11 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .footer-col a:hover{color:var(--yellow);}
 .footer-social-title{margin-top:34px;}
 .footer-social-grid{display:flex;gap:10px;margin-top:14px;}
-.footer-social-tile{width:44px;height:44px;border-radius:10px;border:1px solid var(--line-on-navy);display:flex;align-items:center;justify-content:center;transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);}
+.footer-social-tile{
+  width:44px;height:44px;border-radius:10px;border:1px solid var(--line-on-navy);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);
+}
 .footer-social-tile:hover{border-color:rgba(255,255,255,.3);}
 .footer-social-tile svg{width:18px;height:18px;fill:var(--white);}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding-top:26px;font-size:13px;color:rgba(255,255,255,.5);}
@@ -174,84 +183,129 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 @media (max-width:860px){.footer-top{grid-template-columns:1fr 1fr;}}
 @media (max-width:520px){.footer-top{grid-template-columns:1fr;}}
 
+.footer-v2_bottom{
+  display:flex;align-items:center;flex-wrap:wrap;gap:clamp(18px,3vw,32px);
+  padding:clamp(28px,4vw,38px) 0;margin-top:clamp(6px,1vw,10px);border-bottom:1px solid var(--line-on-navy);
+}
+.footer-v2_bottom-title{
+  font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);
+  flex:0 0 auto;padding-right:clamp(10px,2vw,20px);
+}
+.footer-v2_bottom-list{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(24px,4vw,44px);flex:1 1 auto;}
+.footer-v2_bottom-item{display:flex;align-items:center;}
+.footer-v2_bottom-img{
+  height:clamp(26px,3vw,34px);width:auto;
+  filter:brightness(0) invert(1) opacity(.55);
+  transition:filter .25s var(--ease),opacity .25s var(--ease);
+}
+
+
 /* REVEAL */
+.js-reveal-ready .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease-soft),transform .9s var(--ease-soft);}
+.js-reveal-ready .reveal.is-visible{opacity:1;transform:none;}
+.js-reveal-ready .reveal.d1{transition-delay:.08s;}
+.js-reveal-ready .reveal.d2{transition-delay:.16s;}
+.js-reveal-ready .reveal.d3{transition-delay:.24s;}
+.js-reveal-ready .reveal.d4{transition-delay:.32s;}
+
+/* SECTION FADE-IN */
+@keyframes sectionFadeIn{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:none;}}
+.section-animate{animation:sectionFadeIn .8s var(--ease-soft) forwards;}
+
+/* STAT COUNTER */
+.counter{font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4vw,56px);color:var(--navy);line-height:1;}
+
+/* ═══════════════════════════════════════
+   NEW ANIMATION SYSTEM
+   ═══════════════════════════════════════ */
+
+/* REVEAL SYSTEM */
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
 .reveal.is-visible{opacity:1;transform:translateY(0);}
 .reveal.d1{transition-delay:.1s;}.reveal.d2{transition-delay:.2s;}.reveal.d3{transition-delay:.3s;}.reveal.d4{transition-delay:.4s;}.reveal.d5{transition-delay:.5s;}
+
+/* SCALE REVEAL */
 .reveal-scale{opacity:0;transform:scale(.92);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
 .reveal-scale.is-visible{opacity:1;transform:scale(1);}
+
+/* CLIP REVEAL — image wipe */
 .reveal-clip{clip-path:inset(100% 0 0 0);transition:clip-path 1s var(--ease-soft);}
 .reveal-clip.is-visible{clip-path:inset(0 0 0 0);}
+
+/* SPLIT TEXT */
+.split-text .word{display:inline-block;opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease-soft),transform .5s var(--ease-soft);}
+.split-text.is-visible .word{opacity:1;transform:translateY(0);}
+
+/* PARALLAX */
+.parallax{will-change:transform;}
+
+/* FLOAT */
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
 .float{animation:float 5s ease-in-out infinite;}
+
+/* ROTATE IN */
+@keyframes rotateIn{from{opacity:0;transform:rotate(-8deg) scale(.9);}to{opacity:1;transform:rotate(0) scale(1);}}
+.reveal-rotate{opacity:0;transform:rotate(-8deg) scale(.9);transition:opacity .8s var(--ease-soft),transform .8s var(--ease-soft);}
+.reveal-rotate.is-visible{opacity:1;transform:rotate(0) scale(1);}
+
+/* MARQUEE */
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.marquee-track{display:flex;width:max-content;animation:marquee 25s linear infinite;}
+.marquee-track:hover{animation-play-state:paused;}
+
+/* LINE DRAW */
+.line-draw{stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset 1.2s var(--ease-soft);}
+.line-draw.is-visible{stroke-dashoffset:0;}
+
+/* STAGGER GRID > children */
 .stagger-grid > *{opacity:0;transform:translateY(30px);transition:opacity .6s var(--ease-soft),transform .6s var(--ease-soft);}
-.stagger-grid.is-visible > *{opacity:1;transform:translateY(0);}
-.stagger-grid.is-visible > *:nth-child(1){transition-delay:.05s;}
-.stagger-grid.is-visible > *:nth-child(2){transition-delay:.10s;}
-.stagger-grid.is-visible > *:nth-child(3){transition-delay:.15s;}
-.stagger-grid.is-visible > *:nth-child(4){transition-delay:.20s;}
-.stagger-grid.is-visible > *:nth-child(5){transition-delay:.25s;}
-.stagger-grid.is-visible > *:nth-child(6){transition-delay:.30s;}
-.img-zoom{overflow:hidden;}
-.img-zoom img{transition:transform .7s var(--ease-soft);}
-.img-zoom:hover img{transform:scale(1.06);}
-.parallax{will-change:transform;}
+.stagger-grid.is-visible > *:nth-child(1){transition-delay:.05s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(2){transition-delay:.12s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(3){transition-delay:.19s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(4){transition-delay:.26s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(5){transition-delay:.33s;opacity:1;transform:translateY(0);}
+.stagger-grid.is-visible > *:nth-child(6){transition-delay:.40s;opacity:1;transform:translateY(0);}
+
+/* CARD TILT on hover */
 .tilt-card{transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
 .tilt-card:hover{transform:translateY(-6px) rotate(.5deg);box-shadow:0 20px 50px rgba(34,41,95,.1);}
 
-/* SECTION NAVIGATOR (archive tab) */
-.archive-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding:14px 22px 14px 30px;background:var(--white);border-top-left-radius:6px;border-bottom-left-radius:6px;box-shadow:-6px 0 24px rgba(34,41,95,0.08);transition:background .4s var(--ease),box-shadow .4s var(--ease);}
-.archive-tab-num{font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.04em;color:var(--navy);}
-.archive-tab-label{font-family:var(--font-serif);font-style:italic;font-size:12px;color:var(--ink-soft);white-space:nowrap;}
-.archive-tab-toc{position:absolute;right:100%;top:50%;transform:translateY(-50%) translateX(12px);width:236px;background:var(--white);box-shadow:-6px 0 24px rgba(34,41,95,0.14);padding:10px 0;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);border-radius:8px;}
-.archive-tab:hover .archive-tab-toc,.archive-tab:focus-within .archive-tab-toc{opacity:1;transform:translateY(-50%) translateX(0);pointer-events:auto;}
-.archive-tab-toc-item{display:flex;align-items:baseline;gap:12px;width:100%;text-align:left;padding:8px 20px;font-size:12.5px;color:var(--ink-soft);transition:color .2s var(--ease),background .2s var(--ease);}
-.archive-tab-toc-item:hover{color:var(--navy);background:#f1f1ef;}
-.archive-tab-toc-item .num{font-family:var(--font-display);font-weight:700;font-size:11px;color:var(--crimson);min-width:18px;}
-.archive-tab-toc-item.is-active{color:var(--navy);font-weight:600;}
-.archive-tab-toc-item.is-active .num{color:var(--crimson);}
-@media (max-width:960px){.archive-tab{display:none;}}
+/* IMAGE HOVER ZOOM */
+.img-zoom{overflow:hidden;}
+.img-zoom img{transition:transform .7s var(--ease-soft);}
+.img-zoom:hover img{transform:scale(1.06);}
 
+/* MAGNETIC BUTTON */
+.mag-btn{position:relative;transition:transform .3s var(--ease);}
 
-/* FACULTY GRID */
-.faculty-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;}
-.faculty-card{flex:0 0 calc((100% - 64px) / 5);border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--white);animation:cardReveal linear both;animation-timeline:view();animation-range:entry 0% entry 100%;}
-.faculty-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(34,41,95,.1);}
-.faculty-card-img{width:100%;aspect-ratio:3/4;object-fit:cover;background:#f1f1ef;}
-.faculty-card-body{padding:14px 16px 16px;}
-.faculty-card-name{font-family:var(--font-display);font-weight:700;font-size:13px;color:var(--navy);margin-bottom:2px;line-height:1.3;}
-.faculty-card-title{font-size:11px;color:var(--crimson);font-weight:600;margin-bottom:0;line-height:1.35;}
-.faculty-card-bio{font-size:13px;line-height:1.6;color:var(--ink-soft);}
-@keyframes cardReveal{from{opacity:0;transform:translateY(40px) scale(.96);}to{opacity:1;transform:translateY(0) scale(1);}}
-@media (max-width:1100px){.faculty-card{flex:0 0 calc((100% - 48px) / 4);}}
-@media (max-width:860px){.faculty-card{flex:0 0 calc((100% - 32px) / 3);}}
-@media (max-width:600px){
-  @keyframes cardReveal{from{opacity:1;transform:none;}to{opacity:1;transform:none;}}
-  #team .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scrollbar-width:none;}
-  #team .wrap::-webkit-scrollbar{display:none;}
-  .faculty-grid{justify-content:flex-start!important;padding-bottom:16px;}
-  .faculty-card{flex:0 0 160px;scroll-snap-align:start;}
-  .faculty-card-body{padding:10px 12px 12px;}
-  .faculty-card-name{font-size:12px;}
-  .faculty-card-title{font-size:10px;}
+@media (hover:none){.prog-card-detail{max-height:120px!important;opacity:1!important;transform:translateY(0)!important;}}
+
+@media (max-width:960px){
+  .hero h1{font-size:clamp(28px,7vw,52px);}
+  .hero-sub{font-size:clamp(14px,2.8vw,16px);}
 }
 
-/* DEAN CARD RESPONSIVE */
-@media (max-width:700px){
-  #overview .wrap>[style*="display:flex"][style*="border-radius:16px"]{flex-direction:column;}
-  #overview [style*="flex:0 0 260px"]{flex:0 0 auto!important;width:100%!important;padding:32px 24px!important;}
-  #overview [style*="flex:0 0 260px"] img{width:120px!important;height:120px!important;}
+@media (max-width:760px){
+  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr)!important;}
+  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,1fr)!important;}
+  .cta-section{padding:clamp(40px,6vw,60px) 0;}
+  .cta-section h2{font-size:clamp(20px,5vw,30px);}
 }
 
+@media (max-width:960px){
+  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr)!important;}
+  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,1fr)!important;}
+}
 @media (max-width:760px){
   .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
   .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
   .wrap>[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
-  .cta-section{padding:clamp(40px,6vw,60px) 0;}
-  .cta-section h2{font-size:clamp(20px,5vw,30px);}
+  .wrap>[style*="grid-template-columns:1fr 1.4fr"]{grid-template-columns:1fr!important;}
 }
 @media (max-width:600px){
   .wrap{padding-left:clamp(16px,4vw,24px);padding-right:clamp(16px,4vw,24px);}
+  .wrap>[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
+  .wrap>[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
   .footer-top{grid-template-columns:1fr!important;gap:clamp(20px,4vw,28px);}
 }
 /* SITE SEARCH */
@@ -265,151 +319,32 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .aus-search-drop[hidden]{display:none !important;}
 .aus-search-drop a:hover{background:#f1f1ef;}
 @media (max-width:900px){.aus-search{display:none;}}
-.footer-v2_bottom{
-  display:flex;align-items:center;gap:clamp(24px,4vw,44px);
-  padding:clamp(28px,4vw,38px) 0;margin-top:clamp(6px,1vw,10px);border-bottom:1px solid var(--line-on-navy);
+/* ---------- ARCHIVE INDEX TAB (section navigator, desktop only) ---------- */
+.archive-tab{
+  position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:90;
+  display:flex;flex-direction:column;align-items:flex-end;gap:6px;
+  padding:14px 22px 14px 30px;background:var(--white);
+  border-top-left-radius:6px;border-bottom-left-radius:6px;
+  box-shadow:-6px 0 24px rgba(34,41,95,0.08);
+  transition:background .4s var(--ease),box-shadow .4s var(--ease);
+  cursor:pointer;
 }
-.footer-v2_bottom-title{
-  font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--slate);white-space:nowrap;
-}
-.footer-v2_bottom-list{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(24px,4vw,44px);flex:1 1 auto;}
-.footer-v2_bottom-item{display:flex;align-items:center;}
-.footer-v2_bottom-img{
-  height:clamp(28px,3vw,36px);width:auto;opacity:.55;
-  filter:brightness(0) invert(1);transition:opacity .25s var(--ease),filter .25s var(--ease);
-}
-
-@media (max-width:760px){
-  .footer-v2_bottom{flex-direction:column;align-items:flex-start;}
-  .footer-v2_bottom-list{gap:clamp(20px,6vw,30px);}
-}
-
-/* ---------- PROMO POPUP ---------- */
-.aus-popup-overlay{position:fixed;inset:0;z-index:999;background:rgba(12,14,34,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s var(--ease);display:flex;align-items:center;justify-content:center;padding:20px;}
-.aus-popup-overlay.is-visible{opacity:1;visibility:visible;}
-.aus-popup{background:var(--white);border-radius:20px;max-width:520px;width:100%;box-shadow:0 30px 80px rgba(12,14,34,.25);overflow:hidden;position:relative;transform:translateY(30px) scale(.97);transition:transform .5s var(--ease);display:flex;flex-direction:column;}
-.aus-popup-overlay.is-visible .aus-popup{transform:translateY(0) scale(1);}
-.aus-popup-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.9);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;transition:background .2s,transform .2s;font-size:18px;color:var(--ink-soft);}
-.aus-popup-close:hover{background:var(--white);transform:scale(1.1);color:var(--crimson);}
-.aus-popup-hero{position:relative;height:180px;overflow:hidden;background:#111827;}
-.aus-popup-hero img{width:100%;height:100%;object-fit:cover;opacity:.65;}
-.aus-popup-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(34,41,95,.85) 0%,rgba(34,41,95,.2) 100%);}
-.aus-popup-hero-badge{position:absolute;bottom:16px;left:20px;z-index:2;display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--navy);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:100px;}
-.aus-popup-body{padding:28px 24px 24px;}
-.aus-popup-title{font-family:var(--font-serif);font-style:italic;font-weight:600;font-size:clamp(22px,3vw,28px);color:var(--navy);line-height:1.25;margin-bottom:10px;}
-.aus-popup-subtitle{font-size:14px;line-height:1.65;color:var(--ink-soft);margin-bottom:20px;}
-.aus-popup-benefits{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;}
-.aus-popup-benefit{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:#f1f1ef;border-radius:10px;}
-.aus-popup-benefit-icon{flex:0 0 auto;width:28px;height:28px;border-radius:8px;background:#111827;color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;}
-.aus-popup-benefit-text{font-size:12px;font-weight:600;line-height:1.4;color:var(--navy);}
-.aus-popup-benefit-text span{display:block;font-weight:400;color:var(--ink-soft);font-size:11px;margin-top:2px;}
-.aus-popup-cta{display:flex;gap:10px;flex-wrap:wrap;}
-.aus-popup-cta a{flex:1;min-width:140px;text-align:center;padding:13px 20px;border-radius:10px;font-size:13px;font-weight:700;letter-spacing:.02em;transition:all .25s var(--ease);cursor:pointer;}
-.aus-popup-cta-primary{background:var(--crimson);color:var(--white);border:2px solid var(--crimson);}
-.aus-popup-cta-primary:hover{background:#a01a33;border-color:#a01a33;transform:translateY(-2px);box-shadow:0 6px 20px rgba(190,31,61,.3);}
-.aus-popup-cta-secondary{background:transparent;color:var(--navy);border:2px solid var(--line);}
-.aus-popup-cta-secondary:hover{border-color:var(--navy);transform:translateY(-2px);}
-@media(max-width:540px){.aus-popup-body{padding:22px 18px 20px;}.aus-popup-benefits{grid-template-columns:1fr;}.aus-popup-hero{height:140px;}}
-</style>
-
-<style>
-/* STUDENT LIFE PAGE */
-.sl-hero{position:relative;min-height:70vh;display:flex;align-items:flex-end;overflow:hidden;background:#111827;}
-.sl-hero-bg{position:absolute;inset:0;}
-.sl-hero-bg img{width:100%;height:100%;object-fit:cover;}
-.sl-hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,14,34,.92) 0%,rgba(12,14,34,.45) 45%,rgba(12,14,34,.15) 100%);}
-.sl-hero-inner{position:relative;z-index:1;width:100%;padding:clamp(60px,8vw,100px) clamp(20px,5vw,64px) clamp(40px,6vw,70px);color:var(--white);}
-.sl-hero-inner h1{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(36px,5vw,64px);line-height:1.05;letter-spacing:-.02em;margin-bottom:16px;}
-.sl-hero-sub{max-width:52ch;font-size:clamp(15px,1.4vw,18px);line-height:1.6;color:rgba(255,255,255,.65);margin-bottom:28px;}
-.sl-hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
-.sl-hero-ctas a{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:14px 28px;border-radius:100px;transition:all .3s var(--ease);}
-.sl-cta-primary{background:var(--white);color:var(--navy);border:1px solid var(--line);}
-.sl-cta-primary:hover{background:var(--crimson);color:var(--white);border-color:var(--crimson);}
-.sl-cta-outline{border:1px solid rgba(255,255,255,.28);color:var(--white);}
-.sl-cta-outline:hover{background:rgba(255,255,255,.1);}
-
-/* SECTION NAVIGATOR */
-.archive-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding:14px 22px 14px 30px;background:var(--white);border-top-left-radius:6px;border-bottom-left-radius:6px;box-shadow:-6px 0 24px rgba(34,41,95,0.08);transition:background .4s var(--ease),box-shadow .4s var(--ease);}
 .archive-tab-num{font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.04em;color:var(--navy);}
 .archive-tab-label{font-family:var(--font-serif);font-style:italic;font-size:12px;color:var(--ink-soft);white-space:nowrap;}
-.archive-tab-toc{position:absolute;right:100%;top:50%;transform:translateY(-50%) translateX(12px);width:236px;background:var(--white);box-shadow:-6px 0 24px rgba(34,41,95,0.14);padding:10px 0;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);border-radius:8px;}
+.archive-tab-toc{
+  position:absolute;right:100%;top:50%;transform:translateY(-50%) translateX(12px);
+  width:236px;background:var(--white);box-shadow:-6px 0 24px rgba(34,41,95,0.14);
+  padding:10px 0;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);
+}
 .archive-tab:hover .archive-tab-toc,.archive-tab:focus-within .archive-tab-toc{opacity:1;transform:translateY(-50%) translateX(0);pointer-events:auto;}
-.archive-tab-toc-item{display:flex;align-items:baseline;gap:12px;width:100%;text-align:left;padding:8px 20px;font-size:12.5px;color:var(--ink-soft);transition:color .2s var(--ease),background .2s var(--ease);}
-.archive-tab-toc-item:hover{color:var(--navy);background:#f1f1ef;}
-.archive-tab-toc-item .num{font-family:var(--font-display);font-weight:700;font-size:11px;color:var(--crimson);min-width:18px;}
-.archive-tab-toc-item.is-active{color:var(--navy);font-weight:600;}
-.archive-tab-toc-item.is-active .num{color:var(--crimson);}
-@media (max-width:960px){.archive-tab{display:none;}}
-
-/* SECTION TITLES */
-.sl-section{padding:clamp(60px,8vw,100px) 0;}
-.sl-section-alt{background:#f1f1ef;}
-.sl-title-wrap{text-align:center;max-width:640px;margin:0 auto clamp(40px,5vw,56px);}
-.sl-title-wrap .eyebrow{margin-bottom:8px;}
-.sl-title-wrap h2{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-bottom:12px;}
-.sl-title-wrap p{font-size:clamp(15px,1.2vw,17px);line-height:1.65;color:var(--ink-soft);}
-
-/* SERVICES GRID */
-.sl-services{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;}
-.sl-service{background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s var(--ease);}
-.sl-service:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(34,41,95,.08);}
-.sl-service-img{width:100%;height:160px;object-fit:cover;display:block;}
-.sl-service h3{font-size:clamp(16px,1.2vw,19px);font-weight:700;color:var(--navy);margin:16px 20px 8px;}
-.sl-service p{font-size:14px;line-height:1.65;color:var(--ink-soft);padding:0 20px 20px;}
-
-/* CTA BLOCK */
-.sl-cta-block{background:#111827;border-radius:16px;padding:clamp(40px,5vw,56px);display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;color:var(--white);}
-.sl-cta-block h6{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;}
-.sl-cta-block h2{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(22px,2.5vw,32px);}
-.sl-cta-btns{display:flex;gap:12px;flex-wrap:wrap;}
-.sl-cta-btns a{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:12px 24px;border-radius:100px;border:1px solid rgba(255,255,255,.25);color:var(--white);transition:all .3s var(--ease);}
-.sl-cta-btns a:hover{background:var(--white);color:var(--navy);}
-
-/* STATS */
-.sl-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:40px;}
-.sl-stat{text-align:center;padding:24px 16px;background:var(--white);border:1px solid var(--line);border-radius:14px;}
-.sl-stat-num{font-family:var(--font-display);font-weight:800;font-size:clamp(28px,3vw,40px);color:var(--navy);line-height:1;}
-.sl-stat-label{font-size:13px;color:var(--ink-soft);margin-top:6px;line-height:1.3;}
-@media(max-width:760px){.sl-stats{grid-template-columns:repeat(2,1fr);}}
-
-/* AMBASSADOR CARD */
-.sl-ambassador{background:#111827;border-radius:16px;padding:clamp(32px,4vw,48px);color:var(--white);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;}
-.sl-ambassador-text h6{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--yellow);margin-bottom:6px;}
-.sl-ambassador-text h3{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(20px,2.5vw,28px);margin-bottom:8px;}
-.sl-ambassador-text p{font-size:14px;color:rgba(255,255,255,.65);max-width:42ch;line-height:1.6;}
-.sl-ambassador .sl-cta-primary{background:var(--white);color:var(--navy);border:none;padding:14px 28px;border-radius:100px;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:8px;transition:background .3s;}
-.sl-ambassador .sl-cta-primary:hover{background:var(--crimson);color:var(--white);}
-
-/* PROFILE GRID */
-.sl-profile{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
-.sl-profile-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:clamp(24px,3vw,32px);}
-.sl-profile-card h3{font-size:clamp(16px,1.2vw,19px);font-weight:700;color:var(--navy);margin-bottom:8px;}
-.sl-profile-card p{font-size:14px;line-height:1.65;color:var(--ink-soft);}
-.sl-profile-card strong{color:var(--navy);}
-
-/* ACCOMMODATIONS TABLE */
-.sl-acc{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-.sl-acc table{width:100%;border-collapse:collapse;font-size:14px;}
-.sl-acc thead th{text-align:left;padding:14px 16px;font-weight:700;color:var(--navy);border-bottom:2px solid var(--navy);white-space:nowrap;}
-.sl-acc tbody td{padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
-.sl-acc tbody tr:hover{background:#f1f1ef;}
-.sl-acc .property{font-weight:700;color:var(--navy);}
-.sl-acc .rate{font-weight:700;color:var(--crimson);white-space:nowrap;}
-.sl-acc .note{font-size:13px;color:var(--ink-soft);line-height:1.5;}
-.sl-acc-disclaimer{margin-top:16px;font-size:13px;color:var(--ink-soft);line-height:1.6;font-style:italic;}
-@media(max-width:760px){
-  .sl-acc table{font-size:13px;}
-  .sl-acc thead th,.sl-acc tbody td{padding:10px 12px;}
+.archive-tab-toc-item{
+  display:flex;align-items:baseline;gap:12px;width:100%;text-align:left;
+  padding:8px 20px;font-size:12.5px;color:var(--ink-soft);transition:color .2s var(--ease),background .2s var(--ease);
 }
-
-@media(max-width:760px){
-  .sl-hero{min-height:50vh;}
-  .sl-anchor{top:60px;}
-  .sl-cta-block{flex-direction:column;text-align:center;}
-  .sl-cta-btns{justify-content:center;}
-  .sl-ambassador{flex-direction:column;text-align:center;}
-}
+.archive-tab-toc-item:hover{background:#f1f1ef;color:var(--navy);}
+.archive-tab-toc-item .num{font-family:var(--font-display);font-weight:700;color:var(--crimson);width:18px;flex:0 0 auto;}
+.archive-tab-toc-item.is-current{color:var(--navy);font-weight:600;}
+@media (max-width:960px){.archive-tab,.archive-tab-toc{display:none;}}
 </style>
 <!-- Homepage chrome: kept inline for independent Webflow embeds. -->
 <style id="aus-shared-chrome">
@@ -602,48 +537,77 @@ button,a[class*="btn"],a[class*="cta"]{white-space:nowrap;}
   .footer-v2_bottom-item{min-width:0;justify-content:center;}
   .footer-v2_bottom-img{max-width:100%;object-fit:contain;}
 }
-</style><style id="destination-page">
-
-.destination-hero{min-height:72vh;display:flex;align-items:flex-end;position:relative;overflow:hidden;padding:160px 0 72px;background:#111827;color:#fff}
-.destination-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62}.destination-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,17,38,.92),rgba(15,17,38,.24))}.destination-hero .wrap{position:relative;z-index:1;width:100%;text-align:left}.destination-hero h1{font-family:var(--font-display);font-size:clamp(42px,7vw,84px);line-height:.98;max-width:900px;margin:12px 0 18px}.destination-hero p{max-width:64ch;color:rgba(255,255,255,.82);font-size:clamp(16px,1.5vw,20px);line-height:1.65}
-.destination-section{padding:clamp(64px,8vw,108px) 0}.destination-section.alt{background:#f1f1ef}.destination-section h2{font-family:var(--font-display);font-size:clamp(30px,4.3vw,54px);line-height:1.07;color:#22295f;margin:10px 0 18px}.destination-lead{max-width:780px;color:var(--ink-soft);font-size:16px;line-height:1.78}.destination-split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,84px);align-items:center}.destination-photo{overflow:hidden;border-radius:22px;box-shadow:0 20px 55px rgba(34,41,95,.14)}.destination-photo img{width:100%;aspect-ratio:4/3;object-fit:cover}.destination-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:34px}.destination-card{padding:26px;border:1px solid rgba(34,41,95,.18);border-radius:16px;background:#fff}.destination-card h3{font-family:var(--font-display);font-size:20px;line-height:1.25;color:#22295f;margin:0 0 9px}.destination-card p{margin:0;color:var(--ink-soft);font-size:14px;line-height:1.7}.destination-card .tag{display:inline-block;margin-bottom:12px;color:var(--crimson);font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.destination-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:28px}.destination-list div{padding:16px 18px;border-left:3px solid var(--crimson);background:#fff;color:#22295f;font-size:14px;font-weight:650}.destination-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.destination-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;background:var(--crimson);color:#fff;font-size:13px;font-weight:800}.destination-btn.secondary{background:#fff;color:#22295f;border:1px solid rgba(34,41,95,.2)}.destination-note{margin-top:28px;padding:20px;border-left:4px solid var(--crimson);background:#fff;color:var(--ink-soft);font-size:14px;line-height:1.68}.employer-cloud{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.employer-cloud span{padding:12px 18px;border:1px solid rgba(34,41,95,.18);border-radius:999px;background:#fff;color:#22295f;font-size:13px;font-weight:750}.story-card{overflow:hidden;padding:0}.story-card img{width:100%;aspect-ratio:4/3;object-fit:cover}.story-card .destination-card-body{padding:24px}.story-meta{color:var(--crimson);font-size:12px;font-weight:800;margin-bottom:9px}.transport-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:32px}.transport-fact{padding:24px;background:#fff;border:1px solid rgba(34,41,95,.18);border-radius:16px}.transport-fact strong{display:block;color:var(--crimson);font-size:26px;margin-bottom:8px}.transport-fact span{color:#22295f;font-size:14px;line-height:1.5}
-@media(max-width:850px){.destination-split{grid-template-columns:1fr}.destination-grid,.transport-facts{grid-template-columns:1fr 1fr}}@media(max-width:600px){.destination-hero{min-height:620px;padding-bottom:52px}.destination-grid,.destination-list,.transport-facts{grid-template-columns:1fr}}
-
-</style>
-<style id="responsive-hardening">
-
-html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img,section img{max-width:100%}main [style*="display:grid"]>*{min-width:0}h1,h2,h3,p,a{overflow-wrap:break-word}
-@media(max-width:900px){main section .wrap>[style*="display:grid"],main section .wrap>.reveal[style*="display:grid"],main .stagger-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.hero-mob-content{min-width:0}.hero-mob-content h1{font-size:clamp(36px,10vw,58px)!important;overflow-wrap:anywhere}.destination-split,.sl-split{grid-template-columns:1fr!important}.destination-grid[style]{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
-@media(max-width:640px){main section .wrap>[style*="display:grid"],main section .wrap>.reveal[style*="display:grid"],main .stagger-grid,.destination-grid[style]{grid-template-columns:1fr!important}.destination-actions,.sl-hero-ctas{display:grid!important;grid-template-columns:1fr}.destination-btn,.sl-hero-ctas a{width:100%}.curr-scroll,.compare-table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.dual-logos{flex-wrap:wrap}.program-section h2{font-size:clamp(32px,10vw,48px)!important}}
-
-</style>
-<style id="careers-responsive-fix">
-
-.destination-split>*{min-width:0}.destination-photo img{display:block}.employer-cloud span{max-width:100%;overflow-wrap:anywhere}
-@media(max-width:600px){.destination-hero{min-height:500px!important;padding:118px 0 44px!important}.destination-hero h1{font-size:clamp(40px,12vw,58px)!important}.destination-grid[style],.destination-grid,.destination-list,.transport-facts{grid-template-columns:1fr!important}}
-
-</style>
-
-<style id="careers-moving-carousels">
-.employer-logo-carousel{overflow:hidden;margin-top:34px;mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}.employer-logo-track{display:flex;width:max-content;gap:16px;animation:ausLogoMove 46s linear infinite}.employer-logo-carousel:hover .employer-logo-track{animation-play-state:paused}.employer-logo-item{width:164px;height:116px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:17px;background:#fff;border:1px solid rgba(34,41,95,.16);border-radius:16px}.employer-logo-item img{display:block;width:58px;height:58px;object-fit:contain}.employer-logo-item span{color:#22295f;font-size:11px;font-weight:800;text-align:center;line-height:1.25}.industry-connections-layout{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(32px,5vw,70px);align-items:center}.industry-slider{position:relative;min-width:0;overflow:hidden;border-radius:22px;background:#111827;box-shadow:0 20px 55px rgba(34,41,95,.14)}.industry-slider-stage{position:relative;aspect-ratio:4/3}.industry-slide{position:absolute;inset:0;margin:0;opacity:0;visibility:hidden;transform:scale(1.025);transition:opacity .42s ease,transform .55s ease,visibility .42s}.industry-slide.is-active{opacity:1;visibility:visible;transform:scale(1)}.industry-slide img{display:block;width:100%;height:100%;object-fit:cover}.industry-slide figcaption{position:absolute;left:18px;right:18px;bottom:18px;padding:12px 15px;border-radius:11px;background:rgba(17,24,39,.88);color:#fff;font-size:12px;font-weight:750}.industry-slider-btn{position:absolute;z-index:3;top:50%;width:44px;height:44px;display:grid;place-items:center;transform:translateY(-50%);border:1px solid rgba(255,255,255,.55);border-radius:50%;background:rgba(17,24,39,.78);color:#fff;font:inherit;font-size:22px;cursor:pointer;transition:background .2s,transform .2s}.industry-slider-btn:hover{background:var(--crimson);transform:translateY(-50%) scale(1.06)}.industry-slider-btn.prev{left:14px}.industry-slider-btn.next{right:14px}.industry-slider-dots{position:absolute;z-index:3;left:50%;bottom:77px;display:flex;gap:7px;transform:translateX(-50%)}.industry-slider-dot{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer}.industry-slider-dot.is-active{width:24px;border-radius:10px;background:#fff}@keyframes ausLogoMove{to{transform:translateX(calc(-50% - 8px))}}@media(max-width:800px){.industry-connections-layout{grid-template-columns:1fr}.employer-logo-item{width:148px;height:106px}.industry-slider-stage{aspect-ratio:16/11}}@media(max-width:520px){.industry-slider-btn{top:auto;bottom:16px;transform:none}.industry-slider-btn:hover{transform:scale(1.06)}.industry-slider-dots{bottom:34px}.industry-slide figcaption{bottom:72px}}@media(prefers-reduced-motion:reduce){.employer-logo-track{animation:none}.employer-logo-carousel{overflow-x:auto;mask-image:none}.industry-slide{transition:none}}
-</style>
-<style id="careers-mobile-width-fix">@media(max-width:600px){.destination-hero .wrap{width:100%!important;max-width:100%!important;padding-left:20px!important;padding-right:20px!important}.destination-hero h1{max-width:100%!important;font-size:clamp(38px,11vw,48px)!important;overflow-wrap:normal!important}.destination-hero p{max-width:100%!important}.employer-logo-carousel,.industry-slider{width:100%;max-width:100%}}</style>
-<style id="aus-search-drop-mobile-position">
+</style><style id="aus-search-drop-mobile-position">
 @media(max-width:760px){.aus-search-drop{position:fixed!important;top:54px!important;left:50vw!important;right:auto!important;transform:translateX(-50%)!important;width:calc(100vw - 20px)!important;max-height:calc(100dvh - 66px)!important}}
 </style>
-<style id="employer-vector-logo-fix">
-.employer-logo-item{position:relative;width:184px;height:112px;padding:18px 20px}.employer-logo-item img{width:138px;height:68px;max-width:100%;object-fit:contain}.employer-logo-item span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.employer-logo-item{transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}.employer-logo-item:hover,.employer-logo-item:focus-visible{transform:translateY(-3px);border-color:rgba(197,30,66,.55);box-shadow:0 12px 28px rgba(17,24,39,.12);outline:none}
+
+<style id="aus-404-page">
+.error-page-body{background:#f1f1ef;}
+.error-page-body .archive-tab{display:none!important;}
+.error-page{position:relative;min-height:100svh;display:flex;align-items:center;padding:clamp(118px,12vw,164px) 0 clamp(64px,8vw,104px);overflow:hidden;background:linear-gradient(to bottom,var(--night) 0 96px,#f1f1ef 96px);}
+.error-page::before{content:"";position:absolute;width:min(48vw,680px);aspect-ratio:1;border-radius:50%;top:-22%;right:-13%;border:1px solid rgba(190,31,61,.14);box-shadow:0 0 0 70px rgba(190,31,61,.035),0 0 0 140px rgba(190,31,61,.025);pointer-events:none;}
+.error-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(420px,.9fr);align-items:center;gap:clamp(48px,8vw,112px);}
+.error-eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;color:var(--crimson);font-size:12px;font-weight:750;letter-spacing:.14em;text-transform:uppercase;}
+.error-eyebrow::before{content:"";width:30px;height:1px;background:currentColor;}
+.error-copy h1{max-width:760px;color:var(--navy);font-family:var(--font-display);font-size:clamp(48px,6.4vw,88px);font-weight:800;letter-spacing:-.055em;line-height:.96;}
+.error-copy h1 em{font-family:var(--font-serif);font-weight:500;letter-spacing:-.03em;color:var(--crimson);}
+.error-copy>p{max-width:620px;margin-top:24px;color:var(--ink-soft);font-size:clamp(15px,1.35vw,18px);line-height:1.72;}
+.error-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:32px;}
+.error-btn{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 22px;border:1px solid var(--navy);border-radius:100px;color:var(--navy);font-size:14px;font-weight:700;transition:transform .25s var(--ease),background .25s var(--ease),color .25s var(--ease),box-shadow .25s var(--ease);}
+.error-btn:hover{transform:translateY(-2px);background:var(--navy);color:var(--white);box-shadow:0 12px 28px rgba(34,41,95,.16);}
+.error-btn.primary{background:var(--crimson);border-color:var(--crimson);color:var(--white);box-shadow:0 10px 26px rgba(190,31,61,.22);}
+.error-btn.primary:hover{background:#a91935;border-color:#a91935;box-shadow:0 14px 32px rgba(190,31,61,.3);}
+.error-links{display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap;margin-top:30px;padding-top:24px;border-top:1px solid rgba(34,41,95,.12);}
+.error-links span{color:var(--ink-soft);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+.error-links a{position:relative;color:var(--navy);font-size:13px;font-weight:650;}
+.error-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:1px;background:var(--crimson);transition:right .25s var(--ease);}
+.error-links a:hover::after{right:0;}
+.error-visual{position:relative;min-height:clamp(390px,42vw,570px);display:flex;align-items:center;justify-content:center;}
+.error-number{position:absolute;inset:auto 0;top:50%;transform:translateY(-57%);color:transparent;-webkit-text-stroke:1px rgba(34,41,95,.16);font-family:var(--font-display);font-size:clamp(150px,21vw,310px);font-weight:800;letter-spacing:-.09em;line-height:.8;text-align:center;user-select:none;}
+.error-card{position:relative;width:min(82%,420px);aspect-ratio:.82;border-radius:22px;overflow:hidden;background:var(--white);box-shadow:0 32px 80px rgba(34,41,95,.18);transform:rotate(3deg);}
+.error-card img{width:100%;height:100%;object-fit:cover;}
+.error-card::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(17,24,39,.76),rgba(17,24,39,.04) 62%);}
+.error-card-note{position:absolute;z-index:2;left:24px;right:24px;bottom:22px;color:var(--white);}
+.error-card-note strong{display:block;font-size:16px;font-weight:700;}
+.error-card-note span{display:block;margin-top:5px;color:rgba(255,255,255,.72);font-size:12px;line-height:1.5;}
+.error-marker{position:absolute;z-index:3;top:10%;right:3%;width:92px;height:92px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--crimson);color:var(--white);font-family:var(--font-display);font-size:17px;font-weight:800;box-shadow:0 16px 34px rgba(190,31,61,.28);transform:rotate(8deg);}
+@media(max-width:1050px){
+  .error-grid{grid-template-columns:minmax(0,1fr) minmax(330px,.8fr);gap:42px;}
+  .error-page-body .aus-nav-links{display:none;}
+}
+@media(max-width:760px){
+  .error-page{min-height:auto;padding:98px 0 58px;background:linear-gradient(to bottom,var(--night) 0 62px,#f1f1ef 62px);}
+  .error-page::before{width:520px;top:-180px;right:-330px;}
+  .error-grid{grid-template-columns:1fr;gap:34px;}
+  .error-copy h1{font-size:clamp(43px,14vw,62px);}
+  .error-copy>p{font-size:15px;margin-top:18px;}
+  .error-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:26px;}
+  .error-btn{min-width:0;padding:11px 12px;font-size:12px;}
+  .error-links{margin-top:24px;padding-top:20px;gap:10px 16px;}
+  .error-links span{width:100%;}
+  .error-visual{min-height:330px;}
+  .error-number{font-size:clamp(150px,55vw,240px);}
+  .error-card{width:min(72vw,310px);}
+  .error-marker{width:72px;height:72px;right:7%;font-size:14px;}
+}
+@media(max-width:390px){
+  .error-actions{grid-template-columns:1fr;}
+}
 </style>
 </head>
-<body>
+<body class="error-page-body">
 
-<!-- PRELOADER -->
 <div class="aus-preloader" id="preloader">
   <img loading="lazy" decoding="async" class="aus-preloader-mark" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
   <div class="aus-preloader-bar"></div>
 </div>
 
-<!-- NAV -->
+<!-- ARCHIVE INDEX TAB (section navigator) -->
+<div class="archive-tab" id="archiveTab" tabindex="0">
+  <span class="archive-tab-num" id="archiveTabNum">01</span>
+  <span class="archive-tab-label" id="archiveTabLabel">Overview</span>
+  <nav class="archive-tab-toc" id="archiveTabToc" aria-label="Jump to chapter"></nav>
+</div>
 <nav class="aus-nav" id="nav">
   <a href="index.html" class="aus-wordmark" aria-label="AUS Business School home">
     <img loading="lazy" decoding="async" class="logo-white" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
@@ -672,8 +636,6 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
   </button>
 </nav>
 
-
-<!-- SIDE PANEL -->
 <div class="side-panel" id="sidePanel">
   <div class="side-panel-backdrop" id="sidePanelBackdrop"></div>
   <aside class="side-panel-canvas">
@@ -771,21 +733,39 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
   </aside>
 </div>
 
+<!-- 404 PAGE -->
+<main class="error-page" data-chapter="01" data-chapter-label="Page Not Found">
+  <div class="wrap error-grid">
+    <div class="error-copy reveal">
+      <span class="error-eyebrow">Error 404 · Page not found</span>
+      <h1>This page took a <em>wrong turn.</em></h1>
+      <p>The address may have changed, or the page may no longer be available. Let’s get you back to the part of AUS you were looking for.</p>
+      <div class="error-actions">
+        <a class="error-btn primary" href="index.html">Back to Homepage <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a class="error-btn" href="find-programs.html">Find Your Program</a>
+      </div>
+      <div class="error-links" aria-label="Helpful links">
+        <span>Popular pages</span>
+        <a href="programs.html">Programs</a>
+        <a href="admissions.html">Admissions</a>
+        <a href="student-life.html">Student Life</a>
+        <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24">Contact Us</a>
+      </div>
+    </div>
+    <div class="error-visual reveal-scale" aria-hidden="true">
+      <div class="error-number">404</div>
+      <div class="error-card">
+        <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a326d5971bd7053927eaf90_American%20Institute%20of%20Applied%20Sciences%20in%20Switzerland%20-%20Campus%20main%20picture%202025%20lr.jpg" alt="" loading="eager" decoding="async">
+        <div class="error-card-note"><strong>AUS Business School</strong><span>La Tour-de-Peilz · Switzerland</span></div>
+      </div>
+      <div class="error-marker">Lost?</div>
+    </div>
+  </div>
+</main>
 
-<!-- HERO -->
-<section class="destination-hero" data-chapter="01" data-chapter-label="Careers &amp; Outcomes">
-  <img decoding="async" fetchpriority="high" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa272ce0ef760da4aab62e3_image45.jpg" alt="AUS students on an industry visit in Switzerland">
-  <div class="wrap"><span class="eyebrow on-navy">Careers &amp; Outcomes</span><h1>Build experience that moves with you.</h1><p>Career coaching, internships, and direct industry exposure help turn an AUS education into confident next steps in Switzerland and around the world.</p></div>
-</section>
-<section class="destination-section" id="career-services" data-chapter="02" data-chapter-label="Career Services"><div class="wrap"><div class="destination-split"><div><span class="eyebrow">Career Services</span><h2>A practical roadmap, shaped around you.</h2><p class="destination-lead">AUS supports students from early career exploration through job applications and interviews. Workshops and one-to-one coaching connect academic strengths with realistic pathways in Swiss and international markets.</p><div class="destination-actions"><a class="destination-btn" href="https://meetings-eu1.hubspot.com/jonathan-hilton/advisory-session">Talk to Admissions</a></div></div><div class="destination-grid" style="grid-template-columns:1fr 1fr;margin-top:0"><article class="destination-card"><span class="tag">Plan</span><h3>Career roadmaps</h3><p>Clarify goals, understand career pathways, and build a focused development plan.</p></article><article class="destination-card"><span class="tag">Prepare</span><h3>Applications &amp; interviews</h3><p>Strengthen your CV, cover letter, personal brand and interview performance.</p></article><article class="destination-card"><span class="tag">Develop</span><h3>Employability skills</h3><p>Build communication, teamwork, time management and technology confidence.</p></article><article class="destination-card"><span class="tag">Connect</span><h3>Professional network</h3><p>Meet alumni, industry leaders and organizations through events and visits.</p></article></div></div></div></section>
-<section class="destination-section alt" id="outcomes" data-chapter="03" data-chapter-label="Graduate Outcomes"><div class="wrap"><span class="eyebrow">Graduate Outcomes</span><h2>From learning to meaningful work.</h2><p class="destination-lead">AUS students graduate with applied projects, international perspectives and the confidence to contribute across business, technology, aviation, healthcare and other sectors. The latest alumni outcomes survey reports that 94% are employed or in graduate school within six months of graduation.</p><div class="destination-grid"><article class="destination-card"><span class="tag">94%</span><h3>Early career momentum</h3><p>Employed or continuing into graduate study within six months of graduating.</p></article><article class="destination-card"><span class="tag">Applied learning</span><h3>Work-ready experience</h3><p>Projects, presentations and industry interaction make professional skills visible.</p></article><article class="destination-card"><span class="tag">Global reach</span><h3>International pathways</h3><p>A multicultural campus prepares graduates to work across borders and teams.</p></article></div></div></section>
-<section class="destination-section" id="internships" data-chapter="04" data-chapter-label="Internships"><div class="wrap"><div class="destination-split"><figure class="destination-photo"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa272cec2220127b8b6ee89_image48.jpg" alt="AUS students during an industry visit"></figure><div><span class="eyebrow">Internships</span><h2>Test your knowledge in a real workplace.</h2><p class="destination-lead">Students are encouraged to pursue internships that align with their program and career goals. Career Services helps with preparation and access to opportunities through employer relationships and specialist internship networks.</p><div class="destination-note">For non-EU/EFTA students, Swiss rules normally allow employment of up to 15 hours per week outside university holidays, subject to eligibility, authorization and compatibility with study. The employer must submit the application; students should confirm their individual situation before accepting work.</div><div class="destination-actions" style="margin-top:20px"><a class="destination-btn" href="https://docs.google.com/document/d/1jB_DnmTw2Sekeh5wLiqwcKH_WiG_a1S3/edit#heading=h.gjdgxs" target="_blank" rel="noopener">View Internship Guidelines</a></div></div></div></div></section>
-<section class="destination-section alt" id="employers" data-chapter="05" data-chapter-label="Employers"><div class="wrap"><span class="eyebrow">Employers</span><h2>A network across industries.</h2><p class="destination-lead">AUS graduates and students have built experience with organizations ranging from global corporations to fast-growing ventures and international institutions.</p><div class="employer-logo-carousel" aria-label="Organizations where AUS students and graduates have built experience"><div class="employer-logo-track">
-  <a class="employer-logo-item" href="https://www.nestle.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Nestlé website"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/nestle.svg" alt="Nestlé logo"><span>Nestlé</span></a><a class="employer-logo-item" href="https://www.un.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit United Nations website"><img loading="eager" decoding="async" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Logo_of_the_United_Nations.svg" alt="United Nations logo"><span>United Nations</span></a><a class="employer-logo-item" href="https://www.pmi.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Philip Morris International website"><img loading="eager" decoding="async" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Pmi_logo_text_only.svg" alt="Philip Morris International logo"><span>Philip Morris International</span></a><a class="employer-logo-item" href="https://www.hsbc.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit HSBC website"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/hsbc-logo-2018-.svg" alt="HSBC logo"><span>HSBC</span></a><a class="employer-logo-item" href="https://www.deloitte.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Deloitte website"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/deloitte-1.svg" alt="Deloitte logo"><span>Deloitte</span></a><a class="employer-logo-item" href="https://www.ubs.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit UBS website"><img loading="eager" decoding="async" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/UBS_Logo.png" alt="UBS logo"><span>UBS</span></a><a class="employer-logo-item" href="https://www.abb.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit ABB website"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/abb.svg" alt="ABB logo"><span>ABB</span></a><a class="employer-logo-item" href="https://www.cisco.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Cisco website"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/cisco-2.svg" alt="Cisco logo"><span>Cisco</span></a><a class="employer-logo-item" href="https://www.danone.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Danone website"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/danone-group.svg" alt="Danone logo"><span>Danone</span></a><a class="employer-logo-item" href="https://www.adeccogroup.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Adecco website"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/adecco-1.svg" alt="Adecco logo"><span>Adecco</span></a><a class="employer-logo-item" href="https://www.unilabs.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Unilabs website"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/unilabs-1.svg" alt="Unilabs logo"><span>Unilabs</span></a><a class="employer-logo-item" href="https://www.alcon.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Alcon website"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/alcon.svg" alt="Alcon logo"><span>Alcon</span></a><a class="employer-logo-item" href="https://www.merckgroup.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Merck website"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/logo-merck-kgaa-2015.svg" alt="Merck logo"><span>Merck</span></a><a class="employer-logo-item" href="https://www.swiss.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Swiss International Air Lines website"><img loading="eager" decoding="async" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Swiss_International_Air_Lines_Logo_2011.svg" alt="Swiss International Air Lines logo"><span>Swiss International Air Lines</span></a>
-  <a class="employer-logo-item" href="https://www.nestle.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/nestle.svg" alt=""><span>Nestlé</span></a><a class="employer-logo-item" href="https://www.un.org/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img loading="eager" decoding="async" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Logo_of_the_United_Nations.svg" alt=""><span>United Nations</span></a><a class="employer-logo-item" href="https://www.pmi.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img loading="eager" decoding="async" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Pmi_logo_text_only.svg" alt=""><span>Philip Morris International</span></a><a class="employer-logo-item" href="https://www.hsbc.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/hsbc-logo-2018-.svg" alt=""><span>HSBC</span></a><a class="employer-logo-item" href="https://www.deloitte.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/deloitte-1.svg" alt=""><span>Deloitte</span></a><a class="employer-logo-item" href="https://www.ubs.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img loading="eager" decoding="async" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/UBS_Logo.png" alt=""><span>UBS</span></a><a class="employer-logo-item" href="https://www.abb.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/abb.svg" alt=""><span>ABB</span></a><a class="employer-logo-item" href="https://www.cisco.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/cisco-2.svg" alt=""><span>Cisco</span></a><a class="employer-logo-item" href="https://www.danone.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/danone-group.svg" alt=""><span>Danone</span></a><a class="employer-logo-item" href="https://www.adeccogroup.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/adecco-1.svg" alt=""><span>Adecco</span></a><a class="employer-logo-item" href="https://www.unilabs.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/unilabs-1.svg" alt=""><span>Unilabs</span></a><a class="employer-logo-item" href="https://www.alcon.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/alcon.svg" alt=""><span>Alcon</span></a><a class="employer-logo-item" href="https://www.merckgroup.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img loading="eager" decoding="async" src="https://cdn.worldvectorlogo.com/logos/logo-merck-kgaa-2015.svg" alt=""><span>Merck</span></a><a class="employer-logo-item" href="https://www.swiss.com/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img loading="eager" decoding="async" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Swiss_International_Air_Lines_Logo_2011.svg" alt=""><span>Swiss International Air Lines</span></a>
-</div></div></div></section>
-<section class="destination-section" id="industry-connections" data-chapter="06" data-chapter-label="Industry Connections"><div class="wrap"><div class="industry-connections-layout"><div><span class="eyebrow">Industry Connections</span><h2>Meet organizations where the work happens.</h2><p class="destination-lead">Industry visits, guest speakers, alumni events, internships, and applied projects connect classroom ideas with professional practice.</p><div class="destination-list"><div>Company visits and field learning</div><div>Guest speakers and expert sessions</div><div>Alumni and employer networking</div><div>Internship and project connections</div></div></div><div class="industry-slider" aria-label="AUS industry activities"><div class="industry-slider-stage"><figure class="industry-slide is-active"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa272cec2220127b8b6ee89_image48.jpg" alt="AUS students on a company visit"><figcaption>Company visits and field learning</figcaption></figure><figure class="industry-slide"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa272ceb83a3e19096b79e7_image42.jpg" alt="An industry expert speaking with AUS students"><figcaption>Guest speakers and expert sessions</figcaption></figure><figure class="industry-slide"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa272cfbed021791fa3f940_image25.jpg" alt="An AUS graduate speaking with the university community"><figcaption>Alumni and employer networking</figcaption></figure><figure class="industry-slide"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa272cd4d1a079fb40a2998_image49.jpg" alt="AUS students taking part in an industry collaboration"><figcaption>Internship and project connections</figcaption></figure></div><button class="industry-slider-btn prev" type="button" aria-label="Previous industry image">&#8249;</button><button class="industry-slider-btn next" type="button" aria-label="Next industry image">&#8250;</button><div class="industry-slider-dots" aria-label="Choose industry image"><button class="industry-slider-dot is-active" type="button" aria-label="Show image 1"></button><button class="industry-slider-dot" type="button" aria-label="Show image 2"></button><button class="industry-slider-dot" type="button" aria-label="Show image 3"></button><button class="industry-slider-dot" type="button" aria-label="Show image 4"></button></div></div></div></div></section>
-
+<!-- ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-top">
@@ -850,6 +830,7 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
 
 <script>
 (function(){
+  // Preloader
                       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.documentElement.classList.add('has-preloader');
   var preloader = document.getElementById('preloader');
@@ -954,51 +935,78 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
 
 
 
-})();
-/* REVEAL */
-(function(){
-  document.documentElement.classList.add('js-reveal-ready');
-  var els=document.querySelectorAll('.reveal,.reveal-scale,.reveal-clip,.reveal-rotate,.stagger-grid');
-  if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('is-visible');});return;}
-  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
-  els.forEach(function(el){io.observe(el);});
-})();
 
-/* SECTION NAVIGATOR (archive tab) */
-(function(){
-  var tab=document.getElementById('archiveTab');
-  var tabNum=document.getElementById('archiveTabNum');
-  var tabLabel=document.getElementById('archiveTabLabel');
-  var chapters=document.querySelectorAll('[data-chapter]');
-  var toc=document.getElementById('archiveTabToc');
-  if(tab&&chapters.length&&toc){
-    chapters.forEach(function(el){
-      var num=el.getAttribute('data-chapter');
-      var label=el.getAttribute('data-chapter-label');
-      var item=document.createElement('button');
-      item.type='button';
-      item.className='archive-tab-toc-item';
-      item.setAttribute('data-toc-target',num);
-      item.innerHTML='<span class="num">'+num+'</span><span>'+label+'</span>';
-      item.addEventListener('click',function(){
-        el.scrollIntoView({block:'start',behavior:'smooth'});
-      });
-      toc.appendChild(item);
-    });
-  }
-  if(tab&&chapters.length&&'IntersectionObserver' in window){
-    var tocItems=toc?toc.querySelectorAll('.archive-tab-toc-item'):[];
-    var chapterObserver=new IntersectionObserver(function(entries){
+  // Reveal
+  var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if('IntersectionObserver' in window&&!reduceMotion){
+    document.documentElement.classList.add('js-reveal-ready');
+    var revealTargets=document.querySelectorAll('.reveal,.reveal-scale,.reveal-clip,.reveal-rotate,.split-text,.stagger-grid,.line-draw');
+    var revealObserver=new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if(entry.isIntersecting){
-          var num=entry.target.getAttribute('data-chapter');
-          tabNum.textContent=num;
-          tabLabel.textContent=entry.target.getAttribute('data-chapter-label');
-          tocItems.forEach(function(ti){ti.classList.remove('is-active');if(ti.getAttribute('data-toc-target')===num)ti.classList.add('is-active');});
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
         }
       });
-    },{threshold:0,rootMargin:'-45% 0px -45% 0px'});
-    chapters.forEach(function(ch){chapterObserver.observe(ch);});
+    },{threshold:0,rootMargin:'0px 0px -60px 0px'});
+    revealTargets.forEach(function(el){revealObserver.observe(el);});
+  }
+
+  // Split text into words
+  document.querySelectorAll('.split-text').forEach(function(el){
+    var text=el.textContent.trim();
+    el.innerHTML=text.split(/\s+/).map(function(w){return '<span class="word">'+w+'</span>';}).join(' ');
+  });
+
+  // Magnetic buttons
+  document.querySelectorAll('.mag-btn').forEach(function(btn){
+    btn.addEventListener('mousemove',function(e){
+      var rect=btn.getBoundingClientRect();
+      var x=e.clientX-rect.left-rect.width/2;
+      var y=e.clientY-rect.top-rect.height/2;
+      btn.style.transform='translate('+x*.15+'px,'+y*.15+'px)';
+    });
+    btn.addEventListener('mouseleave',function(){btn.style.transform='';});
+  });
+
+  // Parallax on scroll
+  if(!reduceMotion){
+    var parallaxEls=document.querySelectorAll('.parallax');
+    window.addEventListener('scroll',function(){
+      parallaxEls.forEach(function(el){
+        var rect=el.getBoundingClientRect();
+        var speed=parseFloat(el.getAttribute('data-speed'))||0.15;
+        var y=(rect.top-window.innerHeight)*speed;
+        el.style.transform='translateY('+y+'px)';
+      });
+    },{passive:true});
+  }
+
+  // Counter animation
+  var counters=document.querySelectorAll('.counter');
+  if('IntersectionObserver' in window&&!reduceMotion){
+    var counterObserver=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          var el=entry.target;
+          var target=parseInt(el.getAttribute('data-target'));
+          var duration=1500;
+          var start=0;
+          var startTime=null;
+          function animate(time){
+            if(!startTime)startTime=time;
+            var progress=Math.min((time-startTime)/duration,1);
+            var eased=1-Math.pow(1-progress,3);
+            el.textContent=Math.floor(eased*target);
+            if(progress<1)requestAnimationFrame(animate);
+            else el.textContent=target;
+          }
+          requestAnimationFrame(animate);
+          counterObserver.unobserve(el);
+        }
+      });
+    },{threshold:0.5});
+    counters.forEach(function(c){counterObserver.observe(c);});
   }
 })();
 /* SITE SEARCH â€” INDEX: add new pages here to appear in dropdown */
@@ -1088,7 +1096,16 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
 ,
     {title:"AUS Speaker Series",url:"about/news-and-events/speaker-series.html",cat:"Campus Life",keys:"AUS Speaker Series Industry experts networking with AUS students Monthly seminars lectures leading experts Commencement speakers Industry visits Campus Life"},
     {title:"Campus Life",url:"student-life/campus.html",cat:"Campus Life",keys:"Campus Life Embrace Life in Switzerland AUS inclusive multicultural campus personalized education sports extracurricular activities La Tour-de-Peilz Swiss Riviera Student events Welcome Week diversity celebrations guest speakers field trips coached sports social events Accommodation career support living in Switzerland campus facilities student visa health insurance"},
-    {title:"Student Life",url:"student-life.html",cat:"Life at AUS",keys:"Student Life AUS Student Services Accommodation Visa Immigration Health Insurance Academic Advising Personal Wellbeing Orientation Student ID Benefits nationalities community class profile Bachelor Master Gender Languages Swiss Riviera campus life student ambassadors 40+ nationalities 20 max students 7:1 staff ratio"}];
+
+    {title:"Student Life",url:"student-life.html",cat:"About",keys:"Student Life AUS campus student services accommodation visa health insurance academic advising career support Our Students 50 nationalities Class Profile 20 students per class Campus Life Swiss Riviera Lake Geneva events Welcome Week diversity"}
+    ,{title:"Student Activities",url:"student-activities.html",cat:"Student Life",keys:"Student Activities Clubs International Community Student Support Student Success Advising"}
+    ,{title:"Tuition Fees & Scholarships",url:"tuition-fees-scholarships.html",cat:"Tuition",keys:"Program tuition fees scholarships funding annual tuition"}
+    ,{title:"Meet Our People",url:"about/meet-our-people.html",cat:"About",keys:"Leadership faculty departments biographies people"}
+    ,{title:"Housing",url:"housing.html",cat:"Student Life",keys:"AUS student housing accommodation La Tour-de-Peilz Vevey shared rooms single rooms furnished housing application"}
+    ,{title:"Careers & Outcomes",url:"careers-outcomes.html",cat:"Careers",keys:"Career Services Graduate Outcomes Internships Employers Industry Connections coaching workshops employability careers"}
+    ,{title:"Alumni & Student Success",url:"alumni-success.html",cat:"Careers",keys:"Alumni Student Success Stories graduate network alumni benefits career support"}
+    ,{title:"Living in Switzerland & Transportation",url:"living-in-switzerland.html",cat:"Student Life",keys:"Live in Switzerland Transportation Swiss Riviera Lake Geneva La Tour-de-Peilz Vevey train bus SBB"}
+];
   // allow pages to extend idx via window.AUS_SEARCH_EXTRA
   if(window.AUS_SEARCH_EXTRA && Array.isArray(window.AUS_SEARCH_EXTRA)){ idx = idx.concat(window.AUS_SEARCH_EXTRA); }
   var input=document.getElementById("siteSearchInput");
@@ -1165,40 +1182,49 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
     {title:"AUS Collaboration with Tiffin University",url:"about/academic-partners/tiffin-university.html",cat:"About",keys:"AUS Collaboration Tiffin University Dual Degree Program DDP BSBA BBA MIBA MBA Ohio USA Bachelor Master Accounting Business Management Healthcare Administration Human Resource Management Marketing International Business Athletic Administration Sports Marketing Aviation Data Analytics Finance Leadership Strategic Brand Digital Marketing"}, 400);
 })();
 
-// ---------- PROMO POPUP ----------
+</script>
+<script>
+// ---------- Archive index tab (section navigator) ----------
 (function(){
-  var popup=document.getElementById('ausPopup');
-  var closeBtn=document.getElementById('ausPopupClose');
-  if(!popup||!closeBtn) return;
-  try{ if(localStorage.getItem('aus-popup-seen')==='1') return; }catch(e){}
-
-  function startPopupTimer(){
-    setTimeout(function(){
-      popup.classList.add('is-visible');
-    },8000);
-  }
-
-  var preloader=document.getElementById('preloader');
-  if(preloader && !preloader.classList.contains('is-hidden')){
-    var obs=new MutationObserver(function(){
-      if(preloader.classList.contains('is-hidden')){
-        obs.disconnect();
-        startPopupTimer();
-      }
+  var tab = document.getElementById('archiveTab');
+  var tabNum = document.getElementById('archiveTabNum');
+  var tabLabel = document.getElementById('archiveTabLabel');
+  var chapters = document.querySelectorAll('[data-chapter]');
+  var toc = document.getElementById('archiveTabToc');
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(tab && chapters.length && toc){
+    chapters.forEach(function(el){
+      var num = el.getAttribute('data-chapter');
+      var label = el.getAttribute('data-chapter-label');
+      var item = document.createElement('button');
+      item.type = 'button';
+      item.className = 'archive-tab-toc-item';
+      item.setAttribute('data-toc-target', num);
+      item.innerHTML = '<span class="num">' + num + '</span><span>' + label + '</span>';
+      item.addEventListener('click', function(){
+        el.scrollIntoView({block:'start', behavior: reduceMotion ? 'auto' : 'smooth'});
+      });
+      toc.appendChild(item);
     });
-    obs.observe(preloader,{attributes:true,attributeFilter:['class']});
-  } else {
-    startPopupTimer();
   }
-
-  function dismiss(){
-    popup.classList.remove('is-visible');
-    try{ localStorage.setItem('aus-popup-seen','1'); }catch(e){}
+  if(tab && chapters.length && 'IntersectionObserver' in window){
+    var tocItems = toc ? toc.querySelectorAll('.archive-tab-toc-item') : [];
+    var chapterObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          var num = entry.target.getAttribute('data-chapter');
+          tabNum.textContent = num;
+          tabLabel.textContent = entry.target.getAttribute('data-chapter-label');
+          tocItems.forEach(function(item){
+            item.classList.toggle('is-current', item.getAttribute('data-toc-target') === num);
+          });
+        }
+      });
+    }, {threshold:0, rootMargin:'-45% 0px -45% 0px'});
+    chapters.forEach(function(el){ chapterObserver.observe(el); });
   }
-  closeBtn.addEventListener('click',dismiss);
-  popup.addEventListener('click',function(e){if(e.target===popup)dismiss();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&popup.classList.contains('is-visible'))dismiss();});
-})();</script>
+})();
+</script>
 <script>
 /* SITE SEARCH — INDEX: add new pages here to appear in dropdown */
 (function(){
@@ -1226,7 +1252,7 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
     {title:"MSc Aviation Management",url:"masters-degree/aviation-management/",cat:"Programs Â· Master",keys:"QS Ranked — 5-Star Teaching MSc in International Business Administration Aviation Management Start your Application Download Brochure Scroll MSc in International Business Administration Aviation Management Two years, six academic terms plus capstone, 83 CH | 135 ECTS. Start your Application Download Brochure Home / Programs / Masters / Aviation Management 0 :1 Student-to-staff ratio 0 % Employed or in Graduate School within six months of graduation 0 + Nationalities 0 + Multinational HQs nearby Overview Master of Science in International Business Administration TU Degree Master of Business Administration Specialization Aviation Management Entry Dates September, January, April Duration 2 Years Structure 6 Academic Terms + Capstone Study Mode Full-Time Credits 83 CH | 135 ECTS Program Overview Lead the future of global aviation at the executive level. The Aviation Management specialization at the master's level prepares senior professionals for executive roles in airlines, airports, and aviation consulting. Covering airline strategy, airport planning, aviation safety management, and aerospace innovation, graduates are ready to lead in one of the world's most complex and globalized industries. The dual degree allows students enrolled in the program to earn a degree from Switzerland and a degree from the United States while studying entirely in Switzerland. Airline strategy and operations Airport planning and management Aviation safety and regulatory compliance Aviation consulting and advisory Aerospace innovation and sustainability Air cargo and logistics management Aviation finance and investment International aviation law Read more → 0 % Employed or in graduate school within six months Curriculum Two years — six academic terms plus capstone — 83 CH | 135 ECTS. Year 1 3 TERMS International Business Strategy Global Trade & Corporate Regulation Airport Operations in a Global Aviation System Global Aviation Systems Airline Marketing Organization Analysis & Design Year 2 3 TERMS Global & Transnational Management Executive Leadership Airline Revenue Management Airline Strategy in a Changing Global Aviation Market Aviation Regulation Compliance Capstone Project The modules listed above are subject to change at any time. This overview serves only as an indicative guide to key subjects. Dual Swiss and US Degree Graduate with two degrees. From two continents. The Master of Science in International Business Administration at AUS is offered exclusively as a dual degree in collaboration with Tiffin University in the United States. All enrolled students graduate with two degrees: a Master of Science in International Business Administration from AUS and a Master of Business Administration from Tiffin University. To complete the dual degree pathway, students must successfully complete the required AUS and Tiffin University courses. AUS courses are taught on campus in Switzerland, while Tiffin University courses may be completed on campus or remotely, with the option of student exchanges to either university under certain conditions. Upon successful completion of the dual degree program, students graduate with an MSc in International Business Administration from AUS and an MBA from Tiffin University. Tiffin University is accredited by the Higher Learning Commission in the United States, supporting the international credibility and recognition of the degree pathway. Tiffin University is accredited by the Higher Learning Commission in the United States, supporting the international credibility and recognition of the degree pathway. Switzerland United States The AUS Advantage Why AUS Business School Focused Learning With a 7:1 student-to-staff ratio and classes limited to 20 students, you receive personal attention and meaningful interaction. Dual Degree Earn two separate degrees at the same time. This gives graduates a stronger international profile. Top Ranked Top-ranked by QS. Five-star rated for teaching and class experience. Career-Focused Build practical business skills through specialization modules, industry visits, guest speakers, and networking opportunities. Tuition Fees CHF 25\'050 per year Admissions & Financing → Career Outcomes Your Future in Aviation Management The Aviation Management specialization prepares students for executive-level roles in airlines, airports, aviation consulting, and aerospace. Students develop strategic leadership skills for the global aviation industry. Airline CEO Lead airlines, setting strategic direction, fleet planning, route network, and commercial strategy. Airport Director Manage airport operations, commercial activities, infrastructure development, and stakeholder relations. Aviation Consulting Director Advise airlines, airports, and governments on strategy, operations, and regulatory matters. Aviation Safety Director Lead safety management systems and ensure compliance with international aviation safety standards. Airline Strategy Director Develop and execute long-term strategic plans for airlines in competitive global markets. Aviation Innovation Director Drive adoption of new technologies, sustainable practices, and innovative business models in aviation. Air Cargo Director Manage global air cargo operations, freight logistics, and supply chain partnerships. Aviation Regulatory Director Navigate international aviation regulations and represent organizations in regulatory affairs. Admissions Join the AUS Community 1 Core Requirements To qualify for this program, applicants must have successfully completed a Bachelor’s degree or equivalent. No GMAT or entrance exam scores are required. Admission is based on a holistic review of your application and a mandatory online interview. Language: English C-Level. CEFR B2 level considered following a successful oral interview. Education: Bachelor’s degree with good academic achievements, or IELTS Overall 6.0 with no single element below 5.0. Motivation: A personal statement explaining why you are pursuing this degree, your professional goals, and the specific value you will bring to your peer group. 2 Admissions Philosophy AUS offers a fair and transparent admissions process based on individual merit and potential. We look beyond basic eligibility to understand the specific context of your background, ensuring we balance high standards with true inclusivity. Our goal is to align your prior experience and interests with the program that will best drive your future career. Next Intake Fall 2026 EU/EFTA deadline: July 15 · International deadline: July 15 Start your Application → Certification Partners Build Practical Digital Skills. Alongside their dual degree, students can earn certifications through AUS partnerships with leading technology firms in AI, digital tools, and data analytics. \"The Aviation Management specialization gave me the executive-level skills and industry knowledge to lead in global aviation. The dual degree was a differentiator.\" Alumni testimonial MSc in International Business Administration — Aviation Management Student Life Life at AUS What's Next Take the Next Step Talk to an Admissions Advisor, request a Program Overview, or book a campus visit to experience AUS firsthand. Talk to an Admissions Advisor → Request a Program Overview Book a Campus Visit"},
     {title:"DBA - Doctorate in Business Administration",url:"doctorate-in-business-administration/",cat:"Programs Â· Doctorate",keys:"QS Ranked — 5-Star Teaching Doctorate in Business Administration Doctorate in Business Administration Start your Application Download Brochure Scroll DBA Doctorate in Business Administration Three years, Seven academic terms, followed by a final dissertation and oral defense, 90 CH / 150 ECTS. Start your Application Download Brochure Home / Programs / Doctorate / Doctorate in Business Administration 0 :1 Student-to-staff ratio 0 % Employed or in Graduate School within six months of graduation 0 + Nationalities 0 + Multinational HQs nearby Overview AUS DEGREE: Doctor of Business Administration Entry Dates September, January, April Duration 3 Years Structure Seven academic terms, followed by a final dissertation and oral defense Credits 90 CH / 150 ECTS Language English Program Overview The highest level of professional business education — for senior executives and leaders. The Doctorate in Business Administration (DBA) is the highest level of professional business education. Designed for senior executives, entrepreneurs, and leaders with extensive professional experience, the DBA combines rigorous academic research with real-world application. Students conduct original research that addresses complex business challenges, contributing new knowledge to the field of management. Executive leadership and strategic thinking Advanced business research methodologies Organizational transformation and innovation Industry-specific expertise development Doctoral dissertation and original research Global business governance Ethical leadership and corporate responsibility Knowledge transfer and thought leadership Read more → 0 % Employed or in graduate school within six months Curriculum Three years — Seven academic terms, followed by a final dissertation and oral defense — 90 CH / 150 ECTS. Year 1 Epistemology and Contemporary Management Theory Advanced Strategic Formulations and Corporate Governance Econometrics and Evidence-Based Decision-Making Quantitative Research Methods and Data Analysis Qualitative Research Methods and Thematic Analysis Mixed Methods Research Architectures Year 2 Research Ethics Governance and Data Integrity Doctoral Research Literature Review Seminar Advanced Research Colloquium and Peer Review Doctoral Research Proposal and Pre-Defense Year 3 Dissertation Proposal Validation and Methodology Design Fieldwork Data Collection and Empirical Analysis Thesis Drafting Review and Faculty Supervisor Clearance External Subject Matter Assessment and Final Oral Defense The modules listed above are subject to change at any time. This overview serves only as an indicative guide to key subjects.rt-time structure — 120 CH | 240 ECTS. Year 1 3 TERMS Principles of Accounting Microeconomics & Macroeconomics Business Mathematics Introduction to Business Law Academic Writing & Research Business Communication Year 2 3 TERMS Financial Accounting & Reporting Cost & Management Accounting Auditing Principles Taxation Corporate Finance Business Statistics Year 3 3 TERMS Advanced Auditing International Accounting Standards Data Analytics for Finance Ethics & Governance Strategic Management Bachelors Thesis Dual Swiss and US Degree Graduate with two degrees. From two continents. The Doctor of Business Administration at AUS is offered in collaboration with Tiffin University in the United States. Graduates receive a DBA from AUS and a doctoral degree from Tiffin University. Tiffin University is accredited by the Higher Learning Commission in the United States, supporting the international credibility and recognition of the degree pathway. Switzerland United States The AUS Advantage Why AUS Business School Focused Learning With a 7:1 student-to-staff ratio and classes limited to 20 students, you receive personal attention and meaningful interaction. Dual Degree Earn two separate degrees at the same time. This gives graduates a stronger international profile. Top Ranked Top-ranked by QS. Five-star rated for teaching and class experience. Career-Focused Build practical business skills through specialization modules, industry visits, guest speakers, and networking opportunities. Tuition Fees 35\'000 CHF / year Admissions & Financing → Career Outcomes Your Future with a DBA The DBA prepares graduates for the highest levels of professional and academic leadership, combining executive expertise with original research capabilities. C-Suite Executive Lead organizations at the highest level, driving strategy, growth, and stakeholder value. Business Consultant Advise Fortune 500 companies and governments on complex strategic and operational challenges. Academic Researcher Conduct original research and publish in leading academic journals, shaping business theory. Board Member Serve on corporate or nonprofit boards, providing governance and strategic oversight. Entrepreneur Found and scale ventures based on original research and deep industry expertise. Industry Expert Become a recognized thought leader through publications, speaking, and consulting. Policy Advisor Advise governments and international organizations on business and economic policy. Executive Educator Teach and develop MBA and executive education programs at leading business schools. Admissions Join the AUS Community 1 Core Requirements To qualify for this program, applicants must have successfully completed secondary education in their home country, earning a diploma or leaving certificate that grants university-level eligibility. No GMAT or entrance exam scores are required. Admission is based on a holistic review of your application and a mandatory online interview. Language: English C-Level. CEFR B2 level considered after completing an oral interview. Education: Secondary school diploma with good academic achievements, or IELTS Overall 6.5 with no single element below 6.0. Motivation: Explain why you are pursuing this degree, your goals, and the specific value you will bring to your peer group. 2 Admissions Philosophy AUS offers a fair and transparent admissions process based on individual merit and potential. We look beyond basic eligibility to understand the specific context of your background, ensuring we balance high standards with true inclusivity. Our goal is to align your prior experience and interests with the program that will best drive your future career. Next Intake Fall 2026 EU/EFTA deadline: July 15 · International deadline: July 15 Start your Application → Certification Partners Build Practical Digital Skills. Alongside their dual degree, students can earn certifications through AUS partnerships with leading technology firms in AI, digital tools, and data analytics. \"The DBA transformed my approach to leadership. The rigorous research and global perspective I gained at AUS have fundamentally changed how I lead and innovate in my organization.\" Alumni testimonial DBA — Business Administration Student Life Life at AUS What's Next Take the Next Step Talk to an Admissions Advisor, request a Program Overview, or book a campus visit to experience AUS firsthand. Talk to an Admissions Advisor → Request a Program Overview Book a Campus Visit"},
     {title:"Swiss Federal Diploma - Business Administration",url:"swiss-federal-diploma-business-administration/",cat:"Programs Â· Diploma",keys:"QS Ranked — 5-Star Teaching Swiss Federal Diploma Swiss Federal Diploma in Business Administration Start your Application Download Brochure Scroll Swiss Federal Diploma Swiss Federal Diploma in Business Administration Two years, four academic terms, 60 CH | 120 ECTS. Start your Application Download Brochure Home / Programs / Swiss Federal Diploma / Swiss Federal Diploma in Business Administration 0 :1 Student-to-staff ratio 0 % Employed or in Graduate School within six months of graduation 0 + Nationalities 0 + Multinational HQs nearby Overview Bachelor of Science in Business Administration TU Degree Swiss Federal Diploma Specialization Business Administration Entry Dates September, January, April Duration 2 Years (Part-Time) Structure 4 Academic Terms Study Mode Part-Time Credits 60 CH | 120 ECTS Program Overview A Swiss-recognized professional qualification — for experienced professionals. The Swiss Federal Diploma in Business Administration provides a nationally recognized professional qualification that validates advanced business competencies. Designed for experienced professionals seeking formal recognition of their expertise, the program combines rigorous academic content with practical application, ensuring graduates meet the highest Swiss professional standards. The program is recognized by Swiss authorities and provides a pathway to senior management roles in Swiss and international organizations. Swiss-recognized professional qualification Part-time study for working professionals Business management fundamentals Strategic leadership and operations Financial management and accounting Marketing and business development Organizational behavior and HR Practical capstone project Read more → 0 % Employed or in graduate school within six months Curriculum Two years — four academic terms — 60 CH | 120 ECTS. Year 1 3 TERMS Business Fundamentals Swiss Business Environment Business Mathematics Swiss Business Law Academic Writing Business Communication Year 2 3 TERMS Financial Accounting Management Accounting Business Ethics Swiss Taxation Corporate Finance Business Statistics The AUS Advantage Why AUS Business School Focused Learning With a 7:1 student-to-staff ratio and classes limited to 20 students, you receive personal attention and meaningful interaction. Top Ranked Top-ranked by QS. Five-star rated for teaching and class experience. Career-Focused Build practical business skills through specialization modules, industry visits, guest speakers, and networking opportunities. Tuition Fees 18\'000 CHF / year Admissions & Financing → Career Outcomes Your Future with a Swiss Federal Diploma The Swiss Federal Diploma prepares experienced professionals for senior management roles with a nationally recognized qualification. Senior Manager Lead teams and departments with formal recognition of advanced business competencies. Business Director Oversee business units or functions with the authority of a Swiss-recognized qualification. Operations Director Manage complex operations with the strategic and operational skills validated by the diploma. Management Consultant Advise organizations with a qualification recognized across Swiss and European markets. Project Leader Lead major projects and initiatives with formal professional recognition. Department Head Manage departments in multinational organizations with Swiss-recognized credentials. Entrepreneur Launch and manage businesses with a formal professional qualification from Switzerland. Industry Specialist Specialize in specific sectors with a qualification valued by Swiss employers. Admissions Join the AUS Community 1 Core Requirements To qualify for this program, applicants must have successfully completed secondary education in their home country, earning a diploma or leaving certificate that grants university-level eligibility. No GMAT or entrance exam scores are required. Admission is based on a holistic review of your application and a mandatory online interview. Language: English C-Level. CEFR B2 level considered after completing an oral interview. Education: Secondary school diploma with good academic achievements, or IELTS Overall 5.5 with no single element below 4.5. Motivation: Explain why you are pursuing this degree, your goals, and the specific value you will bring to your peer group. 2 Admissions Philosophy AUS offers a fair and transparent admissions process based on individual merit and potential. We look beyond basic eligibility to understand the specific context of your background, ensuring we balance high standards with true inclusivity. Our goal is to align your prior experience and interests with the program that will best drive your future career. Next Intake Fall 2026 EU/EFTA deadline: July 15 · International deadline: July 15 Start your Application → \"The Swiss Federal Diploma gave me the formal recognition I needed to advance into senior management. The program combined practical relevance with academic rigor.\" Alumni testimonial Swiss Federal Diploma — Business Administration Student Life Life at AUS What's Next Take the Next Step Talk to an Admissions Advisor, request a Program Overview, or book a campus visit to experience AUS firsthand. Talk to an Admissions Advisor → Request a Program Overview Book a Campus Visit"},
-    {title:"About AUS",url:"about.html",cat:"About",keys:"About AUS Shaping Tomorrow's Business Leaders For over three decades, AUS has equipped international students with the global business expertise and practical skills that drive organizational success. Scroll About AUS Shaping Tomorrow's Business Leaders For over three decades, AUS has equipped international students with the global business expertise and practical skills that drive organizational success. Start your Application Home / About Our Purpose Mission AUS equips its students pursuing a degree in international business with the knowledge, skills, and tools necessary to make a significant contribution to the development and success of any business organization. Through practice-oriented studies based on the application of scientific methods, research and development, AUS graduates will be prepared to become competent and confident leaders in the business world. Where We're Going Vision Our vision is to build a reputation as a prestigious and well-known private higher education institution in Switzerland that attracts students and faculty from all over the world. President's Message 30+ Years Leading AUS The entire world of higher education is evolving at an accelerating pace. The AUS history is characterized by continued transformation, growth, and improvement in a world of tremendous change. Internally, we are on an accelerated path of capacity building. Externally, we are strengthening new partnerships as part of our community engagement strategy that builds on existing networks of alumni and representatives. Dr. M. El Khansa President, AUS What We Stand For Our Values Respect We value professional behavior and conduct based on respectful communication and actions. Excellence We provide value for money and are transformational in our approaches to learning and teaching. Accountability We hold ourselves accountable and adhere to the highest integrity and ethical standards. Leadership We lead students through developing their knowledge and abilities so they can become impactful leaders of the future. 30 + Years of Excellence 40 + Nationalities 80 % Graduate Employment 20 Max Students Per Class Explore Learn More About AUS Our History From 1963 to today Learn more Accreditation Internationally recognized accreditations and memberships. Learn more Faculty Meet our international team of expert educators. Learn more Governance Our leadership structure and principles. Learn more Rankings QS World Rankings and other recognitions. Learn more What's Next Take the Next Step Talk to an Admissions Advisor, request a Program Overview, or book a campus visit to experience AUS firsthand. Talk to an Admissions Advisor → Request a Program Overview Book a Campus Visit"},
+    {title:"About AUS",url:"about.html",cat:"About",keys:"About AUS Shaping Tomorrow's Business Leaders For over three decades, AUS has equipped international students with the global business expertise and practical skills that drive organizational success. Scroll About AUS Shaping Tomorrow's Business Leaders For over three decades, AUS has equipped international students with the global business expertise and practical skills that drive organizational success. Start your Application Home / About Our Purpose Mission AUS equips its students pursuing a degree in international business with the knowledge, skills, and tools necessary to make a significant contribution to the development and success of any business organization. Through practice-oriented studies based on the application of scientific methods, research and development, AUS graduates will be prepared to become competent and confident leaders in the business world. Where We're Going Vision Our vision is to build a reputation as a prestigious and well-known private higher education institution in Switzerland that attracts students and faculty from all over the world. President's Message 15+ Years Leading AUS The entire world of higher education is evolving at an accelerating pace. The AUS history is characterized by continued transformation, growth, and improvement in a world of tremendous change. Internally, we are on an accelerated path of capacity building. Externally, we are strengthening new partnerships as part of our community engagement strategy that builds on existing networks of alumni and representatives. Dr. M. El Khansa President, AUS What We Stand For Our Values Respect We value professional behavior and conduct based on respectful communication and actions. Excellence We provide value for money and are transformational in our approaches to learning and teaching. Accountability We hold ourselves accountable and adhere to the highest integrity and ethical standards. Leadership We lead students through developing their knowledge and abilities so they can become impactful leaders of the future. 30 + Years of Excellence 40 + Nationalities 80 % Graduate Employment 20 Max Students Per Class Explore Learn More About AUS Our History From 1963 to today Learn more Accreditation Internationally recognized accreditations and memberships. Learn more Faculty Meet our international team of expert educators. Learn more Governance Our leadership structure and principles. Learn more Rankings QS World Rankings and other recognitions. Learn more What's Next Take the Next Step Talk to an Admissions Advisor, request a Program Overview, or book a campus visit to experience AUS firsthand. Talk to an Admissions Advisor → Request a Program Overview Book a Campus Visit"},
     {title:"History",url:"about/history.html",cat:"About",keys:"About AUS Our History From a visionary idea in 1963 to a leading international business school in Switzerland. Scroll About AUS Our History From a visionary idea in 1963 to a leading international business school in Switzerland. Home / About / History Where It All Began The Founding Story The story of AUS Business School began in 1963 with the creation of the American College of Switzerland, whose academic body had the vision of combining the effectiveness of American graduate education with the Swiss work ethic. Building upon this vision, four of the ACS teachers created the American Graduate School of Business in 1991 , which grew into one of the leading international business schools in Switzerland. In 2019, the school changed its name from the American Graduate School of Business to the AUS Business School to reflect its growing international education status. 1963 The Beginning Brand Identity Evolution of the Logo ACS 1963 American College of Switzerland AGSB 1991 American Graduate School of Business AUS 2019 AUS Business School AUS Today AUS Business School Milestones History Through the Years 1991 AGSB founded Four ACS teachers create the American Graduate School of Business in La Tour-de-Peilz, Switzerland. 1992 Campus established AGSB sets up its permanent campus in La Tour-de-Peilz, welcoming its first cohorts. 1993 AVDEP recognition Recognized by the Association of Private Schools in Canton Vaud. 1994 SFPS membership Joins the Swiss Federation of Private Schools. 1996 ECIS membership Becomes a member of the European Council of International Schools. 1998 College Board & VA approval Gains College Board membership and approval by the U.S. Department of Veteran Affairs. 2013 AAHEA accreditation Accredited by the American Association for Higher Education. 2014 ASIC accreditation Gains Accreditation Service for International Schools, Colleges & Universities. 2016 New campus inauguration Opens the doors to its expanded, modern campus in La Tour-de-Peilz. 2017 Global partnerships Signs academic agreements with institutions in Mexico, Colombia, Georgia, Lebanon, and India. Reaccredited by IACBE. 2018 ECBE & expansion Reaccredited by ECBE. Partnerships with institutions in Saudi Arabia. Establishment of AGSB S.A. 2019 AUS is born Renamed to AUS Business School. IATA certification. Dual degree partnership with Tiffin University. New partnerships in Malaysia, Jordan, and Saudi Arabia. 2020 29th anniversary AUS celebrates nearly three decades of academic excellence and international education. What's Next Let's Make History Together Join a legacy of academic excellence. Take the first step toward your future at AUS. Apply for Admission →"},
     {title:"Faculty",url:"about/faculty.html",cat:"About",keys:"About AUS Our Faculty World-class educators and industry practitioners committed to your growth. Scroll About AUS Our Faculty World-class educators and industry practitioners committed to your growth. Home / About / Faculty Academic Excellence Meet Our Faculty Our faculty brings together distinguished academics and seasoned industry professionals from around the world. With diverse backgrounds in business, finance, marketing, and leadership, they deliver a learning experience that bridges theory and practice. Every instructor at AUS is committed to small-class engagement, mentorship, and preparing students for real-world challenges in international business. Our Team Academic Faculty Dr. M. El Khansa President & Professor Over 30 years of leadership in international education. PhD in Business Administration. Dr. S. Martin Dean of Faculty & Professor of Finance Former investment banker with 20 years in international finance. PhD in Finance, CFA charterholder. Prof. A. Rossi Professor of Marketing Award-winning marketing strategist. Former VP at L'Oreal. MBA from INSEAD. Dr. J. Chen Professor of Data Analytics AI and machine learning specialist. Published 40+ research papers. PhD in Computer Science. Dr. L. Amiri Professor of International Business Former World Bank consultant. Expert in emerging markets and cross-cultural management. PhD in Economics. Prof. R. Keller Professor of Hospitality Management 25 years in luxury hospitality. Former GM at Four Seasons. MBA from Cornell. What's Next Learn from the Best Our faculty are here to guide you. Take the first step toward your future at AUS. Apply for Admission →"},
     {title:"Accreditation & Memberships",url:"about/accreditation.html",cat:"About",keys:"About AUS Accreditation & Memberships Scroll About AUS Accreditation & Memberships Home / About / Accreditation & Memberships AUS is accredited, listed, and recognized by leading international bodies — from specialized business-education accreditors to ministries, UNESCO, and the United Nations. PRME — Principles for Responsible Management Education AUS is a signatory of PRME, a United Nations-supported initiative with over 800 signatories worldwide, committed to embedding sustainability and the SDGs into management education. Learn more → UNESCO WHED — World Higher Education Database AUS is listed in the UNESCO World Higher Education Database. Institution Code: IAU-029651 Learn more → United States Department of Veterans Affairs AUS is a recognized university by the US Department of Veterans Affairs. US veterans can apply to study at AUS and obtain a GI Bill. Facility Code: 21001578 Assess your VA benefits → IELTS — Official Preparation and Testing Center AUS is an Official IELTS Preparation and Testing Center, recognized by more than 10\'000 organizations in over 140 countries. Council of International Schools (CIS) AUS has been granted membership by CIS, a global non-profit organization dedicated to high-quality international education, joining a network of over 1\'500 institutions worldwide. Ohio Department of Higher Education Tiffin University's seated and online programs are authorized by the Ohio Department of Higher Education. ACBSP — Accreditation Council for Business Schools and Programs Tiffin University's School of Business is accredited by ACBSP, a leading specialized accreditation body for business education at all degree levels worldwide. Learn more → Higher Learning Commission (HLC) — Tiffin University The dual degree programs are accredited by the HLC, one of the six regional accreditation bodies recognized by major colleges and universities in America. Ministry of Higher Education — Hashemite Kingdom of Jordan AUS is accredited by the Ministry of Higher Education in the Hashemite Kingdom of Jordan. Learn more → Ministry of Higher Education — Kingdom of Saudi Arabia AUS is accredited by the Ministry of Higher Education in the Kingdom of Saudi Arabia, ensuring that degrees earned by Saudi students are recognized upon return to the Kingdom. Learn more → CHEA — Council for Higher Education Accreditation AUS's IACBE accreditation has gained CHEA recognition since January 2011. CHEA Member Status Page → IACBE — International Accreditation Council for Business Education AUS has received specialized accreditation for its business programs through the IACBE, located in Overland Park, Kansas, USA. IACBE Member Status Page → Ranking QS World University Rankings The American Institute of Applied Sciences in Switzerland has been awarded a four-star rating in the QS Stars University Ratings — five stars in \"Teaching\" and \"Business and Management Studies\", four stars for Facilities and Employability. AUS is ranked #2 in Switzerland and among the top 200 globally for its Masters in Management programs by the 2026 QS World University Rankings. QS World University Rankings 2026 Master in Management: Top 2 in Switzerland, Top 200 globally. Global MBA: Top 3 in Switzerland, Top 250 globally. QS World University Rankings 2025 Master in Management: Top 2 in Switzerland, Top 200 globally. Global MBA: Top 3 in Switzerland, Top 250 globally. QS World University Rankings 2024 Master in Management: Top 2 in Switzerland, Top 150 globally (Rank 141–150). IACBE Public Disclosures of Student Achievement 2018–2019 2019–2020 2020–2021 2021–2022 2022–2023 2023–2024 2024–2025 Educational Partnerships Our partner institutions Academic cooperation with leading universities across Europe, Asia, the Middle East and the Americas. Tiffin University Learn more → Meiji University Learn more → American University of Science and Technology Learn more → Dar Al-Hekma University Learn more → University of Prince Mugrin Learn more → Tbilisi State University Learn more → Ferrari Fashion School Learn more → MAHSA University Learn more → Anahuac University Learn more → Universidad de Guadalajara Learn more → The National Unified Corporation of Higher Education (CUN) Learn more → What's Next Let's Make History Together Join a legacy of academic excellence. Take the first step toward your future at AUS. Apply for Admission →"},
@@ -1288,10 +1314,6 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
     ,{title:"Student Activities",url:"student-activities.html",cat:"Student Life",keys:"Student Activities Clubs International Community Student Support Student Success Advising"}
     ,{title:"Tuition Fees & Scholarships",url:"tuition-fees-scholarships.html",cat:"Tuition",keys:"Program tuition fees scholarships funding annual tuition"}
     ,{title:"Meet Our People",url:"about/meet-our-people.html",cat:"About",keys:"Leadership faculty departments biographies people"}
-    ,{title:"Housing",url:"housing.html",cat:"Student Life",keys:"AUS student housing accommodation La Tour-de-Peilz Vevey shared rooms single rooms furnished housing application"}
-    ,{title:"Careers & Outcomes",url:"careers-outcomes.html",cat:"Careers",keys:"Career Services Graduate Outcomes Internships Employers Industry Connections coaching workshops employability careers"}
-    ,{title:"Alumni & Student Success",url:"alumni-success.html",cat:"Careers",keys:"Alumni Student Success Stories graduate network alumni benefits career support"}
-    ,{title:"Living in Switzerland & Transportation",url:"living-in-switzerland.html",cat:"Student Life",keys:"Live in Switzerland Transportation Swiss Riviera Lake Geneva La Tour-de-Peilz Vevey train bus SBB"}
 ];
   // allow pages to extend idx via window.AUS_SEARCH_EXTRA
   if(window.AUS_SEARCH_EXTRA && Array.isArray(window.AUS_SEARCH_EXTRA)){ idx = idx.concat(window.AUS_SEARCH_EXTRA); }
@@ -1339,33 +1361,6 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
     if(e.key==="Enter"){ var a=drop.querySelector("a"); if(a) location.href=a.getAttribute("href"); }
   });
   document.addEventListener("click", function(e){ if(!wrap.contains(e.target)) drop.hidden=true; });
-})();
-</script>
-
-<script id="industry-slider-interactions">
-(function(){
-  var slider=document.querySelector('.industry-slider');
-  if(!slider) return;
-  var slides=Array.prototype.slice.call(slider.querySelectorAll('.industry-slide'));
-  var dots=Array.prototype.slice.call(slider.querySelectorAll('.industry-slider-dot'));
-  var current=0,timer=null,delay=5500;
-  function show(index){
-    current=(index+slides.length)%slides.length;
-    slides.forEach(function(slide,i){slide.classList.toggle('is-active',i===current);slide.setAttribute('aria-hidden',i===current?'false':'true')});
-    dots.forEach(function(dot,i){dot.classList.toggle('is-active',i===current);dot.setAttribute('aria-current',i===current?'true':'false')});
-  }
-  function stop(){if(timer){clearInterval(timer);timer=null}}
-  function start(){stop();if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){timer=setInterval(function(){show(current+1)},delay)}}
-  function navigate(index){show(index);start()}
-  slider.querySelector('.prev').addEventListener('click',function(){navigate(current-1)});
-  slider.querySelector('.next').addEventListener('click',function(){navigate(current+1)});
-  dots.forEach(function(dot,i){dot.addEventListener('click',function(){navigate(i)})});
-  slider.addEventListener('mouseenter',stop);
-  slider.addEventListener('mouseleave',start);
-  slider.addEventListener('focusin',stop);
-  slider.addEventListener('focusout',start);
-  document.addEventListener('visibilitychange',function(){if(document.hidden)stop();else start()});
-  show(0);start();
 })();
 </script>
 
