@@ -11,6 +11,7 @@ let widgetCount = 0;
 let inlineScriptCount = 0;
 let largest = { file: '', characters: 0 };
 let searchIndexCount = 0;
+let structuredDataCount = 0;
 const requestedProgramRoutes = [
   '/bachelors-degree/accounting',
   '/masters-degree/finance',
@@ -46,10 +47,19 @@ function walk(directory) {
       if (opens !== closes) failures.push(`${relative} has unbalanced ${tag} tags (${opens}/${closes}).`);
     }
 
-    for (const match of source.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)) {
+    for (const match of source.matchAll(/<script(?![^>]*\bsrc=)([^>]*)>([\s\S]*?)<\/script>/gi)) {
       inlineScriptCount += 1;
+      if (/\btype\s*=\s*["']application\/ld\+json["']/i.test(match[1])) {
+        structuredDataCount += 1;
+        try {
+          JSON.parse(match[2]);
+        } catch (error) {
+          failures.push(`${relative} contains invalid JSON-LD: ${error.message}`);
+        }
+        continue;
+      }
       try {
-        new Function(match[1]);
+        new Function(match[2]);
       } catch (error) {
         failures.push(`${relative} contains invalid JavaScript: ${error.message}`);
       }
@@ -78,5 +88,5 @@ if (failures.length) {
 }
 
 console.log(`Validated ${widgetCount} Webflow Code Embed widgets.`);
-console.log(`Validated ${inlineScriptCount} inline scripts and ${searchIndexCount} search indexes.`);
+console.log(`Validated ${inlineScriptCount} inline scripts, ${structuredDataCount} structured-data blocks and ${searchIndexCount} search indexes.`);
 console.log(`Largest widget: ${largest.file} (${largest.characters} characters).`);

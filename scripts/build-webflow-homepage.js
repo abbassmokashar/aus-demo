@@ -206,6 +206,8 @@ function makeSearchScript(script) {
 }
 
 function splitHomepageScripts(html) {
+  const structuredData = [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi)]
+    .map((match) => match[0]);
   const inlineScripts = [...html.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)]
     .map((match) => match[1]);
   const externalScripts = [...html.matchAll(/<script\b[^>]*\bsrc=[^>]*><\/script>/gi)]
@@ -240,6 +242,7 @@ function splitHomepageScripts(html) {
   const finderData = `window.AUS_FINDER_PROGRAMS=${programLiteral};`;
 
   const scripts = [
+    ...structuredData,
     wrapScript(news),
     externalScripts.join('\n'),
     wrapScript(mainUi),

@@ -178,7 +178,8 @@ function transformInlineScript(code, sourceRelative) {
 function orderedScriptBlocks(html, sourceRelative) {
   const blocks = [];
   for (const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
-    if (/\bsrc\s*=/i.test(match[1])) blocks.push(match[0]);
+    if (/\btype\s*=\s*["']application\/ld\+json["']/i.test(match[1])) blocks.push(match[0]);
+    else if (/\bsrc\s*=/i.test(match[1])) blocks.push(match[0]);
     else blocks.push(...transformInlineScript(match[2], sourceRelative));
   }
   return combineCompleteBlocks(blocks, targetLimit);
