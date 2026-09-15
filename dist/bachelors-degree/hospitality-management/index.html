@@ -742,8 +742,8 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .aus-search-drop{position:absolute;top:calc(100% + 10px);left:auto;right:0;transform:none;width:min(420px,92vw);max-height:min(60vh,520px);overflow:auto;background:var(--white);border-radius:16px;box-shadow:0 20px 50px rgba(12,14,34,.18);border:1px solid var(--line);padding:8px;display:grid;gap:6px;z-index:120;}
 .aus-search-drop[hidden]{display: none !important;}
 .aus-search-drop a:hover{background:#f1f1ef;}
-@media (max-width: 760px) {.aus-search-drop{top: 54px; left: 50vw; width: calc(-20px + 100vw); max-height: calc(100dvh - 66px);}}
-@media (max-width: 420px) {.aus-search-drop{top: 50px; left: 50vw; max-height: calc(100dvh - 62px);}}
+@media (max-width: 760px) {.aus-search-drop{top: 54px; width: calc(-20px + 100vw); max-height: calc(100dvh - 66px);}}
+@media (max-width: 420px) {.aus-search-drop{top: 50px; max-height: calc(100dvh - 62px);}}
 .side-panel-foot .hero-cta{width:auto;text-align:start;}
 
 /* CTA buttons must stay on a single line (cta-nowrap-rule) */
@@ -786,6 +786,77 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
 <style id="aus-search-drop-mobile-position">
 @media(max-width:760px){.aus-search-drop{position:fixed!important;top:54px!important;left:50vw!important;right:auto!important;transform:translateX(-50%)!important;width:calc(100vw - 20px)!important;max-height:calc(100dvh - 66px)!important}}
 </style>
+
+<style id="aus-contact-partner-update-styles">
+*,*::before,*::after{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden;overflow-x:clip}
+img,svg,video,iframe{max-width:100%}
+input,select,textarea,button{max-width:100%}
+pre{max-width:100%;overflow-x:auto}
+main,section,.wrap{min-width:0}
+.aus-nav-talk{font-family:inherit;cursor:pointer;appearance:none;-webkit-appearance:none;background:transparent;color:inherit}
+.footer-social-title{margin-top:24px;margin-bottom:0}.footer-social-grid{display:flex;flex-wrap:wrap;gap:9px;margin-top:11px}.footer-social-grid a{padding:0}
+.footer-contact-heading{margin:26px 0 9px}
+.footer-contact-details{display:flex;flex-direction:column;gap:3px;margin-top:0;font-style:normal;font-size:13.5px;line-height:1.55;color:rgba(34,41,95,.75)}
+.footer-contact-details a{display:inline;color:inherit;font-weight:650}.footer-contact-details a:hover{color:var(--crimson)}
+.aus-popup-recognition{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:center;justify-content:center;gap:10px;margin:0 0 14px}
+.aus-popup-recognition-card{display:grid;place-items:center;width:100%;min-width:0;padding:0;border:1px solid var(--line);border-radius:12px;background:transparent;overflow:hidden}
+.aus-popup-recognition-card img{display:block;width:min(44%,112px);height:auto;object-fit:contain;margin:10px auto}
+.aus-popup{width:min(700px,calc(100vw - 32px));max-width:700px;max-height:calc(100dvh - 32px)}.aus-popup-body{overflow-y:auto}
+.reasons-partner-lockup{position:absolute;z-index:4;right:clamp(22px,4vw,58px);top:50%;display:flex;align-items:center;gap:16px;max-width:min(46%,520px);padding:12px 16px;border:1px solid rgba(255,255,255,.58);border-radius:18px;background:rgba(255,255,255,.78);box-shadow:0 14px 32px rgba(17,24,39,.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transform:translateY(calc(-50% + 12px));pointer-events:none;transition:opacity .35s ease,transform .35s ease}
+.reasons-partner-lockup.is-active{opacity:1;transform:translateY(-50%)}.reasons-partner-lockup img{display:block;width:auto;max-width:218px;height:66px;object-fit:contain}.reasons-partner-lockup img:first-child{height:74px}.partner-x{display:block;width:auto;height:auto;border:0;border-radius:0;background:transparent;color:var(--navy);font-weight:900;font-size:clamp(42px,4.4vw,66px);line-height:.8;flex:0 0 auto}
+.partner-hero-lockup{position:absolute;z-index:3;right:clamp(22px,5vw,76px);bottom:clamp(104px,13vh,144px);display:flex;align-items:center;gap:16px;max-width:min(46vw,540px);padding:12px 16px;border:1px solid rgba(255,255,255,.58);border-radius:18px;background:rgba(255,255,255,.8);box-shadow:0 14px 34px rgba(17,24,39,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.partner-hero-lockup img{display:block;width:auto;max-width:210px;height:62px;object-fit:contain}.partner-hero-lockup img:first-child{height:70px}
+.hero-mob-img .partner-hero-lockup{right:16px;bottom:18px;left:16px;max-width:none;justify-content:center;padding:10px 12px}.hero-mob-img .partner-hero-lockup img{height:38px;max-width:128px}.hero-mob-img .partner-hero-lockup img:first-child{height:43px}.hero-mob-img .partner-x{font-size:36px}
+.rankings>.wrap{display:flex;flex-direction:column}.rankings>.wrap>.chapter-label{order:0}.rankings>.wrap>.rankings-head{order:1}.rankings>.wrap>.logo-carousel-wrap{order:2}.rankings>.wrap>.rankings-highlight{order:3;position:relative;clear:both}
+.stagger-grid.is-visible>*:nth-child(n+7){opacity:1;transform:translateY(0);transition-delay:.47s}
+@media(max-width:760px){
+  .aus-search-drop{position:fixed!important;top:64px!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important;width:calc(100vw - 20px)!important;max-width:620px!important;max-height:calc(100dvh - 76px)!important}
+  .stagger-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  [style*="grid-template-columns:1fr 1fr"],[style*="grid-template-columns: 1fr 1fr"],[style*="grid-template-columns:2fr 1fr"],[style*="grid-template-columns: 2fr 1fr"]{grid-template-columns:1fr!important}
+  table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+@media(max-width:1050px) and (min-width:641px){.reasons-partner-lockup{right:18px;max-width:43%;gap:10px;padding:10px 12px}.reasons-partner-lockup img{height:48px;max-width:155px}.reasons-partner-lockup img:first-child{height:54px}.reasons-partner-lockup .partner-x{font-size:40px}.partner-hero-lockup{right:22px;max-width:43vw;gap:10px;padding:10px 12px}.partner-hero-lockup img{height:48px;max-width:155px}.partner-hero-lockup img:first-child{height:54px}.partner-hero-lockup .partner-x{font-size:40px}}
+@media(max-width:640px){.aus-popup-recognition-card img{width:min(42%,96px);height:auto;margin:8px auto}.reasons-partner-lockup{top:auto;left:14px;right:14px;bottom:18px;max-width:none;justify-content:center;gap:10px;padding:10px 12px;transform:translateY(10px)}.reasons-partner-lockup.is-active{transform:none}.reasons-partner-lockup img{height:36px;max-width:118px}.reasons-partner-lockup img:first-child{height:41px}.reasons-partner-lockup .partner-x{font-size:34px}.partner-hero-lockup:not(.hero-mob-img .partner-hero-lockup){display:none}.footer-contact-details{font-size:13px}}
+@media(max-width:480px){.aus-search-drop{top:56px!important;max-height:calc(100dvh - 66px)!important}.stagger-grid{grid-template-columns:1fr!important}}
+</style>
+<style id="program-admissions-redesign-styles">
+.program-admissions{position:relative;overflow:hidden;padding:clamp(58px,7vw,94px) 0;background:#f1f1ef!important}
+.program-admissions::before{content:"";position:absolute;left:0;top:0;width:clamp(7px,1vw,12px);height:100%;background:var(--crimson)}
+.program-admissions .wrap{position:relative;z-index:1}
+.program-admissions-head{display:grid;grid-template-columns:minmax(180px,.5fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:end;margin-bottom:clamp(28px,4vw,46px)}
+.program-admissions-head .eyebrow{margin:0}
+.program-admissions-head h2{max-width:760px;margin:0;font-family:var(--font-display);font-size:clamp(34px,4.4vw,62px);font-style:normal;font-weight:800;line-height:1.02;letter-spacing:-.035em;color:var(--navy)}
+.program-admissions-head h2 span{color:var(--crimson)}
+.program-admissions .adm-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:18px;align-items:stretch}
+.program-admissions .admission-card{position:relative;min-width:0;padding:clamp(25px,3vw,38px);border:1px solid rgba(34,41,95,.13);border-radius:20px;background:#fff;box-shadow:0 18px 46px rgba(17,24,39,.07)}
+.program-admissions .admission-card::before{position:absolute;right:24px;top:18px;font-family:var(--font-display);font-size:52px;font-weight:850;line-height:1;color:rgba(197,23,62,.11)}
+.program-admissions .admission-card-requirements::before{content:"01"}
+.program-admissions .admissions-philosophy::before{content:"02"}
+.program-admissions .program-requirements{margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+.program-admissions .adm-req h3{max-width:calc(100% - 62px);margin:0 0 18px;font-family:var(--font-display)!important;font-size:clamp(19px,2vw,25px);font-style:normal!important;font-weight:750;line-height:1.2;color:var(--navy)}
+.program-admissions .adm-req h3:first-letter{font-size:0}
+.program-admissions .adm-req p{font-size:15px!important;line-height:1.75!important}
+.program-admissions .adm-req ul{display:grid;gap:10px;margin:18px 0 0;padding:0;list-style:none}
+.program-admissions .adm-req li{position:relative;padding:13px 14px 13px 38px;border-radius:10px;background:#f1f1ef;font-size:14px;line-height:1.55;color:var(--ink-soft)}
+.program-admissions .adm-req li::before{content:"✓";position:absolute;left:14px;top:13px;color:var(--crimson);font-weight:900}
+.program-admissions .admissions-support{display:flex;align-items:center;justify-content:space-between;gap:22px;margin-top:18px;padding:20px 22px;border:1px solid rgba(34,41,95,.13);border-radius:16px;background:#fff}
+.program-admissions .admissions-support p{max-width:58ch;margin:0;color:var(--ink-soft);font-size:14px;line-height:1.6}
+.program-admissions .admissions-support-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.program-admissions .admissions-support a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 17px;border-radius:999px;font-family:var(--font-display);font-size:13px;font-weight:750;text-decoration:none}
+.program-admissions .admissions-support-primary{background:var(--crimson);color:#fff}
+.program-admissions .admissions-support-secondary{border:1px solid rgba(34,41,95,.24);color:var(--navy);background:#fff}
+@media(max-width:760px){
+  .program-admissions{padding:50px 0}
+  .program-admissions-head{grid-template-columns:1fr;gap:13px;margin-bottom:25px}
+  .program-admissions-head h2{font-size:clamp(32px,10vw,46px)}
+  .program-admissions .adm-grid{grid-template-columns:1fr!important}
+  .program-admissions .admission-card{padding:24px 20px}
+  .program-admissions .admissions-support{align-items:stretch;flex-direction:column;padding:20px}
+  .program-admissions .admissions-support-actions{display:grid;grid-template-columns:1fr;width:100%}
+  .program-admissions .admissions-support a{width:100%}
+}
+</style>
 </head>
 <body>
 
@@ -819,7 +890,7 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
       <span class="aus-search-btn" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
       <div id="siteSearchDrop" class="aus-search-drop" hidden></div>
     </div>
-    <a href="https://meetings-eu1.hubspot.com/jonathan-hilton/advisory-session" class="aus-nav-talk"><span class="aus-nav-action-full">Talk to Admissions</span><span class="aus-nav-action-short">Talk</span></a>
+    <button type="button" class="aus-nav-talk" data-open-panel="contact" aria-label="Open contact options"><span class="aus-nav-action-full">Contact Us</span><span class="aus-nav-action-short">Contact</span></button>
     <a href="https://study.aus.swiss/application" class="aus-nav-apply" aria-label="Apply now"><span class="aus-nav-apply-full">Apply Now</span><span class="aus-nav-apply-short">Apply</span></a>
   </div>
   <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="sidePanel">
@@ -898,7 +969,6 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
             <a href="../../living-in-switzerland.html#living">Living in Switzerland</a>
             <a href="../../student-activities.html">Student Activities</a>
             <a href="../../living-in-switzerland.html#transportation">Transportation</a>
-            <a href="https://share-eu1.hsforms.com/1t_dizG4cT7-D9bCyPSDnAwfwv24">Book a Campus Visit</a>
           </div>
         </div></div>
       </div>
@@ -914,13 +984,22 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
             <a href="../../about/meet-our-people.html">Meet Our People</a>
             <a href="../../about/governance.html">Leadership &amp; Governance</a>
             <a href="../../about/policies-and-procedures.html">Policies</a>
-            <a href="../../about/academic-partners/tiffin-university.html">Academic Partners</a>
+            <a href="../../about/academic-partners/tiffin-university.html">Academic Partner</a>
             <a href="../../about/industry-partners/ibm.html">Industry Partners &amp; Collaborations</a>
-            <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24">Contact</a>
+            <a href="../../contact-us.html">Contact Us</a>
           </div>
         </div></div>
       </div>
-      <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24" class="side-panel-link">Contact</a>
+            <div class="accordion-item" data-panel-key="contact" id="menu-contact">
+        <button class="accordion-trigger">Contact Us <span class="accordion-icon"></span></button>
+        <div class="accordion-panel"><div class="accordion-panel-inner">
+          <div class="accordion-group">
+            <a href="https://meetings-eu1.hubspot.com/jonathan-hilton/advisory-session">Student Advising</a>
+            <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24">Book a Call</a>
+            <a href="https://share-eu1.hsforms.com/1t_dizG4cT7-D9bCyPSDnAwfwv24">Book a Campus Visit</a>
+          </div>
+        </div></div>
+      </div>
     </nav>
   </aside>
 </div>
@@ -941,7 +1020,12 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
     </span>
     <h1 class="reveal d1" style="font-size:clamp(56px,10vw,120px);line-height:.95;">Hospitality Management</h1>
     <div class="hero-row reveal d2">
-      <a href="https://study.aus.swiss/application" class="hero-cta hero-cta-primary">Apply Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      
+      
+      
+      <a href="../../admissions.html" class="hero-cta hero-cta-primary">View Admissions
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
       <a href="https://share-eu1.hsforms.com/1_N5NamNWRLeBrDAYfIYx7Qfwv24" class="hero-cta hero-cta-secondary">Download Brochure</a>
     </div>
   </div>
@@ -958,7 +1042,12 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
     <h1>Hospitality Management</h1>
     <p class="hero-mob-sub">Three years, nine academic terms, 135 CH | 225 ECTS.</p>
     <div class="hero-mob-ctas">
-      <a href="https://study.aus.swiss/application" class="hero-cta hero-cta-primary">Apply Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      
+      
+      
+      <a href="../../admissions.html" class="hero-cta hero-cta-primary">View Admissions
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
       <a href="https://share-eu1.hsforms.com/1_N5NamNWRLeBrDAYfIYx7Qfwv24" class="hero-cta hero-cta-secondary">Download Brochure</a>
     </div>
   </div>
@@ -1204,7 +1293,7 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
 
 <!-- DUAL DEGREE -->
 <section class="dual-degree" style="background:#111827;color:var(--white);padding:clamp(40px,6vw,70px) 0;position:relative;overflow:hidden;" data-chapter="06" data-chapter-label="Dual Degree">
-  <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&auto=format&fit=crop&q=80" alt="Swiss Alps and Lake Geneva" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.12;">
+  <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa41153ec7e23c6ba9485ea_bachelors-hospitality-management-1.jpg.webp" alt="AUS students applying their learning" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.12;">
   <div class="wrap" style="position:relative;z-index:1;">
     <div class="dual-inner" style="display:flex;align-items:center;gap:clamp(40px,6vw,80px);">
       <div class="dual-copy" style="flex:1;">
@@ -1231,7 +1320,7 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
 <!-- WHY AUS -->
 <section style="padding:clamp(40px,6vw,70px) 0;position:relative;overflow:hidden;" data-chapter="07" data-chapter-label="Why AUS">
   <div style="position:absolute;inset:0;z-index:0;">
-    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1800&auto=format&fit=crop&q=80" alt="AUS Campus" style="width:100%;height:100%;object-fit:cover;opacity:.06;">
+    <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa411534b6e4d60b6654dbc_bachelors-hospitality-management-2.jpg.webp" alt="AUS program learning environment" style="width:100%;height:100%;object-fit:cover;opacity:.06;">
   </div>
   <div class="wrap" style="position:relative;z-index:1;">
     <span class="eyebrow reveal">The AUS Advantage</span>
@@ -1313,16 +1402,12 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
 </section>
 
 <!-- ADMISSIONS -->
-<section class="admissions" style="position:relative;overflow:hidden;" data-chapter="09" data-chapter-label="Admissions">
-  <div style="position:absolute;inset:0;z-index:0;">
-    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1800&auto=format&fit=crop" alt="Students" style="width:100%;height:100%;object-fit:cover;opacity:.05;">
-  </div>
+<section class="admissions program-admissions" style="position:relative;overflow:hidden;" data-chapter="09" data-chapter-label="Admissions">
   <div class="wrap" style="position:relative;z-index:1;">
+    <div class="program-admissions-head reveal"><span class="eyebrow">Admissions</span><h2>Join a community built for <span>ambition.</span></h2></div>
     <div class="adm-grid">
-      <div class="reveal">
-        <span class="eyebrow">Admissions</span>
-        <h2 style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;margin-bottom:16px;">Join the AUS Community</h2>
-        <div class="adm-req" style="margin-bottom:20px;">
+      <div class="admission-card admission-card-requirements reveal">
+        <div class="adm-req program-requirements">
           <h3>1 &nbsp;Core Requirements</h3>
           <p style="font-size:14px;line-height:1.7;color:var(--ink-soft);margin-bottom:12px;">To qualify for this program, applicants must have successfully completed secondary education in their home country, earning a diploma or leaving certificate that grants university-level eligibility. No GMAT or entrance exam scores are required. Admission is based on a holistic review of your application and a mandatory online interview.</p>
           <ul>
@@ -1332,10 +1417,17 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
           </ul>
         </div>
       </div>
-      <div class="adm-req reveal d1">
+      <div class="adm-req admission-card admissions-philosophy reveal d1">
         <h3>2 &nbsp;Admissions Philosophy</h3>
         <p style="font-size:14px;line-height:1.7;color:var(--ink-soft);margin-bottom:16px;">AUS offers a fair and transparent admissions process based on individual merit and potential. We look beyond basic eligibility to understand the specific context of your background, ensuring we balance high standards with true inclusivity.</p>
         <p style="font-size:14px;line-height:1.7;color:var(--ink-soft);">Our goal is to align your prior experience and interests with the program that will best drive your future career.</p>
+      </div>
+    </div>
+    <div class="admissions-support reveal d2">
+      <p>Not sure whether your background meets the entry requirements? Our admissions team can review your profile and guide your next step.</p>
+      <div class="admissions-support-actions">
+        <a class="admissions-support-primary" href="../../admissions.html">Review Admissions</a>
+        <a class="admissions-support-secondary" href="https://meetings-eu1.hubspot.com/jonathan-hilton/advisory-session">Speak with an Advisor</a>
       </div>
     </div>
   </div>
@@ -1375,7 +1467,7 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
     <h2 class="reveal d1" style="font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.5vw,44px);color:var(--navy);margin-top:12px;margin-bottom:clamp(24px,3vw,36px);">Life at AUS</h2>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:200px 200px;gap:12px;">
       <div class="reveal" style="grid-column:1/3;grid-row:1/3;border-radius:6px;overflow:hidden;">
-        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop&q=80" alt="Campus life" style="width:100%;height:100%;object-fit:cover;">
+        <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa41153ec7e23c6ba9485ea_bachelors-hospitality-management-1.jpg.webp" alt="Student life at AUS Business School" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div class="reveal d1" style="border-radius:6px;overflow:hidden;">
         <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&auto=format&fit=crop&q=80" alt="Students studying" style="width:100%;height:100%;object-fit:cover;">
@@ -1433,7 +1525,7 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
         <div class="footer-col-title" style="margin-top:6px;">Connect</div>
         <a href="../../admissions.html">Admissions</a>
 
-        <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24">Contact Us</a>
+        <a href="../../contact-us.html">Contact Us</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">School</div>
@@ -1451,6 +1543,14 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
         <a href="https://search.ebscohost.com/login.aspx" target="_blank" rel="noopener">E-Library</a>
         <a href="https://openstax.org/" target="_blank" rel="noopener">OpenStax</a>
         <a href="https://www.oecd.org/en/publications.html" target="_blank" rel="noopener">OECD Publications</a>
+        <div class="footer-contact-heading footer-col-title">Visit Us</div>
+        <address class="footer-contact-details">
+          <a href="mailto:info@aus.swiss">info@aus.swiss</a>
+          <span>Chemin du Levant 5</span>
+          <span>1814 La Tour-de-Peilz</span>
+          <span>Switzerland</span>
+          <a href="tel:+41219449501">+41 21 944 95 01</a>
+        </address>
       </div>
     </div>
     <div class="footer-v2_bottom">
@@ -1481,6 +1581,10 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
     <div class="aus-popup-body">
       <div class="aus-popup-title">Your Future Starts at AUS</div>
       <div class="aus-popup-subtitle">Swiss business education with dual degrees, small classes, and 96%+ graduate employment. Applications are open for September 2026.</div>
+      <div class="aus-popup-recognition" aria-label="AUS rankings recognition">
+        <a class="aus-popup-recognition-card" href="../../about/rankings.html" aria-label="View AUS Top 2 in Switzerland ranking"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a9dcf4a977a6a6c1b85f25f_2.png" alt="Top 2 in Switzerland recognition badge"></a>
+        <a class="aus-popup-recognition-card" href="../../about/rankings.html" aria-label="View AUS Top 200 global ranking"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a9dcf4b71caefbe2cebb61e_200.png" alt="Top 200 globally recognition badge"></a>
+      </div>
       <div class="aus-popup-benefits">
         <div class="aus-popup-benefit"><div class="aus-popup-benefit-icon">&#x2713;</div><div class="aus-popup-benefit-text">Dual Degree<span>Swiss + American degree</span></div></div>
         <div class="aus-popup-benefit"><div class="aus-popup-benefit-icon">&#x2713;</div><div class="aus-popup-benefit-text">Max 20 Students<span>Small class sizes</span></div></div>
@@ -1488,8 +1592,8 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
         <div class="aus-popup-benefit"><div class="aus-popup-benefit-icon">&#x2713;</div><div class="aus-popup-benefit-text">Swiss Riviera<span>La Tour-de-Peilz campus</span></div></div>
       </div>
       <div class="aus-popup-cta">
-        <a href="https://study.aus.swiss/application" class="aus-popup-cta-primary">Apply Now</a>
-        <a href="../../programs.html" class="aus-popup-cta-secondary">Explore Programs</a>
+        <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24" class="aus-popup-cta-primary">Contact Us</a>
+        <a href="../../programs.html" class="aus-popup-cta-secondary">Find Your Program</a>
       </div>
     </div>
   </div>
@@ -1768,6 +1872,7 @@ if(!reduceMotion){
     ,{title:"Careers & Outcomes",url:"../../careers-outcomes.html",cat:"Careers",keys:"Career Services Graduate Outcomes Internships Employers Industry Connections coaching workshops employability careers"}
     ,{title:"Alumni & Student Success",url:"../../alumni-success.html",cat:"Careers",keys:"Alumni Student Success Stories graduate network alumni benefits career support"}
     ,{title:"Living in Switzerland & Transportation",url:"../../living-in-switzerland.html",cat:"Student Life",keys:"Live in Switzerland Transportation Swiss Riviera Lake Geneva La Tour-de-Peilz Vevey train bus SBB"}
+    ,{title:"Contact Us",url:"../../contact-us.html",cat:"About",keys:"Contact AUS email phone address working hours student advising book a call campus visit La Tour-de-Peilz Switzerland"}
 ];
   // allow pages to extend idx via window.AUS_SEARCH_EXTRA
   if(window.AUS_SEARCH_EXTRA && Array.isArray(window.AUS_SEARCH_EXTRA)){ idx = idx.concat(window.AUS_SEARCH_EXTRA); }

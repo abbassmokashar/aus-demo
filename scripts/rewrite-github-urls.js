@@ -70,13 +70,28 @@ function rewriteDocument(source, file) {
     .replace(/((?:window\.)?location(?:\.href)?\s*=\s*)(['"])([^'"]+)\2/g, (whole, prefix, quote, value) => `${prefix}${quote}${repositoryUrl(value, file)}${quote}`);
 }
 
+function writeFileWithRetry(file, contents) {
+  let lastError;
+  for (let attempt = 0; attempt < 12; attempt += 1) {
+    try {
+      fs.writeFileSync(file, contents, 'utf8');
+      return;
+    } catch (error) {
+      lastError = error;
+      if (!['UNKNOWN', 'EBUSY', 'EPERM'].includes(error.code)) throw error;
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
+    }
+  }
+  throw lastError;
+}
+
 function rewriteAll() {
   let changedFiles = 0;
   for (const file of listHtml(root)) {
     const source = fs.readFileSync(file, 'utf8');
     const rewritten = rewriteDocument(source, file);
     if (rewritten !== source) {
-      fs.writeFileSync(file, rewritten, 'utf8');
+      writeFileWithRetry(file, rewritten);
       changedFiles += 1;
     }
   }

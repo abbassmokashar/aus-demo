@@ -74,6 +74,7 @@ ${programRoutes.map(([route, item]) => `- [${item.program.credential}](${site.ba
 ## Admissions and student information
 
 - [Admissions and financing](${site.baseUrl}/admissions-financing): Application process, requirements, deadlines, financing and visa guidance.
+- [Campus facilities](${site.baseUrl}/campus-facilities): Classrooms, conference rooms, student spaces and nearby sports facilities in La Tour-de-Peilz.
 - [Tuition fees and scholarships](${site.baseUrl}/tuition-fees-scholarships): Tuition and scholarship information.
 - [International students](${site.baseUrl}/international-students): Visa, permit and arrival guidance.
 - [Student life](${site.baseUrl}/student-life): Campus, housing, activities and life in Switzerland.
@@ -82,7 +83,9 @@ ${programRoutes.map(([route, item]) => `- [${item.program.credential}](${site.ba
 
 ## Contact and location
 
-AUS Business School is located at Chemin du Levant 5, 1814 La Tour-de-Peilz, Switzerland. Telephone: +41 21 944 95 01.
+- [Contact AUS](${site.baseUrl}/contact-us): Email, telephone, working hours, advising, campus visits and directions.
+
+AUS Business School is located at Chemin du Levant 5, 1814 La Tour-de-Peilz, Switzerland. Telephone: +41 21 944 95 01. Email: info@aus.swiss.
 `;
 
 writeBoth('sitemap.xml', sitemap);
@@ -96,14 +99,23 @@ const csvRows = indexableRoutes.map((route) => {
   const meta = pages[route];
   return [route, meta.title, meta.description, meta.title, meta.description, site.defaultImage].map(csvEscape).join(',');
 });
-fs.writeFileSync(path.join(webflowDirectory, 'seo-settings.csv'), [csvHeader.map(csvEscape).join(','), ...csvRows].join('\n') + '\n', 'utf8');
+const seoCsv = [csvHeader.map(csvEscape).join(','), ...csvRows].join('\n') + '\n';
+let seoSheetName = 'seo-settings.csv';
+try {
+  fs.writeFileSync(path.join(webflowDirectory, seoSheetName), seoCsv, 'utf8');
+} catch (error) {
+  if (error.code !== 'EBUSY') throw error;
+  seoSheetName = 'seo-settings-latest.csv';
+  fs.writeFileSync(path.join(webflowDirectory, seoSheetName), seoCsv, 'utf8');
+  console.warn('webflow/seo-settings.csv is open in another application; wrote webflow/seo-settings-latest.csv instead.');
+}
 
 const guide = `# Webflow SEO implementation
 
 The standalone HTML and generated Code Embed packages already contain the page-specific structured data. Complete these Webflow settings when the embeds are installed:
 
 1. Set the Webflow global canonical URL to \`${site.baseUrl}\` (no trailing slash). Do not add another canonical tag through custom code.
-2. Use [webflow/seo-settings.csv](webflow/seo-settings.csv) to populate each page's SEO title, meta description, Open Graph title, Open Graph description and Open Graph image in Page settings.
+2. Use [webflow/${seoSheetName}](webflow/${seoSheetName}) to populate each page's SEO title, meta description, Open Graph title, Open Graph description and Open Graph image in Page settings.
 3. Enable Webflow's auto-generated sitemap and keep the 404 utility page excluded from indexing.
 4. In Site settings, use the contents of [robots.txt](robots.txt) as the custom robots policy if Webflow is not already serving an equivalent policy.
 5. Publish [llms.txt](llms.txt) at the production root if the hosting layer supports static root files or rewrites.

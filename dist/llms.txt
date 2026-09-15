@@ -43,6 +43,7 @@ Canonical website: https://www.aus.swiss/
 ## Admissions and student information
 
 - [Admissions and financing](https://www.aus.swiss/admissions-financing): Application process, requirements, deadlines, financing and visa guidance.
+- [Campus facilities](https://www.aus.swiss/campus-facilities): Classrooms, conference rooms, student spaces and nearby sports facilities in La Tour-de-Peilz.
 - [Tuition fees and scholarships](https://www.aus.swiss/tuition-fees-scholarships): Tuition and scholarship information.
 - [International students](https://www.aus.swiss/international-students): Visa, permit and arrival guidance.
 - [Student life](https://www.aus.swiss/student-life): Campus, housing, activities and life in Switzerland.
@@ -51,4 +52,6 @@ Canonical website: https://www.aus.swiss/
 
 ## Contact and location
 
-AUS Business School is located at Chemin du Levant 5, 1814 La Tour-de-Peilz, Switzerland. Telephone: +41 21 944 95 01.
+- [Contact AUS](https://www.aus.swiss/contact-us): Email, telephone, working hours, advising, campus visits and directions.
+
+AUS Business School is located at Chemin du Levant 5, 1814 La Tour-de-Peilz, Switzerland. Telephone: +41 21 944 95 01. Email: info@aus.swiss.

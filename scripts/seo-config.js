@@ -56,6 +56,10 @@ const pages = {
     title: 'Campus Life on the Swiss Riviera | AUS',
     description: 'Explore the AUS campus in La Tour-de-Peilz, its learning spaces, Lake Geneva setting and student experience on the Swiss Riviera.'
   },
+  '/campus-facilities': {
+    title: 'Campus Facilities in La Tour-de-Peilz | AUS',
+    description: 'Explore AUS classrooms, conference rooms, cafeteria, collaborative spaces and nearby sports facilities in La Tour-de-Peilz, Switzerland.'
+  },
   '/careers-outcomes': {
     title: 'Careers, Internships & Graduate Outcomes | AUS',
     description: 'Explore career coaching, internships, employer connections, industry learning and graduate outcomes available to AUS Business School students.'
@@ -63,6 +67,10 @@ const pages = {
   '/compare-programs': {
     title: 'Compare AUS Business Degree Programs | AUS',
     description: 'Compare AUS Bachelor, Master, DBA and Swiss Federal Diploma programs by subject, duration, credits, study mode and career direction.'
+  },
+  '/contact-us': {
+    title: 'Contact AUS Business School in Switzerland | AUS',
+    description: 'Contact AUS Business School in La Tour-de-Peilz by email, phone, appointment or campus visit. View working hours, address and directions.'
   },
   '/cost-calculator': {
     title: 'Student Cost Calculator for Switzerland | AUS',

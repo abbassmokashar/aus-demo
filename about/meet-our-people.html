@@ -643,6 +643,51 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
 <style id="aus-search-drop-mobile-position">
 @media(max-width:760px){.aus-search-drop{position:fixed!important;top:54px!important;left:50vw!important;right:auto!important;transform:translateX(-50%)!important;width:calc(100vw - 20px)!important;max-height:calc(100dvh - 66px)!important}}
 </style>
+
+<style id="aus-contact-partner-update-styles">
+*,*::before,*::after{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden;overflow-x:clip}
+img,svg,video,iframe{max-width:100%}
+input,select,textarea,button{max-width:100%}
+pre{max-width:100%;overflow-x:auto}
+main,section,.wrap{min-width:0}
+.aus-nav-talk{font-family:inherit;cursor:pointer;appearance:none;-webkit-appearance:none;background:transparent;color:inherit}
+.footer-social-title{margin-top:24px;margin-bottom:0}.footer-social-grid{display:flex;flex-wrap:wrap;gap:9px;margin-top:11px}.footer-social-grid a{padding:0}
+.footer-contact-heading{margin:26px 0 9px}
+.footer-contact-details{display:flex;flex-direction:column;gap:3px;margin-top:0;font-style:normal;font-size:13.5px;line-height:1.55;color:rgba(34,41,95,.75)}
+.footer-contact-details a{display:inline;color:inherit;font-weight:650}.footer-contact-details a:hover{color:var(--crimson)}
+.aus-popup-recognition{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:center;justify-content:center;gap:10px;margin:0 0 14px}
+.aus-popup-recognition-card{display:grid;place-items:center;width:100%;min-width:0;padding:0;border:1px solid var(--line);border-radius:12px;background:transparent;overflow:hidden}
+.aus-popup-recognition-card img{display:block;width:min(44%,112px);height:auto;object-fit:contain;margin:10px auto}
+.aus-popup{width:min(700px,calc(100vw - 32px));max-width:700px;max-height:calc(100dvh - 32px)}.aus-popup-body{overflow-y:auto}
+.reasons-partner-lockup{position:absolute;z-index:4;right:clamp(22px,4vw,58px);top:50%;display:flex;align-items:center;gap:16px;max-width:min(46%,520px);padding:12px 16px;border:1px solid rgba(255,255,255,.58);border-radius:18px;background:rgba(255,255,255,.78);box-shadow:0 14px 32px rgba(17,24,39,.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transform:translateY(calc(-50% + 12px));pointer-events:none;transition:opacity .35s ease,transform .35s ease}
+.reasons-partner-lockup.is-active{opacity:1;transform:translateY(-50%)}.reasons-partner-lockup img{display:block;width:auto;max-width:218px;height:66px;object-fit:contain}.reasons-partner-lockup img:first-child{height:74px}.partner-x{display:block;width:auto;height:auto;border:0;border-radius:0;background:transparent;color:var(--navy);font-weight:900;font-size:clamp(42px,4.4vw,66px);line-height:.8;flex:0 0 auto}
+.partner-hero-lockup{position:absolute;z-index:3;right:clamp(22px,5vw,76px);bottom:clamp(104px,13vh,144px);display:flex;align-items:center;gap:16px;max-width:min(46vw,540px);padding:12px 16px;border:1px solid rgba(255,255,255,.58);border-radius:18px;background:rgba(255,255,255,.8);box-shadow:0 14px 34px rgba(17,24,39,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.partner-hero-lockup img{display:block;width:auto;max-width:210px;height:62px;object-fit:contain}.partner-hero-lockup img:first-child{height:70px}
+.hero-mob-img .partner-hero-lockup{right:16px;bottom:18px;left:16px;max-width:none;justify-content:center;padding:10px 12px}.hero-mob-img .partner-hero-lockup img{height:38px;max-width:128px}.hero-mob-img .partner-hero-lockup img:first-child{height:43px}.hero-mob-img .partner-x{font-size:36px}
+.rankings>.wrap{display:flex;flex-direction:column}.rankings>.wrap>.chapter-label{order:0}.rankings>.wrap>.rankings-head{order:1}.rankings>.wrap>.logo-carousel-wrap{order:2}.rankings>.wrap>.rankings-highlight{order:3;position:relative;clear:both}
+.stagger-grid.is-visible>*:nth-child(n+7){opacity:1;transform:translateY(0);transition-delay:.47s}
+@media(max-width:760px){
+  .aus-search-drop{position:fixed!important;top:64px!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important;width:calc(100vw - 20px)!important;max-width:620px!important;max-height:calc(100dvh - 76px)!important}
+  .stagger-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  [style*="grid-template-columns:1fr 1fr"],[style*="grid-template-columns: 1fr 1fr"],[style*="grid-template-columns:2fr 1fr"],[style*="grid-template-columns: 2fr 1fr"]{grid-template-columns:1fr!important}
+  table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+@media(max-width:1050px) and (min-width:641px){.reasons-partner-lockup{right:18px;max-width:43%;gap:10px;padding:10px 12px}.reasons-partner-lockup img{height:48px;max-width:155px}.reasons-partner-lockup img:first-child{height:54px}.reasons-partner-lockup .partner-x{font-size:40px}.partner-hero-lockup{right:22px;max-width:43vw;gap:10px;padding:10px 12px}.partner-hero-lockup img{height:48px;max-width:155px}.partner-hero-lockup img:first-child{height:54px}.partner-hero-lockup .partner-x{font-size:40px}}
+@media(max-width:640px){.aus-popup-recognition-card img{width:min(42%,96px);height:auto;margin:8px auto}.reasons-partner-lockup{top:auto;left:14px;right:14px;bottom:18px;max-width:none;justify-content:center;gap:10px;padding:10px 12px;transform:translateY(10px)}.reasons-partner-lockup.is-active{transform:none}.reasons-partner-lockup img{height:36px;max-width:118px}.reasons-partner-lockup img:first-child{height:41px}.reasons-partner-lockup .partner-x{font-size:34px}.partner-hero-lockup:not(.hero-mob-img .partner-hero-lockup){display:none}.footer-contact-details{font-size:13px}}
+@media(max-width:480px){.aus-search-drop{top:56px!important;max-height:calc(100dvh - 66px)!important}.stagger-grid{grid-template-columns:1fr!important}}
+</style>
+<style id="people-unified-grid-styles">
+.people-directory{background:#f1f1ef}
+.people-directory .people-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;align-items:stretch}
+.people-directory .person-card{width:100%;min-width:0;min-height:0;aspect-ratio:3/4;border-color:rgba(34,41,95,.38);box-shadow:0 10px 30px rgba(17,24,39,.09)}
+.people-directory .person-card>img{object-position:center top}
+.people-directory .person-caption h3{font-size:clamp(18px,1.55vw,22px)}
+.people-directory .person-caption p{min-height:2.9em}
+@media(max-width:1100px){.people-directory .people-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:820px){.people-directory .people-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.people-hero{padding:132px 0 58px}.people-hero p{font-size:16px}.people-directory .people-grid{grid-template-columns:1fr!important;gap:18px}.people-directory .person-card{aspect-ratio:4/5;min-height:0}.people-directory .person-caption p{min-height:0}.people-directory .person-bio{padding:28px}}
+</style>
 </head>
 <body>
 
@@ -670,7 +715,7 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
       <span class="aus-search-btn" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
       <div id="siteSearchDrop" class="aus-search-drop" hidden></div>
     </div>
-    <a href="https://meetings-eu1.hubspot.com/jonathan-hilton/advisory-session" class="aus-nav-talk"><span class="aus-nav-action-full">Talk to Admissions</span><span class="aus-nav-action-short">Talk</span></a>
+    <button type="button" class="aus-nav-talk" data-open-panel="contact" aria-label="Open contact options"><span class="aus-nav-action-full">Contact Us</span><span class="aus-nav-action-short">Contact</span></button>
     <a href="https://study.aus.swiss/application" class="aus-nav-apply" aria-label="Apply now"><span class="aus-nav-apply-full">Apply Now</span><span class="aus-nav-apply-short">Apply</span></a>
   </div>
   <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="sidePanel">
@@ -749,7 +794,6 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
             <a href="../living-in-switzerland.html#living">Living in Switzerland</a>
             <a href="../student-activities.html">Student Activities</a>
             <a href="../living-in-switzerland.html#transportation">Transportation</a>
-            <a href="https://share-eu1.hsforms.com/1t_dizG4cT7-D9bCyPSDnAwfwv24">Book a Campus Visit</a>
           </div>
         </div></div>
       </div>
@@ -765,13 +809,22 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
             <a href="meet-our-people.html">Meet Our People</a>
             <a href="governance.html">Leadership &amp; Governance</a>
             <a href="policies-and-procedures.html">Policies</a>
-            <a href="academic-partners/tiffin-university.html">Academic Partners</a>
+            <a href="academic-partners/tiffin-university.html">Academic Partner</a>
             <a href="industry-partners/ibm.html">Industry Partners &amp; Collaborations</a>
-            <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24">Contact</a>
+            <a href="../contact-us.html">Contact Us</a>
           </div>
         </div></div>
       </div>
-      <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24" class="side-panel-link">Contact</a>
+            <div class="accordion-item" data-panel-key="contact" id="menu-contact">
+        <button class="accordion-trigger">Contact Us <span class="accordion-icon"></span></button>
+        <div class="accordion-panel"><div class="accordion-panel-inner">
+          <div class="accordion-group">
+            <a href="https://meetings-eu1.hubspot.com/jonathan-hilton/advisory-session">Student Advising</a>
+            <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24">Book a Call</a>
+            <a href="https://share-eu1.hsforms.com/1t_dizG4cT7-D9bCyPSDnAwfwv24">Book a Campus Visit</a>
+          </div>
+        </div></div>
+      </div>
     </nav>
   </aside>
 </div>
@@ -783,16 +836,71 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
   <nav class="archive-tab-toc" id="archiveTabToc" aria-label="Jump to section"></nav>
 </div>
 
-<section class="people-hero" data-chapter="01" data-chapter-label="Our People"><div class="wrap"><span class="eyebrow on-navy">About AUS</span><h1>Meet Our People</h1><p>The people behind the AUS experience bring together academic depth, professional practice and a shared commitment to student success.</p></div></section><section class="people-section" data-chapter="02" data-chapter-label="Leadership & Academic Affairs"><div class="wrap"><span class="eyebrow">Department</span><h2>Leadership & Academic Affairs</h2><div class="people-grid"><article class="person-card" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc0e3242cee4a2ab0db_dr-dominic-szambowski.webp" alt="Dean Dr. Dominic Szambowski"><div class="person-caption"><h3>Dean Dr. Dominic Szambowski</h3><p>Executive Dean</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div><div class="person-bio"><strong>Dean Dr. Dominic Szambowski</strong><span>Executive Dean</span><p>An international education leader with experience across Australia, Malaysia, Switzerland and the United States, focused on academic quality and student-centered growth.</p><button type="button" class="person-bio-close">Back to profile</button></div></article>
-<article class="person-card" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc7c7b162a3710270e9_vittoria-gambirasi.webp" alt="Vittoria Gambirasi"><div class="person-caption"><h3>Vittoria Gambirasi</h3><p>AI, Marketing & Organizational Transformation</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div><div class="person-bio"><strong>Vittoria Gambirasi</strong><span>AI, Marketing & Organizational Transformation</span><p>Brings together emerging technology, marketing strategy and organizational transformation to help learners connect ideas with practical change.</p><button type="button" class="person-bio-close">Back to profile</button></div></article>
-<article class="person-card" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc5dfbf3d61bcf249a9_prof-natan-zimenkov.webp" alt="Prof. Natan Zimenkov"><div class="person-caption"><h3>Prof. Natan Zimenkov</h3><p>Economics & Financial Management</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div><div class="person-bio"><strong>Prof. Natan Zimenkov</strong><span>Economics & Financial Management</span><p>Supports students in understanding economic decisions, financial systems and the analytical thinking behind responsible management.</p><button type="button" class="person-bio-close">Back to profile</button></div></article></div></div></section>
-<section class="people-section alt" data-chapter="03" data-chapter-label="Business, People & Strategy"><div class="wrap"><span class="eyebrow">Department</span><h2>Business, People & Strategy</h2><div class="people-grid"><article class="person-card" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc5c73e2c87e7d6fa40_katarzyna-grzesik-harz.webp" alt="Katarzyna Grzesik-Harz"><div class="person-caption"><h3>Katarzyna Grzesik-Harz</h3><p>Executive Leadership & Psychology</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div><div class="person-bio"><strong>Katarzyna Grzesik-Harz</strong><span>Executive Leadership & Psychology</span><p>Explores how leaders build trust, guide teams and translate an understanding of people into stronger organizations.</p><button type="button" class="person-bio-close">Back to profile</button></div></article>
-<article class="person-card" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc2c73e2c87e7d6f962_dr-natalia-raksha.webp" alt="Dr. Natalia Raksha"><div class="person-caption"><h3>Dr. Natalia Raksha</h3><p>Strategic Management & Leadership</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div><div class="person-bio"><strong>Dr. Natalia Raksha</strong><span>Strategic Management & Leadership</span><p>Connects strategic thinking with leadership practice, helping students turn complex organizational challenges into clear decisions.</p><button type="button" class="person-bio-close">Back to profile</button></div></article>
-<article class="person-card" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc39094a639bba40321_dr-olivier-naray.webp" alt="Dr. Olivier Naray"><div class="person-caption"><h3>Dr. Olivier Naray</h3><p>International Business & Economic Diplomacy</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div><div class="person-bio"><strong>Dr. Olivier Naray</strong><span>International Business & Economic Diplomacy</span><p>Brings an international perspective to trade, policy and economic diplomacy across markets and institutions.</p><button type="button" class="person-bio-close">Back to profile</button></div></article></div></div></section>
-<section class="people-section" data-chapter="04" data-chapter-label="Aviation & Industry"><div class="wrap"><span class="eyebrow">Department</span><h2>Aviation & Industry</h2><div class="people-grid"><article class="person-card" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc5867bc7febcb2624d_sandro-guidetti.webp" alt="Sandro Guidetti"><div class="person-caption"><h3>Sandro Guidetti</h3><p>Aviation</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div><div class="person-bio"><strong>Sandro Guidetti</strong><span>Aviation</span><p>Shares industry-facing aviation knowledge and helps students understand the operational realities behind global mobility.</p><button type="button" class="person-bio-close">Back to profile</button></div></article>
-<article class="person-card" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc5613cbe4a14372d27_philippe-meyer.webp" alt="Philippe Meyer"><div class="person-caption"><h3>Philippe Meyer</h3><p>Aviation</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div><div class="person-bio"><strong>Philippe Meyer</strong><span>Aviation</span><p>Connects classroom study with contemporary aviation practice, systems and professional expectations.</p><button type="button" class="person-bio-close">Back to profile</button></div></article>
-<article class="person-card" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc5dfff9ef80f866c13_humbert-costas-garcia.webp" alt="Humbert Costas Garcia"><div class="person-caption"><h3>Humbert Costas Garcia</h3><p>Aviation Safety, Quality & Operations</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div><div class="person-bio"><strong>Humbert Costas Garcia</strong><span>Aviation Safety, Quality & Operations</span><p>Focuses on safety, quality and operational planning in an industry where disciplined decisions matter every day.</p><button type="button" class="person-bio-close">Back to profile</button></div></article></div></div></section>
-
+<section class="people-hero" data-chapter="01" data-chapter-label="Our People"><div class="wrap"><span class="eyebrow on-navy">About AUS</span><h1>Meet Our People</h1><p>Meet the team whose leadership, expertise and care shape the AUS experience.</p></div></section>
+<section class="people-section people-directory" data-chapter="02" data-chapter-label="AUS Team">
+  <div class="wrap"><span class="eyebrow">AUS Team</span><h2>The people behind AUS.</h2><p class="people-lead">One connected team supports academic quality, institutional development, admissions, technology, communications and the everyday student experience.</p><div class="people-grid">
+<article class="person-card" tabindex="0">
+  <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa95db26dcbf128e20fa169_Fouad.webp" alt="Fouad Al Khansa">
+  <div class="person-caption"><h3>Fouad Al Khansa</h3><p>Head of Institutional Development</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div>
+  <div class="person-bio"><strong>Fouad Al Khansa</strong><span>Head of Institutional Development</span><p>Supports institutional initiatives and long-term organizational priorities at AUS.</p><button type="button" class="person-bio-close">Back to profile</button></div>
+</article>
+<article class="person-card" tabindex="0">
+  <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa95db21e2c951cf450316a_Hakim.webp" alt="Hakim El Omrani">
+  <div class="person-caption"><h3>Hakim El Omrani</h3><p>Executive Director</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div>
+  <div class="person-bio"><strong>Hakim El Omrani</strong><span>Executive Director</span><p>Oversees executive operations and helps translate institutional priorities into coordinated action.</p><button type="button" class="person-bio-close">Back to profile</button></div>
+</article>
+<article class="person-card" tabindex="0">
+  <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa95db2c37c7848e229e664_Dominic.webp" alt="Dominic Szambowski">
+  <div class="person-caption"><h3>Dominic Szambowski</h3><p>Executive Dean</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div>
+  <div class="person-bio"><strong>Dominic Szambowski</strong><span>Executive Dean</span><p>Provides academic leadership and supports the quality and direction of teaching and learning at AUS.</p><button type="button" class="person-bio-close">Back to profile</button></div>
+</article>
+<article class="person-card" tabindex="0">
+  <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa95db26602daa375412dde_Connor.webp" alt="Connor Lamb">
+  <div class="person-caption"><h3>Connor Lamb</h3><p>Vice Dean of Academics</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div>
+  <div class="person-bio"><strong>Connor Lamb</strong><span>Vice Dean of Academics</span><p>Supports academic planning, faculty coordination and the delivery of the student learning experience.</p><button type="button" class="person-bio-close">Back to profile</button></div>
+</article>
+<article class="person-card" tabindex="0">
+  <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa95db4a13fc8df5545d3db_Paulo.webp" alt="Paulo Pereira">
+  <div class="person-caption"><h3>Paulo Pereira</h3><p>Registrar</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div>
+  <div class="person-bio"><strong>Paulo Pereira</strong><span>Registrar</span><p>Oversees academic records, registration processes and key student administration services.</p><button type="button" class="person-bio-close">Back to profile</button></div>
+</article>
+<article class="person-card" tabindex="0">
+  <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa95db2d29d2a961dc6a7b3_Anca.webp" alt="Anca Prisacariu">
+  <div class="person-caption"><h3>Anca Prisacariu</h3><p>Quality Assurance Director</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div>
+  <div class="person-bio"><strong>Anca Prisacariu</strong><span>Quality Assurance Director</span><p>Leads quality assurance processes and supports continuous improvement across the institution.</p><button type="button" class="person-bio-close">Back to profile</button></div>
+</article>
+<article class="person-card" tabindex="0">
+  <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa95db2cd663a402e494e21_Jonathan.webp" alt="Jonathan Hilton">
+  <div class="person-caption"><h3>Jonathan Hilton</h3><p>Head of Admission and Recruitment</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div>
+  <div class="person-bio"><strong>Jonathan Hilton</strong><span>Head of Admission and Recruitment</span><p>Leads admissions and recruitment, helping prospective students understand programs and their next steps.</p><button type="button" class="person-bio-close">Back to profile</button></div>
+</article>
+<article class="person-card" tabindex="0">
+  <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa95db20d2739bf368d590a_Abbass.webp" alt="Abbass Mokashar">
+  <div class="person-caption"><h3>Abbass Mokashar</h3><p>Chief Information & Technology Officer</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div>
+  <div class="person-bio"><strong>Abbass Mokashar</strong><span>Chief Information & Technology Officer</span><p>Leads information technology strategy, digital systems and technology-enabled institutional development.</p><button type="button" class="person-bio-close">Back to profile</button></div>
+</article>
+<article class="person-card" tabindex="0">
+  <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa95db3a13fc8df5545d39c_Nour.webp" alt="Nour El Yaafouri">
+  <div class="person-caption"><h3>Nour El Yaafouri</h3><p>Graphic Designer</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div>
+  <div class="person-bio"><strong>Nour El Yaafouri</strong><span>Graphic Designer</span><p>Develops visual communications and design materials that support the AUS brand and student experience.</p><button type="button" class="person-bio-close">Back to profile</button></div>
+</article>
+<article class="person-card" tabindex="0">
+  <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa95db8fcb4c9761e7cfbed_Rayan.webp" alt="Rayan Abdallah">
+  <div class="person-caption"><h3>Rayan Abdallah</h3><p>Student Recruitment Officer — MENA Region</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div>
+  <div class="person-bio"><strong>Rayan Abdallah</strong><span>Student Recruitment Officer — MENA Region</span><p>Supports prospective students across the MENA region throughout discovery, admissions and enrollment.</p><button type="button" class="person-bio-close">Back to profile</button></div>
+</article>
+<article class="person-card" tabindex="0">
+  <img loading="lazy" decoding="async" src="https://placehold.co/900x1100/f1f1ef/22295f?text=Ivana+Korolija%0APhoto+Coming+Soon" alt="Placeholder portrait for Ivana Korolija">
+  <div class="person-caption"><h3>Ivana Korolija</h3><p>Administrative Assistant</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div>
+  <div class="person-bio"><strong>Ivana Korolija</strong><span>Administrative Assistant</span><p>Supports day-to-day administration and helps coordinate services across the AUS community.</p><button type="button" class="person-bio-close">Back to profile</button></div>
+</article>
+<article class="person-card" tabindex="0">
+  <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa95db1d97052904e24b5b4_Caitline.webp" alt="Caitline Bengtsson">
+  <div class="person-caption"><h3>Caitline Bengtsson</h3><p>Head of Marketing</p><button type="button" class="person-bio-toggle" aria-expanded="false">View biography</button></div>
+  <div class="person-bio"><strong>Caitline Bengtsson</strong><span>Head of Marketing</span><p>Leads marketing strategy, communications and audience engagement for AUS.</p><button type="button" class="person-bio-close">Back to profile</button></div>
+</article>
+  </div></div>
+</section>
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-top">
@@ -818,7 +926,7 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
         <div class="footer-col-title" style="margin-top:6px;">Connect</div>
         <a href="../admissions.html">Admissions</a>
 
-        <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24">Contact Us</a>
+        <a href="../contact-us.html">Contact Us</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">School</div>
@@ -836,6 +944,14 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
         <a href="https://search.ebscohost.com/login.aspx" target="_blank" rel="noopener">E-Library</a>
         <a href="https://openstax.org/" target="_blank" rel="noopener">OpenStax</a>
         <a href="https://www.oecd.org/en/publications.html" target="_blank" rel="noopener">OECD Publications</a>
+        <div class="footer-contact-heading footer-col-title">Visit Us</div>
+        <address class="footer-contact-details">
+          <a href="mailto:info@aus.swiss">info@aus.swiss</a>
+          <span>Chemin du Levant 5</span>
+          <span>1814 La Tour-de-Peilz</span>
+          <span>Switzerland</span>
+          <a href="tel:+41219449501">+41 21 944 95 01</a>
+        </address>
       </div>
     </div>
     <div class="footer-v2_bottom">
@@ -1104,6 +1220,7 @@ html,body{max-width:100%;overflow-x:clip}main,section,.wrap{min-width:0}main img
     ,{title:"Careers & Outcomes",url:"../careers-outcomes.html",cat:"Careers",keys:"Career Services Graduate Outcomes Internships Employers Industry Connections coaching workshops employability careers"}
     ,{title:"Alumni & Student Success",url:"../alumni-success.html",cat:"Careers",keys:"Alumni Student Success Stories graduate network alumni benefits career support"}
     ,{title:"Living in Switzerland & Transportation",url:"../living-in-switzerland.html",cat:"Student Life",keys:"Live in Switzerland Transportation Swiss Riviera Lake Geneva La Tour-de-Peilz Vevey train bus SBB"}
+    ,{title:"Contact Us",url:"../contact-us.html",cat:"About",keys:"Contact AUS email phone address working hours student advising book a call campus visit La Tour-de-Peilz Switzerland"}
 ];
   // allow pages to extend idx via window.AUS_SEARCH_EXTRA
   if(window.AUS_SEARCH_EXTRA && Array.isArray(window.AUS_SEARCH_EXTRA)){ idx = idx.concat(window.AUS_SEARCH_EXTRA); }
