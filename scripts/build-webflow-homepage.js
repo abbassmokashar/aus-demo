@@ -165,7 +165,7 @@ function findArrayEnd(source, arrayStart) {
 
 function compactSearchKeys(item) {
   const source = String(item.keys || '').replace(/\s+/g, ' ').trim();
-  const lead = source.slice(0, 150);
+  const lead = source.slice(0, 130);
   const stop = new Set([
     'about', 'after', 'also', 'american', 'and', 'are', 'aus', 'built', 'can',
     'for', 'from', 'have', 'into', 'more', 'not', 'our', 'page', 'that', 'the',
@@ -179,9 +179,9 @@ function compactSearchKeys(item) {
     if (stop.has(word) || seen.has(word)) continue;
     seen.add(word);
     useful.push(word);
-    if (useful.join(' ').length >= 150) break;
+    if (useful.join(' ').length >= 130) break;
   }
-  return `${lead} ${useful.join(' ')}`.replace(/\s+/g, ' ').trim().slice(0, 320);
+  return `${lead} ${useful.join(' ')}`.replace(/\s+/g, ' ').trim().slice(0, 280);
 }
 
 function wrapScript(code) {

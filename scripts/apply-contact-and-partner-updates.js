@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { programImageUrls } = require('./program-image-urls');
+const { rewriteDocument } = require('./rewrite-github-urls');
 
 const root = path.resolve(__dirname, '..');
 const skipped = new Set(['.chrome-backup', '.git', '.visual-check', 'history', 'node_modules', 'webflow']);
@@ -25,8 +26,8 @@ main,section,.wrap{min-width:0}
 .aus-nav-talk{font-family:inherit;cursor:pointer;appearance:none;-webkit-appearance:none;background:transparent;color:inherit}
 .footer-social-title{margin-top:24px;margin-bottom:0}.footer-social-grid{display:flex;flex-wrap:wrap;gap:9px;margin-top:11px}.footer-social-grid a{padding:0}
 .footer-contact-heading{margin:26px 0 9px}
-.footer-contact-details{display:flex;flex-direction:column;gap:3px;margin-top:0;font-style:normal;font-size:13.5px;line-height:1.55;color:rgba(34,41,95,.75)}
-.footer-contact-details a{display:inline;color:inherit;font-weight:650}.footer-contact-details a:hover{color:var(--crimson)}
+.footer-contact-details{display:flex;flex-direction:column;gap:8px;margin-top:0;font-style:normal;font-size:13.5px;line-height:1.55;color:rgba(34,41,95,.75)}
+.footer-contact-item{display:flex!important;align-items:flex-start;gap:8px;color:inherit}.footer-contact-item svg{width:16px;height:16px;flex:0 0 16px;margin-top:2px;color:var(--crimson)}.footer-contact-item>span{display:block;min-width:0}.footer-contact-details a{font-weight:650}.footer-contact-details a:hover{color:var(--crimson)}
 .aus-popup-recognition{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:center;justify-content:center;gap:10px;margin:0 0 14px}
 .aus-popup-recognition-card{display:grid;place-items:center;width:100%;min-width:0;padding:0;border:1px solid var(--line);border-radius:12px;background:transparent;overflow:hidden}
 .aus-popup-recognition-card img{display:block;width:min(44%,112px);height:auto;object-fit:contain;margin:10px auto}
@@ -36,7 +37,7 @@ main,section,.wrap{min-width:0}
 .partner-hero-lockup{position:absolute;z-index:3;right:clamp(22px,5vw,76px);top:clamp(110px,15vh,155px);bottom:auto;display:flex;align-items:center;gap:16px;max-width:min(46vw,540px);padding:12px 16px;border:1px solid rgba(255,255,255,.58);border-radius:18px;background:rgba(255,255,255,.8);box-shadow:0 14px 34px rgba(17,24,39,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .partner-hero-lockup img{display:block;width:auto;max-width:210px;height:62px;object-fit:contain}.partner-hero-lockup img:first-child{height:70px}
 .hero-mob-img .partner-hero-lockup{right:16px;top:auto;bottom:18px;left:16px;max-width:none;justify-content:center;padding:10px 12px}.hero-mob-img .partner-hero-lockup img{height:38px;max-width:128px}.hero-mob-img .partner-hero-lockup img:first-child{height:43px}.hero-mob-img .partner-x{font-size:36px}
-.rankings>.wrap{display:flex;flex-direction:column}.rankings>.wrap>.chapter-label{order:0}.rankings>.wrap>.rankings-head{order:1}.rankings>.wrap>.logo-carousel-wrap{order:2}.rankings>.wrap>.rankings-highlight{order:3;position:relative;clear:both}
+.rankings>.wrap{display:flex;flex-direction:column}.rankings>.wrap>.chapter-label{order:0}/*.rankings>.wrap>.rankings-head{order:1}*/.rankings>.wrap>.logo-carousel-wrap{order:2}.rankings>.wrap>.rankings-highlight{order:3;position:relative;clear:both}
 .stagger-grid.is-visible>*:nth-child(n+7){opacity:1;transform:translateY(0);transition-delay:.47s}
 @media(max-width:760px){
   .aus-search-drop{position:fixed!important;top:64px!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important;width:calc(100vw - 20px)!important;max-width:620px!important;max-height:calc(100dvh - 76px)!important}
@@ -66,11 +67,9 @@ const recognition = `      <div class="aus-popup-recognition" aria-label="AUS ra
       </div>`;
 
 const footerDetails = `        <address class="footer-contact-details">
-          <a href="mailto:info@aus.swiss">info@aus.swiss</a>
-          <span>Chemin du Levant 5</span>
-          <span>1814 La Tour-de-Peilz</span>
-          <span>Switzerland</span>
-          <a href="tel:+41219449501">+41 21 944 95 01</a>
+          <a class="footer-contact-item" href="mailto:info@aus.swiss"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg><span>info@aus.swiss</span></a>
+          <div class="footer-contact-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><span>Chemin du Levant 5<br>1814 La Tour-de-Peilz<br>Switzerland</span></div>
+          <a class="footer-contact-item" href="tel:+41219449501"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2.1Z"></path></svg><span>+41 21 944 95 01</span></a>
         </address>`;
 
 const footerHeading = '        <div class="footer-contact-heading footer-col-title">Visit Us</div>';
@@ -104,6 +103,10 @@ function updateShared(html) {
     .replaceAll('Accreditations & Memberships', 'Accreditation & Recognition')
     .replaceAll('Accreditation & Memberships', 'Accreditation & Recognition')
     .replaceAll('Plan Your AUS Investment', 'Plan your AUS journey with confidence.');
+  html = html
+    .replace(/(<a href="[^"]*admissions\.html)#key-info(">Entry Requirements<\/a>)/g, '$1#entry-requirements$2')
+    .replace(/(<a href="[^"]*admissions\.html)#key-info(">Required Documents<\/a>)/g, '$1#required-documents$2')
+    .replace(/(<a href="[^"]*admissions\.html)#key-info(">Application Deadlines<\/a>)/g, '$1#application-deadlines$2');
   html = html.replace(/\s*<a href="[^"]*living-in-switzerland\.html#transportation">Transportation<\/a>/g, '');
   html = html.replace('.aus-nav-talk{font-family:inherit;cursor:pointer;appearance:none;-webkit-appearance:none}', '.aus-nav-talk{font-family:inherit;cursor:pointer;appearance:none;-webkit-appearance:none;background:transparent;color:inherit}');
   if (!html.includes('.aus-popup{max-height:calc(100dvh - 32px)}')) {
@@ -145,7 +148,7 @@ function updateShared(html) {
     );
   }
   const contactDetailsMatch = html.match(/\s*<address class="footer-contact-details">[\s\S]*?<\/address>/);
-  const contactDetails = contactDetailsMatch ? contactDetailsMatch[0].trimStart() : footerDetails.trimStart();
+  const contactDetails = footerDetails.trimStart();
   if (contactDetailsMatch) html = html.replace(contactDetailsMatch[0], '');
   html = html.replace(/\s*<div class="footer-contact-heading footer-col-title">[\s\S]*?<\/div>/g, '');
   html = html.replace(
@@ -170,6 +173,14 @@ function updateShared(html) {
 }
 
 function updateHomepage(html) {
+  html = html.replace(
+    /(<a href="bachelors-degree\/international-business\/">International Business<\/a>\s*)(<a href="bachelors-degree\/sports-management-athletic-administration\/">)/,
+    '$1            <a href="bachelors-degree/hospitality-management/">Hospitality Management</a>\n            $2'
+  );
+  html = html.replace(
+    /(<div class="program-level" data-level="master"[\s\S]*?<div class="program-level-list-inner">\s*)(<a href="masters-degree\/data-analytics\/">)/,
+    '$1            <a href="masters-degree/aviation-management/">Aviation Management</a>\n            $2'
+  );
   if (!html.includes('class="reasons-partner-lockup')) {
     html = html.replace(
       /(\s*<\/div>\s*<div class="reasons-spread-content">)/,
@@ -181,6 +192,28 @@ function updateHomepage(html) {
   if (!html.includes("var reasonBrand = document.querySelector('[data-reason-brand]');")) {
     html = html.replace("var reasonImgs = document.querySelectorAll('.reasons-spread-img');", "var reasonImgs = document.querySelectorAll('.reasons-spread-img');\n  var reasonBrand = document.querySelector('[data-reason-brand]');");
     html = html.replace("reasonImgs.forEach(function(img){ img.classList.toggle('is-active', img.getAttribute('data-reason') === key); });", "reasonImgs.forEach(function(img){ img.classList.toggle('is-active', img.getAttribute('data-reason') === key); });\n    if(reasonBrand) reasonBrand.classList.toggle('is-active', key === '1');");
+  }
+  return html;
+}
+
+function completeHospitalityFinderRecord(html) {
+  const incomplete = '{id:"bsc_hospitality",name:"Hospitality Management",level:"Bachelor",levelLabel:"Bachelor\'s Degree",url:"bachelors-degree/hospitality-management/",interests:["hospitality"],career:["hospitality"],work:["sector"],ambition:["foundation","global"],priorities:["practical","international"],format:["fulltime"],credits:"180 ECTS",tuition:"CHF 30\\\'000/yr",duration:"3 years"}';
+  const complete = '{id:"bsc_hospitality",name:"Hospitality Management",level:"Bachelor",levelLabel:"Bachelor\'s Degree",url:"bachelors-degree/hospitality-management/",interests:["hospitality"],career:["hospitality"],work:["sector"],ambition:["foundation","global"],priorities:["practical","international"],format:["fulltime"],credits:"135 CH | 225 ECTS",tuition:"CHF 30\\\'000/yr",duration:"3 years",terms:"9 Academic Terms",entry:"September, January, April",overview:"Prepare for international careers in fast-growing service sectors. The Hospitality Management specialization prepares students for leadership roles in hotels, resorts, restaurants, event management, and tourism.",skills:["Hotel and resort management","Food and beverage operations","Revenue and yield management","Event planning and coordination","Guest relations and service excellence","Hospitality marketing and branding","Financial management in hospitality","Sustainable tourism practices"],curriculum:[{y:"Year 1",m:["Introduction to Business","Introduction to Finance","Business Communication","Introduction to International Business","Hospitality F&B Service","Hospitality French Language"]},{y:"Year 2",m:["Hospitality Internship","Hospitality F&B Cost Control","Hospitality Rooms Division Management","Hospitality Yield & Revenue Management","Business Strategy","Soft Skills for Sales"]},{y:"Year 3",m:["Hospitality Resort Management","Geopolitics & Global Business","Responsible Business Ethics","Global Trade","International Management","International Finance"]}]}';
+  return html.replaceAll(incomplete, complete);
+}
+
+function dedupeComparePrograms(html) {
+  const marker = '// ---------- COMPARE SPECIALIZATIONS ----------';
+  const first = html.indexOf(marker);
+  if (first === -1) return html;
+
+  let duplicate = html.indexOf(marker, first + marker.length);
+  while (duplicate !== -1) {
+    const scriptStart = html.lastIndexOf('<script', duplicate);
+    const scriptEnd = html.indexOf('</script>', duplicate);
+    if (scriptStart === -1 || scriptEnd === -1) break;
+    html = html.slice(0, scriptStart) + html.slice(scriptEnd + '</script>'.length);
+    duplicate = html.indexOf(marker, first + marker.length);
   }
   return html;
 }
@@ -294,11 +327,20 @@ for (const file of listHtml(root)) {
   let html = fs.readFileSync(file, 'utf8');
   const before = html;
   html = updateShared(html);
+  html = completeHospitalityFinderRecord(html);
   if (relative === 'index.html') html = updateHomepage(html);
+    if (relative === 'compare-programs.html') {
+      html = dedupeComparePrograms(html);
+      html = html.replace(
+        'if(!overlay||!openBtn||!closeBtn||!selA||!selB) return;',
+        'if(!selA||!selB) return;'
+      );
+    }
   if (relative === 'about/academic-partners/tiffin-university.html') html = updateTiffin(html);
   if (relative === 'housing.html') html = updateHousing(html);
   if (relative === 'programs/federal-diploma.html') html = updateDiploma(html);
   if (relative.startsWith('programs/')) html = updateRepeatedProgramImages(html, relative);
+  html = rewriteDocument(html, file);
   if (html !== before) {
     writeFileWithRetry(file, html);
     changed += 1;
