@@ -3,7 +3,7 @@ const path = require('path');
 const { chromium } = require('playwright');
 
 const root = path.resolve(__dirname, '..');
-const output = path.join(root, '.visual-check', 'latest');
+const output = path.join(root, '.visual-check', 'latest-current');
 fs.mkdirSync(output, { recursive: true });
 
 async function routeLocalAssets(page) {
@@ -73,7 +73,17 @@ async function overflow(page) {
     { name: 'homepage-partner', url: 'http://127.0.0.1:8766/index.html', selector: '.reasons-partner-lockup' },
     { name: 'tiffin-hero', url: 'http://127.0.0.1:8766/about/academic-partners/tiffin-university.html', selector: '.hero' },
     { name: 'campus-facilities', url: 'http://127.0.0.1:8766/campus-facilities.html', selector: 'main' },
+    { name: 'campus-facilities-mobile', url: 'http://127.0.0.1:8766/campus-facilities.html', selector: 'main', mobile: true },
     { name: 'campus-experience-mobile', url: 'http://127.0.0.1:8766/student-life/campus.html', selector: '[data-chapter="04"]', mobile: true },
+    { name: 'admissions-intakes', url: 'http://127.0.0.1:8766/admissions.html', selector: '#application-deadlines' },
+    { name: 'admissions-intakes-mobile', url: 'http://127.0.0.1:8766/admissions.html', selector: '#application-deadlines', mobile: true },
+    { name: 'alumni-mobile', url: 'http://127.0.0.1:8766/alumni-success.html', selector: '#alumni', mobile: true },
+    { name: 'living-mobile', url: 'http://127.0.0.1:8766/living-in-switzerland.html', selector: '#settling-in', mobile: true },
+    { name: 'activities-mobile', url: 'http://127.0.0.1:8766/student-activities.html', selector: '#student-experience', mobile: true },
+    { name: 'meet-team-mobile', url: 'http://127.0.0.1:8766/about/meet-our-people.html', selector: '.people-directory', mobile: true },
+    { name: 'accreditation', url: 'http://127.0.0.1:8766/about/accreditation.html', selector: '#recognition-status' },
+    { name: 'accreditation-qs-mobile', url: 'http://127.0.0.1:8766/about/accreditation.html', selector: '.qs-recognition', mobile: true },
+    { name: 'program-advantage-mobile', url: 'http://127.0.0.1:8766/masters-degree/finance/', selector: '.program-advantage', mobile: true },
     { name: 'bachelor-aviation', url: 'http://127.0.0.1:8766/bachelors-degree/aviation-management/', selector: '.hero' },
     { name: 'master-aviation', url: 'http://127.0.0.1:8766/masters-degree/aviation-management/', selector: '.hero' }
   ]) {

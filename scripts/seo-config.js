@@ -129,7 +129,7 @@ const pages = {
     description: "Check the Bachelor's degree, English-language, personal statement, document and interview requirements for AUS Master's programs."
   },
   '/meet-our-people': {
-    title: 'Meet Our People | AUS Business School',
+    title: 'Meet Our Team | AUS Business School',
     description: 'Meet the leadership, academic and professional teams who support teaching, operations and the student experience at AUS Business School.'
   },
   '/policies': {

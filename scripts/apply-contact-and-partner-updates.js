@@ -7,8 +7,8 @@ const skipped = new Set(['.chrome-backup', '.git', '.visual-check', 'history', '
 
 const AUS_LOGO = 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a99cdf83566fae73a65cc9c_AUS%20Logo%202023.png';
 const TIFFIN_LOGO = 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a9ac1b3fb4e84ba658f3a8a_tiffin-university-logo.svg';
-const BADGE_SWISS = 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a9dcf4a977a6a6c1b85f25f_2.png';
-const BADGE_GLOBAL = 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a9dcf4b71caefbe2cebb61e_200.png';
+const BADGE_SWISS = 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aaa549701ac3c9c1e1b9a35_rank%202.png';
+const BADGE_GLOBAL = 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aaa549c9a50844e7214c1a4_rank%20200.png';
 const CONTACT_FORM = 'https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24';
 const ADVISING = 'https://meetings-eu1.hubspot.com/jonathan-hilton/advisory-session';
 const CAMPUS_VISIT = 'https://share-eu1.hsforms.com/1t_dizG4cT7-D9bCyPSDnAwfwv24';
@@ -92,6 +92,19 @@ function logicalPath(file) {
 }
 
 function updateShared(html) {
+  html = html
+    .replaceAll('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&auto=format&fit=crop&q=80', 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aaa4a665311c16ac0174ce7_20080619-DSC_0347.webp')
+    .replaceAll('https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a9dcf4a977a6a6c1b85f25f_2.png', BADGE_SWISS)
+    .replaceAll('https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a9dcf4b71caefbe2cebb61e_200.png', BADGE_GLOBAL)
+    .replaceAll('Meet Our People', 'Meet Our Team')
+    .replaceAll('Meet our People', 'Meet our Team')
+    .replaceAll('Meet our people', 'Meet our team')
+    .replaceAll('Accreditations &amp; Memberships', 'Accreditation &amp; Recognition')
+    .replaceAll('Accreditation &amp; Memberships', 'Accreditation &amp; Recognition')
+    .replaceAll('Accreditations & Memberships', 'Accreditation & Recognition')
+    .replaceAll('Accreditation & Memberships', 'Accreditation & Recognition')
+    .replaceAll('Plan Your AUS Investment', 'Plan your AUS journey with confidence.');
+  html = html.replace(/\s*<a href="[^"]*living-in-switzerland\.html#transportation">Transportation<\/a>/g, '');
   html = html.replace('.aus-nav-talk{font-family:inherit;cursor:pointer;appearance:none;-webkit-appearance:none}', '.aus-nav-talk{font-family:inherit;cursor:pointer;appearance:none;-webkit-appearance:none;background:transparent;color:inherit}');
   if (!html.includes('.aus-popup{max-height:calc(100dvh - 32px)}')) {
     html = html.replace('.aus-popup-recognition-card span{font-size:11px;line-height:1.35;font-weight:750;color:var(--navy)}', '.aus-popup-recognition-card span{font-size:11px;line-height:1.35;font-weight:750;color:var(--navy)}\n.aus-popup{max-height:calc(100dvh - 32px)}.aus-popup-body{overflow-y:auto}');

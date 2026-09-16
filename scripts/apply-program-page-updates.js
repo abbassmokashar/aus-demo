@@ -35,6 +35,13 @@ const styles = `<style id="program-admissions-redesign-styles">
 .program-admissions .admissions-support a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 17px;border-radius:999px;font-family:var(--font-display);font-size:13px;font-weight:750;text-decoration:none}
 .program-admissions .admissions-support-primary{background:var(--crimson);color:#fff}
 .program-admissions .admissions-support-secondary{border:1px solid rgba(34,41,95,.24);color:var(--navy);background:#fff}
+.program-advantage{background:#f1f1ef!important}.program-advantage>div:first-child img{opacity:.035!important}
+.program-advantage-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:18px!important}
+.program-advantage-card{display:flex;flex-direction:column;min-width:0;min-height:240px;padding:26px!important;border:1px solid rgba(34,41,95,.18)!important;border-radius:16px!important;background:#fff;box-shadow:0 14px 34px rgba(17,24,39,.06)}
+.program-advantage-icon{display:flex!important;align-items:center!important;justify-content:center!important;width:46px!important;height:46px!important;margin-bottom:22px!important;border-radius:12px!important;background:#f1f1ef!important}.program-advantage-icon svg{display:block!important;margin:0!important;stroke:var(--navy)!important}
+.program-advantage-card h3{margin:0 0 10px!important;font-family:var(--font-display)!important;font-size:18px!important;font-style:normal!important;font-weight:800!important;line-height:1.2!important;color:var(--navy)!important}
+.program-advantage-card p{margin:0!important;font-size:14px!important;line-height:1.7!important;color:var(--ink-soft)!important}
+@media(max-width:980px){.program-advantage-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.program-advantage-card{min-height:220px}}
 @media(max-width:760px){
   .program-admissions{padding:50px 0}
   .program-admissions-head{grid-template-columns:1fr;gap:13px;margin-bottom:25px}
@@ -44,6 +51,7 @@ const styles = `<style id="program-admissions-redesign-styles">
   .program-admissions .admissions-support{align-items:stretch;flex-direction:column;padding:20px}
   .program-admissions .admissions-support-actions{display:grid;grid-template-columns:1fr;width:100%}
   .program-admissions .admissions-support a{width:100%}
+  .program-advantage-grid{grid-template-columns:1fr!important}.program-advantage-card{min-height:0;padding:22px!important}
 }
 </style>`;
 
@@ -112,14 +120,68 @@ function restoreNextIntakeApply(html) {
   return html.slice(0, sectionStart) + section + html.slice(sectionEnd + 10);
 }
 
+function redesignAdvantages(html) {
+  const start = html.search(/<section[^>]*data-chapter-label="Why AUS"[^>]*>/);
+  if (start < 0) return html;
+  const end = html.indexOf('</section>', start);
+  if (end < 0) return html;
+  let section = html.slice(start, end + 10);
+  section = section.replace(/<section(?![^>]*class=)/, '<section class="program-advantage"');
+  section = section.replace(/<section class="(?![^"]*program-advantage)([^"]*)"/, '<section class="program-advantage $1"');
+  section = section.replace(/<div style="display:grid;grid-template-columns:repeat\(4,1fr\);gap:clamp\(14px,1\.6vw,20px\);">/, '<div class="program-advantage-grid">');
+  section = section.replace(/<div class="(reveal(?: d[1-3])?)" style="padding:clamp\(20px,2\.5vw,28px\);border:1px solid var\(--line\);border-radius:4px;">/g, '<article class="$1 program-advantage-card">');
+  section = section.replace(/<\/div>\s*(?=<article class="reveal(?: d[1-3])? program-advantage-card">|<\/div>\s*<\/div>\s*<\/section>)/g, '</article>');
+  section = section.replace(/<div style="width:40px;height:40px;background:var\(--sky\);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">/g, '<div class="program-advantage-icon">');
+  return html.slice(0, start) + section + html.slice(end + 10);
+}
+
+const intakeScript = `<script id="aus-intake-schedule-script">
+(function(){
+  function secondMonday(year,month){var d=new Date(year,month,1);return new Date(year,month,1+((8-d.getDay())%7)+7);}
+  function lastMonday(year,month){var d=new Date(year,month+1,0);return new Date(year,month,d.getDate()-((d.getDay()+6)%7));}
+  function upcomingIntakes(limit){
+    var today=new Date();today.setHours(0,0,0,0);var output=[];
+    for(var year=today.getFullYear();year<=today.getFullYear()+3;year++){
+      [
+        {month:0,name:'January',start:secondMonday(year,0),deadline:new Date(year-1,10,15)},
+        {month:3,name:'April',start:lastMonday(year,3),deadline:new Date(year,1,15)},
+        {month:8,name:'September',start:lastMonday(year,8),deadline:new Date(year,6,15)}
+      ].forEach(function(item){if(item.deadline>=today)output.push({name:item.name,year:year,start:item.start,deadline:item.deadline});});
+    }
+    return output.sort(function(a,b){return a.deadline-b.deadline;}).slice(0,limit||3);
+  }
+  var next=upcomingIntakes(1)[0];if(!next)return;
+  document.querySelectorAll('[data-next-intake-label]').forEach(function(el){el.textContent=next.name+' '+next.year;});
+  document.querySelectorAll('[data-next-intake-deadline]').forEach(function(el){el.textContent='Classes begin: '+next.start.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})+' · Application deadline: '+next.deadline.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})+' · Program availability is confirmed by Admissions.';});
+  window.AUSUpcomingIntakes=upcomingIntakes;
+})();
+</script>`;
+
+function updateNextIntakeDetails(html) {
+  const marker = '<!-- NEXT INTAKE -->';
+  const markerIndex = html.indexOf(marker);
+  if (markerIndex < 0) return html;
+  const end = html.indexOf('</section>', markerIndex);
+  if (end < 0) return html;
+  let section = html.slice(markerIndex, end + 10);
+  section = section.replace(/<div(?: data-next-intake-label)? style="font-family:var\(--font-display\);font-weight:800;font-size:clamp\(28px,3vw,40px\);color:var\(--navy\);margin-top:8px;">[^<]*<\/div>/, '<div data-next-intake-label style="font-family:var(--font-display);font-weight:800;font-size:clamp(28px,3vw,40px);color:var(--navy);margin-top:8px;">January 2027</div>');
+  section = section.replace(/<div(?: data-next-intake-deadline)? style="font-size:14px;color:var\(--ink-soft\);margin-top:4px;">[\s\S]*?<\/div>/, '<div data-next-intake-deadline style="font-size:14px;color:var(--ink-soft);margin-top:4px;">Classes begin: 11 January 2027 · Application deadline: 15 November 2026 · Program availability is confirmed by Admissions.</div>');
+  html = html.slice(0, markerIndex) + section + html.slice(end + 10);
+  if (html.includes('aus-intake-schedule-script')) html = html.replace(/<script id="aus-intake-schedule-script">[\s\S]*?<\/script>/, intakeScript);
+  else html = html.replace('</body>', `${intakeScript}\n</body>`);
+  return html;
+}
+
 function update(html) {
   html = html.replaceAll('href="/admissions"', 'href="/admissions-financing"');
   html = html.replace(/<style id="program-admissions-redesign-styles">[\s\S]*?<\/style>/, styles);
   if (!html.includes('program-admissions-redesign-styles')) html = html.replace('</head>', `${styles}\n</head>`);
   html = redesignAdmissions(html);
+  html = redesignAdvantages(html);
   html = updateHeroActions(html);
   html = html.replace(/<div style="display:flex;gap:12px;">\s*<\/div>/g, '');
   html = restoreNextIntakeApply(html);
+  html = updateNextIntakeDetails(html);
   return html;
 }
 

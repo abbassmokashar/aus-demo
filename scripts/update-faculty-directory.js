@@ -21,14 +21,16 @@ const removedNames = new Set([
   'Dr. Haitao Zhang',
   'Dr. Attila Shelley',
   'Dr. Alessandro Bianchi',
-  'Dr. Haluk Haksal'
+  'Dr. Haluk Haksal',
+  'Prof. Thomas Lindsey',
+  'Prof. Saeed Saadatnejad'
 ]);
 
 const newFaculty = [
   {
     name: 'Prof. Yannick Bouyidou',
     title: 'International Business and Entrepreneurship &amp; Venture Capital',
-    image: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc5dfbf3d61bcf249a9_prof-natan-zimenkov.webp'
+    image: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aaa76e7a79f462458a7452e_Yannick%20Bouyidou.webp'
   },
   {
     name: 'Prof. Sandra Bandelier',
@@ -36,26 +38,21 @@ const newFaculty = [
     image: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc3c20b8c07a9981159_dr-suzanne-rosselet.webp'
   },
   {
-    name: 'Prof. Thomas Lindsey',
-    title: 'Business Communication',
-    image: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc5f15285d84e630fb6_robert-fontaine.webp'
-  },
-  {
     name: 'Dr. Jessie Yan',
     title: 'Business Ethics',
-    image: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc2c73e2c87e7d6f962_dr-natalia-raksha.webp'
+    image: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aaa76e6898fde21b7c73ec5_jessie%20yan.webp'
   },
   {
     name: 'Dr. Nadia Spadaro',
     title: 'Law and Research Methods',
-    image: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc3d819cdf9a9784795_dr-ruby-bakshi-khurdi.webp'
-  },
-  {
-    name: 'Prof. Saeed Saadatnejad',
-    title: 'AI Systems',
-    image: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa05fc086074b0dd59f1f66_dr-alessandro-bianchi.webp'
+    image: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aaa7bf577ac4c0c3b77c33f_Nadia.webp'
   }
 ];
+
+const facultyImageOverrides = new Map([
+  ['Katarzyna Grzesik-Harz', 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aaa76e720608e06540af8c7_Katarzyna%20Grzesik-Harz.webp'],
+  ['Dr. Sajal Kabiraj', 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aaa76e70ea617fa38539b78_Sajal%20Kabiraj.webp']
+]);
 
 function cardMarkup({ name, title, image }) {
   return `      <div class="faculty-card tilt-card">
@@ -80,7 +77,6 @@ const grid = html.slice(gridStart, gridEnd);
 const afterGrid = html.slice(gridEnd);
 const cardPattern = /      <div class="faculty-card tilt-card">\r?\n[\s\S]*?\r?\n      <\/div>\r?\n?/g;
 const cards = grid.match(cardPattern) || [];
-const existingNames = new Set(cards.map((card) => card.match(/<div class="faculty-card-name">([^<]+)<\/div>/)?.[1]));
 const removed = [];
 const retained = cards.filter((card) => {
   const name = card.match(/<div class="faculty-card-name">([^<]+)<\/div>/)?.[1];
@@ -89,15 +85,15 @@ const retained = cards.filter((card) => {
     return false;
   }
   return !newFaculty.some((person) => person.name === name);
+}).map((card) => {
+  const name = card.match(/<div class="faculty-card-name">([^<]+)<\/div>/)?.[1];
+  const image = facultyImageOverrides.get(name);
+  return image ? card.replace(/(<img class="faculty-card-img"[^>]* src=")[^"]+/, `$1${image}`) : card;
 });
-
-const missing = [...removedNames].filter((name) => !removed.includes(name));
-const alreadyUpdated = removed.length === 0 && newFaculty.every((person) => existingNames.has(person.name));
-if (missing.length && !alreadyUpdated) throw new Error(`Requested faculty entries were not found: ${missing.join(', ')}`);
 
 const rebuiltGrid = `${gridOpen}\n${retained.join('').trimEnd()}\n${newFaculty.map(cardMarkup).join('\n')}\n`;
 html = beforeGrid + rebuiltGrid + afterGrid;
 fs.writeFileSync(sourcePath, html, 'utf8');
 fs.copyFileSync(sourcePath, distPath);
 
-console.log(`Removed ${removed.length} faculty profiles and added ${newFaculty.length} temporary profiles.`);
+console.log(`Removed ${removed.length} faculty profiles and refreshed ${newFaculty.length} managed profiles.`);
