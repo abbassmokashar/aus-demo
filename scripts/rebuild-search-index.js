@@ -27,7 +27,13 @@ function sourceForRoute(route) {
   return sourceByRoute.get(route) || null;
 }
 
+const landingPageCategories = {
+  '/study-in-switzerland': 'Admissions',
+  '/aviation-management': 'Programs'
+};
+
 function categoryForRoute(route) {
+  if (landingPageCategories[route]) return landingPageCategories[route];
   if (route === '/') return 'Home';
   if (/^\/(?:bachelors-degree|masters-degree|doctorate-in-business-administration|swiss-federal-diploma|programs|find-programs|compare-programs)/.test(route)) return 'Programs';
   if (/^\/(?:admissions|bachelors-admission|masters-admission|doctoral-admission|english-language|international|transfer)/.test(route)) return 'Admissions';
@@ -128,10 +134,12 @@ function writeFileWithRetry(file, contents) {
   throw lastError;
 }
 
-function rebuild() {
+function rebuild(only = []) {
+  const wanted = new Set(only.map((value) => value.replace(/\\/g, '/')));
   const entries = pageEntries();
   let updated = 0;
   for (const file of listHtml(root)) {
+    if (wanted.size && !wanted.has(path.relative(root, file).replace(/\\/g, '/'))) continue;
     let html = fs.readFileSync(file, 'utf8');
     const declaration = html.indexOf('var idx=');
     if (declaration < 0) continue;
@@ -146,4 +154,6 @@ function rebuild() {
   console.log(`Rebuilt ${updated} search indexes with ${pageCount} public pages and ${faqCount} FAQ answers.`);
 }
 
-rebuild();
+module.exports = { rebuild };
+
+if (require.main === module) rebuild(process.argv.slice(2));

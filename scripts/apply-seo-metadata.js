@@ -198,10 +198,13 @@ function cleanHead(head) {
     .replace(/<script\b[^>]*id="aus-structured-data"[^>]*>[\s\S]*?<\/script>\s*/gi, '');
 }
 
-function applyMetadata() {
+function applyMetadata(only = []) {
+  const wanted = new Set(only.map((value) => value.replace(/\\/g, '/')));
   let changed = 0;
   let processed = 0;
   for (const file of listHtml(root)) {
+    const relative = path.relative(root, file).replace(/\\/g, '/');
+    if (wanted.size && !wanted.has(relative)) continue;
     const route = routeForFile(file);
     if (!route) throw new Error(`No canonical route is configured for ${path.relative(root, file)}.`);
     const meta = pages[route];
@@ -224,6 +227,6 @@ function applyMetadata() {
   console.log(`Applied SEO metadata to ${processed} HTML files; changed ${changed}.`);
 }
 
-if (require.main === module) applyMetadata();
+if (require.main === module) applyMetadata(process.argv.slice(2));
 
 module.exports = { applyMetadata, routeForFile };

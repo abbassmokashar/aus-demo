@@ -136,6 +136,11 @@ const pages = {
     title: 'Policies and Procedures | AUS Business School',
     description: 'Access AUS Business School academic, student, privacy, quality-assurance and institutional policies and procedures.'
   },
+  '/aviation-management': {
+    title: 'Aviation Management in Switzerland | AUS Business School',
+    description: 'Study Aviation Management in Switzerland at an IATA Authorized Training Center. Compare the BSc and MSc programs, annual tuition and entry requirements.',
+    llms: { label: 'Aviation Management in Switzerland' }
+  },
   '/programs': {
     title: 'Business Degree Programs in Switzerland | AUS',
     description: 'Explore AUS Bachelor, Master, DBA and Swiss Federal Diploma programs designed around applied business learning in Switzerland.'
@@ -143,6 +148,11 @@ const pages = {
   '/rankings': {
     title: 'Rankings & Recognition | AUS Business School',
     description: 'Explore AUS Business School rankings, QS Stars ratings and recognition for teaching, employability, facilities and business education.'
+  },
+  '/study-in-switzerland': {
+    title: 'Study Business in Switzerland | AUS Business School',
+    description: 'Study business in Switzerland at AUS Business School on Lake Geneva. Compare Bachelor, Master and DBA programs, annual tuition and funding, then request a brochure.',
+    llms: { label: 'Study business in Switzerland' }
   },
   '/speaker-series': {
     title: 'Speaker Series & Industry Visits | AUS',

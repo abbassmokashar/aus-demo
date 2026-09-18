@@ -12,6 +12,7 @@ const {
   wrapScript
 } = require('./build-webflow-homepage');
 const { canonicalizeDocument } = require('./rewrite-webflow-urls');
+const { webflowCompatibilityCss } = require('./webflow-compatibility-css');
 
 const root = path.resolve(__dirname, '..');
 const outputRoot = path.join(root, 'webflow', 'pages');
@@ -207,9 +208,10 @@ function buildPage(sourcePath) {
   const body = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i)?.[1];
   if (!body) throw new Error(`${sourceRelative} has no body element.`);
 
-  const css = [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)]
+  const sourceCss = [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)]
     .map((match) => match[1])
     .join('\n');
+  const css = `${webflowCompatibilityCss}\n${sourceCss}`;
   const links = fontLinksFromHead(head);
   const cssChunks = splitCss(css, targetLimit - 20).map((chunk, index) => {
     const linkMarkup = index === 0 && links.length ? `${links.join('\n')}\n` : '';
@@ -245,7 +247,7 @@ function buildPage(sourcePath) {
   scriptChunks.forEach((chunk) => writeChunk('scripts', chunk));
 
   const table = files.map((file) => `| ${file.name} | ${file.characters.toLocaleString('en-US')} |`).join('\n');
-  const readme = `# ${sourceRelative.replace(/\\/g, '/')} — Webflow Code Embed package\n\nReplace any earlier embeds for this page, then paste the numbered files into separate Webflow Code Embed widgets in ascending order. Do not split a file, merge adjacent files, or keep an older copy of the same code on the page.\n\nEach widget is self-contained and below Webflow's 50,000-character limit. The first markup widget also contains the independent preloader safety release when this page has a preloader.\n\n| File | Characters |\n| --- | ---: |\n${table}\n`;
+  const readme = `# ${sourceRelative.replace(/\\/g, '/')} — Webflow Code Embed package\n\nReplace any earlier embeds for this page, then paste the numbered files into separate Webflow Code Embed widgets in ascending order. Do not split a file, merge adjacent files, or keep an older copy of the same code on the page.\n\nThe first style widget includes an AUS typography reset that neutralizes Webflow's global heading, paragraph and body rules. Keep it before the remaining AUS style and markup widgets.\n\nEach widget is self-contained and below Webflow's 50,000-character limit. The first markup widget also contains the independent preloader safety release when this page has a preloader.\n\n| File | Characters |\n| --- | ---: |\n${table}\n`;
   fs.writeFileSync(path.join(outputDirectory, 'README.md'), readme, 'utf8');
   return { sourceRelative: sourceRelative.replace(/\\/g, '/'), outputDirectory, files };
 }

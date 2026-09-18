@@ -48,7 +48,9 @@ Allow: /
 Sitemap: ${site.baseUrl}/sitemap.xml
 `;
 
-const programRoutes = Object.entries(pages).filter(([, item]) => item.program);
+// Degree programs and landing pages both describe somewhere a reader can study, so they share the
+// same list in llms.txt. Landing pages supply their own label instead of a program credential.
+const studyRoutes = Object.entries(pages).filter(([, item]) => item.program || item.llms);
 const llms = `# AUS Business School
 
 > AUS Business School, legally the American Institute of Applied Sciences in Switzerland, is an international business school in La Tour-de-Peilz, Canton of Vaud, Switzerland. AUS offers practice-led business education in English through Bachelor's, Master's, Doctorate in Business Administration and Swiss Federal Diploma programs.
@@ -69,7 +71,7 @@ Canonical website: ${site.baseUrl}/
 - [All business programs](${site.baseUrl}/programs): Overview of all study levels and specializations.
 - [Find your program](${site.baseUrl}/find-programs): Guided program-matching tool.
 - [Compare programs](${site.baseUrl}/compare-programs): Side-by-side program comparison.
-${programRoutes.map(([route, item]) => `- [${item.program.credential}](${site.baseUrl}${route}): ${item.description}`).join('\n')}
+${studyRoutes.map(([route, item]) => `- [${item.program ? item.program.credential : item.llms.label}](${site.baseUrl}${route}): ${item.description}`).join('\n')}
 
 ## Admissions and student information
 

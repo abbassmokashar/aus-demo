@@ -37,6 +37,8 @@ const livePaths = {
 
 const customPaths = {
   '404.html': '/404',
+  'study-in-switzerland.html': '/study-in-switzerland',
+  'aviation-management.html': '/aviation-management',
   'programs.html': '/programs',
   'compare-programs.html': '/compare-programs',
   'find-programs.html': '/find-programs',

@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { canonicalizeDocument } = require('./rewrite-webflow-urls');
+const { webflowCompatibilityCss } = require('./webflow-compatibility-css');
 const vm = require('vm');
 
 const root = path.resolve(__dirname, '..');
@@ -264,9 +265,10 @@ function build() {
 
   const fontLinks = [...head.matchAll(/<link\b[^>]*(?:fonts\.googleapis|fonts\.gstatic)[^>]*>/gi)]
     .map((match) => match[0]);
-  const css = [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)]
+  const sourceCss = [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)]
     .map((match) => match[1])
     .join('\n');
+  const css = `${webflowCompatibilityCss}\n${sourceCss}`;
   const cssChunks = splitCss(css, targetLimit - 20)
     .map((chunk, index) => `${index === 0 ? `${fontLinks.join('\n')}\n` : ''}<style>\n${chunk}\n</style>`);
 
@@ -303,7 +305,7 @@ function build() {
   scriptChunks.forEach((chunk) => writeChunk('scripts', chunk));
 
   const table = files.map((file) => `| ${file.name} | ${file.characters.toLocaleString('en-US')} |`).join('\n');
-  const readme = `# AUS homepage — Webflow Code Embed package\n\nReplace the old homepage Code Embed widgets with these files, then paste them into separate widgets in ascending numerical order. Do not keep the old chunks underneath the new ones, merge adjacent files, or split any file internally. Every widget is self-contained and below Webflow's 50,000-character limit.\n\nBefore publishing, remove the old Webflow page scripts that mention \`ScrollSmoother\`, \`.hero_img-wrapper\`, \`.hero_heading .char\`, or \`Modal elements not found\`. Those selectors and the licensed ScrollSmoother plugin do not belong to this homepage package. Leaving those old scripts on the page can continue to produce console errors even though the embeds below are valid.\n\nThe first markup widget includes a standalone preloader release. It dismisses on page readiness and also has a five-second safety release, so a later optional feature cannot trap the page behind the preloader.\n\n| File | Characters |\n| --- | ---: |\n${table}\n`;
+  const readme = `# AUS homepage — Webflow Code Embed package\n\nReplace the old homepage Code Embed widgets with these files, then paste them into separate widgets in ascending numerical order. Do not keep the old chunks underneath the new ones, merge adjacent files, or split any file internally. Every widget is self-contained and below Webflow's 50,000-character limit.\n\nThe first style widget includes an AUS typography reset that neutralizes Webflow's global heading, paragraph and body rules. Keep it before the remaining AUS style and markup widgets.\n\nBefore publishing, remove the old Webflow page scripts that mention \`ScrollSmoother\`, \`.hero_img-wrapper\`, \`.hero_heading .char\`, or \`Modal elements not found\`. Those selectors and the licensed ScrollSmoother plugin do not belong to this homepage package. Leaving those old scripts on the page can continue to produce console errors even though the embeds below are valid.\n\nThe first markup widget includes a standalone preloader release. It dismisses on page readiness and also has a five-second safety release, so a later optional feature cannot trap the page behind the preloader.\n\n| File | Characters |\n| --- | ---: |\n${table}\n`;
   fs.writeFileSync(path.join(outputDir, 'README.md'), readme, 'utf8');
 
   console.log(`Built ${files.length} Webflow widgets in ${path.relative(root, outputDir)}.`);

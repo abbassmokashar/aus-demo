@@ -18,6 +18,8 @@ Canonical website: https://www.aus.swiss/
 - [All business programs](https://www.aus.swiss/programs): Overview of all study levels and specializations.
 - [Find your program](https://www.aus.swiss/find-programs): Guided program-matching tool.
 - [Compare programs](https://www.aus.swiss/compare-programs): Side-by-side program comparison.
+- [Aviation Management in Switzerland](https://www.aus.swiss/aviation-management): Study Aviation Management in Switzerland at an IATA Authorized Training Center. Compare the BSc and MSc programs, annual tuition and entry requirements.
+- [Study business in Switzerland](https://www.aus.swiss/study-in-switzerland): Study business in Switzerland at AUS Business School on Lake Geneva. Compare Bachelor, Master and DBA programs, annual tuition and funding, then request a brochure.
 - [Swiss Federal Diploma in Business Administration](https://www.aus.swiss/swiss-federal-diploma-business-administration): Earn a Swiss-recognized Federal Diploma in Business Administration at AUS through a practical, part-time program for working professionals.
 - [Doctorate in Business Administration](https://www.aus.swiss/doctorate-in-business-administration): Advance executive practice through the AUS Doctorate in Business Administration, combining applied research, leadership and a doctoral dissertation.
 - [Bachelor's degree in Accounting](https://www.aus.swiss/bachelors-degree/accounting): Explore the AUS Bachelor’s degree in Accounting: curriculum, admissions, career outcomes and dual-degree study in Switzerland.
