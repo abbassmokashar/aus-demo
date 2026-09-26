@@ -1,0 +1,1890 @@
+<!-- ADD THIS TO THE FOOTER CODE IN THE CUSTOM CODE SECTION IN THE SITE SETTINGS OF WEBFLOW -->
+<!-- AI CODE -->
+<!-- =========================================================
+     AUS AI ASSISTANT
+     Webflow Global Footer Code
+========================================================= -->
+
+<style>
+  :root {
+    --aus-crimson: #be1f3d;
+    --aus-night: #111827;
+    --aus-grey: #f1f1ef;
+    --aus-white: #ffffff;
+    --aus-muted: #6b7280;
+    --aus-border: rgba(17, 24, 39, 0.10);
+  }
+
+  /* =========================
+     CHAT LAUNCHER
+  ========================== */
+
+  #aus-ai-launcher {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 2147483000;
+
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    min-height: 58px;
+    padding: 8px 18px 8px 8px;
+
+    border: 0;
+    border-radius: 999px;
+
+    background: var(--aus-night);
+    color: var(--aus-white);
+
+    font-family: Inter, Arial, sans-serif;
+    cursor: pointer;
+
+    box-shadow:
+      0 12px 35px rgba(17, 24, 39, 0.22),
+      0 3px 10px rgba(17, 24, 39, 0.12);
+
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      background 0.25s ease;
+  }
+
+  #aus-ai-launcher:hover {
+    transform: translateY(-3px);
+    background: var(--aus-crimson);
+
+    box-shadow:
+      0 18px 45px rgba(190, 31, 61, 0.26),
+      0 5px 15px rgba(17, 24, 39, 0.14);
+  }
+
+  #aus-ai-launcher:active {
+    transform: translateY(-1px) scale(0.99);
+  }
+
+  .aus-launcher-logo-wrap {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    flex: 0 0 42px;
+
+    border-radius: 50%;
+    background: var(--aus-white);
+  }
+
+  .aus-launcher-logo-wrap::after {
+    content: "";
+
+    position: absolute;
+    inset: -4px;
+
+    border-radius: 50%;
+    border: 1px solid rgba(190, 31, 61, 0.32);
+
+    animation: ausPulse 2.6s ease-in-out infinite;
+  }
+
+  @keyframes ausPulse {
+    0% {
+      transform: scale(0.96);
+      opacity: 0;
+    }
+
+    40% {
+      opacity: 0.65;
+    }
+
+    100% {
+      transform: scale(1.25);
+      opacity: 0;
+    }
+  }
+
+  .aus-launcher-logo {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+
+  .aus-launcher-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.1;
+  }
+
+  .aus-launcher-title {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .aus-launcher-subtitle {
+    margin-top: 4px;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    opacity: 0.68;
+    letter-spacing: 0.02em;
+  }
+
+
+  /* =========================
+     CHAT WINDOW
+  ========================== */
+
+  #aus-ai-window {
+    position: fixed;
+    right: 24px;
+    bottom: 96px;
+
+    z-index: 2147483000;
+
+    width: 410px;
+    height: min(680px, calc(100vh - 130px));
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--aus-white);
+
+    border:
+      1px solid var(--aus-border);
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    box-shadow:
+      0 30px 80px rgba(17, 24, 39, 0.20),
+      0 8px 25px rgba(17, 24, 39, 0.10);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+      translateY(18px)
+      scale(0.97);
+
+    transform-origin: bottom right;
+
+    transition:
+      opacity 0.22s ease,
+      transform 0.22s ease,
+      visibility 0.22s ease;
+  }
+
+  #aus-ai-window.aus-open {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+
+  /* =========================
+     HEADER
+  ========================== */
+
+  .aus-ai-header {
+    position: relative;
+
+    padding: 19px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--aus-night);
+    color: var(--aus-white);
+  }
+
+  .aus-ai-header::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 3px;
+
+    background: var(--aus-crimson);
+  }
+
+  .aus-ai-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .aus-ai-header-logo {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--aus-white);
+  }
+
+  .aus-ai-header-logo img {
+    width: 31px;
+    height: 31px;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+
+  .aus-ai-title {
+    margin: 0;
+
+    font-family:
+      "Playfair Display",
+      Georgia,
+      serif;
+
+    font-size: 18px;
+    line-height: 1.15;
+    font-weight: 600;
+
+    letter-spacing: -0.01em;
+  }
+
+  .aus-ai-status {
+    margin-top: 4px;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    font-family:
+      Inter,
+      Arial,
+      sans-serif;
+
+    font-size: 10px;
+
+    opacity: 0.72;
+  }
+
+  .aus-ai-status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #68d391;
+  }
+
+  #aus-ai-close {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    border-radius: 50%;
+
+    background:
+      rgba(255, 255, 255, 0.08);
+
+    color: var(--aus-white);
+
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  #aus-ai-close:hover {
+    background:
+      rgba(255, 255, 255, 0.16);
+
+    transform: rotate(4deg);
+  }
+
+
+  /* =========================
+     CONTENT / MESSAGES
+  ========================== */
+
+  #aus-ai-content {
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 20px 18px;
+
+    background: var(--aus-grey);
+
+    scroll-behavior: smooth;
+  }
+
+  #aus-ai-content::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  #aus-ai-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  #aus-ai-content::-webkit-scrollbar-thumb {
+    background:
+      rgba(17, 24, 39, 0.16);
+
+    border-radius: 99px;
+  }
+
+  .aus-welcome-card {
+    margin-bottom: 16px;
+    padding: 17px;
+
+    background: var(--aus-white);
+
+    border:
+      1px solid var(--aus-border);
+
+    border-radius: 16px;
+  }
+
+  .aus-welcome-eyebrow {
+    margin-bottom: 5px;
+
+    color: var(--aus-crimson);
+
+    font-family:
+      Inter,
+      Arial,
+      sans-serif;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .aus-welcome-title {
+    margin: 0 0 6px;
+
+    color: var(--aus-night);
+
+    font-family:
+      "Playfair Display",
+      Georgia,
+      serif;
+
+    font-size: 20px;
+    line-height: 1.25;
+  }
+
+  .aus-welcome-copy {
+    margin: 0;
+
+    color: var(--aus-muted);
+
+    font-family:
+      Inter,
+      Arial,
+      sans-serif;
+
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+
+  /* =========================
+     QUICK ACTIONS
+  ========================== */
+
+  .aus-quick-grid {
+    display: grid;
+    grid-template-columns:
+      1fr 1fr;
+
+    gap: 8px;
+
+    margin-bottom: 19px;
+  }
+
+  .aus-quick-action {
+    min-height: 60px;
+
+    padding: 11px 12px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    border:
+      1px solid var(--aus-border);
+
+    border-radius: 13px;
+
+    background: var(--aus-white);
+
+    color: var(--aus-night);
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+      border-color 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .aus-quick-action:hover {
+    transform: translateY(-2px);
+
+    border-color:
+      rgba(190, 31, 61, 0.35);
+
+    box-shadow:
+      0 8px 20px rgba(17, 24, 39, 0.07);
+  }
+
+  .aus-quick-icon {
+    color: var(--aus-crimson);
+
+    font-family:
+      Inter,
+      Arial,
+      sans-serif;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    margin-bottom: 5px;
+  }
+
+  .aus-quick-label {
+    font-family:
+      Inter,
+      Arial,
+      sans-serif;
+
+    font-size: 11px;
+    line-height: 1.3;
+    font-weight: 650;
+  }
+
+
+  /* =========================
+     CHAT MESSAGES
+  ========================== */
+
+  #aus-ai-messages {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .aus-message-row {
+    display: flex;
+
+    margin-bottom: 12px;
+  }
+
+  .aus-message-row.user {
+    justify-content: flex-end;
+  }
+
+  .aus-message-row.bot {
+    justify-content: flex-start;
+  }
+
+  .aus-message {
+    max-width: 86%;
+
+    padding:
+      11px 13px;
+
+    border-radius: 14px;
+
+    font-family:
+      Inter,
+      Arial,
+      sans-serif;
+
+    font-size: 12.5px;
+    line-height: 1.55;
+
+    word-break: break-word;
+  }
+
+  .aus-message.user {
+    background:
+      var(--aus-night);
+
+    color:
+      var(--aus-white);
+
+    border-bottom-right-radius:
+      5px;
+  }
+
+  .aus-message.bot {
+    background:
+      var(--aus-white);
+
+    color:
+      var(--aus-night);
+
+    border:
+      1px solid var(--aus-border);
+
+    border-bottom-left-radius:
+      5px;
+  }
+
+  .aus-message.bot p {
+    margin:
+      0 0 8px;
+  }
+
+  .aus-message.bot p:last-child {
+    margin-bottom: 0;
+  }
+
+  .aus-message.bot a {
+    color:
+      var(--aus-crimson);
+
+    font-weight: 650;
+
+    text-decoration: none;
+
+    border-bottom:
+      1px solid rgba(190, 31, 61, 0.35);
+  }
+
+  .aus-message.bot a:hover {
+    border-bottom-color:
+      var(--aus-crimson);
+  }
+
+
+  /* =========================
+     TYPING INDICATOR
+  ========================== */
+
+  .aus-typing {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    min-width: 48px;
+  }
+
+  .aus-typing span {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+      var(--aus-muted);
+
+    animation:
+      ausTyping 1.1s infinite ease-in-out;
+  }
+
+  .aus-typing span:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+
+  .aus-typing span:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes ausTyping {
+    0%,
+    60%,
+    100% {
+      transform:
+        translateY(0);
+
+      opacity: 0.35;
+    }
+
+    30% {
+      transform:
+        translateY(-3px);
+
+      opacity: 1;
+    }
+  }
+
+
+  /* =========================
+     INPUT AREA
+  ========================== */
+
+  .aus-ai-composer {
+    padding:
+      12px 13px 9px;
+
+    background:
+      var(--aus-white);
+
+    border-top:
+      1px solid var(--aus-border);
+  }
+
+  .aus-ai-input-wrap {
+    display: flex;
+    align-items: flex-end;
+
+    gap: 8px;
+
+    padding:
+      6px 6px 6px 13px;
+
+    background:
+      var(--aus-grey);
+
+    border:
+      1px solid transparent;
+
+    border-radius: 14px;
+
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .aus-ai-input-wrap:focus-within {
+    background:
+      var(--aus-white);
+
+    border-color:
+      rgba(190, 31, 61, 0.45);
+  }
+
+  #aus-ai-input {
+    flex: 1;
+
+    min-height: 38px;
+    max-height: 90px;
+
+    padding:
+      9px 0;
+
+    resize: none;
+
+    border: 0;
+    outline: none;
+
+    background:
+      transparent;
+
+    color:
+      var(--aus-night);
+
+    font-family:
+      Inter,
+      Arial,
+      sans-serif;
+
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+
+  #aus-ai-input::placeholder {
+    color:
+      #8b9099;
+  }
+
+  #aus-ai-send {
+    width: 39px;
+    height: 39px;
+
+    flex:
+      0 0 39px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    border-radius: 11px;
+
+    background:
+      var(--aus-crimson);
+
+    color:
+      var(--aus-white);
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease;
+  }
+
+  #aus-ai-send:hover {
+    background:
+      #a81934;
+
+    transform:
+      translateY(-1px);
+  }
+
+  #aus-ai-send:disabled {
+    opacity: 0.5;
+    cursor: default;
+    transform: none;
+  }
+
+  .aus-ai-footer-note {
+    padding-top: 7px;
+
+    color:
+      #969aa2;
+
+    font-family:
+      Inter,
+      Arial,
+      sans-serif;
+
+    font-size: 8.5px;
+    line-height: 1.3;
+
+    text-align: center;
+  }
+
+
+  /* =========================
+     MOBILE
+  ========================== */
+
+  @media (max-width: 520px) {
+
+    #aus-ai-launcher {
+      right: 14px;
+      bottom: 14px;
+    }
+
+    #aus-ai-window {
+      right: 10px;
+      bottom: 84px;
+
+      width:
+        calc(100vw - 20px);
+
+      height:
+        min(
+          720px,
+          calc(100dvh - 100px)
+        );
+
+      border-radius:
+        19px;
+    }
+
+    .aus-launcher-subtitle {
+      display: none;
+    }
+
+    .aus-launcher-title {
+      font-size: 13px;
+    }
+
+    .aus-quick-grid {
+      grid-template-columns:
+        1fr 1fr;
+    }
+
+  }
+
+/* =========================================================
+   AUS CHATBOT STYLE ISOLATION
+   Prevent Webflow/page styles from overriding the widget
+========================================================= */
+
+#aus-ai-launcher,
+#aus-ai-window,
+#aus-ai-window *,
+#aus-ai-launcher * {
+  box-sizing: border-box;
+}
+
+#aus-ai-launcher,
+#aus-ai-launcher span,
+#aus-ai-window,
+#aus-ai-window div,
+#aus-ai-window span,
+#aus-ai-window p,
+#aus-ai-window h1,
+#aus-ai-window h2,
+#aus-ai-window h3,
+#aus-ai-window h4,
+#aus-ai-window h5,
+#aus-ai-window h6,
+#aus-ai-window button,
+#aus-ai-window textarea,
+#aus-ai-window a {
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+#aus-ai-launcher {
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.1 !important;
+}
+
+#aus-ai-launcher .aus-launcher-title {
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.1 !important;
+  font-weight: 700 !important;
+}
+
+#aus-ai-launcher .aus-launcher-subtitle {
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 10px !important;
+  line-height: 1.1 !important;
+  font-weight: 500 !important;
+}
+
+#aus-ai-window {
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+}
+
+#aus-ai-window .aus-ai-title {
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: 18px !important;
+  line-height: 1.15 !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+}
+
+#aus-ai-window .aus-welcome-title {
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: 20px !important;
+  line-height: 1.25 !important;
+  font-weight: 600 !important;
+  margin: 0 0 6px !important;
+}
+
+#aus-ai-window .aus-welcome-copy {
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 12px !important;
+  line-height: 1.55 !important;
+  font-weight: 400 !important;
+}
+
+#aus-ai-window .aus-message {
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 12.5px !important;
+  line-height: 1.55 !important;
+  font-weight: 400 !important;
+}
+
+#aus-ai-window .aus-message p {
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 12.5px !important;
+  line-height: 1.55 !important;
+  font-weight: 400 !important;
+}
+
+#aus-ai-window .aus-quick-label {
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 11px !important;
+  line-height: 1.3 !important;
+  font-weight: 650 !important;
+}
+
+#aus-ai-window .aus-ai-status {
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+}
+
+#aus-ai-window #aus-ai-input {
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 12.5px !important;
+  line-height: 1.45 !important;
+}
+
+#aus-ai-window button,
+#aus-ai-launcher {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+#aus-ai-window button {
+  font-family: Inter, Arial, sans-serif !important;
+}
+</style>
+
+<!-- CHAT LAUNCHER -->
+
+<button
+  id="aus-ai-launcher"
+  type="button"
+  aria-label="Open AUS Assistant"
+>
+
+  <span class="aus-launcher-logo-wrap">
+
+    <img
+      class="aus-launcher-logo"
+      src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a5f759147e0cb5f00ed63e8_fevicon.png"
+      alt="AUS"
+    >
+
+  </span>
+
+
+  <span class="aus-launcher-text">
+
+    <span class="aus-launcher-title">
+      Ask AUS
+    </span>
+
+    <span class="aus-launcher-subtitle">
+      AI Assistant
+    </span>
+
+  </span>
+
+</button>
+
+
+<!-- CHAT WINDOW -->
+
+<section
+  id="aus-ai-window"
+  role="dialog"
+  aria-label="AUS Assistant"
+>
+
+  <!-- HEADER -->
+
+  <div class="aus-ai-header">
+
+    <div class="aus-ai-header-left">
+
+      <div class="aus-ai-header-logo">
+
+        <img
+          src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a5f759147e0cb5f00ed63e8_fevicon.png"
+          alt="AUS"
+        >
+
+      </div>
+
+
+      <div>
+
+        <h3 class="aus-ai-title">
+          AUS Assistant
+        </h3>
+
+        <div class="aus-ai-status">
+
+          <span class="aus-ai-status-dot"></span>
+
+          <span>
+            Here to help
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="aus-ai-close"
+      type="button"
+      aria-label="Close AUS Assistant"
+    >
+      ×
+    </button>
+
+  </div>
+
+
+  <!-- CONTENT -->
+
+  <div id="aus-ai-content">
+
+    <div class="aus-welcome-card">
+
+      <div class="aus-welcome-eyebrow">
+        Welcome to AUS
+      </div>
+
+      <h4 class="aus-welcome-title">
+        How can we help?
+      </h4>
+
+      <p class="aus-welcome-copy">
+        Ask about programs, admissions, tuition,
+        student life or studying in Switzerland.
+      </p>
+
+    </div>
+
+
+    <!-- QUICK ACTIONS -->
+
+    <div class="aus-quick-grid">
+
+      <button
+        class="aus-quick-action"
+        data-link="https://www.aus.swiss/find-programs"
+      >
+
+        <span class="aus-quick-icon">
+          ✦
+        </span>
+
+        <span class="aus-quick-label">
+          Find my program
+        </span>
+
+      </button>
+
+
+      <button
+        class="aus-quick-action"
+        data-link="https://www.aus.swiss/cost-calculator"
+      >
+
+        <span class="aus-quick-icon">
+          CHF
+        </span>
+
+        <span class="aus-quick-label">
+          Estimate my costs
+        </span>
+
+      </button>
+
+
+      <button
+        class="aus-quick-action"
+        data-link="https://www.aus.swiss/compare-programs"
+      >
+
+        <span class="aus-quick-icon">
+          ⇄
+        </span>
+
+        <span class="aus-quick-label">
+          Compare programs
+        </span>
+
+      </button>
+
+
+      <button
+        class="aus-quick-action"
+        data-question="What should I know about applying to AUS and the admission requirements?"
+      >
+
+        <span class="aus-quick-icon">
+          →
+        </span>
+
+        <span class="aus-quick-label">
+          Admissions
+        </span>
+
+      </button>
+
+    </div>
+
+
+    <div id="aus-ai-messages"></div>
+
+  </div>
+
+
+  <!-- COMPOSER -->
+
+  <div class="aus-ai-composer">
+
+    <div class="aus-ai-input-wrap">
+
+      <textarea
+        id="aus-ai-input"
+        rows="1"
+        maxlength="1000"
+        placeholder="Ask anything about AUS..."
+      ></textarea>
+
+
+      <button
+        id="aus-ai-send"
+        type="button"
+        aria-label="Send message"
+      >
+        ↑
+      </button>
+
+    </div>
+
+
+    <div class="aus-ai-footer-note">
+      Responses are based on information published on the AUS website.
+    </div>
+
+  </div>
+
+</section>
+
+
+<script>
+(function () {
+
+  /* =========================================
+     CONFIGURATION
+  ========================================== */
+
+  const API_URL =
+    "https://aus-ai-assistant.a-mokashar.workers.dev";
+
+
+  const launcher =
+    document.getElementById(
+      "aus-ai-launcher"
+    );
+
+
+  const chatWindow =
+    document.getElementById(
+      "aus-ai-window"
+    );
+
+
+  const closeButton =
+    document.getElementById(
+      "aus-ai-close"
+    );
+
+
+  const content =
+    document.getElementById(
+      "aus-ai-content"
+    );
+
+
+  const messages =
+    document.getElementById(
+      "aus-ai-messages"
+    );
+
+
+  const input =
+    document.getElementById(
+      "aus-ai-input"
+    );
+
+
+  const sendButton =
+    document.getElementById(
+      "aus-ai-send"
+    );
+
+
+  let conversationHistory = [];
+
+
+  /* =========================================
+     SESSION HISTORY
+  ========================================== */
+
+  try {
+
+    const saved =
+      sessionStorage.getItem(
+        "aus-ai-history"
+      );
+
+
+    if (saved) {
+
+      const parsed =
+        JSON.parse(saved);
+
+
+      if (
+        Array.isArray(parsed)
+      ) {
+
+        conversationHistory =
+          parsed.slice(-8);
+
+
+        conversationHistory
+          .forEach(function (item) {
+
+            renderMessage(
+              item.content,
+              item.role === "assistant"
+                ? "bot"
+                : "user",
+              false
+            );
+
+          });
+
+      }
+
+    }
+
+  } catch (error) {
+
+    console.warn(
+      "AUS chat history unavailable.",
+      error
+    );
+
+  }
+
+
+  function saveHistory() {
+
+    try {
+
+      sessionStorage.setItem(
+        "aus-ai-history",
+        JSON.stringify(
+          conversationHistory.slice(-8)
+        )
+      );
+
+    } catch (error) {
+
+      /* Ignore storage errors */
+
+    }
+
+  }
+
+
+  /* =========================================
+     OPEN / CLOSE
+  ========================================== */
+
+  launcher.addEventListener(
+    "click",
+    function () {
+
+      chatWindow
+        .classList
+        .add(
+          "aus-open"
+        );
+
+
+      setTimeout(
+        function () {
+
+          input.focus();
+
+        },
+        250
+      );
+
+    }
+  );
+
+
+  closeButton.addEventListener(
+    "click",
+    function () {
+
+      chatWindow
+        .classList
+        .remove(
+          "aus-open"
+        );
+
+    }
+  );
+
+
+  /* =========================================
+     SAFE TEXT / LINK HANDLING
+  ========================================== */
+
+  function escapeHTML(text) {
+
+    return String(text)
+      .replace(
+        /&/g,
+        "&amp;"
+      )
+      .replace(
+        /</g,
+        "&lt;"
+      )
+      .replace(
+        />/g,
+        "&gt;"
+      )
+      .replace(
+        /"/g,
+        "&quot;"
+      )
+      .replace(
+        /'/g,
+        "&#039;"
+      );
+
+  }
+
+
+  function formatBotText(text) {
+
+    let safe =
+      escapeHTML(text);
+
+
+    /* clickable URLs */
+
+    safe =
+      safe.replace(
+        /(https?:\/\/[^\s<]+)/g,
+        function (url) {
+
+          let clean =
+            url;
+
+
+          let punctuation =
+            "";
+
+
+          while (
+            /[.,;!?)]$/.test(
+              clean
+            )
+          ) {
+
+            punctuation =
+              clean.slice(-1)
+              +
+              punctuation;
+
+
+            clean =
+              clean.slice(
+                0,
+                -1
+              );
+
+          }
+
+
+          return (
+            '<a href="' +
+            clean +
+            '" target="_blank" rel="noopener noreferrer">' +
+            clean +
+            "</a>" +
+            punctuation
+          );
+
+        }
+      );
+
+
+    /* paragraphs */
+
+    const paragraphs =
+      safe
+        .split(
+          /\n{2,}/
+        )
+        .map(
+          function (paragraph) {
+
+            return (
+              "<p>" +
+              paragraph
+                .replace(
+                  /\n/g,
+                  "<br>"
+                )
+              +
+              "</p>"
+            );
+
+          }
+        )
+        .join("");
+
+
+    return paragraphs;
+
+  }
+
+
+  /* =========================================
+     MESSAGE RENDERING
+  ========================================== */
+
+  function renderMessage(
+    text,
+    sender,
+    scroll = true
+  ) {
+
+    const row =
+      document.createElement(
+        "div"
+      );
+
+
+    row.className =
+      "aus-message-row " +
+      sender;
+
+
+    const bubble =
+      document.createElement(
+        "div"
+      );
+
+
+    bubble.className =
+      "aus-message " +
+      sender;
+
+
+    if (
+      sender === "bot"
+    ) {
+
+      bubble.innerHTML =
+        formatBotText(
+          text
+        );
+
+    } else {
+
+      bubble.textContent =
+        text;
+
+    }
+
+
+    row.appendChild(
+      bubble
+    );
+
+
+    messages.appendChild(
+      row
+    );
+
+
+    if (scroll) {
+
+      scrollToBottom();
+
+    }
+
+
+    return row;
+
+  }
+
+
+  function renderTyping() {
+
+    const row =
+      document.createElement(
+        "div"
+      );
+
+
+    row.className =
+      "aus-message-row bot";
+
+
+    row.innerHTML = `
+      <div class="aus-message bot aus-typing">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    `;
+
+
+    messages.appendChild(
+      row
+    );
+
+
+    scrollToBottom();
+
+
+    return row;
+
+  }
+
+
+  function scrollToBottom() {
+
+    setTimeout(
+      function () {
+
+        content.scrollTop =
+          content.scrollHeight;
+
+      },
+      30
+    );
+
+  }
+
+
+  /* =========================================
+     INPUT AUTO HEIGHT
+  ========================================== */
+
+  input.addEventListener(
+    "input",
+    function () {
+
+      input.style.height =
+        "auto";
+
+
+      input.style.height =
+        Math.min(
+          input.scrollHeight,
+          90
+        )
+        +
+        "px";
+
+    }
+  );
+
+
+  /* =========================================
+     SEND MESSAGE
+  ========================================== */
+
+  async function askAUS(
+    question
+  ) {
+
+    question =
+      String(
+        question || ""
+      )
+      .trim();
+
+
+    if (!question) {
+      return;
+    }
+
+
+    if (
+      sendButton.disabled
+    ) {
+
+      return;
+    }
+
+
+    renderMessage(
+      question,
+      "user"
+    );
+
+
+    conversationHistory.push({
+      role:
+        "user",
+
+      content:
+        question
+    });
+
+
+    conversationHistory =
+      conversationHistory
+        .slice(-8);
+
+
+    saveHistory();
+
+
+    input.value =
+      "";
+
+
+    input.style.height =
+      "auto";
+
+
+    input.disabled =
+      true;
+
+
+    sendButton.disabled =
+      true;
+
+
+    const typing =
+      renderTyping();
+
+
+    try {
+
+      const response =
+        await fetch(
+          API_URL,
+          {
+
+            method:
+              "POST",
+
+
+            headers: {
+
+              "Content-Type":
+                "application/json"
+
+            },
+
+
+            body:
+              JSON.stringify({
+
+                message:
+                  question,
+
+                pageUrl:
+                  window.location.href,
+
+                pageTitle:
+                  document.title,
+
+                history:
+                  conversationHistory
+                    .slice(
+                      0,
+                      -1
+                    )
+
+              })
+
+          }
+        );
+
+
+      const data =
+        await response.json();
+
+
+      typing.remove();
+
+
+      if (
+        !response.ok
+      ) {
+
+        throw new Error(
+          data.error ||
+          "Request failed."
+        );
+
+      }
+
+
+      const answer =
+        String(
+          data.answer ||
+          "I couldn't find enough information to answer that."
+        );
+
+
+      renderMessage(
+        answer,
+        "bot"
+      );
+
+
+      conversationHistory.push({
+        role:
+          "assistant",
+
+        content:
+          answer
+      });
+
+
+      conversationHistory =
+        conversationHistory
+          .slice(-8);
+
+
+      saveHistory();
+
+
+    } catch (error) {
+
+      typing.remove();
+
+
+      renderMessage(
+        "I'm temporarily unable to answer. You can visit https://www.aus.swiss/contact-us to contact AUS directly.",
+        "bot"
+      );
+
+
+      console.error(
+        "AUS Assistant error:",
+        error
+      );
+
+    }
+
+
+    input.disabled =
+      false;
+
+
+    sendButton.disabled =
+      false;
+
+
+    input.focus();
+
+  }
+
+
+  /* =========================================
+     SEND EVENTS
+  ========================================== */
+
+  sendButton.addEventListener(
+    "click",
+    function () {
+
+      askAUS(
+        input.value
+      );
+
+    }
+  );
+
+
+  input.addEventListener(
+    "keydown",
+    function (event) {
+
+      if (
+        event.key === "Enter" &&
+        !event.shiftKey
+      ) {
+
+        event.preventDefault();
+
+
+        askAUS(
+          input.value
+        );
+
+      }
+
+    }
+  );
+
+
+  /* =========================================
+     QUICK ACTIONS
+  ========================================== */
+
+  document
+    .querySelectorAll(
+      ".aus-quick-action"
+    )
+    .forEach(
+      function (button) {
+
+        button.addEventListener(
+          "click",
+          function () {
+
+            const link =
+              button.getAttribute(
+                "data-link"
+              );
+
+
+            const question =
+              button.getAttribute(
+                "data-question"
+              );
+
+
+            if (link) {
+
+              window.location.href =
+                link;
+
+              return;
+
+            }
+
+
+            if (question) {
+
+              askAUS(
+                question
+              );
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+})();
+</script>

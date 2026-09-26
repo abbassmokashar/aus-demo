@@ -212,7 +212,11 @@ function splitHomepageScripts(html) {
   const inlineScripts = [...html.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)]
     .map((match) => match[1]);
   const externalScripts = [...html.matchAll(/<script\b[^>]*\bsrc=[^>]*><\/script>/gi)]
-    .map((match) => match[0]);
+    .map((match) => match[0])
+    // Webflow loads its supported GSAP runtime before DOMContentLoaded. Shipping
+    // another GSAP/ScrollTrigger pair inside an Embed overwrites that runtime and
+    // can leave plugins registered against a different GSAP version.
+    .filter((script) => !/(?:\/gsap(?:\.min)?\.js|\/ScrollTrigger(?:\.min)?\.js)/i.test(script));
 
   const news = inlineScripts.find((script) => script.includes('newsOverlay'));
   const main = inlineScripts.find((script) => script.includes('SITE SEARCH'));
@@ -305,7 +309,7 @@ function build() {
   scriptChunks.forEach((chunk) => writeChunk('scripts', chunk));
 
   const table = files.map((file) => `| ${file.name} | ${file.characters.toLocaleString('en-US')} |`).join('\n');
-  const readme = `# AUS homepage — Webflow Code Embed package\n\nReplace the old homepage Code Embed widgets with these files, then paste them into separate widgets in ascending numerical order. Do not keep the old chunks underneath the new ones, merge adjacent files, or split any file internally. Every widget is self-contained and below Webflow's 50,000-character limit.\n\nThe first style widget includes an AUS typography reset that neutralizes Webflow's global heading, paragraph and body rules. Keep it before the remaining AUS style and markup widgets.\n\nBefore publishing, remove the old Webflow page scripts that mention \`ScrollSmoother\`, \`.hero_img-wrapper\`, \`.hero_heading .char\`, or \`Modal elements not found\`. Those selectors and the licensed ScrollSmoother plugin do not belong to this homepage package. Leaving those old scripts on the page can continue to produce console errors even though the embeds below are valid.\n\nThe first markup widget includes a standalone preloader release. It dismisses on page readiness and also has a five-second safety release, so a later optional feature cannot trap the page behind the preloader.\n\n| File | Characters |\n| --- | ---: |\n${table}\n`;
+  const readme = `# AUS homepage — Webflow Code Embed package\n\nReplace the old homepage Code Embed widgets with these files, then paste them into separate widgets in ascending numerical order. Do not keep the old chunks underneath the new ones, merge adjacent files, or split any file internally. Every widget is self-contained and below Webflow's 50,000-character limit.\n\nThe first style widget includes an AUS typography reset that neutralizes Webflow's global heading, paragraph and body rules. Keep it before the remaining AUS style and markup widgets.\n\nThis package intentionally does not load GSAP or ScrollTrigger. It waits until DOMContentLoaded and reuses the single GSAP runtime supplied by Webflow, preventing version conflicts while preserving the homepage animations.\n\nBefore publishing, remove the old Webflow page or site custom-code blocks that load another GSAP/ScrollTrigger version or mention \`ScrollSmoother\`, \`.hero_img-wrapper\`, \`.hero_heading .char\`, or \`Modal elements not found\`. Those scripts belong to an older template and cannot be neutralized after they have already executed. Keep Webflow's native GSAP libraries enabled.\n\nThe first markup widget includes a standalone preloader release. It dismisses on page readiness and also has a five-second safety release, so a later optional feature cannot trap the page behind the preloader.\n\n| File | Characters |\n| --- | ---: |\n${table}\n`;
   fs.writeFileSync(path.join(outputDir, 'README.md'), readme, 'utf8');
 
   console.log(`Built ${files.length} Webflow widgets in ${path.relative(root, outputDir)}.`);

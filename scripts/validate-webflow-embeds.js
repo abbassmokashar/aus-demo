@@ -32,6 +32,14 @@ function walk(directory) {
     widgetCount += 1;
     const source = fs.readFileSync(fullPath, 'utf8');
     const relative = path.relative(root, fullPath).replace(/\\/g, '/');
+    if (relative.startsWith('webflow/homepage/')) {
+      if (/<script\b[^>]*\bsrc=[^>]*(?:\/gsap(?:\.min)?\.js|\/ScrollTrigger(?:\.min)?\.js)/i.test(source)) {
+        failures.push(`${relative} loads a duplicate GSAP or ScrollTrigger runtime.`);
+      }
+      if (/ScrollSmoother|hero_img-wrapper|hero_heading\s+\.char|Modal elements not found/i.test(source)) {
+        failures.push(`${relative} contains obsolete homepage animation code.`);
+      }
+    }
     if (source.length > largest.characters) largest = { file: relative, characters: source.length };
     if (source.length >= 50000) failures.push(`${relative} is ${source.length} characters.`);
     if (/\/programs\/(?:bachelors|masters|doctorate|federal-diploma)/i.test(source)) {

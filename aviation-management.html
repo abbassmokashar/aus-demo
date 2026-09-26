@@ -881,6 +881,21 @@ main,section,.wrap{min-width:0}
 .lp-media-card figcaption strong{display:block;margin-bottom:2px;color:var(--navy);font-size:14.5px}
 @media(max-width:980px){.lp-career-grid,.lp-media-grid{grid-template-columns:1fr}}
 @media(max-width:620px){.lp-media-grid{grid-template-columns:1fr}.lp-facts>div{grid-template-columns:1fr;gap:3px}}
+
+/* Focused landing-page chrome: intentionally isolated from the main AUS site navigation. */
+.archive-tab[hidden],.aus-nav[hidden],.side-panel[hidden],.site-footer[hidden]{display:none!important}
+.lp-landing-nav{position:fixed;inset:0 0 auto;z-index:90;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:82px;padding:12px clamp(20px,5vw,72px);background:linear-gradient(180deg,rgba(17,24,39,.96),rgba(17,24,39,.84));border-bottom:1px solid rgba(255,255,255,.14);box-shadow:0 12px 38px rgba(17,24,39,.14);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.lp-landing-brand{display:flex;align-items:center;min-width:0}
+.lp-landing-brand img{display:block;width:auto;height:56px;max-width:min(230px,45vw);object-fit:contain}
+.lp-landing-nav-cta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:var(--crimson);color:#fff;font-size:14px;font-weight:780;letter-spacing:.01em;box-shadow:0 12px 28px rgba(190,31,61,.28);transition:transform .25s var(--ease),background .25s var(--ease),box-shadow .25s var(--ease)}
+.lp-landing-nav-cta:hover{background:#a71935;color:#fff;transform:translateY(-2px);box-shadow:0 16px 34px rgba(190,31,61,.36)}
+.lp-landing-nav-cta:focus-visible,.lp-landing-footer a:focus-visible{outline:3px solid #fff737;outline-offset:4px}
+.lp-landing-footer{display:flex;align-items:center;justify-content:center;padding:34px 20px;background:#111827;border-top:1px solid rgba(255,255,255,.12)}
+.lp-landing-footer a{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border:1px solid rgba(255,255,255,.28);border-radius:999px;color:#fff;font-size:14px;font-weight:760;letter-spacing:.02em;transition:background .25s var(--ease),border-color .25s var(--ease),transform .25s var(--ease)}
+.lp-landing-footer a:hover{background:var(--crimson);border-color:var(--crimson);color:#fff;transform:translateY(-2px)}
+.lp-landing-footer svg{width:16px;height:16px;transition:transform .25s var(--ease)}
+.lp-landing-footer a:hover svg{transform:translate(2px,-2px)}
+@media(max-width:600px){.lp-landing-nav{min-height:68px;padding:10px 14px;gap:10px}.lp-landing-brand img{height:44px;max-width:38vw}.lp-landing-nav-cta{min-height:42px;padding:0 14px;font-size:12px}.lp-hero-content{padding-top:108px}}
 </style>
 </head>
 <body>
@@ -891,14 +906,22 @@ main,section,.wrap{min-width:0}
   <div class="aus-preloader-bar"></div>
 </div>
 
+<!-- FOCUSED LANDING-PAGE HEADER -->
+<nav class="lp-landing-nav" aria-label="Landing page">
+  <div class="lp-landing-brand" aria-label="American Institute of Applied Sciences in Switzerland">
+    <img loading="eager" decoding="async" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS — American Institute of Applied Sciences in Switzerland">
+  </div>
+  <a class="lp-landing-nav-cta" href="#programs">Explore Aviation Programs</a>
+</nav>
+
 <!-- NAV -->
 <!-- ARCHIVE INDEX TAB (section navigator) -->
-<div class="archive-tab" id="archiveTab" tabindex="0">
+<div class="archive-tab" id="archiveTab" tabindex="0" hidden>
   <span class="archive-tab-num" id="archiveTabNum">01</span>
   <span class="archive-tab-label" id="archiveTabLabel">Study in Switzerland</span>
   <nav class="archive-tab-toc" id="archiveTabToc" aria-label="Jump to chapter"></nav>
 </div>
-<nav class="aus-nav" id="nav">
+<nav class="aus-nav" id="nav" hidden>
   <a href="index.html" class="aus-wordmark" aria-label="AUS Business School home">
     <img loading="lazy" decoding="async" class="logo-white" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a572d869feaf5c0c9629e73_AUS%20Logo%20-%20White%20text.avif" alt="AUS Business School">
     <img loading="lazy" decoding="async" class="logo-color" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a558e03f97cbda4768f37bb_aus-logo.avif" alt="AUS Business School">
@@ -928,7 +951,7 @@ main,section,.wrap{min-width:0}
 
 
 <!-- SIDE PANEL -->
-<div class="side-panel" id="sidePanel">
+<div class="side-panel" id="sidePanel" hidden>
   <div class="side-panel-backdrop" id="sidePanelBackdrop"></div>
   <aside class="side-panel-canvas">
     <div class="side-panel-head">
@@ -1272,7 +1295,7 @@ main,section,.wrap{min-width:0}
   </div>
 </section>
 </main>
-<footer class="site-footer">
+<footer class="site-footer" hidden>
   <div class="wrap">
     <div class="footer-top">
       <div>
@@ -1338,6 +1361,10 @@ main,section,.wrap{min-width:0}
       <span>&copy; 2026 AUS Business School. All rights reserved.</span>
       </div>
   </div>
+</footer>
+
+<footer class="lp-landing-footer">
+  <a href="https://aus.swiss/" target="_blank" rel="noopener">Visit aus.swiss <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
 </footer>
 
 <script>

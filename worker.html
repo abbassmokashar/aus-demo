@@ -1,0 +1,1461 @@
+const ALLOWED_ORIGINS = [
+  "https://aus.swiss",
+  "https://www.aus.swiss"
+];
+
+const SITEMAP =
+  "https://www.aus.swiss/sitemap.xml";
+
+const IMPORTANT_LINKS = {
+  findProgram:
+    "https://www.aus.swiss/find-programs",
+
+  costCalculator:
+    "https://www.aus.swiss/cost-calculator",
+
+  comparePrograms:
+    "https://www.aus.swiss/compare-programs",
+
+  programs:
+    "https://www.aus.swiss/programs",
+
+  bachelors:
+    "https://www.aus.swiss/admissions-bachelors",
+
+  masters:
+    "https://www.aus.swiss/admissions-masters",
+
+  doctorate:
+    "https://www.aus.swiss/admissions-doctoral",
+
+  tuition:
+    "https://www.aus.swiss/tuition-fees-scholarships",
+
+  contact:
+    "https://www.aus.swiss/contact-us",
+
+  faq:
+    "https://www.aus.swiss/faq",
+
+  people:
+    "https://www.aus.swiss/meet-our-people"
+};
+
+
+const SYSTEM_PROMPT = `
+You are the official website assistant for
+AUS - American Institute of Applied Sciences in Switzerland.
+
+Your job is to help visitors quickly find accurate information
+and navigate the AUS website.
+
+STYLE:
+
+- Do NOT introduce yourself in every reply.
+- Never say "Hello, I'm the AUS Assistant" unless the visitor is greeting you for the first time.
+- Keep responses concise.
+- Normally answer in 2 to 5 sentences.
+- Do not dump large amounts of information unless the visitor asks for detail.
+- Do not repeat the visitor's question.
+- Use short paragraphs.
+- Use bullet points only when they genuinely improve readability.
+- Recommend no more than 1 to 3 useful AUS links.
+- Prefer direct, useful answers over long explanations.
+- When a dedicated AUS tool is more useful than a long answer, recommend the tool.
+
+ACCURACY:
+
+- Use only the AUS website information supplied in the context.
+- Never invent tuition fees.
+- Never invent deadlines.
+- Never invent accreditation information.
+- Never invent admission requirements.
+- Never invent scholarships.
+- Never invent rankings.
+- Never invent staff roles or biographies.
+- Never guarantee admission.
+- Never guarantee visas.
+- Never guarantee scholarships.
+- Never guarantee employment.
+- If information cannot be verified from the supplied AUS material,
+  say that you cannot confirm it and direct the visitor to the appropriate AUS page.
+
+AUS WEBSITE TOOLS:
+
+If someone is unsure which program fits them, recommend:
+https://www.aus.swiss/find-programs
+
+If someone wants to estimate study costs, recommend:
+https://www.aus.swiss/cost-calculator
+
+If someone wants to compare programs or specializations, recommend:
+https://www.aus.swiss/compare-programs
+
+If someone wants to contact AUS, recommend:
+https://www.aus.swiss/contact-us
+
+If someone asks about tuition or scholarships, prefer:
+https://www.aus.swiss/tuition-fees-scholarships
+
+If someone asks about the AUS team, leadership, staff, or named people, prefer:
+https://www.aus.swiss/meet-our-people
+
+Do not use the program-fit quiz as a substitute for factual program information
+when the relevant information is already available.
+
+CONVERSATION:
+
+Use previous messages to understand follow-up questions.
+
+For example:
+
+Visitor:
+I want something related to analytics.
+
+Assistant:
+Briefly explains relevant options.
+
+Visitor:
+What about at Master's level?
+
+Understand that "Master's level" refers to the previous discussion.
+
+CONSISTENCY:
+
+- Never contradict a fact you stated earlier in the same conversation
+  if that fact came from an AUS source.
+- For follow-up questions such as "who is this person?",
+  "what about that program?", "how much is it?", "what does he do?",
+  or "what about her?", use the earlier conversation to resolve the reference.
+- If a person was previously identified from an AUS source,
+  do not later say that person cannot be found simply because the
+  follow-up question uses only a first name, surname, pronoun, or shorthand.
+- When possible, verify earlier facts against the newly supplied sources.
+- If the new sources conflict with the earlier answer, trust the newly supplied
+  AUS source and explain the correction briefly.
+
+LINKS:
+
+When useful, provide the most relevant AUS URL.
+Do not spam links.
+Prefer 1 to 3 highly relevant links.
+`;
+
+
+function cors(origin) {
+  const allowed =
+    ALLOWED_ORIGINS.includes(origin)
+      ? origin
+      : ALLOWED_ORIGINS[0];
+
+  return {
+    "Access-Control-Allow-Origin":
+      allowed,
+
+    "Access-Control-Allow-Methods":
+      "POST, GET, OPTIONS",
+
+    "Access-Control-Allow-Headers":
+      "Content-Type",
+
+    "Content-Type":
+      "application/json"
+  };
+}
+
+
+function decodeEntities(text) {
+  return text
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/gi, "'")
+    .replace(/&apos;/gi, "'")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/&#x27;/gi, "'")
+    .replace(/&#x2F;/gi, "/");
+}
+
+
+function htmlToText(html) {
+  let text = html;
+
+  text =
+    text.replace(
+      /<script[\s\S]*?<\/script>/gi,
+      " "
+    );
+
+  text =
+    text.replace(
+      /<style[\s\S]*?<\/style>/gi,
+      " "
+    );
+
+  text =
+    text.replace(
+      /<svg[\s\S]*?<\/svg>/gi,
+      " "
+    );
+
+  text =
+    text.replace(
+      /<noscript[\s\S]*?<\/noscript>/gi,
+      " "
+    );
+
+  text =
+    text.replace(
+      /<!--[\s\S]*?-->/g,
+      " "
+    );
+
+  text =
+    text.replace(
+      /<[^>]+>/g,
+      " "
+    );
+
+  text =
+    decodeEntities(text);
+
+  text =
+    text.replace(/\s+/g, " ");
+
+  return text.trim();
+}
+
+
+function getTitle(html) {
+  const match =
+    html.match(
+      /<title[^>]*>([\s\S]*?)<\/title>/i
+    );
+
+  if (!match) {
+    return "";
+  }
+
+  return htmlToText(
+    match[1]
+  );
+}
+
+
+function makeKey(url) {
+  const parsed =
+    new URL(url);
+
+  let path =
+    parsed.pathname
+      .replace(/^\/+/, "")
+      .replace(/\/+$/, "");
+
+  if (!path) {
+    path = "home";
+  }
+
+  return (
+    "page:" +
+    path
+      .replace(
+        /[^a-zA-Z0-9/_-]/g,
+        ""
+      )
+      .replace(/\//g, ":")
+  );
+}
+
+
+async function fetchSitemapUrls() {
+  const response =
+    await fetch(
+      SITEMAP,
+      {
+        headers: {
+          "User-Agent":
+            "AUS-Knowledge-Indexer/1.0"
+        }
+      }
+    );
+
+  if (!response.ok) {
+    throw new Error(
+      `Unable to fetch sitemap. Status: ${response.status}`
+    );
+  }
+
+  const xml =
+    await response.text();
+
+  const urls = [];
+
+  const regex =
+    /<loc>(.*?)<\/loc>/gi;
+
+  let match;
+
+  while (
+    (match = regex.exec(xml)) !== null
+  ) {
+    let pageUrl =
+      match[1]
+        .replace(/&amp;/g, "&")
+        .trim();
+
+    if (
+      pageUrl.startsWith(
+        "https://www.aus.swiss"
+      )
+    ) {
+      urls.push(
+        pageUrl
+      );
+    }
+  }
+
+  return [
+    ...new Set(urls)
+  ];
+}
+
+
+async function indexWebsite(
+  env,
+  start = 0,
+  limit = 25
+) {
+  const urls =
+    await fetchSitemapUrls();
+
+  const batch =
+    urls.slice(
+      start,
+      start + limit
+    );
+
+  let indexed = 0;
+
+  const errors = [];
+
+  for (
+    const pageUrl of batch
+  ) {
+    try {
+      const response =
+        await fetch(
+          pageUrl,
+          {
+            headers: {
+              "User-Agent":
+                "AUS-Knowledge-Indexer/1.0"
+            }
+          }
+        );
+
+      if (!response.ok) {
+        errors.push({
+          url:
+            pageUrl,
+
+          status:
+            response.status
+        });
+
+        continue;
+      }
+
+      const html =
+        await response.text();
+
+      let text =
+        htmlToText(
+          html
+        );
+
+      text =
+        text.slice(
+          0,
+          50000
+        );
+
+      const document = {
+        title:
+          getTitle(html),
+
+        url:
+          pageUrl,
+
+        content:
+          text,
+
+        indexedAt:
+          new Date()
+            .toISOString()
+      };
+
+      const key =
+        makeKey(
+          pageUrl
+        );
+
+      await env.KNOWLEDGE.put(
+        key,
+        JSON.stringify(
+          document
+        )
+      );
+
+      indexed++;
+
+    } catch (error) {
+      errors.push({
+        url:
+          pageUrl,
+
+        error:
+          String(error)
+      });
+    }
+  }
+
+  const stats =
+    await countIndexedPages(
+      env
+    );
+
+  await env.KNOWLEDGE.put(
+    "system:index",
+    JSON.stringify({
+      total:
+        stats.total,
+
+      sitemapUrls:
+        urls.length,
+
+      lastBatchStart:
+        start,
+
+      lastBatchLimit:
+        limit,
+
+      updatedAt:
+        new Date()
+          .toISOString()
+    })
+  );
+
+  return {
+    indexed,
+
+    processed:
+      batch.length,
+
+    start,
+
+    limit,
+
+    totalUrls:
+      urls.length,
+
+    totalIndexed:
+      stats.total,
+
+    nextStart:
+      start + batch.length < urls.length
+        ? start + batch.length
+        : null,
+
+    errors
+  };
+}
+
+
+async function countIndexedPages(
+  env
+) {
+  let total = 0;
+
+  let cursor =
+    undefined;
+
+  do {
+    const result =
+      await env.KNOWLEDGE.list({
+        prefix:
+          "page:",
+
+        cursor
+      });
+
+    total +=
+      result.keys.length;
+
+    cursor =
+      result.list_complete
+        ? undefined
+        : result.cursor;
+
+  } while (cursor);
+
+  return {
+    total
+  };
+}
+
+
+async function getAllPages(
+  env
+) {
+  const pages = [];
+
+  let cursor =
+    undefined;
+
+  do {
+    const result =
+      await env.KNOWLEDGE.list({
+        prefix:
+          "page:",
+
+        cursor
+      });
+
+    for (
+      const key of result.keys
+    ) {
+      const value =
+        await env.KNOWLEDGE.get(
+          key.name,
+          "json"
+        );
+
+      if (value) {
+        pages.push(
+          value
+        );
+      }
+    }
+
+    cursor =
+      result.list_complete
+        ? undefined
+        : result.cursor;
+
+  } while (cursor);
+
+  return pages;
+}
+
+
+function normalizeQuery(
+  question
+) {
+  return String(
+    question || ""
+  )
+    .toLowerCase()
+    .replace(
+      /[^a-z0-9\s-]/g,
+      " "
+    )
+    .replace(
+      /\s+/g,
+      " "
+    )
+    .trim();
+}
+
+
+function scorePage(
+  page,
+  question
+) {
+  const query =
+    normalizeQuery(
+      question
+    );
+
+  const words =
+    query
+      .split(/\s+/)
+      .filter(
+        word =>
+          word.length > 2
+      );
+
+  const title =
+    String(
+      page.title || ""
+    )
+      .toLowerCase();
+
+  const content =
+    String(
+      page.content || ""
+    )
+      .toLowerCase();
+
+  const pageUrl =
+    String(
+      page.url || ""
+    )
+      .toLowerCase();
+
+  let score = 0;
+
+  for (
+    const word of words
+  ) {
+    if (
+      title.includes(
+        word
+      )
+    ) {
+      score += 10;
+    }
+
+    if (
+      pageUrl.includes(
+        word
+      )
+    ) {
+      score += 7;
+    }
+
+    const matches =
+      content
+        .split(word)
+        .length - 1;
+
+    score +=
+      Math.min(
+        matches,
+        12
+      );
+  }
+
+
+  if (
+    query.includes("price") ||
+    query.includes("cost") ||
+    query.includes("tuition") ||
+    query.includes("fees") ||
+    query.includes("scholarship") ||
+    query.includes("financial")
+  ) {
+    if (
+      pageUrl.includes(
+        "tuition-fees-scholarships"
+      )
+    ) {
+      score += 60;
+    }
+
+    if (
+      pageUrl.includes(
+        "cost-calculator"
+      )
+    ) {
+      score += 45;
+    }
+
+    if (
+      pageUrl.includes(
+        "admissions-financing"
+      )
+    ) {
+      score += 35;
+    }
+  }
+
+
+  if (
+    query.includes("admission") ||
+    query.includes("requirements") ||
+    query.includes("requirement") ||
+    query.includes("apply") ||
+    query.includes("application")
+  ) {
+    if (
+      pageUrl.includes(
+        "admission"
+      )
+    ) {
+      score += 45;
+    }
+
+    if (
+      pageUrl.includes(
+        "requirement"
+      )
+    ) {
+      score += 45;
+    }
+  }
+
+
+  if (
+    query.includes("english") ||
+    query.includes("ielts") ||
+    query.includes("toefl") ||
+    query.includes("language")
+  ) {
+    if (
+      pageUrl.includes(
+        "english-language-requirements"
+      )
+    ) {
+      score += 70;
+    }
+  }
+
+
+  if (
+    query.includes("international") ||
+    query.includes("visa")
+  ) {
+    if (
+      pageUrl.includes(
+        "international-students"
+      ) ||
+      pageUrl.includes(
+        "international-admission-requirements"
+      )
+    ) {
+      score += 50;
+    }
+  }
+
+
+  if (
+    query.includes("housing") ||
+    query.includes("accommodation")
+  ) {
+    if (
+      pageUrl.includes(
+        "housing"
+      )
+    ) {
+      score += 70;
+    }
+  }
+
+
+  if (
+    query.includes("living") ||
+    query.includes("switzerland")
+  ) {
+    if (
+      pageUrl.includes(
+        "living-in-switzerland"
+      ) ||
+      pageUrl.includes(
+        "study-in-switzerland"
+      )
+    ) {
+      score += 40;
+    }
+  }
+
+
+  if (
+    query.includes("accreditation") ||
+    query.includes("accredited")
+  ) {
+    if (
+      pageUrl.includes(
+        "accreditation"
+      )
+    ) {
+      score += 80;
+    }
+  }
+
+
+  if (
+    query.includes("ranking") ||
+    query.includes("rankings")
+  ) {
+    if (
+      pageUrl.includes(
+        "rankings"
+      )
+    ) {
+      score += 80;
+    }
+  }
+
+
+  if (
+    query.includes("compare") ||
+    query.includes("difference") ||
+    query.includes("versus") ||
+    query.includes(" vs ")
+  ) {
+    if (
+      pageUrl.includes(
+        "compare-programs"
+      )
+    ) {
+      score += 55;
+    }
+  }
+
+
+  if (
+    query.includes("best program") ||
+    query.includes("which program") ||
+    query.includes("what program") ||
+    query.includes("best fit") ||
+    query.includes("which degree")
+  ) {
+    if (
+      pageUrl.includes(
+        "find-programs"
+      )
+    ) {
+      score += 65;
+    }
+  }
+
+
+  if (
+    query.includes("contact") ||
+    query.includes("email") ||
+    query.includes("phone") ||
+    query.includes("call")
+  ) {
+    if (
+      pageUrl.includes(
+        "contact-us"
+      )
+    ) {
+      score += 70;
+    }
+  }
+
+
+  if (
+    query.includes("faq") ||
+    query.includes("question")
+  ) {
+    if (
+      pageUrl.includes(
+        "/faq"
+      )
+    ) {
+      score += 30;
+    }
+  }
+
+
+  /*
+   * PEOPLE / TEAM
+   */
+
+  if (
+    query.includes("team") ||
+    query.includes("people") ||
+    query.includes("staff") ||
+    query.includes("faculty") ||
+    query.includes("director") ||
+    query.includes("dean") ||
+    query.includes("registrar") ||
+    query.includes("officer") ||
+    query.includes("abbass") ||
+    query.includes("mokashar") ||
+    query.includes("hakim") ||
+    query.includes("fouad") ||
+    query.includes("dominic") ||
+    query.includes("connor") ||
+    query.includes("paulo") ||
+    query.includes("anca") ||
+    query.includes("jonathan") ||
+    query.includes("nour") ||
+    query.includes("rayan")
+  ) {
+    if (
+      pageUrl.includes(
+        "meet-our-people"
+      )
+    ) {
+      score += 90;
+    }
+
+    if (
+      pageUrl.includes(
+        "faculty"
+      )
+    ) {
+      score += 35;
+    }
+  }
+
+
+  return score;
+}
+
+
+async function searchKnowledge(
+  env,
+  question,
+  currentPageUrl = ""
+) {
+  const pages =
+    await getAllPages(
+      env
+    );
+
+  const ranked =
+    pages
+      .map(
+        page => {
+          let score =
+            scorePage(
+              page,
+              question
+            );
+
+          if (
+            currentPageUrl &&
+            page.url === currentPageUrl
+          ) {
+            score += 25;
+          }
+
+          return {
+            page,
+            score
+          };
+        }
+      )
+      .filter(
+        item =>
+          item.score > 0
+      )
+      .sort(
+        (a, b) =>
+          b.score - a.score
+      );
+
+  return ranked
+    .slice(
+      0,
+      6
+    )
+    .map(
+      item =>
+        item.page
+    );
+}
+
+
+function buildContext(
+  pages
+) {
+  return pages
+    .map(
+      (
+        page,
+        index
+      ) => {
+        const content =
+          String(
+            page.content || ""
+          )
+            .slice(
+              0,
+              7500
+            );
+
+        return `
+SOURCE ${index + 1}
+
+TITLE:
+${page.title}
+
+URL:
+${page.url}
+
+CONTENT:
+${content}
+`;
+      }
+    )
+    .join(
+      "\n\n"
+    );
+}
+
+
+function sanitizeHistory(
+  history
+) {
+  if (
+    !Array.isArray(
+      history
+    )
+  ) {
+    return [];
+  }
+
+  return history
+    .slice(-8)
+    .map(
+      item => {
+        const role =
+          item &&
+          item.role === "assistant"
+            ? "assistant"
+            : "user";
+
+        const content =
+          String(
+            item?.content || ""
+          )
+            .slice(
+              0,
+              2000
+            );
+
+        return {
+          role,
+          content
+        };
+      }
+    )
+    .filter(
+      item =>
+        item.content
+    );
+}
+
+
+export default {
+  async fetch(
+    request,
+    env
+  ) {
+    const origin =
+      request.headers
+        .get("Origin") || "";
+
+    if (
+      request.method ===
+      "OPTIONS"
+    ) {
+      return new Response(
+        null,
+        {
+          headers:
+            cors(origin)
+        }
+      );
+    }
+
+    const url =
+      new URL(
+        request.url
+      );
+
+
+    /*
+     * ROOT
+     */
+    if (
+      url.pathname === "/" &&
+      request.method === "GET"
+    ) {
+      return new Response(
+        JSON.stringify({
+          status:
+            "AUS Assistant Worker is running",
+
+          endpoints: {
+            chat:
+              "POST /",
+
+            index:
+              "GET /index-site?start=0&limit=25",
+
+            status:
+              "GET /status"
+          }
+        }),
+        {
+          headers:
+            cors(origin)
+        }
+      );
+    }
+
+
+    /*
+     * INDEX SITE
+     */
+    if (
+      url.pathname ===
+        "/index-site" &&
+      request.method ===
+        "GET"
+    ) {
+      try {
+        const rawStart =
+          parseInt(
+            url.searchParams.get(
+              "start"
+            ) || "0",
+            10
+          );
+
+        const rawLimit =
+          parseInt(
+            url.searchParams.get(
+              "limit"
+            ) || "25",
+            10
+          );
+
+        const start =
+          Number.isFinite(
+            rawStart
+          )
+            ? Math.max(
+                0,
+                rawStart
+              )
+            : 0;
+
+        const limit =
+          Number.isFinite(
+            rawLimit
+          )
+            ? Math.min(
+                25,
+                Math.max(
+                  1,
+                  rawLimit
+                )
+              )
+            : 25;
+
+        const result =
+          await indexWebsite(
+            env,
+            start,
+            limit
+          );
+
+        return new Response(
+          JSON.stringify(
+            result,
+            null,
+            2
+          ),
+          {
+            headers:
+              cors(origin)
+          }
+        );
+
+      } catch (error) {
+        return new Response(
+          JSON.stringify(
+            {
+              error:
+                String(error)
+            },
+            null,
+            2
+          ),
+          {
+            status:
+              500,
+
+            headers:
+              cors(origin)
+          }
+        );
+      }
+    }
+
+
+    /*
+     * STATUS
+     */
+    if (
+      url.pathname ===
+        "/status" &&
+      request.method ===
+        "GET"
+    ) {
+      const info =
+        await env.KNOWLEDGE.get(
+          "system:index",
+          "json"
+        );
+
+      const count =
+        await countIndexedPages(
+          env
+        );
+
+      return new Response(
+        JSON.stringify(
+          {
+            indexed:
+              count.total,
+
+            info:
+              info || null
+          },
+          null,
+          2
+        ),
+        {
+          headers:
+            cors(origin)
+        }
+      );
+    }
+
+
+    /*
+     * CHAT
+     */
+    if (
+      request.method !==
+      "POST"
+    ) {
+      return new Response(
+        JSON.stringify({
+          error:
+            "Method not allowed"
+        }),
+        {
+          status:
+            405,
+
+          headers:
+            cors(origin)
+        }
+      );
+    }
+
+
+    try {
+      const body =
+        await request.json();
+
+      const message =
+        String(
+          body.message || ""
+        )
+          .trim();
+
+      const history =
+        sanitizeHistory(
+          body.history
+        );
+
+      const currentPage =
+        String(
+          body.pageUrl || ""
+        )
+          .trim();
+
+      if (!message) {
+        return new Response(
+          JSON.stringify({
+            error:
+              "No message supplied."
+          }),
+          {
+            status:
+              400,
+
+            headers:
+              cors(origin)
+          }
+        );
+      }
+
+
+      /*
+       * Build retrieval query using
+       * recent conversation context too.
+       */
+      const retrievalContext =
+        history
+          .slice(-4)
+          .map(
+            item =>
+              `${item.role}: ${item.content}`
+          )
+          .join("\n");
+
+
+      const retrievalQuery = `
+${retrievalContext}
+
+Current visitor question:
+${message}
+`;
+
+
+      const pages =
+        await searchKnowledge(
+          env,
+          retrievalQuery,
+          currentPage
+        );
+
+
+      const context =
+        buildContext(
+          pages
+        );
+
+
+      const conversation =
+        history
+          .map(
+            item =>
+              `${item.role}: ${item.content}`
+          )
+          .join(
+            "\n"
+          );
+
+
+      const prompt = `
+CURRENT VISITOR PAGE:
+${currentPage || "Unknown"}
+
+RECENT CONVERSATION:
+${conversation || "No earlier conversation."}
+
+AUS WEBSITE SOURCES:
+
+${context || "No relevant AUS source was found."}
+
+VISITOR QUESTION:
+${message}
+
+Answer using the supplied AUS website sources.
+
+Keep the response concise.
+
+Normally answer in 2 to 5 sentences.
+
+When useful, include the most relevant AUS page URL.
+
+Useful AUS tools:
+
+Find the best-fit program:
+${IMPORTANT_LINKS.findProgram}
+
+Cost calculator:
+${IMPORTANT_LINKS.costCalculator}
+
+Compare programs:
+${IMPORTANT_LINKS.comparePrograms}
+
+Programs:
+${IMPORTANT_LINKS.programs}
+
+Tuition and scholarships:
+${IMPORTANT_LINKS.tuition}
+
+Meet the AUS team:
+${IMPORTANT_LINKS.people}
+
+Contact AUS:
+${IMPORTANT_LINKS.contact}
+
+If the supplied source material does not confirm the answer,
+say so clearly rather than guessing.
+`;
+
+
+      const result =
+        await env.AI.run(
+          "@cf/meta/llama-3.1-8b-instruct-fast",
+          {
+            messages: [
+              {
+                role:
+                  "system",
+
+                content:
+                  SYSTEM_PROMPT
+              },
+
+              {
+                role:
+                  "user",
+
+                content:
+                  prompt
+              }
+            ],
+
+            max_tokens:
+              450,
+
+            temperature:
+              0.15
+          }
+        );
+
+
+      const answer =
+        result.response ||
+        result.result ||
+        "I couldn't generate a response.";
+
+
+      return new Response(
+        JSON.stringify({
+          answer,
+
+          sources:
+            pages.map(
+              page => ({
+                title:
+                  page.title,
+
+                url:
+                  page.url
+              })
+            )
+        }),
+        {
+          headers:
+            cors(origin)
+        }
+      );
+
+
+    } catch (error) {
+      return new Response(
+        JSON.stringify({
+          error:
+            "The AUS Assistant is temporarily unavailable.",
+
+          details:
+            String(error)
+        }),
+        {
+          status:
+            500,
+
+          headers:
+            cors(origin)
+        }
+      );
+    }
+  }
+};
