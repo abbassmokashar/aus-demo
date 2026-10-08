@@ -83,7 +83,7 @@ const pageMarkup = `<!-- 404 PAGE -->
     <div class="error-visual reveal-scale" aria-hidden="true">
       <div class="error-number">404</div>
       <div class="error-card">
-        <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a326d5971bd7053927eaf90_American%20Institute%20of%20Applied%20Sciences%20in%20Switzerland%20-%20Campus%20main%20picture%202025%20lr.jpg" alt="" loading="eager" decoding="async">
+        <img src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6ab7dc4a8e5eb4e325dd9391_American-Institute-of-Applied-Sciences-in-Switzerland-Campus-main-picture-2025.jpg.webp" alt="" loading="eager" decoding="async">
         <div class="error-card-note"><strong>AUS Business School</strong><span>La Tour-de-Peilz · Switzerland</span></div>
       </div>
       <div class="error-marker">Lost?</div>

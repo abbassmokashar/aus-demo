@@ -2,7 +2,7 @@ const site = {
   baseUrl: 'https://www.aus.swiss',
   name: 'AUS Business School',
   legalName: 'American Institute of Applied Sciences in Switzerland',
-  defaultImage: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a326d5971bd7053927eaf90_American%20Institute%20of%20Applied%20Sciences%20in%20Switzerland%20-%20Campus%20main%20picture%202025%20lr.jpg',
+  defaultImage: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6ab7dc4a8e5eb4e325dd9391_American-Institute-of-Applied-Sciences-in-Switzerland-Campus-main-picture-2025.jpg.webp',
   logo: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a99cdf83566fae73a65cc9c_AUS%20Logo%202023.png'
 };
 

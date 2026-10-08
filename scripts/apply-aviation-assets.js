@@ -9,7 +9,7 @@ const aviation = {
   management: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa9a46273b173b572bf1f77_Aviation%20Management.png',
   flight: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa9a46364778a463732fdbf_1.jpg',
   hangar: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa9a464b5cd707cbe4bd83c_2.jpg',
-  group: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa9a46464778a463732fdee_1668620333055.jpg',
+  group: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6ab7dc4afce5c9415bb855e2_1668620333055.jpg.webp',
   session: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa9a464fdc354b0697f79b3_20221116_132636_2-2.jpg'
 };
 const generic = {

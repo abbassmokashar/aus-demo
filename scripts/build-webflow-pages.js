@@ -266,4 +266,6 @@ function buildAllPages() {
   console.log(`Created ${results.reduce((sum, result) => sum + result.files.length, 0)} Code Embed widgets.`);
 }
 
-buildAllPages();
+if (require.main === module) buildAllPages();
+
+module.exports = { buildAllPages, buildPage };

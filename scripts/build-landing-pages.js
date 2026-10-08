@@ -22,7 +22,7 @@ const archiveTabMarkup = `<!-- ARCHIVE INDEX TAB (section navigator) -->
 const qsBadgeBase = 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/';
 
 const images = {
-  hero: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a326d5971bd7053927eaf90_American%20Institute%20of%20Applied%20Sciences%20in%20Switzerland%20-%20Campus%20main%20picture%202025%20lr.jpg',
+  hero: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6ab7dc4a8e5eb4e325dd9391_American-Institute-of-Applied-Sciences-in-Switzerland-Campus-main-picture-2025.jpg.webp',
   switzerland: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa7a8ffc8165c3077529ecb_campus-life.webp',
   qsOverall: `${qsBadgeBase}6aaa4e3f4418e5d34460a4b9_uni-overall-4star.png`,
   qsTeaching: `${qsBadgeBase}6aaa4e475ce4a1e586596e0b_uni-teaching-5star.png`,
@@ -469,7 +469,7 @@ ${section(
 // page, aimed at the two Aviation Management programs. Content is sourced from the published
 // Bachelor's and Master's Aviation Management program pages.
 const aviationImages = {
-  hero: `${qsBadgeBase}6aa9a46464778a463732fdee_1668620333055.jpg`,
+  hero: `${qsBadgeBase}6ab7dc4afce5c9415bb855e2_1668620333055.jpg.webp`,
   hangar: `${qsBadgeBase}6aa9a464b5cd707cbe4bd83c_2.jpg`,
   airside: `${qsBadgeBase}6aa9a461cfa87fb586d66568_Aviation%20Managment%20-%20Geneva%20Airport%20Visit.JPG`,
   visit: `${qsBadgeBase}6aa9a4612a43da5076c73b96_Aviation%20Management%20-%20Geneva%20Airport%20Visit%202.JPG`,

@@ -42,6 +42,145 @@ const IMPORTANT_LINKS = {
 };
 
 
+const PROGRAM_LINKS = [
+  {
+    name: "Bachelor's in Accounting",
+    level: "bachelor",
+    aliases: ["accounting"],
+    url: "https://www.aus.swiss/bachelors-degree/accounting"
+  },
+  {
+    name: "Bachelor's in Aviation Management",
+    level: "bachelor",
+    aliases: ["aviation management"],
+    url: "https://www.aus.swiss/bachelors-degree/aviation-management"
+  },
+  {
+    name: "Bachelor's in Business Management",
+    level: "bachelor",
+    aliases: ["business management"],
+    url: "https://www.aus.swiss/bachelors-degree/business-management"
+  },
+  {
+    name: "Bachelor's in Healthcare Administration",
+    level: "bachelor",
+    aliases: ["healthcare administration", "health care administration"],
+    url: "https://www.aus.swiss/bachelors-degree/healthcare-administration"
+  },
+  {
+    name: "Bachelor's in Hospitality Management",
+    level: "bachelor",
+    aliases: ["hospitality management"],
+    url: "https://www.aus.swiss/bachelors-degree/hospitality-management"
+  },
+  {
+    name: "Bachelor's in Human Resource Management",
+    level: "bachelor",
+    aliases: ["human resource management", "human resources management"],
+    url: "https://www.aus.swiss/bachelors-degree/human-resource-management"
+  },
+  {
+    name: "Bachelor's in Integrated & Digital Marketing",
+    level: "bachelor",
+    aliases: ["integrated digital marketing", "integrated and digital marketing"],
+    url: "https://www.aus.swiss/bachelors-degree/integrated-digital-marketing"
+  },
+  {
+    name: "Bachelor's in International Business",
+    level: "bachelor",
+    aliases: ["international business"],
+    url: "https://www.aus.swiss/bachelors-degree/international-business"
+  },
+  {
+    name: "Bachelor's in Sports Management - Athletic Administration",
+    level: "bachelor",
+    aliases: ["sports management athletic administration", "athletic administration"],
+    url: "https://www.aus.swiss/bachelors-degree/sports-management-athletic-administration"
+  },
+  {
+    name: "Bachelor's in Sports Management - Sports Marketing",
+    level: "bachelor",
+    aliases: ["sports management sports marketing", "sports marketing"],
+    url: "https://www.aus.swiss/bachelors-degree/sports-management-sports-marketing"
+  },
+  {
+    name: "Master's in Aviation Management",
+    level: "master",
+    aliases: ["aviation management"],
+    url: "https://www.aus.swiss/masters-degree/aviation-management"
+  },
+  {
+    name: "Master's in Data Analytics",
+    level: "master",
+    aliases: ["data analytics"],
+    url: "https://www.aus.swiss/masters-degree/data-analytics"
+  },
+  {
+    name: "Master's in Finance",
+    level: "master",
+    aliases: ["finance"],
+    url: "https://www.aus.swiss/masters-degree/finance"
+  },
+  {
+    name: "Master's in Healthcare Administration",
+    level: "master",
+    aliases: ["healthcare administration", "health care administration"],
+    url: "https://www.aus.swiss/masters-degree/healthcare-administration"
+  },
+  {
+    name: "Master's in Human Resource Management",
+    level: "master",
+    aliases: ["human resource management", "human resources management"],
+    url: "https://www.aus.swiss/masters-degree/human-resource-management"
+  },
+  {
+    name: "Master's in International Business",
+    level: "master",
+    aliases: ["international business"],
+    url: "https://www.aus.swiss/masters-degree/international-business"
+  },
+  {
+    name: "Master's in Leadership & Change",
+    level: "master",
+    aliases: ["leadership and change", "leadership change"],
+    url: "https://www.aus.swiss/masters-degree/leadership-change"
+  },
+  {
+    name: "Master's in Sports Management",
+    level: "master",
+    aliases: ["sports management"],
+    url: "https://www.aus.swiss/masters-degree/sports-management"
+  },
+  {
+    name: "Master's in Strategic Brand & Digital Marketing",
+    level: "master",
+    aliases: ["strategic brand digital marketing", "strategic brand and digital marketing"],
+    url: "https://www.aus.swiss/masters-degree/strategic-brand-digital-marketing"
+  },
+  {
+    name: "Doctorate in Business Administration",
+    level: "doctorate",
+    aliases: ["doctorate in business administration", "doctoral business administration", "dba"],
+    url: "https://www.aus.swiss/doctorate-in-business-administration"
+  },
+  {
+    name: "Swiss Federal Diploma in Business Administration",
+    level: "diploma",
+    aliases: ["swiss federal diploma", "federal diploma"],
+    url: "https://www.aus.swiss/swiss-federal-diploma-business-administration"
+  }
+];
+
+
+const PROGRAM_LINK_GUIDE =
+  PROGRAM_LINKS
+    .map(
+      program =>
+        `- ${program.name}: ${program.url}`
+    )
+    .join("\n");
+
+
 const SYSTEM_PROMPT = `
 You are the official website assistant for
 AUS - American Institute of Applied Sciences in Switzerland.
@@ -102,6 +241,23 @@ https://www.aus.swiss/meet-our-people
 
 Do not use the program-fit quiz as a substitute for factual program information
 when the relevant information is already available.
+
+SPECIFIC PROGRAM LINKS:
+
+- Whenever you identify, recommend, compare, or provide details about a specific
+  AUS program, include that program's direct URL in the same response.
+- Do not replace a known program's direct URL with the general Programs page,
+  Find Your Program, or Compare Programs.
+- Use the general tools only when the visitor is still exploring broadly or the
+  specific program is not yet known.
+- If the visitor asks about a specialization available at both Bachelor's and
+  Master's level, link to the level discussed. If no level is clear, link to both.
+- Link only the specific program the visitor asked about or a program you are
+  explicitly recommending. Do not add a second program link merely because its
+  name appears while describing a degree title, pathway, credential, or context.
+- Use only the canonical program URLs below:
+
+${PROGRAM_LINK_GUIDE}
 
 CONVERSATION:
 
@@ -568,6 +724,135 @@ function normalizeQuery(
 }
 
 
+function detectStudyLevels(
+  text
+) {
+  const normalized =
+    normalizeQuery(text);
+
+  const levels =
+    new Set();
+
+  if (
+    /\b(bachelor|bachelors|undergraduate|bsc)\b/.test(
+      normalized
+    )
+  ) {
+    levels.add("bachelor");
+  }
+
+  if (
+    /\b(master|masters|graduate|msc|mba)\b/.test(
+      normalized
+    )
+  ) {
+    levels.add("master");
+  }
+
+  if (
+    /\b(doctorate|doctoral|dba)\b/.test(
+      normalized
+    )
+  ) {
+    levels.add("doctorate");
+  }
+
+  if (
+    /\b(federal diploma|swiss diploma|diploma)\b/.test(
+      normalized
+    )
+  ) {
+    levels.add("diploma");
+  }
+
+  return levels;
+}
+
+
+function getMentionedPrograms(
+  text
+) {
+  const normalized =
+    normalizeQuery(text);
+
+  const levels =
+    detectStudyLevels(
+      normalized
+    );
+
+  const mentioned =
+    PROGRAM_LINKS.filter(
+      program =>
+        program.aliases.some(
+          alias =>
+            normalized.includes(
+              normalizeQuery(alias)
+            )
+        )
+    );
+
+  if (
+    levels.size !== 1
+  ) {
+    return mentioned;
+  }
+
+  const level =
+    Array.from(levels)[0];
+
+  const levelMatches =
+    mentioned.filter(
+      program =>
+        program.level === level
+    );
+
+  return levelMatches.length
+    ? levelMatches
+    : mentioned;
+}
+
+
+function appendMissingProgramLinks(
+  answer,
+  question
+) {
+  const response =
+    String(answer || "")
+      .trim();
+
+  const programs =
+    getMentionedPrograms(
+      question
+    )
+      .filter(
+        program =>
+          !response.includes(
+            program.url
+          )
+      )
+      .slice(0, 3);
+
+  if (!programs.length) {
+    return response;
+  }
+
+  const heading =
+    programs.length === 1
+      ? "Program page:"
+      : "Program pages:";
+
+  const links =
+    programs
+      .map(
+        program =>
+          `- ${program.name}: ${program.url}`
+      )
+      .join("\n");
+
+  return `${response}\n\n${heading}\n${links}`;
+}
+
+
 function scorePage(
   page,
   question
@@ -604,6 +889,32 @@ function scorePage(
       .toLowerCase();
 
   let score = 0;
+
+  const mentionedPrograms =
+    getMentionedPrograms(
+      query
+    );
+
+  for (
+    const program of
+      mentionedPrograms
+  ) {
+    const programPath =
+      program.url
+        .replace(
+          "https://www.aus.swiss",
+          ""
+        )
+        .toLowerCase();
+
+    if (
+      pageUrl.includes(
+        programPath
+      )
+    ) {
+      score += 120;
+    }
+  }
 
   for (
     const word of words
@@ -1411,10 +1722,17 @@ say so clearly rather than guessing.
         );
 
 
-      const answer =
+      const generatedAnswer =
         result.response ||
         result.result ||
         "I couldn't generate a response.";
+
+
+      const answer =
+        appendMissingProgramLinks(
+          generatedAnswer,
+          message
+        );
 
 
       return new Response(

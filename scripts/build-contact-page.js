@@ -6,7 +6,7 @@ const templatePath = path.join(root, 'about.html');
 const outputPath = path.join(root, 'contact-us.html');
 const distPath = path.join(root, 'dist', 'contact-us.html');
 
-const campusImage = 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a326d5971bd7053927eaf90_American%20Institute%20of%20Applied%20Sciences%20in%20Switzerland%20-%20Campus%20main%20picture%202025%20lr.jpg';
+const campusImage = 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6ab7dc4a8e5eb4e325dd9391_American-Institute-of-Applied-Sciences-in-Switzerland-Campus-main-picture-2025.jpg.webp';
 
 const styles = `
 <style id="aus-contact-page-styles">
