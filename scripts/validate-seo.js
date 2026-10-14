@@ -5,7 +5,10 @@ const { routeForFile } = require('./apply-seo-metadata');
 const { pages, site } = require('./seo-config');
 
 const root = path.resolve(__dirname, '..');
-const skipped = new Set(['.git', '.chrome-backup', 'history', 'node_modules', 'program-media', 'webflow', 'Website Bank of Images', 'bank of images']);
+const skipped = new Set([
+  '.git', '.chrome-backup', 'hbs-demo-deploy', 'history', 'node_modules',
+  'program-media', 'tmp', 'webflow', 'Website Bank of Images', 'bank of images'
+]);
 const failures = [];
 
 function listHtml(directory, output = []) {

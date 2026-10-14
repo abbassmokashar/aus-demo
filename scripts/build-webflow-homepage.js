@@ -222,6 +222,7 @@ function splitHomepageScripts(html) {
   const main = inlineScripts.find((script) => script.includes('SITE SEARCH'));
   const finder = inlineScripts.find((script) => script.includes('var questions=['));
   const cta = inlineScripts.find((script) => script.includes('function fitAll()'));
+  const intake = inlineScripts.find((script) => script.includes('function nextAvailableIntake()'));
   if (!news || !main || !finder || !cta) throw new Error('One or more homepage scripts could not be identified.');
 
   const searchMarker = main.indexOf('/* SITE SEARCH');
@@ -256,7 +257,8 @@ function splitHomepageScripts(html) {
     wrapScript(compare),
     wrapScript(finderData),
     wrapScript(finderLogic),
-    wrapScript(cta)
+    wrapScript(cta),
+    ...(intake ? [wrapScript(intake)] : [])
   ];
   return combineCompleteBlocks(scripts, targetLimit);
 }

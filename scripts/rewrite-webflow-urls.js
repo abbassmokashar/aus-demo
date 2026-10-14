@@ -3,7 +3,10 @@ const path = require('path');
 const { programImageUrls } = require('./program-image-urls');
 
 const root = path.resolve(__dirname, '..');
-const skipped = new Set(['.chrome-backup', '.git', '.visual-check', 'history', 'node_modules', 'webflow']);
+const skipped = new Set([
+  '.chrome-backup', '.git', '.visual-check', 'hbs-demo-deploy', 'history',
+  'node_modules', 'tmp', 'webflow'
+]);
 
 const livePaths = {
   'index.html': '/',
@@ -39,6 +42,9 @@ const customPaths = {
   '404.html': '/404',
   'study-in-switzerland.html': '/study-in-switzerland',
   'aviation-management.html': '/aviation-management',
+  'aviation-management-specialization.html': '/aviation-management-specialization',
+  'veterans-study-in-switzerland.html': '/veterans-study-in-switzerland',
+  'brochures.html': '/brochures',
   'programs.html': '/programs',
   'compare-programs.html': '/compare-programs',
   'find-programs.html': '/find-programs',

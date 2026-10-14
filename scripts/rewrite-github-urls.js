@@ -3,7 +3,10 @@ const path = require('path');
 const { destinations } = require('./rewrite-webflow-urls');
 
 const root = path.resolve(__dirname, '..');
-const skipped = new Set(['.chrome-backup', '.git', '.visual-check', 'history', 'node_modules', 'webflow']);
+const skipped = new Set([
+  '.chrome-backup', '.git', '.visual-check', 'hbs-demo-deploy', 'history',
+  'node_modules', 'tmp', 'webflow'
+]);
 const sourceByRoute = new Map(Object.entries(destinations).map(([source, route]) => [route, source]));
 const repositoryTargetByRoute = new Map(
   [...sourceByRoute].map(([route, source]) => [

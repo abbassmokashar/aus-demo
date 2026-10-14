@@ -11,7 +11,7 @@ const newCampusImage = 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd
 const programGuideUrl = 'https://share-eu1.hsforms.com/1_N5NamNWRLeBrDAYfIYx7Qfwv24';
 const swissNumbers = [
   '1,000', '1,350', '1,380', '1,500', '1,780', '2,000', '2,500',
-  '4,000', '10,000', '14,000', '25,000', '25,050', '26,000',
+  '4,000', '10,000', '14,000', '25,000', '26,000',
   '28,000', '30,000'
 ];
 

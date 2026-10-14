@@ -17,7 +17,8 @@ const { webflowCompatibilityCss } = require('./webflow-compatibility-css');
 const root = path.resolve(__dirname, '..');
 const outputRoot = path.join(root, 'webflow', 'pages');
 const skippedDirectories = new Set([
-  '.chrome-backup', '.git', '.visual-check', 'dist', 'history', 'node_modules', 'webflow'
+  '.chrome-backup', '.git', '.visual-check', 'dist', 'hbs-demo-deploy', 'history',
+  'node_modules', 'tmp', 'webflow'
 ]);
 
 function listSourcePages(directory, pages = []) {
@@ -25,7 +26,12 @@ function listSourcePages(directory, pages = []) {
     if (entry.isDirectory() && skippedDirectories.has(entry.name)) continue;
     const fullPath = path.join(directory, entry.name);
     if (entry.isDirectory()) listSourcePages(fullPath, pages);
-    else if (entry.name.endsWith('.html') && entry.name !== 'index.html') pages.push(fullPath);
+    else if (
+      entry.name.endsWith('.html')
+      && entry.name !== 'index.html'
+      && entry.name !== 'chatbot.html'
+      && entry.name !== 'worker.html'
+    ) pages.push(fullPath);
   }
   return pages.sort();
 }
@@ -162,7 +168,7 @@ function transformInlineScript(code, sourceRelative) {
   parts.push(...splitKnownScriptSections(transformed));
   const expanded = [];
   for (const part of parts.filter((item) => item.trim())) {
-    if (wrapScript(part).length <= targetLimit) {
+    if (wrapScript(part).length < hardLimit) {
       expanded.push(part);
       continue;
     }
@@ -183,7 +189,7 @@ function orderedScriptBlocks(html, sourceRelative) {
     else if (/\bsrc\s*=/i.test(match[1])) blocks.push(match[0]);
     else blocks.push(...transformInlineScript(match[2], sourceRelative));
   }
-  return combineCompleteBlocks(blocks, targetLimit);
+  return combineCompleteBlocks(blocks, hardLimit - 1);
 }
 
 function outputDirectoryFor(sourceRelative) {

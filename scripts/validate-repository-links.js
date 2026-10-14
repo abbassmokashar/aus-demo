@@ -2,7 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..');
-const skipped = new Set(['.chrome-backup', '.git', '.visual-check', 'history', 'node_modules', 'webflow']);
+const skipped = new Set([
+  '.chrome-backup', '.git', '.visual-check', 'hbs-demo-deploy', 'history',
+  'node_modules', 'tmp', 'webflow'
+]);
 
 function listHtml(directory, output = []) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {

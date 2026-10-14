@@ -154,6 +154,11 @@ const pages = {
     description: 'Study business in Switzerland at AUS Business School on Lake Geneva. Compare Bachelor, Master and DBA programs, annual tuition and funding, then request a brochure.',
     llms: { label: 'Study business in Switzerland' }
   },
+  '/veterans-study-in-switzerland': {
+    title: 'GI Bill Study in Switzerland for U.S. Veterans | AUS',
+    description: 'Eligible U.S. veterans can use Post-9/11 GI Bill benefits for approved AUS programs in Switzerland. Explore dual degrees, VA funding and how to apply.',
+    llms: { label: 'GI Bill study in Switzerland for U.S. veterans' }
+  },
   '/speaker-series': {
     title: 'Speaker Series & Industry Visits | AUS',
     description: 'Explore distinguished speakers, expert sessions and industry visits that connect AUS students with business leaders and applied learning.'

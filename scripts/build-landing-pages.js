@@ -313,7 +313,7 @@ ${section(
         <h2>Request the AUS brochure.</h2>
         <p class="lp-lead">Tell us where you are in your planning and we will send the brochure, tuition details and the next steps for your intake.</p>
         <div class="lp-tuition-strip">
-          <div><span>Annual tuition, Bachelor's to DBA</span><strong>CHF 25'050 – 30'000</strong></div>
+          <div><span>Annual tuition, Bachelor's to DBA</span><strong>CHF 25'000 – 30'000</strong></div>
           <div><span>One-time application and admission fees</span><strong>CHF 1'750</strong></div>
           <div><span>Funds to show for the Swiss permit</span><strong>CHF 25'000</strong></div>
         </div>
@@ -352,7 +352,7 @@ ${section(
         tag: "Master's Degree",
         title: 'MSc specializations',
         forWhom: 'For graduates building a specialist career, or career changers with a first degree.',
-        price: "CHF 25'050",
+        price: "CHF 25'000",
         period: 'per year',
         duration: '2 years · 9 specializations',
         subjects: ['Aviation Management', 'Data Analytics', 'Finance', 'Healthcare Administration', 'Human Resource Management', 'International Business', 'Leadership &amp; Change', 'Sports Management', 'Strategic Brand &amp; Digital Marketing'],
@@ -513,7 +513,7 @@ ${section(
         <h2>Request the aviation brochure.</h2>
         <p class="lp-lead">Tell us where you are in your planning and we will send the Aviation Management brochure, tuition for your level and the next steps for your intake.</p>
         <div class="lp-tuition-strip">
-          <div><span>Annual tuition, Bachelor's and Master's</span><strong>CHF 25'050 – 28'000</strong></div>
+          <div><span>Annual tuition, Bachelor's and Master's</span><strong>CHF 25'000 – 28'000</strong></div>
           <div><span>One-time application and admission fees</span><strong>CHF 1'750</strong></div>
           <div><span>Funds to show for the Swiss permit</span><strong>CHF 25'000</strong></div>
         </div>
@@ -579,7 +579,7 @@ ${section(
         tag: "Master's Degree",
         title: 'MSc in International Business Administration · Aviation Management',
         forWhom: 'For graduates and working professionals moving towards executive roles in airlines, airports or aviation consulting.',
-        price: "CHF 25'050",
+        price: "CHF 25'000",
         period: 'per year',
         duration: '2 years · 6 terms + capstone · 83 CH | 135 ECTS',
         facts: [
