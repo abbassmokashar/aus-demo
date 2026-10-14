@@ -60,7 +60,7 @@ function levelCard({ tag, title, forWhom, price, period, duration, subjects, not
     </article>`;
 }
 
-// The Bachelor's degree is one programme with ten specializations. Nine are tuition-only at
+// The Bachelor's degree is one program with ten specializations. Nine are tuition-only at
 // CHF 28'000 and Hospitality Management is the all-inclusive package at CHF 30'000, so both prices
 // are shown inside the same card instead of as two competing "levels".
 const bachelorStandardSubjects = [
@@ -75,8 +75,8 @@ const bachelorStandardSubjects = [
   'Sports Management – Sports Marketing'
 ];
 
-// One programme presented in full width: the left half is the curriculum and the key study facts,
-// the right half is the one thing that makes this programme different (a package, IATA credentials).
+// One program presented in full width: the left half is the curriculum and the key study facts,
+// the right half is the one thing that makes this program different (a package, IATA credentials).
 function wideLevelCard({ tag, title, forWhom, from, price, period, duration, facts, chipsTitle, chips, chipsNote, highlightTag, highlightTitle, highlightNote, highlightItems, highlightFoot }) {
   const chipList = chips.map((chip) => `<li>${chip}</li>`).join('');
   const factList = (facts || [])
@@ -203,6 +203,11 @@ const sharedStyles = `
 .lp-level-note{margin:16px 0 0;color:var(--ink-soft);font-size:13.5px;line-height:1.6}
 .lp-text-link{color:var(--crimson);font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .lp-text-link:hover{color:var(--navy)}
+.lp-fit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
+.lp-fit-item{display:flex;gap:10px;align-items:center;min-width:0;padding:12px;border:1px solid rgba(34,41,95,.13);border-radius:13px;background:#fff;color:var(--navy);font-size:12.5px;font-weight:750;line-height:1.35}
+.lp-fit-item>span:last-child{min-width:0;overflow-wrap:anywhere;word-break:normal}
+.lp-fit-icon{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;flex:0 0 34px;color:var(--navy);background:var(--paper);border-radius:10px}
+.lp-fit-icon svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .lp-tuition-strip{margin-top:clamp(22px,2.8vw,30px);padding:clamp(6px,1vw,10px) clamp(18px,2.2vw,24px);border:1px solid rgba(34,41,95,.14);border-radius:16px;background:#fff}
 .lp-tuition-strip div{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 14px;padding:12px 0;border-bottom:1px solid rgba(34,41,95,.1)}
 .lp-tuition-strip div:last-child{border-bottom:0}
@@ -258,7 +263,7 @@ const sharedStyles = `
 @media(max-width:1100px){.lp-level-grid{grid-template-columns:1fr}}
 @media(max-width:980px){.lp-level-grid,.lp-usp-grid{grid-template-columns:1fr}.lp-costs,.lp-split,.lp-form-layout,.lp-level-wide-top,.lp-level-wide-body{grid-template-columns:1fr}.lp-cost-group+.lp-cost-group{padding-left:0;border-left:0;border-top:1px solid rgba(255,255,255,.14);padding-top:clamp(22px,3vw,32px)}.lp-level-wide-price{text-align:left}.lp-split.reverse .lp-split-media{order:0}.lp-fact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:980px){.lp-qs-ranks{grid-template-columns:repeat(2,minmax(0,140px))}}
-@media(max-width:760px){.lp-hero{min-height:640px}.lp-hero h1{font-size:clamp(36px,10.5vw,54px)}.lp-hero-media::after{background:linear-gradient(0deg,rgba(17,24,39,.94),rgba(17,24,39,.34) 80%)}.lp-hero-content{padding:124px 0 52px}.lp-hero-actions,.lp-cta-actions{display:grid}.lp-hero-actions .lp-btn,.lp-cta-actions .lp-btn{width:min(100%,380px);justify-self:center}.lp-fact-grid{grid-template-columns:1fr}.lp-section h2{font-size:clamp(28px,7.4vw,40px)}.lp-qs-stars img{height:clamp(96px,22vw,160px)}.lp-qs-ranks{grid-template-columns:repeat(2,minmax(0,132px));gap:14px}}
+@media(max-width:760px){.lp-hero{min-height:640px}.lp-hero h1{font-size:clamp(36px,10.5vw,54px)}.lp-hero-media::after{background:linear-gradient(0deg,rgba(17,24,39,.94),rgba(17,24,39,.34) 80%)}.lp-hero-content{padding:124px 0 52px}.lp-hero-actions,.lp-cta-actions{display:grid}.lp-hero-actions .lp-btn,.lp-cta-actions .lp-btn{width:min(100%,380px);justify-self:center}.lp-fact-grid,.lp-form-layout .lp-fit-grid{grid-template-columns:1fr!important}.lp-form-layout .lp-fit-item{width:100%;min-width:0;padding:14px 16px;font-size:13.5px}.lp-section h2{font-size:clamp(28px,7.4vw,40px)}.lp-qs-stars img{height:clamp(96px,22vw,160px)}.lp-qs-ranks{grid-template-columns:repeat(2,minmax(0,132px));gap:14px}}
 @media(max-width:480px){.lp-level-card{border-radius:14px}.lp-costs{border-radius:16px}.lp-qs-panel{padding:20px 16px}.lp-qs-ranks{grid-template-columns:repeat(2,minmax(0,124px))}}
 `;
 
@@ -309,9 +314,14 @@ ${section(
   `
     <div class="lp-form-layout">
       <div>
-        <span class="eyebrow">Programme Brochure</span>
+        <span class="eyebrow">Program Brochure</span>
         <h2>Request the AUS brochure.</h2>
-        <p class="lp-lead">Tell us where you are in your planning and we will send the brochure, tuition details and the next steps for your intake.</p>
+        <p class="lp-lead">AUS is a business school in La Tour-de-Peilz, Switzerland. Compare the programs and tuition before requesting the brochure.</p>
+        <div class="lp-fit-grid" aria-label="Essential study information">
+          <div class="lp-fit-item"><span class="lp-fit-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg></span><span>Study in Switzerland</span></div>
+          <div class="lp-fit-item"><span class="lp-fit-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16v12H4z"/><path d="M9 7V5h6v2M4 12h16M10 12v2h4v-2"/></svg></span><span>Business education through an applied sciences approach</span></div>
+          <div class="lp-fit-item"><span class="lp-fit-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 11 9-7 9 7"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg></span><span>Student accommodation available</span></div>
+        </div>
         <div class="lp-tuition-strip">
           <div><span>Annual tuition, Bachelor's to DBA</span><strong>CHF 25'000 – 30'000</strong></div>
           <div><span>One-time application and admission fees</span><strong>CHF 1'750</strong></div>
@@ -509,7 +519,7 @@ ${section(
   `
     <div class="lp-form-layout">
       <div>
-        <span class="eyebrow">Programme Brochure</span>
+        <span class="eyebrow">Program Brochure</span>
         <h2>Request the aviation brochure.</h2>
         <p class="lp-lead">Tell us where you are in your planning and we will send the Aviation Management brochure, tuition for your level and the next steps for your intake.</p>
         <div class="lp-tuition-strip">
@@ -601,7 +611,7 @@ ${section(
           '<strong>Data &amp; Sustainability</strong> — CORSIA fundamentals, flight data analysis and data science.',
           '<strong>People &amp; Leadership</strong> — diversity and inclusion for aviation teams.'
         ],
-        highlightFoot: 'Microcredentials are optional additions to the degree and are selected with your programme director.'
+        highlightFoot: 'Microcredentials are optional additions to the degree and are selected with your program director.'
       })}
     </div>
     <div class="lp-costs">

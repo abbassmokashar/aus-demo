@@ -7,6 +7,7 @@ const excludedDirectories = new Set([
   'node_modules', 'tmp', 'webflow', 'bachelors-degree', 'masters-degree',
   'doctorate-in-business-administration', 'swiss-federal-diploma-business-administration'
 ]);
+const excludedFiles = new Set(['chatbot.html', 'worker.html']);
 
 const oldPopupCopy = 'Swiss business education with dual degrees, small classes, and 96%+ graduate employment. Applications are open for September 2026.';
 const newPopupCopy = 'Swiss business education with dual degrees, small classes, and 96%+ graduate employment. Applications are open for <span data-next-intake-copy>January 2027</span>.';
@@ -40,7 +41,7 @@ function listCanonicalHtml(directory, files = []) {
     if (entry.isDirectory() && excludedDirectories.has(entry.name)) continue;
     const fullPath = path.join(directory, entry.name);
     if (entry.isDirectory()) listCanonicalHtml(fullPath, files);
-    else if (entry.name.endsWith('.html')) files.push(fullPath);
+    else if (entry.name.endsWith('.html') && !excludedFiles.has(entry.name)) files.push(fullPath);
   }
   return files;
 }
@@ -50,6 +51,7 @@ function updateHtml(file) {
   const original = html;
   html = html
     .replaceAll("25'050", "25'000")
+    .replaceAll("25\\'050", "25\\'000")
     .replaceAll('25,050', '25,000')
     .replaceAll('25050', '25000')
     .replaceAll(oldPopupCopy, newPopupCopy);
@@ -81,6 +83,7 @@ let landingSource = fs.readFileSync(landingBuilder, 'utf8');
 const originalLandingSource = landingSource;
 landingSource = landingSource
   .replaceAll("25'050", "25'000")
+  .replaceAll("25\\'050", "25\\'000")
   .replaceAll('25,050', '25,000')
   .replaceAll('25050', '25000');
 if (landingSource !== originalLandingSource) fs.writeFileSync(landingBuilder, landingSource, 'utf8');

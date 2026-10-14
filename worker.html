@@ -181,6 +181,43 @@ const PROGRAM_LINK_GUIDE =
     .join("\n");
 
 
+const CURRENT_VERIFIED_FACTS = `
+- Tuition is stated per academic year, not per academic term.
+- Bachelor's programs: CHF 28'000 per academic year.
+- Hospitality Management: CHF 30'000 per academic year as an all-inclusive package.
+- Master's programs: CHF 25'000 per academic year. Never state CHF 25'050.
+- Doctor of Business Administration: CHF 26'000 per academic year.
+- Swiss Federal Diploma in Business Administration: CHF 28'000 per academic year.
+`;
+
+
+function getNextIntakeLabel(now = new Date()) {
+  const rules = [
+    { name: "January", deadlineMonth: 10, deadlineDay: 15, deadlineYearOffset: -1 },
+    { name: "April", deadlineMonth: 1, deadlineDay: 15, deadlineYearOffset: 0 },
+    { name: "September", deadlineMonth: 6, deadlineDay: 15, deadlineYearOffset: 0 }
+  ];
+
+  for (let year = now.getUTCFullYear(); year <= now.getUTCFullYear() + 3; year++) {
+    for (const rule of rules) {
+      const deadline = new Date(Date.UTC(
+        year + rule.deadlineYearOffset,
+        rule.deadlineMonth,
+        rule.deadlineDay,
+        23,
+        59,
+        59,
+        999
+      ));
+
+      if (now <= deadline) return `${rule.name} ${year}`;
+    }
+  }
+
+  return "the next available intake";
+}
+
+
 const SYSTEM_PROMPT = `
 You are the official website assistant for
 AUS - American Institute of Applied Sciences in Switzerland.
@@ -204,6 +241,8 @@ STYLE:
 
 ACCURACY:
 
+- Treat the CURRENT VERIFIED FACTS supplied below as authoritative. They override
+  any older or conflicting figure in a cached website excerpt.
 - Use only the AUS website information supplied in the context.
 - Never invent tuition fees.
 - Never invent deadlines.
@@ -1651,6 +1690,12 @@ ${conversation || "No earlier conversation."}
 AUS WEBSITE SOURCES:
 
 ${context || "No relevant AUS source was found."}
+
+CURRENT VERIFIED FACTS:
+
+${CURRENT_VERIFIED_FACTS}
+- Based on the published application-deadline rules and today's date, the next
+  available intake is ${getNextIntakeLabel()}.
 
 VISITOR QUESTION:
 ${message}
