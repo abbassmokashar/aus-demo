@@ -9,21 +9,18 @@ const groups = [
   {
     id: 'accreditation-status', chapter: '01', label: 'Accreditation', eyebrow: 'Accreditation',
     title: 'Independent academic quality assurance.',
-    intro: 'Accreditation evaluates academic programs against defined quality standards. AUS and its dual-degree partner hold the following relevant accreditations.',
+    intro: 'Accreditation evaluates academic provision against defined quality standards. AUS holds the following institutional accreditation.',
     cards: [
-      ['IACBE — International Accreditation Council for Business Education', 'AUS business programs have received specialized accreditation through IACBE.', 'https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563d0f6361ad7bd1c6f24b_iacbe.png', 'https://iacbe.org/memberpdf/AmericanInstituteofAppliedSciencesinSwitzerland.pdf', 'Verify IACBE status'],
-      ['ACBSP — Accreditation Council for Business Schools and Programs', "Tiffin University's School of Business is accredited by ACBSP, supporting the US qualification within the dual-degree pathway.", 'https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c8d3210aeaac6c80a11_acbsp.jpg', 'https://acbsp.org/', 'Visit ACBSP'],
-      ['Higher Learning Commission — Tiffin University', 'Tiffin University is institutionally accredited by the Higher Learning Commission in the United States.', 'https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563ca06ac461eb8d7d5ba3_hlc.png', 'https://www.hlcommission.org/', 'Visit HLC']
+      ['IACBE — International Accreditation Council for Business Education', 'AUS business education has received specialized accreditation through IACBE.', 'https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563d0f6361ad7bd1c6f24b_iacbe.png', 'https://iacbe.org/memberpdf/AmericanInstituteofAppliedSciencesinSwitzerland.pdf', 'Verify IACBE status']
     ]
   },
   {
     id: 'recognition-status', chapter: '02', label: 'Recognition', eyebrow: 'Recognition & Listings',
     title: 'Official listings and external recognition.',
-    intro: 'Recognition confirms how AUS, its programs or its partner pathways are listed, authorized or accepted by relevant public and professional bodies.',
+    intro: 'Recognition confirms how AUS is listed or accepted by relevant public and professional bodies.',
     cards: [
       ['UNESCO WHED — World Higher Education Database', 'AUS is listed in the World Higher Education Database under institution code IAU-029651.', 'https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c4c5f40eac49da26803_unesco.webp', 'https://www.whed.net/institutions/IAU-029651', 'Verify WHED listing'],
       ['United States Department of Veterans Affairs', 'AUS is approved for eligible US veterans to use GI Bill benefits. Facility code: 21001578.', 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aaa48711d1339ae79307bfe_max1200-removebg-preview.png', 'https://www.va.gov/education/gi-bill-comparison-tool/institution/21001578', 'Assess VA benefits'],
-      ['Ohio Department of Higher Education', "Tiffin University's seated and online programs are authorized by the Ohio Department of Higher Education.", 'https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563c845b040ef12c733acc_ohio.webp', 'https://highered.ohio.gov/', 'Visit ODHE'],
       ['Ministry of Higher Education — Jordan', 'AUS is recognized by the Ministry of Higher Education in the Hashemite Kingdom of Jordan.', 'https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563cec6361ad7bd1c6d426_ministry_jordan.webp', 'https://rce.mohe.gov.jo/en/RecognizedUniversities', 'Verify recognition'],
       ['Ministry of Education — Saudi Arabia', 'AUS is listed for degree recognition by the relevant higher-education authority in the Kingdom of Saudi Arabia.', 'https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563cf8826f0f64152c33a2_ministry_sa.webp', 'https://ru.moe.gov.sa/Search#/University/13058', 'Verify recognition'],
       ['CHEA recognition of IACBE', "IACBE's specialized accreditation is recognized by the Council for Higher Education Accreditation.", 'https://cdn.prod.website-files.com/6a3268e8b878fd22920cd884/6a563d01e87b055975389ff1_chea.png', 'https://www.chea.org/international-accreditation-council-business-education', 'View CHEA listing'],

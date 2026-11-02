@@ -70,11 +70,11 @@ const pageMarkup = `<!-- 404 PAGE -->
       <p>The address may have changed, or the page may no longer be available. Let’s get you back to the part of AUS you were looking for.</p>
       <div class="error-actions">
         <a class="error-btn primary" href="index.html">Back to Homepage <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-        <a class="error-btn" href="find-programs.html">Find Your Program</a>
+        <a class="error-btn" href="admissions.html">Admissions Information</a>
       </div>
       <div class="error-links" aria-label="Helpful links">
         <span>Popular pages</span>
-        <a href="programs.html">Programs</a>
+        <a href="tuition-fees-scholarships.html">Tuition &amp; Scholarships</a>
         <a href="admissions.html">Admissions</a>
         <a href="student-life.html">Student Life</a>
         <a href="https://share-eu1.hsforms.com/11syZtqHyQeS44OepgqCVtQfwv24">Contact Us</a>
@@ -106,7 +106,7 @@ function buildPage() {
   let html = fs.readFileSync(templatePath, 'utf8');
   html = html.replace(
     '<title>About AUS | AUS Business School</title>',
-    '<title>Page Not Found | AUS Business School</title>\n<meta name="description" content="The page you requested could not be found. Return to AUS Business School or explore our programs and admissions information.">\n<meta name="robots" content="noindex,follow">'
+    '<title>Page Not Found | AUS Business School</title>\n<meta name="description" content="The page you requested could not be found. Return to AUS Business School or explore admissions and student-life information.">\n<meta name="robots" content="noindex,follow">'
   );
   html = html.replace('</head>', `${pageStyles}\n</head>`);
   html = html.replace('<body>', '<body class="error-page-body">');

@@ -1,12 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 const { destinations } = require('./rewrite-webflow-urls');
-const { pages, site } = require('./seo-config');
+const { bachelorPrograms, masterPrograms, pages, site } = require('./seo-config');
 
 const root = path.resolve(__dirname, '..');
-const skipped = new Set(['.git', '.chrome-backup', 'history', 'node_modules', 'program-media', 'webflow', 'Website Bank of Images', 'bank of images']);
+const skipped = new Set(['.git', '.chrome-backup', '.visual-check', 'hbs-demo-deploy', 'history', 'node_modules', 'program-media', 'tmp', 'webflow', 'Website Bank of Images', 'bank of images']);
 const seoStart = '<!-- AUS SEO START -->';
 const seoEnd = '<!-- AUS SEO END -->';
+const standaloneEmbeds = new Set(['chatbot.html', 'worker.html']);
 
 function listHtml(directory, output = []) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
@@ -22,8 +23,7 @@ function routeForFile(file) {
   let relative = path.relative(root, file).replace(/\\/g, '/');
   if (relative.startsWith('dist/')) relative = relative.slice(5);
   if (destinations[relative]) return destinations[relative];
-  const cleanRoute = relative.match(/^((?:bachelors-degree|masters-degree)\/[a-z0-9-]+|doctorate-in-business-administration|swiss-federal-diploma-business-administration)\/index\.html$/);
-  return cleanRoute ? `/${cleanRoute[1]}` : null;
+  return null;
 }
 
 function escapeHtml(value) {
@@ -54,9 +54,9 @@ function extractPageImage(html) {
 function breadcrumbFor(route, title) {
   if (route === '/') return null;
   const crumbs = [{ name: 'Home', url: `${site.baseUrl}/` }];
-  if (/^\/(?:bachelors-degree|masters-degree)\//.test(route) || /^(?:\/doctorate-in-business-administration|\/swiss-federal-diploma)/.test(route)) {
+  if (/^\/(?:bachelors-degree|masters-degree)\//.test(route)) {
     crumbs.push({ name: 'Programs', url: `${site.baseUrl}/programs` });
-  } else if (/admission|international-students|transfer-requirements|english-language/.test(route)) {
+  } else if (/admission|international-students|transfer-requirements|english-language|study-in-switzerland|veterans-study-in-switzerland/.test(route)) {
     crumbs.push({ name: 'Admissions', url: `${site.baseUrl}/admissions-financing` });
   } else if (/^\/(?:about-us|academic-partners|accreditation|faculty|governance|history|industry-partners|meet-our-people|policies|rankings|speaker-series)/.test(route) && route !== '/about-us') {
     crumbs.push({ name: 'About AUS', url: `${site.baseUrl}/about-us` });
@@ -126,33 +126,42 @@ function structuredData(route, meta, html, image) {
     potentialAction: { '@type': 'ReadAction', target: canonical }
   };
   if (faq.length) webPage.mainEntity = faq;
+  const program = bachelorPrograms[route] || masterPrograms[route];
+  if (program) webPage.mainEntity = { '@id': `${canonical}#course` };
+  if (route === '/programs') webPage.mainEntity = { '@id': `${canonical}#program-list` };
   graph.push(webPage);
 
   const breadcrumb = breadcrumbFor(route, meta.title);
   if (breadcrumb) graph.push(breadcrumb);
 
-  if (meta.program) {
-    const courseId = `${canonical}#course`;
+  if (program) {
     graph.push({
-      '@type': 'Course', '@id': courseId, name: meta.program.credential, description: meta.description,
-      url: canonical, provider: { '@id': organizationId }, inLanguage: 'en',
-      educationalLevel: meta.program.level, teaches: meta.program.subject
+      '@type': 'Course',
+      '@id': `${canonical}#course`,
+      name: program.name,
+      description: meta.description,
+      url: canonical,
+      provider: { '@id': organizationId },
+      inLanguage: 'en',
+      educationalLevel: bachelorPrograms[route] ? 'Bachelor of Business Administration' : 'Master of Business Administration',
+      teaches: program.subject
     });
-    webPage.mainEntity = { '@id': courseId };
   }
 
   if (route === '/programs') {
-    const programEntries = Object.entries(pages).filter(([, item]) => item.program);
-    const listId = `${canonical}#program-list`;
+    const currentPrograms = [...Object.entries(bachelorPrograms), ...Object.entries(masterPrograms)];
     graph.push({
-      '@type': 'ItemList', '@id': listId, name: 'AUS Business School Programs',
-      numberOfItems: programEntries.length,
-      itemListElement: programEntries.map(([programRoute, item], index) => ({
-        '@type': 'ListItem', position: index + 1, name: item.program.credential,
+      '@type': 'ItemList',
+      '@id': `${canonical}#program-list`,
+      name: 'AUS Business School BBA and MBA Specializations',
+      numberOfItems: currentPrograms.length,
+      itemListElement: currentPrograms.map(([programRoute, details], index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: details.name,
         url: `${site.baseUrl}${programRoute}`
       }))
     });
-    webPage.mainEntity = { '@id': listId };
   }
 
   return { '@context': 'https://schema.org', '@graph': graph };
@@ -198,6 +207,21 @@ function cleanHead(head) {
     .replace(/<script\b[^>]*id="aus-structured-data"[^>]*>[\s\S]*?<\/script>\s*/gi, '');
 }
 
+function writeFileWithRetry(file, contents) {
+  let lastError;
+  for (let attempt = 0; attempt < 12; attempt += 1) {
+    try {
+      fs.writeFileSync(file, contents, 'utf8');
+      return;
+    } catch (error) {
+      lastError = error;
+      if (!['UNKNOWN', 'EBUSY', 'EPERM'].includes(error.code)) throw error;
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
+    }
+  }
+  throw lastError;
+}
+
 function applyMetadata(only = []) {
   const wanted = new Set(only.map((value) => value.replace(/\\/g, '/')));
   let changed = 0;
@@ -205,6 +229,7 @@ function applyMetadata(only = []) {
   for (const file of listHtml(root)) {
     const relative = path.relative(root, file).replace(/\\/g, '/');
     if (wanted.size && !wanted.has(relative)) continue;
+    if (standaloneEmbeds.has(relative)) continue;
     const route = routeForFile(file);
     if (!route) throw new Error(`No canonical route is configured for ${path.relative(root, file)}.`);
     const meta = pages[route];
@@ -220,7 +245,7 @@ function applyMetadata(only = []) {
     let updated = source.replace(headMatch[0], `<head>${head}</head>`).replace(/<html\s+lang="[^"]*"/i, '<html lang="en-CH"');
     processed += 1;
     if (updated !== source) {
-      fs.writeFileSync(file, updated, 'utf8');
+      writeFileWithRetry(file, updated);
       changed += 1;
     }
   }

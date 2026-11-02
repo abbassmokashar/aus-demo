@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { programImageUrls } = require('./program-image-urls');
 
 const root = path.resolve(__dirname, '..');
 const skipped = new Set([
@@ -14,41 +13,26 @@ const livePaths = {
   'about/faculty.html': '/faculty',
   'about/policies-and-procedures.html': '/policies',
   'admissions.html': '/admissions-financing',
-  'student-life.html': '/student-life',
-  'programs/bachelors/accounting.html': '/bachelors-degree/accounting',
-  'programs/bachelors/aviation-management.html': '/bachelors-degree/aviation-management',
-  'programs/bachelors/business-management.html': '/bachelors-degree/business-management',
-  'programs/bachelors/healthcare-administration.html': '/bachelors-degree/healthcare-administration',
-  'programs/bachelors/hospitality-management.html': '/bachelors-degree/hospitality-management',
-  'programs/bachelors/human-resource-management.html': '/bachelors-degree/human-resource-management',
-  'programs/bachelors/integrated-digital-marketing.html': '/bachelors-degree/integrated-digital-marketing',
-  'programs/bachelors/international-business.html': '/bachelors-degree/international-business',
-  'programs/bachelors/sports-management-athletic-administration.html': '/bachelors-degree/sports-management-athletic-administration',
-  'programs/bachelors/sports-management-sports-marketing.html': '/bachelors-degree/sports-management-sports-marketing',
-  'programs/masters/aviation-management.html': '/masters-degree/aviation-management',
-  'programs/masters/data-analytics.html': '/masters-degree/data-analytics',
-  'programs/masters/finance.html': '/masters-degree/finance',
-  'programs/masters/healthcare-administration.html': '/masters-degree/healthcare-administration',
-  'programs/masters/human-resource-management.html': '/masters-degree/human-resource-management',
-  'programs/masters/international-business.html': '/masters-degree/international-business',
-  'programs/masters/leadership-and-change.html': '/masters-degree/leadership-change',
-  'programs/masters/sports-management.html': '/masters-degree/sports-management',
-  'programs/masters/strategic-brand-digital-marketing.html': '/masters-degree/strategic-brand-digital-marketing',
-  'programs/doctorate/dba.html': '/doctorate-in-business-administration',
-  'programs/federal-diploma.html': '/swiss-federal-diploma-business-administration'
+  'student-life.html': '/student-life'
 };
 
 const customPaths = {
   '404.html': '/404',
+  'programs.html': '/programs',
+  'programs/bachelors/aviation-business-airport-operations.html': '/bachelors-degree/aviation-business-airport-operations',
+  'programs/bachelors/business-analytics-ai-applications.html': '/bachelors-degree/business-analytics-ai-applications',
+  'programs/bachelors/finance-fintech-digital-banking.html': '/bachelors-degree/finance-fintech-digital-banking',
+  'programs/bachelors/international-business-trade-supply-chain.html': '/bachelors-degree/international-business-trade-supply-chain',
+  'programs/bachelors/entrepreneurship-innovation-family-business.html': '/bachelors-degree/entrepreneurship-innovation-family-business',
+  'programs/masters/aviation-strategy-sustainability-leadership.html': '/masters-degree/aviation-strategy-sustainability-leadership',
+  'programs/masters/ai-strategy-digital-transformation.html': '/masters-degree/ai-strategy-digital-transformation',
+  'programs/masters/financial-strategy-investment-fintech.html': '/masters-degree/financial-strategy-investment-fintech',
+  'programs/masters/global-strategy-risk-supply-chain-leadership.html': '/masters-degree/global-strategy-risk-supply-chain-leadership',
+  'programs/masters/innovation-growth-family-enterprise-leadership.html': '/masters-degree/innovation-growth-family-enterprise-leadership',
   'study-in-switzerland.html': '/study-in-switzerland',
-  'aviation-management.html': '/aviation-management',
-  'aviation-management-specialization.html': '/aviation-management-specialization',
   'veterans-study-in-switzerland.html': '/veterans-study-in-switzerland',
   'brochures.html': '/brochures',
-  'programs.html': '/programs',
-  'compare-programs.html': '/compare-programs',
-  'find-programs.html': '/find-programs',
-  'cost-calculator.html': '/cost-calculator',
+  'brochure-library.html': '/brochure-library',
   'contact-us.html': '/contact-us',
   'faq.html': '/faq',
   'housing.html': '/housing',
@@ -64,15 +48,8 @@ const customPaths = {
   'about/accreditation.html': '/accreditation',
   'about/rankings.html': '/rankings',
   'about/meet-our-people.html': '/meet-our-people',
-  'about/academic-partners/tiffin-university.html': '/academic-partners/tiffin-university',
   'about/industry-partners/ibm.html': '/industry-partners-and-collaborations',
   'about/news-and-events/speaker-series.html': '/speaker-series',
-  'admissions/bachelors.html': '/admissions-bachelors',
-  'admissions/bachelors-requirements.html': '/bachelors-admission-requirements',
-  'admissions/masters.html': '/admissions-masters',
-  'admissions/masters-requirements.html': '/masters-admission-requirements',
-  'admissions/doctoral.html': '/admissions-doctoral',
-  'admissions/doctoral-requirements.html': '/doctoral-admission-requirements',
   'admissions/english-requirements.html': '/english-language-requirements',
   'admissions/international.html': '/international-students',
   'admissions/international-requirements.html': '/international-admission-requirements',
@@ -80,11 +57,6 @@ const customPaths = {
 };
 
 const destinations = { ...customPaths, ...livePaths };
-const cleanProgramRouteByPath = new Map(
-  Object.entries(destinations)
-    .filter(([source]) => source.startsWith('programs/'))
-    .map(([, route]) => [route.replace(/^\//, ''), route])
-);
 
 function listHtml(directory, output = []) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
@@ -116,9 +88,6 @@ function canonicalize(value, currentFile) {
       if (destinations[rootRelative]) target = rootRelative;
     }
     destination = destinations[target] || `/${target.replace(/\.html$/, '')}`;
-  } else {
-    const repositoryPath = path.posix.normalize(path.posix.join(currentDir, match[1])).replace(/\/+$/, '');
-    destination = cleanProgramRouteByPath.get(repositoryPath);
   }
 
   if (!destination) return value;
@@ -126,9 +95,7 @@ function canonicalize(value, currentFile) {
 }
 
 function externalProgramMediaUrl(value) {
-  const match = value.match(/(?:^|\/)program-media\/([^?#]+)([?#][\s\S]*)?$/);
-  if (!match) return value;
-  return (programImageUrls[match[1]] || value) + (programImageUrls[match[1]] ? (match[2] || '') : '');
+  return value;
 }
 
 function canonicalizeDocument(source, file, options = {}) {
@@ -162,7 +129,6 @@ function rewriteAll() {
 module.exports = {
   canonicalize,
   canonicalizeDocument,
-  cleanProgramRouteByPath,
   customPaths,
   destinations,
   externalProgramMediaUrl,

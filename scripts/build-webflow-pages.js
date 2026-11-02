@@ -260,6 +260,7 @@ function buildPage(sourcePath) {
 
 function buildAllPages() {
   const pages = listSourcePages(root);
+  fs.rmSync(outputRoot, { recursive: true, force: true });
   fs.mkdirSync(outputRoot, { recursive: true });
   const results = pages.map(buildPage);
   const rows = results.map((result) => {

@@ -1,6 +1,6 @@
 # AUS Business School
 
-> AUS Business School, legally the American Institute of Applied Sciences in Switzerland, is an international business school in La Tour-de-Peilz, Canton of Vaud, Switzerland. AUS offers practice-led business education in English through Bachelor's, Master's, Doctorate in Business Administration and Swiss Federal Diploma programs.
+> AUS Business School, legally the American Institute of Applied Sciences in Switzerland, is an international business school in La Tour-de-Peilz, Canton of Vaud, Switzerland. AUS provides practice-led applied business education in English.
 
 Canonical website: https://www.aus.swiss/
 
@@ -15,38 +15,26 @@ Canonical website: https://www.aus.swiss/
 
 ## Study at AUS
 
-- [All business programs](https://www.aus.swiss/programs): Overview of all study levels and specializations.
-- [Find your program](https://www.aus.swiss/find-programs): Guided program-matching tool.
-- [Compare programs](https://www.aus.swiss/compare-programs): Side-by-side program comparison.
-- [Aviation Management in Switzerland](https://www.aus.swiss/aviation-management): Study Aviation Management in Switzerland at an IATA Authorized Training Center. Compare the BSc and MSc programs, annual tuition and entry requirements.
-- [Study business in Switzerland](https://www.aus.swiss/study-in-switzerland): Study business in Switzerland at AUS Business School on Lake Geneva. Compare Bachelor, Master and DBA programs, annual tuition and funding, then request a brochure.
-- [Swiss Federal Diploma in Business Administration](https://www.aus.swiss/swiss-federal-diploma-business-administration): Earn a Swiss-recognized Federal Diploma in Business Administration at AUS through a practical, part-time program for working professionals.
-- [Doctorate in Business Administration](https://www.aus.swiss/doctorate-in-business-administration): Advance executive practice through the AUS Doctorate in Business Administration, combining applied research, leadership and a doctoral dissertation.
-- [Bachelor's degree in Accounting](https://www.aus.swiss/bachelors-degree/accounting): Explore the AUS Bachelor’s degree in Accounting: curriculum, admissions, career outcomes and dual-degree study in Switzerland.
-- [Bachelor's degree in Aviation Management](https://www.aus.swiss/bachelors-degree/aviation-management): Explore the AUS Bachelor’s degree in Aviation Management: curriculum, admissions, career outcomes and dual-degree study in Switzerland.
-- [Bachelor's degree in Business Management](https://www.aus.swiss/bachelors-degree/business-management): Explore the AUS Bachelor’s degree in Business Management: curriculum, admissions, career outcomes and dual-degree study in Switzerland.
-- [Bachelor's degree in Healthcare Administration](https://www.aus.swiss/bachelors-degree/healthcare-administration): Explore the AUS Bachelor’s degree in Healthcare Administration: curriculum, admissions, career outcomes and dual-degree study in Switzerland.
-- [Bachelor's degree in Hospitality Management](https://www.aus.swiss/bachelors-degree/hospitality-management): Explore the AUS Bachelor’s degree in Hospitality Management: curriculum, admissions, career outcomes and dual-degree study in Switzerland.
-- [Bachelor's degree in Human Resource Management](https://www.aus.swiss/bachelors-degree/human-resource-management): Explore the AUS Bachelor’s degree in Human Resource Management: curriculum, admissions, career outcomes and dual-degree study in Switzerland.
-- [Bachelor's degree in Integrated & Digital Marketing](https://www.aus.swiss/bachelors-degree/integrated-digital-marketing): Explore the AUS Bachelor’s degree in Integrated & Digital Marketing: curriculum, admissions, career outcomes and dual-degree study in Switzerland.
-- [Bachelor's degree in International Business](https://www.aus.swiss/bachelors-degree/international-business): Explore the AUS Bachelor’s degree in International Business: curriculum, admissions, career outcomes and dual-degree study in Switzerland.
-- [Bachelor's degree in Sports Management – Athletic Administration](https://www.aus.swiss/bachelors-degree/sports-management-athletic-administration): Explore AUS Bachelor’s study in Sports Management – Athletic Administration, including curriculum, admissions, dual-degree options and careers in Switzerland.
-- [Bachelor's degree in Sports Management – Sports Marketing](https://www.aus.swiss/bachelors-degree/sports-management-sports-marketing): Explore AUS Bachelor’s study in Sports Management – Sports Marketing, including curriculum, admissions, dual-degree options and careers in Switzerland.
-- [Master's degree in Aviation Management](https://www.aus.swiss/masters-degree/aviation-management): Explore the AUS Master’s degree in Aviation Management: curriculum, admissions, applied learning and career outcomes in Switzerland.
-- [Master's degree in Data Analytics](https://www.aus.swiss/masters-degree/data-analytics): Explore the AUS Master’s degree in Data Analytics: curriculum, admissions, applied learning and career outcomes in Switzerland.
-- [Master's degree in Finance](https://www.aus.swiss/masters-degree/finance): Explore the AUS Master’s degree in Finance: curriculum, admissions, applied learning and career outcomes in Switzerland.
-- [Master's degree in Healthcare Administration](https://www.aus.swiss/masters-degree/healthcare-administration): Explore the AUS Master’s degree in Healthcare Administration: curriculum, admissions, applied learning and career outcomes in Switzerland.
-- [Master's degree in Human Resource Management](https://www.aus.swiss/masters-degree/human-resource-management): Explore the AUS Master’s degree in Human Resource Management: curriculum, admissions, applied learning and career outcomes in Switzerland.
-- [Master's degree in International Business](https://www.aus.swiss/masters-degree/international-business): Explore the AUS Master’s degree in International Business: curriculum, admissions, applied learning and career outcomes in Switzerland.
-- [Master's degree in Leadership & Change](https://www.aus.swiss/masters-degree/leadership-change): Explore the AUS Master’s degree in Leadership & Change: curriculum, admissions, applied learning and career outcomes in Switzerland.
-- [Master's degree in Sports Management](https://www.aus.swiss/masters-degree/sports-management): Explore the AUS Master’s degree in Sports Management: curriculum, admissions, applied learning and career outcomes in Switzerland.
-- [Master's degree in Strategic Brand & Digital Marketing](https://www.aus.swiss/masters-degree/strategic-brand-digital-marketing): Explore the AUS Master’s degree in Strategic Brand & Digital Marketing: curriculum, admissions, applied learning and career outcomes in Switzerland.
+- [Programs overview](https://www.aus.swiss/programs): Five BBA specializations and five MBA specializations.
+- [BBA Specialization in Aviation Business & Airport Operations](https://www.aus.swiss/bachelors-degree/aviation-business-airport-operations): Aviation business and airport operations.
+- [BBA Specialization in Business Analytics & AI Applications](https://www.aus.swiss/bachelors-degree/business-analytics-ai-applications): Business analytics and AI applications.
+- [BBA Specialization in Finance, FinTech & Digital Banking](https://www.aus.swiss/bachelors-degree/finance-fintech-digital-banking): Finance, FinTech and digital banking.
+- [BBA Specialization in International Business, Trade & Supply Chain](https://www.aus.swiss/bachelors-degree/international-business-trade-supply-chain): International business, trade and supply chain.
+- [BBA Specialization in Entrepreneurship, Innovation & Family Business](https://www.aus.swiss/bachelors-degree/entrepreneurship-innovation-family-business): Entrepreneurship, innovation and family business.
+- [MBA Specialization in Aviation Strategy, Sustainability & Leadership](https://www.aus.swiss/masters-degree/aviation-strategy-sustainability-leadership): Aviation strategy, sustainability and leadership.
+- [MBA Specialization in AI Strategy & Digital Transformation](https://www.aus.swiss/masters-degree/ai-strategy-digital-transformation): AI strategy and digital transformation.
+- [MBA Specialization in Financial Strategy, Investment & FinTech](https://www.aus.swiss/masters-degree/financial-strategy-investment-fintech): Financial strategy, investment and FinTech.
+- [MBA Specialization in Global Strategy, Risk & Supply Chain Leadership](https://www.aus.swiss/masters-degree/global-strategy-risk-supply-chain-leadership): Global strategy, risk and supply chain leadership.
+- [MBA Specialization in Innovation, Growth & Family Enterprise Leadership](https://www.aus.swiss/masters-degree/innovation-growth-family-enterprise-leadership): Innovation, growth and family enterprise leadership.
+
+- [Study business in Switzerland](https://www.aus.swiss/study-in-switzerland): Discover applied business education and student life at AUS Business School on Lake Geneva, and contact admissions for current study information.
+- [GI Bill study in Switzerland for U.S. veterans](https://www.aus.swiss/veterans-study-in-switzerland): Eligible U.S. veterans can learn how Post-9/11 GI Bill benefits may support approved study at AUS in Switzerland and contact the admissions team for guidance.
 
 ## Admissions and student information
 
 - [Admissions and financing](https://www.aus.swiss/admissions-financing): Application process, requirements, deadlines, financing and visa guidance.
 - [Campus facilities](https://www.aus.swiss/campus-facilities): Classrooms, conference rooms, student spaces and nearby sports facilities in La Tour-de-Peilz.
-- [Tuition fees and scholarships](https://www.aus.swiss/tuition-fees-scholarships): Tuition and scholarship information.
+- [Tuition fees and scholarships](https://www.aus.swiss/tuition-fees-scholarships): Scholarship information and guidance on obtaining the latest approved tuition details.
 - [International students](https://www.aus.swiss/international-students): Visa, permit and arrival guidance.
 - [Student life](https://www.aus.swiss/student-life): Campus, housing, activities and life in Switzerland.
 - [Careers and outcomes](https://www.aus.swiss/careers-outcomes): Career services, internships, employers and graduate outcomes.

@@ -9,10 +9,7 @@ const skipped = new Set([
 ]);
 const sourceByRoute = new Map(Object.entries(destinations).map(([source, route]) => [route, source]));
 const repositoryTargetByRoute = new Map(
-  [...sourceByRoute].map(([route, source]) => [
-    route,
-    source.startsWith('programs/') ? `${route.replace(/^\//, '')}/index.html` : source
-  ])
+  [...sourceByRoute].map(([route, source]) => [route, source])
 );
 const routeByRepositoryPath = new Map(
   [...repositoryTargetByRoute]

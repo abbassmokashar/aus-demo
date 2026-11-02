@@ -8,49 +8,29 @@ const site = {
 
 const pages = {
   '/': {
-    title: 'AUS Business School Switzerland | Bachelor, Master & DBA',
-    description: 'Study business in Switzerland at AUS Business School. Explore practice-led Bachelor, Master, DBA and Swiss Federal Diploma programs on the Swiss Riviera.'
+    title: 'AUS Business School Switzerland | Applied Business Education',
+    description: 'Discover AUS Business School and its practice-led approach to applied business education on the Swiss Riviera.'
   },
   '/404': {
     title: 'Page Not Found | AUS Business School',
-    description: 'The requested page could not be found. Return to AUS Business School or explore programs, admissions and student life.',
+    description: 'The requested page could not be found. Return to AUS Business School or explore admissions and student life.',
     noindex: true
   },
   '/about-us': {
     title: 'About AUS Business School in Switzerland | AUS',
     description: 'Discover AUS Business School, its mission, values and practice-led approach to international business education in La Tour-de-Peilz, Switzerland.'
   },
-  '/academic-partners/tiffin-university': {
-    title: 'AUS and Tiffin University Dual Degrees | AUS',
-    description: 'Learn how the AUS collaboration with Tiffin University gives eligible students a Swiss and US dual-degree pathway while studying in Switzerland.'
-  },
   '/accreditation': {
     title: 'Accreditation & Recognition | AUS Business School',
     description: 'Review the accreditation, recognition and professional memberships supporting AUS Business School and its international academic partnerships.'
-  },
-  '/admissions-bachelors': {
-    title: "Bachelor's Admissions in Switzerland | AUS",
-    description: "Explore the AUS Bachelor's admissions process, required documents, eligibility, deadlines and next steps for studying business in Switzerland."
-  },
-  '/admissions-doctoral': {
-    title: 'Doctoral Admissions in Switzerland | AUS',
-    description: 'Explore the AUS Doctor of Business Administration admissions process, eligibility, documents, interview requirements and application steps.'
   },
   '/admissions-financing': {
     title: 'Admissions & Financing | AUS Business School',
     description: 'Learn how to apply to AUS Business School, including entry requirements, documents, deadlines, tuition, scholarships, visas and enrollment steps.'
   },
-  '/admissions-masters': {
-    title: "Master's Admissions in Switzerland | AUS",
-    description: "Explore the AUS Master's admissions process, Bachelor's degree requirements, English proficiency, documents, deadlines and interview steps."
-  },
   '/alumni-success': {
     title: 'AUS Alumni & Student Success Stories | AUS',
     description: 'Meet AUS graduates, explore student success stories and learn how the international alumni community supports careers beyond graduation.'
-  },
-  '/bachelors-admission-requirements': {
-    title: "Bachelor's Admission Requirements | AUS",
-    description: "Check the academic, English-language, document and motivation requirements for admission to an AUS Bachelor's degree in Switzerland."
   },
   '/campus-life': {
     title: 'Campus Life on the Swiss Riviera | AUS',
@@ -60,25 +40,21 @@ const pages = {
     title: 'Campus Facilities in La Tour-de-Peilz | AUS',
     description: 'Explore AUS classrooms, conference rooms, cafeteria, collaborative spaces and nearby sports facilities in La Tour-de-Peilz, Switzerland.'
   },
+  '/brochures': {
+    title: 'AUS Brochures | Academic Information',
+    description: 'Check the status of updated AUS academic brochures and contact Admissions for the latest approved study information.'
+  },
+  '/brochure-library': {
+    title: 'AUS Brochure Library | Academic Information',
+    description: 'Access current guidance about AUS academic brochures and contact Admissions while updated materials are under review.'
+  },
   '/careers-outcomes': {
     title: 'Careers, Internships & Graduate Outcomes | AUS',
     description: 'Explore career coaching, internships, employer connections, industry learning and graduate outcomes available to AUS Business School students.'
   },
-  '/compare-programs': {
-    title: 'Compare AUS Business Degree Programs | AUS',
-    description: 'Compare AUS Bachelor, Master, DBA and Swiss Federal Diploma programs by subject, duration, credits, study mode and career direction.'
-  },
   '/contact-us': {
     title: 'Contact AUS Business School in Switzerland | AUS',
     description: 'Contact AUS Business School in La Tour-de-Peilz by email, phone, appointment or campus visit. View working hours, address and directions.'
-  },
-  '/cost-calculator': {
-    title: 'Student Cost Calculator for Switzerland | AUS',
-    description: 'Estimate AUS tuition and monthly student living costs in Switzerland, including housing, food, insurance, mobile service and transportation.'
-  },
-  '/doctoral-admission-requirements': {
-    title: 'DBA Admission Requirements | AUS Business School',
-    description: 'Check the degree, professional experience, English-language, age, document and interview requirements for the AUS DBA program.'
   },
   '/english-language-requirements': {
     title: 'English Language Requirements | AUS Admissions',
@@ -91,10 +67,6 @@ const pages = {
   '/faq': {
     title: 'Frequently Asked Questions | AUS Business School',
     description: 'Find answers about AUS admissions, tuition, scholarships, visas, housing, registration, arrival in Switzerland and student support.'
-  },
-  '/find-programs': {
-    title: 'Find Your AUS Business Program | Program Finder',
-    description: 'Use the AUS program finder to match your education, interests, career goals and study preferences with a business program in Switzerland.'
   },
   '/governance': {
     title: 'Leadership & Governance | AUS Business School',
@@ -124,10 +96,6 @@ const pages = {
     title: 'Living and Transportation in Switzerland | AUS',
     description: 'Learn about living on the Swiss Riviera, local transportation, trains, airports and everyday student life around La Tour-de-Peilz.'
   },
-  '/masters-admission-requirements': {
-    title: "Master's Admission Requirements | AUS",
-    description: "Check the Bachelor's degree, English-language, personal statement, document and interview requirements for AUS Master's programs."
-  },
   '/meet-our-people': {
     title: 'Meet Our Team | AUS Business School',
     description: 'Meet the leadership, academic and professional teams who support teaching, operations and the student experience at AUS Business School.'
@@ -136,14 +104,49 @@ const pages = {
     title: 'Policies and Procedures | AUS Business School',
     description: 'Access AUS Business School academic, student, privacy, quality-assurance and institutional policies and procedures.'
   },
-  '/aviation-management': {
-    title: 'Aviation Management in Switzerland | AUS Business School',
-    description: 'Study Aviation Management in Switzerland at an IATA Authorized Training Center. Compare the BSc and MSc programs, annual tuition and entry requirements.',
-    llms: { label: 'Aviation Management in Switzerland' }
-  },
   '/programs': {
-    title: 'Business Degree Programs in Switzerland | AUS',
-    description: 'Explore AUS Bachelor, Master, DBA and Swiss Federal Diploma programs designed around applied business learning in Switzerland.'
+    title: 'BBA & MBA Business Programs in Switzerland | AUS',
+    description: 'Explore five applied business pathways offered at BBA and MBA level at AUS Business School in Switzerland.'
+  },
+  '/bachelors-degree/aviation-business-airport-operations': {
+    title: 'BBA Aviation Business & Airport Operations | AUS',
+    description: 'Study aviation business, airport operations and applied management in the 180 ECTS BBA specialization at AUS in Switzerland.'
+  },
+  '/bachelors-degree/business-analytics-ai-applications': {
+    title: 'BBA Business Analytics & AI Applications | AUS',
+    description: 'Build business, analytics and responsible AI application skills in the 180 ECTS BBA specialization at AUS in Switzerland.'
+  },
+  '/bachelors-degree/finance-fintech-digital-banking': {
+    title: 'BBA Finance, FinTech & Digital Banking | AUS',
+    description: 'Study finance, digital banking and FinTech business models in the 180 ECTS BBA specialization at AUS in Switzerland.'
+  },
+  '/bachelors-degree/international-business-trade-supply-chain': {
+    title: 'BBA International Business, Trade & Supply Chain | AUS',
+    description: 'Study international business, global trade and supply chain operations in the 180 ECTS BBA specialization at AUS.'
+  },
+  '/bachelors-degree/entrepreneurship-innovation-family-business': {
+    title: 'BBA Entrepreneurship, Innovation & Family Business | AUS',
+    description: 'Develop venture, innovation and family business skills in the 180 ECTS BBA specialization at AUS in Switzerland.'
+  },
+  '/masters-degree/aviation-strategy-sustainability-leadership': {
+    title: 'MBA Aviation Strategy, Sustainability & Leadership | AUS',
+    description: 'Develop strategic aviation, sustainability and leadership expertise in the 120 ECTS MBA specialization at AUS.'
+  },
+  '/masters-degree/ai-strategy-digital-transformation': {
+    title: 'MBA AI Strategy & Digital Transformation | AUS',
+    description: 'Lead AI adoption and digital business change through the 120 ECTS MBA specialization at AUS in Switzerland.'
+  },
+  '/masters-degree/financial-strategy-investment-fintech': {
+    title: 'MBA Financial Strategy, Investment & FinTech | AUS',
+    description: 'Advance your financial strategy, investment and FinTech expertise in the 120 ECTS MBA specialization at AUS.'
+  },
+  '/masters-degree/global-strategy-risk-supply-chain-leadership': {
+    title: 'MBA Global Strategy, Risk & Supply Chain Leadership | AUS',
+    description: 'Study global strategy, international risk and resilient supply chains in the 120 ECTS MBA specialization at AUS.'
+  },
+  '/masters-degree/innovation-growth-family-enterprise-leadership': {
+    title: 'MBA Innovation, Growth & Family Enterprise Leadership | AUS',
+    description: 'Develop innovation, growth and family enterprise leadership expertise in the 120 ECTS MBA specialization at AUS.'
   },
   '/rankings': {
     title: 'Rankings & Recognition | AUS Business School',
@@ -151,12 +154,12 @@ const pages = {
   },
   '/study-in-switzerland': {
     title: 'Study Business in Switzerland | AUS Business School',
-    description: 'Study business in Switzerland at AUS Business School on Lake Geneva. Compare Bachelor, Master and DBA programs, annual tuition and funding, then request a brochure.',
+    description: 'Discover applied business education and student life at AUS Business School on Lake Geneva, and contact admissions for current study information.',
     llms: { label: 'Study business in Switzerland' }
   },
   '/veterans-study-in-switzerland': {
     title: 'GI Bill Study in Switzerland for U.S. Veterans | AUS',
-    description: 'Eligible U.S. veterans can use Post-9/11 GI Bill benefits for approved AUS programs in Switzerland. Explore dual degrees, VA funding and how to apply.',
+    description: 'Eligible U.S. veterans can learn how Post-9/11 GI Bill benefits may support approved study at AUS in Switzerland and contact the admissions team for guidance.',
     llms: { label: 'GI Bill study in Switzerland for U.S. veterans' }
   },
   '/speaker-series': {
@@ -177,72 +180,23 @@ const pages = {
   },
   '/tuition-fees-scholarships': {
     title: 'Tuition Fees & Scholarships | AUS Business School',
-    description: 'Review AUS program tuition fees, payment information, scholarship categories, eligibility and financial planning resources.'
-  },
-  '/swiss-federal-diploma-business-administration': {
-    title: 'Swiss Federal Diploma in Business Administration | AUS',
-    description: 'Earn a Swiss-recognized Federal Diploma in Business Administration at AUS through a practical, part-time program for working professionals.',
-    program: { level: 'Professional diploma', subject: 'Business Administration', credential: 'Swiss Federal Diploma in Business Administration' }
-  },
-  '/doctorate-in-business-administration': {
-    title: 'Doctorate in Business Administration in Switzerland | AUS',
-    description: 'Advance executive practice through the AUS Doctorate in Business Administration, combining applied research, leadership and a doctoral dissertation.',
-    program: { level: 'Doctoral degree', subject: 'Business Administration', credential: 'Doctorate in Business Administration' }
+    description: 'Learn about AUS scholarship support and contact admissions for the latest approved tuition and study information.'
   }
 };
 
 const bachelorPrograms = {
-  accounting: 'Accounting',
-  'aviation-management': 'Aviation Management',
-  'business-management': 'Business Management',
-  'healthcare-administration': 'Healthcare Administration',
-  'hospitality-management': 'Hospitality Management',
-  'human-resource-management': 'Human Resource Management',
-  'integrated-digital-marketing': 'Integrated & Digital Marketing',
-  'international-business': 'International Business',
-  'sports-management-athletic-administration': 'Sports Management – Athletic Administration',
-  'sports-management-sports-marketing': 'Sports Management – Sports Marketing'
+  '/bachelors-degree/aviation-business-airport-operations': { name: 'BBA Specialization in Aviation Business & Airport Operations', subject: 'Aviation business and airport operations' },
+  '/bachelors-degree/business-analytics-ai-applications': { name: 'BBA Specialization in Business Analytics & AI Applications', subject: 'Business analytics and AI applications' },
+  '/bachelors-degree/finance-fintech-digital-banking': { name: 'BBA Specialization in Finance, FinTech & Digital Banking', subject: 'Finance, FinTech and digital banking' },
+  '/bachelors-degree/international-business-trade-supply-chain': { name: 'BBA Specialization in International Business, Trade & Supply Chain', subject: 'International business, trade and supply chain' },
+  '/bachelors-degree/entrepreneurship-innovation-family-business': { name: 'BBA Specialization in Entrepreneurship, Innovation & Family Business', subject: 'Entrepreneurship, innovation and family business' }
 };
-
 const masterPrograms = {
-  'aviation-management': 'Aviation Management',
-  'data-analytics': 'Data Analytics',
-  finance: 'Finance',
-  'healthcare-administration': 'Healthcare Administration',
-  'human-resource-management': 'Human Resource Management',
-  'international-business': 'International Business',
-  'leadership-change': 'Leadership & Change',
-  'sports-management': 'Sports Management',
-  'strategic-brand-digital-marketing': 'Strategic Brand & Digital Marketing'
+  '/masters-degree/aviation-strategy-sustainability-leadership': { name: 'MBA Specialization in Aviation Strategy, Sustainability & Leadership', subject: 'Aviation strategy, sustainability and leadership' },
+  '/masters-degree/ai-strategy-digital-transformation': { name: 'MBA Specialization in AI Strategy & Digital Transformation', subject: 'AI strategy and digital transformation' },
+  '/masters-degree/financial-strategy-investment-fintech': { name: 'MBA Specialization in Financial Strategy, Investment & FinTech', subject: 'Financial strategy, investment and FinTech' },
+  '/masters-degree/global-strategy-risk-supply-chain-leadership': { name: 'MBA Specialization in Global Strategy, Risk & Supply Chain Leadership', subject: 'Global strategy, risk and supply chain leadership' },
+  '/masters-degree/innovation-growth-family-enterprise-leadership': { name: 'MBA Specialization in Innovation, Growth & Family Enterprise Leadership', subject: 'Innovation, growth and family enterprise leadership' }
 };
-
-for (const [slug, subject] of Object.entries(bachelorPrograms)) {
-  const title = {
-    'healthcare-administration': 'Healthcare Administration Bachelor’s | AUS Switzerland',
-    'human-resource-management': 'Human Resource Management Bachelor’s | AUS Switzerland',
-    'integrated-digital-marketing': 'Integrated & Digital Marketing Bachelor’s | AUS',
-    'sports-management-athletic-administration': 'Sports Management: Athletic Administration | AUS',
-    'sports-management-sports-marketing': 'Sports Marketing Bachelor’s Degree | AUS Switzerland'
-  }[slug] || `${subject} Bachelor’s Degree | AUS Switzerland`;
-  const description = slug.startsWith('sports-management-')
-    ? `Explore AUS Bachelor’s study in ${subject}, including curriculum, admissions, dual-degree options and careers in Switzerland.`
-    : `Explore the AUS Bachelor’s degree in ${subject}: curriculum, admissions, career outcomes and dual-degree study in Switzerland.`;
-  pages[`/bachelors-degree/${slug}`] = {
-    title,
-    description,
-    program: { level: "Bachelor's degree", subject, credential: `Bachelor's degree in ${subject}` }
-  };
-}
-
-for (const [slug, subject] of Object.entries(masterPrograms)) {
-  const title = slug === 'strategic-brand-digital-marketing'
-    ? 'Strategic Brand & Digital Marketing Master’s | AUS'
-    : `${subject} Master’s Degree | AUS Switzerland`;
-  pages[`/masters-degree/${slug}`] = {
-    title,
-    description: `Explore the AUS Master’s degree in ${subject}: curriculum, admissions, applied learning and career outcomes in Switzerland.`,
-    program: { level: "Master's degree", subject, credential: `Master's degree in ${subject}` }
-  };
-}
 
 module.exports = { bachelorPrograms, masterPrograms, pages, site };

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { pages, site } = require('./seo-config');
+const { bachelorPrograms, masterPrograms, pages, site } = require('./seo-config');
 
 const root = path.resolve(__dirname, '..');
 const dist = path.join(root, 'dist');
@@ -18,10 +18,25 @@ function csvEscape(value) {
   return `"${String(value).replace(/"/g, '""')}"`;
 }
 
+function writeFileWithRetry(file, content) {
+  let lastError;
+  for (let attempt = 0; attempt < 12; attempt += 1) {
+    try {
+      fs.writeFileSync(file, content, 'utf8');
+      return;
+    } catch (error) {
+      lastError = error;
+      if (!['UNKNOWN', 'EBUSY', 'EPERM'].includes(error.code)) throw error;
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
+    }
+  }
+  throw lastError;
+}
+
 function writeBoth(name, content) {
-  fs.writeFileSync(path.join(root, name), content, 'utf8');
+  writeFileWithRetry(path.join(root, name), content);
   fs.mkdirSync(dist, { recursive: true });
-  fs.writeFileSync(path.join(dist, name), content, 'utf8');
+  writeFileWithRetry(path.join(dist, name), content);
 }
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -48,12 +63,10 @@ Allow: /
 Sitemap: ${site.baseUrl}/sitemap.xml
 `;
 
-// Degree programs and landing pages both describe somewhere a reader can study, so they share the
-// same list in llms.txt. Landing pages supply their own label instead of a program credential.
-const studyRoutes = Object.entries(pages).filter(([, item]) => item.program || item.llms);
+const studyRoutes = Object.entries(pages).filter(([, item]) => item.llms);
 const llms = `# AUS Business School
 
-> AUS Business School, legally the American Institute of Applied Sciences in Switzerland, is an international business school in La Tour-de-Peilz, Canton of Vaud, Switzerland. AUS offers practice-led business education in English through Bachelor's, Master's, Doctorate in Business Administration and Swiss Federal Diploma programs.
+> AUS Business School, legally the American Institute of Applied Sciences in Switzerland, is an international business school in La Tour-de-Peilz, Canton of Vaud, Switzerland. AUS provides practice-led applied business education in English.
 
 Canonical website: ${site.baseUrl}/
 
@@ -68,16 +81,17 @@ Canonical website: ${site.baseUrl}/
 
 ## Study at AUS
 
-- [All business programs](${site.baseUrl}/programs): Overview of all study levels and specializations.
-- [Find your program](${site.baseUrl}/find-programs): Guided program-matching tool.
-- [Compare programs](${site.baseUrl}/compare-programs): Side-by-side program comparison.
-${studyRoutes.map(([route, item]) => `- [${item.program ? item.program.credential : item.llms.label}](${site.baseUrl}${route}): ${item.description}`).join('\n')}
+- [Programs overview](${site.baseUrl}/programs): Five BBA specializations and five MBA specializations.
+${Object.entries(bachelorPrograms).map(([route, program]) => `- [${program.name}](${site.baseUrl}${route}): ${program.subject}.`).join('\n')}
+${Object.entries(masterPrograms).map(([route, program]) => `- [${program.name}](${site.baseUrl}${route}): ${program.subject}.`).join('\n')}
+
+${studyRoutes.map(([route, item]) => `- [${item.llms.label}](${site.baseUrl}${route}): ${item.description}`).join('\n')}
 
 ## Admissions and student information
 
 - [Admissions and financing](${site.baseUrl}/admissions-financing): Application process, requirements, deadlines, financing and visa guidance.
 - [Campus facilities](${site.baseUrl}/campus-facilities): Classrooms, conference rooms, student spaces and nearby sports facilities in La Tour-de-Peilz.
-- [Tuition fees and scholarships](${site.baseUrl}/tuition-fees-scholarships): Tuition and scholarship information.
+- [Tuition fees and scholarships](${site.baseUrl}/tuition-fees-scholarships): Scholarship information and guidance on obtaining the latest approved tuition details.
 - [International students](${site.baseUrl}/international-students): Visa, permit and arrival guidance.
 - [Student life](${site.baseUrl}/student-life): Campus, housing, activities and life in Switzerland.
 - [Careers and outcomes](${site.baseUrl}/careers-outcomes): Career services, internships, employers and graduate outcomes.
@@ -104,11 +118,11 @@ const csvRows = indexableRoutes.map((route) => {
 const seoCsv = [csvHeader.map(csvEscape).join(','), ...csvRows].join('\n') + '\n';
 let seoSheetName = 'seo-settings.csv';
 try {
-  fs.writeFileSync(path.join(webflowDirectory, seoSheetName), seoCsv, 'utf8');
+  writeFileWithRetry(path.join(webflowDirectory, seoSheetName), seoCsv);
 } catch (error) {
   if (error.code !== 'EBUSY') throw error;
   seoSheetName = 'seo-settings-latest.csv';
-  fs.writeFileSync(path.join(webflowDirectory, seoSheetName), seoCsv, 'utf8');
+  writeFileWithRetry(path.join(webflowDirectory, seoSheetName), seoCsv);
   console.warn('webflow/seo-settings.csv is open in another application; wrote webflow/seo-settings-latest.csv instead.');
 }
 
@@ -121,10 +135,10 @@ The standalone HTML and generated Code Embed packages already contain the page-s
 3. Enable Webflow's auto-generated sitemap and keep the 404 utility page excluded from indexing.
 4. In Site settings, use the contents of [robots.txt](robots.txt) as the custom robots policy if Webflow is not already serving an equivalent policy.
 5. Publish [llms.txt](llms.txt) at the production root if the hosting layer supports static root files or rewrites.
-6. After publishing, submit \`${site.baseUrl}/sitemap.xml\` in Google Search Console and Bing Webmaster Tools, then test representative program, FAQ and breadcrumb pages in Google's Rich Results Test.
+6. After publishing, submit \`${site.baseUrl}/sitemap.xml\` in Google Search Console and Bing Webmaster Tools, then test representative FAQ and breadcrumb pages in Google's Rich Results Test.
 
 Do not add meta-keywords tags. Google does not use them for ranking.
 `;
-fs.writeFileSync(path.join(root, 'SEO-WEBFLOW-GUIDE.md'), guide, 'utf8');
+writeFileWithRetry(path.join(root, 'SEO-WEBFLOW-GUIDE.md'), guide);
 
 console.log(`Built sitemap.xml with ${indexableRoutes.length} canonical URLs, robots.txt, llms.txt and the Webflow SEO settings sheet.`);

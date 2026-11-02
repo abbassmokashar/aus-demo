@@ -209,8 +209,9 @@ function makeSearchScript(script) {
 function splitHomepageScripts(html) {
   const structuredData = [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi)]
     .map((match) => match[0]);
-  const inlineScripts = [...html.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)]
-    .map((match) => match[1]);
+  const inlineScripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)]
+    .filter((match) => !/\bsrc\s*=/i.test(match[1]) && !/\btype\s*=\s*["']application\/ld\+json["']/i.test(match[1]))
+    .map((match) => match[2]);
   const externalScripts = [...html.matchAll(/<script\b[^>]*\bsrc=[^>]*><\/script>/gi)]
     .map((match) => match[0])
     // Webflow loads its supported GSAP runtime before DOMContentLoaded. Shipping
@@ -218,48 +219,23 @@ function splitHomepageScripts(html) {
     // can leave plugins registered against a different GSAP version.
     .filter((script) => !/(?:\/gsap(?:\.min)?\.js|\/ScrollTrigger(?:\.min)?\.js)/i.test(script));
 
-  const news = inlineScripts.find((script) => script.includes('newsOverlay'));
-  const main = inlineScripts.find((script) => script.includes('SITE SEARCH'));
-  const finder = inlineScripts.find((script) => script.includes('var questions=['));
-  const cta = inlineScripts.find((script) => script.includes('function fitAll()'));
-  const intake = inlineScripts.find((script) => script.includes('function nextAvailableIntake()'));
-  if (!news || !main || !finder || !cta) throw new Error('One or more homepage scripts could not be identified.');
-
-  const searchMarker = main.indexOf('/* SITE SEARCH');
-  const highlightMarker = main.indexOf('/* SEARCH HIGHLIGHT');
-  const compareMarker = main.indexOf('// ---------- COMPARE SPECIALIZATIONS');
-  if (searchMarker < 0 || highlightMarker < 0 || compareMarker < 0) {
-    throw new Error('Homepage script markers have changed.');
+  const scripts = [...structuredData];
+  if (externalScripts.length) scripts.push(externalScripts.join('\n'));
+  for (let code of inlineScripts) {
+    if (!code.trim()) continue;
+    if (code.includes('var idx=')) code = makeSearchScript(code);
+    const marker = code.indexOf('/* SITE SEARCH');
+    const sections = wrapScript(code).length > targetLimit && marker > 0
+      ? [code.slice(0, marker), code.slice(marker)]
+      : [code];
+    for (const section of sections) {
+      const wrapped = wrapScript(section);
+      if (wrapped.length > targetLimit) {
+        throw new Error(`A homepage script remains too large after search-index compaction (${wrapped.length} characters).`);
+      }
+      scripts.push(wrapped);
+    }
   }
-
-  const mainUi = main.slice(0, searchMarker);
-  const search = makeSearchScript(main.slice(searchMarker, highlightMarker));
-  const highlightAndPromo = main.slice(highlightMarker, compareMarker);
-  const compare = main.slice(compareMarker);
-
-  const programDeclaration = 'var programData=';
-  const programStart = finder.indexOf(programDeclaration);
-  const programArrayStart = finder.indexOf('[', programStart + programDeclaration.length);
-  const programArrayEnd = findArrayEnd(finder, programArrayStart);
-  const programLiteral = finder.slice(programArrayStart, programArrayEnd + 1);
-  const finderLogic = finder.slice(0, programStart)
-    + 'var programData=window.AUS_FINDER_PROGRAMS||[];'
-    + finder.slice(programArrayEnd + 2);
-  const finderData = `window.AUS_FINDER_PROGRAMS=${programLiteral};`;
-
-  const scripts = [
-    ...structuredData,
-    wrapScript(news),
-    externalScripts.join('\n'),
-    wrapScript(mainUi),
-    wrapScript(search),
-    wrapScript(highlightAndPromo),
-    wrapScript(compare),
-    wrapScript(finderData),
-    wrapScript(finderLogic),
-    wrapScript(cta),
-    ...(intake ? [wrapScript(intake)] : [])
-  ];
   return combineCompleteBlocks(scripts, targetLimit);
 }
 

@@ -7,26 +7,11 @@ const SITEMAP =
   "https://www.aus.swiss/sitemap.xml";
 
 const IMPORTANT_LINKS = {
-  findProgram:
-    "https://www.aus.swiss/find-programs",
-
-  costCalculator:
-    "https://www.aus.swiss/cost-calculator",
-
-  comparePrograms:
-    "https://www.aus.swiss/compare-programs",
-
   programs:
     "https://www.aus.swiss/programs",
 
-  bachelors:
-    "https://www.aus.swiss/admissions-bachelors",
-
-  masters:
-    "https://www.aus.swiss/admissions-masters",
-
-  doctorate:
-    "https://www.aus.swiss/admissions-doctoral",
+  admissions:
+    "https://www.aus.swiss/admissions-financing",
 
   tuition:
     "https://www.aus.swiss/tuition-fees-scholarships",
@@ -41,153 +26,28 @@ const IMPORTANT_LINKS = {
     "https://www.aus.swiss/meet-our-people"
 };
 
-
-const PROGRAM_LINKS = [
-  {
-    name: "Bachelor's in Accounting",
-    level: "bachelor",
-    aliases: ["accounting"],
-    url: "https://www.aus.swiss/bachelors-degree/accounting"
-  },
-  {
-    name: "Bachelor's in Aviation Management",
-    level: "bachelor",
-    aliases: ["aviation management"],
-    url: "https://www.aus.swiss/bachelors-degree/aviation-management"
-  },
-  {
-    name: "Bachelor's in Business Management",
-    level: "bachelor",
-    aliases: ["business management"],
-    url: "https://www.aus.swiss/bachelors-degree/business-management"
-  },
-  {
-    name: "Bachelor's in Healthcare Administration",
-    level: "bachelor",
-    aliases: ["healthcare administration", "health care administration"],
-    url: "https://www.aus.swiss/bachelors-degree/healthcare-administration"
-  },
-  {
-    name: "Bachelor's in Hospitality Management",
-    level: "bachelor",
-    aliases: ["hospitality management"],
-    url: "https://www.aus.swiss/bachelors-degree/hospitality-management"
-  },
-  {
-    name: "Bachelor's in Human Resource Management",
-    level: "bachelor",
-    aliases: ["human resource management", "human resources management"],
-    url: "https://www.aus.swiss/bachelors-degree/human-resource-management"
-  },
-  {
-    name: "Bachelor's in Integrated & Digital Marketing",
-    level: "bachelor",
-    aliases: ["integrated digital marketing", "integrated and digital marketing"],
-    url: "https://www.aus.swiss/bachelors-degree/integrated-digital-marketing"
-  },
-  {
-    name: "Bachelor's in International Business",
-    level: "bachelor",
-    aliases: ["international business"],
-    url: "https://www.aus.swiss/bachelors-degree/international-business"
-  },
-  {
-    name: "Bachelor's in Sports Management - Athletic Administration",
-    level: "bachelor",
-    aliases: ["sports management athletic administration", "athletic administration"],
-    url: "https://www.aus.swiss/bachelors-degree/sports-management-athletic-administration"
-  },
-  {
-    name: "Bachelor's in Sports Management - Sports Marketing",
-    level: "bachelor",
-    aliases: ["sports management sports marketing", "sports marketing"],
-    url: "https://www.aus.swiss/bachelors-degree/sports-management-sports-marketing"
-  },
-  {
-    name: "Master's in Aviation Management",
-    level: "master",
-    aliases: ["aviation management"],
-    url: "https://www.aus.swiss/masters-degree/aviation-management"
-  },
-  {
-    name: "Master's in Data Analytics",
-    level: "master",
-    aliases: ["data analytics"],
-    url: "https://www.aus.swiss/masters-degree/data-analytics"
-  },
-  {
-    name: "Master's in Finance",
-    level: "master",
-    aliases: ["finance"],
-    url: "https://www.aus.swiss/masters-degree/finance"
-  },
-  {
-    name: "Master's in Healthcare Administration",
-    level: "master",
-    aliases: ["healthcare administration", "health care administration"],
-    url: "https://www.aus.swiss/masters-degree/healthcare-administration"
-  },
-  {
-    name: "Master's in Human Resource Management",
-    level: "master",
-    aliases: ["human resource management", "human resources management"],
-    url: "https://www.aus.swiss/masters-degree/human-resource-management"
-  },
-  {
-    name: "Master's in International Business",
-    level: "master",
-    aliases: ["international business"],
-    url: "https://www.aus.swiss/masters-degree/international-business"
-  },
-  {
-    name: "Master's in Leadership & Change",
-    level: "master",
-    aliases: ["leadership and change", "leadership change"],
-    url: "https://www.aus.swiss/masters-degree/leadership-change"
-  },
-  {
-    name: "Master's in Sports Management",
-    level: "master",
-    aliases: ["sports management"],
-    url: "https://www.aus.swiss/masters-degree/sports-management"
-  },
-  {
-    name: "Master's in Strategic Brand & Digital Marketing",
-    level: "master",
-    aliases: ["strategic brand digital marketing", "strategic brand and digital marketing"],
-    url: "https://www.aus.swiss/masters-degree/strategic-brand-digital-marketing"
-  },
-  {
-    name: "Doctorate in Business Administration",
-    level: "doctorate",
-    aliases: ["doctorate in business administration", "doctoral business administration", "dba"],
-    url: "https://www.aus.swiss/doctorate-in-business-administration"
-  },
-  {
-    name: "Swiss Federal Diploma in Business Administration",
-    level: "diploma",
-    aliases: ["swiss federal diploma", "federal diploma"],
-    url: "https://www.aus.swiss/swiss-federal-diploma-business-administration"
-  }
-];
-
-
-const PROGRAM_LINK_GUIDE =
-  PROGRAM_LINKS
-    .map(
-      program =>
-        `- ${program.name}: ${program.url}`
-    )
-    .join("\n");
-
-
 const CURRENT_VERIFIED_FACTS = `
-- Tuition is stated per academic year, not per academic term.
-- Bachelor's programs: CHF 28'000 per academic year.
-- Hospitality Management: CHF 30'000 per academic year as an all-inclusive package.
-- Master's programs: CHF 25'000 per academic year. Never state CHF 25'050.
-- Doctor of Business Administration: CHF 26'000 per academic year.
-- Swiss Federal Diploma in Business Administration: CHF 28'000 per academic year.
+- AUS currently publishes five BBA specializations and five MBA specializations.
+- The BBA structure carries 180 ECTS. The MBA structure carries 120 ECTS.
+- Use the current program pages listed below for pathway names, subject areas and direct links.
+- Never repeat, infer or link to any retired program or former academic partnership.
+- Direct visitors to Admissions for entry requirements, tuition and intake guidance.
+`;
+
+const CURRENT_PROGRAM_LINKS = `
+BBA:
+- Aviation Business & Airport Operations: https://www.aus.swiss/bachelors-degree/aviation-business-airport-operations
+- Business Analytics & AI Applications: https://www.aus.swiss/bachelors-degree/business-analytics-ai-applications
+- Finance, FinTech & Digital Banking: https://www.aus.swiss/bachelors-degree/finance-fintech-digital-banking
+- International Business, Trade & Supply Chain: https://www.aus.swiss/bachelors-degree/international-business-trade-supply-chain
+- Entrepreneurship, Innovation & Family Business: https://www.aus.swiss/bachelors-degree/entrepreneurship-innovation-family-business
+
+MBA:
+- Aviation Strategy, Sustainability & Leadership: https://www.aus.swiss/masters-degree/aviation-strategy-sustainability-leadership
+- AI Strategy & Digital Transformation: https://www.aus.swiss/masters-degree/ai-strategy-digital-transformation
+- Financial Strategy, Investment & FinTech: https://www.aus.swiss/masters-degree/financial-strategy-investment-fintech
+- Global Strategy, Risk & Supply Chain Leadership: https://www.aus.swiss/masters-degree/global-strategy-risk-supply-chain-leadership
+- Innovation, Growth & Family Enterprise Leadership: https://www.aus.swiss/masters-degree/innovation-growth-family-enterprise-leadership
 `;
 
 
@@ -258,16 +118,16 @@ ACCURACY:
 - If information cannot be verified from the supplied AUS material,
   say that you cannot confirm it and direct the visitor to the appropriate AUS page.
 
-AUS WEBSITE TOOLS:
+AUS WEBSITE GUIDANCE:
 
-If someone is unsure which program fits them, recommend:
-https://www.aus.swiss/find-programs
+If someone asks about a degree, program or specialization, answer from the current
+program information and include the exact corresponding program-page URL. Use the
+program overview when the visitor asks generally about all available pathways:
+https://www.aus.swiss/programs
 
-If someone wants to estimate study costs, recommend:
-https://www.aus.swiss/cost-calculator
-
-If someone wants to compare programs or specializations, recommend:
-https://www.aus.swiss/compare-programs
+If someone asks about entry requirements, tuition or intake availability, direct
+them to Admissions or the tuition page because those details may depend on the
+applicant and study route.
 
 If someone wants to contact AUS, recommend:
 https://www.aus.swiss/contact-us
@@ -278,25 +138,9 @@ https://www.aus.swiss/tuition-fees-scholarships
 If someone asks about the AUS team, leadership, staff, or named people, prefer:
 https://www.aus.swiss/meet-our-people
 
-Do not use the program-fit quiz as a substitute for factual program information
-when the relevant information is already available.
-
-SPECIFIC PROGRAM LINKS:
-
-- Whenever you identify, recommend, compare, or provide details about a specific
-  AUS program, include that program's direct URL in the same response.
-- Do not replace a known program's direct URL with the general Programs page,
-  Find Your Program, or Compare Programs.
-- Use the general tools only when the visitor is still exploring broadly or the
-  specific program is not yet known.
-- If the visitor asks about a specialization available at both Bachelor's and
-  Master's level, link to the level discussed. If no level is clear, link to both.
-- Link only the specific program the visitor asked about or a program you are
-  explicitly recommending. Do not add a second program link merely because its
-  name appears while describing a degree title, pathway, credential, or context.
-- Use only the canonical program URLs below:
-
-${PROGRAM_LINK_GUIDE}
+- Do not describe, compare, recommend or link to any retired AUS program.
+- Do not mention any former academic partnership or retired award arrangement.
+- Do not use cached excerpts that conflict with the CURRENT VERIFIED FACTS.
 
 CONVERSATION:
 
@@ -308,12 +152,13 @@ Visitor:
 I want something related to analytics.
 
 Assistant:
-Briefly explains relevant options.
+Recommends Business Analytics & AI Applications at BBA level or AI Strategy &
+Digital Transformation at MBA level, and includes the corresponding direct links.
 
 Visitor:
-What about at Master's level?
+How can I confirm what will be available?
 
-Understand that "Master's level" refers to the previous discussion.
+Understand that the visitor is following up on the program recommendation.
 
 CONSISTENCY:
 
@@ -524,6 +369,12 @@ async function indexWebsite(
   const urls =
     await fetchSitemapUrls();
 
+  const pruned =
+    await pruneStaleIndexedPages(
+      env,
+      urls
+    );
+
   const batch =
     urls.slice(
       start,
@@ -644,6 +495,8 @@ async function indexWebsite(
   return {
     indexed,
 
+    pruned,
+
     processed:
       batch.length,
 
@@ -664,6 +517,44 @@ async function indexWebsite(
 
     errors
   };
+}
+
+
+async function pruneStaleIndexedPages(
+  env,
+  urls
+) {
+  const currentKeys =
+    new Set(
+      urls.map(
+        url => makeKey(url)
+      )
+    );
+
+  let cursor = undefined;
+  let removed = 0;
+
+  do {
+    const result =
+      await env.KNOWLEDGE.list({
+        prefix: "page:",
+        cursor
+      });
+
+    for (const key of result.keys) {
+      if (!currentKeys.has(key.name)) {
+        await env.KNOWLEDGE.delete(key.name);
+        removed++;
+      }
+    }
+
+    cursor =
+      result.list_complete
+        ? undefined
+        : result.cursor;
+  } while (cursor);
+
+  return removed;
 }
 
 
@@ -763,135 +654,6 @@ function normalizeQuery(
 }
 
 
-function detectStudyLevels(
-  text
-) {
-  const normalized =
-    normalizeQuery(text);
-
-  const levels =
-    new Set();
-
-  if (
-    /\b(bachelor|bachelors|undergraduate|bsc)\b/.test(
-      normalized
-    )
-  ) {
-    levels.add("bachelor");
-  }
-
-  if (
-    /\b(master|masters|graduate|msc|mba)\b/.test(
-      normalized
-    )
-  ) {
-    levels.add("master");
-  }
-
-  if (
-    /\b(doctorate|doctoral|dba)\b/.test(
-      normalized
-    )
-  ) {
-    levels.add("doctorate");
-  }
-
-  if (
-    /\b(federal diploma|swiss diploma|diploma)\b/.test(
-      normalized
-    )
-  ) {
-    levels.add("diploma");
-  }
-
-  return levels;
-}
-
-
-function getMentionedPrograms(
-  text
-) {
-  const normalized =
-    normalizeQuery(text);
-
-  const levels =
-    detectStudyLevels(
-      normalized
-    );
-
-  const mentioned =
-    PROGRAM_LINKS.filter(
-      program =>
-        program.aliases.some(
-          alias =>
-            normalized.includes(
-              normalizeQuery(alias)
-            )
-        )
-    );
-
-  if (
-    levels.size !== 1
-  ) {
-    return mentioned;
-  }
-
-  const level =
-    Array.from(levels)[0];
-
-  const levelMatches =
-    mentioned.filter(
-      program =>
-        program.level === level
-    );
-
-  return levelMatches.length
-    ? levelMatches
-    : mentioned;
-}
-
-
-function appendMissingProgramLinks(
-  answer,
-  question
-) {
-  const response =
-    String(answer || "")
-      .trim();
-
-  const programs =
-    getMentionedPrograms(
-      question
-    )
-      .filter(
-        program =>
-          !response.includes(
-            program.url
-          )
-      )
-      .slice(0, 3);
-
-  if (!programs.length) {
-    return response;
-  }
-
-  const heading =
-    programs.length === 1
-      ? "Program page:"
-      : "Program pages:";
-
-  const links =
-    programs
-      .map(
-        program =>
-          `- ${program.name}: ${program.url}`
-      )
-      .join("\n");
-
-  return `${response}\n\n${heading}\n${links}`;
-}
-
-
 function scorePage(
   page,
   question
@@ -928,32 +690,6 @@ function scorePage(
       .toLowerCase();
 
   let score = 0;
-
-  const mentionedPrograms =
-    getMentionedPrograms(
-      query
-    );
-
-  for (
-    const program of
-      mentionedPrograms
-  ) {
-    const programPath =
-      program.url
-        .replace(
-          "https://www.aus.swiss",
-          ""
-        )
-        .toLowerCase();
-
-    if (
-      pageUrl.includes(
-        programPath
-      )
-    ) {
-      score += 120;
-    }
-  }
 
   for (
     const word of words
@@ -1001,14 +737,6 @@ function scorePage(
       )
     ) {
       score += 60;
-    }
-
-    if (
-      pageUrl.includes(
-        "cost-calculator"
-      )
-    ) {
-      score += 45;
     }
 
     if (
@@ -1134,39 +862,6 @@ function scorePage(
       )
     ) {
       score += 80;
-    }
-  }
-
-
-  if (
-    query.includes("compare") ||
-    query.includes("difference") ||
-    query.includes("versus") ||
-    query.includes(" vs ")
-  ) {
-    if (
-      pageUrl.includes(
-        "compare-programs"
-      )
-    ) {
-      score += 55;
-    }
-  }
-
-
-  if (
-    query.includes("best program") ||
-    query.includes("which program") ||
-    query.includes("what program") ||
-    query.includes("best fit") ||
-    query.includes("which degree")
-  ) {
-    if (
-      pageUrl.includes(
-        "find-programs"
-      )
-    ) {
-      score += 65;
     }
   }
 
@@ -1694,6 +1389,9 @@ ${context || "No relevant AUS source was found."}
 CURRENT VERIFIED FACTS:
 
 ${CURRENT_VERIFIED_FACTS}
+CURRENT PROGRAM PAGES:
+
+${CURRENT_PROGRAM_LINKS}
 - Based on the published application-deadline rules and today's date, the next
   available intake is ${getNextIntakeLabel()}.
 
@@ -1710,17 +1408,8 @@ When useful, include the most relevant AUS page URL.
 
 Useful AUS tools:
 
-Find the best-fit program:
-${IMPORTANT_LINKS.findProgram}
-
-Cost calculator:
-${IMPORTANT_LINKS.costCalculator}
-
-Compare programs:
-${IMPORTANT_LINKS.comparePrograms}
-
-Programs:
-${IMPORTANT_LINKS.programs}
+Admissions and current study guidance:
+${IMPORTANT_LINKS.admissions}
 
 Tuition and scholarships:
 ${IMPORTANT_LINKS.tuition}
@@ -1774,10 +1463,8 @@ say so clearly rather than guessing.
 
 
       const answer =
-        appendMissingProgramLinks(
-          generatedAnswer,
-          message
-        );
+        String(generatedAnswer || "")
+          .trim();
 
 
       return new Response(

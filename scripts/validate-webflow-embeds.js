@@ -12,13 +12,7 @@ let inlineScriptCount = 0;
 let largest = { file: '', characters: 0 };
 let searchIndexCount = 0;
 let structuredDataCount = 0;
-const requestedProgramRoutes = [
-  '/bachelors-degree/accounting',
-  '/masters-degree/finance',
-  '/doctorate-in-business-administration',
-  '/swiss-federal-diploma-business-administration'
-];
-const foundProgramRoutes = new Set();
+const retiredContent = /Tiffin|dual[- ]degree|find-programs|compare-programs|cost-calculator|doctorate-in-business-administration|swiss-federal-diploma-business-administration|bachelors-degree\/(?:accounting|aviation-management|business-management|healthcare-administration|hospitality-management|human-resource-management|integrated-digital-marketing|international-business|sports-management)(?:[\/"'#?]|$)|masters-degree\/(?:aviation-management|data-analytics|finance|healthcare-administration|human-resource-management|international-business|leadership-change|sports-management|strategic-brand-digital-marketing)(?:[\/"'#?]|$)/i;
 
 function walk(directory) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
@@ -42,12 +36,7 @@ function walk(directory) {
     }
     if (source.length > largest.characters) largest = { file: relative, characters: source.length };
     if (source.length >= 50000) failures.push(`${relative} is ${source.length} characters.`);
-    if (/\/programs\/(?:bachelors|masters|doctorate|federal-diploma)/i.test(source)) {
-      failures.push(`${relative} contains a legacy /programs/ degree route.`);
-    }
-    requestedProgramRoutes.forEach((route) => {
-      if (source.includes(route)) foundProgramRoutes.add(route);
-    });
+    if (retiredContent.test(source)) failures.push(`${relative} contains retired partnership or catalogue content.`);
 
     for (const tag of ['script', 'style']) {
       const opens = (source.match(new RegExp(`<${tag}\\b`, 'gi')) || []).length;
@@ -86,9 +75,6 @@ function walk(directory) {
 }
 
 packageRoots.forEach(walk);
-requestedProgramRoutes.forEach((route) => {
-  if (!foundProgramRoutes.has(route)) failures.push(`Webflow output is missing ${route}.`);
-});
 
 if (failures.length) {
   failures.forEach((failure) => console.error(failure));

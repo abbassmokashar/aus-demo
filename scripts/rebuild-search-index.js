@@ -29,15 +29,15 @@ function sourceForRoute(route) {
 
 const landingPageCategories = {
   '/study-in-switzerland': 'Admissions',
-  '/aviation-management': 'Programs'
+  '/veterans-study-in-switzerland': 'Admissions'
 };
 
 function categoryForRoute(route) {
   if (landingPageCategories[route]) return landingPageCategories[route];
   if (route === '/') return 'Home';
-  if (/^\/(?:bachelors-degree|masters-degree|doctorate-in-business-administration|swiss-federal-diploma|programs|find-programs|compare-programs)/.test(route)) return 'Programs';
-  if (/^\/(?:admissions|bachelors-admission|masters-admission|doctoral-admission|english-language|international|transfer)/.test(route)) return 'Admissions';
-  if (/^\/(?:tuition|cost-calculator)/.test(route)) return 'Tuition & Scholarships';
+  if (route === '/programs' || /^\/(?:bachelors-degree|masters-degree)\//.test(route)) return 'Programs';
+  if (/^\/(?:admissions|english-language|international|transfer|study-in-switzerland|veterans-study-in-switzerland)/.test(route)) return 'Admissions';
+  if (/^\/tuition/.test(route)) return 'Tuition & Scholarships';
   if (/^\/(?:careers|alumni)/.test(route)) return 'Careers & Outcomes';
   if (/^\/(?:student|campus|housing|living)/.test(route)) return 'Student Life';
   return 'About';
@@ -141,11 +141,17 @@ function rebuild(only = []) {
   for (const file of listHtml(root)) {
     if (wanted.size && !wanted.has(path.relative(root, file).replace(/\\/g, '/'))) continue;
     let html = fs.readFileSync(file, 'utf8');
-    const declaration = html.indexOf('var idx=');
+    let declaration = html.indexOf('var idx=');
     if (declaration < 0) continue;
-    const start = html.indexOf('[', declaration);
-    const end = findArrayEnd(html, start);
-    html = html.slice(0, start) + serialize(entries, file) + html.slice(end + 1);
+    let cursor = 0;
+    while (declaration >= 0) {
+      const start = html.indexOf('[', declaration);
+      const end = findArrayEnd(html, start);
+      const serialized = serialize(entries, file);
+      html = html.slice(0, start) + serialized + html.slice(end + 1);
+      cursor = start + serialized.length;
+      declaration = html.indexOf('var idx=', cursor);
+    }
     writeFileWithRetry(file, html);
     updated += 1;
   }
