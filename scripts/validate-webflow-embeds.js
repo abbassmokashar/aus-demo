@@ -12,7 +12,7 @@ let inlineScriptCount = 0;
 let largest = { file: '', characters: 0 };
 let searchIndexCount = 0;
 let structuredDataCount = 0;
-const retiredContent = /Tiffin|dual[- ]degree|find-programs|compare-programs|cost-calculator|doctorate-in-business-administration|swiss-federal-diploma-business-administration|bachelors-degree\/(?:accounting|aviation-management|business-management|healthcare-administration|hospitality-management|human-resource-management|integrated-digital-marketing|international-business|sports-management)(?:[\/"'#?]|$)|masters-degree\/(?:aviation-management|data-analytics|finance|healthcare-administration|human-resource-management|international-business|leadership-change|sports-management|strategic-brand-digital-marketing)(?:[\/"'#?]|$)/i;
+  const retiredContent = /Tiffin|dual[- ]degree|find-programs|compare-programs|cost-calculator|bachelors-degree\/(?:accounting|aviation-management|business-management|healthcare-administration|human-resource-management|integrated-digital-marketing|international-business|sports-management)(?:[\/"'#?]|$)|masters-degree\/(?:aviation-management|data-analytics|finance|healthcare-administration|human-resource-management|international-business|leadership-change|sports-management|strategic-brand-digital-marketing)(?:[\/"'#?]|$)/i;
 
 function walk(directory) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {

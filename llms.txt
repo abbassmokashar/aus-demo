@@ -21,6 +21,7 @@ Canonical website: https://www.aus.swiss/
 - [BBA Specialization in Finance, FinTech & Digital Banking](https://www.aus.swiss/bachelors-degree/finance-fintech-digital-banking): Finance, FinTech and digital banking.
 - [BBA Specialization in International Business, Trade & Supply Chain](https://www.aus.swiss/bachelors-degree/international-business-trade-supply-chain): International business, trade and supply chain.
 - [BBA Specialization in Entrepreneurship, Innovation & Family Business](https://www.aus.swiss/bachelors-degree/entrepreneurship-innovation-family-business): Entrepreneurship, innovation and family business.
+- [Bachelor’s Degree in Hospitality Management](https://www.aus.swiss/bachelors-degree/hospitality-management): Hospitality management, operations and guest experience.
 - [MBA Specialization in Aviation Strategy, Sustainability & Leadership](https://www.aus.swiss/masters-degree/aviation-strategy-sustainability-leadership): Aviation strategy, sustainability and leadership.
 - [MBA Specialization in AI Strategy & Digital Transformation](https://www.aus.swiss/masters-degree/ai-strategy-digital-transformation): AI strategy and digital transformation.
 - [MBA Specialization in Financial Strategy, Investment & FinTech](https://www.aus.swiss/masters-degree/financial-strategy-investment-fintech): Financial strategy, investment and FinTech.

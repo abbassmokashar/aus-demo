@@ -105,8 +105,8 @@ const pages = {
     description: 'Access AUS Business School academic, student, privacy, quality-assurance and institutional policies and procedures.'
   },
   '/programs': {
-    title: 'BBA & MBA Business Programs in Switzerland | AUS',
-    description: 'Explore five applied business pathways offered at BBA and MBA level at AUS Business School in Switzerland.'
+    title: 'Business Programs in Switzerland | AUS Business School',
+    description: 'Explore applied BBA, MBA, Doctorate, Hospitality Management and Swiss Federal Diploma programs at AUS Business School in Switzerland.'
   },
   '/bachelors-degree/aviation-business-airport-operations': {
     title: 'BBA Aviation Business & Airport Operations | AUS',
@@ -128,6 +128,10 @@ const pages = {
     title: 'BBA Entrepreneurship, Innovation & Family Business | AUS',
     description: 'Develop venture, innovation and family business skills in the 180 ECTS BBA specialization at AUS in Switzerland.'
   },
+  '/bachelors-degree/hospitality-management': {
+    title: 'Bachelor’s in Hospitality Management | AUS Switzerland',
+    description: 'Study hospitality operations, guest experience, revenue management, events and sustainable tourism at AUS in Switzerland.'
+  },
   '/masters-degree/aviation-strategy-sustainability-leadership': {
     title: 'MBA Aviation Strategy, Sustainability & Leadership | AUS',
     description: 'Develop strategic aviation, sustainability and leadership expertise in the 120 ECTS MBA specialization at AUS.'
@@ -147,6 +151,14 @@ const pages = {
   '/masters-degree/innovation-growth-family-enterprise-leadership': {
     title: 'MBA Innovation, Growth & Family Enterprise Leadership | AUS',
     description: 'Develop innovation, growth and family enterprise leadership expertise in the 120 ECTS MBA specialization at AUS.'
+  },
+  '/doctorate-in-business-administration': {
+    title: 'Doctorate in Business Administration in Switzerland | AUS',
+    description: 'Pursue applied doctoral research for executive leadership and organizational practice through the DBA at AUS Business School in Switzerland.'
+  },
+  '/swiss-federal-diploma-business-administration': {
+    title: 'Swiss Federal Diploma in Business Administration | AUS',
+    description: 'Advance your professional business expertise through the Swiss Federal Diploma in Business Administration at AUS in Switzerland.'
   },
   '/rankings': {
     title: 'Rankings & Recognition | AUS Business School',
@@ -189,7 +201,8 @@ const bachelorPrograms = {
   '/bachelors-degree/business-analytics-ai-applications': { name: 'BBA Specialization in Business Analytics & AI Applications', subject: 'Business analytics and AI applications' },
   '/bachelors-degree/finance-fintech-digital-banking': { name: 'BBA Specialization in Finance, FinTech & Digital Banking', subject: 'Finance, FinTech and digital banking' },
   '/bachelors-degree/international-business-trade-supply-chain': { name: 'BBA Specialization in International Business, Trade & Supply Chain', subject: 'International business, trade and supply chain' },
-  '/bachelors-degree/entrepreneurship-innovation-family-business': { name: 'BBA Specialization in Entrepreneurship, Innovation & Family Business', subject: 'Entrepreneurship, innovation and family business' }
+  '/bachelors-degree/entrepreneurship-innovation-family-business': { name: 'BBA Specialization in Entrepreneurship, Innovation & Family Business', subject: 'Entrepreneurship, innovation and family business' },
+  '/bachelors-degree/hospitality-management': { name: 'Bachelor’s Degree in Hospitality Management', subject: 'Hospitality management, operations and guest experience' }
 };
 const masterPrograms = {
   '/masters-degree/aviation-strategy-sustainability-leadership': { name: 'MBA Specialization in Aviation Strategy, Sustainability & Leadership', subject: 'Aviation strategy, sustainability and leadership' },

@@ -87,15 +87,55 @@ const programs = [
     themes: ['Innovation strategy and portfolio choices', 'Growth leadership and organizational scaling', 'Family enterprise governance and succession', 'Entrepreneurial finance and strategic renewal'],
     careers: ['Innovation leadership', 'Growth strategy', 'Family enterprise management', 'Entrepreneurial consulting', 'Venture and business development'],
     image: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa4115bfa4ea9b34d427c5f_masters-leadership-and-change-1.jpg.webp'
+  },
+  {
+    level: 'BBA', slug: 'hospitality-management',
+    title: 'Hospitality Management',
+    summary: 'Combine business foundations with hospitality operations, guest experience, revenue management and practical preparation for international service-sector careers.',
+    themes: ['Hospitality operations', 'Guest experience and service excellence', 'Revenue and yield management', 'Sustainable tourism and events'],
+    careers: ['Hotel and resort operations', 'Food and beverage management', 'Revenue management', 'Events and banqueting', 'Guest relations'],
+    image: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa41153ec7e23c6ba9485ea_bachelors-hospitality-management-1.jpg.webp',
+    standalone: true,
+    preserveExistingPage: true
+  },
+  {
+    level: 'DBA', slug: 'doctorate-in-business-administration',
+    title: 'Doctorate in Business Administration',
+    summary: 'Combine advanced applied research with professional practice to address complex organizational challenges and contribute new knowledge to business and management.',
+    themes: ['Applied doctoral research', 'Executive leadership', 'Organizational transformation', 'Business ethics and governance'],
+    careers: ['Executive leadership', 'Management consulting', 'Academic and applied research', 'Organizational transformation', 'Policy and governance'],
+    image: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa41155e31b0cd830ec9cec_doctorate-dba-1.jpg.webp',
+    source: 'programs/doctorate/dba.html',
+    route: '/doctorate-in-business-administration',
+    degree: 'Doctor of Business Administration',
+    credits: '90 CH | 150 ECTS',
+    standalone: true,
+    preserveExistingPage: true
+  },
+  {
+    level: 'Diploma', slug: 'swiss-federal-diploma-business-administration',
+    title: 'Swiss Federal Diploma in Business Administration',
+    summary: 'Develop advanced professional business competencies through a Swiss-recognized qualification designed for experienced professionals and practical management careers.',
+    themes: ['Business administration', 'Strategic leadership', 'Finance and operations', 'Applied professional practice'],
+    careers: ['Business administration', 'Operations management', 'Team leadership', 'Business development', 'Finance and commercial support'],
+    image: 'https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa41155d798236eaa77bb9a_federal-diploma-1.jpg.webp',
+    source: 'programs/federal-diploma.html',
+    route: '/swiss-federal-diploma-business-administration',
+    degree: 'Advanced Federal Diploma of Higher Education in Business Administration',
+    credits: 'Swiss Federal Qualification',
+    standalone: true,
+    preserveExistingPage: true
   }
 ];
 
 for (const program of programs) {
-  const folder = program.level === 'BBA' ? 'bachelors' : 'masters';
-  program.source = `programs/${folder}/${program.slug}.html`;
-  program.route = `/${program.level === 'BBA' ? 'bachelors-degree' : 'masters-degree'}/${program.slug}`;
-  program.degree = program.level === 'BBA' ? 'Bachelor of Business Administration' : 'Master of Business Administration';
-  program.credits = program.level === 'BBA' ? '180 ECTS' : '120 ECTS';
+  if (!program.source) {
+    const folder = program.level === 'BBA' ? 'bachelors' : 'masters';
+    program.source = `programs/${folder}/${program.slug}.html`;
+  }
+  if (!program.route) program.route = `/${program.level === 'BBA' ? 'bachelors-degree' : 'masters-degree'}/${program.slug}`;
+  if (!program.degree) program.degree = program.level === 'BBA' ? 'Bachelor of Business Administration' : 'Master of Business Administration';
+  if (!program.credits) program.credits = program.level === 'BBA' ? '180 ECTS' : '120 ECTS';
 }
 
 const structure = {
@@ -131,8 +171,10 @@ function programLink(from, program) {
 function programsMenu(from) {
   const bba = programs.filter((program) => program.level === 'BBA');
   const mba = programs.filter((program) => program.level === 'MBA');
+  const doctorate = programs.find((program) => program.level === 'DBA');
+  const diploma = programs.find((program) => program.level === 'Diploma');
   const group = (label, items) => `<div class="menu-program-group"><span>${label}</span>${items.map((program) => `<a href="${programLink(from, program)}">${esc(program.title)}</a>`).join('')}</div>`;
-  return `<div class="menu-section"><a class="menu-section-title" href="${href(from, 'programs.html')}">Programs</a>${group('Bachelor of Business Administration', bba)}${group('Master of Business Administration', mba)}</div>`;
+  return `<div class="menu-section"><a class="menu-section-title" href="${href(from, 'programs.html')}">Programs</a>${group('Bachelor of Business Administration', bba)}${group('Master of Business Administration', mba)}${group('Doctoral and Professional Study', [doctorate, diploma])}</div>`;
 }
 
 function footer(from) {
@@ -174,10 +216,103 @@ function programPage(program) {
 
 function overviewPage() {
   const from = 'programs.html';
-  const pairs = programs.filter((program) => program.level === 'BBA').map((bba) => ({ bba, mba: programs[programs.indexOf(bba) + 1] }));
+  const pairs = programs.filter((program) => program.level === 'BBA' && !program.standalone).map((bba) => ({ bba, mba: programs[programs.indexOf(bba) + 1] }));
+  const hospitality = programs.find((program) => program.slug === 'hospitality-management');
   const cards = pairs.map((pair, index) => `<article class="pathway"><div class="pathway-number">0${index + 1}</div><div><span>BBA foundations and application</span><h3><a href="${programLink(from, pair.bba)}">${esc(pair.bba.title)}</a></h3><p>${esc(pair.bba.summary)}</p></div><div><span>MBA strategy and leadership</span><h3><a href="${programLink(from, pair.mba)}">${esc(pair.mba.title)}</a></h3><p>${esc(pair.mba.summary)}</p></div></article>`).join('');
-  const extra = `<style>.portfolio-hero .hero-media img{object-position:center 46%}.portfolio-intro{max-width:850px}.pathways{display:grid;gap:18px;margin-top:48px}.pathway{display:grid;grid-template-columns:70px 1fr 1fr;gap:26px;padding:30px;background:#fff;border:1px solid var(--line);border-radius:20px}.pathway-number{font-family:var(--serif);font-size:42px;color:var(--crimson)}.pathway span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:800}.pathway h3{font-size:22px;color:var(--navy);margin:11px 0}.pathway h3 a:hover{color:var(--crimson)}.pathway p{font-size:14px;line-height:1.65;color:var(--muted)}.level-compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:42px}.level-card{padding:34px;border:1px solid var(--line);border-radius:20px;background:#fff}.level-card strong{font-family:var(--serif);font-size:46px;color:var(--crimson)}.level-card h3{font-size:24px;color:var(--navy);margin:16px 0}.level-card p{color:var(--muted);line-height:1.65}@media(max-width:760px){.pathway{grid-template-columns:1fr}.pathway-number{font-size:28px}.level-compare{grid-template-columns:1fr}}</style>`;
-  return `<!doctype html><html lang="en-CH">${head('Business Programs in Switzerland | AUS') .replace('</head>', `${extra}</head>`)}<body>${header(from)}<main><section class="hero portfolio-hero"><div class="hero-media"><img fetchpriority="high" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6ab7dc4afce5c9415bb855f5_Copy-of-AUS-Business-School-Students.jpg.webp" alt="AUS students in Switzerland"></div><div class="shell hero-content"><span class="eyebrow">AUS academic portfolio</span><h1>Five business pathways<strong>Two levels of focused study</strong></h1><p>Choose a BBA specialization built around foundations and application, or an MBA specialization focused on strategy and leadership.</p><div class="hero-actions"><a class="btn btn-primary" href="${href(from, 'contact-us.html')}">Talk to Admissions</a><a class="btn btn-light" href="${applyUrl}">Apply Now</a></div></div></section><section class="section alt"><div class="shell"><div class="portfolio-intro"><span class="section-label">Choose your pathway</span><h2>Focused expertise connected to business practice</h2><p class="lead">Each pathway links a BBA specialization with a related MBA leadership field. Students develop expertise in one area while keeping the broader business perspective needed to work across functions.</p></div><div class="pathways">${cards}</div></div></section><section class="section"><div class="shell"><span class="section-label">Degree structure</span><h2>A clear progression at each level</h2><div class="level-compare"><article class="level-card"><strong>180 ECTS</strong><h3>Bachelor of Business Administration</h3><p>Business foundations, six specialization courses, three cross-specialization courses, professional practice and an applied capstone.</p></article><article class="level-card"><strong>120 ECTS</strong><h3>Master of Business Administration</h3><p>Advanced management study, five specialization courses, two cross-specialization courses, professional practice and an applied research thesis.</p></article></div></div></section><section class="cta"><div class="shell cta-inner"><div><span class="eyebrow">Your next step</span><h2>Find the pathway that fits your goals</h2><p>Speak with Admissions about your academic background, professional interests and current application options.</p></div><div class="hero-actions"><a class="btn btn-light" href="${href(from, 'contact-us.html')}">Contact Admissions</a><a class="btn btn-primary" href="${applyUrl}">Apply Now</a></div></div></section></main>${footer(from)}${scripts()}</body></html>`;
+  const extra = `<style>.portfolio-hero .hero-media img{object-position:center 46%}.portfolio-intro{max-width:850px}.pathways{display:grid;gap:18px;margin-top:48px}.pathway{display:grid;grid-template-columns:70px 1fr 1fr;gap:26px;padding:30px;background:#fff;border:1px solid var(--line);border-radius:20px}.pathway-number{font-family:var(--serif);font-size:42px;color:var(--crimson)}.pathway span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:800}.pathway h3{font-size:22px;color:var(--navy);margin:11px 0}.pathway h3 a:hover{color:var(--crimson)}.pathway p{font-size:14px;line-height:1.65;color:var(--muted)}.standalone-pathway{margin-top:28px;padding:34px;border:1px solid var(--line);border-radius:20px;background:var(--navy);color:#fff;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}.standalone-pathway span{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#fff737;font-weight:800}.standalone-pathway h3{font-size:28px;margin:10px 0}.standalone-pathway p{max-width:720px;color:rgba(255,255,255,.72);line-height:1.65}.standalone-pathway .btn{background:#fff;color:var(--navy)}.level-compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:42px}.level-card{padding:34px;border:1px solid var(--line);border-radius:20px;background:#fff}.level-card strong{font-family:var(--serif);font-size:46px;color:var(--crimson)}.level-card h3{font-size:24px;color:var(--navy);margin:16px 0}.level-card p{color:var(--muted);line-height:1.65}@media(max-width:760px){.pathway,.standalone-pathway{grid-template-columns:1fr}.pathway-number{font-size:28px}.level-compare{grid-template-columns:1fr}}</style>`;
+  return `<!doctype html><html lang="en-CH">${head('Business Programs in Switzerland | AUS') .replace('</head>', `${extra}</head>`)}<body>${header(from)}<main><section class="hero portfolio-hero"><div class="hero-media"><img fetchpriority="high" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6ab7dc4afce5c9415bb855f5_Copy-of-AUS-Business-School-Students.jpg.webp" alt="AUS students in Switzerland"></div><div class="shell hero-content"><span class="eyebrow">AUS academic portfolio</span><h1>Business programs for applied careers<strong>Bachelor's and master's study in Switzerland</strong></h1><p>Choose a BBA specialization built around foundations and application, an MBA specialization focused on strategy and leadership, or Hospitality Management with an integrated practical approach.</p><div class="hero-actions"><a class="btn btn-primary" href="${href(from, 'contact-us.html')}">Talk to Admissions</a><a class="btn btn-light" href="${applyUrl}">Apply Now</a></div></div></section><section class="section alt" id="bachelor"><div class="shell"><div class="portfolio-intro"><span class="section-label">Choose your pathway</span><h2>Focused expertise connected to business practice</h2><p class="lead">Each pathway links a BBA specialization with a related MBA leadership field. Students develop expertise in one area while keeping the broader business perspective needed to work across functions.</p></div><div class="pathways">${cards}</div><article class="standalone-pathway"><div><span>Specialized bachelor program</span><h3>${esc(hospitality.title)}</h3><p>${esc(hospitality.summary)}</p></div><a class="btn" href="${programLink(from, hospitality)}">Explore Hospitality Management</a></article></div></section><section class="section" id="master"><div class="shell"><span class="section-label">Degree structure</span><h2>A clear progression at each level</h2><div class="level-compare"><article class="level-card"><strong>180 ECTS</strong><h3>Bachelor of Business Administration</h3><p>Business foundations, six specialization courses, three cross-specialization courses, professional practice and an applied capstone.</p></article><article class="level-card"><strong>120 ECTS</strong><h3>Master of Business Administration</h3><p>Advanced management study, five specialization courses, two cross-specialization courses, professional practice and an applied research thesis.</p></article></div></div></section><section class="cta"><div class="shell cta-inner"><div><span class="eyebrow">Your next step</span><h2>Find the pathway that fits your goals</h2><p>Speak with Admissions about your academic background, professional interests and current application options.</p></div><div class="hero-actions"><a class="btn btn-light" href="${href(from, 'contact-us.html')}">Contact Admissions</a><a class="btn btn-primary" href="${applyUrl}">Apply Now</a></div></div></section></main>${footer(from)}${scripts()}</body></html>`;
+}
+
+function legacyProgramCard(from, program, index) {
+  const delay = index % 3 === 1 ? ' d1' : index % 3 === 2 ? ' d2' : '';
+  const duration = program.level === 'BBA' ? '3 Years' : '2 Years';
+  const tag = program.level === 'BBA' ? 'Bachelors' : 'Masters';
+  const shortDescriptions = {
+    'aviation-business-airport-operations': 'Lead airport, airline and service operations.',
+    'business-analytics-ai-applications': 'Turn business data and AI into better decisions.',
+    'finance-fintech-digital-banking': 'Connect finance with FinTech and digital banking.',
+    'international-business-trade-supply-chain': 'Lead trade and supply chains across borders.',
+    'entrepreneurship-innovation-family-business': 'Build and renew ventures and family businesses.',
+    'hospitality-management': 'Shape service, guest experience and hospitality operations.',
+    'aviation-strategy-sustainability-leadership': 'Lead aviation strategy and sustainable transformation.',
+    'ai-strategy-digital-transformation': 'Guide responsible AI strategy and digital change.',
+    'financial-strategy-investment-fintech': 'Lead investment, FinTech and financial strategy.',
+    'global-strategy-risk-supply-chain-leadership': 'Build resilient global strategy and supply chains.',
+    'innovation-growth-family-enterprise-leadership': 'Lead innovation, growth and family enterprise.'
+  };
+  return `<a href="${programLink(from, program)}" class="prog-card reveal${delay}"><div class="prog-card-bg"><img loading="lazy" decoding="async" class="archive-plate" src="${program.image}" alt="${esc(program.title)}"></div><div class="prog-card-content"><div class="prog-card-top"><span class="prog-card-tag">${tag}</span><span class="prog-card-num">${String(index + 1).padStart(2, '0')}</span></div><h3 class="prog-card-name">${esc(program.title)}</h3><div class="prog-card-detail"><span class="prog-card-duration">${duration}</span><p class="prog-card-desc">${esc(shortDescriptions[program.slug] || program.summary)}</p><span class="prog-card-arrow">Explore</span></div></div></a>`;
+}
+
+function updateProgramsOverview() {
+  for (const file of [path.join(root, 'programs.html'), path.join(distRoot, 'programs.html')]) {
+    let html = fs.readFileSync(file, 'utf8');
+    const from = 'programs.html';
+    const bba = programs.filter((program) => program.level === 'BBA');
+    const mba = programs.filter((program) => program.level === 'MBA');
+    const doctorate = programs.find((program) => program.level === 'DBA');
+    const diploma = programs.find((program) => program.level === 'Diploma');
+    const bachelorCards = bba.map((program, index) => legacyProgramCard(from, program, index)).join('\n      ');
+    const masterCards = mba.map((program, index) => legacyProgramCard(from, program, index)).join('\n      ');
+    const bachelorSection = `<!-- BACHELOR'S -->
+<section class="program-section chapter" id="bachelor" data-chapter="02" data-chapter-label="Bachelors">
+  <div class="wrap">
+    <div class="chapter-label reveal"><span class="num">02</span> Bachelor’s Degree</div>
+    <div class="program-section-head reveal d1">
+      <h2>Start with a foundation that doesn't need replacing.</h2>
+      <p>Three years of applied business education combining management foundations, focused expertise and practical experience.</p>
+    </div>
+    <div class="bento">
+      ${bachelorCards}
+    </div>
+  </div>
+</section>`;
+    const masterSection = `<!-- MASTER'S -->
+<section class="program-section program-section--alt chapter" id="master" data-chapter="03" data-chapter-label="Masters">
+  <div class="wrap">
+    <div class="chapter-label reveal"><span class="num">03</span> Master’s Degree</div>
+    <div class="program-section-head reveal d1">
+      <h2>Already leading? Go deeper.</h2>
+      <p>Advanced management study for professionals ready to connect strategy, leadership and applied decision-making.</p>
+    </div>
+    <div class="bento">
+      ${masterCards}
+    </div>
+  </div>
+</section>`;
+    const advancedSections = `<!-- DOCTORATE -->
+<section class="program-section chapter" id="doctorate" data-chapter="04" data-chapter-label="Doctorate">
+  <div class="wrap"><div class="chapter-label reveal"><span class="num">04</span> Doctorate</div><div class="program-section-head reveal d1"><h2>The highest level of applied business research.</h2><p>For experienced professionals ready to address complex organizational challenges and contribute new knowledge to management practice.</p></div><div class="doc-grid" style="grid-template-columns:minmax(0,820px);"><a href="${programLink(from, doctorate)}" class="doc-card reveal d2"><div class="doc-card-bg"><img loading="lazy" decoding="async" class="archive-plate" src="${doctorate.image}" alt="${esc(doctorate.title)}"></div><div class="doc-card-content"><span class="doc-card-tag">Doctorate</span><h3>${esc(doctorate.title)}</h3><p>${esc(doctorate.summary)}</p></div></a></div></div>
+</section>
+<!-- FEDERAL DIPLOMA -->
+<section class="program-section program-section--alt chapter" id="diploma" data-chapter="05" data-chapter-label="Federal Diploma">
+  <div class="wrap"><div class="chapter-label reveal"><span class="num">05</span> Swiss Federal Diploma</div><div class="program-section-head reveal d1"><h2>A nationally recognized professional qualification.</h2><p>Advanced business education for experienced professionals seeking formal recognition of their management expertise.</p></div><div class="doc-grid" style="grid-template-columns:minmax(0,820px);"><a href="${programLink(from, diploma)}" class="doc-card reveal d2"><div class="doc-card-bg"><img loading="lazy" decoding="async" class="archive-plate" src="${diploma.image}" alt="${esc(diploma.title)}"></div><div class="doc-card-content"><span class="doc-card-tag">Federal Diploma</span><h3>${esc(diploma.title)}</h3><p>${esc(diploma.summary)}</p></div></a></div></div>
+</section>`;
+
+    html = html.replace(/(?:Twenty-one|Eleven) programs designed around real organizational problems\./g, 'Thirteen programs designed around real organizational problems.');
+    html = html.replace(/<span class="hero-meta">[\s\S]*?<\/span>/, '<span class="hero-meta">13 programs<br>4 levels</span>');
+    html = html.replace(/<div class="filter-pills">[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/, `<div class="filter-pills">
+      <a href="#bachelor" class="filter-pill is-active" data-filter="bachelor">Bachelors <span>${bba.length}</span></a>
+      <a href="#master" class="filter-pill" data-filter="master">Masters <span>${mba.length}</span></a>
+      <a href="#doctorate" class="filter-pill" data-filter="doctorate">Doctorate <span>1</span></a>
+      <a href="#diploma" class="filter-pill" data-filter="diploma">Federal Diploma <span>1</span></a>
+    </div>
+  </div>
+</div>`);
+    html = html.replace(/<!-- BACHELOR'S -->[\s\S]*?(?=<!-- MASTER'S -->)/, `${bachelorSection}\n\n`);
+    html = html.replace(/<!-- MASTER'S -->[\s\S]*?(?=<!-- DOCTORATE -->|<\/div><!-- end programs-wrapper -->)/, `${masterSection}\n\n`);
+    html = html.replace(/<!-- DOCTORATE -->[\s\S]*?<\/div><!-- end programs-wrapper -->/, '</div><!-- end programs-wrapper -->');
+    html = html.replace('</div><!-- end programs-wrapper -->', `${advancedSections}\n\n</div><!-- end programs-wrapper -->`);
+    html = html.replace(/<!-- DUAL DEGREE -->[\s\S]*?(?=<!-- RANKINGS -->)/, '');
+    html = html.replace(/\/\* DUAL DEGREE \*\/[\s\S]*?(?=\/\* RANKINGS \*\/)/, '');
+    html = html.replace(/<!-- Compare Modal -->[\s\S]*?(?=<script>\s*\(function\(\)\{)/, '');
+    html = html.replace(/\/\/ ---------- COMPARE SPECIALIZATIONS ----------[\s\S]*?\}\)\(\);<\/script>/, '</script>');
+    html = html.replace('Combining Swiss and American education traditions since 1991.', 'Delivering applied business education in Switzerland since 1991.');
+    html = html.replace(/Swiss business education with dual degrees, small classes, and 96%\+ graduate employment\./g, 'Swiss business education with small classes, applied learning, and dedicated student support.');
+    html = html.replace(/<div class="aus-popup-benefit"><div class="aus-popup-benefit-icon">&#x2713;<\/div><div class="aus-popup-benefit-text">Dual Degree<span>Swiss \+ American degree<\/span><\/div><\/div>/g, '<div class="aus-popup-benefit"><div class="aus-popup-benefit-icon">&#x2713;</div><div class="aus-popup-benefit-text">Applied Learning<span>Projects and industry experience</span></div></div>');
+    html = html.replace(/\s*<a href="programs\.html" class="aus-popup-cta-secondary">Find Your Program<\/a>/g, '');
+    html = html.replace(/\s*<div class="accred-logo"><img[^>]+alt="(?:ACBSP|HLC)"[^>]*><\/div>/g, '');
+    fs.writeFileSync(file, html, 'utf8');
+  }
 }
 
 function writeBoth(relative, html) {
@@ -189,7 +324,7 @@ function writeBoth(relative, html) {
 }
 
 function updateExistingNavigation() {
-  const ignored = new Set(['.chrome-backup', '.git', '.visual-check', 'hbs-demo-deploy', 'history', 'node_modules', 'tmp', 'webflow', 'programs']);
+  const ignored = new Set(['.chrome-backup', '.git', '.visual-check', 'hbs-demo-deploy', 'history', 'node_modules', 'tmp', 'webflow']);
   function walk(directory, output = []) {
     for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
       if (entry.isDirectory() && ignored.has(entry.name)) continue;
@@ -202,19 +337,53 @@ function updateExistingNavigation() {
   for (const file of walk(root)) {
     const storedRelative = path.relative(root, file).replace(/\\/g, '/');
     const relative = storedRelative.startsWith('dist/') ? storedRelative.slice(5) : storedRelative;
-    if (relative === 'programs.html' || relative === 'worker.html' || relative === 'chatbot.html') continue;
+    if (relative === 'worker.html' || relative === 'chatbot.html') continue;
     let html = fs.readFileSync(file, 'utf8');
     if (!html.includes('class="aus-nav-links"') || !html.includes('class="side-panel-nav"')) continue;
     const programHref = href(relative, 'programs.html');
-    const panel = `<div class="accordion-item" data-panel-key="programs"><button class="accordion-trigger">Programs <span class="accordion-icon"></span></button><div class="accordion-panel"><div class="accordion-panel-inner"><div class="accordion-group"><a href="${programHref}">View All Programs</a><a href="${programHref}">BBA Specializations</a><a href="${programHref}">MBA Specializations</a></div></div></div></div>`;
+    const tuitionHref = href(relative, 'tuition-fees-scholarships.html');
+    const hospitalityHref = href(relative, 'programs/bachelors/hospitality-management.html');
+    const doctorateHref = href(relative, 'programs/doctorate/dba.html');
+    const diplomaHref = href(relative, 'programs/federal-diploma.html');
+    const panel = `<div class="accordion-item" data-panel-key="programs">
+        <button class="accordion-trigger">Programs <span class="accordion-icon"></span></button>
+        <div class="accordion-panel"><div class="accordion-panel-inner">
+          <div class="accordion-group">
+            <a href="${programHref}" style="font-weight:600;">View All Programs</a>
+            <a href="${programHref}#bachelor">Bachelor's Programs</a>
+            <a href="${programHref}#master">Master's Programs</a>
+            <a href="${hospitalityHref}">Hospitality Management</a>
+            <a href="${doctorateHref}">Doctorate in Business Administration</a>
+            <a href="${diplomaHref}">Swiss Federal Diploma</a>
+          </div>
+        </div></div>
+      </div>`;
     html = html.replace(/<!-- CURRENT PROGRAM PORTFOLIO NAV START -->[\s\S]*?<!-- CURRENT PROGRAM PORTFOLIO NAV END -->\s*/g, '');
     html = html.replace(/<!-- CURRENT PROGRAM PORTFOLIO PANEL START -->[\s\S]*?<!-- CURRENT PROGRAM PORTFOLIO PANEL END -->\s*/g, '');
     html = html.replace(/<!-- CURRENT PROGRAM PORTFOLIO STYLE START -->[\s\S]*?<!-- CURRENT PROGRAM PORTFOLIO STYLE END -->\s*/g, '');
-    html = html.replace(/(<div class="aus-nav-links">\s*)/, `$1<!-- CURRENT PROGRAM PORTFOLIO NAV START --><a class="aus-nav-programs-link" href="${programHref}">Programs</a><!-- CURRENT PROGRAM PORTFOLIO NAV END -->\n    `);
+    html = html.replace(/<button type="button" data-open-panel="programs">Programs<\/button>\s*/g, '');
+    html = html.replace(/(<div class="aus-nav-links">\s*)/, `$1<!-- CURRENT PROGRAM PORTFOLIO NAV START --><button type="button" data-open-panel="programs">Programs</button><!-- CURRENT PROGRAM PORTFOLIO NAV END -->\n    `);
+    html = html.replace(/<div class="accordion-item" data-panel-key="programs">[\s\S]*?(?=<div class="accordion-item" data-panel-key="admissions">)/, '');
     html = html.replace(/(<nav class="side-panel-nav"[^>]*>\s*)/, `$1<!-- CURRENT PROGRAM PORTFOLIO PANEL START -->${panel}<!-- CURRENT PROGRAM PORTFOLIO PANEL END -->\n      `);
-    html = html.replace('</head>', `<!-- CURRENT PROGRAM PORTFOLIO STYLE START --><style>.aus-nav-links .aus-nav-programs-link{font-weight:500;font-size:13px;white-space:nowrap}.aus-nav-links .aus-nav-programs-link::after{content:"";display:block;width:0;height:1px;background:currentColor;transition:width .3s;margin-top:3px}.aus-nav-links .aus-nav-programs-link:hover::after{width:100%}</style><!-- CURRENT PROGRAM PORTFOLIO STYLE END --></head>`);
-    html = html.replace(/<!-- CURRENT PROGRAM PORTFOLIO FOOTER START -->[\s\S]*?<!-- CURRENT PROGRAM PORTFOLIO FOOTER END -->\s*/g, '');
-    html = html.replace(/(<div class="footer-col-title">Connect<\/div>\s*)(?:<a[^>]*>Programs<\/a>\s*)*/, `$1<!-- CURRENT PROGRAM PORTFOLIO FOOTER START --><a href="${programHref}">Programs</a><!-- CURRENT PROGRAM PORTFOLIO FOOTER END -->\n        `);
+    const footerPrograms = `<!-- CURRENT PROGRAM PORTFOLIO FOOTER START --><div class="footer-col-title">Programs</div>
+        <a href="${programHref}#bachelor">Bachelors</a>
+        <a href="${programHref}#master">Masters</a>
+        <a href="${hospitalityHref}">Hospitality Management</a>
+        <a href="${doctorateHref}">Doctorate</a>
+        <a href="${diplomaHref}">Federal Diploma</a>
+        <div style="margin-top:14px;"></div>
+        <div class="footer-col-title" style="margin-top:6px;">Connect</div><!-- CURRENT PROGRAM PORTFOLIO FOOTER END -->`;
+    html = html.replace(/<!-- CURRENT PROGRAM PORTFOLIO FOOTER (?:START|END) -->/g, '');
+    html = html.replace(/<div class="footer-col-title">Programs<\/div>[\s\S]*?<div class="footer-col-title"(?: style="[^"]*")?>Connect<\/div>(?=\s*<a href="[^"]*admissions\.html">Admissions<\/a>)/, footerPrograms);
+    if (!html.includes('<!-- CURRENT PROGRAM PORTFOLIO FOOTER START -->')) {
+      html = html.replace(/(<div class="footer-col">)\s*(?=<a href="[^"]*admissions\.html">Admissions<\/a>)/, `$1\n        ${footerPrograms}\n        `);
+    }
+    html = html.replace(/\s*<a[^>]*academic-partners\/tiffin-university\.html[^>]*>Academic Partner<\/a>/g, '');
+    html = html.replace(/<a href="[^"]*cost-calculator\.html">Cost Calculator<\/a>/g, `<a href="${tuitionHref}">Tuition &amp; Scholarships</a>`);
+    html = html.replace(/<a href="[^"]*cost-calculator\.html\?program=[^"]+" class="cta-btn"([^>]*)>Calculate My Costs →<\/a>/g, `<a href="${tuitionHref}" class="cta-btn"$1>Tuition &amp; Scholarships →</a>`);
+    html = html.replace(/\{title:"AUS Collaboration with Tiffin University"[^}]*\}, 400\);/g, '400);');
+    html = html.replace(/Swiss business education with dual degrees, small classes, and 96%\+ graduate employment\./g, 'Swiss business education with small classes, applied learning, and dedicated student support.');
+    html = html.replace(/<div class="aus-popup-benefit"><div class="aus-popup-benefit-icon">&#x2713;<\/div><div class="aus-popup-benefit-text">Dual Degree<span>Swiss \+ American degree<\/span><\/div><\/div>/g, '<div class="aus-popup-benefit"><div class="aus-popup-benefit-icon">&#x2713;</div><div class="aus-popup-benefit-text">Applied Learning<span>Projects and industry experience</span></div></div>');
     fs.writeFileSync(file, html, 'utf8');
   }
 }
@@ -222,17 +391,40 @@ function updateExistingNavigation() {
 function updateHomepagePortfolio() {
   for (const file of [path.join(root, 'index.html'), path.join(distRoot, 'index.html')]) {
     let html = fs.readFileSync(file, 'utf8');
-    const cards = programs.map((program) => `<a class="home-program-card" href="${program.source}"><span>${program.level}</span><strong>${esc(program.title)}</strong></a>`).join('');
-    const section = `<section class="chapter" id="academic-portfolio" data-chapter="02" data-chapter-label="Academic Portfolio"><div class="wrap"><div class="chapter-label reveal"><span class="num">02</span> Academic Portfolio</div><div class="catalog-head reveal d1"><h2>Five pathways. Two levels.</h2><p>Explore BBA specializations focused on foundations and application, and related MBA specializations built around strategy and leadership.</p><div class="home-program-grid">${cards}</div><p class="home-program-action"><a class="hero-cta" href="programs.html">Explore all programs &rarr;</a></p></div></div></section>`;
+    const bba = programs.filter((program) => program.level === 'BBA').map((program) => `<a href="${program.source}">${esc(program.title)}</a>`).join('');
+    const mba = programs.filter((program) => program.level === 'MBA').map((program) => `<a href="${program.source}">${esc(program.title)}</a>`).join('');
+    const doctorate = programs.find((program) => program.level === 'DBA');
+    const diploma = programs.find((program) => program.level === 'Diploma');
+    const section = `<section class="catalog chapter" id="programs" data-chapter="02" data-chapter-label="Programs">
+    <div class="wrap">
+      <div class="chapter-label reveal"><span class="num">02</span> Programs</div>
+      <div class="catalog-head reveal d1"><h2>Choose your level.</h2><p>Every program is built around the same practice-led method. Select a level to explore the current portfolio.</p></div>
+      <div class="program-switcher reveal d2">
+        <div class="program-levels" id="programLevels">
+          <div class="program-level is-active" data-level="bachelor" data-img="bachelor"><span class="program-level-index">01</span><span class="program-level-name">Bachelor's Degree</span><div class="program-level-list"><div class="program-level-list-inner">${bba}</div></div></div>
+          <div class="program-level" data-level="master" data-img="master"><span class="program-level-index">02</span><span class="program-level-name">Master's Degree</span><div class="program-level-list"><div class="program-level-list-inner">${mba}</div></div></div>
+          <div class="program-level" data-level="doctorate" data-img="doctorate"><span class="program-level-index">03</span><span class="program-level-name">Doctorate</span><div class="program-level-list"><div class="program-level-list-inner"><a href="${doctorate.source}">${esc(doctorate.title)}</a></div></div></div>
+          <div class="program-level" data-level="diploma" data-img="diploma"><span class="program-level-index">04</span><span class="program-level-name">Swiss Federal Diploma</span><div class="program-level-list"><div class="program-level-list-inner"><a href="${diploma.source}">${esc(diploma.title)}</a></div></div></div>
+        </div>
+        <div class="program-media" id="programMedia">
+          <div class="program-media-img is-active" data-img="bachelor"><img loading="lazy" decoding="async" class="archive-plate" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a99d1f0dfd6b716b05c80c9_bachelor-p-1080.webp" alt="Bachelor's students at AUS"><div class="program-media-cap">Applied foundations for emerging business professionals.</div></div>
+          <div class="program-media-img" data-img="master"><img loading="lazy" decoding="async" class="archive-plate" src="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6a99d1f0e69c48936efda252_Masters-p-1080.webp" alt="Master's students at AUS"><div class="program-media-cap">Advanced study for strategic leadership.</div></div>
+          <div class="program-media-img" data-img="doctorate"><img loading="lazy" decoding="async" class="archive-plate" src="${doctorate.image}" alt="Doctorate in Business Administration"><div class="program-media-cap">Applied research for experienced business leaders.</div></div>
+          <div class="program-media-img" data-img="diploma"><img loading="lazy" decoding="async" class="archive-plate" src="${diploma.image}" alt="Swiss Federal Diploma in Business Administration"><div class="program-media-cap">A Swiss-recognized professional qualification.</div></div>
+        </div>
+      </div>
+      <p style="margin-top:28px;"><a class="hero-cta" href="programs.html">Explore all programs &rarr;</a></p>
+    </div>
+  </section>`;
     html = html.replace(/<section class="chapter" id="academic-portfolio"[\s\S]*?<\/section>/, section);
+    html = html.replace(/<section class="catalog chapter" id="programs"[\s\S]*?<\/section>/, section);
     html = html.replace(/<style id="current-program-home-style">[\s\S]*?<\/style>/g, '');
-    html = html.replace('</head>', `<style id="current-program-home-style">.home-program-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:34px;max-width:980px}.home-program-card{padding:20px 22px;border:1px solid var(--line);background:var(--white);transition:.25s transform,.25s border-color}.home-program-card:hover{transform:translateY(-3px);border-color:var(--crimson)}.home-program-card span{display:block;color:var(--crimson);font-size:11px;font-weight:800;letter-spacing:.08em;margin-bottom:8px}.home-program-card strong{font-size:16px;color:var(--navy);line-height:1.35}.home-program-action{margin-top:22px}@media(max-width:700px){.home-program-grid{grid-template-columns:1fr}.home-program-card{padding:17px 18px}}</style></head>`);
     fs.writeFileSync(file, html, 'utf8');
   }
 }
 
-writeBoth('programs.html', overviewPage());
-for (const program of programs) writeBoth(program.source, programPage(program));
+updateProgramsOverview();
+for (const program of programs) if (!program.preserveExistingPage) writeBoth(program.source, programPage(program));
 updateExistingNavigation();
 updateHomepagePortfolio();
 console.log(`Built the programs overview and ${programs.length} current pathway pages in source and dist.`);
