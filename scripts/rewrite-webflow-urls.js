@@ -19,6 +19,9 @@ const livePaths = {
 const customPaths = {
   '404.html': '/404',
   'programs.html': '/programs',
+  'find-programs.html': '/find-your-program',
+  'compare-programs.html': '/compare-specializations',
+  'cost-calculator.html': '/cost-calculator',
   'programs/bachelors/aviation-business-airport-operations.html': '/bachelors-degree/aviation-business-airport-operations',
   'programs/bachelors/business-analytics-ai-applications.html': '/bachelors-degree/business-analytics-ai-applications',
   'programs/bachelors/finance-fintech-digital-banking.html': '/bachelors-degree/finance-fintech-digital-banking',
@@ -104,6 +107,10 @@ function externalProgramMediaUrl(value) {
 function canonicalizeDocument(source, file, options = {}) {
   source = source.replace(/(href|action)=(['"])([^'"]+)\2/g, (whole, attribute, quote, value) => `${attribute}=${quote}${canonicalize(value, file)}${quote}`);
   source = source.replace(/\b(url|href):(['"])([^'"]+)\2/g, (whole, attribute, quote, value) => `${attribute}:${quote}${canonicalize(value, file)}${quote}`);
+  // JSON-generated page data uses quoted property names ("url": "...").
+  // Canonicalize these too so restored interactive tools keep repository-safe
+  // paths locally while their Webflow packages receive clean live routes.
+  source = source.replace(/(['"])(url|href)\1\s*:\s*(['"])([^'"]+)\3/g, (whole, keyQuote, attribute, valueQuote, value) => `${keyQuote}${attribute}${keyQuote}:${valueQuote}${canonicalize(value, file)}${valueQuote}`);
   source = source.replace(/((?:window\.)?location(?:\.href)?\s*=\s*)(['"])([^'"]+)\2/g, (whole, prefix, quote, value) => `${prefix}${quote}${canonicalize(value, file)}${quote}`);
   if (options.externalizeAssets) {
     source = source.replace(/(src)=(['"])([^'"]+)\2/g, (whole, attribute, quote, value) => `${attribute}=${quote}${externalProgramMediaUrl(value)}${quote}`);

@@ -168,6 +168,65 @@ function programLink(from, program) {
   return href(from, program.source);
 }
 
+function toolProgramData(program) {
+  const isBba = program.level === 'BBA';
+  const isMba = program.level === 'MBA';
+  const isDba = program.level === 'DBA';
+  const level = isBba ? 'Bachelor' : isMba ? 'Master' : isDba ? 'Doctorate' : 'Federal Diploma';
+  const duration = isBba ? '3 Years' : isMba ? '2 Years' : isDba ? '3 Years' : '2 Years (Part-Time)';
+  const terms = isBba ? 'Applied BBA structure' : isMba ? 'Applied MBA structure' : isDba ? 'Seven academic terms, dissertation and oral defense' : '4 Academic Terms';
+  const mode = program.level === 'Diploma' ? 'Part-Time' : 'Full-Time and In Person';
+  const curriculum = program.level === 'BBA' || program.level === 'MBA'
+    ? [{ y: 'Program structure', m: structure[program.level].map((item) => `${item[0]} — ${item[1]}`) }]
+    : [{ y: 'Key study areas', m: program.themes }];
+  const tuition = isBba ? (program.slug === 'hospitality-management' ? 30000 : 28000) : isMba ? 25000 : isDba ? 26000 : 28000;
+  return {
+    id: `${program.level.toLowerCase()}_${program.slug.replace(/-/g, '_')}`,
+    name: program.title,
+    level,
+    levelLabel: isBba ? "Bachelor's Degree" : isMba ? "Master's Degree" : isDba ? 'Doctorate' : 'Swiss Federal Diploma',
+    // Keep repository pages usable locally and on GitHub Pages. The Webflow
+    // packaging step rewrites this source path to the corresponding clean URL.
+    url: program.source,
+    duration,
+    durationYears: isBba || isDba ? 3 : 2,
+    credits: program.credits,
+    terms,
+    entry: 'January, April and September',
+    mode,
+    overview: program.summary,
+    skills: [...program.themes, ...program.careers.slice(0, 4)],
+    curriculum,
+    tuition: { amount: tuition, period: 'year' },
+    termsPerYear: isBba || isMba ? 3 : 2
+  };
+}
+
+function finderProfile(program) {
+  const data = toolProgramData(program);
+  const tags = {
+    'aviation-business-airport-operations': ['aviation', 'aviation', 'sector', 'foundation', 'practical', 'industry'],
+    'business-analytics-ai-applications': ['tech', 'tech', 'insights', 'specialist', 'analytical', 'practical'],
+    'finance-fintech-digital-banking': ['finance', 'finance', 'numbers', 'specialist', 'analytical', 'practical'],
+    'international-business-trade-supply-chain': ['global', 'global', 'leading', 'global', 'international', 'practical'],
+    'entrepreneurship-innovation-family-business': ['management', 'management', 'leading', 'foundation', 'practical', 'leadership'],
+    'hospitality-management': ['hospitality', 'hospitality', 'sector', 'global', 'practical', 'international'],
+    'aviation-strategy-sustainability-leadership': ['aviation', 'aviation', 'sector', 'lead', 'industry', 'leadership'],
+    'ai-strategy-digital-transformation': ['tech', 'tech', 'insights', 'transform', 'analytical', 'leadership'],
+    'financial-strategy-investment-fintech': ['finance', 'finance', 'numbers', 'lead', 'analytical', 'leadership'],
+    'global-strategy-risk-supply-chain-leadership': ['global', 'global', 'leading', 'global', 'international', 'leadership'],
+    'innovation-growth-family-enterprise-leadership': ['management', 'management', 'leading', 'transform', 'practical', 'leadership'],
+    'doctorate-in-business-administration': ['management', 'management', 'leading', 'executive', 'leadership', 'prestige'],
+    'swiss-federal-diploma-business-administration': ['management', 'management', 'leading', 'foundation', 'practical', 'flexible']
+  }[program.slug] || ['management', 'management', 'leading', 'specialist', 'practical', 'leadership'];
+  return {
+    ...data,
+    interests: [tags[0]], career: [tags[1]], work: [tags[2]], ambition: [tags[3]],
+    priorities: [tags[4], tags[5]], format: [program.level === 'Diploma' ? 'parttime' : 'fulltime'],
+    tuition: `CHF ${data.tuition.amount.toLocaleString('de-CH').replace(/\./g, "'")}/yr`
+  };
+}
+
 function programsMenu(from) {
   const bba = programs.filter((program) => program.level === 'BBA');
   const mba = programs.filter((program) => program.level === 'MBA');
@@ -315,6 +374,45 @@ function updateProgramsOverview() {
   }
 }
 
+function updateRestoredTools() {
+  const compareData = programs.map((program) => {
+    const data = toolProgramData(program);
+    return {
+      name: data.name, level: data.level, url: data.url, duration: data.duration,
+      credits: data.credits, terms: data.terms, entry: data.entry, mode: data.mode,
+      overview: data.overview, skills: data.skills, curriculum: data.curriculum
+    };
+  });
+  const finderData = programs.map(finderProfile);
+  const calculatorData = programs.map((program) => {
+    const data = toolProgramData(program);
+    return {
+      id: data.id, name: data.name, level: data.level, degree: data.levelLabel,
+      duration: data.duration, durationYears: data.durationYears, tuition: data.tuition,
+      termsPerYear: data.termsPerYear, url: data.url
+    };
+  });
+
+  for (const relative of ['compare-programs.html', 'find-programs.html', 'cost-calculator.html']) {
+    const source = path.join(root, relative);
+    if (!fs.existsSync(source)) continue;
+    let html = fs.readFileSync(source, 'utf8');
+    if (relative === 'compare-programs.html' || relative === 'find-programs.html') {
+      html = html.replace(/var programs=\[[\s\S]*?\r?\n  \];\r?\n\r?\n  function populateSelects/, `var programs=${JSON.stringify(compareData, null, 2)};\n\n  function populateSelects`);
+    }
+    if (relative === 'find-programs.html') {
+      html = html.replace(/var programData=\[[\s\S]*?\r?\n\];(?=\r?\n\r?\n\/\* ={20,}\r?\n   STATE)/, `var programData=${JSON.stringify(finderData, null, 2)};`);
+    }
+    if (relative === 'cost-calculator.html') {
+      html = html.replace(/var programData=\[[\s\S]*?\];\r?\nvar ausCosts=/, `var programData=${JSON.stringify(calculatorData)};\nvar ausCosts=`);
+      html = html.replace(/programId:"[^"]+"/, `programId:"${calculatorData[0].id}"`);
+      html = html.replace("+' ('+prog.termsPerYear+' terms/year)</div>'", "+'</div>'");
+    }
+    fs.writeFileSync(source, html, 'utf8');
+    fs.writeFileSync(path.join(distRoot, relative), html, 'utf8');
+  }
+}
+
 function writeBoth(relative, html) {
   for (const base of [root, distRoot]) {
     const target = path.join(base, relative);
@@ -342,6 +440,9 @@ function updateExistingNavigation() {
     if (!html.includes('class="aus-nav-links"') || !html.includes('class="side-panel-nav"')) continue;
     const programHref = href(relative, 'programs.html');
     const tuitionHref = href(relative, 'tuition-fees-scholarships.html');
+    const finderHref = href(relative, 'find-programs.html');
+    const compareHref = href(relative, 'compare-programs.html');
+    const calculatorHref = href(relative, 'cost-calculator.html');
     const hospitalityHref = href(relative, 'programs/bachelors/hospitality-management.html');
     const doctorateHref = href(relative, 'programs/doctorate/dba.html');
     const diplomaHref = href(relative, 'programs/federal-diploma.html');
@@ -352,9 +453,10 @@ function updateExistingNavigation() {
             <a href="${programHref}" style="font-weight:600;">View All Programs</a>
             <a href="${programHref}#bachelor">Bachelor's Programs</a>
             <a href="${programHref}#master">Master's Programs</a>
-            <a href="${hospitalityHref}">Hospitality Management</a>
             <a href="${doctorateHref}">Doctorate in Business Administration</a>
             <a href="${diplomaHref}">Swiss Federal Diploma</a>
+            <a href="${finderHref}" style="font-weight:600;">Find Your Program</a>
+            <a href="${compareHref}" style="font-weight:600;">Compare Specializations</a>
           </div>
         </div></div>
       </div>`;
@@ -368,7 +470,6 @@ function updateExistingNavigation() {
     const footerPrograms = `<!-- CURRENT PROGRAM PORTFOLIO FOOTER START --><div class="footer-col-title">Programs</div>
         <a href="${programHref}#bachelor">Bachelors</a>
         <a href="${programHref}#master">Masters</a>
-        <a href="${hospitalityHref}">Hospitality Management</a>
         <a href="${doctorateHref}">Doctorate</a>
         <a href="${diplomaHref}">Federal Diploma</a>
         <div style="margin-top:14px;"></div>
@@ -379,9 +480,20 @@ function updateExistingNavigation() {
       html = html.replace(/(<div class="footer-col">)\s*(?=<a href="[^"]*admissions\.html">Admissions<\/a>)/, `$1\n        ${footerPrograms}\n        `);
     }
     html = html.replace(/\s*<a[^>]*academic-partners\/tiffin-university\.html[^>]*>Academic Partner<\/a>/g, '');
-    html = html.replace(/<a href="[^"]*cost-calculator\.html">Cost Calculator<\/a>/g, `<a href="${tuitionHref}">Tuition &amp; Scholarships</a>`);
-    html = html.replace(/<a href="[^"]*cost-calculator\.html\?program=[^"]+" class="cta-btn"([^>]*)>Calculate My Costs →<\/a>/g, `<a href="${tuitionHref}" class="cta-btn"$1>Tuition &amp; Scholarships →</a>`);
+    const tuitionPanel = `<div class="accordion-item" data-panel-key="tuition">
+        <button class="accordion-trigger">Tuition &amp; Scholarships <span class="accordion-icon"></span></button>
+        <div class="accordion-panel"><div class="accordion-panel-inner">
+          <div class="accordion-group">
+            <a href="${tuitionHref}">Tuition Fees &amp; Scholarships</a>
+            <a href="${calculatorHref}" style="font-weight:600;">Cost Calculator</a>
+            <a href="${href(relative, 'faq.html')}">FAQ</a>
+          </div>
+        </div></div>
+      </div>`;
+    html = html.replace(/<div class="accordion-item" data-panel-key="tuition">[\s\S]*?(?=<div class="accordion-item" data-panel-key="careers">)/, tuitionPanel + '\n      ');
+    html = html.replace(/<a href="[^"]*cost-calculator\.html\?program=[^"]+" class="cta-btn"([^>]*)>Calculate My Costs →<\/a>/g, `<a href="${calculatorHref}" class="cta-btn"$1>Calculate My Costs →</a>`);
     html = html.replace(/\{title:"AUS Collaboration with Tiffin University"[^}]*\}, 400\);/g, '400);');
+    html = html.replace(/\/\* DUAL DEGREE \*\/[\s\S]*?(?=\/\* RANKINGS \*\/)/, '');
     html = html.replace(/Swiss business education with dual degrees, small classes, and 96%\+ graduate employment\./g, 'Swiss business education with small classes, applied learning, and dedicated student support.');
     html = html.replace(/<div class="aus-popup-benefit"><div class="aus-popup-benefit-icon">&#x2713;<\/div><div class="aus-popup-benefit-text">Dual Degree<span>Swiss \+ American degree<\/span><\/div><\/div>/g, '<div class="aus-popup-benefit"><div class="aus-popup-benefit-icon">&#x2713;</div><div class="aus-popup-benefit-text">Applied Learning<span>Projects and industry experience</span></div></div>');
     fs.writeFileSync(file, html, 'utf8');
@@ -425,6 +537,7 @@ function updateHomepagePortfolio() {
 
 updateProgramsOverview();
 for (const program of programs) if (!program.preserveExistingPage) writeBoth(program.source, programPage(program));
+updateRestoredTools();
 updateExistingNavigation();
 updateHomepagePortfolio();
 console.log(`Built the programs overview and ${programs.length} current pathway pages in source and dist.`);

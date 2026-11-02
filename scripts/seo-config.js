@@ -108,6 +108,18 @@ const pages = {
     title: 'Business Programs in Switzerland | AUS Business School',
     description: 'Explore applied BBA, MBA, Doctorate, Hospitality Management and Swiss Federal Diploma programs at AUS Business School in Switzerland.'
   },
+  '/find-your-program': {
+    title: 'Find Your Business Program | AUS Switzerland',
+    description: 'Answer six quick questions and discover which current AUS Bachelor, Master, Doctorate or Swiss Federal Diploma pathway fits your goals.'
+  },
+  '/compare-specializations': {
+    title: 'Compare AUS Programs and Specializations | AUS',
+    description: 'Compare current AUS business programs and specializations by level, duration, credits, study structure, skills and academic focus.'
+  },
+  '/cost-calculator': {
+    title: 'AUS Study Cost Calculator | Tuition and Living Costs',
+    description: 'Estimate AUS tuition and student living costs in Switzerland, including accommodation, food, insurance, transportation and personal expenses.'
+  },
   '/bachelors-degree/aviation-business-airport-operations': {
     title: 'BBA Aviation Business & Airport Operations | AUS',
     description: 'Study aviation business, airport operations and applied management in the 180 ECTS BBA specialization at AUS in Switzerland.'

@@ -35,7 +35,8 @@ const landingPageCategories = {
 function categoryForRoute(route) {
   if (landingPageCategories[route]) return landingPageCategories[route];
   if (route === '/') return 'Home';
-  if (route === '/programs' || /^\/(?:bachelors-degree|masters-degree)\//.test(route) || route === '/doctorate-in-business-administration' || route === '/swiss-federal-diploma-business-administration') return 'Programs';
+  if (['/programs', '/find-your-program', '/compare-specializations'].includes(route) || /^\/(?:bachelors-degree|masters-degree)\//.test(route) || route === '/doctorate-in-business-administration' || route === '/swiss-federal-diploma-business-administration') return 'Programs';
+  if (route === '/cost-calculator') return 'Tuition & Scholarships';
   if (/^\/(?:admissions|english-language|international|transfer|study-in-switzerland|veterans-study-in-switzerland)/.test(route)) return 'Admissions';
   if (/^\/tuition/.test(route)) return 'Tuition & Scholarships';
   if (/^\/(?:careers|alumni)/.test(route)) return 'Careers & Outcomes';
