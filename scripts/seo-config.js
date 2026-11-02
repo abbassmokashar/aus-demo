@@ -120,6 +120,30 @@ const pages = {
     title: 'AUS Study Cost Calculator | Tuition and Living Costs',
     description: 'Estimate AUS tuition and student living costs in Switzerland, including accommodation, food, insurance, transportation and personal expenses.'
   },
+  '/admissions-bachelors': {
+    title: "Bachelor's Admissions in Switzerland | AUS",
+    description: "Review the AUS bachelor's admissions process, application stages, deadlines, documents and next steps for studying in Switzerland."
+  },
+  '/bachelors-admission-requirements': {
+    title: "Bachelor's Admission Requirements | AUS",
+    description: "Review academic, English-language and application requirements for admission to an AUS bachelor's program in Switzerland."
+  },
+  '/admissions-masters': {
+    title: "Master's Admissions in Switzerland | AUS",
+    description: "Review the AUS master's admissions process, required documents, application stages and deadlines for graduate study in Switzerland."
+  },
+  '/masters-admission-requirements': {
+    title: "Master's Admission Requirements | AUS",
+    description: "Review degree, academic, English-language and application requirements for admission to an AUS master's program."
+  },
+  '/admissions-doctoral': {
+    title: 'Doctoral Admissions in Switzerland | AUS',
+    description: 'Review the AUS doctoral admissions process, applicant profile, application stages, required documents and deadlines.'
+  },
+  '/doctoral-admission-requirements': {
+    title: 'DBA Admission Requirements | AUS',
+    description: 'Review the academic, professional, research and application requirements for the AUS Doctorate in Business Administration.'
+  },
   '/bachelors-degree/aviation-business-airport-operations': {
     title: 'BBA Aviation Business & Airport Operations | AUS',
     description: 'Study aviation business, airport operations and applied management in the 180 ECTS BBA specialization at AUS in Switzerland.'

@@ -443,6 +443,13 @@ function updateExistingNavigation() {
     const finderHref = href(relative, 'find-programs.html');
     const compareHref = href(relative, 'compare-programs.html');
     const calculatorHref = href(relative, 'cost-calculator.html');
+    const admissionsHref = href(relative, 'admissions.html');
+    const bachelorsAdmissionsHref = href(relative, 'admissions/bachelors.html');
+    const bachelorsRequirementsHref = href(relative, 'admissions/bachelors-requirements.html');
+    const mastersAdmissionsHref = href(relative, 'admissions/masters.html');
+    const mastersRequirementsHref = href(relative, 'admissions/masters-requirements.html');
+    const doctoralAdmissionsHref = href(relative, 'admissions/doctoral.html');
+    const doctoralRequirementsHref = href(relative, 'admissions/doctoral-requirements.html');
     const hospitalityHref = href(relative, 'programs/bachelors/hospitality-management.html');
     const doctorateHref = href(relative, 'programs/doctorate/dba.html');
     const diplomaHref = href(relative, 'programs/federal-diploma.html');
@@ -480,6 +487,33 @@ function updateExistingNavigation() {
       html = html.replace(/(<div class="footer-col">)\s*(?=<a href="[^"]*admissions\.html">Admissions<\/a>)/, `$1\n        ${footerPrograms}\n        `);
     }
     html = html.replace(/\s*<a[^>]*academic-partners\/tiffin-university\.html[^>]*>Academic Partner<\/a>/g, '');
+    html = html.replace('One year, nine specializations, a dual degree with Tiffin University — here is the route from application to enrollment.', 'A focused postgraduate route with five applied specializations — here is the path from application to enrollment.');
+    html = html.replace(/\s*<div class="step-card route-note"><span class="n">Your route<\/span><strong>Tiffin dual-degree track<\/strong><p>[\s\S]*?<\/p><\/div>/g, '');
+    html = html.replace('What a recognized bachelor&rsquo;s degree, English evidence, and the Tiffin University partnership mean for your application.', 'What a recognized bachelor&rsquo;s degree, English evidence, and your academic and professional background mean for your application.');
+    html = html.replace(/\s*<li>Students are subject to the specific admission requirements of AUS educational partner Tiffin University<small>[\s\S]*?<\/small><\/li>/g, '');
+    const admissionsPanel = `<div class="accordion-item" data-panel-key="admissions">
+        <button class="accordion-trigger">Admissions <span class="accordion-icon"></span></button>
+        <div class="accordion-panel"><div class="accordion-panel-inner">
+          <div class="accordion-group">
+            <a href="${admissionsHref}" style="font-weight:600;">Admissions Overview</a>
+            <a href="${bachelorsAdmissionsHref}">Bachelor's Admissions</a>
+            <a href="${bachelorsRequirementsHref}">Bachelor's Requirements</a>
+            <a href="${mastersAdmissionsHref}">Master's Admissions</a>
+            <a href="${mastersRequirementsHref}">Master's Requirements</a>
+            <a href="${doctoralAdmissionsHref}">Doctoral Admissions</a>
+            <a href="${doctoralRequirementsHref}">Doctoral Requirements</a>
+            <a href="${admissionsHref}#entry-requirements">Entry Requirements</a>
+            <a href="${admissionsHref}#required-documents">Required Documents</a>
+            <a href="${admissionsHref}#application-deadlines">Application Deadlines</a>
+            <a href="${href(relative, 'admissions/international.html')}">International Students</a>
+            <a class="academic-calendar-download" href="https://cdn.prod.website-files.com/6a3268e6b878fd22920cd747/6aa3c00aca9e742e4f7edbea_AUS-Academic%20Calendar%202026-2027.pdf" download="AUS-Academic Calendar 2026-2027.pdf">Academic Calendar</a>
+            <a href="${href(relative, 'admissions/international.html')}#visa">Visa &amp; Immigration</a>
+            <a href="${href(relative, 'admissions/transfer-requirements.html')}">Transfer Students</a>
+            <a href="${href(relative, 'faq.html')}?category=admissions#faq-intro">FAQ</a>
+          </div>
+        </div></div>
+      </div>`;
+    html = html.replace(/<div class="accordion-item" data-panel-key="admissions">[\s\S]*?(?=<div class="accordion-item" data-panel-key="tuition">)/, admissionsPanel + '\n      ');
     const tuitionPanel = `<div class="accordion-item" data-panel-key="tuition">
         <button class="accordion-trigger">Tuition &amp; Scholarships <span class="accordion-icon"></span></button>
         <div class="accordion-panel"><div class="accordion-panel-inner">
