@@ -14,13 +14,19 @@
       height: auto;
       transform-origin: 50% 50%;
       animation: professionalPreloader 3.2s cubic-bezier(.45,0,.55,1) infinite;
-      will-change: transform, opacity;
+      animation-play-state: paused;
+      visibility: hidden;
+      will-change: transform;
+    }
+    .logo.is-ready {
+      visibility: visible;
+      animation-play-state: running;
     }
     @keyframes professionalPreloader {
-      0%, 100% { opacity: .78; transform: rotateY(-2.5deg) scale(.965); }
-      25% { opacity: 1; transform: rotateY(0deg) scale(1); }
-      50% { opacity: 1; transform: rotateY(2.5deg) scale(1.012); }
-      75% { opacity: 1; transform: rotateY(0deg) scale(1); }
+      0%, 100% { transform: rotateY(-2.5deg) scale(.965); }
+      25% { transform: rotateY(0deg) scale(1); }
+      50% { transform: rotateY(2.5deg) scale(1.012); }
+      75% { transform: rotateY(0deg) scale(1); }
     }
     @media (max-width: 600px) {
       .logo { width: min(54vw, 230px); }
@@ -32,7 +38,7 @@
 </head>
 <body>
   <main class="preview" aria-label="AUS logo animation concept">
-    <img class="logo" src="aus-3d-logo-front.png" alt="AUS emblem">
+    <img class="logo" src="aus-3d-logo-front.webp" alt="AUS emblem" width="540" height="678" decoding="async" fetchpriority="high" onload="this.classList.add('is-ready')">
   </main>
 </body>
 </html>

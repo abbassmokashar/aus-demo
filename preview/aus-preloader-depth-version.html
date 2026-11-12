@@ -25,7 +25,13 @@
       width: min(30vw, 270px);
       transform-style: preserve-3d;
       animation: dimensionalPreloader 4.4s cubic-bezier(.42,0,.24,1) infinite;
-      will-change: transform, opacity;
+      animation-play-state: paused;
+      visibility: hidden;
+      will-change: transform;
+    }
+    .logo-stage.is-ready {
+      visibility: visible;
+      animation-play-state: running;
     }
     .logo {
       display: block;
@@ -35,12 +41,12 @@
       backface-visibility: hidden;
     }
     @keyframes dimensionalPreloader {
-      0%   { opacity: .82; transform: rotateX(0deg) rotateY(0deg) translateZ(0) scale(.965); }
-      18%  { opacity: 1;   transform: rotateX(-1.5deg) rotateY(-8deg) translateZ(18px) scale(1); }
-      38%  { opacity: 1;   transform: rotateX(0deg) rotateY(0deg) translateZ(24px) scale(1.012); }
-      62%  { opacity: 1;   transform: rotateX(1.5deg) rotateY(8deg) translateZ(18px) scale(1); }
-      82%  { opacity: 1;   transform: rotateX(0deg) rotateY(0deg) translateZ(8px) scale(.992); }
-      100% { opacity: .82; transform: rotateX(0deg) rotateY(0deg) translateZ(0) scale(.965); }
+      0%   { transform: rotateX(0deg) rotateY(0deg) translateZ(0) scale(.965); }
+      18%  { transform: rotateX(-1.5deg) rotateY(-8deg) translateZ(18px) scale(1); }
+      38%  { transform: rotateX(0deg) rotateY(0deg) translateZ(24px) scale(1.012); }
+      62%  { transform: rotateX(1.5deg) rotateY(8deg) translateZ(18px) scale(1); }
+      82%  { transform: rotateX(0deg) rotateY(0deg) translateZ(8px) scale(.992); }
+      100% { transform: rotateX(0deg) rotateY(0deg) translateZ(0) scale(.965); }
     }
     @media (max-width: 600px) {
       .logo-stage { width: min(54vw, 230px); }
@@ -53,7 +59,7 @@
 <body>
   <main class="preview" aria-label="AUS dimensional logo animation concept">
     <div class="logo-stage">
-      <img class="logo" src="aus-3d-logo-front.png" alt="AUS emblem">
+      <img class="logo" src="aus-3d-logo-front.webp" alt="AUS emblem" width="540" height="678" decoding="async" fetchpriority="high" onload="this.parentElement.classList.add('is-ready')">
     </div>
   </main>
 </body>
